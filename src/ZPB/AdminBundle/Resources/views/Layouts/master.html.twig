@@ -1,4 +1,4 @@
-{% set active = active is defined ?: "none" %}
+{% set active = (active is defined) ? active : "none" %}
 <!doctype html>
 <html lang="fr">
 <head>

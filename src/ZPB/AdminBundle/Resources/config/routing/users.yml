@@ -1,0 +1,4 @@
+zpb_admin_users_list:
+    path: /
+    defaults: { _controller: ZPBAdminBundle:General/AdminUser:list }
+    methods: ["GET"]

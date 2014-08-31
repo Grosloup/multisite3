@@ -31,10 +31,10 @@
 
                             </ul>
                         </li>
-                        <li class="sidebar-dropdown"><a href="">Utilisateurs</a><i class="sidebar-icon fa fa-angle-right"></i>
+                        <li class="sidebar-dropdown{% if active in ["list_users", "new_user"] %} active{% endif %}"><a href="">Utilisateurs</a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
-                                <li><a href="">Liste</a></li>
-                                <li><a href="">nouveau</a></li>
+                                <li class="{% if active == "list_users" %}active{% endif %}"><a href="{{ path("zpb_admin_users_list") }}">Liste</a></li>
+                                <li class="{% if active == "new_user" %}active{% endif %}"><a href="">nouveau</a></li>
                             </ul>
                         </li>
                         <li class="sidebar-dropdown"><a href="">Médiathèque</a><i class="sidebar-icon fa fa-angle-right"></i>

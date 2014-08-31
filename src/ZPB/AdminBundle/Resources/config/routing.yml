@@ -2,6 +2,10 @@ zpb_admin_homepage:
     path:     /
     defaults: { _controller: ZPBAdminBundle:Index:index }
 
-zpb_admin_post_routes:
-    prefix: /actulites
+zpb_admin_posts_routes:
+    prefix: /actualites
     resource: "@ZPBAdminBundle/Resources/config/routing/posts.yml"
+
+zpb_admin_users_routes:
+    prefix: /utilisateurs
+    resource: "@ZPBAdminBundle/Resources/config/routing/users.yml"
