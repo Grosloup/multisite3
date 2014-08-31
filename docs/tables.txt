@@ -2,7 +2,7 @@ zpb_institutions - Institution
 	name, slug, id, created_at, updated_at, description
 
 zpb_phototek_photos (phototek) - Photo
-	id, filename, extension, mime, width, height, rootDir, webDir, created_at, updated_at, title, copyright, legend, description
+	id, filename, extension, mime, width, height, rootDir, webDir, created_at, updated_at, title, copyright, legend, description, position
 
 	OneToOne counter => DocumentCounter (zpb_documents_counters)
 	ManyToOne institution => Institutions (zpb_institutions)

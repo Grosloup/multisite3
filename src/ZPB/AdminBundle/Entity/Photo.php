@@ -3,12 +3,17 @@
 namespace ZPB\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Photo
  *
  * @ORM\Table(name="zpb_phototek_photos")
  * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\PhotoRepository")
+ * @UniqueEntity("filename", message="Un fichier photo du même nom existe déjà.")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Photo
 {
@@ -24,49 +29,49 @@ class Photo
     /**
      * @var string
      *
-     * @ORM\Column(name="filename", type="string", length=255)
+     * @ORM\Column(name="filename", type="string", length=255, nullable=false, unique=true)
      */
     private $filename;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="extension", type="string", length=6)
+     * @ORM\Column(name="extension", type="string", length=6, nullable=false)
      */
     private $extension;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="mime", type="string", length=50)
+     * @ORM\Column(name="mime", type="string", length=50, nullable=false)
      */
     private $mime;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="width", type="integer")
+     * @ORM\Column(name="width", type="integer", nullable=false)
      */
     private $width;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="height", type="integer")
+     * @ORM\Column(name="height", type="integer", nullable=false)
      */
     private $height;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="rootDir", type="string", length=255)
+     * @ORM\Column(name="rootDir", type="string", length=255, nullable=false)
      */
     private $rootDir;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="webDir", type="string", length=255)
+     * @ORM\Column(name="webDir", type="string", length=255, nullable=false)
      */
     private $webDir;
 
@@ -74,6 +79,7 @@ class Photo
      * @var \DateTime
      *
      * @ORM\Column(name="ceated_at", type="datetime")
+     * @Gedmo\Timestampable(on="create")
      */
     private $ceatedAt;
 
@@ -81,6 +87,7 @@ class Photo
      * @var \DateTime
      *
      * @ORM\Column(name="updated_at", type="datetime")
+     * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
 
@@ -106,6 +113,72 @@ class Photo
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
+    /**
+     * @Gedmo\SortableGroup()
+     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\PhotoCategory", inversedBy="photos")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    private $category;
+    /**
+     * @Gedmo\SortablePosition()
+     * @ORM\Column(name="position", type="integer")
+     */
+    private $position;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\Institution")
+     * @ORM\JoinColumn(name="institution_id", referencedColumnName="id")
+     */
+    private $institution;
+
+    /**
+     * @var string
+     */
+    private $absolutePath;
+
+    /**
+     * @var \Symfony\Component\HttpFoundation\File\UploadedFile
+     */
+    public $file;
+
+
+    public function __construct()
+    {
+
+    }
+
+    public function upload()
+    {
+
+    }
+
+    public function getAbsolutePath()
+    {
+        return $this->rootDir . $this->webDir . $this->filename . "." . $this->extension;
+    }
+
+    public function getWebPath()
+    {
+        return '/' . $this->webDir . $this->filename . "." . $this->extension;
+    }
+
+    /**
+     * @ORM\PreRemove()
+     */
+    public function storeAbsolutePath()
+    {
+        $this->absolutePath = $this->getAbsolutePath();
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function deleteFile()
+    {
+        if(file_exists($this->absolutePath)){
+            unlink($this->absolutePath);
+        }
+    }
 
     /**
      * @return string
@@ -121,7 +194,7 @@ class Photo
      */
     public function setCopyright($copyright)
     {
-        $this->copyright = $copyright;
+        $this->copyright = '@ ' . trim($copyright, ' @');
         return $this;
     }
 
@@ -207,7 +280,7 @@ class Photo
      */
     public function setFilename($filename)
     {
-        $this->filename = $filename;
+        $this->filename = trim($filename, ' /') . '/';
 
         return $this;
     }
@@ -394,5 +467,74 @@ class Photo
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return Photo
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * Set category
+     *
+     * @param PhotoCategory $category
+     * @return Photo
+     */
+    public function setCategory(PhotoCategory $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return PhotoCategory
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set institution
+     *
+     * @param Institution $institution
+     * @return Photo
+     */
+    public function setInstitution(Institution $institution = null)
+    {
+        $this->institution = $institution;
+
+        return $this;
+    }
+
+    /**
+     * Get institution
+     *
+     * @return Institution
+     */
+    public function getInstitution()
+    {
+        return $this->institution;
     }
 }
