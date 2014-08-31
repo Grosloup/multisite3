@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="fixtures" pattern="file:src//*Bundle/DataFixtures/ORM/Load*.php" />
+</component>
