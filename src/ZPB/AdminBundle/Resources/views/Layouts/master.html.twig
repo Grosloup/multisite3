@@ -10,9 +10,10 @@
     <title>{%  if block('title') %}{{ block('title') }}{% else %}Accueil{% endif %} | Admin | ZooBeauval</title>
 
     {% block headLinks %}
-        <link rel="stylesheet" href="/css/master.css"/>
         <link rel="stylesheet" href="/css/admin/master.min.css"/>
         <link rel="stylesheet" href="/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="/css/common/tooltipster/tooltipster.css"/>
+        <link rel="stylesheet" href="/css/common/tooltipster/themes/tooltipster-punk.css"/>
     {% endblock %}
 
     {% block headStyles %}{% endblock %}
@@ -52,7 +53,7 @@
 
 {% block footer %}{% endblock %}
 {% block footScripts %}
-    <script src="/js/vendor/libs.js"></script>
+    <script src="/js/admin/libs.js"></script>
     <script src="/js/admin/app.min.js"></script>
 {% endblock %}
 </body>
