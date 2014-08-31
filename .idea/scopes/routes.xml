@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="routes" pattern="file:src//Resources/config/routing.yml||file:src//Resources/config/routing/*.yml||file:app/config/routing*.yml" />
+</component>

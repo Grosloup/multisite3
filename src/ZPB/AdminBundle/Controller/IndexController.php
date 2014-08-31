@@ -2,9 +2,8 @@
 
 namespace ZPB\AdminBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class IndexController extends Controller
+class IndexController extends BaseController
 {
     public function indexAction()
     {

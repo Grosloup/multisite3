@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="css" pattern="file:web//*.css&amp;&amp;!file[multisite3]:web/bundles/*" />
+</component>

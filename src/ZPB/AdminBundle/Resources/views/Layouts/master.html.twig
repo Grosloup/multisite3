@@ -1,3 +1,4 @@
+{% set active = active is defined ?: "none" %}
 <!doctype html>
 <html lang="fr">
 <head>
@@ -20,23 +21,35 @@
 <body class="theme_blue">
 <div class="app">
     {% block navbar %}
-        <header class="navbar fixed-top">
-            <a class="sidebar-toggle" href="" id="sidebar-toggle"></a>
-            <a class="logo" href="">Logo</a>
-            <div class="navs">
-                <div class="nav-right">
-                    <ul>
-                        <li><a href=""><i class="fa fa-envelope"></i></a></li>
-                        <li><a href=""><i class="fa fa-user"></i></a></li>
-                        <li><a href=""><i class="fa fa-power-off"></i></a></li>
-                    </ul>
+        {{ render(controller("ZPBAdminBundle:Navs:topbar")) }}
+    {% endblock %}
+    {% block body %}
+    <section class="master">
+        {{ render(controller("ZPBAdminBundle:Navs:sidebar", {active: active})) }}
+        <section class="main-content">
+            <div class="wrapper">
+                <div class="inside-wrapper">
+                    {% if app.session.flashBag|length > 0 %}
+                        {% for type,message in app.session.flashBag.all %}
+                            <div class="dialogs">
+                                <div class="dialog dialog-{{ type }}">
+                                    <div class="dialog-close">&times;</div>
+                                    <p>{{ message }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    <div class="container">
+                        {% block content %}{% endblock %}
+                    </div>
                 </div>
             </div>
-        </header>
+        </section>
+    </section>
     {% endblock %}
 </div>
 
-{% block body %}{% endblock %}
+
 {% block footer %}{% endblock %}
 {% block footScripts %}
     <script src="/js/vendor/libs.js"></script>

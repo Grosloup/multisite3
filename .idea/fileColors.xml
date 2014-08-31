@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SharedFileColors">
+    <fileColor scope="controllers" color="355665" />
+    <fileColor scope="scss" color="bd292c" />
+    <fileColor scope="twig" color="476a3f" />
+    <fileColor scope="routes" color="80691b" />
+    <fileColor scope="entities" color="974009" />
+    <fileColor scope="services" color="652243" />
+    <fileColor scope="css" color="104f40" />
+    <fileColor scope="js" color="3e185d" />
+    <fileColor scope="vendorjs" color="674c5d" />
+  </component>
+</project>
+

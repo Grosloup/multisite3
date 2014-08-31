@@ -1,3 +1,7 @@
 zpb_admin_homepage:
     path:     /
     defaults: { _controller: ZPBAdminBundle:Index:index }
+
+zpb_admin_post_routes:
+    prefix: /actulites
+    resource: "@ZPBAdminBundle/Resources/config/routing/posts.yml"

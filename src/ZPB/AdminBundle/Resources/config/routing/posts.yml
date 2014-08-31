@@ -1,0 +1,4 @@
+zpb_admin_posts_list:
+    path: /
+    defaults: { _controller: ZPBAdminBundle:General/Post:list }
+    methods: ["GET"]
