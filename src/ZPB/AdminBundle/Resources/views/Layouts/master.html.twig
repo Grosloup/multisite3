@@ -9,10 +9,18 @@
     <title>{%  if block('title') %}{{ block('title') }}{% else %}Accueil{% endif %} | Admin | ZooBeauval</title>
 
     {% block headLinks %}
-        <link rel="stylesheet" href="/css/admin/master.css"/>
+        <link rel="stylesheet" href="/css/admin/master.min.css"/>
     {% endblock %}
+
+    {% block headStyles %}{% endblock %}
+    {% block headScripts %}{% endblock %}
 </head>
 <body>
-
+{% block header %}{% endblock %}
+{% block body %}{% endblock %}
+{% block footer %}{% endblock %}
+{% block footScripts %}
+    <script src="/js/vendor/libs.js"></script>
+{% endblock %}
 </body>
 </html>

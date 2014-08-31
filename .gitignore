@@ -11,3 +11,4 @@
 /composer.phar
 /.idea/
 /.sass-cache/
+/node_modules/
