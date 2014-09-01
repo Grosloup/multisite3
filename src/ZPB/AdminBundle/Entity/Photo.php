@@ -161,7 +161,25 @@ class Photo implements ResizeableInterface
 
     public function upload()
     {
+        if(!$this->file){
+            return false;
+        }
 
+        $this->extension = $this->file->guessExtension();
+        $this->mime = $this->file->getMimeType();
+        $dest = $this->rootDir . $this->webDir;
+
+        if(!$this->filename){
+            $this->filename = $this->sanitizeFilename($this->file->getClientOriginalName());
+        }
+
+
+        return true;
+    }
+
+    private function sanitizeFilename($string="")
+    {
+        return preg_replace('/[^a-zA-Z0-9._-]/', '', $string);
     }
 
     public function getAbsolutePath()

@@ -28,7 +28,8 @@ class PhotoController extends BaseController
 {
     public function listAction()
     {
-        return $this->render('ZPBAdminBundle:General:photo/list.html.twig', []);
+        $photos = $this->getRepo('ZPBAdminBundle:Photo')->findAll();
+        return $this->render('ZPBAdminBundle:General:photo/list.html.twig', ['photos'=>$photos]);
     }
 
     public function createAction(Request $request)
