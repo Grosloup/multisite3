@@ -11,6 +11,7 @@
     <fileColor scope="js" color="3e185d" />
     <fileColor scope="vendorjs" color="674c5d" />
     <fileColor scope="fixtures" color="ac3d17" />
+    <fileColor scope="types" color="341082" />
   </component>
 </project>
 
