@@ -25,6 +25,7 @@ use Symfony\Component\HttpFoundation\Request;
 use ZPB\AdminBundle\Controller\BaseController;
 use ZPB\AdminBundle\Entity\PhotoCategory;
 use ZPB\AdminBundle\Form\Type\PhotoCategoryType;
+use ZPB\AdminBundle\Form\Type\PhotoCategoryUpdateType;
 
 class PhotoCategoryController extends BaseController
 {
@@ -47,7 +48,16 @@ class PhotoCategoryController extends BaseController
 
     public function updateAction($id, Request $request)
     {
-        return $this->render('ZPBAdminBundle:General/photo_category:update.html.twig', []);
+        $photoCategory = $this->getRepo('ZPBAdminBundle:PhotoCategory')->find($id);
+        if(!$photoCategory){
+            //TODO
+        }
+        $form = $this->createForm(new PhotoCategoryUpdateType(), $photoCategory);
+        $form->handleRequest($request);
+        if($form->isValid()){
+            //TODO
+        }
+        return $this->render('ZPBAdminBundle:General/photo_category:update.html.twig', ['form'=>$form->createView(), 'name'=>$photoCategory->getName()]);
     }
 
     public function deleteAction($id, Request $request)

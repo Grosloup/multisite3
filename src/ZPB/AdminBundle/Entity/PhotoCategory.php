@@ -30,6 +30,8 @@ class PhotoCategory
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=false, unique=true)
+     * @Assert\NotBlank(message="Ce champs ne doit pas être vide.")
+     * @Assert\Regex("/^[a-zA-Z0-9éèêëàâôöûüîïç@#&',.\/!?:_ -]+$/i", message="Ce champs contient des caractères non autorisés.")
      */
     private $name;
 
