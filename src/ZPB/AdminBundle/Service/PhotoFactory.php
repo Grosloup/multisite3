@@ -21,6 +21,28 @@
 namespace ZPB\AdminBundle\Service;
 
 
-class PhotoFactory {
+class PhotoFactory
+{
+    private $sizes = [];
+    private $options = [];
 
+    public function __construct(array $sizes, array $options)
+    {
+        $this->sizes = $sizes;
+        $this->options = $options;
+    }
+
+    public function create()
+    {
+
+        $class = $this->options['zpb.photo.class'];
+        /** @var \ZPB\AdminBundle\Entity\Photo $photo */
+        $photo = new $class();
+
+        $photo->setRootDir($this->options['zpb.photo.root_dir']);
+        $photo->setWebDir($this->options['zpb.photo.web_dir']);
+        $photo->setCopyright($this->options['zpb.document.default_copyright.text']);
+
+        return $photo;
+    }
 } 

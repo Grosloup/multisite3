@@ -13,20 +13,27 @@
             <parameter key="xlarge">800</parameter>
         </parameter>
         <parameter key="zpb.medias.options" type="collection">
-            <parameter key="zpb.photo.upload_dir">"downloads/images/"</parameter>
+            <parameter key="zpb.photo.class">ZPB\AdminBundle\Entity\Photo</parameter>
+            <parameter key="zpb.photo.web_dir">"downloads/images/"</parameter>
             <parameter key="zpb.photo.thumbs.upload_dir">"downloads/images/thumbs/"</parameter>
             <parameter key="zpb.photo.root_dir">"%kernel.root_dir%/"</parameter>
-            <parameter key="zpb.pdf.upload_dir">"downloads/pdf/"</parameter>
+            <parameter key="zpb.pdf.web_dir">"downloads/pdf/"</parameter>
             <parameter key="zpb.pdf.root_dir">"%kernel.root_dir%/"</parameter>
-            <parameter key="zpb.img.upload_dir">"imgs/"</parameter>
+            <parameter key="zpb.img.web_dir">"imgs/"</parameter>
             <parameter key="zpb.img.thumbs.upload_dir">"imgs/thumbs/"</parameter>
             <parameter key="zpb.img.root_dir">"%kernel.root_dir%/"</parameter>
+            <parameter key="zpb.document.default_copyright.text">ZooParc de Beauval</parameter>
         </parameter>
         <parameter key="zpb.image_resizer.class">ZPB\AdminBundle\Service\ImageResizer</parameter>
+        <parameter key="zpb.photo_factory.class">ZPB\AdminBundle\Service\PhotoFactory</parameter>
     </parameters>
 
     <services>
         <service id="zpb.image_resizer" class="%zpb.image_resizer.class%">
+            <argument>%zpb.photo.thumbnails%</argument>
+            <argument>%zpb.medias.options%</argument>
+        </service>
+        <service id="zpb.photo_factory" class="%zpb.photo_factory.class%">
             <argument>%zpb.photo.thumbnails%</argument>
             <argument>%zpb.medias.options%</argument>
         </service>

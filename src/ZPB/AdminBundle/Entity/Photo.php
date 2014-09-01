@@ -29,7 +29,8 @@ class Photo implements ResizeableInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="filename", type="string", length=255, nullable=false, unique=true)
+     * @ORM\Column(name="filename", type="string", length=255, nullable=true, unique=true)
+     * @Assert\Regex("/^[a-zA-Z0-9._-]*$/", message="Ce champ contient des caractères non autorisés.")
      */
     private $filename;
 
@@ -78,10 +79,10 @@ class Photo implements ResizeableInterface
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="ceated_at", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime")
      * @Gedmo\Timestampable(on="create")
      */
-    private $ceatedAt;
+    private $createdAt;
 
     /**
      * @var \DateTime
@@ -172,8 +173,11 @@ class Photo implements ResizeableInterface
         if(!$this->filename){
             $this->filename = $this->sanitizeFilename($this->file->getClientOriginalName());
         }
-
-
+        $this->file->move($dest, $this->filename . '.' . $this->extension);
+        $size = getimagesize($this->getAbsolutePath());
+        $this->width = $size[0];
+        $this->height = $size[1];
+        $this->file = null;
         return true;
     }
 
@@ -224,7 +228,8 @@ class Photo implements ResizeableInterface
      */
     public function setCopyright($copyright)
     {
-        $this->copyright = '@ ' . trim($copyright, ' @');
+        $year = (new \DateTime())->format('Y');
+        $this->copyright = '@ ' . trim($copyright, ' @') . ' - ' . $year;
         return $this;
     }
 
@@ -458,20 +463,20 @@ class Photo implements ResizeableInterface
      *
      * @return \DateTime
      */
-    public function getCeatedAt()
+    public function getCreatedAt()
     {
-        return $this->ceatedAt;
+        return $this->createdAt;
     }
 
     /**
      * Set ceatedAt
      *
-     * @param \DateTime $ceatedAt
+     * @param \DateTime $createdAt
      * @return Photo
      */
-    public function setCeatedAt($ceatedAt)
+    public function setCreatedAt($createdAt)
     {
-        $this->ceatedAt = $ceatedAt;
+        $this->createdAt = $createdAt;
 
         return $this;
     }

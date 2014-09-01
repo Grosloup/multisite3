@@ -1,0 +1,23 @@
+zpb_admin_photos_categories_list:
+    path: /
+    defaults: { _controller: ZPBAdminBundle:General/PhotoCategory:list }
+    methods: ["GET"]
+
+zpb_admin_photos_categories_create:
+    path: /nouvelle
+    defaults: { _controller: ZPBAdminBundle:General/PhotoCategory:create }
+    methods: ["GET", "POST"]
+
+zpb_admin_photos_categories_update:
+    path: /modifier/{id}
+    defaults: { _controller: ZPBAdminBundle:General/PhotoCategory:update }
+    methods: ["GET", "POST"]
+    requirements:
+        id: \d+
+
+zpb_admin_photos_categories_delete:
+    path: /supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:General/PhotoCategory:delete }
+    methods: ["GET"]
+    requirements:
+        id: \d+

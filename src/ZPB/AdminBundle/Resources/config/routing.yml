@@ -13,3 +13,7 @@ zpb_admin_users_routes:
 zpb_admin_photos_routes:
     prefix: /photos
     resource: "@ZPBAdminBundle/Resources/config/routing/photos.yml"
+
+zpb_admin_photos_categories_routes:
+    prefix: /photos
+    resource: "@ZPBAdminBundle/Resources/config/routing/photos.yml"

@@ -25,6 +25,8 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use ZPB\AdminBundle\Entity\PhotoCategory;
+
 // use ZPB\AdminBundle\Entity\PhotoCategory;
 
 class LoadPhotoCategories  extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
@@ -42,10 +44,24 @@ class LoadPhotoCategories  extends AbstractFixture implements OrderedFixtureInte
     public function load(ObjectManager $manager)
     {
 
+        $pc1 = new PhotoCategory();
+        $pc1->setName('Nouveauté');
+        $manager->persist($pc1);
+        $pc2 = new PhotoCategory();
+        $pc2->setName('Carnet rose');
+        $manager->persist($pc2);
+        $pc3 = new PhotoCategory();
+        $pc3->setName('Chambres (JdB)');
+        $manager->persist($pc3);
+        $pc4 = new PhotoCategory();
+        $pc4->setName('Chambres (HdB)');
+        $manager->persist($pc4);
+        $manager->flush();
 
-        // $manager->flush();
-
-        // $this->addReference('', );
+        $this->addReference('zpb-photo-cat-1', $pc1);
+        $this->addReference('zpb-photo-cat-2', $pc2);
+        $this->addReference('zpb-photo-cat-3', $pc3);
+        $this->addReference('zpb-photo-cat-4', $pc4);
     }
 
     public function getOrder()
