@@ -15,4 +15,20 @@ zpb_phototek_categories - PhotoCategory
 zpb_documents_counters - DocumentCounter
    id, document_id, created_at
 
+#####################
 
+
+Parrainage
+
+zpb_sponsoring_animals - Animal
+zpb_sponsoring_species - Species
+
+zpb_sponsoring_sponsorships_descriptions - SponsorshipDescription
+zpb_sponsoring_sponsorships - Sponsorship
+
+zpb_sponsoring_gifts - Gift
+zpb_sponsoring_gifts_descriptions - GiftDescription
+
+zpb_sponsoring_godparents - GodParent
+
+zpb_sponsoring_orders - SponsorshipOrder
