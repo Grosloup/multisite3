@@ -23,6 +23,8 @@ namespace ZPB\AdminBundle\Controller\General;
 
 use Symfony\Component\HttpFoundation\Request;
 use ZPB\AdminBundle\Controller\BaseController;
+use ZPB\AdminBundle\Entity\PhotoCategory;
+use ZPB\AdminBundle\Form\Type\PhotoCategoryType;
 
 class PhotoCategoryController extends BaseController
 {
@@ -34,7 +36,13 @@ class PhotoCategoryController extends BaseController
 
     public function createAction(Request $request)
     {
-        return $this->render('ZPBAdminBundle:General/photo_category:create.html.twig', []);
+        $photCategory = new PhotoCategory();
+        $form = $this->createForm(new PhotoCategoryType(), $photCategory);
+        $form->handleRequest($request);
+        if($form->isValid()){
+            //TODO
+        }
+        return $this->render('ZPBAdminBundle:General/photo_category:create.html.twig', ['form'=>$form->createView()]);
     }
 
     public function updateAction($id, Request $request)
