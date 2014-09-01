@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @UniqueEntity("filename", message="Un fichier photo du même nom existe déjà.")
  * @ORM\HasLifecycleCallbacks()
  */
-class Photo
+class Photo implements ResizeableInterface
 {
     /**
      * @var integer

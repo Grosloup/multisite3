@@ -1,0 +1,29 @@
+zpb_admin_photos_list:
+    path: /
+    defaults: { _controller: ZPBAdminBundle:General/Photo:list }
+    methods: ["GET"]
+
+zpb_admin_photos_create:
+    path: /nouvelle
+    defaults: { _controller: ZPBAdminBundle:General/Photo:create }
+    methods: ["GET", "POST"]
+
+zpb_admin_photos_update:
+    path: /modifier/{id}
+    defaults: { _controller: ZPBAdminBundle:General/Photo:update }
+    methods: ["GET", "POST"]
+    requirements:
+        id: \d+
+
+zpb_admin_photos_delete:
+    path: /supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:General/Photo:delete }
+    methods: ["GET"]
+    requirements:
+        id: \d+
+
+
+
+
+
+

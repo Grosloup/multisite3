@@ -9,3 +9,7 @@ zpb_admin_posts_routes:
 zpb_admin_users_routes:
     prefix: /utilisateurs
     resource: "@ZPBAdminBundle/Resources/config/routing/users.yml"
+
+zpb_admin_photos_routes:
+    prefix: /photos
+    resource: "@ZPBAdminBundle/Resources/config/routing/photos.yml"
