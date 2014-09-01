@@ -141,10 +141,22 @@ class Photo
      */
     public $file;
 
+    /**
+     * @var string
+     * @ORM\Column(name="long_id", type="string", length=15, nullable=false, unique=true)
+     */
+    private $longId;
+
 
     public function __construct()
     {
+        $now = (new \DateTime())->getTimestamp();
+        $this->longId = substr(base_convert(sha1(uniqid($now, true)), 16, 36),0 ,15);
+    }
 
+    public function getLongId()
+    {
+        return $this->longId;
     }
 
     public function upload()
@@ -537,4 +549,6 @@ class Photo
     {
         return $this->institution;
     }
+
+
 }

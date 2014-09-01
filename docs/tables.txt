@@ -2,9 +2,8 @@ zpb_institutions - Institution
 	name, slug, id, created_at, updated_at, description
 
 zpb_phototek_photos (phototek) - Photo
-	id, filename, extension, mime, width, height, rootDir, webDir, created_at, updated_at, title, copyright, legend, description, position
+	id, filename, extension, mime, width, height, rootDir, webDir, created_at, updated_at, title, copyright, legend, description, position, longId
 
-	OneToOne counter => DocumentCounter (zpb_documents_counters)
 	ManyToOne institution => Institutions (zpb_institutions)
 	ManyToOne category => PhotoCategory (zpb_phototek_categories)
 
@@ -14,6 +13,6 @@ zpb_phototek_categories - PhotoCategory
 	OneToMany photos => Photo
 
 zpb_documents_counters - DocumentCounter
-   id, asset_id, num, created_at, updated_at
+   id, document_id, created_at
 
 
