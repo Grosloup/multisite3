@@ -4,7 +4,8 @@ namespace ZPB\AdminBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Animation
  *
@@ -33,13 +34,14 @@ class Animation
      * @var string
      *
      * @ORM\Column(name="slug", type="string", length=255)
+     * @Gedmo\Slug(fields={"name"}, unique=true)
      */
     private $slug;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 

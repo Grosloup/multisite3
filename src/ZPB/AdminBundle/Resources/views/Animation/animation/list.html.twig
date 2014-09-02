@@ -32,9 +32,9 @@
                                 <tr>
                                     <td>{{ animation.id }}</td>
                                     <td>{{ animation.name }}</td>
-                                    <td>{{ animation.placeNum }}</td>
-                                    <td><a class="btn btn-neutral" href="{{ path("zpb_admin_animations_update") }}"><i class="fa fa-edit"></i></a></td>
-                                    <td><a class="btn btn-neutral alert-delete" href="{{ path("zpb_admin_animations_delete", {id: animation.id, _token: csrf_token('delete_animation')}) }}" data-name="{{ animation.name }}"><i class="fa fa-trash-0"></i></a></td>
+                                    <td>{{ animation.placeNumber }}</td>
+                                    <td><a class="btn btn-neutral" href="{{ path("zpb_admin_animations_update", {id: animation.id}) }}"><i class="fa fa-edit"></i></a></td>
+                                    <td><a class="btn btn-neutral alert-delete" href="{{ path("zpb_admin_animations_delete", {id: animation.id, _token: csrf_token('delete_animation')}) }}" data-name="{{ animation.name }}"><i class="fa fa-trash-o"></i></a></td>
                                 </tr>
                             {% endfor %}
                         {% endif %}

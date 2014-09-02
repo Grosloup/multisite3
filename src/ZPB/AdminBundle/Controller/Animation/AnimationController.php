@@ -51,7 +51,16 @@ class AnimationController extends BaseController
 
     public function updateAction($id, Request $request)
     {
-
+        $animation = $this->getRepo('ZPBAdminBundle:Animation')->find($id);
+        if(!$animation){
+            //TODO
+        }
+        $form = $this->createForm(new AnimationType(), $animation);
+        $form->handleRequest($request);
+        if($form->isValid()){
+            //TODO
+        }
+        return $this->render('ZPBAdminBundle:Animation:animation/update.html.twig', ['form'=>$form->createView(), 'name'=>$animation->getName()]);
     }
 
     public function deleteAction($id, Request $request)
