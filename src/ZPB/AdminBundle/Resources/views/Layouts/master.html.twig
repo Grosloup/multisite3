@@ -31,11 +31,13 @@
             <div class="wrapper">
                 <div class="inside-wrapper">
                     {% if app.session.flashBag|length > 0 %}
-                        {% for type,message in app.session.flashBag.all %}
+                        {% for type,messages in app.session.flashBag.all %}
                             <div class="dialogs">
                                 <div class="dialog dialog-{{ type }}">
                                     <div class="dialog-close">&times;</div>
+                                    {% for message in messages %}
                                     <p>{{ message }}</p>
+                                    {% endfor %}
                                 </div>
                             </div>
                         {% endfor %}

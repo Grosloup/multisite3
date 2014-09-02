@@ -43,7 +43,10 @@ class AnimationController extends BaseController
         $form = $this->createForm(new AnimationType(), $animation);
         $form->handleRequest($request);
         if($form->isValid()){
-            //TODO
+            $this->getManager()->persist($animation);
+            $this->getManager()->flush();
+            $this->setSuccess('La nouvelle animation, ' . $animation->getName() . ' bien enregistée.');
+            return $this->redirect($this->generateUrl('zpb_admin_animations_list'));
         }
 
         return $this->render('ZPBAdminBundle:Animation:animation/create.html.twig', ['form'=>$form->createView()]);
@@ -58,7 +61,10 @@ class AnimationController extends BaseController
         $form = $this->createForm(new AnimationType(), $animation);
         $form->handleRequest($request);
         if($form->isValid()){
-            //TODO
+            $this->getManager()->persist($animation);
+            $this->getManager()->flush();
+            $this->setSuccess('L\'animation, ' . $animation->getName() . ' bien modifiée.');
+            return $this->redirect($this->generateUrl('zpb_admin_animations_list'));
         }
         return $this->render('ZPBAdminBundle:Animation:animation/update.html.twig', ['form'=>$form->createView(), 'name'=>$animation->getName()]);
     }
