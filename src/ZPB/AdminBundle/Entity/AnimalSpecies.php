@@ -3,12 +3,16 @@
 namespace ZPB\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * AnimalSpecies
  *
- * @ORM\Table()
+ * @ORM\Table(name="zpb_animal_species")
  * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\AnimalSpeciesRepository")
+ * @UniqueEntity("name")
  */
 class AnimalSpecies
 {
@@ -24,9 +28,13 @@ class AnimalSpecies
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, nullable=false, unique=true)
      */
     private $name;
+    /**
+     * @ORM\Column(name="latin", type="string", length=255, nullable=false, unique=true)
+     */
+    private $latin;
 
     /**
      * @var string
@@ -35,6 +43,42 @@ class AnimalSpecies
      */
     private $slug;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ZPB\AdminBundle\Entity\Animal", mappedBy="species")
+     */
+    private $animals;
+
+    private $habitat;
+
+    private $geoDistribution;
+
+    private $diet;
+
+    private $size;
+
+    private $weight;
+
+    private $lifespan;
+
+    private $gestation;
+
+    private $statusIUCN;
+
+    private $genus;
+
+    private $classe;
+
+    private $family;
+
+    private $animalOrder;
+    /**
+    * @ORM\Column(name="long_description", type="text", nullable=false)
+    */
+    private $longDescription;
+    /**
+     * @ORM\Column(name="short_description", type="text", nullable=false)
+     */
+    private $shortDescription;
 
     /**
      * Get id
