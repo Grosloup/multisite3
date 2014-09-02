@@ -1,0 +1,19 @@
+zpb_admin_animations_days_list:
+    path: /
+    defaults: { _controller: ZPBAdminBundle:Animation/Day:list }
+    methods: ["GET"]
+
+zpb_admin_animations_days_create:
+    path: /nouvelle
+    defaults: { _controller: ZPBAdminBundle:Animation/Day:create }
+    methods: ["GET","POST"]
+
+zpb_admin_animations_days_update:
+    path: /modifier/{id}
+    defaults: { _controller: ZPBAdminBundle:Animation/Day:update }
+    methods: ["GET","POST"]
+
+zpb_admin_animations_days_delete:
+    path: /supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:Animation/Day:delete }
+    methods: ["GET"]

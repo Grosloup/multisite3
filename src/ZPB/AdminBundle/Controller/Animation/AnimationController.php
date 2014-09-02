@@ -32,8 +32,7 @@ class AnimationController extends BaseController
 {
     public function listAction()
     {
-        $animations = $this->getRepo('ZPBAdminBundle:Animation')->findAll();
-
+        $animations = $this->getRepo('ZPBAdminBundle:Animation')->findAll(); //TODO alpha order
         return $this->render('ZPBAdminBundle:Animation:animation/list.html.twig', ['animations'=>$animations]);
     }
 
@@ -71,6 +70,6 @@ class AnimationController extends BaseController
 
     public function deleteAction($id, Request $request)
     {
-
+        //TODO
     }
 } 

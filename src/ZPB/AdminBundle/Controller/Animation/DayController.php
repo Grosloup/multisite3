@@ -29,7 +29,8 @@ class DayController extends BaseController
 {
     public function listAction()
     {
-
+        $animationDays = $this->getRepo('ZPBAdminBundle:AnimationDay')->findAll();
+        return $this->render('ZPBAdminBundle:Animation:day/list.html.twig', ['animDays'=>$animationDays]);
     }
 
     public function createAction(Request $request)

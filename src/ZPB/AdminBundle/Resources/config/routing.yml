@@ -21,3 +21,12 @@ zpb_admin_photos_categories_routes:
 zpb_admin_photos_animations_routes:
     prefix: /animations
     resource: "@ZPBAdminBundle/Resources/config/routing/animations.yml"
+
+zpb_admin_photos_animations_days_routes:
+    prefix: /animations/journées
+    resource: "@ZPBAdminBundle/Resources/config/routing/animations_days.yml"
+
+
+
+
+
