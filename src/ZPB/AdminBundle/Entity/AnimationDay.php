@@ -4,7 +4,8 @@ namespace ZPB\AdminBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
+use ZPB\AdminBundle\Validator\Constraints as ZPBAssert;
 /**
  * AnimationDay
  *
@@ -25,7 +26,8 @@ class AnimationDay
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     * @Assert\Regex("/^[)(a-zéèêëàâûüîïç@\/.,;: _-]*$/i",message="Seuls les caractères: a à z et éèêëàâûüîïç@/.,;: _-  sont autorisés")
      */
     private $name;
 
@@ -33,8 +35,10 @@ class AnimationDay
      * @var string
      *
      * @ORM\Column(name="color", type="string", length=255)
+     * @ZPBAssert\HexColor()
      */
     private $color;
+
     /**
      * @ORM\OneToMany(targetEntity="ZPB\AdminBundle\Entity\AnimationSchedule", mappedBy="animationDay")
      */
@@ -46,6 +50,7 @@ class AnimationDay
     public function __construct()
     {
         $this->schedules = new ArrayCollection();
+        $this->color = "ffffff";
     }
 
     /**

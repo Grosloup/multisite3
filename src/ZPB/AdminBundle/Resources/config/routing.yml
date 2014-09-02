@@ -23,7 +23,7 @@ zpb_admin_photos_animations_routes:
     resource: "@ZPBAdminBundle/Resources/config/routing/animations.yml"
 
 zpb_admin_photos_animations_days_routes:
-    prefix: /animations/journées
+    prefix: /animations/journees
     resource: "@ZPBAdminBundle/Resources/config/routing/animations_days.yml"
 
 

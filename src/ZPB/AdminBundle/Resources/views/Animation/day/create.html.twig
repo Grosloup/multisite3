@@ -1,0 +1,80 @@
+{% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
+
+{% block title %}Nouvelle journée | Animations{% endblock %}
+{% set active = "new_animation_day" %}
+
+{% block headLinks %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/js/vendor/ui/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="/js/vendor/ui/jquery-ui.structure.min.css"/>
+    <link rel="stylesheet" href="/js/vendor/ui/jquery-ui.theme.min.css"/>
+    <link rel="stylesheet" href="/js/vendor/colorpicker/jquery.colorpicker.css"/>
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="column-3"></div>
+        <div class="column-6">
+            <div class="tile">
+                <div class="tile-header">Nouvelle journée d'animations</div>
+
+
+                {{ form_start(form, {attr:{class: "form", novalidate:true}}) }}
+                {{ form_errors(form) }}
+
+                <div class="form-row {% if form.name.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.name) }}
+                    <div class="form-field">
+                        {{ form_widget(form.name)}}
+                        {% if form.name.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.name)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.color.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.color) }}
+                    <div class="form-field">
+                        {{ form_widget(form.color, {attr:{style:"width:80%;"}})}}
+                        {% if form.color.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.color)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {{ form_widget(form.schedules) }}
+
+
+                <div class="horaires" id="horaires" style="margin-bottom: 16px;">
+
+                </div>
+
+                <div class="form-row">
+                    <button class="btn btn-flat btn-primary" id="addAnim">Ajouter une animation</button>
+                </div>
+
+                <div class="form-row">
+                    {{ form_widget(form.save, {attr: {class: "btn btn-primary"}})}}
+                </div>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+        <div class="column-3"></div>
+    </div>
+
+{% endblock %}
+{% block footScripts %}
+    {{ parent() }}
+    <script src="/js/vendor/ui/jquery-ui.min.js"></script>
+    <script src="/js/vendor/colorpicker/jquery.colorpicker.js"></script>
+    <script src="/js/vendor/colorpicker/i18n/jquery.ui.colorpicker-fr.js"></script>
+    <script src="/js/vendor/colorpicker/swatches/jquery.ui.colorpicker-pantone.js"></script>
+    <script src="/js/vendor/colorpicker/parts/jquery.ui.colorpicker-memory.js"></script>
+    <script src="/js/vendor/colorpicker/parts/jquery.ui.colorpicker-rgbslider.js"></script>
+    <script src="/js/vendor/colorpicker/parsers/jquery.ui.colorpicker-cmyk-parser.js"></script>
+    <script src="/js/vendor/colorpicker/parsers/jquery.ui.colorpicker-cmyk-percentage-parser.js"></script>
+    <script src="/js/admin/animationDayForm.min.js"></script>
+{% endblock %}

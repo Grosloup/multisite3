@@ -4,13 +4,14 @@ module.exports = function(grunt){
         uglify: {
             scripts: {
                 files: {
-                    'web/js/admin/app.min.js': ['web/js/admin/app.js']
+                    'web/js/admin/app.min.js': ['web/js/admin/app.js'],
+                    'web/js/admin/animationDayForm.min.js': ['web/js/admin/animationDayForm.js']
                 }
             }
         },
         watch: {
             js: {
-                files: ['web/js/admin/app.js'],
+                files: ['web/js/admin/app.js','web/js/admin/animationDayForm.js'],
                 tasks: ['uglify:scripts']
             }
         }

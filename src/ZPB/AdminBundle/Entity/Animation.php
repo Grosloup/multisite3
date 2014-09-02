@@ -200,4 +200,9 @@ class Animation
     {
         return $this->schedules;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 }
