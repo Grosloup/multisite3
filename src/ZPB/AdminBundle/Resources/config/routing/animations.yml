@@ -1,0 +1,25 @@
+zpb_admin_animations_list:
+    path: /
+    defaults: { _controller: ZPBAdminBundle:Animation/Animation:list }
+    methods: ["GET"]
+
+zpb_admin_animations_create:
+    path: /nouvelle
+    defaults: { _controller: ZPBAdminBundle:Animation/Animation:create }
+    methods: ["GET","POST"]
+
+zpb_admin_animations_update:
+    path: /modifier/{id}
+    defaults: { _controller: ZPBAdminBundle:Animation/Animation:update }
+    methods: ["GET","POST"]
+
+zpb_admin_animations_delete:
+    path: /supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:Animation/Animation:delete }
+    methods: ["GET"]
+
+
+
+
+
+

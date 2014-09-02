@@ -81,8 +81,14 @@
                 <nav class="menu">
                     <h3 class="menu-title">Animations</h3>
                     <ul>
-                        <li class="sidebar-dropdown{% if active in [""] %} active{% endif %}"><a href="">Calendriers</a><i class="sidebar-icon fa fa-angle-right"></i>
+                        <li class="sidebar-dropdown{% if active in ["new_animation","list_animations"] %} active{% endif %}"><a href="">Calendriers</a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
+                                <li class="sidebar-dropdown{% if active in ["new_animation","list_animations"] %} active{% endif %}"><a href="">Animations</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                    <ul>
+                                        <li class="{% if active == "list_animations" %}active{% endif %}"><a href="{{ path("zpb_admin_animations_list")}}">Liste</a></li>
+                                        <li class="{% if active == "new_animation" %}active{% endif %}"><a href="{{ path("zpb_admin_animations_create")}}">Nouvelle</a></li>
+                                    </ul>
+                                </li>
                                 <li class="sidebar-dropdown{% if active in [""] %} active{% endif %}"><a href="">Journées</a><i class="sidebar-icon fa fa-angle-right"></i>
                                     <ul>
                                         <li><a href="">Liste</a></li>

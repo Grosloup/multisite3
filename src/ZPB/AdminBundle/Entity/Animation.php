@@ -50,12 +50,6 @@ class Animation
      */
     private $placeNumber;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="place_name", type="string", length=255)
-     */
-    private $placeName;
 
     /**
      * @ORM\OneToMany(targetEntity="ZPB\AdminBundle\Entity\AnimationSchedule", mappedBy="animation")
@@ -168,29 +162,6 @@ class Animation
     public function setPlaceNumber($placeNumber)
     {
         $this->placeNumber = $placeNumber;
-
-        return $this;
-    }
-
-    /**
-     * Get placeName
-     *
-     * @return string
-     */
-    public function getPlaceName()
-    {
-        return $this->placeName;
-    }
-
-    /**
-     * Set placeName
-     *
-     * @param string $placeName
-     * @return Animation
-     */
-    public function setPlaceName($placeName)
-    {
-        $this->placeName = $placeName;
 
         return $this;
     }
