@@ -5,7 +5,6 @@ namespace ZPB\AdminBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Animal
@@ -31,7 +30,7 @@ class Animal
      */
     private $name;
     /**
-     * @ORM\Column(name="slug", type="string", nullable=false;, unique=true, length=255)
+     * @ORM\Column(name="slug", type="string", nullable=false, unique=true, length=255)
      * @Gedmo\Slug(fields={"name"}, unique=true)
      */
     private $slug;
@@ -84,7 +83,7 @@ class Animal
      */
     private $shortDescription;
     /**
-     * @ORM\Column(name="short_description", type="text")
+     * @ORM\Column(name="history", type="text")
      */
     private $history;
     /**
@@ -104,11 +103,21 @@ class Animal
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -125,13 +134,13 @@ class Animal
     }
 
     /**
-     * Get name
+     * Get bornAt
      *
-     * @return string 
+     * @return \DateTime
      */
-    public function getName()
+    public function getBornAt()
     {
-        return $this->name;
+        return $this->bornAt;
     }
 
     /**
@@ -148,13 +157,13 @@ class Animal
     }
 
     /**
-     * Get bornAt
+     * Get sex
      *
-     * @return \DateTime 
+     * @return string
      */
-    public function getBornAt()
+    public function getSex()
     {
-        return $this->bornAt;
+        return $this->sex;
     }
 
     /**
@@ -171,12 +180,278 @@ class Animal
     }
 
     /**
-     * Get sex
+     * Get slug
      *
-     * @return string 
+     * @return string
      */
-    public function getSex()
+    public function getSlug()
     {
-        return $this->sex;
+        return $this->slug;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Animal
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get canonicalName
+     *
+     * @return string
+     */
+    public function getCanonicalName()
+    {
+        return $this->canonicalName;
+    }
+
+    /**
+     * Set canonicalName
+     *
+     * @param string $canonicalName
+     * @return Animal
+     */
+    public function setCanonicalName($canonicalName)
+    {
+        $this->canonicalName = $canonicalName;
+
+        return $this;
+    }
+
+    /**
+     * Get longName
+     *
+     * @return string
+     */
+    public function getLongName()
+    {
+        return $this->longName;
+    }
+
+    /**
+     * Set longName
+     *
+     * @param string $longName
+     * @return Animal
+     */
+    public function setLongName($longName)
+    {
+        $this->longName = $longName;
+
+        return $this;
+    }
+
+    /**
+     * Get canonicalLongName
+     *
+     * @return string
+     */
+    public function getCanonicalLongName()
+    {
+        return $this->canonicalLongName;
+    }
+
+    /**
+     * Set canonicalLongName
+     *
+     * @param string $canonicalLongName
+     * @return Animal
+     */
+    public function setCanonicalLongName($canonicalLongName)
+    {
+        $this->canonicalLongName = $canonicalLongName;
+
+        return $this;
+    }
+
+    /**
+     * Get bornIn
+     *
+     * @return string
+     */
+    public function getBornIn()
+    {
+        return $this->bornIn;
+    }
+
+    /**
+     * Set bornIn
+     *
+     * @param string $bornIn
+     * @return Animal
+     */
+    public function setBornIn($bornIn)
+    {
+        $this->bornIn = $bornIn;
+
+        return $this;
+    }
+
+    /**
+     * Get longDescription
+     *
+     * @return string
+     */
+    public function getLongDescription()
+    {
+        return $this->longDescription;
+    }
+
+    /**
+     * Set longDescription
+     *
+     * @param string $longDescription
+     * @return Animal
+     */
+    public function setLongDescription($longDescription)
+    {
+        $this->longDescription = $longDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get shortDescription
+     *
+     * @return string
+     */
+    public function getShortDescription()
+    {
+        return $this->shortDescription;
+    }
+
+    /**
+     * Set shortDescription
+     *
+     * @param string $shortDescription
+     * @return Animal
+     */
+    public function setShortDescription($shortDescription)
+    {
+        $this->shortDescription = $shortDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get history
+     *
+     * @return string
+     */
+    public function getHistory()
+    {
+        return $this->history;
+    }
+
+    /**
+     * Set history
+     *
+     * @param string $history
+     * @return Animal
+     */
+    public function setHistory($history)
+    {
+        $this->history = $history;
+
+        return $this;
+    }
+
+    /**
+     * Get isAvailable
+     *
+     * @return boolean
+     */
+    public function getIsAvailable()
+    {
+        return $this->isAvailable;
+    }
+
+    /**
+     * Set isAvailable
+     *
+     * @param boolean $isAvailable
+     * @return Animal
+     */
+    public function setIsAvailable($isAvailable)
+    {
+        $this->isAvailable = $isAvailable;
+
+        return $this;
+    }
+
+    /**
+     * Get isArchived
+     *
+     * @return boolean
+     */
+    public function getIsArchived()
+    {
+        return $this->isArchived;
+    }
+
+    /**
+     * Set isArchived
+     *
+     * @param boolean $isArchived
+     * @return Animal
+     */
+    public function setIsArchived($isArchived)
+    {
+        $this->isArchived = $isArchived;
+
+        return $this;
+    }
+
+    /**
+     * Get isDropped
+     *
+     * @return boolean
+     */
+    public function getIsDropped()
+    {
+        return $this->isDropped;
+    }
+
+    /**
+     * Set isDropped
+     *
+     * @param boolean $isDropped
+     * @return Animal
+     */
+    public function setIsDropped($isDropped)
+    {
+        $this->isDropped = $isDropped;
+
+        return $this;
+    }
+
+    /**
+     * Get species
+     *
+     * @return AnimalSpecies
+     */
+    public function getSpecies()
+    {
+        return $this->species;
+    }
+
+    /**
+     * Set species
+     *
+     * @param AnimalSpecies $species
+     * @return Animal
+     */
+    public function setSpecies(AnimalSpecies $species = null)
+    {
+        $this->species = $species;
+
+        return $this;
     }
 }

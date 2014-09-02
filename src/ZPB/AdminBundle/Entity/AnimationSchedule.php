@@ -44,11 +44,21 @@ class AnimationSchedule
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get timetable
+     *
+     * @return \DateTime
+     */
+    public function getTimetable()
+    {
+        return $this->timetable;
     }
 
     /**
@@ -65,12 +75,48 @@ class AnimationSchedule
     }
 
     /**
-     * Get timetable
+     * Get animation
      *
-     * @return \DateTime 
+     * @return Animation
      */
-    public function getTimetable()
+    public function getAnimation()
     {
-        return $this->timetable;
+        return $this->animation;
+    }
+
+    /**
+     * Set animation
+     *
+     * @param Animation $animation
+     * @return AnimationSchedule
+     */
+    public function setAnimation(Animation $animation = null)
+    {
+        $this->animation = $animation;
+
+        return $this;
+    }
+
+    /**
+     * Get animationDay
+     *
+     * @return AnimationDay
+     */
+    public function getAnimationDay()
+    {
+        return $this->animationDay;
+    }
+
+    /**
+     * Set animationDay
+     *
+     * @param AnimationDay $animationDay
+     * @return AnimationSchedule
+     */
+    public function setAnimationDay(AnimationDay $animationDay = null)
+    {
+        $this->animationDay = $animationDay;
+
+        return $this;
     }
 }

@@ -4,8 +4,9 @@ namespace ZPB\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Institution
  *
@@ -73,6 +74,16 @@ class Institution
     }
 
     /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
      * Set name
      *
      * @param string $name
@@ -86,13 +97,13 @@ class Institution
     }
 
     /**
-     * Get name
+     * Get slug
      *
      * @return string
      */
-    public function getName()
+    public function getSlug()
     {
-        return $this->name;
+        return $this->slug;
     }
 
     /**
@@ -109,13 +120,13 @@ class Institution
     }
 
     /**
-     * Get slug
+     * Get createdAt
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getSlug()
+    public function getCreatedAt()
     {
-        return $this->slug;
+        return $this->createdAt;
     }
 
     /**
@@ -132,13 +143,13 @@ class Institution
     }
 
     /**
-     * Get createdAt
+     * Get updatedAt
      *
      * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getUpdatedAt()
     {
-        return $this->createdAt;
+        return $this->updatedAt;
     }
 
     /**
@@ -152,16 +163,6 @@ class Institution
         $this->updatedAt = $updatedAt;
 
         return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
 
     /**
@@ -179,6 +180,7 @@ class Institution
     public function setDescription($description)
     {
         $this->description = $description;
+
         return $this;
     }
 

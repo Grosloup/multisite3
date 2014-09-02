@@ -2,6 +2,7 @@
 
 namespace ZPB\AdminBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -61,15 +62,32 @@ class Animation
      */
     private $schedules;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->schedules = new ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -86,13 +104,13 @@ class Animation
     }
 
     /**
-     * Get name
+     * Get slug
      *
-     * @return string 
+     * @return string
      */
-    public function getName()
+    public function getSlug()
     {
-        return $this->name;
+        return $this->slug;
     }
 
     /**
@@ -109,13 +127,13 @@ class Animation
     }
 
     /**
-     * Get slug
+     * Get description
      *
-     * @return string 
+     * @return string
      */
-    public function getSlug()
+    public function getDescription()
     {
-        return $this->slug;
+        return $this->description;
     }
 
     /**
@@ -132,13 +150,13 @@ class Animation
     }
 
     /**
-     * Get description
+     * Get placeNumber
      *
-     * @return string 
+     * @return string
      */
-    public function getDescription()
+    public function getPlaceNumber()
     {
-        return $this->description;
+        return $this->placeNumber;
     }
 
     /**
@@ -155,13 +173,13 @@ class Animation
     }
 
     /**
-     * Get placeNumber
+     * Get placeName
      *
-     * @return string 
+     * @return string
      */
-    public function getPlaceNumber()
+    public function getPlaceName()
     {
-        return $this->placeNumber;
+        return $this->placeName;
     }
 
     /**
@@ -178,12 +196,35 @@ class Animation
     }
 
     /**
-     * Get placeName
+     * Add schedules
      *
-     * @return string 
+     * @param AnimationSchedule $schedules
+     * @return Animation
      */
-    public function getPlaceName()
+    public function addSchedule(AnimationSchedule $schedules)
     {
-        return $this->placeName;
+        $this->schedules[] = $schedules;
+
+        return $this;
+    }
+
+    /**
+     * Remove schedules
+     *
+     * @param AnimationSchedule $schedules
+     */
+    public function removeSchedule(AnimationSchedule $schedules)
+    {
+        $this->schedules->removeElement($schedules);
+    }
+
+    /**
+     * Get schedules
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSchedules()
+    {
+        return $this->schedules;
     }
 }

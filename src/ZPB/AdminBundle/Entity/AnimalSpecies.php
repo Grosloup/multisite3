@@ -2,10 +2,11 @@
 
 namespace ZPB\AdminBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * AnimalSpecies
@@ -85,8 +86,8 @@ class AnimalSpecies
      */
     private $animalOrder;
     /**
-    * @ORM\Column(name="long_description", type="text", nullable=false)
-    */
+     * @ORM\Column(name="long_description", type="text", nullable=false)
+     */
     private $longDescription;
     /**
      * @ORM\Column(name="short_description", type="text", nullable=false)
@@ -94,13 +95,31 @@ class AnimalSpecies
     private $shortDescription;
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->animals = new ArrayCollection();
+    }
+
+    /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -117,13 +136,13 @@ class AnimalSpecies
     }
 
     /**
-     * Get name
+     * Get slug
      *
-     * @return string 
+     * @return string
      */
-    public function getName()
+    public function getSlug()
     {
-        return $this->name;
+        return $this->slug;
     }
 
     /**
@@ -140,12 +159,242 @@ class AnimalSpecies
     }
 
     /**
-     * Get slug
+     * Get latin
      *
-     * @return string 
+     * @return string
      */
-    public function getSlug()
+    public function getLatin()
     {
-        return $this->slug;
+        return $this->latin;
+    }
+
+    /**
+     * Set latin
+     *
+     * @param string $latin
+     * @return AnimalSpecies
+     */
+    public function setLatin($latin)
+    {
+        $this->latin = $latin;
+
+        return $this;
+    }
+
+    /**
+     * Get gestation
+     *
+     * @return string
+     */
+    public function getGestation()
+    {
+        return $this->gestation;
+    }
+
+    /**
+     * Set gestation
+     *
+     * @param string $gestation
+     * @return AnimalSpecies
+     */
+    public function setGestation($gestation)
+    {
+        $this->gestation = $gestation;
+
+        return $this;
+    }
+
+    /**
+     * Get statusIUCN
+     *
+     * @return string
+     */
+    public function getStatusIUCN()
+    {
+        return $this->statusIUCN;
+    }
+
+    /**
+     * Set statusIUCN
+     *
+     * @param string $statusIUCN
+     * @return AnimalSpecies
+     */
+    public function setStatusIUCN($statusIUCN)
+    {
+        $this->statusIUCN = $statusIUCN;
+
+        return $this;
+    }
+
+    /**
+     * Get genus
+     *
+     * @return string
+     */
+    public function getGenus()
+    {
+        return $this->genus;
+    }
+
+    /**
+     * Set genus
+     *
+     * @param string $genus
+     * @return AnimalSpecies
+     */
+    public function setGenus($genus)
+    {
+        $this->genus = $genus;
+
+        return $this;
+    }
+
+    /**
+     * Get classe
+     *
+     * @return string
+     */
+    public function getClasse()
+    {
+        return $this->classe;
+    }
+
+    /**
+     * Set classe
+     *
+     * @param string $classe
+     * @return AnimalSpecies
+     */
+    public function setClasse($classe)
+    {
+        $this->classe = $classe;
+
+        return $this;
+    }
+
+    /**
+     * Get family
+     *
+     * @return string
+     */
+    public function getFamily()
+    {
+        return $this->family;
+    }
+
+    /**
+     * Set family
+     *
+     * @param string $family
+     * @return AnimalSpecies
+     */
+    public function setFamily($family)
+    {
+        $this->family = $family;
+
+        return $this;
+    }
+
+    /**
+     * Get animalOrder
+     *
+     * @return string
+     */
+    public function getAnimalOrder()
+    {
+        return $this->animalOrder;
+    }
+
+    /**
+     * Set animalOrder
+     *
+     * @param string $animalOrder
+     * @return AnimalSpecies
+     */
+    public function setAnimalOrder($animalOrder)
+    {
+        $this->animalOrder = $animalOrder;
+
+        return $this;
+    }
+
+    /**
+     * Get longDescription
+     *
+     * @return string
+     */
+    public function getLongDescription()
+    {
+        return $this->longDescription;
+    }
+
+    /**
+     * Set longDescription
+     *
+     * @param string $longDescription
+     * @return AnimalSpecies
+     */
+    public function setLongDescription($longDescription)
+    {
+        $this->longDescription = $longDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get shortDescription
+     *
+     * @return string
+     */
+    public function getShortDescription()
+    {
+        return $this->shortDescription;
+    }
+
+    /**
+     * Set shortDescription
+     *
+     * @param string $shortDescription
+     * @return AnimalSpecies
+     */
+    public function setShortDescription($shortDescription)
+    {
+        $this->shortDescription = $shortDescription;
+
+        return $this;
+    }
+
+    /**
+     * Add animals
+     *
+     * @param Animal $animals
+     * @return AnimalSpecies
+     */
+    public function addAnimal(Animal $animals)
+    {
+        $this->animals[] = $animals;
+
+        return $this;
+    }
+
+    /**
+     * Remove animals
+     *
+     * @param Animal $animals
+     */
+    public function removeAnimal(Animal $animals)
+    {
+        $this->animals->removeElement($animals);
+    }
+
+    /**
+     * Get animals
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAnimals()
+    {
+        return $this->animals;
     }
 }

@@ -574,4 +574,17 @@ class Photo implements ResizeableInterface
     }
 
 
+
+    /**
+     * Set longId
+     *
+     * @param string $longId
+     * @return Photo
+     */
+    public function setLongId($longId)
+    {
+        $this->longId = $longId;
+
+        return $this;
+    }
 }

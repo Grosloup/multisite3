@@ -5,6 +5,7 @@ namespace ZPB\AdminBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * DocumentCounter
  *
@@ -48,6 +49,16 @@ class DocumentCounter
     }
 
     /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -58,16 +69,6 @@ class DocumentCounter
         $this->createdAt = $createdAt;
 
         return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
     }
 
     /**
@@ -85,6 +86,7 @@ class DocumentCounter
     public function setDocumentId($documentId)
     {
         $this->documentId = $documentId;
+
         return $this;
     }
 }

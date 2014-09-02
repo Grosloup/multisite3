@@ -2,6 +2,7 @@
 
 namespace ZPB\AdminBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -39,15 +40,32 @@ class AnimationDay
      */
     private $schedules;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->schedules = new ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -64,13 +82,13 @@ class AnimationDay
     }
 
     /**
-     * Get name
+     * Get color
      *
-     * @return string 
+     * @return string
      */
-    public function getName()
+    public function getColor()
     {
-        return $this->name;
+        return $this->color;
     }
 
     /**
@@ -87,12 +105,35 @@ class AnimationDay
     }
 
     /**
-     * Get color
+     * Add schedules
      *
-     * @return string 
+     * @param AnimationSchedule $schedules
+     * @return AnimationDay
      */
-    public function getColor()
+    public function addSchedule(AnimationSchedule $schedules)
     {
-        return $this->color;
+        $this->schedules[] = $schedules;
+
+        return $this;
+    }
+
+    /**
+     * Remove schedules
+     *
+     * @param AnimationSchedule $schedules
+     */
+    public function removeSchedule(AnimationSchedule $schedules)
+    {
+        $this->schedules->removeElement($schedules);
+    }
+
+    /**
+     * Get schedules
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSchedules()
+    {
+        return $this->schedules;
     }
 }

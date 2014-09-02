@@ -2,6 +2,7 @@
 
 namespace ZPB\AdminBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -89,15 +90,32 @@ class SponsoringGiftDefinition
      */
     private $formulas;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->formulas = new ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -114,13 +132,13 @@ class SponsoringGiftDefinition
     }
 
     /**
-     * Get name
+     * Get slug
      *
-     * @return string 
+     * @return string
      */
-    public function getName()
+    public function getSlug()
     {
-        return $this->name;
+        return $this->slug;
     }
 
     /**
@@ -137,13 +155,13 @@ class SponsoringGiftDefinition
     }
 
     /**
-     * Get slug
+     * Get longDescription
      *
-     * @return string 
+     * @return string
      */
-    public function getSlug()
+    public function getLongDescription()
     {
-        return $this->slug;
+        return $this->longDescription;
     }
 
     /**
@@ -160,13 +178,13 @@ class SponsoringGiftDefinition
     }
 
     /**
-     * Get longDescription
+     * Get shortDescription
      *
-     * @return string 
+     * @return string
      */
-    public function getLongDescription()
+    public function getShortDescription()
     {
-        return $this->longDescription;
+        return $this->shortDescription;
     }
 
     /**
@@ -183,13 +201,13 @@ class SponsoringGiftDefinition
     }
 
     /**
-     * Get shortDescription
+     * Get legend
      *
-     * @return string 
+     * @return string
      */
-    public function getShortDescription()
+    public function getLegend()
     {
-        return $this->shortDescription;
+        return $this->legend;
     }
 
     /**
@@ -206,13 +224,13 @@ class SponsoringGiftDefinition
     }
 
     /**
-     * Get legend
+     * Get createdAt
      *
-     * @return string 
+     * @return \DateTime
      */
-    public function getLegend()
+    public function getCreatedAt()
     {
-        return $this->legend;
+        return $this->createdAt;
     }
 
     /**
@@ -229,13 +247,13 @@ class SponsoringGiftDefinition
     }
 
     /**
-     * Get createdAt
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getUpdatedAt()
     {
-        return $this->createdAt;
+        return $this->updatedAt;
     }
 
     /**
@@ -252,13 +270,13 @@ class SponsoringGiftDefinition
     }
 
     /**
-     * Get updatedAt
+     * Get position
      *
-     * @return \DateTime 
+     * @return integer
      */
-    public function getUpdatedAt()
+    public function getPosition()
     {
-        return $this->updatedAt;
+        return $this->position;
     }
 
     /**
@@ -275,13 +293,13 @@ class SponsoringGiftDefinition
     }
 
     /**
-     * Get position
+     * Get positionGroup
      *
-     * @return integer 
+     * @return string
      */
-    public function getPosition()
+    public function getPositionGroup()
     {
-        return $this->position;
+        return $this->positionGroup;
     }
 
     /**
@@ -298,12 +316,35 @@ class SponsoringGiftDefinition
     }
 
     /**
-     * Get positionGroup
+     * Add formulas
      *
-     * @return string 
+     * @param SponsoringFormula $formulas
+     * @return SponsoringGiftDefinition
      */
-    public function getPositionGroup()
+    public function addFormula(SponsoringFormula $formulas)
     {
-        return $this->positionGroup;
+        $this->formulas[] = $formulas;
+
+        return $this;
+    }
+
+    /**
+     * Remove formulas
+     *
+     * @param SponsoringFormula $formulas
+     */
+    public function removeFormula(SponsoringFormula $formulas)
+    {
+        $this->formulas->removeElement($formulas);
+    }
+
+    /**
+     * Get formulas
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFormulas()
+    {
+        return $this->formulas;
     }
 }

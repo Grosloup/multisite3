@@ -2,6 +2,7 @@
 
 namespace ZPB\AdminBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -90,15 +91,32 @@ class SponsoringFormula
      */
     private $giftDesriptions;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->giftDesriptions = new ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -115,13 +133,13 @@ class SponsoringFormula
     }
 
     /**
-     * Get name
+     * Get slug
      *
-     * @return string 
+     * @return string
      */
-    public function getName()
+    public function getSlug()
     {
-        return $this->name;
+        return $this->slug;
     }
 
     /**
@@ -138,13 +156,13 @@ class SponsoringFormula
     }
 
     /**
-     * Get slug
+     * Get createdAt
      *
-     * @return string 
+     * @return \DateTime
      */
-    public function getSlug()
+    public function getCreatedAt()
     {
-        return $this->slug;
+        return $this->createdAt;
     }
 
     /**
@@ -161,13 +179,13 @@ class SponsoringFormula
     }
 
     /**
-     * Get createdAt
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getUpdatedAt()
     {
-        return $this->createdAt;
+        return $this->updatedAt;
     }
 
     /**
@@ -184,13 +202,13 @@ class SponsoringFormula
     }
 
     /**
-     * Get updatedAt
+     * Get isActive
      *
-     * @return \DateTime 
+     * @return boolean
      */
-    public function getUpdatedAt()
+    public function getIsActive()
     {
-        return $this->updatedAt;
+        return $this->isActive;
     }
 
     /**
@@ -207,13 +225,13 @@ class SponsoringFormula
     }
 
     /**
-     * Get isActive
+     * Get taxFreePrice
      *
-     * @return boolean 
+     * @return float
      */
-    public function getIsActive()
+    public function getTaxFreePrice()
     {
-        return $this->isActive;
+        return $this->taxFreePrice;
     }
 
     /**
@@ -230,13 +248,13 @@ class SponsoringFormula
     }
 
     /**
-     * Get taxFreePrice
+     * Get taxRate
      *
-     * @return float 
+     * @return float
      */
-    public function getTaxFreePrice()
+    public function getTaxRate()
     {
-        return $this->taxFreePrice;
+        return $this->taxRate;
     }
 
     /**
@@ -253,13 +271,13 @@ class SponsoringFormula
     }
 
     /**
-     * Get taxRate
+     * Get longDescription
      *
-     * @return float 
+     * @return string
      */
-    public function getTaxRate()
+    public function getLongDescription()
     {
-        return $this->taxRate;
+        return $this->longDescription;
     }
 
     /**
@@ -276,13 +294,13 @@ class SponsoringFormula
     }
 
     /**
-     * Get longDescription
+     * Get shortDescription
      *
-     * @return string 
+     * @return string
      */
-    public function getLongDescription()
+    public function getShortDescription()
     {
-        return $this->longDescription;
+        return $this->shortDescription;
     }
 
     /**
@@ -299,12 +317,35 @@ class SponsoringFormula
     }
 
     /**
-     * Get shortDescription
+     * Add giftDesriptions
      *
-     * @return string 
+     * @param SponsoringGiftDefinition $giftDesriptions
+     * @return SponsoringFormula
      */
-    public function getShortDescription()
+    public function addGiftDesription(SponsoringGiftDefinition $giftDesriptions)
     {
-        return $this->shortDescription;
+        $this->giftDesriptions[] = $giftDesriptions;
+
+        return $this;
+    }
+
+    /**
+     * Remove giftDesriptions
+     *
+     * @param SponsoringGiftDefinition $giftDesriptions
+     */
+    public function removeGiftDesription(SponsoringGiftDefinition $giftDesriptions)
+    {
+        $this->giftDesriptions->removeElement($giftDesriptions);
+    }
+
+    /**
+     * Get giftDesriptions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGiftDesriptions()
+    {
+        return $this->giftDesriptions;
     }
 }
