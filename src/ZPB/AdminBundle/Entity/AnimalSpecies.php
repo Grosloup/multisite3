@@ -40,6 +40,7 @@ class AnimalSpecies
      * @var string
      *
      * @ORM\Column(name="slug", type="string", length=255)
+     * @Gedmo\Slug(fields={"name"})
      */
     private $slug;
 
@@ -59,17 +60,29 @@ class AnimalSpecies
     private $weight;
 
     private $lifespan;
-
+    /**
+     * @ORM\Column(name="gestation", type="text", nullable=false)
+     */
     private $gestation;
-
+    /**
+     * @ORM\Column(name="status_iucn", type="string", length=255, nullable=false)
+     */
     private $statusIUCN;
-
+    /**
+     * @ORM\Column(name="genus", type="string", length=255, nullable=false)
+     */
     private $genus;
-
+    /**
+     * @ORM\Column(name="classe", type="string", length=255, nullable=false)
+     */
     private $classe;
-
+    /**
+     * @ORM\Column(name="family", type="string", length=255, nullable=false)
+     */
     private $family;
-
+    /**
+     * @ORM\Column(name="animal_order", type="string", length=255, nullable=false)
+     */
     private $animalOrder;
     /**
     * @ORM\Column(name="long_description", type="text", nullable=false)

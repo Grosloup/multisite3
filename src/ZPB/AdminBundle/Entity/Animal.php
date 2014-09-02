@@ -30,7 +30,27 @@ class Animal
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
      */
     private $name;
-
+    /**
+     * @ORM\Column(name="slug", type="string", nullable=false;, unique=true, length=255)
+     * @Gedmo\Slug(fields={"name"}, unique=true)
+     */
+    private $slug;
+    /**
+     * @ORM\Column(name="canonical_name", type="string", length=255, nullable=false)
+     * @Gedmo\Slug(fields={"canonicalName"}, unique=true)
+     */
+    private $canonicalName;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="long_name", type="string", length=255, nullable=false)
+     */
+    private $longName;
+    /**
+     * @ORM\Column(name="canonical_long_name", type="string", length=255, nullable=false)
+     * @Gedmo\Slug(fields={"canonicalLongName"}, unique=true)
+     */
+    private $canonicalLongName;
     /**
      * @var \DateTime
      *
@@ -63,6 +83,22 @@ class Animal
      * @ORM\Column(name="short_description", type="text", nullable=false)
      */
     private $shortDescription;
+    /**
+     * @ORM\Column(name="short_description", type="text")
+     */
+    private $history;
+    /**
+     * @ORM\Column(name="is_available", type="boolean")
+     */
+    private $isAvailable;
+    /**
+     * @ORM\Column(name="is_archived", type="boolean")
+     */
+    private $isArchived;
+    /**
+     * @ORM\Column(name="is_dropped", type="boolean")
+     */
+    private $isDropped;
 
 
     /**
