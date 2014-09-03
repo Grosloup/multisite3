@@ -26,3 +26,8 @@ zpb_sites_zoo_parrainage_remove_from_basket:
     methods: ["GET"]
     requirements:
         id: "[0-9-]+"
+
+zpb_sites_zoo_parrainages_login_or_register:
+    path: /identification
+    defaults: { _controller: ZPBSitesZooBundle:Parrainage/Index:loginOrRegister }
+    methods: ["GET"]

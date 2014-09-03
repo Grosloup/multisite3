@@ -47,13 +47,7 @@ class SponsorBasket
         if(!$this->session->has($this->key)){
             return false;
         }
-        return count($this->session->get($this->key)) === 0;
-    }
-
-    public function testme()
-    {
-        var_dump($this->session->get($this->key));
-        die();
+        return $this->count() === 0;
     }
 
     public function addItem($pack, $animal)
@@ -71,6 +65,11 @@ class SponsorBasket
             return true;
         }
         return false;
+    }
+
+    public function count()
+    {
+        return count($this->session->get($this->key));
     }
 
     public function getItems()

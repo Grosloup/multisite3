@@ -1,0 +1,56 @@
+{% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
+{% block title %}Mon panier | Parrainez un animal{% endblock %}
+
+{% block header %}
+    {{ render(controller("ZPBSitesZooBundle:Partials:smallHeader")) }}
+{% endblock %}
+
+{% block content %}
+    <div class="columns large-12">
+        <div class="row">
+            <div class="columns large-12">
+                <h1>Identifiez-vous</h1>
+            </div>
+            <hr/>
+        </div>
+
+        <div class="row">
+            <div class="column large-6">
+                <h3>J'ai déjà un compte</h3>
+                <form action="" method="post">
+                    <div class="row">
+                        <div class="column large-8 large-centered">
+                            <label for="username">Pseudo ou adresse email</label>
+                            <input type="text" id="username" name="_username" value="{#{{ last_username }}#}" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column large-8 large-centered">
+                            <label for="password">Mot de passe</label>
+                            <input type="password" id="password" name="_password" class="form-control"/>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" >
+                    <input type="hidden" name="_target_path" value="/parrainages/recapitulatif" />
+
+                    <div class="row">
+                        <div class="column large-8 large-offset-2">
+                            <button type="submit" class="button" disabled="disabled">login</button>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="column large-6">
+                <h3>Je n'ai pas de compte</h3>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

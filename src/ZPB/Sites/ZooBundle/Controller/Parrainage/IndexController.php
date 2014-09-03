@@ -92,9 +92,34 @@ class IndexController extends BaseController
         return $this->render('ZPBSitesZooBundle:PArrainage/Index:basket.html.twig', ['packs'=>$items]);
     }
 
-    public function removeSponsoringFromBasket($id)
+    public function removeSponsoringFromBasketAction($id, Request $request)
     {
+        $token = $request->query->get('_token', false);
+        if(!$token || !$this->getCsrf()->isCsrfTokenValid('delete_from_basket',$token)){
+            throw $this->createAccessDeniedException(); //TODO
+        }
 
+        $sb = $this->container->get('zpb.zoo.sponsor_basket');
+        if($sb->removeItem($id)){
+            $this->setSuccess('L\'élément a bien été retiré de votre panier.');
+        }
+
+        return $this->redirect($this->generateUrl('zpb_sites_zoo_parrainages_show_basket'));
 
     }
-} 
+
+    public function loginOrRegisterAction()
+    {
+        // $user déjà conncté ?
+        if($this->getUser() && $this->get('security.context')->isGranted('ROLE_GODPARENT')){
+            $this->redirect('');
+        }
+
+        return $this->render('ZPBSitesZooBundle:Parrainage/Index:login_register.html.twig', []);
+    }
+
+    public function recapOrderAfterLoginAction()
+    {
+
+    }
+}

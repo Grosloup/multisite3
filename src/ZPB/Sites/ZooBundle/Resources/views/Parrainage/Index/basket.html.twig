@@ -23,8 +23,6 @@
     {{ render(controller("ZPBSitesZooBundle:Partials:smallHeader")) }}
 {% endblock %}
 {% block content %}
-
-
     <div class="columns large-12">
         {% if packs|length > 0 %}
             {% for id,pack in packs %}
@@ -49,7 +47,7 @@
                         <p class="text-center"><strong>{{ pack.pack.price }}</strong></p>
                     </div>
                     <div class="columns large-1">
-                        <a class="btn btn-danger" href="{{ path("zpb_sites_zoo_parrainage_remove_from_basket", {id: id, _token: csrf_token("delete_from_basket")}) }}"><i class="fa fa-trash-o"></i></a>
+                        <a class="btn btn-danger" href="{{ path("zpb_sites_zoo_parrainage_remove_from_basket", {id: id, _token: csrf_token("delete_from_basket")}) }}"><span class="label alert"><i class="fa fa-trash-o"></i></span></a>
                     </div>
                 </div>
             {% endfor %}
@@ -76,7 +74,12 @@
         <hr/>
         <a class="button success large" href="{{ path("zpb_sites_zoo_parrainages_homepage") }}">Ajouter des parrainages</a>
         {% if packs|length > 0 %}
-            <a class="button success large" href="">Regler votre commande</a> {# TODO #}
+            <a class="button success large" href="{{ path("zpb_sites_zoo_parrainages_login_or_register") }}">Regler votre commande</a> {# TODO #}
         {% endif %}
     </div>
+{% endblock %}
+
+{% block footScripts %}
+    {{ parent() }}
+    <script src="/js/app.min.js"></script>
 {% endblock %}
