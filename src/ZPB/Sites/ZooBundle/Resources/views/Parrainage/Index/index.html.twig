@@ -1,13 +1,27 @@
 {% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
 {% block title %}Parrainez un animal{% endblock %}
 {% block header %}
-    <header style="position: relative;">
-        <img src="http://lorempicsum.com/rio/600/150/{{ random(5) + 1}}" alt="" width="100%"/>
-        <a class="button alert large" href="{{ path("zpb_sites_zoo_parrainages_homepage") }}" style="position: absolute; top: 75px; right: 50px;">Parrainages</a>
-        <a class="button alert large" href="" style="position: absolute; top: 150px; right: 50px;">Billetterie</a>
-        <a class="button alert large" href="" style="position: absolute; top: 225px; right: 50px;">Hôtels</a>
-    </header>
+    {{ render(controller("ZPBSitesZooBundle:Partials:smallHeader")) }}
 {% endblock %}
 {% block content %}
+    <div class="columns large-12">
+        <h1>Parrainages</h1>
+    </div>
+    <div class="columns large-9">
+        <ul class="large-block-grid-3">
+            {% for animal in animals %}
+            <li>
 
+                    <img class="th" src="http://lorempicsum.com/nemo/600/450/{{ random(5) + 1 }}" alt=""/>
+                    <h5>{{animal.longName}}</h5>
+                    {{animal.shortDescription|raw}}
+
+                    <a class="button success expand" href="">Plus d'infos</a>
+
+
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="columns large-3"></div>
 {% endblock %}

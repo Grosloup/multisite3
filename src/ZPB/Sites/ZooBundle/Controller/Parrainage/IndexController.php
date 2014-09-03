@@ -27,6 +27,19 @@ class IndexController extends BaseController
 {
     public function indexAction()
     {
-        return $this->render('ZPBSitesZooBundle:Parrainage/Index:index.html.twig', []);
+        $animals = $this->getRepo('ZPBAdminBundle:Animal')->findall();
+        return $this->render('ZPBSitesZooBundle:Parrainage/Index:index.html.twig', ['animals'=>$animals]);
+    }
+
+    public function showAnimalAction($name = "")
+    {
+        $animal = $this->getRepo('ZPBAdminBundle:Animal')->findOneByCcanonicalLongName();
+
+        if(!$animal){
+            //TODO page not found
+            throw $this->createNotFoundException();
+        }
+
+        return $this->render('ZPBSitesZooBundle:Parrainage/Index:show_animal.html.twig', ['animal'=>$animal]);
     }
 } 

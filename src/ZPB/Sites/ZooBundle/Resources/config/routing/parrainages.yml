@@ -2,3 +2,10 @@ zpb_sites_zoo_parrainages_homepage:
     path:     /
     defaults: { _controller: ZPBSitesZooBundle:Parrainage/Index:index }
     methods: ["GET"]
+
+zpb_sites_zoo_parrainages_animal_show:
+    path: /decouvrir/{name}
+    defaults: { _controller: ZPBSitesZooBundle:Parrainage/Index:showAnimal }
+    methods: ["GET"]
+    requirements:
+        name: "[a-zA-Z0-9_-]+"
