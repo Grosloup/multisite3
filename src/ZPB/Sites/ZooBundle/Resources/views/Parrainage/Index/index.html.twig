@@ -16,7 +16,7 @@
                     <h5>{{animal.longName}}</h5>
                     {{animal.shortDescription|raw}}
 
-                    <a class="button success expand" href="">Plus d'infos</a>
+                    <a class="button success expand" href="{{ path("zpb_sites_zoo_parrainages_animal_show", {name: animal.canonicalLongName}) }}">Plus d'infos</a>
 
 
             </li>

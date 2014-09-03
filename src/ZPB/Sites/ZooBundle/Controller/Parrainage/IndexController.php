@@ -33,7 +33,7 @@ class IndexController extends BaseController
 
     public function showAnimalAction($name = "")
     {
-        $animal = $this->getRepo('ZPBAdminBundle:Animal')->findOneByCcanonicalLongName();
+        $animal = $this->getRepo('ZPBAdminBundle:Animal')->findOneByCanonicalLongName($name);
 
         if(!$animal){
             //TODO page not found
