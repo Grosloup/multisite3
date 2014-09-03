@@ -39,7 +39,9 @@ class IndexController extends BaseController
             //TODO page not found
             throw $this->createNotFoundException();
         }
+        $formulas = $this->getRepo('ZPBAdminBundle:SponsoringFormula')->findByIsActive(true);
+        $gifts = $this->getRepo('ZPBAdminBundle:SponsoringGiftDefinition')->findAll();
 
-        return $this->render('ZPBSitesZooBundle:Parrainage/Index:show_animal.html.twig', ['animal'=>$animal]);
+        return $this->render('ZPBSitesZooBundle:Parrainage/Index:show_animal.html.twig', ['animal'=>$animal, 'formulas'=>$formulas, 'gifts'=>$gifts]);
     }
 } 

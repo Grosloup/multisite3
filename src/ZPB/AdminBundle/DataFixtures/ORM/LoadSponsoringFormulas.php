@@ -45,7 +45,7 @@ class LoadSponsoringFormulas extends AbstractFixture implements OrderedFixtureIn
         $sf1->setIsActive(true);
         $sf1->setTaxRate(0.34);
         $sf1->setPrice(15);
-        $sf1->setTaxFreePrice(15 * 034);
+        $sf1->setTaxFreePrice(15 * 0.34);
         $sf1->addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-1'));
         $this->getReference('zpb-sponsor-gift-desc-1')->addFormula($sf1);
         $sf1->addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-2'));
@@ -70,7 +70,7 @@ class LoadSponsoringFormulas extends AbstractFixture implements OrderedFixtureIn
         $sf2->setIsActive(true);
         $sf2->setTaxRate(0.34);
         $sf2->setPrice(50);
-        $sf2->setTaxFreePrice(50 * 034);
+        $sf2->setTaxFreePrice(50 * 0.34);
         $sf2->addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-1'));
         $this->getReference('zpb-sponsor-gift-desc-1')->addFormula($sf2);
         $sf2->addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-2'));
@@ -96,7 +96,7 @@ class LoadSponsoringFormulas extends AbstractFixture implements OrderedFixtureIn
         $sf3->setIsActive(true);
         $sf3->setTaxRate(0.34);
         $sf3->setPrice(80);
-        $sf3->setTaxFreePrice(80 * 034);
+        $sf3->setTaxFreePrice(80 * 0.34);
         $sf3-> addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-1'));
         $this->getReference('zpb-sponsor-gift-desc-1')->addFormula($sf3);
         $sf3-> addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-2'));
@@ -126,7 +126,7 @@ class LoadSponsoringFormulas extends AbstractFixture implements OrderedFixtureIn
         $sf4->setIsActive(true);
         $sf4->setTaxRate(0.34);
         $sf4->setPrice(130);
-        $sf4->setTaxFreePrice(130 * 034);
+        $sf4->setTaxFreePrice(130 * 0.34);
         $sf4->addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-1'));
         $this->getReference('zpb-sponsor-gift-desc-1')->addFormula($sf4);
         $sf4->addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-2'));
@@ -158,7 +158,7 @@ class LoadSponsoringFormulas extends AbstractFixture implements OrderedFixtureIn
         $sf5->setIsActive(true);
         $sf5->setTaxRate(0.34);
         $sf5->setPrice(500);
-        $sf5->setTaxFreePrice(500 * 034);
+        $sf5->setTaxFreePrice(500 * 0.34);
         $sf5->addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-1'));
         $this->getReference('zpb-sponsor-gift-desc-1')->addFormula($sf5);
         $sf5->addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-2'));
@@ -192,7 +192,7 @@ class LoadSponsoringFormulas extends AbstractFixture implements OrderedFixtureIn
         $sf6->setIsActive(true);
         $sf6->setTaxRate(0.34);
         $sf6->setPrice(1000);
-        $sf6->setTaxFreePrice(1000 * 034);
+        $sf6->setTaxFreePrice(1000 * 0.34);
         $sf6->addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-1'));
         $this->getReference('zpb-sponsor-gift-desc-1')->addFormula($sf6);
         $sf6->addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-2'));

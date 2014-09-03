@@ -4,11 +4,12 @@ namespace ZPB\AdminBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * SponsoringGiftDefinition
  *
- * @ORM\Table(name="zpb_sponsoring_gifts_descriptions")
+ * @ORM\Table(name="zpb_sponsoring_gifts_definitions")
  * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\SponsoringGiftDefinitionRepository")
  */
 class SponsoringGiftDefinition
@@ -33,6 +34,7 @@ class SponsoringGiftDefinition
      * @var string
      *
      * @ORM\Column(name="slug", type="string", length=255)
+     * @Gedmo\Slug(fields={"name"}, unique=true)
      */
     private $slug;
 
@@ -61,6 +63,7 @@ class SponsoringGiftDefinition
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
+     * @Gedmo\Timestampable(on="create")
      */
     private $createdAt;
 
@@ -68,6 +71,7 @@ class SponsoringGiftDefinition
      * @var \DateTime
      *
      * @ORM\Column(name="updated_at", type="datetime")
+     * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
 
@@ -75,6 +79,7 @@ class SponsoringGiftDefinition
      * @var integer
      *
      * @ORM\Column(name="position", type="integer")
+     * @Gedmo\SortablePosition()
      */
     private $position;
 
@@ -82,6 +87,7 @@ class SponsoringGiftDefinition
      * @var string
      *
      * @ORM\Column(name="positionGroup", type="string", length=255)
+     * @Gedmo\SortableGroup()
      */
     private $positionGroup;
 
