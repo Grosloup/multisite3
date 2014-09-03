@@ -7,4 +7,7 @@ LoadInstitutions    => 10
 
 LoadPhotoCategories => 15
 
+LoadSpecies => 30
+LoadAnimals => 35
+
 LoadAnimations      => 50

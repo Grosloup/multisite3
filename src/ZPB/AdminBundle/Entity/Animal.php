@@ -34,11 +34,7 @@ class Animal
      * @Gedmo\Slug(fields={"name"}, unique=true)
      */
     private $slug;
-    /**
-     * @ORM\Column(name="canonical_name", type="string", length=255, nullable=false)
-     * @Gedmo\Slug(fields={"canonicalName"}, unique=true)
-     */
-    private $canonicalName;
+
     /**
      * @var string
      *
@@ -47,7 +43,7 @@ class Animal
     private $longName;
     /**
      * @ORM\Column(name="canonical_long_name", type="string", length=255, nullable=false)
-     * @Gedmo\Slug(fields={"canonicalLongName"}, unique=true)
+     * @Gedmo\Slug(fields={"longName"}, unique=true)
      */
     private $canonicalLongName;
     /**
@@ -99,7 +95,11 @@ class Animal
      */
     private $isDropped;
 
-
+    public function __construct()
+    {
+        $this->setIsArchived(false);
+        $this->setIsDropped(false);
+    }
     /**
      * Get id
      *
@@ -202,28 +202,6 @@ class Animal
         return $this;
     }
 
-    /**
-     * Get canonicalName
-     *
-     * @return string
-     */
-    public function getCanonicalName()
-    {
-        return $this->canonicalName;
-    }
-
-    /**
-     * Set canonicalName
-     *
-     * @param string $canonicalName
-     * @return Animal
-     */
-    public function setCanonicalName($canonicalName)
-    {
-        $this->canonicalName = $canonicalName;
-
-        return $this;
-    }
 
     /**
      * Get longName

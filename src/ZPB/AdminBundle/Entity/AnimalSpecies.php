@@ -28,19 +28,29 @@ class AnimalSpecies
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="name", type="string", length=255, nullable=false, unique=true)
      */
     private $name;
+
     /**
-     * @ORM\Column(name="latin", type="string", length=255, nullable=false, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Regex("/^[a-zA-Zéèêëàûôç',;.)(: -]+$/", message="Ce champ contient des caractères non autorisés.")
+     * @ORM\Column(name="longName", type="string", length=255, nullable=false)
      */
-    private $latin;
+    private $longName;
+
+    /**
+     * @ORM\Column(name="canonicalLongName", type="string", length=255, nullable=false)
+     * @Gedmo\Slug(fields={"longName"}, unique=true)
+     */
+    private $canonicalLongName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=255, nullable=false, unique=true)
+     * @Assert\Regex("/^[a-zA-Z0-9_-]+$/", message="Ce champ contient des caractères non autorisés.")
      * @Gedmo\Slug(fields={"name"})
      */
     private $slug;
@@ -49,47 +59,90 @@ class AnimalSpecies
      * @ORM\OneToMany(targetEntity="ZPB\AdminBundle\Entity\Animal", mappedBy="species")
      */
     private $animals;
-
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Regex("/^[a-zA-Zéèêëàûôç',;.)(: -]+$/", message="Ce champ contient des caractères non autorisés.")
+     * @ORM\Column(name="habitat", type="string", length=255, nullable=false)
+     */
     private $habitat;
-
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Regex("/^[a-zA-Zéèêëàûôç',;.)(: -]+$/", message="Ce champ contient des caractères non autorisés.")
+     * @ORM\Column(name="geoDistribution", type="string", length=255, nullable=false)
+     */
     private $geoDistribution;
-
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     * @Assert\Regex("/^[a-zA-Zéèêëàûôç',;.)(: -]+$/", message="Ce champ contient des caractères non autorisés.")
+     * @ORM\Column(name="diet", type="text")
+     */
     private $diet;
-
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     * @Assert\Regex("/^[a-zA-Zéèêëàûôç',;.)(: -]+$/", message="Ce champ contient des caractères non autorisés.")
+     * @ORM\Column(name="size", type="string", length=255)
+     */
     private $size;
-
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     * @Assert\Regex("/^[a-zA-Zéèêëàûôç',;.)(: -]+$/", message="Ce champ contient des caractères non autorisés.")
+     * @ORM\Column(name="weight", type="string", length=255)
+     */
     private $weight;
-
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     * @Assert\Regex("/^[a-zA-Zéèêëàûôç',;.)(: -]+$/", message="Ce champ contient des caractères non autorisés.")
+     * @ORM\Column(name="lifespan", type="string", length=255)
+     */
     private $lifespan;
     /**
-     * @ORM\Column(name="gestation", type="text", nullable=false)
+     * @var string
+     * @Assert\NotBlank()
+     * @Assert\Regex("/^[a-zA-Zéèêëàûôç',;.)(: -]+$/", message="Ce champ contient des caractères non autorisés.")
+     * @ORM\Column(name="gestation", type="string", nullable=false)
      */
     private $gestation;
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(name="status_iucn", type="string", length=255, nullable=false)
      */
     private $statusIUCN;
     /**
+     * @var string
+     * @Assert\NotBlank()
+     * @Assert\Regex("/^[a-zA-Zéèêëàûôç' -]+$/", message="Ce champ contient des caractères non autorisés.")
      * @ORM\Column(name="genus", type="string", length=255, nullable=false)
      */
     private $genus;
     /**
+     * @Assert\NotBlank()
+     * @Assert\Regex("/^[a-zA-Zéèêëàûôç' -]+$/", message="Ce champ contient des caractères non autorisés.")
      * @ORM\Column(name="classe", type="string", length=255, nullable=false)
      */
     private $classe;
     /**
+     * @Assert\NotBlank()
+     * @Assert\Regex("/^[a-zA-Zéèêëàûôç' -]+$/", message="Ce champ contient des caractères non autorisés.")
      * @ORM\Column(name="family", type="string", length=255, nullable=false)
      */
     private $family;
     /**
+     * @Assert\NotBlank()
+     * @Assert\Regex("/^[a-zA-Zéèêëàûôç' -]+$/", message="Ce champ contient des caractères non autorisés.")
      * @ORM\Column(name="animal_order", type="string", length=255, nullable=false)
      */
     private $animalOrder;
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(name="long_description", type="text", nullable=false)
      */
     private $longDescription;
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(name="short_description", type="text", nullable=false)
      */
     private $shortDescription;
@@ -154,29 +207,6 @@ class AnimalSpecies
     public function setSlug($slug)
     {
         $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Get latin
-     *
-     * @return string
-     */
-    public function getLatin()
-    {
-        return $this->latin;
-    }
-
-    /**
-     * Set latin
-     *
-     * @param string $latin
-     * @return AnimalSpecies
-     */
-    public function setLatin($latin)
-    {
-        $this->latin = $latin;
 
         return $this;
     }
@@ -396,5 +426,189 @@ class AnimalSpecies
     public function getAnimals()
     {
         return $this->animals;
+    }
+
+    /**
+     * Set longName
+     *
+     * @param string $longName
+     * @return AnimalSpecies
+     */
+    public function setLongName($longName)
+    {
+        $this->longName = $longName;
+
+        return $this;
+    }
+
+    /**
+     * Get longName
+     *
+     * @return string 
+     */
+    public function getLongName()
+    {
+        return $this->longName;
+    }
+
+    /**
+     * Set canonicalLongName
+     *
+     * @param string $canonicalLongName
+     * @return AnimalSpecies
+     */
+    public function setCanonicalLongName($canonicalLongName)
+    {
+        $this->canonicalLongName = $canonicalLongName;
+
+        return $this;
+    }
+
+    /**
+     * Get canonicalLongName
+     *
+     * @return string 
+     */
+    public function getCanonicalLongName()
+    {
+        return $this->canonicalLongName;
+    }
+
+    /**
+     * Set habitat
+     *
+     * @param string $habitat
+     * @return AnimalSpecies
+     */
+    public function setHabitat($habitat)
+    {
+        $this->habitat = $habitat;
+
+        return $this;
+    }
+
+    /**
+     * Get habitat
+     *
+     * @return string 
+     */
+    public function getHabitat()
+    {
+        return $this->habitat;
+    }
+
+    /**
+     * Set geoDistribution
+     *
+     * @param string $geoDistribution
+     * @return AnimalSpecies
+     */
+    public function setGeoDistribution($geoDistribution)
+    {
+        $this->geoDistribution = $geoDistribution;
+
+        return $this;
+    }
+
+    /**
+     * Get geoDistribution
+     *
+     * @return string 
+     */
+    public function getGeoDistribution()
+    {
+        return $this->geoDistribution;
+    }
+
+    /**
+     * Set diet
+     *
+     * @param string $diet
+     * @return AnimalSpecies
+     */
+    public function setDiet($diet)
+    {
+        $this->diet = $diet;
+
+        return $this;
+    }
+
+    /**
+     * Get diet
+     *
+     * @return string 
+     */
+    public function getDiet()
+    {
+        return $this->diet;
+    }
+
+    /**
+     * Set size
+     *
+     * @param string $size
+     * @return AnimalSpecies
+     */
+    public function setSize($size)
+    {
+        $this->size = $size;
+
+        return $this;
+    }
+
+    /**
+     * Get size
+     *
+     * @return string 
+     */
+    public function getSize()
+    {
+        return $this->size;
+    }
+
+    /**
+     * Set weight
+     *
+     * @param string $weight
+     * @return AnimalSpecies
+     */
+    public function setWeight($weight)
+    {
+        $this->weight = $weight;
+
+        return $this;
+    }
+
+    /**
+     * Get weight
+     *
+     * @return string 
+     */
+    public function getWeight()
+    {
+        return $this->weight;
+    }
+
+    /**
+     * Set lifespan
+     *
+     * @param string $lifespan
+     * @return AnimalSpecies
+     */
+    public function setLifespan($lifespan)
+    {
+        $this->lifespan = $lifespan;
+
+        return $this;
+    }
+
+    /**
+     * Get lifespan
+     *
+     * @return string 
+     */
+    public function getLifespan()
+    {
+        return $this->lifespan;
     }
 }
