@@ -9,4 +9,6 @@ LoadSpecies                     => 30
 LoadAnimals                     => 35
 LoadSponsoringGiftDefinitions   => 37
 LoadSponsoringFormulas          => 38
+LoadGodparents                  => 45
+
 LoadAnimations                  => 50

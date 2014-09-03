@@ -10,6 +10,7 @@
         <parameter key="zpb.image_resizer.class">ZPB\AdminBundle\Service\ImageResizer</parameter>
         <parameter key="zpb.photo_factory.class">ZPB\AdminBundle\Service\PhotoFactory</parameter>
         <parameter key="zpb.form.type.civility.class">ZPB\AdminBundle\Form\Type\CivilityType</parameter>
+        <parameter key="zpb.listener.entity.godparent_listener.class">ZPB\AdminBundle\Listener\Entities\GodparentListener</parameter>
 
         <parameter key="zpb.civility" type="collection">
             <parameter key="Mm">Madame</parameter>
@@ -69,6 +70,12 @@
         <service id="zpb.zoo.form.type.civility" class="%zpb.form.type.civility.class%">
             <argument type="string">%zpb.civility%</argument>
             <tag name="form.type" alias="civility_type"/>
+        </service>
+
+        <service id="zpb.listener.entity.godparent_listener" class="%zpb.listener.entity.godparent_listener.class%">
+            <argument type="service" id="security.encoder_factory"/>
+            <tag name="doctrine.event_listener" event="prePersist"/>
+            <tag name="doctrine.event_listener" event="preUpdate"/>
         </service>
 
         <!--<service id="zpb.admin.example" class="%zpb.admin.example.class%">

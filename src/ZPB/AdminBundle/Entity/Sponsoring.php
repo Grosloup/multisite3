@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Sponsoring
  *
- * @ORM\Table()
+ * @ORM\Table(name="zpb_sponsorings")
  * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\SponsoringRepository")
  */
 class Sponsoring
@@ -56,11 +56,17 @@ class Sponsoring
      */
     private $endAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\Godparent", inversedBy="sponsorings")
+     * @ORM\JoinColumn(name="godparent_id", referencedColumnName="id")
+     */
+    private $godparent;
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -83,7 +89,7 @@ class Sponsoring
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -106,7 +112,7 @@ class Sponsoring
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {
@@ -129,7 +135,7 @@ class Sponsoring
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -152,7 +158,7 @@ class Sponsoring
     /**
      * Get startAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getStartAt()
     {
@@ -175,10 +181,33 @@ class Sponsoring
     /**
      * Get endAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEndAt()
     {
         return $this->endAt;
+    }
+
+    /**
+     * Set godparent
+     *
+     * @param Godparent $godparent
+     * @return Sponsoring
+     */
+    public function setGodparent(Godparent $godparent = null)
+    {
+        $this->godparent = $godparent;
+
+        return $this;
+    }
+
+    /**
+     * Get godparent
+     *
+     * @return Godparent
+     */
+    public function getGodparent()
+    {
+        return $this->godparent;
     }
 }

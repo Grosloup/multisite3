@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/src/ZPB/AdminBundle/DataFixtures/ORM/LoadGodparents.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/Godparent.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/GodparentRepository.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Listener/Entities/GodparentListener.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Form/Type/GodparentType.php" charset="UTF-8" />
+  </component>
 </project>
 

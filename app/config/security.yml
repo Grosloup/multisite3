@@ -1,12 +1,48 @@
 security:
+    encoders:
+        ZPB\AdminBundle\Entity\Godparent:
+            algorithm: sha512
+            encode_as_base64: true
+            iterations: 7000
+
     providers:
-        in_memory:
-            memory: ~
+        sponsorship_provider:
+            entity:
+                class: ZPBAdminBundle:Godparent
+                property: username
+
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+        ROLE_SUPERADMIN: [ROLE_USER, ROLE_ADMIN]
+
+    access_control:
+        #- { host: ^(new\.|www\.)?admin\.zooparc\.com$, path: ^/, requires_channel: https, roles: [IS_AUTHENTICATED_ANONYMOUSLY]}
+        #- { host: ^(new\.|www\.)?admin\.zooparc\.com$, path: ^/, requires_channel: https, roles: [ROLE_USER]}
+        #- { host: ^(new\.|www\.)?admin\.zooparc\.com$, path: ^/utilisateurs, requires_channel: https, roles: ROLE_SUPERADMIN }
+        #- { host: ^(new\.|www\.)?admin\.zooparc\.com$, path: ^/utilisateur/.+, requires_channel: https, roles: ROLE_SUPERADMIN }
+        #- { host: ^(new\.|www\.)?admin\.zooparc\.com$, path: ^/(?!(login|login_check|logout)/?$), requires_channel: https, roles: ROLE_USER }
+
+        - { host: ^(new\.|www\.)?zoobeauval\.com$, path: ^/parrainages/mon-compte.*, requires_channel: https, roles: ROLE_GODPARENT }
 
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
+        sponsorship:
+            host: ^(new\.|www\.)?zoobeauval\.com$
+            pattern: ^/parrainages.*
+            security: true
+            provider: sponsorship_provider
+            access_denied_url: /
+            anonymous: ~
+            form_login:
+                login_path: /parrainages/login
+                check_path: /parrainages/login_check
+                csrf_provider: form.csrf_provider
+            logout:
+                path: /parrainages/logout
+                target: /
 
         default:
             anonymous: ~

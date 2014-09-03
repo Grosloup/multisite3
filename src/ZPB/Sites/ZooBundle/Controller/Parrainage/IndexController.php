@@ -22,7 +22,10 @@ namespace ZPB\Sites\ZooBundle\Controller\Parrainage;
 
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use ZPB\AdminBundle\Controller\BaseController;
+use ZPB\AdminBundle\Entity\Godparent;
+use ZPB\Sites\ZooBundle\Form\Type\GodparentType;
 
 class IndexController extends BaseController
 {
@@ -110,12 +113,35 @@ class IndexController extends BaseController
 
     public function loginOrRegisterAction()
     {
-        // $user déjà conncté ?
+        // $user déjà connecté ?
         if($this->getUser() && $this->get('security.context')->isGranted('ROLE_GODPARENT')){
             $this->redirect('');
         }
 
-        return $this->render('ZPBSitesZooBundle:Parrainage/Index:login_register.html.twig', []);
+        $goparent = new Godparent();
+        $form = $this->createForm(new GodparentType(), $goparent);
+
+        return $this->render('ZPBSitesZooBundle:Parrainage/Index:login_register.html.twig', ['form'=>$form->createView()]);
+    }
+
+    public function registerAction(Request $request)
+    {
+        $godparent = new Godparent();
+        $plainPassword = $this->getRepo('ZPBAdminBundle:Godparent')->createPassword();
+        $godparent->setPlainPassword($plainPassword);
+        $godparent->setTmpPassword($plainPassword);
+        $form = $this->createForm(new GodparentType(), $godparent);
+        $form->handleRequest($request);
+        if($form->isValid()){
+            //$em = $this->getEm();
+            //$em->persist($godparent);
+            //$em->flush();
+            //$token = new UsernamePasswordToken($godparent,null,'sponsorship',$godparent->getRoles());
+            //$this->container->get('security.context')->setToken($token);
+            //return $this->redirect($this->generateUrl('')); //=>vers recap
+        }
+
+        return $this->render('ZPBSitesZooBundle:Parrainage/Index:login_register.html.twig', ['form'=>$form->createView()]);
     }
 
     public function recapOrderAfterLoginAction()
