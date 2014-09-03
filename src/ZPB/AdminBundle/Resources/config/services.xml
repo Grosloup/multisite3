@@ -9,6 +9,13 @@
         <parameter key="zpb.form.type.iucn_status.class">ZPB\AdminBundle\Form\Type\IUCNStatusType</parameter>
         <parameter key="zpb.image_resizer.class">ZPB\AdminBundle\Service\ImageResizer</parameter>
         <parameter key="zpb.photo_factory.class">ZPB\AdminBundle\Service\PhotoFactory</parameter>
+        <parameter key="zpb.form.type.civility.class">ZPB\AdminBundle\Form\Type\CivilityType</parameter>
+
+        <parameter key="zpb.civility" type="collection">
+            <parameter key="Mm">Madame</parameter>
+            <parameter key="Mlle">Mademoiselle</parameter>
+            <parameter key="Mr">Monsieur</parameter>
+        </parameter>
 
         <parameter key="zpb.photo.thumbnails" type="collection">
             <parameter key="small">200</parameter>
@@ -48,14 +55,22 @@
             <argument type="string">%zpb.iucn_status%</argument>
             <tag name="form.type" alias="iucn_status_type" />
         </service>
+
         <service id="zpb.image_resizer" class="%zpb.image_resizer.class%">
             <argument>%zpb.photo.thumbnails%</argument>
             <argument>%zpb.medias.options%</argument>
         </service>
+
         <service id="zpb.photo_factory" class="%zpb.photo_factory.class%">
             <argument>%zpb.photo.thumbnails%</argument>
             <argument>%zpb.medias.options%</argument>
         </service>
+
+        <service id="zpb.zoo.form.type.civility" class="%zpb.form.type.civility.class%">
+            <argument type="string">%zpb.civility%</argument>
+            <tag name="form.type" alias="civility_type"/>
+        </service>
+
         <!--<service id="zpb.admin.example" class="%zpb.admin.example.class%">
             <argument type="service" id="service_id" />
             <argument>plain_value</argument>

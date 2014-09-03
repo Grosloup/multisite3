@@ -1,0 +1,82 @@
+{% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
+{% block title %}Mon panier | Parrainez un animal{% endblock %}
+{% block headStyles %}
+    {{ parent() }}
+    <style>
+        .pack{
+            background-color: #abbabe;
+            padding-top: 16px;
+            padding-bottom: 16px;
+            margin-bottom: 16px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
+            border-radius: 5px;
+        }
+        .pack .thumbnail{
+            margin-bottom: 0;
+        }
+    </style>
+{% endblock %}
+{% block header %}
+    {{ render(controller("ZPBSitesZooBundle:Partials:smallHeader")) }}
+{% endblock %}
+{% block content %}
+
+
+    <div class="columns large-12">
+        {% if packs|length > 0 %}
+            {% for id,pack in packs %}
+
+                <div class="row">
+                    <div class="columns large-5">
+                        <div class="row">
+                            <div class="columns large-4">
+                                <img class="th" src="http://lorempicsum.com/rio/180/120/{{ random(5)+1 }}" alt=""/>
+                            </div>
+                            <div class="columns large-8">
+                                {{ pack.animal.longName }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns large-3">
+                        <h4 class="text-center">Formule</h4>
+                        <p class="text-center"><strong>{{ pack.pack.name }}</strong></p>
+                    </div>
+                    <div class="columns large-3">
+                        <h4 class="text-center">Montant</h4>
+                        <p class="text-center"><strong>{{ pack.pack.price }}</strong></p>
+                    </div>
+                    <div class="columns large-1">
+                        <a class="btn btn-danger" href="{{ path("zpb_sites_zoo_parrainage_remove_from_basket", {id: id, _token: csrf_token("delete_from_basket")}) }}"><i class="fa fa-trash-o"></i></a>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="row pack">
+                <div class="columns large-6">
+                    <p class="text-center"><strong>Montant Total</strong></p>
+                </div>
+                <div class="columns large-3">
+                    {% set price = 0 %}
+                    {% set priceRedux = 0 %}
+                    {% for pack in packs %}
+                        {% set price = price + pack.pack.price %}
+                        {% set priceRedux = priceRedux + pack.pack.taxFreePrice %}
+                    {% endfor %}
+                    <p class="text-center"><strong>{{ price|number_format(2,',','.') }}€</strong></p>
+                </div>
+                <div class="columns large-3">
+                    <p>soit <strong>{{ priceRedux|number_format(2,',','.') }}€</strong> après reduction fiscale</p>
+                </div>
+            </div>
+        {% else %}
+            <p>Votre panier est vide.</p>
+        {% endif %}
+        <hr/>
+        <a class="button success large" href="{{ path("zpb_sites_zoo_parrainages_homepage") }}">Ajouter des parrainages</a>
+        {% if packs|length > 0 %}
+            <a class="button success large" href="">Regler votre commande</a> {# TODO #}
+        {% endif %}
+    </div>
+{% endblock %}

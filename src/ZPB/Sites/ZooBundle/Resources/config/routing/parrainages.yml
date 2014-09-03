@@ -9,3 +9,20 @@ zpb_sites_zoo_parrainages_animal_show:
     methods: ["GET"]
     requirements:
         name: "[a-zA-Z0-9_-]+"
+
+zpb_sites_zoo_parrainages_add_to_basket:
+    path: /ajouter-au-panier
+    defaults: { _controller: ZPBSitesZooBundle:Parrainage/Index:addSponsoringToBasket }
+    methods: ["POST"]
+
+zpb_sites_zoo_parrainages_show_basket:
+    path: /mon-panier
+    defaults: { _controller: ZPBSitesZooBundle:Parrainage/Index:showBasket }
+    methods: ["GET"]
+
+zpb_sites_zoo_parrainage_remove_from_basket:
+    path: /supprimer-du-panier/{id}
+    defaults: { _controller: ZPBSitesZooBundle:Parrainage/Index:removeSponsoringFromBasket }
+    methods: ["GET"]
+    requirements:
+        id: "[0-9-]+"
