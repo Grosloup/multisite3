@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new ZPB\AdminBundle\ZPBAdminBundle(),
+            new ZPB\Sites\ZooBundle\ZPBSitesZooBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

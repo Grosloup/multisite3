@@ -1,0 +1,6 @@
+zpb_sites_zoo_homepage:
+    path:     /
+    defaults: { _controller: ZPBSitesZooBundle:Index:index }
+    methods: ["GET"]
+
+

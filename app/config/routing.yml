@@ -1,3 +1,9 @@
+zpb_sites_zoo:
+    resource: "@ZPBSitesZooBundle/Resources/config/routing.yml"
+    prefix:   /
+    host: "new.zoobeauval.com"
+    schemes: ["https"]
+
 zpb_admin:
     resource: "@ZPBAdminBundle/Resources/config/routing.yml"
     prefix:   /
