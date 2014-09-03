@@ -60,43 +60,49 @@ class SponsoringFormula
     /**
      * @var float
      *
-     * @ORM\Column(name="taxFreePrice", type="float")
+     * @ORM\Column(name="taxFreePrice", type="float", nullable=false)
      */
     private $taxFreePrice;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="taxRate", type="float")
+     * @ORM\Column(name="taxRate", type="float", nullable=false)
      */
     private $taxRate;
 
     /**
+     * @ORM\Column(name="price", type="float", nullable=false)
+     */
+    private $price;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="longDescription", type="text")
+     * @ORM\Column(name="longDescription", type="text", nullable=false)
      */
     private $longDescription;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="shortDescription", type="text")
+     * @ORM\Column(name="shortDescription", type="text", nullable=false)
      */
     private $shortDescription;
+
 
     /**
      * @ORM\ManyToMany(targetEntity="ZPB\AdminBundle\Entity\SponsoringGiftDefinition", inversedBy="formulas")
      * @ORM\JoinTable(name="zpb_sponsoring_formulas_gifts")
      */
-    private $giftDesriptions;
+    private $giftDefinitions;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->giftDesriptions = new ArrayCollection();
+        $this->giftDefinitions = new ArrayCollection();
     }
 
     /**
@@ -131,6 +137,26 @@ class SponsoringFormula
 
         return $this;
     }
+
+    /**
+     * @param mixed $price
+     * @return SponsoringFormula
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+
 
     /**
      * Get slug
@@ -317,35 +343,35 @@ class SponsoringFormula
     }
 
     /**
-     * Add giftDesriptions
+     * Add giftDefinitions
      *
-     * @param SponsoringGiftDefinition $giftDesriptions
+     * @param SponsoringGiftDefinition $giftDefinitions
      * @return SponsoringFormula
      */
-    public function addGiftDesription(SponsoringGiftDefinition $giftDesriptions)
+    public function addGiftDefinitions(SponsoringGiftDefinition $giftDefinitions)
     {
-        $this->giftDesriptions[] = $giftDesriptions;
+        $this->giftDefinitions[] = $giftDefinitions;
 
         return $this;
     }
 
     /**
-     * Remove giftDesriptions
+     * Remove giftDefinitions
      *
-     * @param SponsoringGiftDefinition $giftDesriptions
+     * @param SponsoringGiftDefinition $giftDefinitions
      */
-    public function removeGiftDesription(SponsoringGiftDefinition $giftDesriptions)
+    public function removeGiftDefinitions(SponsoringGiftDefinition $giftDefinitions)
     {
-        $this->giftDesriptions->removeElement($giftDesriptions);
+        $this->giftDefinitions->removeElement($giftDefinitions);
     }
 
     /**
-     * Get giftDesriptions
+     * Get giftDefinitions
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getGiftDesriptions()
+    public function getGiftDefinitions()
     {
-        return $this->giftDesriptions;
+        return $this->giftDefinitions;
     }
 }

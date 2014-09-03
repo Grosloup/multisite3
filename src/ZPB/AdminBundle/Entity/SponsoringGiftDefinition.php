@@ -96,6 +96,7 @@ class SponsoringGiftDefinition
     public function __construct()
     {
         $this->formulas = new ArrayCollection();
+        $this->positionGroup = "sponsoring-gifts";
     }
 
     /**

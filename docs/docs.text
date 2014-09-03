@@ -3,11 +3,10 @@ C:\BOX\PROJETS\puphpet_multisite3\xWHB5Y
 
 /var/www/vhosts/multisite3/app
 
-LoadInstitutions    => 10
-
-LoadPhotoCategories => 15
-
-LoadSpecies => 30
-LoadAnimals => 35
-
-LoadAnimations      => 50
+LoadInstitutions                => 10
+LoadPhotoCategories             => 15
+LoadSpecies                     => 30
+LoadAnimals                     => 35
+LoadSponsoringGiftDefinitions   => 37
+LoadSponsoringFormulas          => 38
+LoadAnimations                  => 50
