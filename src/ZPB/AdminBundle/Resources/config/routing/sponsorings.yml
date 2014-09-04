@@ -1,0 +1,9 @@
+zpb_admin_sponsor_species_list:
+   path: /species/liste
+   defaults: { _controller: ZPBAdminBundle:Parrainage/Species:list }
+   methods: ["GET"]
+
+zpb_admin_sponsor_species_create:
+    path: /species/nouvelle
+    defaults: { _controller: ZPBAdminBundle:Parrainage/Species:create }
+    methods: ["GET", "POST"]
