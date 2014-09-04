@@ -7,8 +7,11 @@
         </ul>
         <section class="top-bar-section"> <!-- Right Nav Section -->
             <ul class="right">
-                <li><a href="#">Mon compte</a></li>
-                <li><a href="{{ path("zpb_sites_zoo_parrainages_show_basket") }}">Mon panier <span class="round label success">{{ basketCount }}</span></a></li>
+                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                <li><a href="{{ path("zpb_sites_zoo_parrainages_logout") }}"><i class="fa fa-power-off"></i></a></li>
+                {% endif %}
+                <li><a href="{{ path("zpb_sites_zoo_parrainages_login") }}"><i class="fa fa-user"></i></a></li>
+                <li><a href="{{ path("zpb_sites_zoo_parrainages_show_basket") }}"><i class="fa fa-shopping-cart"></i> <span class="round label success">{{ basketCount }}</span></a></li>
                 {#<li class="has-dropdown"><a href="#">Right Button Dropdown</a>
                     <ul class="dropdown">
                         <li><a href="#">First link in dropdown</a></li>

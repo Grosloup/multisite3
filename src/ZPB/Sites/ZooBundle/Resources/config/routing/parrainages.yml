@@ -36,3 +36,21 @@ zpb_sites_zoo_parrainages_payment_register:
     path: /nouveau-parrain
     defaults: { _controller: ZPBSitesZooBundle:Parrainage/Index:register }
     methods: ["POST"]
+
+zpb_sites_zoo_parrainages_login:
+    path: /login
+    defaults: { _controller: ZPBSitesZooBundle:Parrainage/Account:login }
+    methods: ["GET"]
+
+zpb_sites_zoo_parrainages_login_check:
+    path: /login_check
+    methods: ["POST"]
+
+zpb_sites_zoo_parrainages_logout:
+    path: /logout
+    methods: ["GET"]
+
+zpb_sites_zoo_parrainage_my_account:
+    path: /mon-compte
+    defaults: { _controller: ZPBSitesZooBundle:Parrainage/Account:myAccount }
+    methods: ["GET","POST"]

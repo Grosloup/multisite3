@@ -1,0 +1,46 @@
+{% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
+{% block title %}Connexion | Mon compte | Parrainez un animal{% endblock %}
+
+{% block header %}
+    {{ render(controller("ZPBSitesZooBundle:Partials:smallHeader")) }}
+{% endblock %}
+
+{% block content %}
+<div class="columns large-12">
+    <div class="row">
+        <div class="columns large-12">
+            <h1>Identifiez-vous</h1>
+        </div>
+        <hr/>
+    </div>
+
+    <div class="row">
+        <div class="columns large-8 large-centered">
+            <form action="{{ path("zpb_sites_zoo_parrainages_login_check") }}" method="post">
+                <div class="row">
+                    <div class="columns large-12">
+                        <label for="username">Pseudo ou adresse email</label>
+                        <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="columns large-12">
+                        <label for="password">Mot de passe</label>
+                        <input type="password" id="password" name="_password" class="form-control"/>
+                    </div>
+                </div>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" >
+                <input type="hidden" name="_target_path" value="/parrainages/mon-compte" />
+
+                <div class="row">
+                    <div class="column large-12">
+                        <button type="submit" class="button">login</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
