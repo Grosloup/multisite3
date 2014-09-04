@@ -75,7 +75,18 @@
                 <nav class="menu">
                     <h3 class="menu-title">Parrainages</h3>
                     <ul>
-
+                        <li class="sidebar-dropdown{% if active in ["bla"] %} active{% endif %}"><a href="#">Espèces</a><i class="sidebar-icon fa fa-angle-right"></i>
+                            <ul>
+                                <li class="{% if active == "sponsor_list_species" %}active{% endif %}"><a href="">Liste</a></li>
+                                <li class="{% if active == "sponsor_new_species" %}active{% endif %}"><a href="">Nouvelle</a></li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-dropdown{% if active in ["bla"] %} active{% endif %}"><a href="#">Animaux</a><i class="sidebar-icon fa fa-angle-right"></i>
+                            <ul>
+                                <li class="{% if active == "sponsor_list_animals" %}active{% endif %}"><a href="">Liste</a></li>
+                                <li class="{% if active == "sponsor_new_animal" %}active{% endif %}"><a href="">Nouveau</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
                 <nav class="menu">
