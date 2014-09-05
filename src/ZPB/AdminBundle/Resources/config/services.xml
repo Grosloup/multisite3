@@ -7,7 +7,7 @@
 
     <parameters>
         <parameter key="zpb.form.type.iucn_status.class">ZPB\AdminBundle\Form\Type\IUCNStatusType</parameter>
-        <parameter key="zpb.form.type.sexe.class">ZPB\AdminBundle\Form\Type\SexType</parameter>
+        <parameter key="zpb.form.type.sexe.class">ZPB\AdminBundle\Form\Type\SexeType</parameter>
         <parameter key="zpb.image_resizer.class">ZPB\AdminBundle\Service\ImageResizer</parameter>
         <parameter key="zpb.photo_factory.class">ZPB\AdminBundle\Service\PhotoFactory</parameter>
         <parameter key="zpb.form.type.civility.class">ZPB\AdminBundle\Form\Type\CivilityType</parameter>

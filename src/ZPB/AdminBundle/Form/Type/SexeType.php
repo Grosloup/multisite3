@@ -36,7 +36,7 @@ class SexeType extends AbstractType
     
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(['choices'=>'']);
+        $resolver->setDefaults(['choices'=>$this->sexe]);
     }
     
     public function getName()
