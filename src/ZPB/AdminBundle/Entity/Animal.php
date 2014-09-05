@@ -49,7 +49,7 @@ class Animal
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="born_at", type="date", nullable=false)
+     * @ORM\Column(name="born_at", type="datetime", nullable=false)
      */
     private $bornAt;
 
@@ -97,6 +97,7 @@ class Animal
 
     public function __construct()
     {
+        $this->setIsAvailable(true);
         $this->setIsArchived(false);
         $this->setIsDropped(false);
     }

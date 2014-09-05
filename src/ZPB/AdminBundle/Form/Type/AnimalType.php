@@ -34,7 +34,7 @@ class AnimalType extends AbstractType
         $builder
             ->add('name',null, ['label'=>'Nom'])
             ->add('longName',null, ['label'=>'Nom étendu'])
-            ->add('bornAt','date', ['label'=>'Date de naissance', 'widget'=>'single_text', 'format'=>'dd/MM/yyyy'])
+            ->add('bornAt','date', ['label'=>'Date de naissance (jj/mm/yyyy)', 'widget'=>'single_text', 'format'=>'dd/MM/yyyy'])
             ->add('bornIn',null, ['label'=>'Lieu de naissance'])
             ->add('sex','sexe_type', ['label'=>'Sexe'])
             ->add('shortDescription','textarea', ['label'=>'Description courte'])

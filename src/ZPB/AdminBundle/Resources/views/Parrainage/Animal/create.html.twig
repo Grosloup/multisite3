@@ -12,7 +12,130 @@
                     Nouvel animal
                 </div>
 
-                {{ form(form) }}
+                {{ form_start(form, {attr: {class: "form", novalidate:true }}) }}
+                {{ form_errors(form) }}
+
+                <div class="form-row {% if form.name.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.name) }}
+                    <div class="form-field">
+                        {{ form_widget(form.name) }}
+                        {% if form.name.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.name)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.longName.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.longName) }}
+                    <div class="form-field">
+                        {{ form_widget(form.longName) }}
+                        {% if form.longName.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.longName)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="column-6">
+                        <div class="form-row {% if form.bornAt.vars.errors|length>0 %}has-error{% endif %}">
+                            {{ form_label(form.bornAt) }}
+                            <div class="form-field">
+                                {{ form_widget(form.bornAt) }}
+                                {% if form.bornAt.vars.errors|length>0 %}
+                                    <div class="errors-block">
+                                        {{ form_errors(form.bornAt)}}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column-6">
+                        <div class="form-row {% if form.sex.vars.errors|length>0 %}has-error{% endif %}">
+                            {{ form_label(form.sex) }}
+                            <div class="form-field">
+                                {{ form_widget(form.sex) }}
+                                {% if form.sex.vars.errors|length>0 %}
+                                    <div class="errors-block">
+                                        {{ form_errors(form.sex)}}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.bornIn.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.bornIn) }}
+                    <div class="form-field">
+                        {{ form_widget(form.bornIn) }}
+                        {% if form.bornIn.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.bornIn)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.species.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.species) }}
+                    <div class="form-field">
+                        {{ form_widget(form.species) }}
+                        {% if form.species.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.species)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.shortDescription.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.shortDescription) }}
+                    <div class="form-field">
+                        {{ form_widget(form.shortDescription) }}
+                        {% if form.shortDescription.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.shortDescription)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.longDescription.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.longDescription) }}
+                    <div class="form-field">
+                        {{ form_widget(form.longDescription) }}
+                        {% if form.longDescription.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.longDescription)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.history.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.history) }}
+                    <div class="form-field">
+                        {{ form_widget(form.history) }}
+                        {% if form.history.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.history)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+
+
+                <div class="form-row">
+                    {{ form_widget(form.save, {attr: {class: "btn btn-primary"}})}}
+                </div>
+
+                {{ form_end(form) }}
+
             </div>
         </div>
         <div class="column-3"></div>

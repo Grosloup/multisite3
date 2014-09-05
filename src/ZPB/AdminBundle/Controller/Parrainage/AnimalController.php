@@ -44,7 +44,10 @@ class AnimalController extends BaseController
         $form = $this->createForm(new AnimalType(), $animal, ['em'=>$this->getManager()]);
         $form->handleRequest($request);
         if($form->isValid()){
-
+            $this->getManager()->persist($animal);
+            $this->getManager()->flush();
+            $this->setSuccess("Nouvelle animal bien enregistré.");
+            return $this->redirect($this->generateUrl('zpb_admin_sponsor_animals_list'));
         }
         return $this->render('ZPBAdminBundle:Parrainage/Animal:create.html.twig', ['form'=>$form->createView()]);
     }

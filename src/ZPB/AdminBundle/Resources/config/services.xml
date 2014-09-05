@@ -52,7 +52,7 @@
         </parameter>
 
         <parameter key="zpb.sexe" type="collection">
-            <parameter key="male">Mâle</parameter>
+            <parameter key="mâle">Mâle</parameter>
             <parameter key="femelle">Femelle</parameter>
         </parameter>
     </parameters>
