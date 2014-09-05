@@ -49,12 +49,12 @@ class Animal
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="born_at", type="datetime")
+     * @ORM\Column(name="born_at", type="date", nullable=false)
      */
     private $bornAt;
 
     /**
-     * @ORM\Column(name="born_in", type="string", length=255)
+     * @ORM\Column(name="born_in", type="string", length=255, nullable=true)
      */
     private $bornIn;
 

@@ -7,6 +7,7 @@
 
     <parameters>
         <parameter key="zpb.form.type.iucn_status.class">ZPB\AdminBundle\Form\Type\IUCNStatusType</parameter>
+        <parameter key="zpb.form.type.sexe.class">ZPB\AdminBundle\Form\Type\SexType</parameter>
         <parameter key="zpb.image_resizer.class">ZPB\AdminBundle\Service\ImageResizer</parameter>
         <parameter key="zpb.photo_factory.class">ZPB\AdminBundle\Service\PhotoFactory</parameter>
         <parameter key="zpb.form.type.civility.class">ZPB\AdminBundle\Form\Type\CivilityType</parameter>
@@ -49,12 +50,22 @@
             <parameter key="EW">Espèce éteinte à l'état sauvage</parameter>
             <parameter key="EX">Espèce éteinte</parameter>
         </parameter>
+
+        <parameter key="zpb.sexe" type="collection">
+            <parameter key="male">Mâle</parameter>
+            <parameter key="femelle">Femelle</parameter>
+        </parameter>
     </parameters>
 
     <services>
         <service id="zpb.form.type.iucn_status" class="%zpb.form.type.iucn_status.class%">
             <argument type="string">%zpb.iucn_status%</argument>
             <tag name="form.type" alias="iucn_status_type" />
+        </service>
+
+        <service id="zpb.form.type.sexe" class="%zpb.form.type.sexe.class%">
+            <argument type="string">%zpb.sexe%</argument>
+            <tag name="form.type" alias="sexe_type" />
         </service>
 
         <service id="zpb.image_resizer" class="%zpb.image_resizer.class%">

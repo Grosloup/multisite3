@@ -99,7 +99,7 @@
                                 <li class="sidebar-dropdown{% if active in ["sponsor_list_species", "sponsor_new_species"] %} active{% endif %}"><a href="#">Espèces</a><i class="sidebar-icon fa fa-angle-right"></i>
                                     <ul>
                                         <li class="{% if active == "sponsor_list_species" %}active{% endif %}"><a href="{{ path("zpb_admin_sponsor_species_list") }}">Liste</a></li>
-                                        <li class="{% if active == "sponsor_new_species" %}active{% endif %}"><a href="">Nouvelle</a></li>
+                                        <li class="{% if active == "sponsor_new_species" %}active{% endif %}"><a href="{{ path("zpb_admin_sponsor_species_create") }}">Nouvelle</a></li>
                                     </ul>
                                 </li>
                                 <li class="sidebar-dropdown{% if active in ["sponsor_list_animals","sponsor_new_animal"] %} active{% endif %}"><a href="#">Animaux</a><i class="sidebar-icon fa fa-angle-right"></i>

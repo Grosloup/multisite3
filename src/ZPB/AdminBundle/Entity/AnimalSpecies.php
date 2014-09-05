@@ -61,48 +61,48 @@ class AnimalSpecies
     private $animals;
     /**
      * @Assert\NotBlank()
-     * @Assert\Regex("/^[a-zA-Zéèêëàûôç',;.)(: -]+$/", message="Ce champ contient des caractères non autorisés.")
+     * @Assert\Regex("/^[a-zA-Z0-9éèêëàûôç',;.)(: -]+$/", message="Ce champ contient des caractères non autorisés.")
      * @ORM\Column(name="habitat", type="string", length=255, nullable=false)
      */
     private $habitat;
     /**
      * @Assert\NotBlank()
-     * @Assert\Regex("/^[a-zA-Zéèêëàûôç',;.)(: -]+$/", message="Ce champ contient des caractères non autorisés.")
+     * @Assert\Regex("/^[a-zA-Z0-9éèêëàûôç',;.)(: -]+$/", message="Ce champ contient des caractères non autorisés.")
      * @ORM\Column(name="geoDistribution", type="string", length=255, nullable=false)
      */
     private $geoDistribution;
     /**
      * @var string
      * @Assert\NotBlank()
-     * @Assert\Regex("/^[a-zA-Zéèêëàûôç',;.)(: -]+$/", message="Ce champ contient des caractères non autorisés.")
+     * @Assert\Regex("/^[a-zA-Z0-9éèêëàûôç',;.)(: -]+$/", message="Ce champ contient des caractères non autorisés.")
      * @ORM\Column(name="diet", type="text")
      */
     private $diet;
     /**
      * @var string
      * @Assert\NotBlank()
-     * @Assert\Regex("/^[a-zA-Zéèêëàûôç',;.)(: -]+$/", message="Ce champ contient des caractères non autorisés.")
+     * @Assert\Regex("/^[a-zA-Z0-9éèêëàûôç',;.)(: -]+$/", message="Ce champ contient des caractères non autorisés.")
      * @ORM\Column(name="size", type="string", length=255)
      */
     private $size;
     /**
      * @var string
      * @Assert\NotBlank()
-     * @Assert\Regex("/^[a-zA-Zéèêëàûôç',;.)(: -]+$/", message="Ce champ contient des caractères non autorisés.")
+     * @Assert\Regex("/^[a-zA-Z0-9éèêëàûôç',;.)(: -]+$/", message="Ce champ contient des caractères non autorisés.")
      * @ORM\Column(name="weight", type="string", length=255)
      */
     private $weight;
     /**
      * @var string
      * @Assert\NotBlank()
-     * @Assert\Regex("/^[a-zA-Zéèêëàûôç',;.)(: -]+$/", message="Ce champ contient des caractères non autorisés.")
+     * @Assert\Regex("/^[a-zA-Z0-9éèêëàûôç',;.)(: -]+$/", message="Ce champ contient des caractères non autorisés.")
      * @ORM\Column(name="lifespan", type="string", length=255)
      */
     private $lifespan;
     /**
      * @var string
      * @Assert\NotBlank()
-     * @Assert\Regex("/^[a-zA-Zéèêëàûôç',;.)(: -]+$/", message="Ce champ contient des caractères non autorisés.")
+     * @Assert\Regex("/^[a-zA-Z0-9éèêëàûôç',;.)(: -]+$/", message="Ce champ contient des caractères non autorisés.")
      * @ORM\Column(name="gestation", type="string", nullable=false)
      */
     private $gestation;
@@ -114,25 +114,25 @@ class AnimalSpecies
     /**
      * @var string
      * @Assert\NotBlank()
-     * @Assert\Regex("/^[a-zA-Zéèêëàûôç' -]+$/", message="Ce champ contient des caractères non autorisés.")
+     * @Assert\Regex("/^[a-zA-Z0-9éèêëàûôç' -]+$/", message="Ce champ contient des caractères non autorisés.")
      * @ORM\Column(name="genus", type="string", length=255, nullable=false)
      */
     private $genus;
     /**
      * @Assert\NotBlank()
-     * @Assert\Regex("/^[a-zA-Zéèêëàûôç' -]+$/", message="Ce champ contient des caractères non autorisés.")
+     * @Assert\Regex("/^[a-zA-Z0-9éèêëàûôç' -]+$/", message="Ce champ contient des caractères non autorisés.")
      * @ORM\Column(name="classe", type="string", length=255, nullable=false)
      */
     private $classe;
     /**
      * @Assert\NotBlank()
-     * @Assert\Regex("/^[a-zA-Zéèêëàûôç' -]+$/", message="Ce champ contient des caractères non autorisés.")
+     * @Assert\Regex("/^[a-zA-Z0-9éèêëàûôç' -]+$/", message="Ce champ contient des caractères non autorisés.")
      * @ORM\Column(name="family", type="string", length=255, nullable=false)
      */
     private $family;
     /**
      * @Assert\NotBlank()
-     * @Assert\Regex("/^[a-zA-Zéèêëàûôç' -]+$/", message="Ce champ contient des caractères non autorisés.")
+     * @Assert\Regex("/^[a-zA-Z0-9éèêëàûôç' -]+$/", message="Ce champ contient des caractères non autorisés.")
      * @ORM\Column(name="animal_order", type="string", length=255, nullable=false)
      */
     private $animalOrder;

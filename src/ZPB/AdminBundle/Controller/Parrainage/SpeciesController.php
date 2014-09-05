@@ -41,16 +41,23 @@ class SpeciesController extends BaseController
     {
         $species = new AnimalSpecies();
         $form = $this->createForm(new SponsoringSpeciesType(), $species);
+        $form->handleRequest($request);
+        if($form->isValid()){
+            $this->getManager()->persist($species);
+            $this->getManager()->flush();
+            $this->setSuccess('Nouvelle espèce bien enregistrée.');
+            return $this->redirect($this->generateUrl('zpb_admin_sponsor_species_list'));
+        }
         return $this->render('ZPBAdminBundle:Parrainage/Species:create.html.twig', ['form'=>$form->createView()]);
     }
 
     public function updateAction($id, Request $request)
     {
-
+        //TODO
     }
 
     public function deleteAction($id, Request $request)
     {
-
+        //TODO
     }
 } 
