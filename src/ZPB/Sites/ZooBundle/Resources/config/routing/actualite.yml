@@ -1,0 +1,6 @@
+zpb_sites_zoo_actualites_homepage:
+    path: /{page}
+    defaults: { _controller: ZPBSitesZooBundle:Actualite:index, page: 1}
+    methods: ["GET"]
+    requirements:
+        page: \d+

@@ -6,3 +6,7 @@ zpb_sites_zoo_homepage:
 zpb_sites_zoo_parrainages_routes:
     prefix: /parrainages
     resource: "@ZPBSitesZooBundle/Resources/config/routing/parrainages.yml"
+
+zpb_sites_zoo_actualites_routes:
+    prefix: /actualites
+    resource: "@ZPBSitesZooBundle/Resources/config/routing/actualite.yml"
