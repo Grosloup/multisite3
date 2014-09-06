@@ -9,9 +9,9 @@
                 <nav class="menu">
                     <h3 class="menu-title">Générale</h3>
                     <ul>
-                        <li class="sidebar-dropdown{% if active in ["list_posts","list_post_cats", "new_post_cats", "update_post_cats","list_post_tags", "new_post_tags", "update_post_tags"] %} active{% endif %}"><a href="">Actualités </a><i class="sidebar-icon fa fa-angle-right"></i>
+                        <li class="sidebar-dropdown{% if active in ["write_post","list_posts","list_post_cats", "new_post_cats", "update_post_cats","list_post_tags", "new_post_tags", "update_post_tags"] %} active{% endif %}"><a href="">Actualités </a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
-                                <li><a href="">Ecrire</a></li>
+                                <li class="{% if active == "write_post" %}active{% endif %}"><a href="{{ path("zpb_admin_posts_list") }}"><a href="{{ path("zpb_admin_posts_create") }}">Ecrire</a></li>
                                 <li><a href="">Les brouillons</a></li>
                                 <li class="{% if active == "list_posts" %}active{% endif %}"><a href="{{ path("zpb_admin_posts_list") }}">Les publications</a></li>
                                 <li><a href="">Les archives</a></li>
