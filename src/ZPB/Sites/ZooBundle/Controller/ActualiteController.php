@@ -28,6 +28,16 @@ class ActualiteController extends BaseController
 {
     public function indexAction($page = 1, Request $request)
     {
+        //TODO
+        //recup des posts
+        // publiés, ciblants zoo
+        // du plus récent au plus ancien
+        // paginés
+        //
         return $this->render('ZPBSitesZooBundle:Actualite:index.html.twig', []);
     }
+
+    // tri par categorie, publiés, ciblants zoo, paginés
+    // tri par mot-clé, publiés, ciblants zoo, paginés
+    // tr par date, publiés, ciblants zoo, paginés
 }
