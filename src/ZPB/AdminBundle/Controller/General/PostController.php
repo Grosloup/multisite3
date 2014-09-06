@@ -37,7 +37,7 @@ class PostController extends BaseController
     public function createAction(Request $request)
     {
         $entity = new Post();
-        $form = $this->createForm(new PostType(), $entity);
+        $form = $this->createForm(new PostType(), $entity, ['em'=>$this->getManager()]);
         $form->handleRequest($request);
         if($form->isValid()){
 

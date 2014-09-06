@@ -3,17 +3,127 @@
 {% block title %}Nouvelle Catégories d'actualité | Actualités{% endblock %}
 {% set active = "write_post" %}
 
+{% block headStyles %}
+    <style>
+        .dynamic-checkbox > div{
+            *zoom:1;
+        }
+        .dynamic-checkbox > div:before, .dynamic-checkbox > div:after{
+            content: " ";
+            display: table;
+        }
+        .dynamic-checkbox > div:after{
+            clear: both;
+        }
+        form.form .dynamic-checkbox label{
+            display: block;
+            float: right;
+            width: 90%;
+            height: 27px;
+        }
+        form.form .dynamic-checkbox input[type=checkbox], form.form .dynamic-checkbox input[type=radio]{
+            display: block;
+            float: left;
+            width: 9%;
+            height: 27px;
+        }
+    </style>
+{% endblock %}
 {% block content %}
     <div class="row">
-        <div class="column-3"></div>
+        {{ form_start(form, {attr: {class: "form", novalidate:true }})}}
+        <div class="column-3">
+            <div class="tile">
+                <div class="tile-header">
+                    Status de l'article
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tile-header">
+                    Sites Cibles
+                </div>
+
+                <div class="form-row">
+                    {{ form_label(form.targets, null, {label_attr:{style:"display:none;"}}) }}
+                    <div class="form-field dynamic-checkbox">
+                    {{ form_widget(form.targets) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tile-header">
+                    Catégorie
+                </div>
+                <div class="form-row {% if form.category.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.category, null, {label_attr:{style:"display:none;"}}) }}
+                    <div class="form-field">
+                        {{ form_widget(form.category)}}
+                        {% if form.category.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.category)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
         <div class="column-6">
             <div class="tile">
                 <div class="tile-header">
                     Nouvel article d'actualité
                 </div>
-                {{ form(form) }}
+
+                {{ form_errors(form) }}
+
+                <div class="form-row {% if form.title.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.title) }}
+                    <div class="form-field">
+                        {{ form_widget(form.title)}}
+                        {% if form.title.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.title)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.body.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.body) }}
+                    <div class="form-field">
+                        {{ form_widget(form.body)}}
+                        {% if form.body.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.body)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.excerpt.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.excerpt) }}
+                    <div class="form-field">
+                        {{ form_widget(form.excerpt)}}
+                        {% if form.excerpt.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.excerpt)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    {{ form_widget(form.save, {attr: {class: "btn btn-primary"}})}}
+                    {{ form_widget(form.save_publish, {attr: {class: "btn btn-primary"}})}}
+                </div>
+
+
             </div>
         </div>
         <div class="column-3"></div>
+        {{ form_end(form)}}
     </div>
 {% endblock %}

@@ -29,6 +29,9 @@ class GodparentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $preferred_choices = [
+            'FR','AL','AD','DE','AT','BE','HR','DK','ES','EE','FI','GR','HU','IE','IS','IT','XK','LV','LI','LT','LU','MK','MT','MC','ME','NO','NL','PL','PT','CZ','RO','GB','RS','SK','SI','SE','CH'
+        ];
         $builder
             ->add('civilite', 'civility_type', ['label'=>'Civilité','empty_value'=>'------------'])
             ->add('firstname', null, ['label'=>'Prénom*'])
@@ -44,7 +47,7 @@ class GodparentType extends AbstractType
             ->add('floor', null, ['label'=>'Etage'])
             ->add('postalCode', null, ['label'=>'Code postal*'])
             ->add('city', null, ['label'=>'Ville*'])
-            ->add('country', null, ['label'=>'Pays*'])
+            ->add('country', 'country', ['label'=>'Pays*', 'preferred_choices'=>$preferred_choices])
             ->add('save', 'submit', ['label'=>'Enregistrer'])
         ;
     }
