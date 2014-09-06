@@ -842,4 +842,37 @@ class Godparent implements AdvancedUserInterface, Serializable
     {
         return $this->city;
     }
+
+    /**
+     * Add sponsorings
+     *
+     * @param \ZPB\AdminBundle\Entity\Sponsoring $sponsorings
+     * @return Godparent
+     */
+    public function addSponsoring(\ZPB\AdminBundle\Entity\Sponsoring $sponsorings)
+    {
+        $this->sponsorings[] = $sponsorings;
+
+        return $this;
+    }
+
+    /**
+     * Remove sponsorings
+     *
+     * @param \ZPB\AdminBundle\Entity\Sponsoring $sponsorings
+     */
+    public function removeSponsoring(\ZPB\AdminBundle\Entity\Sponsoring $sponsorings)
+    {
+        $this->sponsorings->removeElement($sponsorings);
+    }
+
+    /**
+     * Get sponsorings
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSponsorings()
+    {
+        return $this->sponsorings;
+    }
 }

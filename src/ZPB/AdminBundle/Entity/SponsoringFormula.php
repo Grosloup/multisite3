@@ -378,4 +378,27 @@ class SponsoringFormula
     {
         return $this->giftDefinitions;
     }
+
+    /**
+     * Add giftDefinitions
+     *
+     * @param \ZPB\AdminBundle\Entity\SponsoringGiftDefinition $giftDefinitions
+     * @return SponsoringFormula
+     */
+    public function addGiftDefinition(\ZPB\AdminBundle\Entity\SponsoringGiftDefinition $giftDefinitions)
+    {
+        $this->giftDefinitions[] = $giftDefinitions;
+
+        return $this;
+    }
+
+    /**
+     * Remove giftDefinitions
+     *
+     * @param \ZPB\AdminBundle\Entity\SponsoringGiftDefinition $giftDefinitions
+     */
+    public function removeGiftDefinition(\ZPB\AdminBundle\Entity\SponsoringGiftDefinition $giftDefinitions)
+    {
+        $this->giftDefinitions->removeElement($giftDefinitions);
+    }
 }
