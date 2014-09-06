@@ -37,6 +37,7 @@
                 <div class="tile-header">
                     Status de l'article
                 </div>
+                <h3>{{ form.vars.value.status }}</h3>
             </div>
 
             <div class="tile">
@@ -69,6 +70,37 @@
                 </div>
             </div>
 
+            <div class="tile">
+                <div class="tile-header">
+                    Mots-clés
+                </div>
+                <div class="form-row {% if form.tags.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.tags, null, {label_attr:{style:"display:none;"}}) }}
+                    <div class="form-field">
+                        {{ form_widget(form.tags)}}
+                        {% if form.tags.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.tags)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div id="tagsContainer"></div>
+
+                <div class="form-row">
+                    <button class="btn btn-primary" id="addTagBtn"><i class="fa fa-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tile-header">
+                    Mettre à la une de:
+                </div>
+
+
+            </div>
+
         </div>
         <div class="column-6">
             <div class="tile">
@@ -93,7 +125,7 @@
                 <div class="form-row {% if form.body.vars.errors|length>0 %}has-error{% endif %}">
                     {{ form_label(form.body) }}
                     <div class="form-field">
-                        {{ form_widget(form.body)}}
+                        {{ form_widget(form.body, {attr:{'data-editor':'html', 'data-editorsize':'large'}})}}
                         {% if form.body.vars.errors|length>0 %}
                             <div class="errors-block">
                                 {{ form_errors(form.body)}}
@@ -105,7 +137,7 @@
                 <div class="form-row {% if form.excerpt.vars.errors|length>0 %}has-error{% endif %}">
                     {{ form_label(form.excerpt) }}
                     <div class="form-field">
-                        {{ form_widget(form.excerpt)}}
+                        {{ form_widget(form.excerpt, {attr:{'data-editor':'html', 'data-editorsize':'small'}})}}
                         {% if form.excerpt.vars.errors|length>0 %}
                             <div class="errors-block">
                                 {{ form_errors(form.excerpt)}}
@@ -126,4 +158,15 @@
         <div class="column-3"></div>
         {{ form_end(form)}}
     </div>
+
+
+
+
+{% endblock %}
+{% block footScripts %}
+    {{ parent() }}
+    <script src="/js/vendor/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/vendor/ace/ext-emmet.js"></script>
+    <script src="/js/vendor/emmet.js"></script>
+    <script src="/js/admin/newPost.min.js"></script>
 {% endblock %}

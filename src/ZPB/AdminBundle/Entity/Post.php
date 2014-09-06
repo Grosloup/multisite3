@@ -158,6 +158,20 @@ class Post
         $this->longId = substr($longId, 0, 8);
     }
 
+    public function getStatus()
+    {
+        if($this->isArchived){
+            return 'Archivé';
+        }
+        if($this->isPublished){
+            return 'Publié';
+        }
+        if($this->isDropped){
+            return 'Encorbeillé';
+        }
+        return  'Brouillon';
+    }
+
     /**
      * Get id
      *
