@@ -1,0 +1,39 @@
+{% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
+
+{% block title %}Modifier {{ form.vars.value.name }} | Actualités{% endblock %}
+{% set active = "update_post_cats" %}
+
+{% block content %}
+    <div class="row">
+        <div class="column-3"></div>
+        <div class="column-6">
+            <div class="tile">
+                <div class="tile-header">
+                    Modification de la catégorie {{ form.vars.value.name }}
+                </div>
+                {{ form_start(form, {attr: {class: "form", novalidate:true }})}}
+                {{ form_errors(form) }}
+                <div class="form-row {% if form.name.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.name) }}
+                    <div class="form-field">
+                        {{ form_widget(form.name)}}
+                        {% if form.name.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.name)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    {{ form_widget(form.save, {attr: {class: "btn btn-primary"}})}}
+                </div>
+
+                {{ form_end(form)}}
+            </div>
+            {{form(form)}}
+        </div>
+        <div class="column-3"></div>
+    </div>
+
+{% endblock %}

@@ -134,4 +134,15 @@ $(function(){
         e.preventDefault();
         closePopup();
     });
+
+    $('.delete-alert').on('click', function(e){
+        e.preventDefault();
+
+        var name = $(this).data('name') || 'cet élément';
+        var message = 'Attention ! cette action est irréversible. Etes-vous sûr de vouloir supprimer ' + name + '?';
+        if(window.confirm(message)){
+            window.location = $(this).attr('href');
+        }
+        return false;
+    });
 });
