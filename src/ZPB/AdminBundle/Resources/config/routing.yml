@@ -30,5 +30,7 @@ zpb_admin_parrainages_routes:
     prefix: /parrainages
     resource: "@ZPBAdminBundle/Resources/config/routing/sponsorings.yml"
 
-
+zpb_admin_posts_categories_routes:
+    prefix: /actualites/categories
+    resource: "@ZPBAdminBundle/Resources/config/routing/posts_categories.yml"
 

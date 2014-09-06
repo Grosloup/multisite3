@@ -141,4 +141,11 @@ class PostCategory
     {
         return $this->posts;
     }
+
+    function __toString()
+    {
+        return $this->name;
+    }
+
+
 }

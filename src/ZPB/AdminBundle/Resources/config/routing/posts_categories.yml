@@ -1,0 +1,22 @@
+zpb_admin_posts_categories_list:
+    path: /
+    defaults: { _controller: ZPBAdminBundle:General/PostCategory:list }
+    methods: ["GET"]
+zpb_admin_posts_categories_create:
+    path: /nouvelle
+    defaults: { _controller: ZPBAdminBundle:General/PostCategory:create }
+    methods: ["GET","POST"]
+
+zpb_admin_posts_categories_update:
+    path: /modifier/{id}
+    defaults: { _controller: ZPBAdminBundle:General/PostCategory:update }
+    methods: ["GET","POST"]
+    requirements:
+        id: \d+
+
+zpb_admin_posts_categories_delete:
+    path: /supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:General/PostCategory:delete }
+    methods: ["GET"]
+    requirements:
+        id: \d+
