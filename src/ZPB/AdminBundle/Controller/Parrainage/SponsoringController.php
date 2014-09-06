@@ -23,7 +23,7 @@ namespace ZPB\AdminBundle\Controller\Parrainage;
 
 use ZPB\AdminBundle\Controller\BaseController;
 
-class SponsorShipController extends BaseController
+class SponsoringController extends BaseController
 {
 
 }

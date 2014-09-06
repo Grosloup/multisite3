@@ -34,3 +34,6 @@ zpb_admin_posts_categories_routes:
     prefix: /actualites/categories
     resource: "@ZPBAdminBundle/Resources/config/routing/posts_categories.yml"
 
+zpb_admin_posts_tags_routes:
+    prefix: /actualites/mots-cles
+    resource: "@ZPBAdminBundle/Resources/config/routing/posts_tags.yml"
