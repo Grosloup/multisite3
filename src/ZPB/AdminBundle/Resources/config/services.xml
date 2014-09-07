@@ -14,6 +14,8 @@
         <parameter key="zpb.form.type.civility.class">ZPB\AdminBundle\Form\Type\CivilityType</parameter>
         <parameter key="zpb.listener.entity.godparent_listener.class">ZPB\AdminBundle\Listener\Entities\GodparentListener</parameter>
         <parameter key="zpb.form.type.target_choice_type.class">ZPB\AdminBundle\Form\Type\TargetChoiceType</parameter>
+        <parameter key="zpb.validator.password_validator.class">ZPB\AdminBundle\Validator\Constraints\PasswordValidator</parameter>
+        <parameter key="zpb.validator.civility_validator.class">ZPB\AdminBundle\Validator\Constraints\CivilityValidator</parameter>
 
         <parameter key="zpb.civility" type="collection">
             <parameter key="Mm">Madame</parameter>
@@ -57,6 +59,13 @@
         <parameter key="zpb.sexe" type="collection">
             <parameter key="mâle">Mâle</parameter>
             <parameter key="femelle">Femelle</parameter>
+        </parameter>
+
+        <parameter key="zpb.password_validator.config" type="collection">
+            <parameter key="minlen">8</parameter>
+            <parameter key="haslower">true</parameter>
+            <parameter key="hasupper">true</parameter>
+            <parameter key="hasnum">true</parameter>
         </parameter>
     </parameters>
 
@@ -102,6 +111,15 @@
             <tag name="doctrine.event_listener" event="preUpdate"/>
         </service>
 
+        <service class="%zpb.validator.password_validator.class%" id="zpb.validator.password_validator" >
+            <argument id="service_container" type="service" />
+            <tag name="validator.constraint_validator" alias="password_validator"/>
+        </service>
+
+        <service id="zpb.validator.civility_validator" class="%zpb.validator.civility_validator.class%">
+            <argument id="service_container" type="service" />
+            <tag name="validator.constraint_validator" alias="civility_validator"/>
+        </service>
         <!--<service id="zpb.admin.example" class="%zpb.admin.example.class%">
             <argument type="service" id="service_id" />
             <argument>plain_value</argument>
