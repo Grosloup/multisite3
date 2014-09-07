@@ -41,6 +41,8 @@
 
             if(response.error){
                 message.text(response.msg);
+                progressBar.width(0+"%");
+                zone.data('droppable', true);
             } else {
                 dropin.after(response.html);
                 dropin.hide();
@@ -50,6 +52,8 @@
                 actions.removeClass("hide").addClass('show');
                 zone.data('droppable', false);
             }
+
+
         }
 
         function progressFunc(e){

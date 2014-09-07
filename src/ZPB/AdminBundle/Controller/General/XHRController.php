@@ -43,33 +43,41 @@ class XHRController extends BaseController
             $fs->mkdir($basePath);
         }
         $path = $basePath . '/' . $filename;
-        file_put_contents($path, $request->getContent());
-        $file = new File($path);
-        if(!in_array($file->getMimeType(), ['image/jpeg', 'image/gif', 'image/png'])){
-            $fs->remove($path);
-            $file = null;
+        if($fs->exists($path)){
             $response['error'] = true;
-            $response['msg'] = 'Le fichier n\'est pas d\'un format acceptable.';
+            $response['msg'] = 'Un fichier du même nom existe déjà.';
         } else {
-            $baseWebPath = $this->container->getParameter('zpb.medias.options')['zpb.img.web_dir'];
-            $webPath = '/' . $baseWebPath . $filename;
-            $image = $this->get('zpb.image_factory')->createFromFile($file);
-            try{
-                $this->getManager()->persist($image);
-                $this->getManager()->flush();
-                if($request->headers->get('X-File-Id', false)){
-                    $postToImg = new PostImg();
-                    $postToImg->setImgId($image->getId());
-                    $postToImg->setPostLongId($request->headers->get('X-File-Id'));
-                    $this->getManager()->persist($postToImg);
+            file_put_contents($path, $request->getContent());
+
+            $file = new File($path);
+            if(!in_array($file->getMimeType(), ['image/jpeg', 'image/gif', 'image/png'])){
+                $fs->remove($path);
+                $file = null;
+                $response['error'] = true;
+                $response['msg'] = 'Le fichier n\'est pas d\'un format acceptable.';
+            } else {
+                $baseWebPath = $this->container->getParameter('zpb.medias.options')['zpb.img.web_dir'];
+                $webPath = '/' . $baseWebPath . $filename;
+
+                $image = $this->get('zpb.image_factory')->createFromFile($file);
+                try{
+                    $this->getManager()->persist($image);
                     $this->getManager()->flush();
-                    $response['html'] = "<img src='" . $webPath . "' width='100%' data-id='" . $image->getId() . "'/>";
-                    $response['msg'] = 'Transfert réussi.';
+                    if($request->headers->get('X-File-Id', false)){
+                        $postToImg = new PostImg();
+                        $postToImg->setImgId($image->getId());
+                        $postToImg->setPostLongId($request->headers->get('X-File-Id'));
+                        $this->getManager()->persist($postToImg);
+                        $this->getManager()->flush();
+                        $response['html'] = "<img src='" . $webPath . "' width='100%' data-id='" . $image->getId() . "'/>";
+                        $response['msg'] = 'Transfert réussi.';
+                    }
+                } catch (\Exception $e){
+                    $response = ['error'=>true,'msg'=>$e->getMessage(), 'html'=>''];
                 }
-            } catch (\Exception $e){
-                $response = ['error'=>true,'msg'=>$e->getMessage(), 'html'=>''];
             }
         }
+
         return new JsonResponse($response);
     }
 
