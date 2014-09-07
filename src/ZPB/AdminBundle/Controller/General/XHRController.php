@@ -1,0 +1,66 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Nicolas Canfrere
+ * Date: 07/09/2014
+ * Time: 08:46
+ */
+ /*
+           ____________________
+  __      /     ______         \
+ {  \ ___/___ /       }         \
+  {  /       / #      }          |
+   {/ ô ô  ;       __}           |
+   /          \__}    /  \       /\
+<=(_    __<==/  |    /\___\     |  \
+   (_ _(    |   |   |  |   |   /    #
+    (_ (_   |   |   |  |   |   |
+      (__<  |mm_|mm_|  |mm_|mm_|
+*/
+
+namespace ZPB\AdminBundle\Controller\General;
+
+
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use ZPB\AdminBundle\Controller\BaseController;
+
+class XHRController extends BaseController
+{
+    public function imgUploadAction(Request $request)
+    {
+        if(!$request->isMethod("POST") || !$request->isXmlHttpRequest()){
+            throw $this->createAccessDeniedException();
+        }
+        $response = ['error'=>false,'msg'=>'', 'html'=>''];
+        $fs = $this->get('filesystem');
+        $filename = $request->headers->get('X-File-Name');
+        $dir = '/' . $request->headers->get('X-File-UploadDir', $this->container->getParameter('zpb_upload_dirname'));
+        $basePath = $this->container->getParameter('zpb_upload_dir_abs_path') . $dir;
+        if(!$fs->exists($basePath)){
+            $fs->mkdir($basePath);
+        }
+        $path = $basePath . '/' . $filename;
+        file_put_contents($path, $request->getContent());
+        $file = new File($path);
+        if(!in_array($file->getMimeType(), ['image/jpeg', 'image/gif', 'image/png'])){
+            $fs->remove($path);
+            $file = null;
+            $response['error'] = true;
+            $response['msg'] = 'Le fichier n\'est pas d\'un format acceptable.';
+        } else {
+            $baseWebPath = $this->container->getParameter('zpb_upload_dir_web_path') . $dir;
+            $webPath = $baseWebPath . '/' . $filename;
+            //db save
+            //resize
+
+            $response['html'] = "<img src='" . $webPath . "' width='100%'/>";
+            $response['msg'] = 'Transfert réussi.';
+        }
+
+
+
+        return new JsonResponse($response);
+    }
+}

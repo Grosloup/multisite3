@@ -1,0 +1,4 @@
+parameters:
+    zpb_upload_dir_abs_path: "%kernel.root_dir%/../web/uploads"
+    zpb_upload_dirname: "uploads"
+    zpb_upload_dir_web_path: "/uploads"

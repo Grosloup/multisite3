@@ -160,12 +160,16 @@
                 <div class="tile-header">
                     Image à la une
                 </div>
-                <div class="dropzone">
-                    <div class="dropin">
-                        <div class="dropzone-legend">Déposez votre image ici</div>
+                <div class="dropzone" id="dropzone" data-longid="{{ form.vars.value.longId }}">
+                    <div class="dropzone-in" id="dropzone-img">
+                        <div class="dropzone-legend"></div>
                     </div>
                     <div class="dropzone-loader">
-                        <div class="dropzone-innerbar"></div>
+                        <div class="dropzone-innerbar" id="dropzone-progress"></div>
+                    </div>
+                    <div class="dropzone-message"></div>
+                    <div class="dropzone-actions hide">
+                        <a class="btn btn-primary dropzone-delete-btn" href="#">Supprimer le fichier</a>
                     </div>
                 </div>
             </div>

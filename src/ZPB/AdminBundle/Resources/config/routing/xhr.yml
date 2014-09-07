@@ -1,0 +1,4 @@
+zpb_admin_xhr_img_upload:
+    path: /upload/img
+    defaults: { _controller: ZPBAdminBundle:General/XHR:imgUpload }
+    methods: ["POST"]
