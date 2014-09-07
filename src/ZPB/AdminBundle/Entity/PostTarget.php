@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="zpb_post_targets")
  * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\PostTargetRepository")
  * @UniqueEntity("name", message="Un site cible existe déjà sous ce nom.")
- *
+ * @ORM\HasLifecycleCallbacks()
  */
 class PostTarget
 {
@@ -50,6 +50,11 @@ class PostTarget
     private $frontPostId;
 
     /**
+     * @ORM\Column(name="acrornym", type="string", length=20, nullable=false, unique=true)
+     */
+    private $acronym;
+
+    /**
      * @ORM\ManyToMany(targetEntity="ZPB\AdminBundle\Entity\Post", mappedBy="targets")
      */
     private $posts;
@@ -60,6 +65,22 @@ class PostTarget
     public function __construct()
     {
         $this->posts = new ArrayCollection();
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function createAcronym()
+    {
+        $name =  mb_strtolower($this->name, 'UTF-8');
+        //$name = str_replace(['l', '\'', '"', 'd', '-', '_', 'a', 'à', 'au','aux','de','des','du','la','le','les'], ' ',);
+        $name = preg_replace('/(^|\s+)(l\'|les?|la|d\'|des?|du|à|a|aux?|_|\-|"|ces?|ça|ses?|sa|et|car|ou|où|or|ni|ne|donc|leurs?|vos|votre|nos|notre)/',' ',$name);
+        $name = preg_replace('/\s+/',' ',$name);
+        $words = explode(' ', $name);
+        $this->acronym = '';
+        foreach($words as $w){
+            $this->acronym .= substr($w, 0, 1);
+        }
     }
 
     /**
@@ -177,6 +198,24 @@ class PostTarget
     function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAcronym()
+    {
+        return $this->acronym;
+    }
+
+    /**
+     * @param mixed $acronym
+     * @return PostTarget
+     */
+    public function setAcronym($acronym)
+    {
+        $this->acronym = $acronym;
+        return $this;
     }
 
 

@@ -3,6 +3,7 @@
 namespace ZPB\AdminBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use ZPB\AdminBundle\Entity\PostTarget;
 
 /**
  * PostRepository
@@ -48,6 +49,14 @@ class PostRepository extends EntityRepository
     }
 
 
+    public function getPublished(PostTarget $target = null)
+    {
+        $q = $this->_em->createQuery('SELECT p FROM ZPB\AdminBundle\Entity\Post p JOIN ZPB\AdminBundle\Entity\PostTarget t WHERE p.isPublished=:isPublished AND t.slug=:slug ORDER BY p.publishedAt DESC');
+        $q->setParameter('isPublished', true);
+        $q->setParameter('slug', $target->getSlug());
+        return $q->getResult();
+
+    }
 
 
 

@@ -71,6 +71,9 @@ class PostController extends BaseController
                     $this->getManager()->persist($tag);
                 }
             }
+            if($form->get('save_publish')->isClicked()){
+                $this->getRepo('ZPBAdminBundle:Post')->publish($entity);
+            }
             $this->getManager()->persist($entity);
             $this->getManager()->flush();
             $this->setSuccess('Nouvel article d\'actualité bien créé.');

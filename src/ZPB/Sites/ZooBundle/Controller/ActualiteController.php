@@ -34,7 +34,9 @@ class ActualiteController extends BaseController
         // du plus récent au plus ancien
         // paginés
         //
-        return $this->render('ZPBSitesZooBundle:Actualite:index.html.twig', []);
+        $target = $this->getRepo('ZPBAdminBundle:PostTarget')->findOneByAcronym('zb');
+        $posts = $this->getRepo('ZPBAdminBundle:Post')->getPublished($target);
+        return $this->render('ZPBSitesZooBundle:Actualite:index.html.twig', ['posts'=>$posts]);
     }
 
     // tri par categorie, publiés, ciblants zoo, paginés
