@@ -30,8 +30,26 @@ class PostController extends BaseController
 {
     public function listAction()
     {
-        $entities = $this->getRepo('ZPBAdminBundle:Post')->findBy([], ['createdAt'=>'DESC']);
+        $entities = $this->getRepo('ZPBAdminBundle:Post')->findBy(['isPublished'=>true], ['createdAt'=>'DESC']);
         return $this->render('ZPBAdminBundle:General:post/list.html.twig', ['posts'=>$entities]);
+    }
+
+    public function listDraftAction()
+    {
+        $entities = $this->getRepo('ZPBAdminBundle:Post')->findBy(['isDraft'=>true], ['createdAt'=>'DESC']);
+        return $this->render('ZPBAdminBundle:General:post/list_draft.html.twig', ['posts'=>$entities]);
+    }
+
+    public function listArchivedAction()
+    {
+        $entities = $this->getRepo('ZPBAdminBundle:Post')->findBy(['isArchived'=>true], ['createdAt'=>'DESC']);
+        return $this->render('ZPBAdminBundle:General:post/list_archived.html.twig', ['posts'=>$entities]);
+    }
+
+    public function listDroppedAction()
+    {
+        $entities = $this->getRepo('ZPBAdminBundle:Post')->findBy(['isDropped'=>true], ['createdAt'=>'DESC']);
+        return $this->render('ZPBAdminBundle:General:post/list_dropped.html.twig', ['posts'=>$entities]);
     }
 
     public function createAction(Request $request)
@@ -40,7 +58,21 @@ class PostController extends BaseController
         $form = $this->createForm(new PostType(), $entity, ['em'=>$this->getManager()]);
         $form->handleRequest($request);
         if($form->isValid()){
-
+            foreach($entity->getTags() as $tag){
+                /** @var \ZPB\AdminBundle\Entity\PostTag $tmp */
+                /** @var \ZPB\AdminBundle\Entity\PostTag $tag */
+                $tmp = $this->getRepo('ZPBAdminBundle:PostTag')->findOneByName($tag->getName());
+                if($tmp){
+                    $entity->removeTag($tag);
+                    $entity->addTag($tmp);
+                    $tmp->addPost($entity);
+                    $this->getManager()->persist($tmp);
+                } else {
+                    $this->getManager()->persist($tag);
+                }
+            }
+            $this->getManager()->persist($entity);
+            $this->getManager()->flush();
             $this->setSuccess('Nouvel article d\'actualité bien créé.');
             return $this->redirect($this->generateUrl('zpb_admin_posts_list'));
         }

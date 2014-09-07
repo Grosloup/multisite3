@@ -34,14 +34,14 @@ class Post
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
     private $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=255, nullable=true)
      * @Gedmo\Slug(fields={"title"}, unique=true)
      */
     private $slug;
@@ -49,14 +49,14 @@ class Post
     /**
      * @var string
      *
-     * @ORM\Column(name="body", type="text")
+     * @ORM\Column(name="body", type="text", nullable=true)
      */
     private $body;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="excerpt", type="text")
+     * @ORM\Column(name="excerpt", type="text", nullable=true)
      */
     private $excerpt;
 

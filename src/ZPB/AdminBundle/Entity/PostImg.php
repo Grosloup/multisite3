@@ -24,14 +24,14 @@ class PostImg
     /**
      * @var integer
      *
-     * @ORM\Column(name="post_long_id", type="integer")
+     * @ORM\Column(name="post_long_id", length=255, nullable=false, type="string")
      */
     private $postLongId;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="img_id", type="integer")
+     * @ORM\Column(name="img_id", nullable=false, type="integer")
      */
     private $imgId;
 

@@ -9,13 +9,13 @@
                 <nav class="menu">
                     <h3 class="menu-title">Générale</h3>
                     <ul>
-                        <li class="sidebar-dropdown{% if active in ["write_post","list_posts","list_post_cats", "new_post_cats", "update_post_cats","list_post_tags", "new_post_tags", "update_post_tags"] %} active{% endif %}"><a href="">Actualités </a><i class="sidebar-icon fa fa-angle-right"></i>
+                        <li class="sidebar-dropdown{% if active in ["write_post","list_posts_published","list_posts_draft","list_posts_archived","list_posts_dropped","list_post_cats", "new_post_cats", "update_post_cats","list_post_tags", "new_post_tags", "update_post_tags"] %} active{% endif %}"><a href="">Actualités </a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
-                                <li class="{% if active == "write_post" %}active{% endif %}"><a href="{{ path("zpb_admin_posts_list") }}"><a href="{{ path("zpb_admin_posts_create") }}">Ecrire</a></li>
-                                <li><a href="">Les brouillons</a></li>
-                                <li class="{% if active == "list_posts" %}active{% endif %}"><a href="{{ path("zpb_admin_posts_list") }}">Les publications</a></li>
-                                <li><a href="">Les archives</a></li>
-                                <li><a href="">La corbeille</a></li>
+                                <li class="{% if active == "write_post" %}active{% endif %}"><a href="{{ path("zpb_admin_posts_create") }}">Ecrire</a></li>
+                                <li class="{% if active == "list_posts_draft" %}active{% endif %}"><a href="{{ path("zpb_admin_posts_list_draft") }}">Les brouillons</a></li>
+                                <li class="{% if active == "list_posts_published" %}active{% endif %}"><a href="{{ path("zpb_admin_posts_list") }}">Les publications</a></li>
+                                <li class="{% if active == "list_posts_archived" %}active{% endif %}"><a href="{{ path("zpb_admin_posts_list_archived") }}">Les archives</a></li>
+                                <li class="{% if active == "list_posts_dropped" %}active{% endif %}"><a href="{{ path("zpb_admin_posts_list_dropped") }}">La corbeille</a></li>
                                 <li class="sidebar-dropdown{% if active in ["list_post_cats", "new_post_cats", "update_post_cats"] %} active{% endif %}"><a href="">Catégories </a><i class="sidebar-icon fa fa-angle-right"></i>
                                     <ul>
                                         <li class="{% if active == "list_post_cats" %}active{% endif %}"><a href="{{ path("zpb_admin_posts_categories_list") }}">Liste</a></li>

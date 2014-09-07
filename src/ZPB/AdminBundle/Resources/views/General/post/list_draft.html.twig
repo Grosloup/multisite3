@@ -1,14 +1,14 @@
 {% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
 
 {% block title %}Les articles | Actualités{% endblock %}
-{% set active = "list_posts_published" %}
+{% set active = "list_posts_draft" %}
 
 {% block content %}
     <div class="row">
         <div class="column-12">
             <div class="tile">
                 <div class="tile-header">
-                    Liste des Articles publiés
+                    Liste des Brouillons d'article
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                                 {% if post.targets|length > 0 %}
                                     <ul>
                                         {% for target in post.targets %}
-                                        <li>{{ target.name }}</li>
+                                            <li>{{ target.name }}</li>
                                         {% endfor %}
                                     </ul>
                                 {% else %}

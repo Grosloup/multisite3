@@ -36,26 +36,20 @@ class ImageFactory
 
     public function create()
     {
-
         $class = $this->options['zpb.image.class'];
         /** @var \ZPB\AdminBundle\Entity\MediaImage $image */
         $image = new $class();
-
         $image->setRootDir($this->options['zpb.img.root_dir']);
         $image->setWebDir($this->options['zpb.img.web_dir']);
         $image->setCopyright($this->options['zpb.document.default_copyright.text']);
-
         return $image;
     }
 
     public function createFromFile(File $file)
     {
         $image = $this->create();
-
         $image->setExtension($file->getExtension());
         $image->setFilename(pathinfo($file->getFilename(), PATHINFO_FILENAME));
-
-
         $image->setMime($file->getMimeType());
         $size = getimagesize($image->getAbsolutePath());
         $image->setWidth($size[0]);
