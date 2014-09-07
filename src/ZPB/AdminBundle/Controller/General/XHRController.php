@@ -36,8 +36,8 @@ class XHRController extends BaseController
         $response = ['error'=>false,'msg'=>'', 'html'=>''];
         $fs = $this->get('filesystem');
         $filename = $request->headers->get('X-File-Name');
-        $dir = '/' . $request->headers->get('X-File-UploadDir', $this->container->getParameter('zpb_upload_dirname'));
-        $basePath = $this->container->getParameter('zpb_upload_dir_abs_path') . $dir;
+
+        $basePath = $this->container->getParameter('zpb.medias.options')['zpb.img.root_dir'] . $this->container->getParameter('zpb.medias.options')['zpb.img.web_dir'];
         if(!$fs->exists($basePath)){
             $fs->mkdir($basePath);
         }
@@ -50,8 +50,12 @@ class XHRController extends BaseController
             $response['error'] = true;
             $response['msg'] = 'Le fichier n\'est pas d\'un format acceptable.';
         } else {
-            $baseWebPath = $this->container->getParameter('zpb_upload_dir_web_path') . $dir;
-            $webPath = $baseWebPath . '/' . $filename;
+            $baseWebPath = $this->container->getParameter('zpb.medias.options')['zpb.img.web_dir'];
+            $webPath = '/' . $baseWebPath . $filename;
+
+            $image = $this->get('zpb.image_factory')->createFromFile($file);
+            $this->getManager()->persist($image);
+            $this->getManager()->flush();
             //db save
             $id = 1;
             //resize

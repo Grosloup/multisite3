@@ -14,7 +14,7 @@
         maxSize: 4500000,
         url: '/xhr/upload/img',
         deleteImgUrl: '/xhr/supprimer/img',
-        uploadDir: 'imgs'
+
     };
 
     function upload(files, zone, idx, opts){
@@ -69,7 +69,7 @@
         xhr.setRequestHeader('X-File-Name',file.name);
         xhr.setRequestHeader('X-File-Type',file.type);
         xhr.setRequestHeader('X-File-Size',file.size);
-        xhr.setRequestHeader('X-File-UploadDir',opts.uploadDir);
+
         xhr.setRequestHeader('X-File-Id',zone.data('longid'));
 
         xhr.send(file);

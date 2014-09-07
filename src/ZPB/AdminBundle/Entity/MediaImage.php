@@ -8,14 +8,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * Photo
+ * MediaImage
  *
- * @ORM\Table(name="zpb_phototek_photos")
- * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\PhotoRepository")
- * @UniqueEntity("filename", message="Un fichier photo du même nom existe déjà.")
+ * @ORM\Table(name="zpb_media_image")
+ * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\MediaImageRepository")
+ * @UniqueEntity("filename", message="Un fichier image du même nom existe déjà.")
  * @ORM\HasLifecycleCallbacks()
  */
-class Photo implements ResizeableInterface
+class MediaImage
 {
     /**
      * @var integer
@@ -94,43 +94,15 @@ class Photo implements ResizeableInterface
 
     /**
      * @var string
-     * @ORM\Column(name="title", type="text", nullable=true)
-     */
-    private $title;
-
-    /**
-     * @var string
      * @ORM\Column(name="copyright", type="string", nullable=false, length=255)
      */
     private $copyright;
 
     /**
      * @var string
-     * @ORM\Column(name="legend", type="text", nullable=true)
+     * @ORM\Column(name="title", type="text", nullable=true)
      */
-    private $legend;
-    /**
-     * @var string
-     * @ORM\Column(name="description", type="text", nullable=true)
-     */
-    private $description;
-    /**
-     * @Gedmo\SortableGroup()
-     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\PhotoCategory", inversedBy="photos")
-     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
-     */
-    private $category;
-    /**
-     * @Gedmo\SortablePosition()
-     * @ORM\Column(name="position", type="integer")
-     */
-    private $position;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\Institution")
-     * @ORM\JoinColumn(name="institution_id", referencedColumnName="id")
-     */
-    private $institution;
+    private $title;
 
     /**
      * @var string
@@ -148,6 +120,16 @@ class Photo implements ResizeableInterface
      */
     private $longId;
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     public function __construct()
     {
@@ -217,61 +199,6 @@ class Photo implements ResizeableInterface
     /**
      * @return string
      */
-    public function getCopyright()
-    {
-        return $this->copyright;
-    }
-
-    /**
-     * @param string $copyright
-     * @return Photo
-     */
-    public function setCopyright($copyright)
-    {
-        $year = (new \DateTime())->format('Y');
-        $this->copyright = '@ ' . trim($copyright, ' @') . ' - ' . $year;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param string $description
-     * @return Photo
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLegend()
-    {
-        return $this->legend;
-    }
-
-    /**
-     * @param string $legend
-     * @return Photo
-     */
-    public function setLegend($legend)
-    {
-        $this->legend = $legend;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
     public function getTitle()
     {
         return $this->title;
@@ -279,22 +206,12 @@ class Photo implements ResizeableInterface
 
     /**
      * @param string $title
-     * @return Photo
+     * @return MediaImage
      */
     public function setTitle($title)
     {
         $this->title = $title;
         return $this;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**
@@ -311,7 +228,7 @@ class Photo implements ResizeableInterface
      * Set filename
      *
      * @param string $filename
-     * @return Photo
+     * @return MediaImage
      */
     public function setFilename($filename)
     {
@@ -334,7 +251,7 @@ class Photo implements ResizeableInterface
      * Set extension
      *
      * @param string $extension
-     * @return Photo
+     * @return MediaImage
      */
     public function setExtension($extension)
     {
@@ -357,7 +274,7 @@ class Photo implements ResizeableInterface
      * Set mime
      *
      * @param string $mime
-     * @return Photo
+     * @return MediaImage
      */
     public function setMime($mime)
     {
@@ -380,7 +297,7 @@ class Photo implements ResizeableInterface
      * Set width
      *
      * @param integer $width
-     * @return Photo
+     * @return MediaImage
      */
     public function setWidth($width)
     {
@@ -403,7 +320,7 @@ class Photo implements ResizeableInterface
      * Set height
      *
      * @param integer $height
-     * @return Photo
+     * @return MediaImage
      */
     public function setHeight($height)
     {
@@ -426,7 +343,7 @@ class Photo implements ResizeableInterface
      * Set rootDir
      *
      * @param string $rootDir
-     * @return Photo
+     * @return MediaImage
      */
     public function setRootDir($rootDir)
     {
@@ -449,7 +366,7 @@ class Photo implements ResizeableInterface
      * Set webDir
      *
      * @param string $webDir
-     * @return Photo
+     * @return MediaImage
      */
     public function setWebDir($webDir)
     {
@@ -472,7 +389,7 @@ class Photo implements ResizeableInterface
      * Set ceatedAt
      *
      * @param \DateTime $createdAt
-     * @return Photo
+     * @return MediaImage
      */
     public function setCreatedAt($createdAt)
     {
@@ -495,7 +412,7 @@ class Photo implements ResizeableInterface
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
-     * @return Photo
+     * @return MediaImage
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -505,81 +422,10 @@ class Photo implements ResizeableInterface
     }
 
     /**
-     * Set position
-     *
-     * @param integer $position
-     * @return Photo
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * Get position
-     *
-     * @return integer
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
-     * Set category
-     *
-     * @param PhotoCategory $category
-     * @return Photo
-     */
-    public function setCategory(PhotoCategory $category = null)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return PhotoCategory
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * Set institution
-     *
-     * @param Institution $institution
-     * @return Photo
-     */
-    public function setInstitution(Institution $institution = null)
-    {
-        $this->institution = $institution;
-
-        return $this;
-    }
-
-    /**
-     * Get institution
-     *
-     * @return Institution
-     */
-    public function getInstitution()
-    {
-        return $this->institution;
-    }
-
-
-
-    /**
      * Set longId
      *
      * @param string $longId
-     * @return Photo
+     * @return MediaImage
      */
     public function setLongId($longId)
     {
@@ -587,4 +433,24 @@ class Photo implements ResizeableInterface
 
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getCopyright()
+    {
+        return $this->copyright;
+    }
+
+    /**
+     * @param string $copyright
+     * @return MediaImage
+     */
+    public function setCopyright($copyright)
+    {
+        $this->copyright = $copyright;
+        return $this;
+    }
+
+
 }
