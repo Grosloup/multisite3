@@ -29,9 +29,7 @@ class ActualiteController extends BaseController
     public function indexAction($page = 1, Request $request)
     {
         //TODO
-        //recup des posts
-        // publiés, ciblants zoo
-        // du plus récent au plus ancien
+        //
         // paginés
         //
         $target = $this->getRepo('ZPBAdminBundle:PostTarget')->findOneByAcronym('zb');
