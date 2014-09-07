@@ -53,14 +53,27 @@ class XHRController extends BaseController
             $baseWebPath = $this->container->getParameter('zpb_upload_dir_web_path') . $dir;
             $webPath = $baseWebPath . '/' . $filename;
             //db save
+            $id = 1;
             //resize
 
-            $response['html'] = "<img src='" . $webPath . "' width='100%'/>";
+            $response['html'] = "<img src='" . $webPath . "' width='100%' data-id='" . $id . "'/>";
             $response['msg'] = 'Transfert réussi.';
         }
 
 
 
+        return new JsonResponse($response);
+    }
+
+    public function imgDeleteAction($id, Request $request)
+    {
+        if(!$request->isMethod("GET") || !$request->isXmlHttpRequest()){
+            throw $this->createAccessDeniedException();
+        }
+        $response = ['error'=>false,'msg'=>'', 'html'=>''];
+        //trouver image, supprimer img
+
+        $response['msg'] = 'Image supprimée.';
         return new JsonResponse($response);
     }
 }

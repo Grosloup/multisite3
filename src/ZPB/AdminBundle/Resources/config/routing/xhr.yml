@@ -2,3 +2,9 @@ zpb_admin_xhr_img_upload:
     path: /upload/img
     defaults: { _controller: ZPBAdminBundle:General/XHR:imgUpload }
     methods: ["POST"]
+zpb_admin_xhr_img_delete:
+    path: /supprimer/img/{id}
+    defaults: { _controller: ZPBAdminBundle:General/XHR:imgDelete }
+    methods: ["GET"]
+    requirements:
+        id: \d+

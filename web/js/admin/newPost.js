@@ -13,6 +13,7 @@
         allow: ['image/jpeg', 'image/gif', 'image/png'],
         maxSize: 4500000,
         url: '/xhr/upload/img',
+        deleteImgUrl: '/xhr/supprimer/img',
         uploadDir: 'imgs'
     };
 
@@ -112,12 +113,25 @@
 
             deleteBtn.on("click", function(e){
                 e.preventDefault();
-                $this.find("img").remove();
-                progressBar.parent().show();
-                message.text('');
-                actions.removeClass("show").addClass("hide");
-                dropin.show();
+                var img = $this.find("img");
+                var id = img.data("id");
+
                 $this.data('droppable', true);
+                if(id){
+                    $.get(opts.deleteImgUrl + '/' + id).done(function(resp){
+                        if(resp.error){
+                            message.text('Une erreur est survenue !');
+                        } else {
+                            img.remove();
+                            progressBar.parent().show();
+                            message.text('');
+                            actions.removeClass("show").addClass("hide");
+                            dropin.show();
+                        }
+                    }).fail(function(){
+                        message.text('Une erreur est survenue !');
+                    });
+                }
             });
         });
 
