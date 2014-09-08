@@ -6,7 +6,7 @@
  * Time: 14:33
  */
 
-namespace ZPB\Admin\UserBundle\Validator\Constraints;
+namespace ZPB\AdminBundle\Validator\Constraints;
 
 
 use Symfony\Component\DependencyInjection\ContainerInterface;

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace ZPB\Admin\UserBundle\Validator\Constraints;
+namespace ZPB\AdminBundle\Validator\Constraints;
 
 
 

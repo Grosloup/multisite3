@@ -19,7 +19,7 @@
             <form action="{{ path("zpb_sites_zoo_parrainages_login_check") }}" method="post">
                 <div class="row">
                     <div class="columns large-12">
-                        <label for="username">Pseudo ou adresse email</label>
+                        <label for="username">Nom d'utilisateur (pseudo) ou adresse email</label>
                         <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control"/>
                     </div>
                 </div>
@@ -34,10 +34,14 @@
 
                 <div class="row">
                     <div class="column large-12">
+                        <p><a href="{{ path("zpb_sites_zoo_parrainages_lost_password") }}">j'ai perdu mes identifiants !</a></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column large-12">
                         <button type="submit" class="button">login</button>
                     </div>
                 </div>
-
             </form>
         </div>
     </div>

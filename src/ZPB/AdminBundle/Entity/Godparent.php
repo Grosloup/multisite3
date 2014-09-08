@@ -180,7 +180,7 @@ class Godparent implements AdvancedUserInterface, Serializable
     /**
      * @ORM\Column(name="tmp", type="string", length=255, nullable=true)
      */
-    private $tmpPassword;
+    private $tmp;
 
     /**
      * @var array
@@ -228,17 +228,19 @@ class Godparent implements AdvancedUserInterface, Serializable
     /**
      * @return mixed
      */
-    public function getTmpPassword()
+    public function getTmp()
     {
-        return $this->tmpPassword;
+        return $this->tmp;
     }
 
     /**
-     * @param mixed $tmpPassword
+     * @param mixed $tmp
+     * @return Godparent
      */
-    public function setTmpPassword($tmpPassword)
+    public function setTmp($tmp)
     {
-        $this->tmpPassword = $tmpPassword;
+        $this->tmp = $tmp;
+        return $this;
     }
 
 
@@ -846,10 +848,10 @@ class Godparent implements AdvancedUserInterface, Serializable
     /**
      * Add sponsorings
      *
-     * @param \ZPB\AdminBundle\Entity\Sponsoring $sponsorings
+     * @param Sponsoring $sponsorings
      * @return Godparent
      */
-    public function addSponsoring(\ZPB\AdminBundle\Entity\Sponsoring $sponsorings)
+    public function addSponsoring(Sponsoring $sponsorings)
     {
         $this->sponsorings[] = $sponsorings;
 
@@ -859,9 +861,9 @@ class Godparent implements AdvancedUserInterface, Serializable
     /**
      * Remove sponsorings
      *
-     * @param \ZPB\AdminBundle\Entity\Sponsoring $sponsorings
+     * @param Sponsoring $sponsorings
      */
-    public function removeSponsoring(\ZPB\AdminBundle\Entity\Sponsoring $sponsorings)
+    public function removeSponsoring(Sponsoring $sponsorings)
     {
         $this->sponsorings->removeElement($sponsorings);
     }

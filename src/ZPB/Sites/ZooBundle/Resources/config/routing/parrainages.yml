@@ -54,3 +54,17 @@ zpb_sites_zoo_parrainage_my_account:
     path: /mon-compte
     defaults: { _controller: ZPBSitesZooBundle:Parrainage/Account:myAccount }
     methods: ["GET","POST"]
+
+zpb_sites_zoo_parrainages_lost_password:
+    path: /demande-identifiants
+    defaults: { _controller: ZPBSitesZooBundle:Parrainage/Account:lostPassword }
+    methods: ["GET", "POST"]
+
+zpb_sites_zoo_parrainages_revalidate:
+    path: /nouveaux-identifiants
+    defaults: { _controller: ZPBSitesZooBundle:Parrainage/Account:activationLink }
+    methods: ["GET"]
+
+
+
+
