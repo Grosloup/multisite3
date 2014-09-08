@@ -166,7 +166,7 @@ class AccountController extends BaseController
         }
 
         if($errors){
-            return $this->createAccessDeniedException(); //TODO
+            return $this->createAccessDeniedException(); //TODO erreur nouveau id
         }
         $godparent->setIsActive(true);
         $this->getManager()->persist($godparent);
