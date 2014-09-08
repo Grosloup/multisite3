@@ -68,7 +68,9 @@ class AccountController extends BaseController
 
         $form->handleRequest($request);
         if($form->isValid()){
-
+            $this->getManager()->persist($user);
+            $this->getManager()->flush();
+            return $this->redirect($this->generateUrl('zpb_sites_zoo_parrainage_my_account'));
         }
 
         $pw_form->handleRequest($request);
