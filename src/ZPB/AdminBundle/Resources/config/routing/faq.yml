@@ -5,7 +5,7 @@ zpb_admin_faq_list:
 
 zpb_admin_faq_create:
     path: /nouvelle
-    defaults: { _controller: ZPBAdminBundle:General/FAQ:list }
+    defaults: { _controller: ZPBAdminBundle:General/FAQ:create }
     methods: ["GET","POST"]
 
 zpb_admin_faq_update:
