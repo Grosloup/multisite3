@@ -43,7 +43,7 @@ class LoadGodparents extends AbstractFixture implements OrderedFixtureInterface,
     function load(ObjectManager $manager)
     {
         $gp1 = new Godparent();
-        $gp1->setTmpPassword('aze123rty456uio789pq');
+        $gp1->setTmp('aze123rty456uio789pq');
         $gp1->setFirstname('nicolas');
         $gp1->setLastname('canfrère');
         $gp1->setUsername('nicolas41');
@@ -59,9 +59,27 @@ class LoadGodparents extends AbstractFixture implements OrderedFixtureInterface,
 
         $manager->persist($gp1);
 
+        $gp2 = new Godparent();
+        $gp2->setTmp('rty123rty456uio789pq');
+        $gp2->setFirstname('Frederic');
+        $gp2->setLastname('canfrère');
+        $gp2->setUsername('frederic91');
+        $gp2->setEmail('fred.canfrere@gmail.com');
+        $gp2->setPlainPassword('rty123rty456uio789pq');
+        $gp2->setPhone('0674065130');
+        $gp2->setBirthdate(\DateTime::createFromFormat('Y-m-d','1971-03-05'));
+        $gp2->setCivilite('Mr');
+        $gp2->setAddress('13 rue Dauphine');
+        $gp2->setPostalCode('41130');
+        $gp2->setCity('Selles/Cher');
+        $gp2->setCountry('France');
+
+        $manager->persist($gp2);
+
         $manager->flush();
 
         $this->addReference('sponsor-godparent-1',$gp1);
+        $this->addReference('sponsor-godparent-2',$gp2);
 
 
     }

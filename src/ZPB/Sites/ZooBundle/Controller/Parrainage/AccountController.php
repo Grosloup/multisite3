@@ -29,6 +29,7 @@ use ZPB\AdminBundle\Controller\BaseController;
 use ZPB\Sites\ZooBundle\Form\Model\ChangePassword;
 use ZPB\Sites\ZooBundle\Form\Type\MyAccountType;
 use ZPB\Sites\ZooBundle\Form\Type\NewPasswordType;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class AccountController extends BaseController
 {
@@ -119,9 +120,26 @@ class AccountController extends BaseController
             $date = (new \DateTime())->getTimestamp() + (30*24*60*60);
             $tmp = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
             $godparent->setTmp($tmp);
-            $link = $this->generateUrl('zpb_sites_zoo_parrainages_revalidate',['ref'=>$tmp,'email'=>$email, 'validation'=>$date]);
-            var_dump($link);die();
+            $this->getManager()->persist($godparent);
+            $this->getManager()->flush();
+            $link = $this->generateUrl('zpb_sites_zoo_parrainages_revalidate',['ref'=>$tmp,'email'=>$email, 'validation'=>$date], UrlGeneratorInterface::ABSOLUTE_URL);
+            $message = \Swift_Message::newInstance()
+                ->setContentType('text/html')
+                ->setSubject('email test')
+                ->setFrom('nicolas.canfrere@zoobeauval.com')
+                ->setTo('nicolas.canfrere@zoobeauval.com')
+                ->setBody($this->renderView('ZPBAdminBundle:Mails:test.html.twig',['password'=>$newPass, 'link'=>$link]))
+                ;
 
+            $sent = $this->get('mailer')->send($message);
+
+            if($sent>0){
+                $this->setSuccess('Un email vous a été envoyé avec un nouveau de passe !');
+            }else {
+                $this->setError('Un problème est survenu !');
+            }
+
+            return $this->redirect($this->generateUrl('zpb_sites_zoo_parrainages_homepage'));
         }
 
         return $this->render('ZPBSitesZooBundle:Parrainage/Account:new_id.html.twig', ['form'=>$form->createView()]);
@@ -147,6 +165,12 @@ class AccountController extends BaseController
             $errors[] = 'Ref non valide.';
         }
 
-        var_dump($email, $ref, $validation, $errors);die();
+        if($errors){
+            return $this->createAccessDeniedException(); //TODO
+        }
+        $godparent->setIsActive(true);
+        $this->getManager()->persist($godparent);
+        $this->getManager()->flush();
+        return $this->redirect($this->generateUrl('zpb_sites_zoo_parrainages_login'));
     }
 } 

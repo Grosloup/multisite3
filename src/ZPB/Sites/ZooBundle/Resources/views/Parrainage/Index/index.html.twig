@@ -25,3 +25,7 @@
     </div>
     <div class="columns large-3"></div>
 {% endblock %}
+{% block footScripts%}
+    {{ parent() }}
+    <script src="/js/app.min.js"></script>
+{% endblock %}
