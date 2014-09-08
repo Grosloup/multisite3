@@ -1,0 +1,29 @@
+zpb_admin_faq_list:
+    path: /
+    defaults: { _controller: ZPBAdminBundle:General/FAQ:list }
+    methods: ["GET"]
+
+zpb_admin_faq_create:
+    path: /nouvelle
+    defaults: { _controller: ZPBAdminBundle:General/FAQ:list }
+    methods: ["GET","POST"]
+
+zpb_admin_faq_update:
+    path: /modifier/{id}
+    defaults: { _controller: ZPBAdminBundle:General/FAQ:update }
+    methods: ["GET","POST"]
+    requirements:
+        id: \d+
+
+zpb_admin_faq_delete:
+    path: /supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:General/FAQ:delete }
+    methods: ["GET"]
+    requirements:
+        id: \d+
+
+
+
+
+
+

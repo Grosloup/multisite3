@@ -70,6 +70,12 @@
 
                             </ul>
                         </li>
+                        <li class="sidebar-dropdown{% if active in ["list_faq", "new_faq"] %} active{% endif %}"><a href="#">Faq</a><i class="sidebar-icon fa fa-angle-right"></i>
+                            <ul>
+                                <li class="{% if active == "list_faq" %}active{% endif %}"><a href="{{ path("zpb_admin_faq_list") }}">Liste</a></li>
+                                <li class="{% if active == "new_faq" %}active{% endif %}"><a href="{{ path("zpb_admin_faq_create") }}">Nouvelle</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
                 <nav class="menu">

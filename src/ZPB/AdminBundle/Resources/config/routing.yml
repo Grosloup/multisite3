@@ -38,6 +38,10 @@ zpb_admin_posts_tags_routes:
     prefix: /actualites/mots-cles
     resource: "@ZPBAdminBundle/Resources/config/routing/posts_tags.yml"
 
+zpb_admin_faq_routes:
+    prefix: /faq
+    resource: "@ZPBAdminBundle/Resources/config/routing/faq.yml"
+
 zpb_admin_xhrs_routes:
     prefix: /xhr
     resource: "@ZPBAdminBundle/Resources/config/routing/xhr.yml"
