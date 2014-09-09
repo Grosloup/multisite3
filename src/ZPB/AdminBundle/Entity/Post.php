@@ -144,6 +144,11 @@ class Post
     private $tags;
 
     /**
+     * @ORM\OneToOne(targetEntity="ZPB\AdminBundle\Entity\PostImg")
+     */
+    private $illustration;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -586,5 +591,28 @@ class Post
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Set illustration
+     *
+     * @param PostImg $illustration
+     * @return Post
+     */
+    public function setIllustration(PostImg $illustration = null)
+    {
+        $this->illustration = $illustration;
+
+        return $this;
+    }
+
+    /**
+     * Get illustration
+     *
+     * @return PostImg
+     */
+    public function getIllustration()
+    {
+        return $this->illustration;
     }
 }

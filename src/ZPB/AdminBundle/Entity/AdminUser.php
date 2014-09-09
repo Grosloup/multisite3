@@ -543,4 +543,24 @@ class AdminUser implements AdvancedUserInterface, Serializable
             $this->password
             ) = unserialize($serialized);
     }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean 
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * Get isLocked
+     *
+     * @return boolean 
+     */
+    public function getIsLocked()
+    {
+        return $this->isLocked;
+    }
 }

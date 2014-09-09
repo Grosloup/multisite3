@@ -37,12 +37,12 @@
                                 <li class="{% if active == "new_user" %}active{% endif %}"><a href="">nouveau</a></li>
                             </ul>
                         </li>
-                        <li class="sidebar-dropdown"><a href="">Médiathèque</a><i class="sidebar-icon fa fa-angle-right"></i>
+                        <li class="sidebar-dropdown{% if active in ["list_media_images", "new_media_images"] %} active{% endif %}"><a href="">Médiathèque</a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
-                                <li class="sidebar-dropdown"><a href="">Images</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                <li class="sidebar-dropdown{% if active in ["list_media_images", "new_media_images"] %} active{% endif %}"><a href="">Images</a><i class="sidebar-icon fa fa-angle-right"></i>
                                     <ul>
-                                        <li><a href="">Liste</a></li>
-                                        <li><a href="">Upload</a></li>
+                                        <li class="{% if active == "list_media_images" %}active{% endif %}"><a href="{{ path("zpb_admin_media_image_list") }}">Liste</a></li>
+                                        <li class="{% if active == "new_media_images" %}active{% endif %}"><a href="{{ path("zpb_admin_media_image_create") }}">Upload</a></li>
                                     </ul>
                                 </li>
                                 <li class="sidebar-dropdown"><a href="">Pdfs</a><i class="sidebar-icon fa fa-angle-right"></i>

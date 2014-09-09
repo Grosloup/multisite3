@@ -1,0 +1,44 @@
+{% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
+
+{% block title %}Images | Médiathèques{% endblock %}
+{% set active = "list_media_images" %}
+
+{% block content %}
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <div class="tile-header">
+                    Liste des images de la médiathèque
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>#Id</th>
+                        <th>Fichier</th>
+                        <th>Largeur x Hauteur</th>
+                        <th>Modifier</th>
+                        <th>Supprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for image in images %}
+                    <tr>
+                        <td>{{ image.id }}</td>
+                        <td>{{ image.filename }}</td>
+                        <td>{{ image.width }} x {{ image.height }}</td>
+                        <td><a class="btn btn-neutral" href="{{ path("zpb_admin_media_image_update", {id: image.id}) }}"><i class="fa fa-edit"></i></a></td>
+                        <td><a class="btn btn-neutral delete-alert" href="{{ path("zpb_admin_media_image_delete", {id: image.id, _token: csrf_token('delete_media_image')}) }}" data-name="{{ image.filename }}"><i class="fa fa-trash-o"></i></a></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

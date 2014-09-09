@@ -42,6 +42,11 @@ zpb_admin_faq_routes:
     prefix: /faq
     resource: "@ZPBAdminBundle/Resources/config/routing/faq.yml"
 
+zpb_admin_mediatheque_routes:
+    prefix: /mediatheque
+    resource: "@ZPBAdminBundle/Resources/config/routing/mediatheque.yml"
+
+
 zpb_admin_xhrs_routes:
     prefix: /xhr
     resource: "@ZPBAdminBundle/Resources/config/routing/xhr.yml"

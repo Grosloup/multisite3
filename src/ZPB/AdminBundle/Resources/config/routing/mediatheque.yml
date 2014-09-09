@@ -1,0 +1,23 @@
+zpb_admin_media_image_list:
+    path: /images
+    defaults: { _controller: ZPBAdminBundle:General/MediaImage:list }
+    methods: ["GET"]
+
+zpb_admin_media_image_create:
+    path: /images/nouvelle
+    defaults: { _controller: ZPBAdminBundle:General/MediaImage:create }
+    methods: ["GET", "POST"]
+
+zpb_admin_media_image_update:
+    path: /images/modifier/{id}
+    defaults: { _controller: ZPBAdminBundle:General/MediaImage:update }
+    methods: ["GET", "POST"]
+    requirements:
+        id: \d+
+
+zpb_admin_media_image_delete:
+    path: /images/supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:General/MediaImage:delete }
+    methods: ["GET"]
+    requirements:
+        id: \d+

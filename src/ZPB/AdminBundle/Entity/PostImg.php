@@ -31,9 +31,9 @@ class PostImg
     /**
      * @var integer
      *
-     * @ORM\Column(name="img_id", nullable=false, type="integer")
+     * @ORM\OneToOne(targetEntity="ZPB\AdminBundle\Entity\MediaImage")
      */
-    private $imgId;
+    private $img;
 
 
     /**
@@ -69,26 +69,28 @@ class PostImg
         return $this->postLongId;
     }
 
+
+
     /**
-     * Set imgId
+     * Set img
      *
-     * @param integer $imgId
+     * @param MediaImage $img
      * @return PostImg
      */
-    public function setImgId($imgId)
+    public function setImg(MediaImage $img = null)
     {
-        $this->imgId = $imgId;
+        $this->img = $img;
 
         return $this;
     }
 
     /**
-     * Get imgId
+     * Get img
      *
-     * @return integer
+     * @return MediaImage
      */
-    public function getImgId()
+    public function getImg()
     {
-        return $this->imgId;
+        return $this->img;
     }
 }

@@ -10,7 +10,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * MediaImage
  *
- * @ORM\Table(name="zpb_media_image")
+ * @ORM\Table(name="zpb_media_images")
  * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\MediaImageRepository")
  * @UniqueEntity("filename", message="Un fichier image du même nom existe déjà.")
  * @ORM\HasLifecycleCallbacks()

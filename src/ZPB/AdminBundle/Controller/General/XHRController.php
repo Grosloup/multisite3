@@ -65,7 +65,7 @@ class XHRController extends BaseController
                     $this->getManager()->flush();
                     if($request->headers->get('X-File-Id', false)){
                         $postToImg = new PostImg();
-                        $postToImg->setImgId($image->getId());
+                        $postToImg->setImg($image);
                         $postToImg->setPostLongId($request->headers->get('X-File-Id'));
                         $this->getManager()->persist($postToImg);
                         $this->getManager()->flush();
@@ -91,9 +91,12 @@ class XHRController extends BaseController
         if(!$image){
             $response = ['error'=>true,'msg'=>'Image introuvable', 'html'=>''];
         } else {
-            $postToImg = $this->getRepo('ZPBAdminBundle:PostImg')->findOneByImgId($image->getId());
+            $postToImg = $this->getRepo('ZPBAdminBundle:PostImg')->findAllByImg($image);
             if($postToImg){
-                $this->getManager()->remove($postToImg);
+                foreach($postToImg as $line){
+                    $this->getManager()->remove($line);
+                }
+
             }
             $this->getManager()->remove($image);
             $this->getManager()->flush();
