@@ -67,6 +67,12 @@ class Sponsoring
      */
     private $type;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\SponsoringFormula", inversedBy="sponsorings")
+     * @ORM\JoinColumn(name="formula_id", referencedColumnName="id")
+     */
+    private $formula;
+
 
     /**
      * Get id
@@ -234,5 +240,28 @@ class Sponsoring
     public function getGodparent()
     {
         return $this->godparent;
+    }
+
+    /**
+     * Set formula
+     *
+     * @param SponsoringFormula $formula
+     * @return Sponsoring
+     */
+    public function setFormula(SponsoringFormula $formula = null)
+    {
+        $this->formula = $formula;
+
+        return $this;
+    }
+
+    /**
+     * Get formula
+     *
+     * @return SponsoringFormula
+     */
+    public function getFormula()
+    {
+        return $this->formula;
     }
 }

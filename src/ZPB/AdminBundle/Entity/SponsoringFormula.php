@@ -102,11 +102,17 @@ class SponsoringFormula
     private $giftDefinitions;
 
     /**
+     * @ORM\OneToMany(targetEntity="ZPB\AdminBundle\Entity\Sponsoring", mappedBy="formula")
+     */
+    private $sponsorings;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->giftDefinitions = new ArrayCollection();
+        $this->sponsorings = new ArrayCollection();
     }
 
     /**
@@ -382,10 +388,10 @@ class SponsoringFormula
     /**
      * Add giftDefinitions
      *
-     * @param \ZPB\AdminBundle\Entity\SponsoringGiftDefinition $giftDefinitions
+     * @param SponsoringGiftDefinition $giftDefinitions
      * @return SponsoringFormula
      */
-    public function addGiftDefinition(\ZPB\AdminBundle\Entity\SponsoringGiftDefinition $giftDefinitions)
+    public function addGiftDefinition(SponsoringGiftDefinition $giftDefinitions)
     {
         $this->giftDefinitions[] = $giftDefinitions;
 
@@ -395,10 +401,43 @@ class SponsoringFormula
     /**
      * Remove giftDefinitions
      *
-     * @param \ZPB\AdminBundle\Entity\SponsoringGiftDefinition $giftDefinitions
+     * @param SponsoringGiftDefinition $giftDefinitions
      */
-    public function removeGiftDefinition(\ZPB\AdminBundle\Entity\SponsoringGiftDefinition $giftDefinitions)
+    public function removeGiftDefinition(SponsoringGiftDefinition $giftDefinitions)
     {
         $this->giftDefinitions->removeElement($giftDefinitions);
+    }
+
+    /**
+     * Add sponsorings
+     *
+     * @param Sponsoring $sponsorings
+     * @return SponsoringFormula
+     */
+    public function addSponsoring(Sponsoring $sponsorings)
+    {
+        $this->sponsorings[] = $sponsorings;
+
+        return $this;
+    }
+
+    /**
+     * Remove sponsorings
+     *
+     * @param Sponsoring $sponsorings
+     */
+    public function removeSponsoring(Sponsoring $sponsorings)
+    {
+        $this->sponsorings->removeElement($sponsorings);
+    }
+
+    /**
+     * Get sponsorings
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSponsorings()
+    {
+        return $this->sponsorings;
     }
 }
