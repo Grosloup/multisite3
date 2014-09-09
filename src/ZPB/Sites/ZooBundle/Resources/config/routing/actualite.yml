@@ -4,3 +4,10 @@ zpb_sites_zoo_actualites_homepage:
     methods: ["GET"]
     requirements:
         page: \d+
+
+zpb_sites_zoo_actualites_single:
+    path: /{slug}
+    defaults: { _controller:  ZPBSitesZooBundle:Actualite:single }
+    methods: ["GET"]
+    requirements:
+        slug: "^[a-zA-Z0-9_-]+$"

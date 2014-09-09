@@ -40,4 +40,14 @@ class ActualiteController extends BaseController
     // tri par categorie, publiés, ciblants zoo, paginés
     // tri par mot-clé, publiés, ciblants zoo, paginés
     // tr par date, publiés, ciblants zoo, paginés
+
+    public function singleAction($slug)
+    {
+        $post = $this->getRepo('ZPBAdminBundle:Post')->findOneBySlug($slug);
+        if(!$post){
+            throw $this->createAccessDeniedException();
+        }
+
+        return $this->render('ZPBSitesZooBundle:Actualite:single.html.twig', ['post'=>$post]);
+    }
 }
