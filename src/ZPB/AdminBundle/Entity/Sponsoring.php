@@ -3,6 +3,8 @@
 namespace ZPB\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Sponsoring
@@ -24,14 +26,15 @@ class Sponsoring
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=255, nullable=true)
+     * @Gedmo\Slug(fields={"name"})
      */
     private $slug;
 
@@ -39,6 +42,7 @@ class Sponsoring
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
+     * @Gedmo\Timestampable(on="create")
      */
     private $createdAt;
 
@@ -46,6 +50,7 @@ class Sponsoring
      * @var \DateTime
      *
      * @ORM\Column(name="start_at", type="datetime")
+     *
      */
     private $startAt;
 
