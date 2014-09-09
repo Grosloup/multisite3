@@ -1,0 +1,35 @@
+{% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
+{% block title %}FAQ{% endblock %}
+{% block header %}
+    {{ render(controller("ZPBSitesZooBundle:Partials:smallHeader")) }}
+{% endblock %}
+
+{% block content %}
+    <div class="columns large-12">
+        <h1>Questions fréquentes</h1>
+        <div class="row">
+            <div class="columns large-9">
+                <ul>
+                    {% for faq in faqs %}
+                        <li>{{ faq.question }}</li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+            <div class="columns large-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="columns large-9">
+                {% for faq in faqs %}
+                    <div class="faq">
+                        <h4>{{ faq.question }}</h4>
+                        <p>{{ faq.response }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="columns large-3"></div>
+        </div>
+
+    </div>
+{% endblock %}

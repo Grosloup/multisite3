@@ -21,12 +21,20 @@
                     <thead>
                     <tr>
                         <th>#Id</th>
+                        <th>Question</th>
+                        <th>Réponse</th>
+                        <th>Modifier</th>
+                        <th>Supprimer</th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for faq in faqs %}
                         <tr>
                             <td>{{ faq.id }}</td>
+                            <td>{{ faq.question }}</td>
+                            <td>{{ faq.response }}</td>
+                            <td><a class="btn btn-neutral" href="{{ path("zpb_admin_faq_update", {id: faq.id}) }}"><i class="fa fa-edit"></i></a></td>
+                            <td><a class="btn btn-neutral delete-alert" href="{{ path("zpb_admin_faq_delete", {id: faq.id, _token: csrf_token("delete_faq")}) }}"><i class="fa fa-trash-o"></i></a></td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -35,3 +43,4 @@
         </div>
     </div>
 {% endblock %}
+

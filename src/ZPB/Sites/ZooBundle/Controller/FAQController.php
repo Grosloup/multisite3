@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: Nicolas Canfrère
- * Date: 03/09/14
- * Time: 12:17
+ * Date: 09/09/2014
+ * Time: 10:42
  */
   /*
            ____________________
@@ -23,15 +23,11 @@ namespace ZPB\Sites\ZooBundle\Controller;
 
 use ZPB\AdminBundle\Controller\BaseController;
 
-class PartialsController extends BaseController
+class FAQController extends BaseController
 {
-    public function smallHeaderAction()
+    public function indexAction()
     {
-        return $this->render('ZPBSitesZooBundle:Partials:small_header.html.twig', []);
-    }
-
-    public function footerAction()
-    {
-        return $this->render('ZPBSitesZooBundle:Partials:footer.html.twig', []);
+        $faqs = $this->getRepo('ZPBAdminBundle:FAQ')->findAll();
+        return $this->render('ZPBAdminBundle:FAQ:index.html.twig', ['faqs'=>$faqs]);
     }
 } 

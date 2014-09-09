@@ -3,6 +3,11 @@ zpb_sites_zoo_homepage:
     defaults: { _controller: ZPBSitesZooBundle:Index:index }
     methods: ["GET"]
 
+zpb_sites_zoo_faq:
+    path:     /faq
+    defaults: { _controller: ZPBSitesZooBundle:FAQ:index }
+    methods: ["GET"]
+
 zpb_sites_zoo_parrainages_routes:
     prefix: /parrainages
     resource: "@ZPBSitesZooBundle/Resources/config/routing/parrainages.yml"

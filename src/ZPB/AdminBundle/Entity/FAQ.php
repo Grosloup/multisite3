@@ -24,14 +24,14 @@ class FAQ
     /**
      * @var string
      *
-     * @ORM\Column(name="question", type="text")
+     * @ORM\Column(name="question", type="text", nullable=false)
      */
     private $question;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="response", type="text")
+     * @ORM\Column(name="response", type="text", nullable=false)
      */
     private $response;
 

@@ -63,7 +63,7 @@ class FAQController extends BaseController
             $this->getManager()->flush();
             return $this->redirect($this->generateUrl('zpb_admin_faq_list'));
         }
-        return $this->render('ZPBAdminBundle:General/faq:update.html.twig', []);
+        return $this->render('ZPBAdminBundle:General/faq:update.html.twig', ['form'=>$form->createView()]);
     }
 
     public function deleteAction($id, Request $request)
