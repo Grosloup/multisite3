@@ -54,11 +54,11 @@ class AnimalController extends BaseController
 
     public function updateAction($id, Request $request)
     {
-
+        //TODO
     }
 
     public function deleteAction($id, Request $request)
     {
-
+        //TODO
     }
 } 

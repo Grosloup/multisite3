@@ -8,6 +8,21 @@ zpb_admin_sponsor_species_create:
     defaults: { _controller: ZPBAdminBundle:Parrainage/Species:create }
     methods: ["GET", "POST"]
 
+zpb_admin_sponsor_species_update:
+   path: /especes/modifier/{id}
+   defaults: { _controller: ZPBAdminBundle:Parrainage/Species:update }
+   methods: ["GET","POST"]
+   requirements:
+       id: \d+
+
+zpb_admin_sponsor_species_delete:
+    path: /especes/supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:Parrainage/Species:delete }
+    methods: ["GET"]
+    requirements:
+        id: \d+
+
+
 zpb_admin_sponsor_animals_list:
    path: /animaux/liste
    defaults: { _controller: ZPBAdminBundle:Parrainage/Animal:list }
@@ -17,3 +32,44 @@ zpb_admin_sponsor_animals_create:
     path: /animaux/nouveau
     defaults: { _controller: ZPBAdminBundle:Parrainage/Animal:create }
     methods: ["GET", "POST"]
+
+zpb_admin_sponsor_animals_update:
+   path: /animaux/modifier/{id}
+   defaults: { _controller: ZPBAdminBundle:Parrainage/Animal:update }
+   methods: ["GET","POST"]
+   requirements:
+       id: \d+
+
+zpb_admin_sponsor_animals_delete:
+    path: /animaux/supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:Parrainage/Animal:delete }
+    methods: ["GET"]
+    requirements:
+        id: \d+
+
+zpb_admin_sponsor_sponsorings_list:
+   path: /formules/liste
+   defaults: { _controller: ZPBAdminBundle:Parrainage/Sponsoring:list }
+   methods: ["GET"]
+
+zpb_admin_sponsor_sponsorings_create:
+    path: /formules/nouveau
+    defaults: { _controller: ZPBAdminBundle:Parrainage/Sponsoring:create }
+    methods: ["GET", "POST"]
+
+zpb_admin_sponsor_sponsorings_update:
+   path: /formules/modifier/{id}
+   defaults: { _controller: ZPBAdminBundle:Parrainage/Sponsoring:update }
+   methods: ["GET","POST"]
+   requirements:
+       id: \d+
+
+zpb_admin_sponsor_sponsorings_delete:
+    path: /formules/supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:Parrainage/Sponsoring:delete }
+    methods: ["GET"]
+    requirements:
+        id: \d+
+
+
+

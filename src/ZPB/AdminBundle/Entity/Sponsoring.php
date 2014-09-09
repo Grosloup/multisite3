@@ -62,6 +62,11 @@ class Sponsoring
      */
     private $godparent;
 
+    /**
+     * @ORM\Column(name="type", type="string", length=100, nullable=false)
+     */
+    private $type;
+
 
     /**
      * Get id
@@ -72,6 +77,26 @@ class Sponsoring
     {
         return $this->id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     * @return Sponsoring
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+        return $this;
+    }
+
+
 
     /**
      * Set name
