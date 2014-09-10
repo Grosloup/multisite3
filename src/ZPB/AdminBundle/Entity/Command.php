@@ -2,12 +2,14 @@
 
 namespace ZPB\AdminBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Command
  *
- * @ORM\Table()
+ * @ORM\Table(name="zpb_commands")
  * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\CommandRepository")
  */
 class Command
@@ -25,6 +27,7 @@ class Command
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
+     * @Gedmo\Timestampable(on="create")
      */
     private $createdAt;
 
@@ -63,15 +66,37 @@ class Command
      */
     private $isValid;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ZPB\AdminBundle\Entity\CommandItemSponsor", mappedBy="command")
+     */
+    private $sponsorings;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->sponsorings = new ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
     }
 
     /**
@@ -88,13 +113,13 @@ class Command
     }
 
     /**
-     * Get createdAt
+     * Get defId
      *
-     * @return \DateTime 
+     * @return string
      */
-    public function getCreatedAt()
+    public function getDefId()
     {
-        return $this->createdAt;
+        return $this->defId;
     }
 
     /**
@@ -111,13 +136,13 @@ class Command
     }
 
     /**
-     * Get defId
+     * Get tmpId
      *
-     * @return string 
+     * @return string
      */
-    public function getDefId()
+    public function getTmpId()
     {
-        return $this->defId;
+        return $this->tmpId;
     }
 
     /**
@@ -134,13 +159,13 @@ class Command
     }
 
     /**
-     * Get tmpId
+     * Get totalAmount
      *
-     * @return string 
+     * @return float
      */
-    public function getTmpId()
+    public function getTotalAmount()
     {
-        return $this->tmpId;
+        return $this->totalAmount;
     }
 
     /**
@@ -157,13 +182,13 @@ class Command
     }
 
     /**
-     * Get totalAmount
+     * Get totalAmountTtc
      *
-     * @return float 
+     * @return float
      */
-    public function getTotalAmount()
+    public function getTotalAmountTtc()
     {
-        return $this->totalAmount;
+        return $this->totalAmountTtc;
     }
 
     /**
@@ -180,13 +205,13 @@ class Command
     }
 
     /**
-     * Get totalAmountTtc
+     * Get isValid
      *
-     * @return float 
+     * @return boolean
      */
-    public function getTotalAmountTtc()
+    public function getIsValid()
     {
-        return $this->totalAmountTtc;
+        return $this->isValid;
     }
 
     /**
@@ -203,12 +228,35 @@ class Command
     }
 
     /**
-     * Get isValid
+     * Add sponsorings
      *
-     * @return boolean 
+     * @param CommandItemSponsor $sponsorings
+     * @return Command
      */
-    public function getIsValid()
+    public function addSponsoring(CommandItemSponsor $sponsorings)
     {
-        return $this->isValid;
+        $this->sponsorings[] = $sponsorings;
+
+        return $this;
+    }
+
+    /**
+     * Remove sponsorings
+     *
+     * @param CommandItemSponsor $sponsorings
+     */
+    public function removeSponsoring(CommandItemSponsor $sponsorings)
+    {
+        $this->sponsorings->removeElement($sponsorings);
+    }
+
+    /**
+     * Get sponsorings
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSponsorings()
+    {
+        return $this->sponsorings;
     }
 }

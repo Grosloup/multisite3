@@ -3,11 +3,12 @@
 namespace ZPB\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * CommandItemSponsor
  *
- * @ORM\Table()
+ * @ORM\Table(name="zpb_command_items_sponsoring")
  * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\CommandItemSponsorRepository")
  */
 class CommandItemSponsor implements CommandItemInterface
@@ -53,8 +54,15 @@ class CommandItemSponsor implements CommandItemInterface
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
+     * @Gedmo\Timestampable(on="create")
      */
     private $createdAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\Command", inversedBy="sponsorings")
+     * @ORM\JoinColumn(name="command_id", referencedColumnName="id")
+     */
+    private $command;
 
 
     /**
@@ -180,5 +188,28 @@ class CommandItemSponsor implements CommandItemInterface
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Set command
+     *
+     * @param Command $command
+     * @return CommandItemSponsor
+     */
+    public function setCommand(Command $command = null)
+    {
+        $this->command = $command;
+
+        return $this;
+    }
+
+    /**
+     * Get command
+     *
+     * @return Command
+     */
+    public function getCommand()
+    {
+        return $this->command;
     }
 }

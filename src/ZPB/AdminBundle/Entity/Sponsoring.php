@@ -279,4 +279,27 @@ class Sponsoring
     {
         return $this->formula;
     }
+
+    /**
+     * Set isPresent
+     *
+     * @param boolean $isPresent
+     * @return Sponsoring
+     */
+    public function setIsPresent($isPresent)
+    {
+        $this->isPresent = $isPresent;
+
+        return $this;
+    }
+
+    /**
+     * Get isPresent
+     *
+     * @return boolean 
+     */
+    public function getIsPresent()
+    {
+        return $this->isPresent;
+    }
 }
