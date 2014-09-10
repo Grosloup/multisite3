@@ -22,6 +22,7 @@ namespace ZPB\Sites\ZooBundle\Service;
 
 
 use ZPB\AdminBundle\Entity\Animal;
+use ZPB\AdminBundle\Entity\Godparent;
 use ZPB\AdminBundle\Entity\SponsoringFormula;
 
 class SponsorBasketItem implements \Serializable
@@ -32,11 +33,14 @@ class SponsorBasketItem implements \Serializable
 
     private $pack;
 
-    function __construct(SponsoringFormula $pack = null, Animal $animal = null)
+    private $godparent;
+
+    function __construct(SponsoringFormula $pack = null, Animal $animal = null, Godparent $recipient = null)
     {
         $this->id = $pack->getId() . "-" . $animal->getId();
         $this->pack = $pack;
         $this->animal = $animal;
+        $this->godparent = $recipient;
     }
 
     /**
@@ -92,6 +96,24 @@ class SponsorBasketItem implements \Serializable
         return $this;
     }
 
+    /**
+     * @return Godparent
+     */
+    public function getGodparent()
+    {
+        return $this->godparent;
+    }
+
+    /**
+     * @param Godparent $godparent
+     * @return SponsorBasketItem
+     */
+    public function setGodparent($godparent)
+    {
+        $this->godparent = $godparent;
+        return $this;
+    }
+
 
     /**
      * (PHP 5 &gt;= 5.1.0)<br/>
@@ -104,7 +126,9 @@ class SponsorBasketItem implements \Serializable
         return serialize([
             'id'=>$this->id,
             'pack'=>$this->pack,
-            'animal'=>$this->animal
+            'animal'=>$this->animal,
+            'godparent'=>$this->godparent
+
         ]);
     }
 

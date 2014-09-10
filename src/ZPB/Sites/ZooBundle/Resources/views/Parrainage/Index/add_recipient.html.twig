@@ -1,0 +1,146 @@
+{% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
+{% block title %}Parrainez un animal{% endblock %}
+{% block header %}
+    {{ render(controller("ZPBSitesZooBundle:Partials:smallHeader")) }}
+{% endblock %}
+{% block content %}
+    <div class="columns large-12">
+        <h1>J'offre ce parrainage</h1>
+    </div>
+    <div class="columns large-3"></div>
+    <div class="columns large-6">
+        <h3>Rappel sur le parrainage</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto consectetur distinctio facere laboriosam magnam maxime molestias ratione recusandae sint?</p>
+    </div>
+    <div class="columns large-3"></div>
+    <div class="columns large-3"></div>
+    <div class="columns large-6">
+        <h3>Les coordonnées du bénéficiaire</h3>
+        {{ form_start(form, {attr:{novalidate:true}}) }}
+        <div class="row">
+            <div class="column large-4">
+                {{ form_label(form.civilite) }}
+                {{ form_widget(form.civilite) }}
+                {{ form_errors(form.civilite) }}
+            </div>
+
+            <div class="column large-8">
+                {{ form_label(form.birthdate) }}
+                {{ form_widget(form.birthdate) }}
+                {{ form_errors(form.birthdate) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column large-12">
+                {{ form_label(form.firstname) }}
+                {{ form_widget(form.firstname) }}
+                {{ form_errors(form.firstname) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column large-12">
+                {{ form_label(form.lastname) }}
+                {{ form_widget(form.lastname) }}
+                {{ form_errors(form.lastname) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column large-12">
+                {{ form_label(form.username) }}
+                {{ form_widget(form.username) }}
+                {{ form_errors(form.username) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column large-12">
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email) }}
+                {{ form_errors(form.email) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column large-12">
+                {{ form_label(form.phone) }}
+                {{ form_widget(form.phone) }}
+                {{ form_errors(form.phone) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column large-12">
+                {{ form_label(form.address) }}
+                {{ form_widget(form.address) }}
+                {{ form_errors(form.address) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column large-12">
+                {{ form_label(form.address2) }}
+                {{ form_widget(form.address2) }}
+                {{ form_errors(form.address2) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column large-4">
+                {{ form_label(form.batiment) }}
+                {{ form_widget(form.batiment) }}
+                {{ form_errors(form.batiment) }}
+            </div>
+
+            <div class="column large-4">
+                {{ form_label(form.door) }}
+                {{ form_widget(form.door) }}
+                {{ form_errors(form.door) }}
+            </div>
+
+            <div class="column large-4">
+                {{ form_label(form.floor) }}
+                {{ form_widget(form.floor) }}
+                {{ form_errors(form.floor) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column large-4">
+                {{ form_label(form.postalCode) }}
+                {{ form_widget(form.postalCode) }}
+                {{ form_errors(form.postalCode) }}
+            </div>
+
+            <div class="column large-8">
+                {{ form_label(form.city) }}
+                {{ form_widget(form.city) }}
+                {{ form_errors(form.city) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column large-4">
+                {{ form_label(form.country) }}
+                {{ form_widget(form.country) }}
+                {{ form_errors(form.country) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column large-12">
+                {{ form_widget(form.save, {attr:{class: "button"}}) }}
+            </div>
+        </div>
+
+
+        {{ form_end(form) }}
+    </div>
+    <div class="columns large-3"></div>
+{% endblock %}
+{% block footScripts%}
+    {{ parent() }}
+    <script src="/js/app.min.js"></script>
+{% endblock %}

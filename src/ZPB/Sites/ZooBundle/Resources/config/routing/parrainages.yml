@@ -15,6 +15,11 @@ zpb_sites_zoo_parrainages_add_to_basket:
     defaults: { _controller: ZPBSitesZooBundle:Parrainage/Index:addSponsoringToBasket }
     methods: ["POST"]
 
+zpb_sites_zoo_parrainages_add_recipient:
+    path: /enregistrer-beneficiaire
+    defaults: { _controller: ZPBSitesZooBundle:Parrainage/Index:addRecipient }
+    methods: ["GET","POST"]
+
 zpb_sites_zoo_parrainages_show_basket:
     path: /mon-panier
     defaults: { _controller: ZPBSitesZooBundle:Parrainage/Index:showBasket }

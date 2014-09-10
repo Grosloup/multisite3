@@ -150,7 +150,7 @@
                     <div class="columns large-6">
                         <input name="sponsorship_form[animal]" type="hidden" value="{{ animal.id }}"/>
                         <input name="sponsorship_form[_token]" type="hidden" value="{{ csrf_token("add_sponsorship") }}"/>
-                        <button type="submit" class="button success large expand">Validation</button>
+                        <button type="submit" class="button success large" name="sponsorship_form[submit]" value="offer">J'offre ce parrainage</button><button type="submit" class="button success large" name="sponsorship_form[submit]" value="forme">Je parraine</button>
                     </div>
                 </div>
             </form>

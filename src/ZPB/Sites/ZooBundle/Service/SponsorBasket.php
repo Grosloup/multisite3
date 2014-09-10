@@ -22,6 +22,7 @@ namespace ZPB\Sites\ZooBundle\Service;
 
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use ZPB\AdminBundle\Entity\Godparent;
 
 class SponsorBasket
 {
@@ -50,9 +51,9 @@ class SponsorBasket
         return $this->count() === 0;
     }
 
-    public function addItem($pack, $animal)
+    public function addItem($pack, $animal,Godparent $recipient = null)
     {
-        $item = new $this->itemClass($pack, $animal);
+        $item = new $this->itemClass($pack, $animal, $recipient);
         $this->basket[$item->getId()] = $item;
         $this->session->set($this->key, $this->basket);
     }

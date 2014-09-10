@@ -78,6 +78,16 @@ class Sponsoring
      */
     private $formula;
 
+    /**
+     * @ORM\Column(name="is_present", type="boolean", nullable=false)
+     */
+    private $isPresent;
+
+    public function __construct()
+    {
+        $this->isPresent = false;
+    }
+
 
     /**
      * Get id

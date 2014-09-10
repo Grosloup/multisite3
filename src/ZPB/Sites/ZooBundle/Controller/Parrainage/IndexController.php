@@ -51,6 +51,7 @@ class IndexController extends BaseController
 
     public function addSponsoringToBasketAction(Request $request)
     {
+
         $csrfProv = $this->getCsrf();
         $form = $request->request->get("sponsorship_form", false);
         if(!$form){
@@ -62,6 +63,7 @@ class IndexController extends BaseController
         }
         $packId = empty($form['pack']) ? false : $form['pack'];
         $animalId = empty($form['animal']) ? false : $form['animal'];
+        $action = empty($form['submit']) ? false : $form['submit'];
         if(!$packId || !$animalId){
             throw $this->createAccessDeniedException();
         }
@@ -73,9 +75,33 @@ class IndexController extends BaseController
         if(!$animal){
             throw $this->createNotFoundException();
         }
+        if(!$action){
+            throw $this->createNotFoundException();
+        }
         $sb = $this->container->get('zpb.zoo.sponsor_basket');
-        $sb->addItem($pack, $animal);
+        if($action == 'offer'){
+            $sb->addItem($pack, $animal);
+            return $this->redirect($this->generateUrl('zpb_sites_zoo_parrainages_add_recipient'));
+        }
+
+        $user = ($this->getUser() != null) ? $this->getUser() : null;
+        $sb->addItem($pack, $animal, $user);
+
         return $this->redirect($this->generateUrl('zpb_sites_zoo_parrainages_show_basket'));
+    }
+
+    public function addRecipientAction(Request $request)
+    {
+        $godparent = new Godparent();
+        $form = $this->createForm(new GodparentType(), $godparent);
+
+        $form->handleRequest($request);
+        if($form->isValid()){
+            // save new goparent
+            // last item add recipient
+            // redirection to basket
+        }
+        return $this->render('ZPBSitesZooBundle:Parrainage/Index:add_recipient.html.twig', ['form'=>$form->createView()]);
     }
 
     public function showBasketAction()
@@ -87,9 +113,10 @@ class IndexController extends BaseController
             foreach($sb->getItems() as $k=>$v){
                 $animalId = $v->getAnimal()->getId();
                 $packId = $v->getPack()->getId();
+                $godparent = $v->getGodparent();
                 $animal = $em->find(get_class($v->getAnimal()),$animalId);
                 $pack = $em->find(get_class($v->getPack()), $packId);
-                $items[$v->getId()] = ["pack"=>$pack, "animal"=>$animal];
+                $items[$v->getId()] = ["pack"=>$pack, "animal"=>$animal, 'godparent'=>$godparent];
             }
         }
         return $this->render('ZPBSitesZooBundle:PArrainage/Index:basket.html.twig', ['packs'=>$items]);
