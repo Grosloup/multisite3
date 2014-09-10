@@ -151,8 +151,8 @@
                     <ul>
                         <li class="sidebar-dropdown{% if active in ["list_static_pages","new_static_page","update_static_page"] %} active{% endif %}"><a>Pages statiques</a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
-                                <li class="{% if active == "list_static_pages" %}active{% endif %}"><a href="">Liste</a></li>
-                                <li class="{% if active == "new_static_page" %}active{% endif %}"><a href="">Nouvelle</a></li>
+                                <li class="{% if active == "list_static_pages" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_static_pages_list") }}">Liste</a></li>
+                                <li class="{% if active == "new_static_page" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_static_pages_create") }}">Nouvelle</a></li>
                             </ul>
                         </li>
                     </ul>

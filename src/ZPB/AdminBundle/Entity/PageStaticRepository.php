@@ -12,4 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class PageStaticRepository extends EntityRepository
 {
+    public function findZooPages()
+    {
+        $q = $this->_em->createQuery('SELECT p FROM ZPB\AdminBundle\Entity\PageStatic p JOIN ZPB\AdminBundle\Entity\PostTarget t WHERE t.slug=:slug');
+        $q->setParameter('slug', 'zooparc-de-beauval');
+        return $q->getResult();
+    }
 }

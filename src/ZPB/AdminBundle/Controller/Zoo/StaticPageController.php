@@ -30,7 +30,7 @@ class StaticPageController extends BaseController
 {
     public function listAction()
     {
-        $entities = $this->getRepo('ZPBAdminBundle:PageStatic')->findAll(); //->findBy([], ['name'=> 'ASC']);
+        $entities = $this->getRepo('ZPBAdminBundle:PageStatic')->findZooPages(); //->findBy([], ['name'=> 'ASC']);
         return $this->render('ZPBAdminBundle:Zoo/StaticPage:list.html.twig', ['entities'=>$entities]); //1
     }
 
@@ -44,7 +44,7 @@ class StaticPageController extends BaseController
             $this->getManager()->flush();
 
             $this->setSuccess('Nouvelle entité bien enregistrée'); //2
-            return $this->redirect($this->generateUrl('')); //3
+            return $this->redirect($this->generateUrl('zpb_admin_zoo_static_pages_list')); //3
         }
         return $this->render('ZPBAdminBundle:Zoo/StaticPage:create.html.twig', ['form'=>$form->createView()]); //4
     }

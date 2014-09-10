@@ -25,6 +25,14 @@ use ZPB\AdminBundle\Controller\BaseController;
 
 class PartialsController extends BaseController
 {
+
+    public function headAction($route)
+    {
+        $page = $this->getRepo('ZPBAdminBundle:PageStatic')->findOneByRouteName($route);
+
+        return $this->render('ZPBSitesZooBundle:Partials:head.html.twig', ['page'=>$page]);
+    }
+
     public function smallHeaderAction()
     {
         return $this->render('ZPBSitesZooBundle:Partials:small_header.html.twig', []);
@@ -34,4 +42,4 @@ class PartialsController extends BaseController
     {
         return $this->render('ZPBSitesZooBundle:Partials:footer.html.twig', []);
     }
-} 
+}

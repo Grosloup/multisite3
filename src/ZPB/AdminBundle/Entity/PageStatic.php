@@ -51,6 +51,11 @@ class PageStatic
      */
     private $name;
 
+    /**
+     * @ORM\Column(name="root_name", type="string", length=255, nullable=false)
+     */
+    private $routeName;
+
 
     /**
      * Get id
@@ -61,6 +66,26 @@ class PageStatic
     {
         return $this->id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRouteName()
+    {
+        return $this->routeName;
+    }
+
+    /**
+     * @param mixed $routeName
+     * @return PageStatic
+     */
+    public function setRouteName($routeName)
+    {
+        $this->routeName = $routeName;
+        return $this;
+    }
+
+
 
     /**
      * @return mixed

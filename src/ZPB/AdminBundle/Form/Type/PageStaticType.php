@@ -32,7 +32,10 @@ class PageStaticType extends AbstractType
             ->add('name',null,['label'=>'Nom'])
             ->add('title',null,['label'=>'Titre'])
             ->add('description',null,['label'=>'Description'])
+            ->add('keywords',null,['label'=>'Mots-clés (suite de mots séparés par des virgules)'])
             ->add('owner','entity',['label'=>'Site propriétaire','class'=>'ZPBAdminBundle:PostTarget','property'=>'name', 'multiple'=>false, 'expanded'=>false])
+            ->add('routeName', null, ['label'=>'Route'])
+            ->add('save', 'submit', ['label'=>'Enregistrer'])
         ;
     }
 

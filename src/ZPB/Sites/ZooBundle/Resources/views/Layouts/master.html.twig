@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% if block('title') %}{{ block('title')}}{% else %}Accueil{% endif %} | ZooParc de Beauval</title>
+    {{ render(controller("ZPBSitesZooBundle:Partials:head", {route: app.request.attributes.get('_route')})) }}
+    {#<title>{% if block('title') %}{{ block('title')}}{% else %}Accueil{% endif %} | ZooParc de Beauval</title>#}
 
     {% block headLinks%}
         <link rel="stylesheet" href="/css/common/normalize.css"/>

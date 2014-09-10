@@ -1,0 +1,97 @@
+{% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
+
+{% block title %}Créer une page statique | ZooParc de Beauval{% endblock %}
+{% set active = "new_static_page" %}
+
+{% block content %}
+    <div class="row">
+        <div class="column-3"></div>
+        <div class="column-6">
+            <div class="tile">
+                <div class="tile-header">
+                    Nouvelle page statique pour le ZooParc
+                </div>
+                {{ form_start(form, {attr:{class: "form", novalidate:true}}) }}
+                {{ form_errors(form) }}
+
+                <div class="form-row {% if form.name.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.name) }}
+                    <div class="form-field">
+                        {{ form_widget(form.name) }}
+                        {% if form.name.vars.errors|length>0 %}
+                            <div class="error-block">
+                                {{ form_errors(form.name)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.owner.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.owner) }}
+                    <div class="form-field">
+                        {{ form_widget(form.owner) }}
+                        {% if form.owner.vars.errors|length>0 %}
+                            <div class="error-block">
+                                {{ form_errors(form.owner)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.title.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.title) }}
+                    <div class="form-field">
+                        {{ form_widget(form.title) }}
+                        {% if form.title.vars.errors|length>0 %}
+                            <div class="error-block">
+                                {{ form_errors(form.title)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.description.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.description) }}
+                    <div class="form-field">
+                        {{ form_widget(form.description) }}
+                        {% if form.description.vars.errors|length>0 %}
+                            <div class="error-block">
+                                {{ form_errors(form.description)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.keywords.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.keywords) }}
+                    <div class="form-field">
+                        {{ form_widget(form.keywords) }}
+                        {% if form.keywords.vars.errors|length>0 %}
+                            <div class="error-block">
+                                {{ form_errors(form.keywords)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.routeName.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.routeName) }}
+                    <div class="form-field">
+                        {{ form_widget(form.routeName) }}
+                        {% if form.routeName.vars.errors|length>0 %}
+                            <div class="error-block">
+                                {{ form_errors(form.routeName)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    {{ form_widget(form.save, {attr: {class: "btn-flat btn-primary"}})}}
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+        <div class="column-3"></div>
+    </div>
+{% endblock %}
