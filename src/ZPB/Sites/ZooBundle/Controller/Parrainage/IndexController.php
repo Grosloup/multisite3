@@ -27,6 +27,7 @@ use ZPB\AdminBundle\Controller\BaseController;
 use ZPB\AdminBundle\Entity\Godparent;
 use ZPB\Sites\ZooBundle\Form\Type\GodparentType;
 use ZPB\Sites\ZooBundle\Form\Type\RecipientType;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class IndexController extends BaseController
 {
@@ -94,22 +95,71 @@ class IndexController extends BaseController
     public function addRecipientAction(Request $request)
     {
         $godparent = new Godparent();
+        $emailForm = $this->get('form.factory')
+            ->createNamedBuilder('godparent_by_email_form')
+            ->add('email', 'email', [
+                    'label'=>'Email',
+                    'constraints'=>[
+                        new Assert\NotBlank(['message'=>'Ce champs est requis']),
+                        new Assert\Email(['message'=>'Ce n\'est pas une email valide', 'checkMX'=>true, 'checkHost'=>true])
+                    ]
+                ]
+            )
+            ->add('delayed', 'date', [
+                    'label'=>'Différer l\'envoi  (jj/mm/aaaa)',
+                    'input'=>'datetime',
+                    'widget'=>'single_text',
+                    'format'=>'dd/MM/yyyy',
+                    'constraints'=>[
+                        new Assert\Date(['message'=>'Cette date n\'est pas valide'])
+                    ]
+                ]
+            )
+            ->add('search', 'submit', ['label'=>'Enregistrer'])
+            ->getForm();
         $form = $this->createForm(new RecipientType(), $godparent);
-        $form->handleRequest($request);
-        if($form->isValid()){
-            $this->getManager()->persist($godparent);
-            $this->getManager()->flush();
-            $sb = $this->container->get('zpb.zoo.sponsor_basket');
-            $lastItem = $sb->getLast();
-            $lastItem->setGodParent($godparent);
-            $delayed = $form->get('delayed')->getData();
-            if($delayed){
-                $lastItem->setDelayedAt($delayed);
+        if($request->isMethod('post')){
+            if($request->request->has('godparent_by_email_form')){
+                $emailForm->handleRequest($request);
+                if($emailForm->isValid()){
+                    $email = $emailForm->get('email')->getData();
+                    $godparent = $this->getRepo('ZPBAdminBundle:Godparent')->findOneByEmail($email);
+                    if(!$godparent){
+                        throw $this->createNotFoundException();
+                    }
+                    $sb = $this->container->get('zpb.zoo.sponsor_basket');
+                    $lastItem = $sb->getLast();
+                    $lastItem->setGodParent($godparent);
+                    $delayed = $form->get('delayed')->getData();
+                    if($delayed){
+                        $lastItem->setDelayedAt($delayed);
+                    }
+                    $sb->add($lastItem);
+                    return $this->redirect($this->generateUrl('zpb_sites_zoo_parrainages_show_basket'));
+                }
+
             }
-            $sb->add($lastItem);
-            return $this->redirect($this->generateUrl('zpb_sites_zoo_parrainages_show_basket'));
+            if($request->request->has('recipient_form')){
+                $form->handleRequest($request);
+                if($form->isValid()){
+                    $this->getManager()->persist($godparent);
+                    $this->getManager()->flush();
+                    $sb = $this->container->get('zpb.zoo.sponsor_basket');
+                    $lastItem = $sb->getLast();
+                    $lastItem->setGodParent($godparent);
+                    $delayed = $form->get('delayed')->getData();
+                    if($delayed){
+                        $lastItem->setDelayedAt($delayed);
+                    }
+                    $sb->add($lastItem);
+                    return $this->redirect($this->generateUrl('zpb_sites_zoo_parrainages_show_basket'));
+                }
+            }
+
+
         }
-        return $this->render('ZPBSitesZooBundle:Parrainage/Index:add_recipient.html.twig', ['form'=>$form->createView()]);
+
+        return $this->render('ZPBSitesZooBundle:Parrainage/Index:add_recipient.html.twig', ['emailForm'=>$emailForm->createView(), 'form'=>$form->createView()]);
     }
 
     public function showBasketAction()

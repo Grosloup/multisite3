@@ -32,7 +32,7 @@ class RecipientType extends AbstractType
             'FR','AL','AD','DE','AT','BE','HR','DK','ES','EE','FI','GR','HU','IE','IS','IT','XK','LV','LI','LT','LU','MK','MT','MC','ME','NO','NL','PL','PT','CZ','RO','GB','RS','SK','SI','SE','CH'
         ];
         $builder
-            ->add('delayed','date',['label'=>'Différé l\'envoi  (jj/mm/aaaa)', 'mapped'=>false,'input'=>'datetime','widget'=>'single_text','format'=>'dd/MM/yyyy'])
+            ->add('delayed','date',['label'=>'Différer l\'envoi  (jj/mm/aaaa)', 'mapped'=>false,'input'=>'datetime','widget'=>'single_text','format'=>'dd/MM/yyyy'])
             ->add('civilite', 'civility_type', ['label'=>'Civilité','empty_value'=>'------------'])
             ->add('firstname', null, ['label'=>'Prénom*'])
             ->add('lastname', null, ['label'=>'Nom*'])
@@ -51,14 +51,14 @@ class RecipientType extends AbstractType
             ->add('save', 'submit', ['label'=>'Enregistrer'])
             ;
     }
-    
+
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults([
                 'data_class'=>'ZPB\AdminBundle\Entity\Godparent',
             ]);
     }
-    
+
     public function getName()
     {
         return 'recipient_form';
