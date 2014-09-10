@@ -83,10 +83,58 @@ class Sponsoring
      */
     private $isPresent;
 
+    /**
+     * @ORM\Column(name="is_active", type="boolean", nullable=false)
+     */
+    private $isActive;
+
+    /**
+     * @ORM\Column(name="delayed_at", type="datetime", nullable=true)
+     */
+    private $delayedAt;
+
     public function __construct()
     {
         $this->isPresent = false;
+        $this->isActive = true;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDelayedAt()
+    {
+        return $this->delayedAt;
+    }
+
+    /**
+     * @param mixed $delayedAt
+     * @return Sponsoring
+     */
+    public function setDelayedAt($delayedAt)
+    {
+        $this->delayedAt = $delayedAt;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * @param mixed $isActive
+     * @return Sponsoring
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+        return $this;
+    }
+
 
 
     /**

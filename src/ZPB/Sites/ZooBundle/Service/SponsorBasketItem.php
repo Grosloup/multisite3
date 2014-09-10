@@ -35,6 +35,8 @@ class SponsorBasketItem implements \Serializable
 
     private $godparent;
 
+    private $delayedAt;
+
     function __construct(SponsoringFormula $pack = null, Animal $animal = null, Godparent $recipient = null)
     {
         $this->id = $pack->getId() . "-" . $animal->getId();
@@ -114,6 +116,26 @@ class SponsorBasketItem implements \Serializable
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getDelayedAt()
+    {
+        return $this->delayedAt;
+    }
+
+    /**
+     * @param mixed $delayedAt
+     * @return SponsorBasketItem
+     */
+    public function setDelayedAt($delayedAt)
+    {
+        $this->delayedAt = $delayedAt;
+        return $this;
+    }
+
+
+
 
     /**
      * (PHP 5 &gt;= 5.1.0)<br/>
@@ -127,8 +149,8 @@ class SponsorBasketItem implements \Serializable
             'id'=>$this->id,
             'pack'=>$this->pack,
             'animal'=>$this->animal,
-            'godparent'=>$this->godparent
-
+            'godparent'=>$this->godparent,
+            'delayedAt'=>$this->delayedAt
         ]);
     }
 

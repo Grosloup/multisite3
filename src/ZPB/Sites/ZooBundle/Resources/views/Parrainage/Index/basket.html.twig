@@ -41,6 +41,14 @@
                     <div class="columns large-3">
                         <h4 class="text-center">Formule</h4>
                         <p class="text-center"><strong>{{ pack.pack.name }}</strong></p>
+
+                        {% if pack.godparent != null %}
+                            <p>Pour {{ pack.godparent.firstname }} {{ pack.godparent.lastname }}</p>
+                        {% endif %}
+
+                        {%  if pack.delayed != null %}
+                            <p>Parrainage différé au {{ pack.delayed|date("d/m/y") }}</p>
+                        {% endif %}
                     </div>
                     <div class="columns large-3">
                         <h4 class="text-center">Montant</h4>

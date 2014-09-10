@@ -17,6 +17,14 @@
     <div class="columns large-6">
         <h3>Les coordonnées du bénéficiaire</h3>
         {{ form_start(form, {attr:{novalidate:true}}) }}
+        {{ form_errors(form) }}
+        <div class="row">
+            <div class="column large-12">
+                {{ form_label(form.delayed) }}
+                {{ form_widget(form.delayed) }}
+                {{ form_errors(form.delayed) }}
+            </div>
+        </div>
         <div class="row">
             <div class="column large-4">
                 {{ form_label(form.civilite) }}

@@ -26,6 +26,7 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use ZPB\AdminBundle\Controller\BaseController;
 use ZPB\AdminBundle\Entity\Godparent;
 use ZPB\Sites\ZooBundle\Form\Type\GodparentType;
+use ZPB\Sites\ZooBundle\Form\Type\RecipientType;
 
 class IndexController extends BaseController
 {
@@ -93,13 +94,20 @@ class IndexController extends BaseController
     public function addRecipientAction(Request $request)
     {
         $godparent = new Godparent();
-        $form = $this->createForm(new GodparentType(), $godparent);
-
+        $form = $this->createForm(new RecipientType(), $godparent);
         $form->handleRequest($request);
         if($form->isValid()){
-            // save new goparent
-            // last item add recipient
-            // redirection to basket
+            $this->getManager()->persist($godparent);
+            $this->getManager()->flush();
+            $sb = $this->container->get('zpb.zoo.sponsor_basket');
+            $lastItem = $sb->getLast();
+            $lastItem->setGodParent($godparent);
+            $delayed = $form->get('delayed')->getData();
+            if($delayed){
+                $lastItem->setDelayedAt($delayed);
+            }
+            $sb->add($lastItem);
+            return $this->redirect($this->generateUrl('zpb_sites_zoo_parrainages_show_basket'));
         }
         return $this->render('ZPBSitesZooBundle:Parrainage/Index:add_recipient.html.twig', ['form'=>$form->createView()]);
     }
@@ -113,10 +121,16 @@ class IndexController extends BaseController
             foreach($sb->getItems() as $k=>$v){
                 $animalId = $v->getAnimal()->getId();
                 $packId = $v->getPack()->getId();
-                $godparent = $v->getGodparent();
+                $godparent = null;
+                if(null !== $godparent = $v->getGodparent()){
+                    $godparent = $em->find(get_class($godparent), $godparent->getId());
+                }
+
                 $animal = $em->find(get_class($v->getAnimal()),$animalId);
                 $pack = $em->find(get_class($v->getPack()), $packId);
-                $items[$v->getId()] = ["pack"=>$pack, "animal"=>$animal, 'godparent'=>$godparent];
+
+                $delayed = $v->getDelayedAt();
+                $items[$v->getId()] = ["pack"=>$pack, "animal"=>$animal, 'godparent'=>$godparent, 'delayed'=>$delayed];
             }
         }
         return $this->render('ZPBSitesZooBundle:PArrainage/Index:basket.html.twig', ['packs'=>$items]);

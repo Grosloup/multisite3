@@ -58,6 +58,12 @@ class SponsorBasket
         $this->session->set($this->key, $this->basket);
     }
 
+    public function add($item)
+    {
+        $this->basket[$item->getId()] = $item;
+        $this->session->set($this->key, $this->basket);
+    }
+
     public function removeItem($itemId)
     {
         if(array_key_exists($itemId, $this->basket)){
@@ -76,6 +82,18 @@ class SponsorBasket
     public function getItems()
     {
         return $this->session->get($this->key, null);
+    }
+
+    public function getLast()
+    {
+        if(!$this->isEmpty()){
+            $basket = $this->session->get($this->key);
+            $last = array_pop($basket);
+            $this->session->set($this->key, $basket);
+            return $last;
+        }
+        return null;
+
     }
 
 

@@ -66,7 +66,7 @@ class Godparent implements AdvancedUserInterface, Serializable
 
     /**
      * @var string
-     * @ORM\Column(name="password", type="string", length=255, nullable=false)
+     * @ORM\Column(name="password", type="string", length=255, nullable=true)
      */
     private $password;
 
@@ -171,7 +171,7 @@ class Godparent implements AdvancedUserInterface, Serializable
     private $createdAt;
 
     /**
-     * @Assert\NotBlank(message="Ce champs est requis.")
+     *
      * @Assert\Length(min="8", minMessage="Le mot de passe doit contenir au moins 8 caractères alphanumériques")
      * @var string
      */
