@@ -72,13 +72,17 @@ class PostTarget
      */
     public function createAcronym()
     {
-        $name =  mb_strtolower($this->name, 'UTF-8');
+        $name = mb_strtolower($this->name, 'UTF-8');
         //$name = str_replace(['l', '\'', '"', 'd', '-', '_', 'a', 'à', 'au','aux','de','des','du','la','le','les'], ' ',);
-        $name = preg_replace('/(^|\s+)(l\'|les?|la|d\'|des?|du|à|a|aux?|_|\-|"|ces?|ça|ses?|sa|et|car|ou|où|or|ni|ne|donc|leurs?|vos|votre|nos|notre)/',' ',$name);
-        $name = preg_replace('/\s+/',' ',$name);
+        $name = preg_replace(
+            '/(^|\s+)(l\'|les?|la|d\'|des?|du|à|a|aux?|_|\-|"|ces?|ça|ses?|sa|et|car|ou|où|or|ni|ne|donc|leurs?|vos|votre|nos|notre)/',
+            ' ',
+            $name
+        );
+        $name = preg_replace('/\s+/', ' ', $name);
         $words = explode(' ', $name);
         $this->acronym = '';
-        foreach($words as $w){
+        foreach ($words as $w) {
             $this->acronym .= substr($w, 0, 1);
         }
     }
@@ -215,6 +219,7 @@ class PostTarget
     public function setAcronym($acronym)
     {
         $this->acronym = $acronym;
+
         return $this;
     }
 

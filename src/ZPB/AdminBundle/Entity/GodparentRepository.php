@@ -18,13 +18,24 @@ class GodparentRepository extends EntityRepository implements UserProviderInterf
 {
     public function createPassword()
     {
-        $chars = array_merge(range(0,9), range('a','z'),range('A', 'Z'));
+        $chars = array_merge(range(0, 9), range('a', 'z'), range('A', 'Z'));
         shuffle($chars);
         $password = '';
-        for($i=0;$i<20;$i++){
-            $password .= $chars[rand(0,61)];
+        for ($i = 0; $i < 20; $i++) {
+            $password .= $chars[rand(0, 61)];
         }
+
         return $password;
+    }
+
+    public function loadUserByUsername($username)
+    {
+        $user = $this->findOneByEmailOrUsername($username);
+        if (!$user) {
+            throw new UsernameNotFoundException();
+        }
+
+        return $user;
     }
 
     public function findOneByEmailOrUsername($username)
@@ -33,27 +44,20 @@ class GodparentRepository extends EntityRepository implements UserProviderInterf
             ->andWhere('u.username=:username OR u.email=:email')
             ->setParameter('username', $username)
             ->setParameter('email', $username);
-        return $qb->getQuery()->getOneOrNullResult();
-    }
 
-    public function loadUserByUsername($username)
-    {
-        $user = $this->findOneByEmailOrUsername($username);
-        if(!$user){
-            throw new UsernameNotFoundException();
-        }
-        return $user;
+        return $qb->getQuery()->getOneOrNullResult();
     }
 
     public function refreshUser(UserInterface $user)
     {
         $class = get_class($user);
-        if(!$this->supportsClass($class)){
+        if (!$this->supportsClass($class)) {
             throw new UnsupportedUserException();
         }
-        if(null === $user = $this->find($user->getId())){
+        if (null === $user = $this->find($user->getId())) {
             throw new UsernameNotFoundException();
         }
+
         return $user;
     }
 

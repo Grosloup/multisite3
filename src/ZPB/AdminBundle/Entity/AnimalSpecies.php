@@ -429,6 +429,16 @@ class AnimalSpecies
     }
 
     /**
+     * Get longName
+     *
+     * @return string
+     */
+    public function getLongName()
+    {
+        return $this->longName;
+    }
+
+    /**
      * Set longName
      *
      * @param string $longName
@@ -442,13 +452,13 @@ class AnimalSpecies
     }
 
     /**
-     * Get longName
+     * Get canonicalLongName
      *
-     * @return string 
+     * @return string
      */
-    public function getLongName()
+    public function getCanonicalLongName()
     {
-        return $this->longName;
+        return $this->canonicalLongName;
     }
 
     /**
@@ -465,13 +475,13 @@ class AnimalSpecies
     }
 
     /**
-     * Get canonicalLongName
+     * Get habitat
      *
-     * @return string 
+     * @return string
      */
-    public function getCanonicalLongName()
+    public function getHabitat()
     {
-        return $this->canonicalLongName;
+        return $this->habitat;
     }
 
     /**
@@ -488,13 +498,13 @@ class AnimalSpecies
     }
 
     /**
-     * Get habitat
+     * Get geoDistribution
      *
-     * @return string 
+     * @return string
      */
-    public function getHabitat()
+    public function getGeoDistribution()
     {
-        return $this->habitat;
+        return $this->geoDistribution;
     }
 
     /**
@@ -511,13 +521,13 @@ class AnimalSpecies
     }
 
     /**
-     * Get geoDistribution
+     * Get diet
      *
-     * @return string 
+     * @return string
      */
-    public function getGeoDistribution()
+    public function getDiet()
     {
-        return $this->geoDistribution;
+        return $this->diet;
     }
 
     /**
@@ -534,13 +544,13 @@ class AnimalSpecies
     }
 
     /**
-     * Get diet
+     * Get size
      *
-     * @return string 
+     * @return string
      */
-    public function getDiet()
+    public function getSize()
     {
-        return $this->diet;
+        return $this->size;
     }
 
     /**
@@ -557,13 +567,13 @@ class AnimalSpecies
     }
 
     /**
-     * Get size
+     * Get weight
      *
-     * @return string 
+     * @return string
      */
-    public function getSize()
+    public function getWeight()
     {
-        return $this->size;
+        return $this->weight;
     }
 
     /**
@@ -580,13 +590,13 @@ class AnimalSpecies
     }
 
     /**
-     * Get weight
+     * Get lifespan
      *
-     * @return string 
+     * @return string
      */
-    public function getWeight()
+    public function getLifespan()
     {
-        return $this->weight;
+        return $this->lifespan;
     }
 
     /**
@@ -600,15 +610,5 @@ class AnimalSpecies
         $this->lifespan = $lifespan;
 
         return $this;
-    }
-
-    /**
-     * Get lifespan
-     *
-     * @return string 
-     */
-    public function getLifespan()
-    {
-        return $this->lifespan;
     }
 }

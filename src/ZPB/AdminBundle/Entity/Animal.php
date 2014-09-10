@@ -101,6 +101,7 @@ class Animal
         $this->setIsArchived(false);
         $this->setIsDropped(false);
     }
+
     /**
      * Get id
      *
@@ -130,29 +131,6 @@ class Animal
     public function setName($name)
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get bornAt
-     *
-     * @return \DateTime
-     */
-    public function getBornAt()
-    {
-        return $this->bornAt;
-    }
-
-    /**
-     * Set bornAt
-     *
-     * @param \DateTime $bornAt
-     * @return Animal
-     */
-    public function setBornAt($bornAt)
-    {
-        $this->bornAt = $bornAt;
 
         return $this;
     }
@@ -202,7 +180,6 @@ class Animal
 
         return $this;
     }
-
 
     /**
      * Get longName
@@ -440,12 +417,36 @@ class Animal
         $todayYear = $today->format("Y");
         $birthYear = $this->getBornAt()->format("Y");
         $years = $todayYear - $birthYear;
-        if($years < 1){
+        if ($years < 1) {
             return 'Moins d\'un an';
         }
-        if($years == 1){
+        if ($years == 1) {
             return '1 an';
         }
+
         return $years . ' ans';
+    }
+
+    /**
+     * Get bornAt
+     *
+     * @return \DateTime
+     */
+    public function getBornAt()
+    {
+        return $this->bornAt;
+    }
+
+    /**
+     * Set bornAt
+     *
+     * @param \DateTime $bornAt
+     * @return Animal
+     */
+    public function setBornAt($bornAt)
+    {
+        $this->bornAt = $bornAt;
+
+        return $this;
     }
 }

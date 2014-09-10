@@ -3,7 +3,6 @@
 namespace ZPB\AdminBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
-use ZPB\AdminBundle\Entity\PostTarget;
 
 /**
  * PostRepository
@@ -18,7 +17,7 @@ class PostRepository extends EntityRepository
         $post->setIsPublished(true)->setIsDropped(false)->setIsArchived(false)->setIsDraft(false);
         $post->setPublishedAt(new \DateTime())->setDroppedAt(null)->setArchivedAt(null);
         $this->_em->persist($post);
-        if($dbSave){
+        if ($dbSave) {
             $this->_em->flush();
         }
     }
@@ -28,7 +27,7 @@ class PostRepository extends EntityRepository
         $post->setIsPublished(false)->setIsDropped(true)->setIsArchived(false)->setIsDraft(false);
         $post->setPublishedAt(null)->setDroppedAt(new \DateTime())->setArchivedAt(null);
         $this->_em->persist($post);
-        if($dbSave){
+        if ($dbSave) {
             $this->_em->flush();
         }
     }
@@ -38,7 +37,7 @@ class PostRepository extends EntityRepository
         $post->setIsPublished(false)->setIsDropped(false)->setIsArchived(true)->setIsDraft(false);
         $post->setPublishedAt(null)->setDroppedAt(null)->setArchivedAt(new \DateTime());
         $this->_em->persist($post);
-        if($dbSave){
+        if ($dbSave) {
             $this->_em->flush();
         }
     }
@@ -51,14 +50,15 @@ class PostRepository extends EntityRepository
 
     public function getPublished(PostTarget $target = null)
     {
-        $q = $this->_em->createQuery('SELECT p FROM ZPB\AdminBundle\Entity\Post p JOIN ZPB\AdminBundle\Entity\PostTarget t WHERE p.isPublished=:isPublished AND t.slug=:slug ORDER BY p.publishedAt DESC');
+        $q = $this->_em->createQuery(
+            'SELECT p FROM ZPB\AdminBundle\Entity\Post p JOIN ZPB\AdminBundle\Entity\PostTarget t WHERE p.isPublished=:isPublished AND t.slug=:slug ORDER BY p.publishedAt DESC'
+        );
         $q->setParameter('isPublished', true);
         $q->setParameter('slug', $target->getSlug());
+
         return $q->getResult();
 
     }
-
-
 
 
 }

@@ -14,9 +14,10 @@ class PostTargetRepository extends EntityRepository
 {
     public function getFrontPost(PostTarget $target)
     {
-        if($target->getFrontPostId() != null){
+        if ($target->getFrontPostId() != null) {
             $post = $this->_em->getRepository('ZPBAdminBundle:Post')->findOneByLongId($target->getFrontPostId());
         }
+
         return null;
     }
 }

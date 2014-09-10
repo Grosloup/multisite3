@@ -15,8 +15,11 @@ class PostImgRepository extends EntityRepository
     public function findAllByImg(MediaImage $image)
     {
         $id = $image->getId();
-        $q = $this->_em->createQuery('SELECT p FROM ZPB\AdminBundle\Entity\PostImg p join ZPB\AdminBundle\Entity\MediaImage i WHERE i.id=:id');
+        $q = $this->_em->createQuery(
+            'SELECT p FROM ZPB\AdminBundle\Entity\PostImg p join ZPB\AdminBundle\Entity\MediaImage i WHERE i.id=:id'
+        );
         $q->setParameter('id', $id);
+
         return $q->getResult();
 
     }
