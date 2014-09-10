@@ -68,11 +68,21 @@ class CommandItemSponsor implements CommandItemInterface
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get amountHt
+     *
+     * @return float
+     */
+    public function getAmountHt()
+    {
+        return $this->amountHt;
     }
 
     /**
@@ -89,13 +99,13 @@ class CommandItemSponsor implements CommandItemInterface
     }
 
     /**
-     * Get amountHt
+     * Get amountTtc
      *
-     * @return float 
+     * @return float
      */
-    public function getAmountHt()
+    public function getAmountTtc()
     {
-        return $this->amountHt;
+        return $this->amountTtc;
     }
 
     /**
@@ -112,13 +122,13 @@ class CommandItemSponsor implements CommandItemInterface
     }
 
     /**
-     * Get amountTtc
+     * Get tva
      *
-     * @return float 
+     * @return float
      */
-    public function getAmountTtc()
+    public function getTva()
     {
-        return $this->amountTtc;
+        return $this->tva;
     }
 
     /**
@@ -135,13 +145,13 @@ class CommandItemSponsor implements CommandItemInterface
     }
 
     /**
-     * Get tva
+     * Get isPresent
      *
-     * @return float 
+     * @return boolean
      */
-    public function getTva()
+    public function getIsPresent()
     {
-        return $this->tva;
+        return $this->isPresent;
     }
 
     /**
@@ -158,13 +168,13 @@ class CommandItemSponsor implements CommandItemInterface
     }
 
     /**
-     * Get isPresent
+     * Get createdAt
      *
-     * @return boolean 
+     * @return \DateTime
      */
-    public function getIsPresent()
+    public function getCreatedAt()
     {
-        return $this->isPresent;
+        return $this->createdAt;
     }
 
     /**
@@ -181,13 +191,13 @@ class CommandItemSponsor implements CommandItemInterface
     }
 
     /**
-     * Get createdAt
+     * Get command
      *
-     * @return \DateTime 
+     * @return Command
      */
-    public function getCreatedAt()
+    public function getCommand()
     {
-        return $this->createdAt;
+        return $this->command;
     }
 
     /**
@@ -201,15 +211,5 @@ class CommandItemSponsor implements CommandItemInterface
         $this->command = $command;
 
         return $this;
-    }
-
-    /**
-     * Get command
-     *
-     * @return Command
-     */
-    public function getCommand()
-    {
-        return $this->command;
     }
 }

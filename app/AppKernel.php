@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new ZPB\AdminBundle\ZPBAdminBundle(),
             new ZPB\Sites\ZooBundle\ZPBSitesZooBundle(),
+            new ZPB\Sites\BNBundle\ZPBSitesBNBundle(),
+            new ZPB\Sites\ProBundle\ZPBSitesProBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

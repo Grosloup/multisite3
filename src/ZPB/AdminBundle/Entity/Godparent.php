@@ -5,10 +5,10 @@ namespace ZPB\AdminBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Security\Core\User\AdvancedUserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 use Serializable;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Godparent
@@ -240,9 +240,9 @@ class Godparent implements AdvancedUserInterface, Serializable
     public function setTmp($tmp)
     {
         $this->tmp = $tmp;
+
         return $this;
     }
-
 
 
     /**
@@ -270,14 +270,22 @@ class Godparent implements AdvancedUserInterface, Serializable
     }
 
     /**
+     * Get isActive
+     *
+     * @return boolean
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
      * @param boolean $isActive
      */
     public function setIsActive($isActive)
     {
         $this->isActive = $isActive;
     }
-
-
 
     /**
      * @return array
@@ -311,8 +319,6 @@ class Godparent implements AdvancedUserInterface, Serializable
         $this->salt = $salt;
     }
 
-
-
     /**
      * @return string
      */
@@ -329,8 +335,6 @@ class Godparent implements AdvancedUserInterface, Serializable
         $this->username = $username;
     }
 
-
-
     /**
      * Get id
      *
@@ -339,20 +343,6 @@ class Godparent implements AdvancedUserInterface, Serializable
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set firstname
-     *
-     * @param string $firstname
-     * @return Godparent
-     */
-    public function setFirstname($firstname)
-    {
-
-        $this->firstname = mb_strtoupper(substr($firstname,0,1),'UTF-8').mb_strtolower(substr($firstname,1), 'UTF-8');
-        //$this->firstname= $firstname;
-        return $this;
     }
 
     /**
@@ -366,15 +356,20 @@ class Godparent implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * Set lastname
+     * Set firstname
      *
-     * @param string $lastname
+     * @param string $firstname
      * @return Godparent
      */
-    public function setLastname($lastname)
+    public function setFirstname($firstname)
     {
-        $this->lastname = mb_strtoupper(substr($lastname,0,1),'UTF-8').mb_strtolower(substr($lastname,1), 'UTF-8');
-        //$this->lastname = $lastname;
+
+        $this->firstname = mb_strtoupper(substr($firstname, 0, 1), 'UTF-8') . mb_strtolower(
+                substr($firstname, 1),
+                'UTF-8'
+            );
+
+        //$this->firstname= $firstname;
         return $this;
     }
 
@@ -386,6 +381,33 @@ class Godparent implements AdvancedUserInterface, Serializable
     public function getLastname()
     {
         return $this->lastname;
+    }
+
+    /**
+     * Set lastname
+     *
+     * @param string $lastname
+     * @return Godparent
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = mb_strtoupper(substr($lastname, 0, 1), 'UTF-8') . mb_strtolower(
+                substr($lastname, 1),
+                'UTF-8'
+            );
+
+        //$this->lastname = $lastname;
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
     }
 
     /**
@@ -402,13 +424,13 @@ class Godparent implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * Get password
+     * Get email
      *
      * @return string
      */
-    public function getPassword()
+    public function getEmail()
     {
-        return $this->password;
+        return $this->email;
     }
 
     /**
@@ -425,13 +447,13 @@ class Godparent implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * Get email
+     * Get phone
      *
      * @return string
      */
-    public function getEmail()
+    public function getPhone()
     {
-        return $this->email;
+        return $this->phone;
     }
 
     /**
@@ -448,13 +470,13 @@ class Godparent implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * Get phone
+     * Get address
      *
      * @return string
      */
-    public function getPhone()
+    public function getAddress()
     {
-        return $this->phone;
+        return $this->address;
     }
 
     /**
@@ -471,13 +493,13 @@ class Godparent implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * Get address
+     * Get country
      *
      * @return string
      */
-    public function getAddress()
+    public function getCountry()
     {
-        return $this->address;
+        return $this->country;
     }
 
     /**
@@ -494,13 +516,13 @@ class Godparent implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * Get country
+     * Get birthdate
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getCountry()
+    public function getBirthdate()
     {
-        return $this->country;
+        return $this->birthdate;
     }
 
     /**
@@ -517,13 +539,13 @@ class Godparent implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * Get birthdate
+     * Get civilite
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getBirthdate()
+    public function getCivilite()
     {
-        return $this->birthdate;
+        return $this->civilite;
     }
 
     /**
@@ -540,13 +562,13 @@ class Godparent implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * Get civilite
+     * Get createdAt
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getCivilite()
+    public function getCreatedAt()
     {
-        return $this->civilite;
+        return $this->createdAt;
     }
 
     /**
@@ -560,16 +582,6 @@ class Godparent implements AdvancedUserInterface, Serializable
         $this->createdAt = $createdAt;
 
         return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
     }
 
     /**
@@ -645,12 +657,14 @@ class Godparent implements AdvancedUserInterface, Serializable
 
     public function serialize()
     {
-        return serialize([
-            $this->id,
-            $this->username,
-            $this->password,
-            $this->salt
-        ]);
+        return serialize(
+            [
+                $this->id,
+                $this->username,
+                $this->password,
+                $this->salt
+            ]
+        );
     }
 
     public function unserialize($serialized)
@@ -661,16 +675,6 @@ class Godparent implements AdvancedUserInterface, Serializable
             $this->password,
             $this->salt
             ) = unserialize($serialized);
-    }
-
-    /**
-     * Get isActive
-     *
-     * @return boolean
-     */
-    public function getIsActive()
-    {
-        return $this->isActive;
     }
 
     /**
@@ -707,6 +711,16 @@ class Godparent implements AdvancedUserInterface, Serializable
     }
 
     /**
+     * Get address2
+     *
+     * @return string
+     */
+    public function getAddress2()
+    {
+        return $this->address2;
+    }
+
+    /**
      * Set address2
      *
      * @param string $address2
@@ -720,13 +734,13 @@ class Godparent implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * Get address2
+     * Get batiment
      *
      * @return string
      */
-    public function getAddress2()
+    public function getBatiment()
     {
-        return $this->address2;
+        return $this->batiment;
     }
 
     /**
@@ -743,13 +757,13 @@ class Godparent implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * Get batiment
+     * Get door
      *
      * @return string
      */
-    public function getBatiment()
+    public function getDoor()
     {
-        return $this->batiment;
+        return $this->door;
     }
 
     /**
@@ -766,13 +780,13 @@ class Godparent implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * Get door
+     * Get floor
      *
      * @return string
      */
-    public function getDoor()
+    public function getFloor()
     {
-        return $this->door;
+        return $this->floor;
     }
 
     /**
@@ -789,13 +803,13 @@ class Godparent implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * Get floor
+     * Get postalCode
      *
      * @return string
      */
-    public function getFloor()
+    public function getPostalCode()
     {
-        return $this->floor;
+        return $this->postalCode;
     }
 
     /**
@@ -811,15 +825,14 @@ class Godparent implements AdvancedUserInterface, Serializable
         return $this;
     }
 
-
     /**
-     * Get postalCode
+     * Get city
      *
      * @return string
      */
-    public function getPostalCode()
+    public function getCity()
     {
-        return $this->postalCode;
+        return $this->city;
     }
 
     /**
@@ -833,16 +846,6 @@ class Godparent implements AdvancedUserInterface, Serializable
         $this->city = $city;
 
         return $this;
-    }
-
-    /**
-     * Get city
-     *
-     * @return string
-     */
-    public function getCity()
-    {
-        return $this->city;
     }
 
     /**
@@ -871,7 +874,7 @@ class Godparent implements AdvancedUserInterface, Serializable
     /**
      * Get sponsorings
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSponsorings()
     {

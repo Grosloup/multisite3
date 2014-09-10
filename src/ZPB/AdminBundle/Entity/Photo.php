@@ -4,8 +4,8 @@ namespace ZPB\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Photo
@@ -18,6 +18,10 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class Photo implements ResizeableInterface
 {
     /**
+     * @var \Symfony\Component\HttpFoundation\File\UploadedFile
+     */
+    public $file;
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -25,7 +29,6 @@ class Photo implements ResizeableInterface
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var string
      *
@@ -33,49 +36,42 @@ class Photo implements ResizeableInterface
      * @Assert\Regex("/^[a-zA-Z0-9._-]*$/", message="Ce champ contient des caractères non autorisés.")
      */
     private $filename;
-
     /**
      * @var string
      *
      * @ORM\Column(name="extension", type="string", length=6, nullable=false)
      */
     private $extension;
-
     /**
      * @var string
      *
      * @ORM\Column(name="mime", type="string", length=50, nullable=false)
      */
     private $mime;
-
     /**
      * @var integer
      *
      * @ORM\Column(name="width", type="integer", nullable=false)
      */
     private $width;
-
     /**
      * @var integer
      *
      * @ORM\Column(name="height", type="integer", nullable=false)
      */
     private $height;
-
     /**
      * @var string
      *
      * @ORM\Column(name="rootDir", type="string", length=255, nullable=false)
      */
     private $rootDir;
-
     /**
      * @var string
      *
      * @ORM\Column(name="webDir", type="string", length=255, nullable=false)
      */
     private $webDir;
-
     /**
      * @var \DateTime
      *
@@ -83,7 +79,6 @@ class Photo implements ResizeableInterface
      * @Gedmo\Timestampable(on="create")
      */
     private $createdAt;
-
     /**
      * @var \DateTime
      *
@@ -91,19 +86,16 @@ class Photo implements ResizeableInterface
      * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
-
     /**
      * @var string
      * @ORM\Column(name="title", type="text", nullable=true)
      */
     private $title;
-
     /**
      * @var string
      * @ORM\Column(name="copyright", type="string", nullable=false, length=255)
      */
     private $copyright;
-
     /**
      * @var string
      * @ORM\Column(name="legend", type="text", nullable=true)
@@ -125,23 +117,15 @@ class Photo implements ResizeableInterface
      * @ORM\Column(name="position", type="integer")
      */
     private $position;
-
     /**
      * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\Institution")
      * @ORM\JoinColumn(name="institution_id", referencedColumnName="id")
      */
     private $institution;
-
     /**
      * @var string
      */
     private $absolutePath;
-
-    /**
-     * @var \Symfony\Component\HttpFoundation\File\UploadedFile
-     */
-    public $file;
-
     /**
      * @var string
      * @ORM\Column(name="long_id", type="string", length=15, nullable=false, unique=true)
@@ -152,7 +136,7 @@ class Photo implements ResizeableInterface
     public function __construct()
     {
         $now = (new \DateTime())->getTimestamp();
-        $this->longId = substr(base_convert(sha1(uniqid($now, true)), 16, 36),0 ,15);
+        $this->longId = substr(base_convert(sha1(uniqid($now, true)), 16, 36), 0, 15);
     }
 
     public function getLongId()
@@ -160,9 +144,22 @@ class Photo implements ResizeableInterface
         return $this->longId;
     }
 
+    /**
+     * Set longId
+     *
+     * @param string $longId
+     * @return Photo
+     */
+    public function setLongId($longId)
+    {
+        $this->longId = $longId;
+
+        return $this;
+    }
+
     public function upload()
     {
-        if(!$this->file){
+        if (!$this->file) {
             return false;
         }
 
@@ -170,7 +167,7 @@ class Photo implements ResizeableInterface
         $this->mime = $this->file->getMimeType();
         $dest = $this->rootDir . $this->webDir;
 
-        if(!$this->filename){
+        if (!$this->filename) {
             $this->filename = $this->sanitizeFilename($this->file->getClientOriginalName());
         }
         $this->file->move($dest, $this->filename . '.' . $this->extension);
@@ -178,10 +175,11 @@ class Photo implements ResizeableInterface
         $this->width = $size[0];
         $this->height = $size[1];
         $this->file = null;
+
         return true;
     }
 
-    private function sanitizeFilename($string="")
+    private function sanitizeFilename($string = "")
     {
         return preg_replace('/[^a-zA-Z0-9._-]/', '', $string);
     }
@@ -209,7 +207,7 @@ class Photo implements ResizeableInterface
      */
     public function deleteFile()
     {
-        if(file_exists($this->absolutePath)){
+        if (file_exists($this->absolutePath)) {
             unlink($this->absolutePath);
         }
     }
@@ -230,6 +228,7 @@ class Photo implements ResizeableInterface
     {
         $year = (new \DateTime())->format('Y');
         $this->copyright = '@ ' . trim($copyright, ' @') . ' - ' . $year;
+
         return $this;
     }
 
@@ -248,6 +247,7 @@ class Photo implements ResizeableInterface
     public function setDescription($description)
     {
         $this->description = $description;
+
         return $this;
     }
 
@@ -266,6 +266,7 @@ class Photo implements ResizeableInterface
     public function setLegend($legend)
     {
         $this->legend = $legend;
+
         return $this;
     }
 
@@ -284,6 +285,7 @@ class Photo implements ResizeableInterface
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -505,6 +507,16 @@ class Photo implements ResizeableInterface
     }
 
     /**
+     * Get position
+     *
+     * @return integer
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
      * Set position
      *
      * @param integer $position
@@ -518,13 +530,13 @@ class Photo implements ResizeableInterface
     }
 
     /**
-     * Get position
+     * Get category
      *
-     * @return integer
+     * @return PhotoCategory
      */
-    public function getPosition()
+    public function getCategory()
     {
-        return $this->position;
+        return $this->category;
     }
 
     /**
@@ -541,13 +553,13 @@ class Photo implements ResizeableInterface
     }
 
     /**
-     * Get category
+     * Get institution
      *
-     * @return PhotoCategory
+     * @return Institution
      */
-    public function getCategory()
+    public function getInstitution()
     {
-        return $this->category;
+        return $this->institution;
     }
 
     /**
@@ -559,31 +571,6 @@ class Photo implements ResizeableInterface
     public function setInstitution(Institution $institution = null)
     {
         $this->institution = $institution;
-
-        return $this;
-    }
-
-    /**
-     * Get institution
-     *
-     * @return Institution
-     */
-    public function getInstitution()
-    {
-        return $this->institution;
-    }
-
-
-
-    /**
-     * Set longId
-     *
-     * @param string $longId
-     * @return Photo
-     */
-    public function setLongId($longId)
-    {
-        $this->longId = $longId;
 
         return $this;
     }

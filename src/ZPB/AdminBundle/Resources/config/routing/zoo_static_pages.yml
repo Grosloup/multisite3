@@ -1,0 +1,40 @@
+zpb_admin_zoo_static_pages_list:
+    path: /
+    defaults: { _controller: ZPBAdminBundle:Zoo/StaticPage:list}
+    methods: ["GET"]
+
+
+
+zpb_admin_zoo_static_pages_create:
+    path: /nouvelle
+    defaults: { _controller: ZPBAdminBundle:Zoo/StaticPage:create}
+    methods: ["GET","POST"]
+
+
+
+
+zpb_admin_zoo_static_pages_update:
+    path: /modifier/{id}
+    defaults: { _controller: ZPBAdminBundle:Zoo/StaticPage:update}
+    methods: ["GET","POST"]
+    requirements:
+        id: \d+
+
+
+
+zpb_admin_zoo_static_pages_delete:
+    path: /supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:Zoo/StaticPage:delete}
+    methods: ["GET"]
+    requirements:
+        id: \d+
+
+
+
+
+
+
+
+
+
+

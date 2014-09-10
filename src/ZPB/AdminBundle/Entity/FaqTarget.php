@@ -39,11 +39,21 @@ class FaqTarget
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get faqId
+     *
+     * @return integer
+     */
+    public function getFaqId()
+    {
+        return $this->faqId;
     }
 
     /**
@@ -60,13 +70,13 @@ class FaqTarget
     }
 
     /**
-     * Get faqId
+     * Get targetId
      *
-     * @return integer 
+     * @return integer
      */
-    public function getFaqId()
+    public function getTargetId()
     {
-        return $this->faqId;
+        return $this->targetId;
     }
 
     /**
@@ -80,15 +90,5 @@ class FaqTarget
         $this->targetId = $targetId;
 
         return $this;
-    }
-
-    /**
-     * Get targetId
-     *
-     * @return integer 
-     */
-    public function getTargetId()
-    {
-        return $this->targetId;
     }
 }

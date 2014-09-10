@@ -38,11 +38,21 @@ class FAQ
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get question
+     *
+     * @return string
+     */
+    public function getQuestion()
+    {
+        return $this->question;
     }
 
     /**
@@ -59,13 +69,13 @@ class FAQ
     }
 
     /**
-     * Get question
+     * Get response
      *
-     * @return string 
+     * @return string
      */
-    public function getQuestion()
+    public function getResponse()
     {
-        return $this->question;
+        return $this->response;
     }
 
     /**
@@ -79,15 +89,5 @@ class FAQ
         $this->response = $response;
 
         return $this;
-    }
-
-    /**
-     * Get response
-     *
-     * @return string 
-     */
-    public function getResponse()
-    {
-        return $this->response;
     }
 }

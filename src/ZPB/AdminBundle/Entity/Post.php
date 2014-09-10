@@ -159,22 +159,25 @@ class Post
         $this->isDropped = false;
         $this->isArchived = false;
         $this->isPublished = false;
-        $longId = md5((new \DateTime('now', new \DateTimeZone('Europe/Paris')))->getTimestamp() . uniqid(mt_rand(), true));
+        $longId = md5(
+            (new \DateTime('now', new \DateTimeZone('Europe/Paris')))->getTimestamp() . uniqid(mt_rand(), true)
+        );
         $this->longId = substr($longId, 0, 8);
     }
 
     public function getStatus()
     {
-        if($this->isArchived){
+        if ($this->isArchived) {
             return 'Archivé';
         }
-        if($this->isPublished){
+        if ($this->isPublished) {
             return 'Publié';
         }
-        if($this->isDropped){
+        if ($this->isDropped) {
             return 'Encorbeillé';
         }
-        return  'Brouillon';
+
+        return 'Brouillon';
     }
 
     /**
@@ -202,6 +205,7 @@ class Post
     public function setLongId($longId)
     {
         $this->longId = $longId;
+
         return $this;
     }
 
@@ -538,6 +542,16 @@ class Post
     }
 
     /**
+     * Get category
+     *
+     * @return PostCategory
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
      * Set category
      *
      * @param PostCategory $category
@@ -548,16 +562,6 @@ class Post
         $this->category = $category;
 
         return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return PostCategory
-     */
-    public function getCategory()
-    {
-        return $this->category;
     }
 
     /**
@@ -594,6 +598,16 @@ class Post
     }
 
     /**
+     * Get illustration
+     *
+     * @return PostImg
+     */
+    public function getIllustration()
+    {
+        return $this->illustration;
+    }
+
+    /**
      * Set illustration
      *
      * @param PostImg $illustration
@@ -604,15 +618,5 @@ class Post
         $this->illustration = $illustration;
 
         return $this;
-    }
-
-    /**
-     * Get illustration
-     *
-     * @return PostImg
-     */
-    public function getIllustration()
-    {
-        return $this->illustration;
     }
 }

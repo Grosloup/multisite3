@@ -47,6 +47,16 @@ class PostImg
     }
 
     /**
+     * Get postLongId
+     *
+     * @return integer
+     */
+    public function getPostLongId()
+    {
+        return $this->postLongId;
+    }
+
+    /**
      * Set postLongId
      *
      * @param integer $postLongId
@@ -60,16 +70,14 @@ class PostImg
     }
 
     /**
-     * Get postLongId
+     * Get img
      *
-     * @return integer
+     * @return MediaImage
      */
-    public function getPostLongId()
+    public function getImg()
     {
-        return $this->postLongId;
+        return $this->img;
     }
-
-
 
     /**
      * Set img
@@ -82,15 +90,5 @@ class PostImg
         $this->img = $img;
 
         return $this;
-    }
-
-    /**
-     * Get img
-     *
-     * @return MediaImage
-     */
-    public function getImg()
-    {
-        return $this->img;
     }
 }

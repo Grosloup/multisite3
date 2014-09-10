@@ -3,12 +3,12 @@
 namespace ZPB\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Serializable;
-use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use ZPB\AdminBundle\Validator\Constraints as ZPBAssert;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * AdminUser
@@ -164,6 +164,7 @@ class AdminUser implements AdvancedUserInterface, Serializable
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
+
         return $this;
     }
 
@@ -193,6 +194,7 @@ class AdminUser implements AdvancedUserInterface, Serializable
     public function setActivatedAt($activatedAt)
     {
         $this->activatedAt = $activatedAt;
+
         return $this;
     }
 
@@ -211,6 +213,7 @@ class AdminUser implements AdvancedUserInterface, Serializable
     public function setActivationCode($activationCode)
     {
         $this->activationCode = $activationCode;
+
         return $this;
     }
 
@@ -223,12 +226,23 @@ class AdminUser implements AdvancedUserInterface, Serializable
     }
 
     /**
+     * Get isActive
+     *
+     * @return boolean
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
      * @param boolean $isActive
      * @return AdminUser
      */
     public function setIsActive($isActive)
     {
         $this->isActive = $isActive;
+
         return $this;
     }
 
@@ -241,12 +255,23 @@ class AdminUser implements AdvancedUserInterface, Serializable
     }
 
     /**
+     * Get isLocked
+     *
+     * @return boolean
+     */
+    public function getIsLocked()
+    {
+        return $this->isLocked;
+    }
+
+    /**
      * @param boolean $isLocked
      * @return AdminUser
      */
     public function setIsLocked($isLocked)
     {
         $this->isLocked = $isLocked;
+
         return $this;
     }
 
@@ -265,6 +290,7 @@ class AdminUser implements AdvancedUserInterface, Serializable
     public function setPlainPassword($plainPassword)
     {
         $this->plainPassword = $plainPassword;
+
         return $this;
     }
 
@@ -283,10 +309,19 @@ class AdminUser implements AdvancedUserInterface, Serializable
     public function setRegisterBefore($registerBefore)
     {
         $this->registerBefore = $registerBefore;
+
         return $this;
     }
 
-
+    /**
+     * Get firstname
+     *
+     * @return string
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
 
     /**
      * Set firstname
@@ -302,13 +337,13 @@ class AdminUser implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * Get firstname
+     * Get lastname
      *
      * @return string
      */
-    public function getFirstname()
+    public function getLastname()
     {
-        return $this->firstname;
+        return $this->lastname;
     }
 
     /**
@@ -325,13 +360,13 @@ class AdminUser implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * Get lastname
+     * Get username
      *
      * @return string
      */
-    public function getLastname()
+    public function getUsername()
     {
-        return $this->lastname;
+        return $this->username;
     }
 
     /**
@@ -348,13 +383,13 @@ class AdminUser implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * Get username
+     * Get password
      *
      * @return string
      */
-    public function getUsername()
+    public function getPassword()
     {
-        return $this->username;
+        return $this->password;
     }
 
     /**
@@ -371,13 +406,13 @@ class AdminUser implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * Get password
+     * Get roles
      *
-     * @return string
+     * @return array
      */
-    public function getPassword()
+    public function getRoles()
     {
-        return $this->password;
+        return $this->roles;
     }
 
     /**
@@ -394,13 +429,13 @@ class AdminUser implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * Get roles
+     * Get salt
      *
-     * @return array
+     * @return string
      */
-    public function getRoles()
+    public function getSalt()
     {
-        return $this->roles;
+        return $this->salt;
     }
 
     /**
@@ -417,13 +452,13 @@ class AdminUser implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * Get salt
+     * Get email
      *
      * @return string
      */
-    public function getSalt()
+    public function getEmail()
     {
-        return $this->salt;
+        return $this->email;
     }
 
     /**
@@ -440,13 +475,13 @@ class AdminUser implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * Get email
+     * Get civility
      *
      * @return string
      */
-    public function getEmail()
+    public function getCivility()
     {
-        return $this->email;
+        return $this->civility;
     }
 
     /**
@@ -463,13 +498,13 @@ class AdminUser implements AdvancedUserInterface, Serializable
     }
 
     /**
-     * Get civility
+     * Get phone
      *
      * @return string
      */
-    public function getCivility()
+    public function getPhone()
     {
-        return $this->civility;
+        return $this->phone;
     }
 
     /**
@@ -485,40 +520,25 @@ class AdminUser implements AdvancedUserInterface, Serializable
         return $this;
     }
 
-    /**
-     * Get phone
-     *
-     * @return string
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-
-
     public function isAccountNonExpired()
     {
         return true;
     }
-
 
     public function isAccountNonLocked()
     {
         return !$this->isLocked;
     }
 
-
     public function isCredentialsNonExpired()
     {
         return true;
     }
 
-
     public function isEnabled()
     {
         return $this->isActive;
     }
-
 
     public function eraseCredentials()
     {
@@ -528,11 +548,13 @@ class AdminUser implements AdvancedUserInterface, Serializable
     public function serialize()
     {
 
-        return serialize([
+        return serialize(
+            [
                 $this->id,
                 $this->username,
                 $this->password
-            ]);
+            ]
+        );
     }
 
     public function unserialize($serialized)
@@ -542,25 +564,5 @@ class AdminUser implements AdvancedUserInterface, Serializable
             $this->username,
             $this->password
             ) = unserialize($serialized);
-    }
-
-    /**
-     * Get isActive
-     *
-     * @return boolean 
-     */
-    public function getIsActive()
-    {
-        return $this->isActive;
-    }
-
-    /**
-     * Get isLocked
-     *
-     * @return boolean 
-     */
-    public function getIsLocked()
-    {
-        return $this->isLocked;
     }
 }

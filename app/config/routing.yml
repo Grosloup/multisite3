@@ -1,3 +1,15 @@
+zpb_sites_pro:
+    resource: "@ZPBSitesProBundle/Resources/config/routing.yml"
+    prefix:   /
+    host: "new.pro.zoobeauval.com"
+    schemes: ["https"]
+
+zpb_sites_bn:
+    resource: "@ZPBSitesBNBundle/Resources/config/routing.yml"
+    prefix:   /
+    host: "new.beauval-nature.com"
+    schemes: ["https"]
+
 zpb_sites_zoo:
     resource: "@ZPBSitesZooBundle/Resources/config/routing.yml"
     prefix:   /

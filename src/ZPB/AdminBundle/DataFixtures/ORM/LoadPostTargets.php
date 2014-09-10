@@ -60,13 +60,35 @@ class LoadPostTargets  extends AbstractFixture implements OrderedFixtureInterfac
         $pt5 = new PostTarget();
         $pt5->setName('Beauval Nature');
         $manager->persist($pt5);
+
+        $pt6 = new PostTarget();
+        $pt6->setName('Pro');
+        $manager->persist($pt6);
+
+        $pt7 = new PostTarget();
+        $pt7->setName('Scolaires');
+        $manager->persist($pt7);
+
+        $pt8 = new PostTarget();
+        $pt8->setName('Groupes');
+        $manager->persist($pt8);
+
+        $pt9 = new PostTarget();
+        $pt9->setName('CE');
+        $manager->persist($pt9);
+
         $manager->flush();
+
 
         $this->addReference('zpb-news-pt-1',$pt1);
         $this->addReference('zpb-news-pt-2',$pt2);
         $this->addReference('zpb-news-pt-3',$pt3);
         $this->addReference('zpb-news-pt-4',$pt4);
         $this->addReference('zpb-news-pt-5',$pt5);
+        $this->addReference('zpb-news-pt-6',$pt6);
+        $this->addReference('zpb-news-pt-7',$pt7);
+        $this->addReference('zpb-news-pt-8',$pt8);
+        $this->addReference('zpb-news-pt-9',$pt9);
     }
 
     public function getOrder()

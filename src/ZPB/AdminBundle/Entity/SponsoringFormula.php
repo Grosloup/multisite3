@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * SponsoringFormula
  *
@@ -149,16 +150,6 @@ class SponsoringFormula
     }
 
     /**
-     * @param mixed $price
-     * @return SponsoringFormula
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-        return $this;
-    }
-
-    /**
      * @return mixed
      */
     public function getPrice()
@@ -166,7 +157,16 @@ class SponsoringFormula
         return $this->price;
     }
 
+    /**
+     * @param mixed $price
+     * @return SponsoringFormula
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
 
+        return $this;
+    }
 
     /**
      * Get slug
@@ -434,7 +434,7 @@ class SponsoringFormula
     /**
      * Get sponsorings
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSponsorings()
     {

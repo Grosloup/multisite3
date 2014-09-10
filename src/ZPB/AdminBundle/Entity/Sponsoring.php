@@ -114,6 +114,7 @@ class Sponsoring
     public function setDelayedAt($delayedAt)
     {
         $this->delayedAt = $delayedAt;
+
         return $this;
     }
 
@@ -132,9 +133,9 @@ class Sponsoring
     public function setIsActive($isActive)
     {
         $this->isActive = $isActive;
+
         return $this;
     }
-
 
 
     /**
@@ -162,10 +163,19 @@ class Sponsoring
     public function setType($type)
     {
         $this->type = $type;
+
         return $this;
     }
 
-
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 
     /**
      * Set name
@@ -181,13 +191,13 @@ class Sponsoring
     }
 
     /**
-     * Get name
+     * Get slug
      *
      * @return string
      */
-    public function getName()
+    public function getSlug()
     {
-        return $this->name;
+        return $this->slug;
     }
 
     /**
@@ -204,13 +214,13 @@ class Sponsoring
     }
 
     /**
-     * Get slug
+     * Get createdAt
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getSlug()
+    public function getCreatedAt()
     {
-        return $this->slug;
+        return $this->createdAt;
     }
 
     /**
@@ -227,13 +237,13 @@ class Sponsoring
     }
 
     /**
-     * Get createdAt
+     * Get startAt
      *
      * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getStartAt()
     {
-        return $this->createdAt;
+        return $this->startAt;
     }
 
     /**
@@ -250,13 +260,13 @@ class Sponsoring
     }
 
     /**
-     * Get startAt
+     * Get endAt
      *
      * @return \DateTime
      */
-    public function getStartAt()
+    public function getEndAt()
     {
-        return $this->startAt;
+        return $this->endAt;
     }
 
     /**
@@ -273,13 +283,13 @@ class Sponsoring
     }
 
     /**
-     * Get endAt
+     * Get godparent
      *
-     * @return \DateTime
+     * @return Godparent
      */
-    public function getEndAt()
+    public function getGodparent()
     {
-        return $this->endAt;
+        return $this->godparent;
     }
 
     /**
@@ -296,13 +306,13 @@ class Sponsoring
     }
 
     /**
-     * Get godparent
+     * Get formula
      *
-     * @return Godparent
+     * @return SponsoringFormula
      */
-    public function getGodparent()
+    public function getFormula()
     {
-        return $this->godparent;
+        return $this->formula;
     }
 
     /**
@@ -319,13 +329,13 @@ class Sponsoring
     }
 
     /**
-     * Get formula
+     * Get isPresent
      *
-     * @return SponsoringFormula
+     * @return boolean
      */
-    public function getFormula()
+    public function getIsPresent()
     {
-        return $this->formula;
+        return $this->isPresent;
     }
 
     /**
@@ -339,15 +349,5 @@ class Sponsoring
         $this->isPresent = $isPresent;
 
         return $this;
-    }
-
-    /**
-     * Get isPresent
-     *
-     * @return boolean 
-     */
-    public function getIsPresent()
-    {
-        return $this->isPresent;
     }
 }

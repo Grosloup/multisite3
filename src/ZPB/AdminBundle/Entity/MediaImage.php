@@ -4,8 +4,8 @@ namespace ZPB\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * MediaImage
@@ -18,6 +18,10 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class MediaImage
 {
     /**
+     * @var \Symfony\Component\HttpFoundation\File\UploadedFile
+     */
+    public $file;
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -25,7 +29,6 @@ class MediaImage
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var string
      *
@@ -33,49 +36,42 @@ class MediaImage
      * @Assert\Regex("/^[a-zA-Z0-9._-]*$/", message="Ce champ contient des caractères non autorisés.")
      */
     private $filename;
-
     /**
      * @var string
      *
      * @ORM\Column(name="extension", type="string", length=6, nullable=false)
      */
     private $extension;
-
     /**
      * @var string
      *
      * @ORM\Column(name="mime", type="string", length=50, nullable=false)
      */
     private $mime;
-
     /**
      * @var integer
      *
      * @ORM\Column(name="width", type="integer", nullable=false)
      */
     private $width;
-
     /**
      * @var integer
      *
      * @ORM\Column(name="height", type="integer", nullable=false)
      */
     private $height;
-
     /**
      * @var string
      *
      * @ORM\Column(name="rootDir", type="string", length=255, nullable=false)
      */
     private $rootDir;
-
     /**
      * @var string
      *
      * @ORM\Column(name="webDir", type="string", length=255, nullable=false)
      */
     private $webDir;
-
     /**
      * @var \DateTime
      *
@@ -83,7 +79,6 @@ class MediaImage
      * @Gedmo\Timestampable(on="create")
      */
     private $createdAt;
-
     /**
      * @var \DateTime
      *
@@ -91,35 +86,31 @@ class MediaImage
      * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
-
     /**
      * @var string
      * @ORM\Column(name="copyright", type="string", nullable=false, length=255)
      */
     private $copyright;
-
     /**
      * @var string
      * @ORM\Column(name="title", type="text", nullable=true)
      */
     private $title;
-
     /**
      * @var string
      */
     private $absolutePath;
-
-    /**
-     * @var \Symfony\Component\HttpFoundation\File\UploadedFile
-     */
-    public $file;
-
     /**
      * @var string
      * @ORM\Column(name="long_id", type="string", length=15, nullable=false, unique=true)
      */
     private $longId;
 
+    public function __construct()
+    {
+        $now = (new \DateTime())->getTimestamp();
+        $this->longId = substr(base_convert(sha1(uniqid($now, true)), 16, 36), 0, 15);
+    }
 
     /**
      * Get id
@@ -131,20 +122,27 @@ class MediaImage
         return $this->id;
     }
 
-    public function __construct()
-    {
-        $now = (new \DateTime())->getTimestamp();
-        $this->longId = substr(base_convert(sha1(uniqid($now, true)), 16, 36),0 ,15);
-    }
-
     public function getLongId()
     {
         return $this->longId;
     }
 
+    /**
+     * Set longId
+     *
+     * @param string $longId
+     * @return MediaImage
+     */
+    public function setLongId($longId)
+    {
+        $this->longId = $longId;
+
+        return $this;
+    }
+
     public function upload()
     {
-        if(!$this->file){
+        if (!$this->file) {
             return false;
         }
 
@@ -152,7 +150,7 @@ class MediaImage
         $this->mime = $this->file->getMimeType();
         $dest = $this->rootDir . $this->webDir;
 
-        if(!$this->filename){
+        if (!$this->filename) {
             $this->filename = $this->sanitizeFilename($this->file->getClientOriginalName());
         }
         $this->file->move($dest, $this->filename . '.' . $this->extension);
@@ -160,10 +158,11 @@ class MediaImage
         $this->width = $size[0];
         $this->height = $size[1];
         $this->file = null;
+
         return true;
     }
 
-    private function sanitizeFilename($string="")
+    private function sanitizeFilename($string = "")
     {
         return preg_replace('/[^a-zA-Z0-9._-]/', '', $string);
     }
@@ -191,7 +190,7 @@ class MediaImage
      */
     public function deleteFile()
     {
-        if(file_exists($this->absolutePath)){
+        if (file_exists($this->absolutePath)) {
             unlink($this->absolutePath);
         }
     }
@@ -211,6 +210,7 @@ class MediaImage
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -422,19 +422,6 @@ class MediaImage
     }
 
     /**
-     * Set longId
-     *
-     * @param string $longId
-     * @return MediaImage
-     */
-    public function setLongId($longId)
-    {
-        $this->longId = $longId;
-
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getCopyright()
@@ -449,6 +436,7 @@ class MediaImage
     public function setCopyright($copyright)
     {
         $this->copyright = $copyright;
+
         return $this;
     }
 
