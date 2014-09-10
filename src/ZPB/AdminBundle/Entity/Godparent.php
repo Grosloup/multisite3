@@ -659,10 +659,8 @@ class Godparent implements AdvancedUserInterface, Serializable
     {
         return serialize(
             [
-                $this->id,
-                $this->username,
-                $this->password,
-                $this->salt
+                $this->id
+
             ]
         );
     }
@@ -670,10 +668,8 @@ class Godparent implements AdvancedUserInterface, Serializable
     public function unserialize($serialized)
     {
         list(
-            $this->id,
-            $this->username,
-            $this->password,
-            $this->salt
+            $this->id
+
             ) = unserialize($serialized);
     }
 

@@ -22,10 +22,12 @@ namespace ZPB\Sites\ZooBundle\Controller\Parrainage;
 
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use ZPB\AdminBundle\Controller\BaseController;
+use ZPB\AdminBundle\Entity\Godparent;
 use ZPB\Sites\ZooBundle\Form\Model\ChangePassword;
 use ZPB\Sites\ZooBundle\Form\Type\MyAccountType;
 use ZPB\Sites\ZooBundle\Form\Type\NewPasswordType;
@@ -65,23 +67,39 @@ class AccountController extends BaseController
 
         $changePasswordModel = new ChangePassword();
         $pw_form = $this->createForm(new NewPasswordType(), $changePasswordModel);
+        if($request->isMethod('post')){
+            if($request->request->has('godparent_update_form')){
+                $form->handleRequest($request);
+                if($form->isValid()){
+                    $this->getManager()->persist($user);
+                    $this->getManager()->flush();
+                    $this->authenticateUser($user);
+                    return $this->redirect($this->generateUrl('zpb_sites_zoo_parrainage_my_account'));
+                }
+            }
 
-        $form->handleRequest($request);
-        if($form->isValid()){
-            $this->getManager()->persist($user);
-            $this->getManager()->flush();
-            return $this->redirect($this->generateUrl('zpb_sites_zoo_parrainage_my_account'));
-        }
-
-        $pw_form->handleRequest($request);
-        if($pw_form->isValid()){
-
+            if($request->request->has('godparent_new_pass_form')){
+                $pw_form->handleRequest($request);
+                if($pw_form->isValid()){
+                    $user->setPlainPassword($changePasswordModel->getNewPassword());
+                    $this->getManager()->persist($user);
+                    $this->getManager()->flush();
+                    $this->authenticateUser($user);
+                    return $this->redirect($this->generateUrl('zpb_sites_zoo_parrainage_my_account'));
+                }
+            }
         }
         return $this->render('ZPBSitesZooBundle:Parrainage/Account:my_account.html.twig',
             [
                 'form'      =>  $form->createView(),
                 'pw_form'   =>  $pw_form->createView()
             ]);
+    }
+
+    private function authenticateUser(Godparent $user)
+    {
+        $token = new UsernamePasswordToken($user, null, 'sponsorship', $user->getRoles());
+        $this->container->get('security.context')->setToken($token);
     }
 
     public function lostPasswordAction(Request $request)
@@ -175,4 +193,4 @@ class AccountController extends BaseController
         $this->getManager()->flush();
         return $this->redirect($this->generateUrl('zpb_sites_zoo_parrainages_login'));
     }
-} 
+}
