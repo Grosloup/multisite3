@@ -26,11 +26,11 @@ use ZPB\AdminBundle\Controller\BaseController;
 class PartialsController extends BaseController
 {
 
-    public function headAction($route)
+    public function headAction($route, $prepend_title)
     {
         $page = $this->getRepo('ZPBAdminBundle:PageStatic')->findOneByRouteName($route);
 
-        return $this->render('ZPBSitesZooBundle:Partials:head.html.twig', ['page'=>$page]);
+        return $this->render('ZPBSitesZooBundle:Partials:head.html.twig', ['page'=>$page, 'prepend_title'=>$prepend_title]);
     }
 
     public function smallHeaderAction()

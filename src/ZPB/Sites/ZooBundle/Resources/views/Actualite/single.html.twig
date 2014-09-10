@@ -1,5 +1,6 @@
 {% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
-{% block title %}{{ post.title }} | Actualités{% endblock %}
+{#{% block title %}{{ post.title }} | Actualités{% endblock %}#}
+{% set prepend_title =  post.title %}
 {% block header %}
     {{ render(controller("ZPBSitesZooBundle:Partials:smallHeader")) }}
 {% endblock %}

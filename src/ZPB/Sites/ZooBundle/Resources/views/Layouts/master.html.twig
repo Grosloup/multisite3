@@ -1,9 +1,11 @@
+{% set prepend_title = (prepend_title is defined) ? prepend_title : null %}
+
 <!doctype html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {{ render(controller("ZPBSitesZooBundle:Partials:head", {route: app.request.attributes.get('_route')})) }}
+    {{ render(controller("ZPBSitesZooBundle:Partials:head", {route: app.request.attributes.get('_route'), prepend_title: prepend_title})) }}
     {#<title>{% if block('title') %}{{ block('title')}}{% else %}Accueil{% endif %} | ZooParc de Beauval</title>#}
 
     {% block headLinks%}
