@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: Nicolas Canfrère
- * Date: 01/09/14
- * Time: 09:09
+ * Date: 11/09/2014
+ * Time: 17:07
  */
   /*
            ____________________
@@ -20,7 +20,6 @@
 
 namespace ZPB\AdminBundle\Service;
 
-
 use ZPB\AdminBundle\Entity\ResizeableInterface;
 
 class ImageResizer
@@ -32,10 +31,5 @@ class ImageResizer
     {
         $this->sizes = $sizes;
         $this->options = $options;
-    }
-
-    public function resize(ResizeableInterface $img)
-    {
-        //TODO
     }
 } 

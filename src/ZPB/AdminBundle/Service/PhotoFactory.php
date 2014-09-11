@@ -45,4 +45,9 @@ class PhotoFactory
 
         return $photo;
     }
+
+    public function getWebThumb($key, $img)
+    {
+        return '/' . $this->options['zpb.photo.thumbs.upload_dir'] . $key . '_' .$img->getFilename() . '.' .$img->getExtension();
+    }
 } 

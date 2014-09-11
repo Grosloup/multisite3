@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @UniqueEntity("filename", message="Un fichier image du même nom existe déjà.")
  * @ORM\HasLifecycleCallbacks()
  */
-class MediaImage
+class MediaImage implements ResizeableInterface
 {
     /**
      * @var \Symfony\Component\HttpFoundation\File\UploadedFile

@@ -30,7 +30,7 @@ class PhotoController extends BaseController
     public function listAction()
     {
         $photos = $this->getRepo('ZPBAdminBundle:Photo')->findAll();
-        return $this->render('ZPBAdminBundle:General:photo/list.html.twig', ['photos'=>$photos]);
+        return $this->render('ZPBAdminBundle:General:photo/list.html.twig', ['photos'=>$photos, 'photo_factory'=>$this->get('zpb.photo_factory')]);
     }
 
     public function createAction(Request $request)
@@ -39,7 +39,13 @@ class PhotoController extends BaseController
         $form = $this->createForm(new PhotoType(), $photo, ['em'=>$this->getManager()]);
         $form->handleRequest($request);
         if($form->isValid()){
-            //TODO
+            $photo->upload();
+
+            $this->getManager()->persist($photo);
+            $this->getManager()->flush();
+
+            $this->get('zpb.photo_resizer')->makeThumbnails($photo);
+            return $this->redirect($this->generateUrl('zpb_admin_photos_list'));
         }
         return $this->render('ZPBAdminBundle:General:photo/create.html.twig', ['form'=>$form->createView()]);
     }

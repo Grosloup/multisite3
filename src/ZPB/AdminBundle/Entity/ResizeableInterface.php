@@ -30,4 +30,9 @@ interface ResizeableInterface
     public function getAbsolutePath();
 
     public function getMime();
+
+    public function getFilename();
+
+    public function getExtension();
+
 }

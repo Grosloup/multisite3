@@ -9,6 +9,7 @@
         <parameter key="zpb.form.type.iucn_status.class">ZPB\AdminBundle\Form\Type\IUCNStatusType</parameter>
         <parameter key="zpb.form.type.sexe.class">ZPB\AdminBundle\Form\Type\SexeType</parameter>
         <parameter key="zpb.image_resizer.class">ZPB\AdminBundle\Service\ImageResizer</parameter>
+        <parameter key="zpb.photo_resizer.class">ZPB\AdminBundle\Service\PhotoResizer</parameter>
         <parameter key="zpb.photo_factory.class">ZPB\AdminBundle\Service\PhotoFactory</parameter>
         <parameter key="zpb.image_factory.class">ZPB\AdminBundle\Service\ImageFactory</parameter>
         <parameter key="zpb.form.type.civility.class">ZPB\AdminBundle\Form\Type\CivilityType</parameter>
@@ -24,20 +25,35 @@
         </parameter>
 
         <parameter key="zpb.photo.thumbnails" type="collection">
-            <parameter key="small">200</parameter>
-            <parameter key="regular">400</parameter>
-            <parameter key="large">600</parameter>
-            <parameter key="xlarge">800</parameter>
+            <parameter key="small" type="collection">
+                <parameter key="width">200</parameter>
+                <parameter key="height">200</parameter>
+            </parameter>
+            <parameter key="regular" type="collection">
+                <parameter key="width">400</parameter>
+                <parameter key="height">400</parameter>
+            </parameter>
+            <parameter key="large" type="collection">
+                <parameter key="width">600</parameter>
+                <parameter key="height">450</parameter>
+            </parameter>
+            <parameter key="xlarge" type="collection">
+                <parameter key="width">900</parameter>
+                <parameter key="height">600</parameter>
+            </parameter>
         </parameter>
 
         <parameter key="zpb.medias.options" type="collection">
+
             <parameter key="zpb.photo.class">ZPB\AdminBundle\Entity\Photo</parameter>
+            <parameter key="zpb.photo.web_dir">downloads/images/</parameter>
+            <parameter key="zpb.photo.thumbs.upload_dir">downloads/images/thumbs/</parameter>
+            <parameter key="zpb.photo.root_dir">%kernel.root_dir%/../web/</parameter>
+
+            <parameter key="zpb.pdf.web_dir">downloads/pdf/</parameter>
+            <parameter key="zpb.pdf.root_dir">%kernel.root_dir%/../web/</parameter>
+
             <parameter key="zpb.image.class">ZPB\AdminBundle\Entity\MediaImage</parameter>
-            <parameter key="zpb.photo.web_dir">"downloads/images/"</parameter>
-            <parameter key="zpb.photo.thumbs.upload_dir">"downloads/images/thumbs/"</parameter>
-            <parameter key="zpb.photo.root_dir">"%kernel.root_dir%/../web/"</parameter>
-            <parameter key="zpb.pdf.web_dir">"downloads/pdf/"</parameter>
-            <parameter key="zpb.pdf.root_dir">"%kernel.root_dir%/../web/"</parameter>
             <parameter key="zpb.img.web_dir">imgs/</parameter>
             <parameter key="zpb.img.thumbs.upload_dir">imgs/thumbs/</parameter>
             <parameter key="zpb.img.root_dir">%kernel.root_dir%/../web/</parameter>
@@ -92,6 +108,11 @@
         </service>
 
         <service id="zpb.image_resizer" class="%zpb.image_resizer.class%">
+            <argument>%zpb.photo.thumbnails%</argument>
+            <argument>%zpb.medias.options%</argument>
+        </service>
+
+        <service id="zpb.photo_resizer" class="%zpb.photo_resizer.class%">
             <argument>%zpb.photo.thumbnails%</argument>
             <argument>%zpb.medias.options%</argument>
         </service>

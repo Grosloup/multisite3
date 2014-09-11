@@ -164,11 +164,12 @@ class Photo implements ResizeableInterface
         }
 
         $this->extension = $this->file->guessExtension();
+
         $this->mime = $this->file->getMimeType();
         $dest = $this->rootDir . $this->webDir;
 
         if (!$this->filename) {
-            $this->filename = $this->sanitizeFilename($this->file->getClientOriginalName());
+            $this->filename = pathinfo($this->sanitizeFilename($this->file->getClientOriginalName()), PATHINFO_FILENAME);
         }
         $this->file->move($dest, $this->filename . '.' . $this->extension);
         $size = getimagesize($this->getAbsolutePath());
