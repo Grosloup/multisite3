@@ -46,7 +46,7 @@ class SponsorBasket
     public function isEmpty()
     {
         if(!$this->session->has($this->key)){
-            return false;
+            return true;
         }
         return $this->count() === 0;
     }
@@ -94,6 +94,20 @@ class SponsorBasket
         }
         return null;
 
+    }
+
+    public function resolveUser($user)
+    {
+        $basket = $this->session->get($this->key);
+
+        foreach($basket as $item){
+            /** @var SponsorBasketItem $item */
+            if($item->getGodparent() == null){
+                $item->setGodparent($user);
+            }
+        }
+
+        $this->session->set($this->key, $basket);
     }
 
 
