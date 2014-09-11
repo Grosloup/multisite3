@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new ZPB\AdminBundle\ZPBAdminBundle(),
             new ZPB\Sites\ZooBundle\ZPBSitesZooBundle(),
             new ZPB\Sites\BNBundle\ZPBSitesBNBundle(),

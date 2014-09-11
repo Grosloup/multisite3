@@ -25,6 +25,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class BaseController extends Controller
 {
+    public function testAction()
+    {
+        //liste des options Knp Snappy Pdf.php
+        /*$this->get('knp_snappy.pdf')->generateFromHtml(
+            $this->renderView(
+                'ZPBAdminBundle:Base:test_pdf.html.twig'
+            ),
+            $this->container->getParameter('kernel.root_dir') . '/../web/tests/test.pdf',
+            ['orientation'=>'Landscape']
+        );*/
+    }
     /**
      * @param null $name
      * @return \Doctrine\Common\Persistence\ObjectManager|object

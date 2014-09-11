@@ -91,3 +91,12 @@ stof_doctrine_extensions:
             timestampable: true
             sortable: true
             translatable: true
+knp_snappy:
+    pdf:
+        enabled: true
+        binary: /usr/local/bin/wkhtmltopdf
+        options: []
+    image:
+        binary: true
+        binary: /usr/local/bin/wkhtmltoimage
+        options: []

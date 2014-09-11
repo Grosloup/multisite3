@@ -1,6 +1,12 @@
+zpb_admin_test:
+    path: /test
+    defaults: { _controller: ZPBAdminBundle:Base:test }
+    methods: ["GET"]
+
 zpb_admin_homepage:
     path:     /
     defaults: { _controller: ZPBAdminBundle:Index:index }
+    methods: ["GET"]
 
 zpb_admin_posts_routes:
     prefix: /actualites
