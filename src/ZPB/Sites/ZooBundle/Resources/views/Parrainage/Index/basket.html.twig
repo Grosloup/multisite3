@@ -82,7 +82,9 @@
         <hr/>
         <a class="button success large" href="{{ path("zpb_sites_zoo_parrainages_homepage") }}">Ajouter des parrainages</a>
         {% if packs|length > 0 %}
-            <a class="button success large" href="{{ path("zpb_sites_zoo_parrainages_login_or_register") }}">Regler votre commande</a> {# TODO #}
+            <a class="button success large" href="{{ path("zpb_sites_zoo_parrainages_login_or_register", {type: "online"}) }}">Regler votre commande par carte</a> {# TODO #}
+
+
         {% endif %}
     </div>
 {% endblock %}

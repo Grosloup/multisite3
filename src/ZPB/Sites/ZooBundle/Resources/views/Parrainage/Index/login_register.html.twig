@@ -17,7 +17,7 @@
         <div class="row">
             <div class="column large-6">
                 <h3>J'ai déjà un compte</h3>
-                <form action="" method="post">
+                <form action="{{ path("zpb_sites_zoo_parrainages_login_check") }}" method="post">
                     <div class="row">
                         <div class="column large-12">
                             <label for="username">Pseudo ou adresse email
@@ -34,11 +34,11 @@
                     </div>
 
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" >
-                    <input type="hidden" name="_target_path" value="/parrainages/recapitulatif" />
+                    <input type="hidden" name="_target_path" value="{{ path("zpb_sites_zoo_parrainages_payment_recap") }}" />
 
                     <div class="row">
                         <div class="column large-12">
-                            <button type="submit" class="button" disabled="disabled">login</button>
+                            <button type="submit" class="button">login</button>
                         </div>
                     </div>
 

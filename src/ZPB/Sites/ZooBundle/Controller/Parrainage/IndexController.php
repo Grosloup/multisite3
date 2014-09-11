@@ -202,18 +202,24 @@ class IndexController extends BaseController
 
     }
 
-    public function loginOrRegisterAction()
+    public function loginOrRegisterAction(Request $request)
     {
         // $user déjà connecté ?
         if($this->getUser() && $this->get('security.context')->isGranted('ROLE_GODPARENT')){
-            $this->redirect('');
+
+            $this->redirect('zpb_sites_zoo_parrainages_payment_recap');
         }
 
         $goparent = new Godparent();
         $form = $this->createForm(new GodparentType(), $goparent);
 
+        $form->handleRequest($request);
+        if($form->isValid()){
+            return $this->redirect($this->generateUrl('zpb_sites_zoo_parrainages_payment_recap'));
+        }
         return $this->render('ZPBSitesZooBundle:Parrainage/Index:login_register.html.twig', ['form'=>$form->createView()]);
     }
+
 
     public function registerAction(Request $request)
     {
@@ -237,6 +243,6 @@ class IndexController extends BaseController
 
     public function recapOrderAfterLoginAction()
     {
-
+        return $this->render('ZPBSitesZooBundle:Parrainage/Index:recap_order.html.twig', []);
     }
 }

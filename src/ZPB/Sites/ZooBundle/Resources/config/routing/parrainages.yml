@@ -34,13 +34,18 @@ zpb_sites_zoo_parrainage_remove_from_basket:
 
 zpb_sites_zoo_parrainages_login_or_register:
     path: /identification
-    defaults: { _controller: ZPBSitesZooBundle:Parrainage/Index:loginOrRegister }
+    defaults: { _controller: ZPBSitesZooBundle:Parrainage/Index:loginOrRegister}
     methods: ["GET"]
 
 zpb_sites_zoo_parrainages_payment_register:
     path: /nouveau-parrain
     defaults: { _controller: ZPBSitesZooBundle:Parrainage/Index:register }
     methods: ["POST"]
+
+zpb_sites_zoo_parrainages_payment_recap:
+    path: /recapitulatif
+    defaults: { _controller: ZPBSitesZooBundle:Parrainage/Index:recapOrderAfterLogin }
+    methods: ["GET"]
 
 zpb_sites_zoo_parrainages_login:
     path: /login
