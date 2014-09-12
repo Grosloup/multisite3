@@ -129,6 +129,11 @@ class Photo implements ResizeableInterface
      */
     private $longId;
 
+    /**
+     * @ORM\Column(name="institution_id", type="integer", nullable=true)
+     */
+    private $institutionId;
+
 
     public function __construct()
     {
@@ -151,6 +156,24 @@ class Photo implements ResizeableInterface
     {
         $this->longId = $longId;
 
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInstitutionId()
+    {
+        return $this->institutionId;
+    }
+
+    /**
+     * @param mixed $institutionId
+     * @return Photo
+     */
+    public function setInstitutionId($institutionId)
+    {
+        $this->institutionId = $institutionId;
         return $this;
     }
 
@@ -546,6 +569,7 @@ class Photo implements ResizeableInterface
     public function setCategory(PhotoCategory $category = null)
     {
         $this->category = $category;
+        $this->institutionId = $category->getInstitution()->getId();
 
         return $this;
     }

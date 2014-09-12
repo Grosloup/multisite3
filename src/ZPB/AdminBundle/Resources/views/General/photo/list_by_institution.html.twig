@@ -8,7 +8,7 @@
         <div class="column-12">
             <div class="tile">
                 <div class="tile-header">
-                    Liste des photos
+                    Liste des photos de {{ institution }}
                 </div>
             </div>
         </div>
@@ -18,28 +18,29 @@
         <div class="column-3">
             <div class="tile">
                 <div class="tile-header">
-                    Filtrer par institution
+                    Filtrer par catégory
                 </div>
-                {{ form_start(institutionFilter, {attr:{class: "form", novalidate:true}}) }}
-                {{ form_errors(institutionFilter) }}
+                {{ form_start(filterCategory, {attr:{class: "form", novalidate:true, name: 'category_filter_form'}}) }}
+                {{ form_errors(filterCategory) }}
 
                 <div class="form-row">
                     <div class="form-field">
-                        {{ form_widget(institutionFilter.institution) }}
-                        {% if institutionFilter.institution.vars.errors|length>0 %}
-                        <div class="errors-block">
-                            {{ form_errors(institutionFilter.institution) }}
-                        </div>
+                        {{ form_widget(filterCategory.category) }}
+                        {% if filterCategory.category.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(filterCategory.category) }}
+                            </div>
                         {% endif %}
                     </div>
                 </div>
 
                 <div class="form-row">
-                    {{ form_widget(institutionFilter.save, {attr: {class: "btn-flat btn-primary"}})}}
+                    {{ form_widget(filterCategory.search, {attr: {class: "btn-flat btn-primary"}})}}
                 </div>
-                {{ form_end(institutionFilter) }}
+                {{ form_end(filterCategory) }}
             </div>
         </div>
+
         <div class="column-9">
             <div class="tile">
                 <table class="table table-hover table-striped">
@@ -55,14 +56,14 @@
                     </thead>
                     <tbody>
                     {% for photo in photos %}
-                    <tr>
-                        <td>{{ photo.id }}</td>
-                        <td><a href="#"><img src="{{ photo_factory.getWebThumb("small", photo) }}" alt="" width="50"/></a></td>
-                        <td>{{ photo.filename }}</td>
-                        <td>{{ photo.category.institution }}</td>
-                        <td>{{ photo.category.name }}</td>
-                        <td>{{ photo.position }}</td>
-                    </tr>
+                        <tr>
+                            <td>{{ photo.id }}</td>
+                            <td><a href="#"><img src="{{ photo_factory.getWebThumb("small", photo) }}" alt="" width="50"/></a></td>
+                            <td>{{ photo.filename }}</td>
+                            <td>{{ photo.category.institution }}</td>
+                            <td>{{ photo.category.name }}</td>
+                            <td>{{ photo.position }}</td>
+                        </tr>
                     {% endfor %}
                     </tbody>
                 </table>
