@@ -19,6 +19,7 @@ class Photo implements ResizeableInterface
 {
     /**
      * @var \Symfony\Component\HttpFoundation\File\UploadedFile
+     * @Assert\Image(maxSize="6M", maxSizeMessage="La taille de votre fichier dépasse le maximum autorisé.", mimeTypes={"image/jpeg","image/gif","image/png"}, mimeTypesMessage="Votre image n\'est pas \'un type autorisé.")
      */
     public $file;
     /**
