@@ -33,10 +33,17 @@ class PhotoController extends BaseController
         return $this->render('ZPBAdminBundle:General:photo/list.html.twig', ['photos'=>$photos, 'photo_factory'=>$this->get('zpb.photo_factory')]);
     }
 
-    public function createAction(Request $request)
+    public function chooseInstitutionAction()
+    {
+        $institutions = $this->getRepo('ZPBAdminBundle:Institution')->findAll();
+
+        return $this->render('ZPBAdminBundle:General/Photo:choose_institution.html.twig', ['institutions'=>$institutions]);
+    }
+
+    public function createAction($institution_slug, Request $request)
     {
         $photo = $this->get('zpb.photo_factory')->create();
-        $form = $this->createForm(new PhotoType(), $photo, ['em'=>$this->getManager()]);
+        $form = $this->createForm(new PhotoType(), $photo, ['em'=>$this->getManager(), 'slug'=>$institution_slug]);
         $form->handleRequest($request);
         if($form->isValid()){
             $photo->upload();

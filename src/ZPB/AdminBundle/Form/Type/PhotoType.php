@@ -20,6 +20,7 @@
 
 namespace ZPB\AdminBundle\Form\Type;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -32,7 +33,7 @@ class PhotoType extends AbstractType
     {
         $em = $options['em'];
         $categoryTransformer = new PhotoCategoryTransformer($em);
-
+        $slug = $options['slug'];
         $builder
             ->add('file', 'file', ['label'=>'Fichier photo'])
             ->add('filename',null, ['label'=>'Nom du fichier'])
@@ -49,7 +50,14 @@ class PhotoType extends AbstractType
                         'empty_value'=>'Choisir une catégorie',
                         'class'=>'ZPBAdminBundle:PhotoCategory',
                         'data_class'=>'ZPB\AdminBundle\Entity\PhotoCategory',
-                        'property'=>'name'
+                        'property'=>'name',
+                        'query_builder'=>function(EntityRepository $repo) use($slug){
+                            return $repo
+                                ->createQueryBuilder('c')
+                                ->join('c.institution', 'i')
+                                ->where('i.slug=:slug')
+                                ->setParameter('slug', $slug);
+                        }
                     ]
                 )->addModelTransformer($categoryTransformer)
             )
@@ -61,7 +69,8 @@ class PhotoType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(['data_class'=>'ZPB\AdminBundle\Entity\Photo']);
-
+        $resolver->setRequired(['em', 'slug']);
+        $resolver->setAllowedTypes(['em'=>'\Doctrine\Common\Persistence\ObjectManager']);
     }
     
     public function getName()
