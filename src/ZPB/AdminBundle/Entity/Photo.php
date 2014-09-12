@@ -118,11 +118,7 @@ class Photo implements ResizeableInterface
      * @ORM\Column(name="position", type="integer")
      */
     private $position;
-    /**
-     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\Institution")
-     * @ORM\JoinColumn(name="institution_id", referencedColumnName="id")
-     */
-    private $institution;
+
     /**
      * @var string
      */
@@ -554,26 +550,4 @@ class Photo implements ResizeableInterface
         return $this;
     }
 
-    /**
-     * Get institution
-     *
-     * @return Institution
-     */
-    public function getInstitution()
-    {
-        return $this->institution;
-    }
-
-    /**
-     * Set institution
-     *
-     * @param Institution $institution
-     * @return Photo
-     */
-    public function setInstitution(Institution $institution = null)
-    {
-        $this->institution = $institution;
-
-        return $this;
-    }
 }

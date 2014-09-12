@@ -13,6 +13,18 @@
                 </div>
                 {{ form_start(form, {attr: {class: "form", novalidate:true }})}}
                 {{ form_errors(form) }}
+                <div class="form-row {% if form.institution.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.institution) }}
+                    <div class="form-field">
+                        {{ form_widget(form.institution)}}
+                        {% if form.institution.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.institution)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
                 <div class="form-row {% if form.name.vars.errors|length>0 %}has-error{% endif %}">
                     {{ form_label(form.name) }}
                     <div class="form-field">

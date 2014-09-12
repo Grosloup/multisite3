@@ -50,12 +50,13 @@ class LoadPhotos extends AbstractFixture implements OrderedFixtureInterface, Con
             'fixtures/photos/tmp/';
         $finder->files()->in($fixturesPhotosTmpDir)->ignoreDotFiles(true);
         $k = 1;
+        $c = 1;
         foreach($finder as $file){
             /** @var \SplFileInfo $file */
             $img = $photoFactory->create();
             $img->setFilename('image_' . $k)
-            ->setInstitution($this->getReference('zpb-instit-1'))
-            ->setCategory($this->getReference('zpb-photo-cat-1'))
+
+            ->setCategory($this->getReference('zpb-photo-cat-' . $c))
             ->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pulvinar dui vel urna sodales porta. Etiam non neque nec tortor elementum scelerisque sit amet a nunc. Nunc a odio tempor sapien interdum convallis.')
             ->setLegend('Suspendisse fermentum malesuada feugiat.')
             ->file = new UploadedFile($file->getRealPath(), pathinfo($file->getRealPath(), PATHINFO_FILENAME), null, null, null, true);
@@ -64,6 +65,10 @@ class LoadPhotos extends AbstractFixture implements OrderedFixtureInterface, Con
             $manager->persist($img);
             $this->addReference('zpb-photo-' . $k, $img);
             $k++;
+            $c++;
+            if($c == 5){
+                $c = 1;
+            }
         }
         $manager->flush();
     }

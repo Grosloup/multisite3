@@ -38,7 +38,7 @@ class PhotoCategoryController extends BaseController
     public function createAction(Request $request)
     {
         $photCategory = new PhotoCategory();
-        $form = $this->createForm(new PhotoCategoryType(), $photCategory);
+        $form = $this->createForm(new PhotoCategoryType(), $photCategory, ['em'=> $this->getManager()]);
         $form->handleRequest($request);
         if($form->isValid()){
             //TODO
@@ -52,7 +52,7 @@ class PhotoCategoryController extends BaseController
         if(!$photoCategory){
             //TODO
         }
-        $form = $this->createForm(new PhotoCategoryUpdateType(), $photoCategory);
+        $form = $this->createForm(new PhotoCategoryUpdateType(), $photoCategory, ['em'=> $this->getManager()]);
         $form->handleRequest($request);
         if($form->isValid()){
             //TODO
