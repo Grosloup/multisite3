@@ -52,6 +52,10 @@ zpb_admin_mediatheque_routes:
     prefix: /mediatheque
     resource: "@ZPBAdminBundle/Resources/config/routing/mediatheque.yml"
 
+zpb_admin_institutions_routes:
+    prefix: /institutions
+    resource: "@ZPBAdminBundle/Resources/config/routing/institutions.yml"
+
 
 zpb_admin_xhrs_routes:
     prefix: /xhr

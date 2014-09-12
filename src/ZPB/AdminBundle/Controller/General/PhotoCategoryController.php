@@ -37,11 +37,16 @@ class PhotoCategoryController extends BaseController
 
     public function createAction(Request $request)
     {
-        $photCategory = new PhotoCategory();
-        $form = $this->createForm(new PhotoCategoryType(), $photCategory, ['em'=> $this->getManager()]);
+        $photoCategory = new PhotoCategory();
+        $form = $this->createForm(new PhotoCategoryType(), $photoCategory, ['em'=> $this->getManager()]);
         $form->handleRequest($request);
         if($form->isValid()){
-            //TODO
+
+            $this->getManager()->persist($photoCategory);
+            $this->getManager()->flush();
+
+            $this->setSuccess('Catégorie bien enregistrée');
+            return $this->redirect($this->generateUrl('zpb_admin_photos_categories_list'));
         }
         return $this->render('ZPBAdminBundle:General/photo_category:create.html.twig', ['form'=>$form->createView()]);
     }

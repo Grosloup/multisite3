@@ -265,4 +265,11 @@ class PhotoCategory
     {
         return $this->institution;
     }
+
+    function __toString()
+    {
+        return $this->name;
+    }
+
+
 }
