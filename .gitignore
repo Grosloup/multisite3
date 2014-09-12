@@ -11,3 +11,6 @@
 /composer.phar
 /.sass-cache/
 /node_modules/
+/web/fixtures/*
+/web/downloads/*
+/web/imgs/*

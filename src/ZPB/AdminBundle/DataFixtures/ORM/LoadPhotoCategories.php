@@ -47,18 +47,22 @@ class LoadPhotoCategories  extends AbstractFixture implements OrderedFixtureInte
         $pc1 = new PhotoCategory();
         $pc1->setName('Nouveauté');
         $pc1->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nisl ligula, ornare sit amet pharetra id, mollis eget est. Nullam quis lorem id diam blandit accumsan facilisis vitae nibh. Quisque aliquam suscipit sapien ut egestas. Nulla at semper orci, vitae volutpat odio. Nulla facilisi.');
+        $pc1->setInstitution($this->getReference('zpb-instit-1'));
         $manager->persist($pc1);
         $pc2 = new PhotoCategory();
         $pc2->setName('Carnet rose');
         $pc2->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nisl ligula, ornare sit amet pharetra id, mollis eget est. Nullam quis lorem id diam blandit accumsan facilisis vitae nibh. Quisque aliquam suscipit sapien ut egestas. Nulla at semper orci, vitae volutpat odio. Nulla facilisi.');
+        $pc2->setInstitution($this->getReference('zpb-instit-1'));
         $manager->persist($pc2);
         $pc3 = new PhotoCategory();
         $pc3->setName('Chambres (JdB)');
         $pc3->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nisl ligula, ornare sit amet pharetra id, mollis eget est. Nullam quis lorem id diam blandit accumsan facilisis vitae nibh. Quisque aliquam suscipit sapien ut egestas. Nulla at semper orci, vitae volutpat odio. Nulla facilisi.');
+        $pc3->setInstitution($this->getReference('zpb-instit-2'));
         $manager->persist($pc3);
         $pc4 = new PhotoCategory();
         $pc4->setName('Chambres (HdB)');
         $pc4->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nisl ligula, ornare sit amet pharetra id, mollis eget est. Nullam quis lorem id diam blandit accumsan facilisis vitae nibh. Quisque aliquam suscipit sapien ut egestas. Nulla at semper orci, vitae volutpat odio. Nulla facilisi.');
+        $pc4->setInstitution($this->getReference('zpb-instit-4'));
         $manager->persist($pc4);
         $manager->flush();
 

@@ -19,6 +19,7 @@ class Photo implements ResizeableInterface
 {
     /**
      * @var \Symfony\Component\HttpFoundation\File\UploadedFile
+     * @Assert\Image(maxSize="6M", maxSizeMessage="La taille de votre fichier dépasse le maximum autorisé.", mimeTypes={"image/jpeg","image/gif","image/png"}, mimeTypesMessage="Votre image n\'est pas \'un type autorisé.")
      */
     public $file;
     /**
@@ -117,11 +118,7 @@ class Photo implements ResizeableInterface
      * @ORM\Column(name="position", type="integer")
      */
     private $position;
-    /**
-     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\Institution")
-     * @ORM\JoinColumn(name="institution_id", referencedColumnName="id")
-     */
-    private $institution;
+
     /**
      * @var string
      */
@@ -131,6 +128,11 @@ class Photo implements ResizeableInterface
      * @ORM\Column(name="long_id", type="string", length=15, nullable=false, unique=true)
      */
     private $longId;
+
+    /**
+     * @ORM\Column(name="institution_id", type="integer", nullable=true)
+     */
+    private $institutionId;
 
 
     public function __construct()
@@ -157,9 +159,27 @@ class Photo implements ResizeableInterface
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getInstitutionId()
+    {
+        return $this->institutionId;
+    }
+
+    /**
+     * @param mixed $institutionId
+     * @return Photo
+     */
+    public function setInstitutionId($institutionId)
+    {
+        $this->institutionId = $institutionId;
+        return $this;
+    }
+
     public function upload()
     {
-        if (!$this->file) {
+        if ($this->file == null) {
             return false;
         }
 
@@ -549,30 +569,9 @@ class Photo implements ResizeableInterface
     public function setCategory(PhotoCategory $category = null)
     {
         $this->category = $category;
+        $this->institutionId = $category->getInstitution()->getId();
 
         return $this;
     }
 
-    /**
-     * Get institution
-     *
-     * @return Institution
-     */
-    public function getInstitution()
-    {
-        return $this->institution;
-    }
-
-    /**
-     * Set institution
-     *
-     * @param Institution $institution
-     * @return Photo
-     */
-    public function setInstitution(Institution $institution = null)
-    {
-        $this->institution = $institution;
-
-        return $this;
-    }
 }

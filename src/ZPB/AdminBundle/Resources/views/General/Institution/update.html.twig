@@ -1,30 +1,19 @@
 {% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
 
-{% block title %}Nouvelle Catégories de photo | Photothèque{% endblock %}
-{% set active = "new_photo_cats" %}
+{% block title %}Modification | Institution{% endblock %}
+{% set active = "update_institution" %}
 
 {% block content %}
+
     <div class="row">
         <div class="column-3"></div>
         <div class="column-6">
             <div class="tile">
                 <div class="tile-header">
-                    Nouvelle catégorie de photo
+                    Modification de {{ form.vars.value.name }}
                 </div>
-                {{ form_start(form, {attr: {class: "form", novalidate:true }})}}
+                {{ form_start(form, {attr: {class: "form", novalidate:true }} ) }}
                 {{ form_errors(form) }}
-                <div class="form-row {% if form.institution.vars.errors|length>0 %}has-error{% endif %}">
-                    {{ form_label(form.institution) }}
-                    <div class="form-field">
-                        {{ form_widget(form.institution)}}
-                        {% if form.institution.vars.errors|length>0 %}
-                            <div class="errors-block">
-                                {{ form_errors(form.institution)}}
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
-
                 <div class="form-row {% if form.name.vars.errors|length>0 %}has-error{% endif %}">
                     {{ form_label(form.name) }}
                     <div class="form-field">
@@ -36,6 +25,7 @@
                         {% endif %}
                     </div>
                 </div>
+
                 <div class="form-row {% if form.description.vars.errors|length>0 %}has-error{% endif %}">
                     {{ form_label(form.description) }}
                     <div class="form-field">
@@ -47,15 +37,16 @@
                         {% endif %}
                     </div>
                 </div>
+
                 <div class="form-row">
                     {{ form_widget(form.save, {attr: {class: "btn btn-primary"}})}}
                 </div>
 
-                {{ form_end(form)}}
+                {{form_end(form)}}
             </div>
+
 
         </div>
         <div class="column-3"></div>
     </div>
-
 {% endblock %}

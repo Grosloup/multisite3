@@ -2,6 +2,7 @@
 
 namespace ZPB\AdminBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -62,6 +63,18 @@ class Institution
      */
     private $updatedAt;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ZPB\AdminBundle\Entity\PhotoCategory", mappedBy="institution")
+     */
+    private $photoCategories;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->photoCategories = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -187,5 +200,38 @@ class Institution
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * Add photoCategories
+     *
+     * @param PhotoCategory $photoCategories
+     * @return Institution
+     */
+    public function addPhotoCategory(PhotoCategory $photoCategories)
+    {
+        $this->photoCategories[] = $photoCategories;
+
+        return $this;
+    }
+
+    /**
+     * Remove photoCategories
+     *
+     * @param PhotoCategory $photoCategories
+     */
+    public function removePhotoCategory(PhotoCategory $photoCategories)
+    {
+        $this->photoCategories->removeElement($photoCategories);
+    }
+
+    /**
+     * Get photoCategories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPhotoCategories()
+    {
+        return $this->photoCategories;
     }
 }

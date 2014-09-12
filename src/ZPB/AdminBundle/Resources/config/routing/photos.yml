@@ -3,10 +3,28 @@ zpb_admin_photos_list:
     defaults: { _controller: ZPBAdminBundle:General/Photo:list }
     methods: ["GET"]
 
+zpb_admin_photos_list_by_institution:
+    path: /liste/par-institution
+    defaults: { _controller: ZPBAdminBundle:General/Photo:listByInstitution }
+    methods: ["POST"]
+
+zpb_admin_photos_list_by_category:
+    path: /list/par-category
+    defaults: { _controller: ZPBAdminBundle:General/Photo:listByCategory }
+    methods: ["POST"]
+
+
+zpb_admin_photos_choose_institution:
+    path: /choix-institution
+    defaults: { _controller: ZPBAdminBundle:General/Photo:chooseInstitution }
+    methods: ["GET"]
+
 zpb_admin_photos_create:
-    path: /nouvelle
+    path: /nouvelle/{institution_slug}
     defaults: { _controller: ZPBAdminBundle:General/Photo:create }
     methods: ["GET", "POST"]
+    requirements:
+        institution_slug: "^[a-zA-Z0-9_-]+$"
 
 zpb_admin_photos_update:
     path: /modifier/{id}

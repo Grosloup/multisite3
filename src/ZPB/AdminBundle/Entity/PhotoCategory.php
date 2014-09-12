@@ -72,6 +72,12 @@ class PhotoCategory
     private $photos;
 
     /**
+     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\Institution", inversedBy="photoCategories")
+     * @ORM\JoinColumn(name="institution_id")
+     */
+    private $institution;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -236,4 +242,34 @@ class PhotoCategory
     {
         return $this->photos;
     }
+
+    /**
+     * Set institution
+     *
+     * @param Institution $institution
+     * @return PhotoCategory
+     */
+    public function setInstitution(Institution $institution = null)
+    {
+        $this->institution = $institution;
+
+        return $this;
+    }
+
+    /**
+     * Get institution
+     *
+     * @return Institution
+     */
+    public function getInstitution()
+    {
+        return $this->institution;
+    }
+
+    function __toString()
+    {
+        return $this->name;
+    }
+
+
 }

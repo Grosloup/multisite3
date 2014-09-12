@@ -1,0 +1,31 @@
+
+zpb_admin_institutions_list:
+    path: /
+    defaults: { _controller: ZPBAdminBundle:General/Institutions:list }
+    methods: ["GET"]
+
+zpb_admin_institutions_create:
+    path: /nouvelle
+    defaults: { _controller: ZPBAdminBundle:General/Institutions:create }
+    methods: ["GET","POST"]
+
+zpb_admin_institutions_update:
+    path: /modifier/{id}
+    defaults: { _controller: ZPBAdminBundle:General/Institutions:update }
+    methods: ["GET","POST"]
+    requirements:
+        id: \d+
+
+zpb_admin_institutions_delete:
+    path: /supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:General/Institutions:delete }
+    methods: ["GET"]
+    requirements:
+        id: \d+
+
+
+
+
+
+
+
