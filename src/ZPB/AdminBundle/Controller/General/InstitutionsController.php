@@ -77,6 +77,7 @@ class InstitutionsController extends BaseController
         if (!$institution) {
             throw $this->createNotFoundException();
         }
+        //TODO message d'alerte si des catégories sont encore liées à l'inst
         $this->getManager()->remove($institution);
         $this->getManager()->flush();
 
