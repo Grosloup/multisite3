@@ -32,6 +32,9 @@ class PhotoFactory
         $this->options = $options;
     }
 
+    /**
+     * @return \ZPB\AdminBundle\Entity\Photo
+     */
     public function create()
     {
 
