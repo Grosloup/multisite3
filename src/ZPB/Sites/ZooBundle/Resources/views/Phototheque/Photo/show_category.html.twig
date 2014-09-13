@@ -12,7 +12,7 @@
             <div class="columns large-9">
                 <ul class="medium-block-grid-3">
                     {% for photo in photos %}
-                        <li><a class="th"><img src="{{ photo_factory.getWebThumb('regular', photo) }}" alt=""/></a></li>
+                        <li><a class="th" href="{{ path("zpb_sites_zoo_download_image", {filename: photo.filename}) }}"><img src="{{ photo_factory.getWebThumb('regular', photo) }}" alt=""/></a></li>
                     {% endfor %}
                 </ul>
 

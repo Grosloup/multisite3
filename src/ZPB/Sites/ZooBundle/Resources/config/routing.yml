@@ -8,6 +8,22 @@ zpb_sites_zoo_faq:
     defaults: { _controller: ZPBSitesZooBundle:FAQ:index }
     methods: ["GET"]
 
+
+
+zpb_sites_zoo_download_image:
+    path: /telecharger/image/{filename}
+    defaults: { _controller: ZPBSitesZooBundle:Download:downloadImage }
+    methods: ["GET"]
+    requirements:
+        filename: ".+"
+
+zpb_sites_zoo_download_pdf:
+    path: /telecharger/image/{filename}
+    defaults: { _controller: ZPBSitesZooBundle:Download:downloadPdf }
+    methods: ["GET"]
+    requirements:
+        filename: ".+"
+
 zpb_sites_zoo_parrainages_routes:
     prefix: /parrainages
     resource: "@ZPBSitesZooBundle/Resources/config/routing/parrainages.yml"
