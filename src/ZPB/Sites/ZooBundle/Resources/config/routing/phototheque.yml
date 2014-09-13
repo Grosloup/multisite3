@@ -1,0 +1,12 @@
+zpb_sites_zoo_phototheque_index:
+    path: /
+    defaults: { _controller: ZPBSitesZooBundle:Phototheque/Photo:index }
+    methods: ["GET"]
+
+zpb_sites_zoo_phototheque_show_category:
+    path: /{institutslug}/{catslug}
+    defaults: { _controller: ZPBSitesZooBundle:Phototheque/Photo:showCategory }
+    methods: ["GET"]
+    requirements:
+        institutslug: "[a-zA-Z_-]+"
+        catslug: "[a-zA-Z_-]+"

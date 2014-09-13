@@ -15,3 +15,7 @@ zpb_sites_zoo_parrainages_routes:
 zpb_sites_zoo_actualites_routes:
     prefix: /actualites
     resource: "@ZPBSitesZooBundle/Resources/config/routing/actualite.yml"
+
+zpb_sites_zoo_phototheque_routes:
+    prefix: /phototheque
+    resource: "@ZPBSitesZooBundle/Resources/config/routing/phototheque.yml"

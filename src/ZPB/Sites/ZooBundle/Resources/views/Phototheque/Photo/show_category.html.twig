@@ -1,0 +1,23 @@
+{% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
+{% block title %}Photothèque{% endblock %}
+{% block header %}
+    {{ render(controller("ZPBSitesZooBundle:Partials:smallHeader")) }}
+{% endblock %}
+
+{% block content %}
+    <div class="columns large-12">
+        <h1>{{ institution }} </h1>
+        <h2>Photos classées dans {{ category }}</h2>
+        <div class="row">
+            <div class="columns large-9">
+                <ul class="medium-block-grid-3">
+                    {% for photo in photos %}
+                        <li><a class="th"><img src="{{ photo_factory.getWebThumb('regular', photo) }}" alt=""/></a></li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

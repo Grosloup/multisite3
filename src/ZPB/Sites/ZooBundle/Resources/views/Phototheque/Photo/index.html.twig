@@ -1,0 +1,32 @@
+{% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
+{% block title %}Photothèque{% endblock %}
+{% block header %}
+    {{ render(controller("ZPBSitesZooBundle:Partials:smallHeader")) }}
+{% endblock %}
+
+{% block content %}
+    <div class="columns large-12">
+        <h1>Photothèque</h1>
+
+        <div class="row">
+            <div class="columns large-9">
+                <ul>
+                    {% for institution in institutions %}
+                        {% set institut = institution.slug %}
+
+                        <li>{{ institution.name }}
+                            <ul>
+                                {% for category in institution.photoCategories %}
+                                    {% set cat = category.slug %}
+                                    <li><a class="button radius small" href="{{ path("zpb_sites_zoo_phototheque_show_category", {institutslug: institut , catslug: cat}) }}">{{ category }} &raquo;</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
