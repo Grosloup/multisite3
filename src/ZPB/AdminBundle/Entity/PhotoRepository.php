@@ -12,4 +12,17 @@ use Gedmo\Sortable\Entity\Repository\SortableRepository;
  */
 class PhotoRepository extends SortableRepository
 {
+    public function getLastPositionInCategory($id)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->join('ZPB\AdminBundle\Entity\PhotoCategory', 'c')->where('c.id=:cid')
+            ->setParameter('cid', $id)
+            ->select('MAX(p.position)');
+        $result = $qb->getQuery()->getSingleScalarResult();
+        if($result !== null){
+            $result = intval($result);
+        }
+        return $result;
+
+    }
 }

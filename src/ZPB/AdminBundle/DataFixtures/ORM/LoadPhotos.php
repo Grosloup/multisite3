@@ -39,7 +39,7 @@ class LoadPhotos extends AbstractFixture implements OrderedFixtureInterface, Con
     {
         $this->container = $container;
     }
-    
+
     public function load(ObjectManager $manager)
     {
         $this->reloadAssets();
@@ -72,7 +72,7 @@ class LoadPhotos extends AbstractFixture implements OrderedFixtureInterface, Con
         }
         $manager->flush();
     }
-    
+
     public function getOrder()
     {
         return 16;
@@ -81,12 +81,16 @@ class LoadPhotos extends AbstractFixture implements OrderedFixtureInterface, Con
     private function reloadAssets()
     {
         $fs = $this->container->get('filesystem');
+
         $finder = new Finder();
 
         $imageDir = $this->container->getParameter('zpb.medias.options')['zpb.photo.root_dir'] .
             $this->container->getParameter('zpb.medias.options')['zpb.photo.web_dir'];
         $thumbDir = $this->container->getParameter('zpb.medias.options')['zpb.photo.root_dir'] .
             $this->container->getParameter('zpb.medias.options')['zpb.photo.thumbs.upload_dir'];
+        if(!file_exists($thumbDir)){
+            $fs->mkdir($thumbDir);
+        }
 
         $finder->files()->in($imageDir)->ignoreDotFiles(true);
         foreach($finder as $file){

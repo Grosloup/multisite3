@@ -86,9 +86,10 @@ class PhotoController extends BaseController
         if(!$category){
             throw $this->createNotFoundException();
         }
-        $photos = $this->getRepo('ZPBAdminBundle:Photo')->findByCategory($category);
+        /*$photos = $this->getRepo('ZPBAdminBundle:Photo')->findBy(['category'=>$category], ['position'=>'ASC']);
 
-        return $this->render('ZPBAdminBundle:General/photo:list_by_category.html.twig', ['photo_factory'=>$this->get('zpb.photo_factory'),'photos'=>$photos, 'category'=>$category]);
+        return $this->render('ZPBAdminBundle:General/photo:list_by_category.html.twig', ['photo_factory'=>$this->get('zpb.photo_factory'),'photos'=>$photos, 'category'=>$category]);*/
+        return $this->forward('ZPBAdminBundle:General/Photo:getListByCategory', ['categoryId'=>$category->getId()]);
     }
 
     public function chooseInstitutionAction()
@@ -124,8 +125,52 @@ class PhotoController extends BaseController
         return $this->render('ZPBAdminBundle:General:photo/update.html.twig', []);
     }
 
+    public function positionUpAction($id)
+    {
+        $photo = $this->getRepo('ZPBAdminBundle:Photo')->find($id);
+        if(!$photo){
+            throw $this->createNotFoundException();
+        }
+        $position = $photo->getPosition();
+        if($position > 0 ){
+            $photo->setPosition($position - 1);
+            $this->getManager()->persist($photo);
+            $this->getManager()->flush();
+        }
+        return $this->forward('ZPBAdminBundle:General/Photo:getListByCategory', ['categoryId'=>$photo->getCategory()->getId()]);
+    }
+
+    public function positionDownAction($id)
+    {
+        $photo = $this->getRepo('ZPBAdminBundle:Photo')->find($id);
+        if(!$photo){
+            throw $this->createNotFoundException();
+        }
+        $position = $photo->getPosition();
+        $last = $this->getRepo('ZPBAdminBundle:Photo')->getLastPositionInCategory($photo->getCategory()->getId());
+
+        if($position < $last ){
+            $photo->setPosition($position + 1);
+            $this->getManager()->persist($photo);
+            $this->getManager()->flush();
+        }
+        return $this->forward('ZPBAdminBundle:General/Photo:getListByCategory', ['categoryId'=>$photo->getCategory()->getId()]);
+
+    }
+
+    public function getListByCategoryAction($categoryId)
+    {
+        $category = $this->getRepo('ZPBAdminBundle:PhotoCategory')->find($categoryId);
+        if(!$category){
+            throw $this->createNotFoundException();
+        }
+        $photos = $this->getRepo('ZPBAdminBundle:Photo')->findBy(['category'=>$category], ['position'=>'ASC']);
+
+        return $this->render('ZPBAdminBundle:General/photo:list_by_category.html.twig', ['photo_factory'=>$this->get('zpb.photo_factory'),'photos'=>$photos, 'category'=>$category]);
+    }
+
     public function deleteAction($id, Request $request)
     {
 
     }
-} 
+}

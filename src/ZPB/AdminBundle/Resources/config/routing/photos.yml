@@ -11,7 +11,7 @@ zpb_admin_photos_list_by_institution:
 zpb_admin_photos_list_by_category:
     path: /list/par-category
     defaults: { _controller: ZPBAdminBundle:General/Photo:listByCategory }
-    methods: ["POST"]
+    methods: ["POST", "GET"]
 
 
 zpb_admin_photos_choose_institution:
@@ -41,7 +41,17 @@ zpb_admin_photos_delete:
         id: \d+
 
 
+zpb_admin_photos_position_up:
+    path: /position/remonter/{id}
+    defaults: { _controller: ZPBAdminBundle:General/Photo:positionUp }
+    methods: ["GET"]
+    requirements:
+        id: \d+
 
-
-
+zpb_admin_photos_position_down:
+    path: /position/descendre/{id}
+    defaults: { _controller: ZPBAdminBundle:General/Photo:positionDown }
+    methods: ["GET"]
+    requirements:
+        id: \d+
 
