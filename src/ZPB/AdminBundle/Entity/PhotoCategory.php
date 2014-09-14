@@ -271,5 +271,8 @@ class PhotoCategory
         return $this->name;
     }
 
-
+    public function hasPhotos()
+    {
+        return count($this->getPhotos()) > 0;
+    }
 }

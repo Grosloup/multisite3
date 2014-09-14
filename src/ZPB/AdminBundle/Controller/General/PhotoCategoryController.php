@@ -55,18 +55,36 @@ class PhotoCategoryController extends BaseController
     {
         $photoCategory = $this->getRepo('ZPBAdminBundle:PhotoCategory')->find($id);
         if(!$photoCategory){
-            //TODO
+            throw $this->createNotFoundException();
         }
         $form = $this->createForm(new PhotoCategoryUpdateType(), $photoCategory, ['em'=> $this->getManager()]);
         $form->handleRequest($request);
         if($form->isValid()){
-            //TODO
+            $this->getManager()->persist($photoCategory);
+            $this->getManager()->flush();
+            $this->setSuccess('Catégorie de photo bien mise à jour.');
+            return $this->redirect($this->generateUrl('zpb_admin_photos_categories_list'));
         }
         return $this->render('ZPBAdminBundle:General/photo_category:update.html.twig', ['form'=>$form->createView(), 'name'=>$photoCategory->getName()]);
     }
 
     public function deleteAction($id, Request $request)
     {
-
+        if(!$this->validateToken($request->query->get('_token', false), 'delete_category')){
+            throw $this->createAccessDeniedException();
+        }
+        /** @var \ZPB\AdminBundle\Entity\PhotoCategory $category */
+        $category = $this->getRepo('ZPBAdminBundle:PhotoCategory')->find($id);
+        if(!$category){
+            throw $this->createNotFoundException();
+        }
+        if($category->hasPhotos()){
+            $this->setError('Des photos dépendent de cette catégorie. Modifier celles-ci pour pouvoir supprimer cette catégorie.');
+            return $this->redirect($this->generateUrl('zpb_admin_photos_categories_list'));
+        }
+        $this->getManager()->remove($category);
+        $this->getManager()->flush();
+        $this->setSuccess('Catégorie de photos bien supprimée');
+        return $this->redirect($this->generateUrl('zpb_admin_photos_categories_list'));
     }
-} 
+}
