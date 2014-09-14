@@ -31,15 +31,16 @@ class InstitutionType extends AbstractType
         $builder
             ->add('name',null, ['label'=>'Nom*'])
             ->add('description',null, ['label'=>'Description'])
+            ->add('host', null, ['label'=>'Nom de domaine associé*'])
             ->add('save', 'submit', ['label'=>'Enregistrer'])
         ;
     }
-    
+
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(['data_class'=>'ZPB\AdminBundle\Entity\Institution']);
     }
-    
+
     public function getName()
     {
         return 'institution_form';

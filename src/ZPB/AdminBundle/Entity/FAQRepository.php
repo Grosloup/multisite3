@@ -12,4 +12,9 @@ use Doctrine\ORM\EntityRepository;
  */
 class FAQRepository extends EntityRepository
 {
+    public function findByHost($host)
+    {
+        $qb = $this->createQueryBuilder('f')
+            ->where('f.host');
+    }
 }
