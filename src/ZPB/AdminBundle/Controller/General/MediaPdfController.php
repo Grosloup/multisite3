@@ -38,7 +38,7 @@ class MediaPdfController extends BaseController
     public function createAction(Request $request)
     {
         $entity = new MediaPdf();
-        $form = $this->createForm(new MediaPdfType(), $entity);
+        $form = $this->createForm(new MediaPdfType(), $entity, ['em'=>$this->getManager()]);
         $form->handleRequest($request);
         if($form->isValid()){
             $this->getManager()->persist($entity);
@@ -56,7 +56,7 @@ class MediaPdfController extends BaseController
         if(!$entity){
             throw $this->createNotFoundException();
         }
-        $form = $this->createForm(new MediaPdfUpdateType(), $entity); //TODO update type
+        $form = $this->createForm(new MediaPdfUpdateType(), $entity, ['em'=>$this->getManager()]); //TODO update type
         $form->handleRequest($request);
         if($form->isValid()){
             $this->getManager()->persist($entity);

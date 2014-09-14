@@ -4,5 +4,72 @@
 {% set active = "update_media_pdf" %}
 
 {% block content %}
+    <div class="column-3"></div>
+    <div class="column-6">
+        <div class="tile">
+            <div class="tile-header">
+                Nouveau PDF
+            </div>
+            {{ form_start(form, {attr: {class: "form", novalidate:true }})}}
+            {{ form_errors(form) }}
 
+
+
+            <div class="form-row {% if form.institution.vars.errors|length>0 %}has-error{% endif %}">
+                {{ form_label(form.institution) }}
+                <div class="form-field">
+                    {{ form_widget(form.institution)}}
+                    {% if form.institution.vars.errors|length>0 %}
+                        <div class="errors-block">
+                            {{ form_errors(form.institution)}}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-row {% if form.title.vars.errors|length>0 %}has-error{% endif %}">
+                {{ form_label(form.title) }}
+                <div class="form-field">
+                    {{ form_widget(form.title)}}
+                    {% if form.title.vars.errors|length>0 %}
+                        <div class="errors-block">
+                            {{ form_errors(form.title)}}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-row {% if form.copyright.vars.errors|length>0 %}has-error{% endif %}">
+                {{ form_label(form.copyright) }}
+                <div class="form-field">
+                    {{ form_widget(form.copyright)}}
+                    {% if form.copyright.vars.errors|length>0 %}
+                        <div class="errors-block">
+                            {{ form_errors(form.copyright)}}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-row">
+                {{ form_widget(form.save, {attr: {class: "btn btn-primary"}})}}
+            </div>
+
+            {{ form_end(form)}}
+        </div>
+
+    </div>
+    <div class="column-3"></div>
+{% endblock %}
+{% block footScripts %}
+    {{ parent() }}
+    <script>
+        $(function(){
+            var institutionId = {{ form.vars.value.institution.id }};
+            var selectId = "#{{ form.institution.vars.id }}";
+            var options = $(selectId).find("option");
+            options.each(function(){
+                if($(this).val() == institutionId){
+                    $(this).attr("selected", "selected");
+                }
+            });
+        });
+    </script>
 {% endblock %}

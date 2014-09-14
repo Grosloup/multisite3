@@ -79,12 +79,18 @@ class Institution
     private $faqs;
 
     /**
+     * @ORM\OneToMany(targetEntity="ZPB\AdminBundle\Entity\MediaPdf", mappedBy="institution")
+     */
+    private $pdfs;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->photoCategories = new ArrayCollection();
         $this->faqs = new ArrayCollection();
+        $this->pdfs = new ArrayCollection();
     }
 
     /**
@@ -305,5 +311,38 @@ class Institution
     public function getFaqs()
     {
         return $this->faqs;
+    }
+
+    /**
+     * Add pdfs
+     *
+     * @param MediaPdf $pdfs
+     * @return Institution
+     */
+    public function addPdf(MediaPdf $pdfs)
+    {
+        $this->pdfs[] = $pdfs;
+
+        return $this;
+    }
+
+    /**
+     * Remove pdfs
+     *
+     * @param MediaPdf $pdfs
+     */
+    public function removePdf(MediaPdf $pdfs)
+    {
+        $this->pdfs->removeElement($pdfs);
+    }
+
+    /**
+     * Get pdfs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPdfs()
+    {
+        return $this->pdfs;
     }
 }

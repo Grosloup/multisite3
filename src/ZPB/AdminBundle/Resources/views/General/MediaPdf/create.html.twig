@@ -4,5 +4,77 @@
 {% set active = "new_media_pdf" %}
 
 {% block content %}
+    <div class="column-3"></div>
+    <div class="column-6">
+        <div class="tile">
+            <div class="tile-header">
+                Nouveau PDF
+            </div>
+            {{ form_start(form, {attr: {class: "form", novalidate:true }})}}
+            {{ form_errors(form) }}
+            <div class="form-row {% if form.file.vars.errors|length>0 %}has-error{% endif %}">
+                {{ form_label(form.file) }}
+                <div class="form-field">
+                    {{ form_widget(form.file)}}
+                    {% if form.file.vars.errors|length>0 %}
+                        <div class="errors-block">
+                            {{ form_errors(form.file)}}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
 
+            <div class="form-row {% if form.filename.vars.errors|length>0 %}has-error{% endif %}">
+                {{ form_label(form.filename) }}
+                <div class="form-field">
+                    {{ form_widget(form.filename)}}
+                    {% if form.filename.vars.errors|length>0 %}
+                        <div class="errors-block">
+                            {{ form_errors(form.filename)}}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-row {% if form.institution.vars.errors|length>0 %}has-error{% endif %}">
+                {{ form_label(form.institution) }}
+                <div class="form-field">
+                    {{ form_widget(form.institution)}}
+                    {% if form.institution.vars.errors|length>0 %}
+                        <div class="errors-block">
+                            {{ form_errors(form.institution)}}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-row {% if form.title.vars.errors|length>0 %}has-error{% endif %}">
+                {{ form_label(form.title) }}
+                <div class="form-field">
+                    {{ form_widget(form.title)}}
+                    {% if form.title.vars.errors|length>0 %}
+                        <div class="errors-block">
+                            {{ form_errors(form.title)}}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-row {% if form.copyright.vars.errors|length>0 %}has-error{% endif %}">
+                {{ form_label(form.copyright) }}
+                <div class="form-field">
+                    {{ form_widget(form.copyright)}}
+                    {% if form.copyright.vars.errors|length>0 %}
+                        <div class="errors-block">
+                            {{ form_errors(form.copyright)}}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-row">
+                {{ form_widget(form.save, {attr: {class: "btn btn-primary"}})}}
+            </div>
+
+            {{ form_end(form)}}
+        </div>
+
+    </div>
+    <div class="column-3"></div>
 {% endblock %}

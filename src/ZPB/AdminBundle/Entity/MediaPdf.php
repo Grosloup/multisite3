@@ -107,6 +107,12 @@ class MediaPdf
     private $longId;
 
     /**
+     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\Institution", inversedBy="pdfs")
+     * @ORM\JoinColumn(name="institution_id", referencedColumnName="id")
+     */
+    private $institution;
+
+    /**
      * @var string
      */
     private $absolutePath;
@@ -410,5 +416,28 @@ class MediaPdf
     public function getLongId()
     {
         return $this->longId;
+    }
+
+    /**
+     * Set institution
+     *
+     * @param Institution $institution
+     * @return MediaPdf
+     */
+    public function setInstitution(Institution $institution = null)
+    {
+        $this->institution = $institution;
+
+        return $this;
+    }
+
+    /**
+     * Get institution
+     *
+     * @return Institution
+     */
+    public function getInstitution()
+    {
+        return $this->institution;
     }
 }
