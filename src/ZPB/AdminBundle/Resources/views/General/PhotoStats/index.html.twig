@@ -1,0 +1,53 @@
+{% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
+
+{% block title %}Statistiques | Photothèque{% endblock %}
+{% set active = "stats_photo" %}
+
+{% block content %}
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <div class="tile-header">
+                    Statistiques de la photothèque
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <div class="tile-header">
+                    Téléchargement d'images tout confondu sur l'année en cours
+                </div>
+                <canvas id="dl-by-month" width="1000" height="250"></canvas>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footScripts %}
+    {{ parent() }}
+
+    <script src="/js/vendor/Chart.min.js"></script>
+
+    <script>
+        $(function(){
+
+            var dlByMonthCtx = $("#dl-by-month").get(0).getContext("2d");
+            datas = {
+                labels: ["Janvier", "Février", "Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],
+                datasets: [
+                    {
+                        fillColor: "rgba(220,220,220,0.2)",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: [{% for r in downloadsByMonth %}{{ r }}{% if loop.last != true %}, {% endif %}{% endfor %}]
+                    }
+                ]
+            };
+            var dlByMonthBarChart = new Chart(dlByMonthCtx).Line(datas);
+        });
+    </script>
+{% endblock %}

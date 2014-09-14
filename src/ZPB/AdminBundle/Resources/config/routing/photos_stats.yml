@@ -1,0 +1,4 @@
+zpb_admin_photos_stats_homepage:
+    path: /
+    defaults: { _controller: ZPBAdminBundle:General/PhotoStats:index }
+    methods: ["GET"]

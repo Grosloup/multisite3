@@ -60,13 +60,13 @@
                                 <li class="{% if active == "new_institution" %}active{% endif %}"><a href="{{ path("zpb_admin_institutions_create") }}">Nouvelle</a></li>
                             </ul>
                         </li>
-                        <li class="sidebar-dropdown{% if active in ["list_photos", "new_photo", "update_photo","list_photos_cats", "new_photo_cats", "update_photo_cats"] %} active{% endif %}"><a href="">Photothèque</a><i class="sidebar-icon fa fa-angle-right"></i>
+                        <li class="sidebar-dropdown{% if active in ["list_photos", "new_photo", "update_photo","list_photos_cats", "new_photo_cats", "update_photo_cats", "stats_photo"] %} active{% endif %}"><a href="">Photothèque</a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
-                                <li class="sidebar-dropdown{% if active in ["list_photos", "new_photo", "update_photo"] %} active{% endif %}"><a href="">Photos</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                <li class="sidebar-dropdown{% if active in ["list_photos", "new_photo", "update_photo", "stats_photo"] %} active{% endif %}"><a href="">Photos</a><i class="sidebar-icon fa fa-angle-right"></i>
                                     <ul>
                                         <li class="{% if active == "list_photos" %}active{% endif %}"><a href="{{ path("zpb_admin_photos_list") }}">Liste</a></li>
                                         <li class="{% if active == "new_photo" %}active{% endif %}"><a href="{{ path("zpb_admin_photos_choose_institution") }}">Upload</a></li>
-                                        <li class="{% if active == "stats_photo" %}active{% endif %}"><a href="{{ path("zpb_admin_photos_choose_institution") }}">Stats</a></li>
+                                        <li class="{% if active == "stats_photo" %}active{% endif %}"><a href="{{ path("zpb_admin_photos_stats_homepage") }}">Stats</a></li>
 
                                     </ul>
                                 </li>

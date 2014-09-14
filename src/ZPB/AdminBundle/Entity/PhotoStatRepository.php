@@ -3,6 +3,7 @@
 namespace ZPB\AdminBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * PhotoStatRepository
@@ -12,4 +13,34 @@ use Doctrine\ORM\EntityRepository;
  */
 class PhotoStatRepository extends EntityRepository
 {
+    public function downloadsByMonth($year = null)
+    {
+        if(!$year){
+            $now = new \DateTime();
+            $year = $now->format('Y');
+        }
+        $nowYear = \DateTime::createFromFormat('Y', $year);
+        $nextYear = \DateTime::createFromFormat('Y', $year);
+        $nextYear->add(new \DateInterval('P1Y'));
+
+        $qb = $this->createQueryBuilder('s')
+            ->select('COUNT(s.id) as nb, SUBSTRING(s.createdAt,6,2) as m, s.host as host')
+            ->where('s.createdAt >=:start')
+            ->andWhere('s.createdAt <:end')
+            ->groupBy('m, host')
+            ->orderBy('s.createdAt', 'ASC')
+            ->setParameter('start', $nowYear->format('Y') . '-01-01 00:00:00')
+            ->setParameter('end',$nextYear->format('Y') . '-01-01 00:00:00');
+        return $qb->getQuery()->getArrayResult();
+    }
+
+    public function downloadsByDay()
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->select('COUNT(s.id), SUBSTRING(s.createdAt,9,2) as m')
+
+            ->groupBy('m')
+            ->orderBy('s.createdAt', 'ASC');
+        return $qb->getQuery()->getArrayResult();
+    }
 }
