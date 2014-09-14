@@ -3,7 +3,8 @@ H:\VAGRANTBOX\multisite3\xWHB5Y
 
 C:\BOX\PROJETS\puphpet_multisite3\xWHB5Y
 /var/www/vhosts/multisite3/app
-
+mailcatcher  192.168.56.120:1080
+phpmyadmin  192.168.56.120/phpmyadmmin
 apt-get install wkhtmltopdf
 
 LoadInstitutions                => 10
