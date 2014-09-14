@@ -3,4 +3,87 @@
 {% block title %}Modification Photo | Photothèque{% endblock %}
 {% set active = "update_photo" %}
 
-{% block content %}{% endblock %}
+{% block content %}
+
+    <div class="row">
+        <div class="column-3">
+            <img src="{{ photo_factory.webThumb('regular', form.vars.value) }}" alt="" width="100%" title="{{ form.vars.value.title ~ form.vars.value.copyright }}"/>
+        </div>
+        <div class="column-6">
+            <div class="tile">
+                <div class="tile-header">
+                    Modification de {{ form.vars.value.filename }}
+                </div>
+
+                {{ form_start(form, {attr: {class: "form", novalidate:true }} ) }}
+                {{ form_errors(form) }}
+
+                <div class="form-row {% if form.category.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.category) }}
+                    <div class="form-field">
+                        {{ form_widget(form.category)}}
+                        {% if form.category.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.category)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.title.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.title) }}
+                    <div class="form-field">
+                        {{ form_widget(form.title)}}
+                        {% if form.title.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.title)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.copyright.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.copyright) }}
+                    <div class="form-field">
+                        {{ form_widget(form.copyright)}}
+                        {% if form.copyright.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.copyright)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.legend.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.legend) }}
+                    <div class="form-field">
+                        {{ form_widget(form.legend)}}
+                        {% if form.legend.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.legend)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.description.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.description) }}
+                    <div class="form-field">
+                        {{ form_widget(form.description)}}
+                        {% if form.description.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.description)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    {{ form_widget(form.save, {attr: {class: "btn btn-primary"}})}}
+                </div>
+                {{form_end(form)}}
+            </div>
+        </div>
+        <div class="column-3"></div>
+    </div>
+{% endblock %}

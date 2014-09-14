@@ -26,6 +26,7 @@ use Symfony\Component\HttpFoundation\Request;
 use ZPB\AdminBundle\Controller\BaseController;
 use ZPB\AdminBundle\Form\Type\InstitutionChoiceType;
 use ZPB\AdminBundle\Form\Type\PhotoType;
+use ZPB\AdminBundle\Form\Type\PhotoUpdateType;
 
 class PhotoController extends BaseController
 {
@@ -119,11 +120,13 @@ class PhotoController extends BaseController
 
     public function updateAction($id, Request $request)
     {
+        /** @var \ZPB\AdminBundle\Entity\Photo $photo */
         $photo = $this->getRepo('ZPBAdminBundle:Photo')->find($id);
         if(!$photo){
-            //TODO
+            $this->createNotFoundException();
         }
-        return $this->render('ZPBAdminBundle:General:photo/update.html.twig', []);
+        $form = $this->createForm(new PhotoUpdateType(), $photo, ['em'=>$this->getManager(), 'slug'=>$photo->getCategory()->getInstitution()->getSlug()]);
+        return $this->render('ZPBAdminBundle:General:photo/update.html.twig', ['form'=>$form->createView(), 'photo_factory'=>$this->get('zpb.photo_factory')]);
     }
 
     public function positionUpAction($id)
@@ -205,6 +208,16 @@ class PhotoController extends BaseController
 
     public function deleteAction($id, Request $request)
     {
-
+        if(!$this->validateToken($request->query->get('_token', false), 'delete_photo')){
+            throw $this->createAccessDeniedException();
+        }
+        $photo = $this->getRepo('ZPBAdminBundle:Photo')->find($id);
+        if(!$photo){
+            throw $this->createNotFoundException();
+        }
+        $this->getManager()->remove($photo);
+        $this->getManager()->flush();
+        $this->setSuccess('Photo bien supprimée');
+        return $this->redirect($this->generateUrl('zpb_admin_photos_list'));
     }
 }
