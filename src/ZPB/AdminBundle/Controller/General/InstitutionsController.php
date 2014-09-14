@@ -81,6 +81,10 @@ class InstitutionsController extends BaseController
             $this->setError('Des catégories de photo dépendent de cette institution. Modifier celles-ci pour pouvoir supprimer cette institution.');
             return $this->redirect($this->generateUrl('zpb_admin_institutions_list'));
         }
+        if($institution->hasFaqs()){
+            $this->setError('Des FAQ dépendent de cette institution. Modifier celles-ci pour pouvoir supprimer cette institution.');
+            return $this->redirect($this->generateUrl('zpb_admin_institutions_list'));
+        }
         $this->getManager()->remove($institution);
         $this->getManager()->flush();
         $this->setSuccess('Institution bien supprimée');

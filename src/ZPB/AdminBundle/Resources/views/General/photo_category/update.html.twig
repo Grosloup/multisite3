@@ -58,3 +58,18 @@
     </div>
 
 {% endblock %}
+{% block footScripts %}
+    {{ parent() }}
+    <script>
+        $(function(){
+            var institutionId = {{ form.vars.value.institution.id }};
+            var selectId = "#{{ form.institution.vars.id }}";
+            var options = $(selectId).find("option");
+            options.each(function(){
+                if($(this).val() == institutionId){
+                    $(this).attr("selected", "selected");
+                }
+            });
+        });
+    </script>
+{% endblock %}

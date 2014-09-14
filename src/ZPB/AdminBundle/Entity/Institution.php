@@ -69,11 +69,17 @@ class Institution
     private $photoCategories;
 
     /**
+     * @ORM\OneToMany(targetEntity="ZPB\AdminBundle\Entity\FAQ", mappedBy="institution")
+     */
+    private $faqs;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->photoCategories = new ArrayCollection();
+        $this->faqs = new ArrayCollection();
     }
 
     /**
@@ -238,5 +244,43 @@ class Institution
     public function hasPhotoCategories()
     {
         return count($this->getPhotoCategories()) > 0;
+    }
+
+    public function hasFaqs()
+    {
+        return count($this->getFaqs()) > 0;
+    }
+
+    /**
+     * Add faqs
+     *
+     * @param FAQ $faqs
+     * @return Institution
+     */
+    public function addFaq(FAQ $faqs)
+    {
+        $this->faqs[] = $faqs;
+
+        return $this;
+    }
+
+    /**
+     * Remove faqs
+     *
+     * @param FAQ $faqs
+     */
+    public function removeFaq(FAQ $faqs)
+    {
+        $this->faqs->removeElement($faqs);
+    }
+
+    /**
+     * Get faqs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFaqs()
+    {
+        return $this->faqs;
     }
 }

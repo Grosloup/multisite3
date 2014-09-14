@@ -50,14 +50,14 @@ class PhotoCategoryType extends AbstractType
             ->add('save', 'submit', ['label'=>'Enregistrer'])
         ;
     }
-    
+
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(['data_class'=>'ZPB\AdminBundle\Entity\PhotoCategory']);
         $resolver->setRequired(['em']);
         $resolver->setAllowedTypes(['em'=>'\Doctrine\Common\Persistence\ObjectManager']);
     }
-    
+
     public function getName()
     {
         return 'photo_category_form';

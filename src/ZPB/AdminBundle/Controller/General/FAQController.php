@@ -40,7 +40,7 @@ class FAQController extends BaseController
     public function createAction(Request $request)
     {
         $faq = new FAQ();
-        $form = $this->createForm(new FAQType(), $faq);
+        $form = $this->createForm(new FAQType(), $faq, ['em'=>$this->getManager()]);
         $form->handleRequest($request);
         if($form->isValid()){
             $this->getManager()->persist($faq);
@@ -52,11 +52,13 @@ class FAQController extends BaseController
 
     public function updateAction($id, Request $request)
     {
+        /** @var \ZPB\AdminBundle\Entity\FAQ $faq */
         $faq = $this->getRepo('ZPBAdminBundle:FAQ')->find($id);
         if(!$faq){
             throw $this->createNotFoundException();
         }
-        $form = $this->createForm(new FAQType(), $faq);
+        $form = $this->createForm(new FAQType(), $faq, ['em'=>$this->getManager()]);
+
         $form->handleRequest($request);
         if($form->isValid()){
             $this->getManager()->persist($faq);
@@ -82,4 +84,4 @@ class FAQController extends BaseController
 
         return $this->redirect($this->generateUrl('zpb_admin_faq_list'));
     }
-} 
+}

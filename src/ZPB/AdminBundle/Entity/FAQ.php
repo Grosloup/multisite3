@@ -36,6 +36,12 @@ class FAQ
     private $response;
 
     /**
+     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\Institution", inversedBy="faqs")
+     * @ORM\JoinColumn(name="institution_id", referencedColumnName="id")
+     */
+    private $institution;
+
+    /**
      * Get id
      *
      * @return integer
@@ -89,5 +95,28 @@ class FAQ
         $this->response = $response;
 
         return $this;
+    }
+
+    /**
+     * Set institution
+     *
+     * @param Institution $institution
+     * @return FAQ
+     */
+    public function setInstitution(Institution $institution = null)
+    {
+        $this->institution = $institution;
+
+        return $this;
+    }
+
+    /**
+     * Get institution
+     *
+     * @return Institution
+     */
+    public function getInstitution()
+    {
+        return $this->institution;
     }
 }
