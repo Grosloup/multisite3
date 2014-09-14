@@ -12,6 +12,7 @@
         <parameter key="zpb.photo_resizer.class">ZPB\AdminBundle\Service\PhotoResizer</parameter>
         <parameter key="zpb.photo_factory.class">ZPB\AdminBundle\Service\PhotoFactory</parameter>
         <parameter key="zpb.image_factory.class">ZPB\AdminBundle\Service\ImageFactory</parameter>
+        <parameter key="zpb.pdf_factory.class">ZPB\AdminBundle\Service\PdfFactory</parameter>
         <parameter key="zpb.form.type.civility.class">ZPB\AdminBundle\Form\Type\CivilityType</parameter>
         <parameter key="zpb.listener.entity.godparent_listener.class">ZPB\AdminBundle\Listener\Entities\GodparentListener</parameter>
         <parameter key="zpb.form.type.target_choice_type.class">ZPB\AdminBundle\Form\Type\TargetChoiceType</parameter>
@@ -51,6 +52,7 @@
             <parameter key="zpb.photo.thumbs.upload_dir">downloads/images/thumbs/</parameter>
             <parameter key="zpb.photo.root_dir">%kernel.root_dir%/../web/</parameter>
 
+            <parameter key="zpb.pdf.class">ZPB\AdminBundle\Entity\MediaPdf</parameter>
             <parameter key="zpb.pdf.web_dir">downloads/pdf/</parameter>
             <parameter key="zpb.pdf.root_dir">%kernel.root_dir%/../web/</parameter>
 
@@ -125,6 +127,10 @@
 
         <service id="zpb.photo_factory" class="%zpb.photo_factory.class%">
             <argument>%zpb.photo.thumbnails%</argument>
+            <argument>%zpb.medias.options%</argument>
+        </service>
+
+        <service id="zpb.pdf_factory" class="%zpb.pdf_factory.class%">
             <argument>%zpb.medias.options%</argument>
         </service>
 

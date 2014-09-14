@@ -47,7 +47,7 @@ class MediaPdfUpdateType extends AbstractType
                     ]
                 )->addModelTransformer($institutionTransformer)
             )
-            ->add('save','submit',['label'=>'Upload'])
+            ->add('save','submit',['label'=>'Enregistrer'])
         ;
     }
 

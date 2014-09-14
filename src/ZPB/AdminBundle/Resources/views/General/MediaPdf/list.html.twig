@@ -36,7 +36,7 @@
                             <td>{{ entity.institution }}</td>
                             <td>-</td>
                             <td><a class="btn btn-neutral" href="{{ path("zpb_admin_media_pdf_update", {id: entity.id}) }}"><i class="fa fa-edit"></i></a></td>
-                            <td><a class="btn btn-neutra delete-alertl" href="{{ path("zpb_admin_media_pdf_delete", {id: entity.id, _token:csrf_token('delete_pdf')}) }}" data-name="{{ entity.filename }}"><i class="fa fa-trash-o"></i></a></td>
+                            <td><a class="btn btn-neutral delete-alert" href="{{ path("zpb_admin_media_pdf_delete", {id: entity.id, _token:csrf_token('delete_pdf')}) }}" data-name="{{ entity.filename }}"><i class="fa fa-trash-o"></i></a></td>
                         </tr>
                     {% endfor %}
                     </tbody>

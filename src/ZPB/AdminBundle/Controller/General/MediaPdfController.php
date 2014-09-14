@@ -37,10 +37,11 @@ class MediaPdfController extends BaseController
 
     public function createAction(Request $request)
     {
-        $entity = new MediaPdf();
+        $entity = $this->get('zpb.pdf_factory')->create();
         $form = $this->createForm(new MediaPdfType(), $entity, ['em'=>$this->getManager()]);
         $form->handleRequest($request);
         if($form->isValid()){
+            $entity->upload();
             $this->getManager()->persist($entity);
             $this->getManager()->flush();
 
@@ -69,7 +70,7 @@ class MediaPdfController extends BaseController
 
     public function deleteAction($id, Request $request)
     {
-        if(!$this->validateToken($request->query->get('_token'), 'delete_')){
+        if(!$this->validateToken($request->query->get('_token'), 'delete_pdf')){
             throw $this->createAccessDeniedException();
         }
         if(null == $entity = $this->getRepo('ZPBAdminBundle:MediaPdf')->find($id)){

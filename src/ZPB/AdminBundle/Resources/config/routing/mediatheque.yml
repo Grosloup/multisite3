@@ -28,7 +28,7 @@ zpb_admin_media_pdf_list:
     methods: ["GET"]
 
 zpb_admin_media_pdf_create:
-    path: /pdfs/nouvelle
+    path: /pdfs/nouveau
     defaults: { _controller: ZPBAdminBundle:General/MediaPdf:create }
     methods: ["GET", "POST"]
 
