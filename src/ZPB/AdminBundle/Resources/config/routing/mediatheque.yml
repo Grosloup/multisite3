@@ -21,3 +21,27 @@ zpb_admin_media_image_delete:
     methods: ["GET"]
     requirements:
         id: \d+
+
+zpb_admin_media_pdf_list:
+    path: /pdfs
+    defaults: { _controller: ZPBAdminBundle:General/MediaPdf:list }
+    methods: ["GET"]
+
+zpb_admin_media_pdf_create:
+    path: /pdfs/nouvelle
+    defaults: { _controller: ZPBAdminBundle:General/MediaPdf:create }
+    methods: ["GET", "POST"]
+
+zpb_admin_media_pdf_update:
+    path: /pdfs/modifier/{id}
+    defaults: { _controller: ZPBAdminBundle:General/MediaPdf:update }
+    methods: ["GET", "POST"]
+    requirements:
+        id: \d+
+
+zpb_admin_media_pdf_delete:
+    path: /pdfs/supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:General/MediaPdf:delete }
+    methods: ["GET"]
+    requirements:
+        id: \d+

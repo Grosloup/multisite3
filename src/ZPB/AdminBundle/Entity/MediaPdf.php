@@ -8,20 +8,15 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * MediaImage
+ * MediaPdf
  *
- * @ORM\Table(name="zpb_media_images")
- * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\MediaImageRepository")
- * @UniqueEntity("filename", message="Un fichier image du même nom existe déjà.")
+ * @ORM\Table(name="zpb_media-pdf")
+ * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\MediaPdfRepository")
+ * @UniqueEntity("filename", message="Un fichier pdf du même nom existe déjà.")
  * @ORM\HasLifecycleCallbacks()
  */
-class MediaImage implements ResizeableInterface
+class MediaPdf
 {
-    /**
-     * @var \Symfony\Component\HttpFoundation\File\UploadedFile
-     * @Assert\Image(maxSize="6M", maxSizeMessage="La taille de votre fichier dépasse le maximum autorisé.", mimeTypes={"image/jpeg","image/gif","image/png"}, mimeTypesMessage="Votre image n\'est pas d\'un type autorisé.")
-     */
-    public $file;
     /**
      * @var integer
      *
@@ -30,6 +25,13 @@ class MediaImage implements ResizeableInterface
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @var \Symfony\Component\HttpFoundation\File\UploadedFile
+     * @Assert\File(maxSize="6M", maxSizeMessage="a taille de votre fichier dépasse le maximum autorisé.", mimeTypes={"application/pdf", "application/x-pdf"}, mimeTypesMessage="Votre fichier n\'est pas unpdf valide.")
+     */
+    public $file;
+
     /**
      * @var string
      *
@@ -37,49 +39,44 @@ class MediaImage implements ResizeableInterface
      * @Assert\Regex("/^[a-zA-Z0-9._-]*$/", message="Ce champ contient des caractères non autorisés.")
      */
     private $filename;
+
     /**
      * @var string
      *
-     * @ORM\Column(name="extension", type="string", length=6, nullable=false)
+     * @ORM\Column(name="extension", type="string", length=10, nullable=false)
      */
     private $extension;
+
     /**
      * @var string
      *
-     * @ORM\Column(name="mime", type="string", length=50, nullable=false)
+     * @ORM\Column(name="mime", type="string", length=20, nullable=false)
      */
     private $mime;
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="width", type="integer", nullable=false)
-     */
-    private $width;
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="height", type="integer", nullable=false)
-     */
-    private $height;
+
     /**
      * @var string
      *
-     * @ORM\Column(name="rootDir", type="string", length=255, nullable=false)
+     * @ORM\Column(name="root_dir", type="string", length=255, nullable=false)
      */
     private $rootDir;
+
     /**
      * @var string
      *
      * @ORM\Column(name="webDir", type="string", length=255, nullable=false)
      */
     private $webDir;
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
      * @Gedmo\Timestampable(on="create")
+     *
      */
     private $createdAt;
+
     /**
      * @var \DateTime
      *
@@ -87,63 +84,44 @@ class MediaImage implements ResizeableInterface
      * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
+
     /**
      * @var string
-     * @ORM\Column(name="copyright", type="string", nullable=false, length=255)
-     */
-    private $copyright;
-    /**
-     * @var string
+     *
      * @ORM\Column(name="title", type="text", nullable=true)
      */
     private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="copyright", type="string", length=255, nullable=false)
+     */
+    private $copyright;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="longId", type="string", length=255, , nullable=false)
+     */
+    private $longId;
+
     /**
      * @var string
      */
     private $absolutePath;
-    /**
-     * @var string
-     * @ORM\Column(name="long_id", type="string", length=15, nullable=false, unique=true)
-     */
-    private $longId;
+
 
     public function __construct()
     {
         $now = (new \DateTime())->getTimestamp();
         $this->longId = substr(base_convert(sha1(uniqid($now, true)), 16, 36), 0, 15);
-    }
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    public function getLongId()
-    {
-        return $this->longId;
-    }
-
-    /**
-     * Set longId
-     *
-     * @param string $longId
-     * @return MediaImage
-     */
-    public function setLongId($longId)
-    {
-        $this->longId = $longId;
-
-        return $this;
     }
 
     public function upload()
     {
-        if (!$this->file) {
+        if ($this->file == null) {
             return false;
         }
 
@@ -155,9 +133,7 @@ class MediaImage implements ResizeableInterface
             $this->filename = pathinfo($this->sanitizeFilename($this->file->getClientOriginalName()), PATHINFO_FILENAME);
         }
         $this->file->move($dest, $this->filename . '.' . $this->extension);
-        $size = getimagesize($this->getAbsolutePath());
-        $this->width = $size[0];
-        $this->height = $size[1];
+
         $this->file = null;
 
         return true;
@@ -195,22 +171,25 @@ class MediaImage implements ResizeableInterface
             unlink($this->absolutePath);
         }
     }
-
     /**
-     * @return string
+     * Get id
+     *
+     * @return integer
      */
-    public function getTitle()
+    public function getId()
     {
-        return $this->title;
+        return $this->id;
     }
 
     /**
-     * @param string $title
-     * @return MediaImage
+     * Set filename
+     *
+     * @param string $filename
+     * @return MediaPdf
      */
-    public function setTitle($title)
+    public function setFilename($filename)
     {
-        $this->title = $title;
+        $this->filename = $filename;
 
         return $this;
     }
@@ -226,14 +205,14 @@ class MediaImage implements ResizeableInterface
     }
 
     /**
-     * Set filename
+     * Set extension
      *
-     * @param string $filename
-     * @return MediaImage
+     * @param string $extension
+     * @return MediaPdf
      */
-    public function setFilename($filename)
+    public function setExtension($extension)
     {
-        $this->filename = $filename;
+        $this->extension = $extension;
 
         return $this;
     }
@@ -249,14 +228,14 @@ class MediaImage implements ResizeableInterface
     }
 
     /**
-     * Set extension
+     * Set mime
      *
-     * @param string $extension
-     * @return MediaImage
+     * @param string $mime
+     * @return MediaPdf
      */
-    public function setExtension($extension)
+    public function setMime($mime)
     {
-        $this->extension = $extension;
+        $this->mime = $mime;
 
         return $this;
     }
@@ -272,60 +251,14 @@ class MediaImage implements ResizeableInterface
     }
 
     /**
-     * Set mime
+     * Set rootDir
      *
-     * @param string $mime
-     * @return MediaImage
+     * @param string $rootDir
+     * @return MediaPdf
      */
-    public function setMime($mime)
+    public function setRootDir($rootDir)
     {
-        $this->mime = $mime;
-
-        return $this;
-    }
-
-    /**
-     * Get width
-     *
-     * @return integer
-     */
-    public function getWidth()
-    {
-        return $this->width;
-    }
-
-    /**
-     * Set width
-     *
-     * @param integer $width
-     * @return MediaImage
-     */
-    public function setWidth($width)
-    {
-        $this->width = $width;
-
-        return $this;
-    }
-
-    /**
-     * Get height
-     *
-     * @return integer
-     */
-    public function getHeight()
-    {
-        return $this->height;
-    }
-
-    /**
-     * Set height
-     *
-     * @param integer $height
-     * @return MediaImage
-     */
-    public function setHeight($height)
-    {
-        $this->height = $height;
+        $this->rootDir = $rootDir;
 
         return $this;
     }
@@ -341,14 +274,14 @@ class MediaImage implements ResizeableInterface
     }
 
     /**
-     * Set rootDir
+     * Set webDir
      *
-     * @param string $rootDir
-     * @return MediaImage
+     * @param string $webDir
+     * @return MediaPdf
      */
-    public function setRootDir($rootDir)
+    public function setWebDir($webDir)
     {
-        $this->rootDir = $rootDir;
+        $this->webDir = $webDir;
 
         return $this;
     }
@@ -364,20 +297,20 @@ class MediaImage implements ResizeableInterface
     }
 
     /**
-     * Set webDir
+     * Set createdAt
      *
-     * @param string $webDir
-     * @return MediaImage
+     * @param \DateTime $createdAt
+     * @return MediaPdf
      */
-    public function setWebDir($webDir)
+    public function setCreatedAt($createdAt)
     {
-        $this->webDir = $webDir;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
     /**
-     * Get ceatedAt
+     * Get createdAt
      *
      * @return \DateTime
      */
@@ -387,14 +320,14 @@ class MediaImage implements ResizeableInterface
     }
 
     /**
-     * Set ceatedAt
+     * Set updatedAt
      *
-     * @param \DateTime $createdAt
-     * @return MediaImage
+     * @param \DateTime $updatedAt
+     * @return MediaPdf
      */
-    public function setCreatedAt($createdAt)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->createdAt = $createdAt;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
@@ -410,29 +343,33 @@ class MediaImage implements ResizeableInterface
     }
 
     /**
-     * Set updatedAt
+     * Set title
      *
-     * @param \DateTime $updatedAt
-     * @return MediaImage
+     * @param string $title
+     * @return MediaPdf
      */
-    public function setUpdatedAt($updatedAt)
+    public function setTitle($title)
     {
-        $this->updatedAt = $updatedAt;
+        $this->title = $title;
 
         return $this;
     }
 
     /**
+     * Get title
+     *
      * @return string
      */
-    public function getCopyright()
+    public function getTitle()
     {
-        return $this->copyright;
+        return $this->title;
     }
 
     /**
+     * Set copyright
+     *
      * @param string $copyright
-     * @return MediaImage
+     * @return MediaPdf
      */
     public function setCopyright($copyright)
     {
@@ -442,5 +379,36 @@ class MediaImage implements ResizeableInterface
         return $this;
     }
 
+    /**
+     * Get copyright
+     *
+     * @return string
+     */
+    public function getCopyright()
+    {
+        return $this->copyright;
+    }
 
+    /**
+     * Set longId
+     *
+     * @param string $longId
+     * @return MediaPdf
+     */
+    public function setLongId($longId)
+    {
+        $this->longId = $longId;
+
+        return $this;
+    }
+
+    /**
+     * Get longId
+     *
+     * @return string
+     */
+    public function getLongId()
+    {
+        return $this->longId;
+    }
 }
