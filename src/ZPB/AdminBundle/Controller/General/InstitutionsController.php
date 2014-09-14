@@ -31,7 +31,6 @@ class InstitutionsController extends BaseController
     public function listAction()
     {
         $institutions = $this->getRepo('ZPBAdminBundle:Institution')->findAll();
-
         return $this->render('ZPBAdminBundle:General/Institution:list.html.twig', ['institutions' => $institutions]);
     }
 
@@ -43,7 +42,7 @@ class InstitutionsController extends BaseController
         if ($form->isValid()) {
             $this->getManager()->persist($institution);
             $this->getManager()->flush();
-
+            $this->setSuccess('Nouvelle institution créée.');
             return $this->redirect($this->generateUrl('zpb_admin_institutions_list'));
         }
 
@@ -61,7 +60,7 @@ class InstitutionsController extends BaseController
         if ($form->isValid()) {
             $this->getManager()->persist($institution);
             $this->getManager()->flush();
-
+            $this->setSuccess('Institution bien modifiée');
             return $this->redirect($this->generateUrl('zpb_admin_institutions_list'));
         }
 
@@ -73,14 +72,18 @@ class InstitutionsController extends BaseController
         if(!$this->validateToken($request->query->get('_token'), 'delete_institution')){
             throw $this->createAccessDeniedException();
         }
+        /** @var \ZPB\AdminBundle\Entity\Institution $institution */
         $institution = $this->getRepo('ZPBAdminBundle:Institution')->find($id);
         if (!$institution) {
             throw $this->createNotFoundException();
         }
-        //TODO message d'alerte si des catégories sont encore liées à l'inst
+        if($institution->hasPhotoCategories()){
+            $this->setError('Des catégories de photo dépendent de cette institution. Modifier celles-ci pour pouvoir supprimer cette institution.');
+            return $this->redirect($this->generateUrl('zpb_admin_institutions_list'));
+        }
         $this->getManager()->remove($institution);
         $this->getManager()->flush();
-
+        $this->setSuccess('Institution bien supprimée');
         return $this->redirect($this->generateUrl('zpb_admin_institutions_list'));
     }
-} 
+}

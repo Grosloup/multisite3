@@ -234,4 +234,9 @@ class Institution
     {
         return $this->photoCategories;
     }
+
+    public function hasPhotoCategories()
+    {
+        return count($this->getPhotoCategories()) > 0;
+    }
 }
