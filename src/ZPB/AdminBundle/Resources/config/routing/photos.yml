@@ -55,3 +55,7 @@ zpb_admin_photos_position_down:
     requirements:
         id: \d+
 
+zpb_admin_photos_position_xhr_change:
+    path: /api/position/modifier
+    defaults: { _controller: ZPBAdminBundle:General/Photo:positionChangeApi }
+    methods: ["POST"]

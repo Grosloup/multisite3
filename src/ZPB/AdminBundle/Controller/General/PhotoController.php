@@ -21,6 +21,7 @@
 namespace ZPB\AdminBundle\Controller\General;
 
 
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use ZPB\AdminBundle\Controller\BaseController;
 use ZPB\AdminBundle\Form\Type\InstitutionChoiceType;
@@ -167,6 +168,35 @@ class PhotoController extends BaseController
         $photos = $this->getRepo('ZPBAdminBundle:Photo')->findBy(['category'=>$category], ['position'=>'ASC']);
 
         return $this->render('ZPBAdminBundle:General/photo:list_by_category.html.twig', ['photo_factory'=>$this->get('zpb.photo_factory'),'photos'=>$photos, 'category'=>$category]);
+    }
+
+    public function positionChangeApiAction(Request $request)
+    {
+        if(!$request->isMethod("post") || !$request->isXmlHttpRequest()){
+            throw $this->createAccessDeniedException();
+        }
+        $id = intval($request->request->get('id', false));
+        $position = intval($request->request->get('position', false));
+        $response = ['error'=>'ok', 'oldPosition'=>null, 'id'=>null, 'newPosition'=>null];
+        if(!$id || !$position){
+            $response['error'] = 'Données manquantes';
+            return new JsonResponse($response);
+        }
+
+        $photo = $this->getRepo('ZPBAdminBundle:Photo')->find($id);
+        if(!$photo){
+            $response['error'] = 'Photo introuvable';
+            return new JsonResponse($response);
+        }
+        $oldPos = $photo->getPosition();
+        $photo->setPosition($position);
+        $this->getManager()->persist($photo);
+        $this->getManager()->flush();
+        $response['oldPosition'] = $oldPos;
+        $response['newPosition'] = $position;
+        $response['id'] = $id;
+        return new JsonResponse($response);
+
     }
 
     public function deleteAction($id, Request $request)
