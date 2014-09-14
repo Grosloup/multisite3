@@ -40,7 +40,7 @@ class PhotoCategoryUpdateType extends AbstractType
                     'entity',
                     [
                         'label'=>'Institution',
-                        'empty_value'=>'Choisir une institution',
+
                         'class'=>'ZPBAdminBundle:Institution',
                         'data_class'=>'ZPB\AdminBundle\Entity\Institution',
                         'property'=>'name'
@@ -62,4 +62,4 @@ class PhotoCategoryUpdateType extends AbstractType
     {
         return 'photo_category_update_form';
     }
-} 
+}
