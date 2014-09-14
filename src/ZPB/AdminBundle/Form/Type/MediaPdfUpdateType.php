@@ -29,7 +29,9 @@ class MediaPdfUpdateType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('',null,['label'=>''])
+            ->add('title','textarea',['label'=>'Texte de l\'attribut title'])
+            ->add('copyright',null,['label'=>'Texte du copyright'])
+            ->add('save','submit',['label'=>'Upload'])
         ;
     }
 

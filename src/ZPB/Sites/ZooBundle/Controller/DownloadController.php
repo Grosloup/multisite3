@@ -37,7 +37,7 @@ class DownloadController extends BaseController
             throw $this->createNotFoundException();
         }
         $stat = new PhotoStat();
-        $stat->setFilename($filename)->setPhotoId($image->getId())->setHost($request->getSchemeAndHttpHost());
+        $stat->setFilename($filename)->setPhotoId($image->getId())->setHost($request->getHost());
         $this->getManager()->persist($stat);
         $this->getManager()->flush();
 
@@ -47,8 +47,8 @@ class DownloadController extends BaseController
         return $response;
     }
 
-    public function downloadImagePdf($filename)
+    public function downloadImagePdf($filename, Request $request)
     {
-
+        //TODO
     }
 }

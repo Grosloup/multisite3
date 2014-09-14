@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * MediaPdf
  *
- * @ORM\Table(name="zpb_media-pdf")
+ * @ORM\Table(name="zpb_media_pdf")
  * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\MediaPdfRepository")
  * @UniqueEntity("filename", message="Un fichier pdf du même nom existe déjà.")
  * @ORM\HasLifecycleCallbacks()
@@ -102,7 +102,7 @@ class MediaPdf
     /**
      * @var string
      *
-     * @ORM\Column(name="longId", type="string", length=255, , nullable=false)
+     * @ORM\Column(name="longId", type="string", length=255,nullable=false)
      */
     private $longId;
 
