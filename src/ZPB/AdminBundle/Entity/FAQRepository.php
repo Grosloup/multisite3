@@ -15,6 +15,12 @@ class FAQRepository extends EntityRepository
     public function findByHost($host)
     {
         $qb = $this->createQueryBuilder('f')
-            ->where('f.host');
+            ->join('ZPB\AdminBundle\Entity\Institution ', 'i')
+            ->where('i.host=:host')
+
+            ->setParameter('host', $host);
+
+
+        return $qb->getQuery()->getResult();
     }
 }

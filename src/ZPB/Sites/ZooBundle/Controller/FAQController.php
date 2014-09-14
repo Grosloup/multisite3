@@ -21,13 +21,21 @@
 namespace ZPB\Sites\ZooBundle\Controller;
 
 
+use Symfony\Component\HttpFoundation\Request;
 use ZPB\AdminBundle\Controller\BaseController;
 
 class FAQController extends BaseController
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $faqs = $this->getRepo('ZPBAdminBundle:FAQ')->findAll();
-        return $this->render('ZPBAdminBundle:FAQ:index.html.twig', ['faqs'=>$faqs]);
+        $institution = $this->getRepo('ZPBAdminBundle:Institution')->findOneByHost($request->getHost());
+        $faqs = $this->getRepo('ZPBAdminBundle:FAQ')->findByInstitution($institution);
+        $commune = $this->getRepo('ZPBAdminBundle:Institution')->findOneBySlug('commune');
+        $cfaqs = [];
+        if($commune){
+            $cfaqs = $this->getRepo('ZPBAdminBundle:FAQ')->findByInstitution($commune);
+        }
+
+        return $this->render('ZPBSitesZooBundle:FAQ:index.html.twig', ['faqs'=>$faqs, 'cfaqs'=>$cfaqs]);
     }
-} 
+}

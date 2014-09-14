@@ -13,6 +13,13 @@
                     {% for faq in faqs %}
                         <li>{{ faq.question }}</li>
                     {% endfor %}
+                    {% if cfaqs|length > 0 %}
+
+                        {% for cfaq in cfaqs %}
+                            <li>{{ cfaq.question }}</li>
+                        {% endfor %}
+
+                    {% endif %}
                 </ul>
 
             </div>
@@ -27,6 +34,16 @@
                         <p>{{ faq.response }}</p>
                     </div>
                 {% endfor %}
+                {% if cfaqs|length > 0 %}
+
+                    {% for cfaq in cfaqs %}
+                        <div class="faq">
+                            <h4>{{ cfaq.question }}</h4>
+                            <p>{{ cfaq.response }}</p>
+                        </div>
+                    {% endfor %}
+
+                {% endif %}
             </div>
             <div class="columns large-3"></div>
         </div>
