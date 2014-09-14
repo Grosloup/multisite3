@@ -27,12 +27,24 @@
         <div class="column-12">
             <div class="tile">
                 <div class="tile-header">
-                    Classement des photos les plus téléchargées
+                    Classement des 20 photos les plus téléchargées
                 </div>
                 <canvas id="ranking" width="800" height="250"></canvas>
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <div class="tile-header">
+                    Classement des 20 photos les moins téléchargées
+                </div>
+                <canvas id="rankingLess" width="800" height="250"></canvas>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="column-12">
             <div class="tile">
@@ -54,6 +66,7 @@
 
             var dlByMonthCtx = $("#dl-by-month").get(0).getContext("2d");
             var rankingCtx = $("#ranking").get(0).getContext("2d");
+            var rankingLessCtx = $("#rankingLess").get(0).getContext("2d");
             var hostCtx = $("#host").get(0).getContext("2d");
             var datas;
             datas = {
@@ -86,6 +99,21 @@
             };
 
             var rankingBarChart = new Chart(rankingCtx).Bar(datas);
+
+            datas = {
+                labels: [{{ rkLessLabels|raw }}],
+                datasets: [
+                    {
+                        fillColor: "rgba(220,220,220,0.5)",
+                        strokeColor: "rgba(220,220,220,0.8)",
+                        highlightFill: "rgba(220,220,220,0.75)",
+                        highlightStroke: "rgba(220,220,220,1)",
+                        data: [{{ rkLessNums }}]
+                    }
+                ]
+            };
+
+            var rankingLessBarChart = new Chart(rankingLessCtx).Bar(datas);
 
             datas = {
                 labels: [{{ hostLabels|raw }}],

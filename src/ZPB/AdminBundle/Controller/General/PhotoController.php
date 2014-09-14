@@ -166,8 +166,12 @@ class PhotoController extends BaseController
             throw $this->createNotFoundException();
         }
         $photos = $this->getRepo('ZPBAdminBundle:Photo')->findBy(['category'=>$category], ['position'=>'ASC']);
+        $stats = [];
+        foreach($photos as $photo){
+            $stats[$photo->getId()] = $this->getRepo('ZPBAdminBundle:PhotoStat')->getDownloadsForOne($photo->getId());
+        }
 
-        return $this->render('ZPBAdminBundle:General/photo:list_by_category.html.twig', ['photo_factory'=>$this->get('zpb.photo_factory'),'photos'=>$photos, 'category'=>$category]);
+        return $this->render('ZPBAdminBundle:General/photo:list_by_category.html.twig', ['photo_factory'=>$this->get('zpb.photo_factory'),'photos'=>$photos, 'category'=>$category, 'stats'=>$stats]);
     }
 
     public function positionChangeApiAction(Request $request)
@@ -178,7 +182,7 @@ class PhotoController extends BaseController
         $id = intval($request->request->get('id', false));
         $position = intval($request->request->get('position', false));
         $response = ['error'=>'ok', 'oldPosition'=>null, 'id'=>null, 'newPosition'=>null];
-        if(!$id || !$position){
+        if(!$id || $position === false){
             $response['error'] = 'Données manquantes';
             return new JsonResponse($response);
         }

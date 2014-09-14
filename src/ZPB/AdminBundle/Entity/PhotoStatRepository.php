@@ -34,13 +34,37 @@ class PhotoStatRepository extends EntityRepository
         return $qb->getQuery()->getArrayResult();
     }
 
-    public function photosRanking()
+    public function getDownloadsForOne($photoId)
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->select('COUNT(s.id)')
+            ->where('s.photoId=:photoId')
+            ->setParameter('photoId', $photoId);
+        return $qb->getQuery()->getSingleScalarResult();
+    }
+
+    public function photosRanking($maxResult)
     {
         $qb = $this->createQueryBuilder('s')
             ->select('COUNT(s.id) as nb, s.filename')
             ->groupBy('s.filename')
             ->orderBy('nb', 'DESC')
+            ->setMaxResults($maxResult)
             ;
+        return $qb->getQuery()->getArrayResult();
+    }
+
+    public function photosRankingLess($maxResult)
+    {
+        $qbCount = $this->createQueryBuilder('sc')->select('COUNT(sc)')->groupBy('sc.filename');
+        $count = count($qbCount->getQuery()->getResult());
+        $qb = $this->createQueryBuilder('s')
+            ->select('COUNT(s.id) as nb, s.filename')
+            ->groupBy('s.filename')
+            ->orderBy('nb', 'ASC')
+
+            ->setMaxResults($maxResult)
+        ;
         return $qb->getQuery()->getArrayResult();
     }
 

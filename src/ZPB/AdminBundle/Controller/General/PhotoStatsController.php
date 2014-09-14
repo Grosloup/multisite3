@@ -29,7 +29,6 @@ class PhotoStatsController extends BaseController
     {
         $repo = $this->getRepo('ZPBAdminBundle:PhotoStat');
         $downloadsByMonth = $repo->downloadsByMonth();
-        $ranking = $repo->photosRanking();
 
         $results = [];
         for($i=0; $i<12 ; $i++){
@@ -41,7 +40,8 @@ class PhotoStatsController extends BaseController
                 }
             }
         }
-        $ranking = $repo->photosRanking();
+
+        $ranking = $repo->photosRanking(20);
         $rankingNums='';
         $rankingLabels='';
         foreach($ranking as $r){
@@ -50,6 +50,16 @@ class PhotoStatsController extends BaseController
         }
         $rankingNums=rtrim($rankingNums, ',');
         $rankingLabels=rtrim($rankingLabels, ',');
+
+        $rankingLess = $repo->photosRankingLess(20);
+        $rankingLessNums='';
+        $rankingLessLabels='';
+        foreach($rankingLess as $r){
+            $rankingLessNums .= $r['nb'].',';
+            $rankingLessLabels .= '"' . $r['filename'].'"'.',';
+        }
+        $rankingLessNums=rtrim($rankingLessNums, ',');
+        $rankingLessLabels=rtrim($rankingLessLabels, ',');
 
         $hostRanking = $repo->hostsRanking();
         $hostNums = '';
@@ -61,6 +71,16 @@ class PhotoStatsController extends BaseController
         $hostNums=rtrim($hostNums, ',');
         $hostLabels=rtrim($hostLabels, ',');
 
-        return $this->render('ZPBAdminBundle:General/PhotoStats:index.html.twig', ['downloadsByMonth'=>$results,'rkNums'=>$rankingNums, 'rkLabels'=>$rankingLabels, 'hostNums'=>$hostNums, 'hostLabels'=>$hostLabels]);
+        return $this->render('ZPBAdminBundle:General/PhotoStats:index.html.twig',
+            [
+                'downloadsByMonth'=>$results,
+                'rkNums'=>$rankingNums,
+                'rkLabels'=>$rankingLabels,
+                'rkLessNums'=>$rankingLessNums,
+                'rkLessLabels'=>$rankingLessLabels,
+                'hostNums'=>$hostNums,
+                'hostLabels'=>$hostLabels
+            ]
+        );
     }
 }

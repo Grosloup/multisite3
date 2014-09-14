@@ -6,6 +6,11 @@
 {% block content %}
     <div class="row">
         <div class="column-12">
+            <div class="jsDialog"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column-12">
             <div class="tile">
                 <div class="tile-header">
                     Liste des photos de la categorie {{ category.name }}
@@ -29,7 +34,7 @@
                         <th>Largeur x Hauteur</th>
                         <th>Institution</th>
                         <th>Catégorie</th>
-
+                        <th>Nbre de téléchargement</th>
                         <th>Modifier</th>
                         <th>Supprimer</th>
                     </tr>
@@ -44,12 +49,12 @@
                                 <a class="btn btn-neutral" href="{{ path("zpb_admin_photos_position_up", {id: photo.id}) }}"><i class="fa fa-caret-up"></i></a>
                                 <a class="btn btn-neutral" href="{{ path("zpb_admin_photos_position_down", {id: photo.id}) }}"><i class="fa fa-caret-down"></i></a>
                             </td>
-                            <td><a href="#"><img src="{{ photo_factory.getWebThumb("small", photo) }}" alt="" width="50"/></a></td>
+                            <td><a href="#"><img src="{{ photo_factory.getWebThumb("small", photo) }}" alt="" title="{{ photo.title ~ photo.copyright }}" width="50"/></a></td>
                             <td>{{ photo.filename }}</td>
                             <td>{{ photo.width }} x {{ photo.height }}</td>
                             <td>{{ photo.category.institution }}</td>
                             <td>{{ photo.category.name }}</td>
-
+                            <td>{{ stats[photo.id] }}</td>
                             <td><a class="btn btn-neutral" href=""><i class="fa fa-edit"></i></a></td>
                             <td><a class="btn btn-neutral delete-alert" href="" data-name="{{ photo.filename }}"><i class="fa fa-trash-o"></i></a></td>
                         </tr>
@@ -64,7 +69,7 @@
     <style>
         .droprow{
             height: 75px;
-            background-color: #ccc;
+            background-color: #eee;
             border: 1px solid #bbb;
         }
         td.handle{
@@ -77,6 +82,16 @@
     <script src="/js/vendor/ui/jquery-ui.min.js"></script>
     <script>
         $(function(){
+            var dialogsPlaceholder = $(".jsDialog");
+            var dialogs = $("<div class='dialogs'></div>");
+            dialogs.appendTo(dialogsPlaceholder);
+
+            function getSuccess(){
+                return $("<div class='dialog dialog-success'><div class='message'></div></div>");
+            }
+            function getError(){
+                return $("<div class='dialog dialog-error'><div class='message'></div></div>");
+            }
             var sortable = $("#table-sortable");
             sortable.sortable({
                 handle: ".handle",
@@ -93,13 +108,39 @@
                     var id = parseInt(it.attr("id"));
                     var position = parseInt(it.find(".position-sortable").text());
                     sortable.sortable("disable");
+
                     $.post("{{ path("zpb_admin_photos_position_xhr_change") }}", {id:id, position: position})
                             .done(function(response){
                                 console.log(response);
+                                var message = "";
                                 if(response.error == "ok"){
                                     sortable.sortable("enable");
+                                    message = "Position mise à jour avec image " + response.id + " ancienne position " + response.oldPosition + ", nouvelle position " + response.newPosition;
+                                    var dialogSuccess = getSuccess();
+                                    dialogSuccess.find(".message").text(message);
+                                    dialogSuccess.appendTo(dialogs);
+                                    dialogs.appendTo(dialogsPlaceholder);
+                                    dialogSuccess.fadeOut(5000, function(){
+                                        dialogs.empty();
+                                    });
+                                } else {
+                                    message = "Une erreur est survenue ! " + response.error;
+                                    var dialogError = getError();
+                                    dialogError.find(".message").text(message);
+                                    dialogError.appendTo(dialogs);
+                                    dialogError.fadeOut(5000, function(){
+                                        dialogs.empty();
+                                    });
                                 }
                             })
+                            .fail(function(){
+                                var dialogError = getError();
+                                dialogError.find(".message").text("Une erreur est survenue ! ");
+                                dialogError.appendTo(dialogs);
+                                dialogError.fadeOut(5000, function(){
+                                    dialogs.empty();
+                                });
+                            });
                 }
             });
         });
