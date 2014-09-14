@@ -48,6 +48,11 @@ class Institution
     private $slug;
 
     /**
+     * @ORM\Column(name="host", type="string", length=255, nullable=false)
+     */
+    private $host;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
@@ -90,6 +95,24 @@ class Institution
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHost()
+    {
+        return $this->host;
+    }
+
+    /**
+     * @param mixed $host
+     * @return Institution
+     */
+    public function setHost($host)
+    {
+        $this->host = $host;
+        return $this;
     }
 
     /**
