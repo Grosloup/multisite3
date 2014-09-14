@@ -24,13 +24,33 @@ class PhotoStatRepository extends EntityRepository
         $nextYear->add(new \DateInterval('P1Y'));
 
         $qb = $this->createQueryBuilder('s')
-            ->select('COUNT(s.id) as nb, SUBSTRING(s.createdAt,6,2) as m, s.host as host')
+            ->select('COUNT(s.id) as nb, SUBSTRING(s.createdAt,6,2) as m')
             ->where('s.createdAt >=:start')
             ->andWhere('s.createdAt <:end')
-            ->groupBy('m, host')
+            ->groupBy('m')
             ->orderBy('s.createdAt', 'ASC')
             ->setParameter('start', $nowYear->format('Y') . '-01-01 00:00:00')
             ->setParameter('end',$nextYear->format('Y') . '-01-01 00:00:00');
+        return $qb->getQuery()->getArrayResult();
+    }
+
+    public function photosRanking()
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->select('COUNT(s.id) as nb, s.filename')
+            ->groupBy('s.filename')
+            ->orderBy('nb', 'DESC')
+            ;
+        return $qb->getQuery()->getArrayResult();
+    }
+
+    public function hostsRanking()
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->select('COUNT(s.id) as nb, s.host')
+            ->groupBy('s.host')
+            ->orderBy('nb', 'DESC')
+        ;
         return $qb->getQuery()->getArrayResult();
     }
 

@@ -19,7 +19,27 @@
                 <div class="tile-header">
                     Téléchargement d'images tout confondu sur l'année en cours
                 </div>
-                <canvas id="dl-by-month" width="1000" height="250"></canvas>
+                <canvas id="dl-by-month" width="800" height="250"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <div class="tile-header">
+                    Classement des photos les plus téléchargées
+                </div>
+                <canvas id="ranking" width="800" height="250"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <div class="tile-header">
+                    Classement des sites de téléchargements
+                </div>
+                <canvas id="host" width="800" height="400"></canvas>
             </div>
         </div>
     </div>
@@ -33,6 +53,9 @@
         $(function(){
 
             var dlByMonthCtx = $("#dl-by-month").get(0).getContext("2d");
+            var rankingCtx = $("#ranking").get(0).getContext("2d");
+            var hostCtx = $("#host").get(0).getContext("2d");
+            var datas;
             datas = {
                 labels: ["Janvier", "Février", "Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],
                 datasets: [
@@ -47,7 +70,37 @@
                     }
                 ]
             };
-            var dlByMonthBarChart = new Chart(dlByMonthCtx).Line(datas);
+            var dlByMonthLineChart = new Chart(dlByMonthCtx).Line(datas);
+
+            datas = {
+                labels: [{{ rkLabels|raw }}],
+                datasets: [
+                    {
+                        fillColor: "rgba(220,220,220,0.5)",
+                        strokeColor: "rgba(220,220,220,0.8)",
+                        highlightFill: "rgba(220,220,220,0.75)",
+                        highlightStroke: "rgba(220,220,220,1)",
+                        data: [{{ rkNums }}]
+                    }
+                ]
+            };
+
+            var rankingBarChart = new Chart(rankingCtx).Bar(datas);
+
+            datas = {
+                labels: [{{ hostLabels|raw }}],
+                datasets: [
+                    {
+                        fillColor: "rgba(220,220,220,0.5)",
+                        strokeColor: "rgba(220,220,220,0.8)",
+                        highlightFill: "rgba(220,220,220,0.75)",
+                        highlightStroke: "rgba(220,220,220,1)",
+                        data: [{{ hostNums }}]
+                    }
+                ]
+            };
+
+            var hostBarChart = new Chart(hostCtx).Bar(datas);
         });
     </script>
 {% endblock %}
