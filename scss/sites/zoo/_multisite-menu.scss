@@ -1,0 +1,76 @@
+#multisite-menu{
+
+  background-color: $mn_bgColor;
+  color: $mn_color;
+  line-height: $mn_lineHeight;
+  a{
+    @include nakedLink;
+    color: inherit;
+    font-family: inherit;
+  }
+  nav{
+    width: 100%;
+    &>ul{
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+
+      &>li{
+        &.active{
+          &:after{
+            content: "";
+            position: absolute;
+            display: block;
+            height: 1px;
+            width: 50%;
+            background-color: $jaune;
+            bottom: 10px;
+            margin: 0 auto;
+            left: 25%;
+          }
+        }
+        display: table-cell;
+
+        position: relative;
+        &.dropdown{
+          &:hover{
+            &>ul{
+              display: block;
+            }
+          }
+        }
+        a{
+          display: block;
+          text-align: center;
+          margin-right: topx($gridGutter);
+          margin-left: topx($gridGutter);
+          &:hover{
+            background-color: $mn_masterLinkHoverColor;
+          }
+        }
+
+        ul{
+          position: absolute;
+          display: none;
+          z-index: 1000;
+          min-width: 100%;
+          background-color: $mn_subMenuBgColor;
+          @if $mn_subMenuShadow != "none" {
+            @include box-shadow($mn_subMenuShadow);
+          }
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          li{
+            a{
+              &:hover{
+                background-color: $mn_submenuLinkHoverBgColor;
+                color: $mn_submenuLinkHoverColor;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

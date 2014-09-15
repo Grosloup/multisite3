@@ -6,9 +6,7 @@
   position: relative;
 }
 .row{
-  width: 100%;
-  @include clearfix;
-  position: relative;
+  @include row;
 }
 [class^="col-"], [class*=" col-"]{
   float: left;

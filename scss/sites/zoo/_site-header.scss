@@ -1,0 +1,82 @@
+#site-header{
+  width: 100%;
+  height: $sh_height;
+  background: transparent url("../../../img/sites/zoo/yuanzi.jpg") center center no-repeat;
+  position: relative;
+
+  #main-menu{
+    line-height: 50px;
+    a{
+      @include nakedLink;
+      color: $blanc;
+      font-family: inherit;
+    }
+    nav{
+
+      &>ul{
+        display: table;
+        table-layout: fixed;
+        width:100%;
+        margin: 0 auto;
+        &>li{
+          &.active, &:hover{
+            &:after{
+              content: "";
+              position: absolute;
+              display: block;
+              height: 1px;
+              width: 50%;
+              background-color: $blanc;
+              bottom: 10px;
+              margin: 0 auto;
+              left: 25%;
+            }
+          }
+          display: table-cell;
+          position: relative;
+          text-align: center;
+          &.dropdown{
+            &:hover{
+              ul{
+                display: block;
+              }
+            }
+          }
+          a{
+            display: block;
+            text-align: center;
+            padding-left: topx($gridGutter);
+            padding-right: topx($gridGutter);
+          }
+          ul{
+            display: none;
+            position: absolute;
+            z-index: 1000;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            background-color: rgba(255,255,255,0.5);
+            @include box-shadow(rgba(0,0,0,0.5) 0 0 4px);
+            min-width: 100%;
+            white-space: nowrap;
+            li{
+              a{
+                color: $noir;
+                text-align: left;
+                padding-left: topx($gridGutter);
+                padding-right: topx($gridGutter);
+                &:hover{
+                  background-color: $blanc;
+                }
+
+              }
+            }
+          }
+          &>a{
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}

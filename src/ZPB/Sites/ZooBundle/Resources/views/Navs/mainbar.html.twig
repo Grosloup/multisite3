@@ -1,4 +1,4 @@
-<div class="row" style="margin-bottom: 20px">
+{#<div class="row" style="margin-bottom: 20px">
     <div class="columns large-12">
         <div class="sticky">
             <nav class="top-bar" data-topbar role="navigation">
@@ -9,13 +9,13 @@
                 </ul>
                 <section class="top-bar-section"> <!-- Right Nav Section -->
                     <ul class="right">
-                        {#<li class="active"><a href="#">Right Button Active</a></li>
+                        &#123;&#35;<li class="active"><a href="#">Right Button Active</a></li>
                         <li class="has-dropdown"><a href="#">Right Button Dropdown</a>
                             <ul class="dropdown">
                                 <li><a href="#">First link in dropdown</a></li>
                                 <li class="active"><a href="#">Active link in dropdown</a></li>
                             </ul>
-                        </li>#}
+                        </li>&#35;&#125;
                     </ul>
                     <!-- Left Nav Section -->
                     <ul class="left">
@@ -30,4 +30,44 @@
             </nav>
         </div>
     </div>
+</div>#}
+<div class="container">
+    <div id="main-menu">
+        <nav>
+            <ul>
+                <li class="active"><a href="{{path("zpb_sites_zoo_homepage")}}">Accueil</a></li>
+                <li class="dropdown"><a href="">Votre visite</a>
+                    <ul>
+                        <li><a href="">Lorem ipsum.</a></li>
+                        <li><a href="">Cupiditate necessitatibus</a></li>
+                        <li><a href="">Magni molestias?</a></li>
+                        <li><a href="">Eaque ipsa.</a></li>
+                        <li><a href="">Fugit, iusto?</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="">Le ZooParc</a>
+                    <ul>
+                        <li><a href="">Lorem ipsum.</a></li>
+                        <li><a href="">Cupiditate, necessitatibus!</a></li>
+                        <li><a href="">Magni, molestias?</a></li>
+                        <li><a href="">Eaque, ipsa.</a></li>
+                        <li><a href="">Fugit, iusto?</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="">Pédagogie</a>
+                    <ul>
+                        <li><a href="">Lorem ipsum.</a></li>
+                        <li><a href="">Cupiditate, necessitatibus!</a></li>
+                        <li><a href="">Magni, molestias?</a></li>
+                        <li><a href="">Eaque, ipsa.</a></li>
+                        <li><a href="">Fugit, iusto?</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ path("zpb_sites_zoo_actualites_homepage") }}">Actualités</a></li>
+                <li><a href="">Communautés</a></li>
+                <li><a href="">La Boutique</a></li>
+            </ul>
+        </nav>
+    </div>
 </div>
+

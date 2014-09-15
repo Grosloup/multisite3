@@ -1,4 +1,4 @@
-<div class="fixed">
+{#<div class="fixed">
     <nav class="top-bar" data-topbar role="navigation">
         <ul class="title-area">
             <li class="name"><h1><a href="{{path("zpb_sites_zoo_homepage")}}">ZooParc de Beauval</a></h1></li>
@@ -12,17 +12,43 @@
                 {% endif %}
                 <li><a href="{{ path("zpb_sites_zoo_parrainages_login") }}"><i class="fa fa-user"></i></a></li>
                 <li><a href="{{ path("zpb_sites_zoo_parrainages_show_basket") }}"><i class="fa fa-shopping-cart"></i> <span class="round label success">{{ basketCount }}</span></a></li>
-                {#<li class="has-dropdown"><a href="#">Right Button Dropdown</a>
+                &#123;&#35;<li class="has-dropdown"><a href="#">Right Button Dropdown</a>
                     <ul class="dropdown">
                         <li><a href="#">First link in dropdown</a></li>
                         <li class="active"><a href="#">Active link in dropdown</a></li>
                     </ul>
-                </li>#}
+                </li>&#35;&#125;
             </ul>
             <!-- Left Nav Section -->
             <ul class="left">
-                {#<li><a href="#">Left Nav Button</a></li>#}
+                &#123;&#35;<li><a href="#">Left Nav Button</a></li>&#35;&#125;
             </ul>
         </section>
     </nav>
+</div>#}
+<div class="" id="multisite-menu">
+    <div class="container">
+        <nav>
+            <ul>
+                <li class="active"><a href="{{path("zpb_sites_zoo_homepage")}}">ZooParc de Beauval</a></li>
+                <li><a href="">Beauval Nature</a></li>
+                <li class="dropdown"><a href="">Les hôtels de Beauval</a>
+                    <ul>
+                        <li><a href="">Les Jardins de Beauval</a></li>
+                        <li><a href="">Les Pagodes de Beauval</a></li>
+                        <li><a href="">Les Hameaux de Beauval</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Séminaires</a></li>
+                <li class="dropdown"><a href="">Tarifs spéciaux</a>
+                    <ul>
+                        <li><a href="">Professionnels</a></li>
+                        <li><a href="">Comités d'entreprises</a></li>
+                        <li><a href="">Scolaires</a></li>
+                        <li><a href="">Groupes</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>

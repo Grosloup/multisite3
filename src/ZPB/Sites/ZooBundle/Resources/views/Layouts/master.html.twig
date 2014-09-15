@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="/css/common/normalize.css"/>
         <link rel="stylesheet" href="/css/common/foundation.min.css"/>
         <link rel="stylesheet" href="/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="/css/sites/zoo/master.css"/>
     {% endblock %}
 
     {% block headScripts %}
@@ -45,14 +46,20 @@
 
     {% block main %}
         {% block header %}
-            <header style="position: relative;">
+            {#<header style="position: relative;">
                 <img src="http://lorempicsum.com/rio/1000/400/{{ random(5) + 1}}" alt="" width="100%"/>
                 <a class="button alert large" href="{{ path("zpb_sites_zoo_parrainages_homepage") }}" style="position: absolute; top: 75px; right: 50px;">Parrainages</a>
                 <a class="button alert large" href="" style="position: absolute; top: 150px; right: 50px;">Billetterie</a>
                 <a class="button alert large" href="" style="position: absolute; top: 225px; right: 50px;">Hôtels</a>
-            </header>
+            </header>#}
+            <div id="site-header">
+                <a class="button alert large" href="{{ path("zpb_sites_zoo_parrainages_homepage") }}" style="position: absolute; top: 75px; right: 50px;">Parrainages</a>
+                <a class="button alert large" href="" style="position: absolute; top: 150px; right: 50px;">Billetterie</a>
+                <a class="button alert large" href="" style="position: absolute; top: 225px; right: 50px;">Hôtels</a>
+                {{ render(controller("ZPBSitesZooBundle:Navs:mainbar")) }}
+            </div>
         {% endblock %}
-        {{ render(controller("ZPBSitesZooBundle:Navs:mainbar")) }}
+
         <div class="row">
             {% block content %}
 
