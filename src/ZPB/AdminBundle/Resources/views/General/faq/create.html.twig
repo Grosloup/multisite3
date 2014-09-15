@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="form-row {% if form.response.vars.errors|length>0 %}has-error{% endif %}">
-                    {{ form_label(form.question) }}
+                    {{ form_label(form.response) }}
                     <div class="form-field">
                         {{ form_widget(form.response) }}
                         {% if form.question.vars.errors|length>0 %}

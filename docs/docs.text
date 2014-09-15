@@ -7,6 +7,7 @@ mailcatcher  192.168.56.120:1080
 phpmyadmin  192.168.56.120/phpmyadmmin
 apt-get install wkhtmltopdf
 
+LoadAdminUsers                  => 5
 LoadInstitutions                => 10
 LoadPhotoCategories             => 15
 LoadPhotos                      => 16
