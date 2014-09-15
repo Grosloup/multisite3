@@ -3,6 +3,9 @@
   //background-color: $mn_bgColor;
   color: $mn_color;
   line-height: $mn_lineHeight;
+  @include box-shadow(rgba(0,0,0,0.5) 0 1px 4px);
+  position: relative;
+  z-index: 999;
   a{
     @include nakedLink;
     color: inherit;

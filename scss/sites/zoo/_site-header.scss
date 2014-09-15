@@ -3,7 +3,76 @@
   height: $sh_height;
   background: transparent url("../../../img/sites/zoo/yuanzi.jpg") center center no-repeat;
   position: relative;
+  @include box-shadow(rgba(0,0,0,0.6) 0 50px 70px inset);
+  #stickytop{
+    &.stuck{
+      .container{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: $blanc;
+        height: 50px;
+        width: 100%;
+        max-width: 100%;
+        z-index: 1000;
+        @include box-shadow(rgba(0,0,0,0.5) 0 1px 4px);
+        #main-menu{
+          max-width: 1200px;
+          margin: 0 auto;
 
+          background-color: $blanc;
+          color: $grisFonce;
+          line-height: 50px;
+          a{
+            @include nakedLink;
+            color: inherit;
+            font-family: inherit;
+          }
+          nav{
+            &>ul{
+              &>li{
+                &.active, &:hover{
+                  &:after{
+                    content: "";
+                    position: absolute;
+                    display: block;
+                    height: 1px;
+                    width: 50%;
+                    background-color: $grisFonce;
+                    bottom: 10px;
+                    margin: 0 auto;
+                    left: 25%;
+                  }
+                }
+                ul{
+
+                  background-color: $blanc;
+                  @include box-shadow(rgba(0,0,0,0.5) 0 3px 4px);
+                  min-width: 100%;
+                  white-space: nowrap;
+                  li{
+                    a{
+                      color: $noir;
+                      text-align: left;
+                      padding-left: topx($gridGutter);
+                      padding-right: topx($gridGutter);
+                      &:hover{
+                        background-color: $blanc;
+                      }
+
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+        }
+      }
+
+    }
+  }
   #main-menu{
     line-height: 50px;
     a{
@@ -12,7 +81,6 @@
       font-family: inherit;
     }
     nav{
-
       &>ul{
         display: table;
         table-layout: fixed;

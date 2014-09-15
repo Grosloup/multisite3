@@ -71,10 +71,13 @@
 
 {% block footScripts %}
     <script src="/js/vendor/jquery-2.1.1.min.js"></script>
-    <script src="/js/vendor/foundation.min.js"></script>
+    <script src="/js/vendor/waypoints.min.js"></script>
+    <script src="/js/vendor/waypoints-sticky.min.js"></script>
 
     <script>
-        $(document).foundation();
+        $(function(){
+            $("#stickytop").waypoint('sticky');
+        })
     </script>
 {% endblock %}
 
