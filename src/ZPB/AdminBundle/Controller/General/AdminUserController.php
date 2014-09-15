@@ -28,7 +28,8 @@ class AdminUserController extends BaseController
 {
     public function listAction()
     {
-        return $this->render('ZPBAdminBundle:General/admin_user:list.html.twig', []);
+        $users = $this->getRepo('ZPBAdminBundle:AdminUser')->findAll();
+        return $this->render('ZPBAdminBundle:General/admin_user:list.html.twig', ['users'=>$users]);
     }
 
     public function updateAction($id, Request $request)
@@ -42,6 +43,11 @@ class AdminUserController extends BaseController
     }
 
     public function deleteAction($id, Request $request)
+    {
+
+    }
+
+    public function myAccount()
     {
 
     }
