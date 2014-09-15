@@ -22,6 +22,7 @@ namespace ZPB\AdminBundle\Service;
 
 
 use Symfony\Component\HttpFoundation\File\File;
+use ZPB\AdminBundle\Entity\ResizeableInterface;
 
 class ImageFactory
 {
@@ -55,5 +56,13 @@ class ImageFactory
         $image->setWidth($size[0]);
         $image->setHeight($size[1]);
         return $image;
+    }
+
+    public function getWebThumb($key = 'regular',ResizeableInterface $img = null)
+    {
+        if(!$img){
+            return null; // TODO image par défaut
+        }
+        return '/' . $this->options['zpb.img.thumbs.upload_dir'] . $key . '_' .$img->getFilename() . '.' .$img->getExtension();
     }
 }

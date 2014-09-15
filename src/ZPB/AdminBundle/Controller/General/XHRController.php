@@ -63,6 +63,7 @@ class XHRController extends BaseController
                 try{
                     $this->getManager()->persist($image);
                     $this->getManager()->flush();
+                    $this->get('zpb.photo_resizer')->makeThumbnails($image);
                     if($request->headers->get('X-File-Id', false)){
                         $postToImg = new PostImg();
                         $postToImg->setImg($image);

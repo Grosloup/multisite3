@@ -34,7 +34,7 @@ class ActualiteController extends BaseController
         //
         $target = $this->getRepo('ZPBAdminBundle:PostTarget')->findOneByAcronym('zb');
         $posts = $this->getRepo('ZPBAdminBundle:Post')->getPublished($target);
-        return $this->render('ZPBSitesZooBundle:Actualite:index.html.twig', ['posts'=>$posts]);
+        return $this->render('ZPBSitesZooBundle:Actualite:index.html.twig', ['posts'=>$posts, 'img_factory'=>$this->get('zpb.image_factory')]);
     }
 
     // tri par categorie, publiés, ciblants zoo, paginés
