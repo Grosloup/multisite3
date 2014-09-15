@@ -47,7 +47,7 @@ class AdminUserController extends BaseController
 
     }
 
-    public function myAccount()
+    public function myAccountAction()
     {
 
     }

@@ -1,4 +1,29 @@
 zpb_admin_users_list:
     path: /
     defaults: { _controller: ZPBAdminBundle:General/AdminUser:list }
+    methhods: ["GET"]
+
+zpb_admin_users_create:
+    path: /nouveau
+    defaults: { _controller: ZPBAdminBundle:General/AdminUser:create }
+    methhods: ["GET", "POST"]
+
+zpb_admin_users_update:
+    path: /modifier/{id}
+    defaults: { _controller: ZPBAdminBundle:General/AdminUser:update }
+    methhods: ["GET", "POST"]
+    requirements:
+        id: \d+
+
+zpb_admin_users_delete:
+    path: /supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:General/AdminUser:delete }
+    methhods: ["GET"]
+    requirements:
+        id: \d+
+
+zpb_admin_users_account:
+    path: /mon-compte
+    defaults: { _controller: ZPBAdminBundle:General/AdminUser:myAccount }
     methods: ["GET"]
+
