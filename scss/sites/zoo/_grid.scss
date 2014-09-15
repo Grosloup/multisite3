@@ -7,16 +7,36 @@
 }
 .row{
   @include row;
+  .row{
+    [class^="col5-"]:first-child, [class*=" col5-"]:first-child,
+    [class^="col5-"]:first-child, [class*=" col5-"]:first-child
+    {
+      padding: 0;
+    }
+    [class^="col5-"]:last-child, [class*=" col5-"]:last-child,
+    [class^="col5-"]:last-child, [class*=" col5-"]:last-child
+    {
+      padding: 0;
+    }
+
+  }
 }
-[class^="col-"], [class*=" col-"]{
+[class^="col-"], [class*=" col-"],[class^="col5-"], [class*=" col5-"], {
   float: left;
   min-height: 1px;
   padding-left: topx($gridGutter);
   padding-right: topx($gridGutter);
   position: relative;
 }
+
 @for $i from 1 through $numCols{
   .col-#{$i}{
+    width: 100%;
+  }
+}
+
+@for $i from 1 through 5{
+  .col5-#{$i}{
     width: 100%;
   }
 }
@@ -28,6 +48,12 @@
       width: percentage( $i / $numCols);
     }
   }
+  @for $i from 1 through 5{
+    .col5-#{$i}{
+      width: percentage( $i / 5);
+    }
+  }
+
 }
 
 @media only screen and (min-width: 960px){

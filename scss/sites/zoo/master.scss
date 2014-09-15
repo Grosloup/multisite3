@@ -8,6 +8,8 @@
 @import "multisite-menu";
 @import "site-header";
 
+@import "footer";
+
 @function  topx($value){
   @return  $value * 1px;
 }
@@ -26,10 +28,13 @@ h1,h2,h3,h4,h5,h6{
   text-transform: uppercase;
   font-family: $headerFontFamily;
   color: $headerFontColor;
+  a{
+    color: inherit;
+  }
 }
 @for $h from 1 through 6 {
   h#{$h}{
-    font-size: topx(55 - ($h * 5));
+    font-size: topx(55 - ($h * 8));
   }
 }
 
@@ -39,8 +44,6 @@ a{
   &:hover{
     color: $linkHoverColor;
   }
-
-
 }
 
 .testbox{
@@ -50,3 +53,6 @@ a{
   border: 1px solid #bbb;
 }
 
+.text-center{
+  text-align: center;
+}

@@ -1,0 +1,25 @@
+#main-footer{
+  margin-top: topx($fontSize);
+  background: $grisFonce url('../../../img/sites/zoo/strips.png') repeat left top;
+  min-height: 350px;
+  padding-top: topx($fontSize * 2);
+  color: $blanc;
+  a{
+    @include nakedLink;
+    color: inherit;
+    font-family: $fontfamily;
+    &:hover{
+      color: $linkHoverColor;
+    }
+  }
+  .socials{
+    text-align: center;
+    a{
+      color: $blanc;
+      font-size: topx($fontSize * 3);
+      &:hover{
+        color: $linkHoverColor;
+      }
+    }
+  }
+}
