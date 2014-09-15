@@ -46,7 +46,8 @@
 
         }
         .offer label{
-            display: block;
+            display: inline-block;
+            padding-left: 5px;
 
         }
         .gift{
@@ -116,11 +117,11 @@
         {% if formulas|length>0 %}
             <form action="{{ path("zpb_sites_zoo_parrainages_add_to_basket") }}" method="post">
                 <div class="row offers">
-                    <div class="columns large-6">
+                    <div class="col-3">
                         <div id="in-offers">
                             {% for formula in formulas %}
                                 <div class="row">
-                                    <div class="large-12 columns">
+                                    <div class="col-6">
 
                                         <div class="offer{% if loop.first == true %} active{% endif %}" id="{{ formula.slug }}">
                                             <input type="radio" name="sponsorship_form[pack]" id="sponsorship_{{ formula.id }}" value="{{ formula.id }}"/><label for="sponsorship_{{ formula.id }}">{{ formula.price }}€ {{ formula.name }}</label>
@@ -130,7 +131,7 @@
                             {% endfor %}
                         </div>
                     </div>
-                    <div class="columns large-6">
+                    <div class="col-3">
                         {% for gift in gifts %}
                             <div class="gift">
                                 <span class="isChecked" id="mark-{{ gift.id }}"><i class="fa fa-check"></i></span><span class="giftName">{{ gift.name }}</span>
@@ -139,13 +140,13 @@
                     </div>
                 </div>
                 <div class="row offers">
-                    <div class="columns large-6">
+                    <div class="col-3">
                         <div class="offer active">
                             Soit <strong><span class="redux">00.00</span></strong>€ après reduction fiscale
                         </div>
 
                     </div>
-                    <div class="columns large-6">
+                    <div class="col-3">
                         <input name="sponsorship_form[animal]" type="hidden" value="{{ animal.id }}"/>
                         <input name="sponsorship_form[_token]" type="hidden" value="{{ csrf_token("add_sponsorship") }}"/>
                         <button type="submit" class="button success large" name="sponsorship_form[submit]" value="offer">J'offre ce parrainage</button><button type="submit" class="button success large" name="sponsorship_form[submit]" value="forme">Je parraine</button>
