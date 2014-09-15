@@ -1,11 +1,19 @@
 security:
     encoders:
+        ZPB\AdminBundle\Entity\AdminUser:
+            algorithm: sha512
+            encode_as_base64: true
+            iterations: 7000
+
         ZPB\AdminBundle\Entity\Godparent:
             algorithm: sha512
             encode_as_base64: true
             iterations: 7000
 
     providers:
+        adminuser_provider:
+            entity:
+                class: ZPBAdminBundle:AdminUser
         sponsorship_provider:
             entity:
                 class: ZPBAdminBundle:Godparent
@@ -42,6 +50,20 @@ security:
                 csrf_provider: form.csrf_provider
             logout:
                 path: /parrainages/logout
+                target: /
+
+        administration:
+            host: ^(new\.|www\.)?admin.zooparc\.com$
+            pattern: ^/
+            security: true
+            provider: adminuser_provider
+            anonymous: ~
+            form_login:
+                login_path: /login
+                check_path: /login_check
+                csrf_provider: form.csrf_provider
+            logout:
+                path: /logout
                 target: /
 
         default:

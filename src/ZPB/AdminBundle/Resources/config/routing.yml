@@ -3,6 +3,18 @@ zpb_admin_test:
     defaults: { _controller: ZPBAdminBundle:Base:test }
     methods: ["GET"]
 
+zpb_admin_login:
+    path: /login
+    defaults: { _controller: ZPBAdminBundle:Login:login }
+    methods: ["GET"]
+zpb_admin_login_check:
+    path: /login_check
+    methods: ["POST"]
+zpb_admin_logout:
+    path: /logout
+    methods: ["GET"]
+
+
 zpb_admin_homepage:
     path:     /
     defaults: { _controller: ZPBAdminBundle:Index:index }
