@@ -60,8 +60,25 @@ $mn_submenuLinkHoverBgColor: $blanc;
 $mn_submenuLinkHoverColor: $grisFonce;
 
 /***************************************\
-  multisite-menu sh_
+  site-header sh_
 \***************************************/
 
 $sh_height: topx(750);
+$sh_boxShadow: rgba(0,0,0,0.6) 0 50px 70px inset;
+
+$sh_mainMenuLineHeight: 50px;
+$sh_mainMenuLinkColor: $blanc;
+$sh_mainMenuLinkFontFamily: inherit;
+$sh_mainMenuLiUnderlineColor: $blanc;
+$sh_mainMenu_submanuBgColor: rgba(255,255,255,0.5);
+$sh_mainMenu_submenu_boxShadow: rgba(0,0,0,0.5) 0 0 4px;
+$sh_mainMenu_submenu_linkColor: $noir;
+$sh_mainMenu_submenu_linkPadding: 10;
+$sh_mainMenu_submenu_linkHoverBgColor: $blanc;
+
+$sh_sticyStuck_bgColor: $bleu;
+$sh_sticyStuck_boxShadow: rgba(0,0,0,0.5) 0 1px 4px;
+$sh_sticyStuck_mainMenu_Color: $jaune;
+$sh_sticyStuck_mainMenuLiUnderlineColor: $jaune;
+
 
