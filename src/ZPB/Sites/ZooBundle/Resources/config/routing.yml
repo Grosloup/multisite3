@@ -1,3 +1,8 @@
+zpb_sites_zoo_testpage:
+    path: /test
+    defaults: { _controller: ZPBSitesZooBundle:TestDesign:index }
+
+
 zpb_sites_zoo_homepage:
     path:     /
     defaults: { _controller: ZPBSitesZooBundle:Index:index }

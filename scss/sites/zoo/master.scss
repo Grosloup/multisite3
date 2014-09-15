@@ -1,0 +1,49 @@
+@import "compass";
+@import "compass/reset";
+
+@import "vars";
+@import "typo";
+@import "grid";
+
+@function  topx($value){
+  @return  $value * 1px;
+}
+
+*, *:before, *:after{
+  @include box-sizing(border-box);
+}
+body{
+  font-size: topx($fontSize);
+  font-family: $fontfamily;
+  color: $fontColor;
+  line-height: $lineHeight;
+}
+
+h1,h2,h3,h4,h5,h6{
+  text-transform: uppercase;
+  font-family: $headerFontFamily;
+  color: $headerFontColor;
+}
+@for $h from 1 through 6 {
+  h#{$h}{
+    font-size: topx(55 - ($h * 5));
+  }
+}
+
+a{
+  @include  nakedLink;
+  font-family: $linkFontFamily;
+  &:hover{
+    color: $linkHoverColor;
+  }
+
+
+}
+
+.testbox{
+  width: 100%;
+  height: 100px;
+  background-color: #ddd;
+  border: 1px solid #bbb;
+}
+
