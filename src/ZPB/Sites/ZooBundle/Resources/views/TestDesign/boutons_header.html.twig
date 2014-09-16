@@ -1,125 +1,24 @@
-<style>
-    .tombeStone{
-        width: 140px;
-        height: 65px;
-        background-color: transparent;
-        position:absolute;
-        bottom: 0;
-        left: calc(50% - 90px);
-        transition: all 0.15s;
-        box-shadow: rgba(0,0,0,0.15) 0 -3px 5px inset;
-        font-size: 14px;
-        text-transform: uppercase;
-        text-align: center;
-        font-family: 'cooper_hewitt_bold', Arial, Helvetica, sans-serif;
-    }
-
-    .tombeStone.left{
-        left: calc(50% - 220px);
-    }
-
-    .tombeStone.left .inner{
-        background-color: #DDAB33;
-        color: #fff;
-    }
-
-    .tombeStone.center{
-        left: calc(50% - 70px);
-    }
-
-    .tombeStone.center .inner{
-       background-color: #4f94b3;
-    }
-
-    .tombeStone.right {
-        left: calc(50% + 80px);
-    }
-
-
-    .tombeStone.right .inner{
-        background-color: #87a13e;
-    }
-
-
-    .tombeStone .inner{
-        width: 140px;
-        height: 140px;
-        /*background-color: #e6e6e6;*/
-        /*border-radius: 50%;*/
-        box-shadow: rgba(0,0,0,0.3) 0 0 5px;
-
-        padding: 15px 25px 0;
-        text-align: center;
-    }
-    .tombeStone .inner a {
-        color: #fff;
-        font-family: inherit;
-    }
-    .tombeStone:hover{
-        height: 120px;
-        /*font-size: 16px;*/
-    }
-    .tombeStone:hover .inner a {
-        color: #313133;
-    }
-
-    .tombeStone:hover .inner #svg_billet path,  .tombeStone:hover .inner #svg_dormir path, .tombeStone:hover .inner #svg_parrainez path, .tombeStone:hover .inner #svg_parrainez polygon, .tombeStone:hover .inner #svg_parrainez circle {
-        fill: #313133;
-    }
-
-    #svg_billet, #svg_dormir, #svg_parrainez{
-        margin-top: 10px;
-    }
-    #svg_billet path{
-        fill: #fff;
-    }
-</style>
-
-
-<div class="tombeStone left">
-    <a href="">  <div class="inner">
-        Achetez<br> vos billets
-        <svg version="1.1" id="svg_billet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-             width="42.061px" height="42.061px" viewBox="0 0 42.061 42.061" enable-background="new 0 0 42.061 42.061" xml:space="preserve">
-<g>
-    <path fill="#FFFFFF" d="M7.349,19.33l2.158,2.16l1.511-1.511L8.859,17.82L26.679,0l4.641,4.64
-		c-1.188,1.708-1.021,4.075,0.503,5.598c1.524,1.524,3.889,1.691,5.597,0.502l4.642,4.642l-17.82,17.82l-2.179-2.179l-1.512,1.511
-		l2.18,2.18l-7.347,7.347l-4.599-4.598c1.491-1.726,1.418-4.331-0.217-5.968c-1.636-1.636-4.244-1.709-5.967-0.217L0,26.68
-		L7.349,19.33z M18.334,30.319l1.512-1.511l-2.2-2.2l-1.51,1.51L18.334,30.319z M13.921,25.905l1.512-1.512l-2.202-2.2l-1.511,1.511
-		L13.921,25.905z"/>
-</g>
-</svg>
-    </div></a>
+<div class="tickets tickets-left">
+    <a href="">
+        <div class="inner">
+            Achetez<br> vos billets
+            {{ include("ZPBSitesZooBundle:incs:billet_svg.html.twig") }}
+        </div>
+    </a>
 </div>
-<div class="tombeStone center">
-    <a href=""> <div class="inner">
-       Dormez<br>à Beauval
-        <svg version="1.1" id="svg_dormir" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-             width="41.686px" height="41.686px" viewBox="0 0 41.686 41.686" enable-background="new 0 0 41.686 41.686" xml:space="preserve">
-<path fill="#FFFFFF" d="M36.274,26.603c-11.703,0-21.192-9.488-21.192-21.192c0-1.87,0.245-3.683,0.7-5.41
-	C6.699,2.392,0,10.659,0,20.493c0,11.704,9.488,21.192,21.192,21.192c9.834,0,18.102-6.699,20.493-15.782
-	C39.958,26.358,38.146,26.603,36.274,26.603z"/>
-</svg>
-    </div></a>
+<div class="tickets tickets-center">
+    <a href="">
+        <div class="inner">
+            Dormez<br>à Beauval
+            {{ include("ZPBSitesZooBundle:incs:dormir_svg.html.twig") }}
+        </div>
+    </a>
 </div>
-<div class="tombeStone right">
-    <a href=""> <div class="inner">
-        Parrainez<br>un animal
-        <svg version="1.1" id="svg_parrainez" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-             width="25.985px" height="41.669px" viewBox="0 0 25.985 41.669" enable-background="new 0 0 25.985 41.669" xml:space="preserve">
-<g id="Your_Icon_1_">
-    <path fill="#FFFFFF" d="M24.647,13.089l1.338-1.578L24.309,10.3l0.921-1.853l-1.917-0.774l0.451-2.019L21.716,5.36L21.67,3.292
-		l-2.058,0.204l-0.537-1.997l-1.951,0.693l-1-1.812l-1.727,1.139L12.993,0l-1.405,1.519L9.86,0.38l-1,1.812L6.91,1.499L6.372,3.496
-		L4.314,3.292L4.27,5.36L2.221,5.654l0.452,2.017L0.755,8.447l0.922,1.852L0,11.511l1.338,1.577L0,14.666l1.677,1.21l-0.922,1.853
-		l1.918,0.775l-0.452,2.02l2.048,0.293l0.044,2.069l2.058-0.205l0.538,1.996l1.95-0.691l1,1.812l1.727-1.139l1.405,1.519
-		l1.405-1.519l1.727,1.139l1-1.812l1.951,0.691l0.537-1.996l2.059,0.205l0.045-2.069l2.047-0.293l-0.451-2.02l1.919-0.775
-		l-0.921-1.853l1.675-1.21L24.647,13.089z M12.993,22.662c-5.287,0-9.572-4.287-9.572-9.573c0-5.287,4.285-9.574,9.572-9.574
-		s9.572,4.287,9.572,9.573C22.564,18.375,18.28,22.662,12.993,22.662z"/>
-    <polygon fill="#FFFFFF" points="17.401,25.31 16.644,26.679 16.334,27.241 15.797,26.889 14.491,26.026 13.429,27.174
-		12.993,27.647 12.557,27.174 11.494,26.026 10.188,26.889 9.651,27.241 9.34,26.679 8.583,25.31 7.109,25.832 6.899,25.907
-		6.899,41.669 12.993,35.574 19.085,41.669 19.085,25.907 18.876,25.832 	"/>
-    <circle fill="#FFFFFF" cx="12.993" cy="13.089" r="8.578"/>
-</g>
-</svg>
-    </div></a>
+<div class="tickets tickets-right">
+    <a href="">
+        <div class="inner">
+            Parrainez<br>un animal
+            {{ include("ZPBSitesZooBundle:incs:parrainer_svg.html.twig") }}
+        </div>
+    </a>
 </div>
