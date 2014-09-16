@@ -49,6 +49,6 @@ class AdminUserController extends BaseController
 
     public function myAccountAction()
     {
-
+        return $this->render('ZPBAdminBundle:General/admin_user:my_account.html.twig', []);
     }
 }

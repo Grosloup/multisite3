@@ -1,4 +1,5 @@
 #site-header{
+  padding-top: 25px;
   width: 100%;
   height: $sh_height;
   background: transparent url("../../../img/sites/zoo/yuanzi.jpg") center center no-repeat;
@@ -7,9 +8,10 @@
     @include box-shadow($sh_boxShadow);
   }
   #stickytop{
-    @include transition(background-color 0.1s);
+    @include transition(background-color 0.3s);
     width: 100%;
     height: 50px;
+
     &.stuck{
       position: fixed;
       top: 0;
@@ -18,6 +20,7 @@
       background-color: $sh_sticyStuck_bgColor;
       width: 100%;
       z-index: 1000;
+
       @if $sh_sticyStuck_boxShadow != "none"{
         @include box-shadow($sh_sticyStuck_boxShadow);
       }
@@ -26,25 +29,55 @@
         #main-menu{
           color: $sh_sticyStuck_mainMenu_Color;
           line-height: 50px;
+
           a{
             @include nakedLink;
             color: inherit;
             font-family: inherit;
           }
+          .logo{
+            padding-top: 8px;
+            padding-bottom: 10px;
+            #Calque_1{
+              path{
+                fill: $grisFonce;
+              }
+
+            }
+
+          }
           nav{
             &>ul{
               &>li{
-                &.active, &:hover{
+                &.active{
+                  a{
+                    color: $bleu;
+                  }
+                  &:hover{
+                    &:after{
+                      content: "";
+                      position: absolute;
+                      display: block;
+                      height: 1px;
+                      width: 20%;
+                      background-color: $jaune;
+                      bottom: 10px;
+                      margin: 0 auto;
+                      left: 40%;
+                    }
+                  }
+                }
+                 &:hover{
                   &:after{
                     content: "";
                     position: absolute;
                     display: block;
                     height: 1px;
-                    width: 50%;
+                    width: 20%;
                     background-color: $sh_sticyStuck_mainMenuLiUnderlineColor;
                     bottom: 10px;
                     margin: 0 auto;
-                    left: 25%;
+                    left: 40%;
                   }
                 }
                 ul{
@@ -54,7 +87,8 @@
                   white-space: nowrap;
                   li{
                     a{
-                      color: $noir;
+                      color: $grisFonce;
+                      font-family: "cooper_hewitt_book", Arial, Helvetica, sans-serif;
                       text-align: left;
                       padding-left: topx($gridGutter);
                       padding-right: topx($gridGutter);
@@ -73,34 +107,71 @@
   }
   #main-menu{
     line-height: $sh_mainMenuLineHeight;
+    text-transform: uppercase;
+    font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+    @include clearfix;
     a{
       @include nakedLink;
       color: $sh_mainMenuLinkColor;
       font-family: $sh_mainMenuLinkFontFamily;
     }
+    .logo{
+      float: left;
+      display: block;
+      padding-right: 15px;
+      #Calque_1{
+        width: 250px;
+        height: 32px;
+      }
+
+    }
     nav{
       &>ul{
-        display: table;
+        //display: table;
+        @include clearfix;
         table-layout: fixed;
         width:100%;
         margin: 0 auto;
-        &>li{
-          &.active, &:hover{
+        &>li{   //,
+          &.active{
+            a{
+              color: $jaune;
+            }
+            &:hover{
+              &:after{
+                content: "";
+                position: absolute;
+                display: block;
+                height: 1px;
+                width: 20%;
+                background-color: $jaune;
+                bottom: 10px;
+                margin: 0 auto;
+                left: 40%;
+              }
+            }
+
+          }
+           &:hover{
             &:after{
               content: "";
               position: absolute;
               display: block;
               height: 1px;
-              width: 50%;
+              width: 20%;
               background-color: $sh_mainMenuLiUnderlineColor;
               bottom: 10px;
               margin: 0 auto;
-              left: 25%;
+              left: 40%;
             }
           }
-          display: table-cell;
+          //display: table-cell;
+          display: block;
+          float: left;
           position: relative;
-          text-align: center;
+          //text-align: center;
+          padding-left: 15px;
+          padding-right: 15px;
           &.dropdown{
             &:hover{
               ul{
@@ -111,8 +182,8 @@
           a{
             display: block;
             text-align: center;
-            padding-left: topx($gridGutter);
-            padding-right: topx($gridGutter);
+            //padding-left: topx($gridGutter);
+            //padding-right: topx($gridGutter);
           }
           ul{
             display: none;
@@ -130,6 +201,8 @@
             white-space: nowrap;
             li{
               a{
+                text-transform: none;
+                font-family: "cooper_hewitt_book", Arial, Helvetica, sans-serif;
                 color: $sh_mainMenu_submenu_linkColor;
                 text-align: left;
                 padding-left: topx($sh_mainMenu_submenu_linkPadding);

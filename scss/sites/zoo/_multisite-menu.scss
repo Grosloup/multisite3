@@ -1,11 +1,13 @@
 #multisite-menu{
-  background: $grisFonce url('../../../img/sites/zoo/strips.png') repeat left top;
-  //background-color: $mn_bgColor;
+  //background: $grisFonce url('../../../img/sites/zoo/strips.png') repeat left top;
+  background-color: $mn_bgColor;
   color: $mn_color;
   line-height: $mn_lineHeight;
   @include box-shadow(rgba(0,0,0,0.5) 0 1px 4px);
   position: relative;
   z-index: 999;
+  //text-transform: uppercase;
+  font-size: 12px;
   a{
     @include nakedLink;
     color: inherit;
@@ -20,16 +22,34 @@
 
       &>li{
         &.active{
+          color: $jaune;
+          &:hover{
+            &:after{
+              content: "";
+              position: absolute;
+              display: block;
+              height: 1px;
+              width: 14%;
+              background-color: $jaune;
+              bottom: 5px;
+              margin: 0 auto;
+              left: 43%;
+            }
+          }
+
+        }
+        &:hover{
+          //color: $jaune;
           &:after{
             content: "";
             position: absolute;
             display: block;
             height: 1px;
-            width: 50%;
-            background-color: $jaune;
-            bottom: 10px;
+            width: 14%;
+            background-color: $blanc;
+            bottom: 5px;
             margin: 0 auto;
-            left: 25%;
+            left: 43%;
           }
         }
         display: table-cell;
@@ -45,8 +65,8 @@
         a{
           display: block;
           text-align: center;
-          margin-right: topx($gridGutter);
-          margin-left: topx($gridGutter);
+          //margin-right: topx($gridGutter);
+          //margin-left: topx($gridGutter);
           &:hover{
             background-color: $mn_masterLinkHoverColor;
           }
