@@ -1,0 +1,62 @@
+<style>
+    .tombeStone{
+        width: 140px;
+        height: 70px;
+        background-color: transparent;
+        position:absolute;
+        bottom: 0;
+        left: calc(50% - 90px);
+        transition: all 0.15s;
+        box-shadow: rgba(0,0,0,0.15) 0 -3px 5px inset;
+        font-size: 14px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .tombeStone.left{
+        left: calc(50% - 220px);
+    }
+
+    .tombeStone.center{
+        left: calc(50% - 70px);
+    }
+
+    .tombeStone.right{
+        left: calc(50% + 80px);
+    }
+
+    .tombeStone .inner{
+        width: 140px;
+        height: 140px;
+        background-color: #e6e6e6;
+        border-radius: 50%;
+        box-shadow: rgba(0,0,0,0.15) 0 -3px 5px inset;
+        padding: 30px 15px 0 15px ;
+        text-align: center;
+    }
+
+    .tombeStone:hover{
+        height: 130px;
+        /*font-size: 16px;*/
+    }
+</style>
+
+
+<div class="tombeStone left">
+    <div class="inner">
+        <a href="">Achetez vos billets</a>
+
+    </div>
+</div>
+<div class="tombeStone center">
+    <div class="inner">
+        <a href="">Achetez vos billets</a>
+
+    </div>
+</div>
+<div class="tombeStone right">
+    <div class="inner">
+        <a href="">Achetez vos billets</a>
+
+    </div>
+</div>

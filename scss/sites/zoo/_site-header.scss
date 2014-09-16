@@ -1,4 +1,5 @@
 #site-header{
+  overflow: hidden;
   padding-top: 25px;
   width: 100%;
   height: $sh_height;
@@ -118,6 +119,7 @@
       float: left;
       display: block;
       padding-right: 15px;
+      padding-left: topx($gridGutter);
       #Calque_1{
         width: 250px;
         height: 32px;
