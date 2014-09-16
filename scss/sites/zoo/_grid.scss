@@ -5,9 +5,9 @@
   @include clearfix;
   position: relative;
 }
-.row{
+.row, .spaced-row{
   @include row;
-  .row{
+  .row, .spaced-row{
     [class^="col5-"]:first-child, [class*=" col5-"]:first-child,
     [class^="col5-"]:first-child, [class*=" col5-"]:first-child
     {
@@ -20,6 +20,9 @@
     }
 
   }
+}
+.spaced-row{
+  margin-bottom: topx($gridGutter * 2);
 }
 [class^="col-"], [class*=" col-"],[class^="col5-"], [class*=" col5-"], {
   float: left;
@@ -38,6 +41,35 @@
 @for $i from 1 through 5{
   .col5-#{$i}{
     width: 100%;
+  }
+}
+
+[class^="grid-"], [class*=" grid-"]{
+  @include clearfix;
+  width: 100%;
+  &>li,&>div{
+    float: left;
+    min-height: 1px;
+    padding-right: topx($gridGutter);
+    padding-left: topx($gridGutter);
+    margin-bottom: topx(2 * $gridGutter);
+  }
+
+}
+@for $i from 1 through 6{
+
+  .grid-#{$i}{
+
+    &>li,&>div{
+      width: percentage(1/$i);
+      $v: 1 + $i;
+      &:nth-of-type(1n){
+        clear: none;
+      }
+      &:nth-of-type(#{$i}n + 1){
+        clear: both;
+      }
+    }
   }
 }
 

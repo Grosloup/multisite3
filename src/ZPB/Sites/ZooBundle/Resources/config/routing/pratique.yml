@@ -1,0 +1,4 @@
+zpb_sites_zoo_pratique_acces_tarifs_horaires:
+    path: /acces-tarifs-horaires
+    defaults: { _controller: ZPBSitesZooBundle:Pratique:accesTarifsHoraires }
+    methods: ["GET"]

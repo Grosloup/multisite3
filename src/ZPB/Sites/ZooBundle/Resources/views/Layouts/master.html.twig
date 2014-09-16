@@ -39,26 +39,41 @@
     {% endblock %}
 </head>
 <body>
+{% set active_page = (active_page is defined) ? active_page : "merde" %}
 {{ render(controller("ZPBSitesZooBundle:Navs:topnav")) }}
-
     {% block main %}
         {% block header %}
-
             <div id="site-header">
-                <a class="button alert large" href="{{ path("zpb_sites_zoo_parrainages_homepage") }}" style="position: absolute; top: 75px; right: 50px;">Parrainages</a>
-                <a class="button alert large" href="" style="position: absolute; top: 150px; right: 50px;">Billetterie</a>
-                <a class="button alert large" href="" style="position: absolute; top: 225px; right: 50px;">Hôtels</a>
-                {{ render(controller("ZPBSitesZooBundle:Navs:mainbar")) }}
-
-                {{ include("ZPBSitesZooBundle:TestDesign:boutons_header.html.twig") }}
+                {{ render(controller("ZPBSitesZooBundle:Navs:mainbar", {active_page: active_page})) }}
+                <div class="tickets tickets-left">
+                    <a href="">
+                        <div class="inner">
+                            Achetez<br> vos billets
+                            {{ include("ZPBSitesZooBundle:incs:billet_svg.html.twig") }}
+                        </div>
+                    </a>
+                </div>
+                <div class="tickets tickets-center">
+                    <a href="">
+                        <div class="inner">
+                            Dormez<br>à Beauval
+                            {{ include("ZPBSitesZooBundle:incs:dormir_svg.html.twig") }}
+                        </div>
+                    </a>
+                </div>
+                <div class="tickets tickets-right">
+                    <a href="{{ path("zpb_sites_zoo_parrainages_homepage") }}">
+                        <div class="inner">
+                            Parrainez<br>un animal
+                            {{ include("ZPBSitesZooBundle:incs:parrainer_svg.html.twig") }}
+                        </div>
+                    </a>
+                </div>
             </div>
         {% endblock %}
 
-        <div class="container">
-            {% block content %}
+        {% block content %}{% endblock %}
 
-            {% endblock %}
-        </div>
     {% endblock %}
 
 {{ render(controller("ZPBSitesZooBundle:Partials:footer")) }}

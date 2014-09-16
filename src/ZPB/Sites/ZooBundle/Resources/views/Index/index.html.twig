@@ -1,23 +1,65 @@
 {% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
 
 {% block content %}
-    {#<div class="columns large-3"></div>#}
-    <div class="row">
-        <div class="col-1"></div>
-        <div class="col-4">
-            <div class="slogan">
-                <h2>bienvenue au zooparc de beauval</h2>
 
-                <p>Très engagé dans la protection des espèces menacées et classé parmi les 15 plus beaux zoos au monde,
-                    le ZooParc de Beauval est un lieu magique et inoubliable.</p>
-
-                <p>Plus de 5700 animaux évoluent au sein d'installations exceptionnelles :
-                    koalas, okapis, lamantins, kangourous arboricoles, tigres et lions blancs... sans oublier les pandas
-                    géants !</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="page-header">
+                    <h1>bienvenue au zooparc de beauval</h1>
+                </div>
             </div>
 
         </div>
-        <div class="col-1"></div>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-4">
+                <div class="slogan">
+                    <p>Très engagé dans la protection des espèces menacées et classé parmi les 15 plus beaux zoos au
+                        monde,
+                        le ZooParc de Beauval est un lieu magique et inoubliable.</p>
+
+                    <p>Plus de 5700 animaux évoluent au sein d'installations exceptionnelles :
+                        koalas, okapis, lamantins, kangourous arboricoles, tigres et lions blancs... sans oublier les
+                        pandas
+                        géants !</p>
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+
+    <div class="container"> <!-- Nouveauté -->
+        <div class="spaced-row">
+            <div class="col-6">
+                <div class="testbox testbox-8">6columns * 400px</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container"> <!-- Blocks divers -->
+        <div class="spaced-row">
+            <div class="col-2">
+                <div class="testbox testbox-5">2columns * 250px</div>
+            </div>
+            <div class="col-2">
+                <div class="testbox testbox-5">2columns * 250px</div>
+            </div>
+            <div class="col-2">
+                <div class="testbox testbox-5">2columns * 250px</div>
+            </div>
+        </div>
+        <div class="spaced-row">
+            <div class="col-2">
+                <div class="testbox testbox-5">2columns * 250px</div>
+            </div>
+            <div class="col-2">
+                <div class="testbox testbox-5">2columns * 250px</div>
+            </div>
+            <div class="col-2">
+                <div class="testbox testbox-5">2columns * 250px</div>
+            </div>
+        </div>
     </div>
 
 {% endblock %}

@@ -12,9 +12,9 @@ class NavsController extends Controller
         return $this->render('ZPBSitesZooBundle:Navs:topnav.html.twig', ['basketCount'=>$items]);
     }
 
-    public function mainbarAction()
+    public function mainbarAction($active_page = "")
     {
-        return $this->render('ZPBSitesZooBundle:Navs:mainbar.html.twig');
+        return $this->render('ZPBSitesZooBundle:Navs:mainbar.html.twig', ['active_page'=>$active_page]);
     }
 
 }

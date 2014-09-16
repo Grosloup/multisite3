@@ -3,51 +3,56 @@
 
 
 {% block content %}
-    <div class="row">
-        <div class="col-6">
-            <h1>Questions fréquentes</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="page-header"><h1>Questions fréquentes</h1></div>
+            </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-4">
-            <ul>
+        <div class="row">
+            <div class="col-4">
+                <ul>
+                    {% for faq in faqs %}
+                        <li>{{ faq.question }}</li>
+                    {% endfor %}
+                    {% if cfaqs|length > 0 %}
+
+                        {% for cfaq in cfaqs %}
+                            <li>{{ cfaq.question }}</li>
+                        {% endfor %}
+
+                    {% endif %}
+                </ul>
+
+            </div>
+            <div class="col-2"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
                 {% for faq in faqs %}
-                    <li>{{ faq.question }}</li>
+                    <div class="faq">
+                        <h5>{{ faq.question }}</h5>
+                        <p>{{ faq.response }}</p>
+                    </div>
                 {% endfor %}
                 {% if cfaqs|length > 0 %}
 
                     {% for cfaq in cfaqs %}
-                        <li>{{ cfaq.question }}</li>
+                        <div class="faq">
+                            <h5>{{ cfaq.question }}</h5>
+                            <p>{{ cfaq.response }}</p>
+                        </div>
                     {% endfor %}
 
                 {% endif %}
-            </ul>
-
+            </div>
+            <div class="col-4"></div>
         </div>
-        <div class="col-2"></div>
     </div>
 
-    <div class="row">
-        <div class="col-4">
-            {% for faq in faqs %}
-                <div class="faq">
-                    <h4>{{ faq.question }}</h4>
-                    <p>{{ faq.response }}</p>
-                </div>
-            {% endfor %}
-            {% if cfaqs|length > 0 %}
 
-                {% for cfaq in cfaqs %}
-                    <div class="faq">
-                        <h4>{{ cfaq.question }}</h4>
-                        <p>{{ cfaq.response }}</p>
-                    </div>
-                {% endfor %}
 
-            {% endif %}
-        </div>
-        <div class="col-4"></div>
-    </div>
 
 {% endblock %}

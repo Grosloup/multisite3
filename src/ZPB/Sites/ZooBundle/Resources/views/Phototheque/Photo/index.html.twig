@@ -3,11 +3,16 @@
 
 
 {% block content %}
-    <div class="columns large-12">
-        <h1>Photothèque</h1>
-
+    <div class="container">
         <div class="row">
-            <div class="columns large-9">
+            <div class="col-6">
+                <div class="page-header">
+                    <h1>Galerie photo</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
                 <ul>
                     {% for institution in institutions %}
                         {% set institut = institution.slug %}
@@ -25,6 +30,5 @@
 
             </div>
         </div>
-
     </div>
 {% endblock %}

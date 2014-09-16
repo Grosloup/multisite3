@@ -3,28 +3,26 @@
 
 
 {% block content %}
-    <div class="col-6">
-        <h1>{{ institution }} </h1>
-        <h2>Photos classées dans {{ category }}</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="page-header"><h1>Galerie photo </h1></div>
+                <h2>{{ institution }}</h2>
+                <h3>Photos classées dans {{ category }}</h3>
+            </div>
 
+        </div>
         <div class="row">
             <div class="col-6">
                 <div id="slider">
                     {% for photo in photos %}
-
                         <div><img src="{{ photo_factory.getWebThumb('xlarge', photo) }}" alt="slide {{ loop.index }}" width="100%"/></div>
-                            {#<div class="orbit-caption">
-                                {{ photo.legend }}
-                            </div>#}
-
                     {% endfor %}
                 </div>
-
-
             </div>
         </div>
         <div class="row">
-            <div class="col-6   ">
+            <div class="col-6">
                 <h4>Télécharger</h4>
                 <div class="row">
                     {% for photo in photos %}
@@ -35,11 +33,11 @@
                         </div>
                     {% endfor %}
                 </div>
-
             </div>
         </div>
 
     </div>
+
 {% endblock %}
 {% block headLinks %}
     {{ parent() }}

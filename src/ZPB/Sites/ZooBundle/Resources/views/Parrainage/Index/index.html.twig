@@ -2,24 +2,57 @@
 {% block title %}Parrainez un animal{% endblock %}
 
 {% block content %}
-    <div class="columns large-12">
-        <h1>Parrainages</h1>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="page-header">
+                    <h1>Parrainages</h1>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-6">
+                <ul class="grid-3">
+                    {% for animal in animals %}
+                        <li>
+
+                            <img class="th" src="http://lorempicsum.com/nemo/600/450/{{ random(5) + 1 }}" alt="" width="100%"/>
+                            <h5>{{ animal.longName }}</h5>
+                            {{ animal.shortDescription|raw }}
+
+                            <a class="button success expand"
+                               href="{{ path("zpb_sites_zoo_parrainages_animal_show", {name: animal.canonicalLongName}) }}">Plus
+                                d'infos</a>
+
+
+                        </li>
+                    {% endfor %}
+                    {% for n in 1..9 %}
+                        <li>
+                            <div class="testbox testbox-6"></div>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
     </div>
+
+
+
+
+
+
+
+
+
+
     <div class="columns large-9">
-        <ul class="large-block-grid-3">
-            {% for animal in animals %}
-            <li>
 
-                    <img class="th" src="http://lorempicsum.com/nemo/600/450/{{ random(5) + 1 }}" alt=""/>
-                    <h5>{{animal.longName}}</h5>
-                    {{animal.shortDescription|raw}}
-
-                    <a class="button success expand" href="{{ path("zpb_sites_zoo_parrainages_animal_show", {name: animal.canonicalLongName}) }}">Plus d'infos</a>
-
-
-            </li>
-            {% endfor %}
-        </ul>
     </div>
     <div class="columns large-3"></div>
 {% endblock %}
