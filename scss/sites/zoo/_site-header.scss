@@ -45,8 +45,8 @@
             &>ul{
               &>li{
                 &.active{
-                  a{
-                    color: $bleu;
+                  & > a{
+                    color: $jaune;
                   }
                   &:hover{
                     &:after{
@@ -80,15 +80,19 @@
                   @include box-shadow(rgba(0,0,0,0.5) 0 3px 4px);
                   min-width: 100%;
                   white-space: nowrap;
+                  line-height: 35px;
                   li{
+                    line-height: auto;
                     a{
+                      line-height: auto;
                       color: $grisFonce;
                       font-family: "cooper_hewitt_book", Arial, Helvetica, sans-serif;
                       text-align: left;
-                      padding-left: topx($gridGutter);
-                      padding-right: topx($gridGutter);
+                      padding-left: topx($sh_mainMenu_submenu_linkPadding);
+                      padding-right: topx($sh_mainMenu_submenu_linkPadding);
                       &:hover{
-                        background-color: $blanc;
+                        background-color: $grisFonce;
+                        color: $blanc;
                       }
                     }
                   }
@@ -122,12 +126,12 @@
     nav{
       &>ul{
         @include clearfix;
-        table-layout: fixed;
+
         width:100%;
         margin: 0 auto;
         &>li{   //,
           &.active{
-            a{
+            & > a{
               color: $jaune;
             }
             &:hover{
@@ -167,6 +171,7 @@
             &:hover{
               ul{
                 display: block;
+                line-height: auto;
               }
             }
           }
@@ -174,7 +179,8 @@
             display: block;
             text-align: center;
           }
-          ul{line-height: auto;
+          ul{
+            line-height: auto;
             display: none;
             position: absolute;
             z-index: 1000;
