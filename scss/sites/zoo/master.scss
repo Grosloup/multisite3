@@ -9,7 +9,7 @@
 @import "site-header";
 
 
-
+@import "dev";
 @import "footer";
 
 @function  topx($value){
@@ -55,7 +55,7 @@ a{
 
 .page-header{
   text-align: center;
-  padding: topx($fontSize) 0;
+  padding: topx($fontSize / 2) 0;
 
 }
 

@@ -24,7 +24,7 @@
 .spaced-row{
   margin-bottom: topx($gridGutter * 2);
 }
-[class^="col-"], [class*=" col-"],[class^="col5-"], [class*=" col5-"], {
+[class^="col-"], [class*=" col-"],[class^="col4-"], [class*=" col4-"], [class^="col5-"], [class*=" col5-"]{
   float: left;
   min-height: 1px;
   padding-left: topx($gridGutter);
@@ -33,6 +33,12 @@
 }
 
 @for $i from 1 through $numCols{
+  .col-#{$i}{
+    width: 100%;
+  }
+}
+
+@for $i from 1 through 4{
   .col-#{$i}{
     width: 100%;
   }
@@ -80,12 +86,16 @@
       width: percentage( $i / $numCols);
     }
   }
+  @for $i from 1 through 4{
+    .col4-#{$i}{
+      width: percentage( $i / 4);
+    }
+  }
   @for $i from 1 through 5{
     .col5-#{$i}{
       width: percentage( $i / 5);
     }
   }
-
 }
 
 @media only screen and (min-width: 960px){

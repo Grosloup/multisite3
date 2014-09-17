@@ -2,7 +2,7 @@
   overflow: hidden;
   padding-top: 25px;
   width: 100%;
-  height: $sh_height;
+  height: $sh_tablet_height;
   background: transparent url("../../../img/sites/zoo/yuanzi.jpg") center center no-repeat;
   position: relative;
   @if $sh_boxShadow != "none" {
@@ -29,7 +29,8 @@
           line-height: 50px;
           a{
             @include nakedLink;
-            color: $grisFonce;
+            // color: $grisFonce;
+            color: $blanc;
             font-family: inherit;
           }
           .logo{
@@ -37,7 +38,8 @@
             padding-bottom: 10px;
             #Calque_1{
               path{
-                fill: $grisFonce;
+                //fill: $grisFonce;
+                fill: $blanc;
               }
 
             }
@@ -63,7 +65,7 @@
                     }
                   }
                 }
-                 &:hover{
+                &:hover{
                   &:after{
                     content: "";
                     position: absolute;
@@ -151,7 +153,7 @@
             }
 
           }
-           &:hover{
+          &:hover{
             &:after{
               content: "";
               position: absolute;
@@ -282,3 +284,11 @@
 
 
 }
+@media only screen and (min-width: 1024px) {
+  #site-header{
+    height: $sh_height;
+  }
+}
+
+
+
