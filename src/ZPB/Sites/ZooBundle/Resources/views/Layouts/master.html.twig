@@ -43,7 +43,7 @@
     {% endblock %}
 </head>
 <body class="{% if block('body_class') %}{{ body_class }}{% endif %}">
-{{ render(controller("ZPBSitesZooBundle:Navs:topnav")) }}
+{{ render(controller("ZPBSitesCommonBundle:Navs:topnav")) }}
     {% block main %}
         {% block header %}
             <div id="site-header">

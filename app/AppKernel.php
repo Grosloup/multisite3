@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new ZPB\Sites\ScolarBundle\ZPBSitesScolarBundle(),
             new ZPB\Sites\CEBundle\ZPBSitesCEBundle(),
             new ZPB\Sites\HotelsBundle\ZPBSitesHotelsBundle(),
+            new ZPB\Sites\CommonBundle\ZPBSitesCommonBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

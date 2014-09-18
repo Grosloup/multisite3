@@ -1,3 +1,7 @@
+zpb_sites_common:
+    resource: "@ZPBSitesCommonBundle/Resources/config/routing.yml"
+    prefix:   /
+
 zpb_sites_hotels:
     resource: "@ZPBSitesHotelsBundle/Resources/config/routing.yml"
     prefix:   /
@@ -32,7 +36,7 @@ zpb_sites_pro:
 zpb_sites_bn:
     resource: "@ZPBSitesBNBundle/Resources/config/routing.yml"
     prefix:   /
-    host: "new.beauval-nature.com"
+    host: "new.beauvalnature.com"
     schemes: ["https"]
 
 zpb_sites_zoo:

@@ -3,19 +3,14 @@
 
 @import "../common/utils";
 @import "vars";
+
 @import "../common/normalize";
-@import "typo";
+
 @import "../common/grid";
-@import "button";
 
 @import "../common/multisite-menu";
-@import "site-header";
 
-
-@import "dev";
 @import "footer";
-
-
 
 *, *:before, *:after{
   @include box-sizing(border-box);
@@ -112,14 +107,4 @@ ul{
   width: 100%;
   background-color: #ddd;
   border: 1px solid #bbb;
-}
-
-
-/*************************************************\
-  Page accueil
-\*************************************************/
-.slogan{
-  color: $bleu;
-  text-align: center;
-  padding-bottom: topx($fontSize * 2);
 }
