@@ -9,6 +9,8 @@ $noir: #000;
 $jaunePale: #DDAB33;
 $bleuPale: #4f94b3;
 $vertPale: #87a13e;
+$rouge: #c56351;
+$rose: #d68aa4; // carnetrose
 
 $fontSize: 16;
 $fontfamily: 'cooper_hewitt_book', Arial, Helvetica, sans-serif;
@@ -23,7 +25,7 @@ $headers: h1,h2,h3,h4,h5,h6;
 $linkFontFamily: 'cooper_hewitt_semi_bold', Arial, Helvetica, sans-serif;
 $linkHoverColor: $bleu;
 
-$gridGutter: 5;
+$gridGutter: 20;
 $numCols: 6;
 
 /***************************************\
@@ -38,7 +40,8 @@ $btn_defaultBtnFontSize: $fontSize;
 $btn_primaryColor: $blanc;
 $btn_primaryBgColor: $bleu;
 
-
+$btn_warningColor: $grisFonce;
+$btn_warningBgColor: $jaune;
 
 
 /***************************************\

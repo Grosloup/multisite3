@@ -17,6 +17,14 @@ a, button, input[type=button], input[type=submit], input[type=reset]{
       font-size: topx($btn_defaultBtnFontSize * 0.75);
     }
 
+    &.btn-xlarge{
+      padding: topx($btn_defaultBtnFontSize * 1) topx($btn_defaultBtnFontSize * 2);
+      font-size: topx($btn_defaultBtnFontSize * 1.25);
+      text-transform: uppercase;
+      font-family: 'cooper_hewitt_bold', Arial, Helvetica, sans-serif;
+
+    }
+
 
 
 
@@ -28,6 +36,17 @@ a, button, input[type=button], input[type=submit], input[type=reset]{
       }
       &:active{
         background-color: darken($btn_primaryBgColor, 15);
+      }
+    }
+
+    &.btn-warning{
+      background-color: $btn_warningBgColor;
+      color: $btn_warningColor;
+      &:hover{
+        background-color: lighten($btn_warningBgColor, 15);
+      }
+      &:active{
+        background-color: darken($btn_warningBgColor, 15);
       }
     }
   }

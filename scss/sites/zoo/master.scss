@@ -4,9 +4,9 @@
 @import "../common/utils";
 @import "vars";
 @import "../common/normalize";
-@import "typo";
+@import "../common/typo";
 @import "../common/grid";
-@import "button";
+@import "../common/button";
 
 @import "../common/multisite-menu";
 @import "site-header";
@@ -119,7 +119,7 @@ ul{
   Page accueil
 \*************************************************/
 .slogan{
-  color: $bleu;
+  color: $grisFonce;
   text-align: center;
   padding-bottom: topx($fontSize * 2);
 }
