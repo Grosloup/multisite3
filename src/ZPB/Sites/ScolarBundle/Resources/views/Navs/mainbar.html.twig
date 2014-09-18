@@ -1,0 +1,57 @@
+{% set children_pages = ["individuels"] %}
+{% set handi_pages = ["groupes"] %}
+{% set school_pages = ["groupes"] %}
+{% set practicle_pages = ["pratique"] %}
+{% set tools_pages = ["tools"] %}
+
+{% set active_page = "none" %}
+
+
+<div id="stickytop">
+    <div class="container">
+        <div id="main-menu">
+            <nav>
+                <a href="{{path("zpb_sites_scolar_homepage")}}" class="logo">{{ include("ZPBSitesScolarBundle:incs:logo_scolar_svg.html.twig") }}</a>
+                <ul>
+                    <li class="dropdown{% if active_page in children_pages %} active{% endif %}"><a href="">Groupes Enfants</a>
+                        <ul>
+                            <li><a href="">Parc seul</a></li>
+                            <li><a href="">Restauration</a></li>
+                            <li><a href="">Pédago</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown{% if active_page in handi_pages %} active{% endif %}"><a href="javascript:void(0)">Groupes Enfants Handicapés</a>
+                        <ul>
+                            <li><a href="">Parc seul</a></li>
+                            <li><a href="">Restauration</a></li>
+                            <li><a href="">Pédago</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown{% if active_page in school_pages %} active{% endif %}"><a href="">Groupes Scolaires</a>
+                        <ul>
+                            <li><a href="">Lorem ipsum.</a></li>
+                            <li><a href="">Sunt, temporibus.</a></li>
+                            <li><a href="">Ipsa, tempora?</a></li>
+                            <li><a href="">A, harum.</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown{% if active_page in practicle_pages %} active{% endif %}"><a href="javascript:void(0)">Pratique</a>
+                        <ul>
+                            <li><a href="">Accès</a></li>
+                            <li><a href="">Avantagess groupes</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown{% if active_page in tools_pages %} active{% endif %}"><a href="javascript:void(0)">Outils de Com'</a>
+                        <ul>
+                            <li><a href="">Outils téléchargeables</a></li>
+                            <li><a href="">Bons de commandes</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

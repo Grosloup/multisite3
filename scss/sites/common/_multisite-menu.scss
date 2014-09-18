@@ -26,6 +26,9 @@
       &>li{
         &.active{
           color: $jaune;
+          ul{
+            color: $blanc;
+          }
           &:hover{
             &:after{
               content: "";

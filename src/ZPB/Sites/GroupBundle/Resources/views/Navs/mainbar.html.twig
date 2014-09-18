@@ -1,5 +1,6 @@
-{% set indiv_pages = ["individuels"] %}
-{% set groupes_pages = ["groupes"] %}
+{% set clubs_pages = ["individuels"] %}
+{% set family_pages = ["groupes"] %}
+{% set ces_pages = ["groupes"] %}
 {% set practicle_pages = ["pratique"] %}
 {% set tools_pages = ["tools"] %}
 
@@ -10,25 +11,34 @@
     <div class="container">
         <div id="main-menu">
             <nav>
-                <a href="{{path("zpb_sites_ce_homepage")}}" class="logo">{{ include("ZPBSitesCEBundle:incs:logo_ce_svg.html.twig") }}</a>
+                <a href="{{path("zpb_sites_group_homepage")}}" class="logo">{{ include("ZPBSitesGroupBundle:incs:logo_groups_svg.html.twig") }}</a>
                 <ul>
-                    <li class="dropdown{% if active_page in indiv_pages %} active{% endif %}"><a href="javascript:void(0)">Individuels</a>
+                    <li class="dropdown{% if active_page in clubs_pages %} active{% endif %}"><a href="javascript:void(0)">Club & Assocs</a>
                         <ul>
-                            <li><a href="">Billettere / Coupons repas</a></li>
+                            <li><a href="">Parc seul</a></li>
                             <li><a href="">Séjours Hôtels+ZooParc</a></li>
-                            <li><a href="">Idées cadeaux</a></li>
+                            <li><a href="">Restauration</a></li>
 
                         </ul>
                     </li>
-                    <li class="dropdown{% if active_page in groupes_pages %} active{% endif %}"><a href="javascript:void(0)">Groupes</a>
+                    <li class="dropdown{% if active_page in family_pages %} active{% endif %}"><a href="javascript:void(0)">Familles</a>
                         <ul>
                             <li><a href="">Parc seul</a></li>
-                            <li><a href="">Restauration</a></li>
                             <li><a href="">Séjours Hôtels+ZooParc</a></li>
-                            <li><a href="">vers groupes enfants</a></li>
+                            <li><a href="">Restauration</a></li>
+
                         </ul>
                     </li>
-                    <li class="dropdown{% if active_page in practicle_pages %} active{% endif %}"><a href="javascript:void(0)">Pratiques</a>
+                    <li class="dropdown{% if active_page in ces_pages %} active{% endif %}"><a href="javascript:void(0)">CES</a>
+                        <ul>
+                            <li><a href="">Parc seul</a></li>
+                            <li><a href="">Séjours Hôtels+ZooParc</a></li>
+                            <li><a href="">Restauration</a></li>
+                            <li><a href="">Groupes enfants handicapés</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown{% if active_page in practicle_pages %} active{% endif %}"><a href="javascript:void(0)">Pratique</a>
                         <ul>
                             <li><a href="">Accès</a></li>
                             <li><a href="">Avantagess groupes</a></li>
