@@ -1,0 +1,52 @@
+{% set active_page = (active_page is defined) ? active_page : "" %}
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{% if block('title') %}{{ block('title')}}{% else %}Bienvenue{% endif %} | pro.zoobeauval.com</title>
+    {% if block('description') %}
+        <meta name="description" content="{{ block('description') }}"/>
+    {% endif %}
+    {% if block('keywords') %}
+        <meta name="keywords" content="{{ block('keywords') }}"/>
+    {% endif %}
+
+    {% block headLinks%}
+        <link rel="stylesheet" href="/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="/css/sites/pro/master.css"/>
+    {% endblock %}
+
+    {% block headScripts %}{% endblock %}
+
+    {% block headStyles %}
+
+    {% endblock %}
+</head>
+<body class="{% if block('body_class') %}{{ body_class }}{% endif %}">
+{{ render(controller("ZPBSitesCommonBundle:Navs:topnav")) }}
+{% block main %}
+    {% block header %}
+
+    {% endblock %}
+
+    {% block content %}{% endblock %}
+
+{% endblock %}
+
+{{ render(controller("ZPBSitesZooBundle:Partials:footer")) }}
+
+{% block footScripts %}
+    <script src="/js/vendor/jquery-2.1.1.min.js"></script>
+    {#<script src="/js/vendor/waypoints.min.js"></script>
+    <script src="/js/vendor/waypoints-sticky.min.js"></script>
+    <script>
+        $(function(){
+            $("#stickytop").waypoint('sticky');
+        })
+    </script>#}
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+#main-footer{
+  margin-top: topx($fontSize);
+  @if $footerBgColor != "non" {
+    background-color: $footerBgColor;
+  }
+  @if $footerBgImage != "none" {
+    background-image: $footerBgImage;
+    @if $footerBgImageRepeat != null{
+      background-repeat: $footerBgImageRepeat
+    } @else {
+      background-repeat: no-repeat;
+    }
+    @if $footerBgImagePosition != null {
+      background-position: $footerBgImagePosition;
+    } @else {
+      background-position: center center;
+    }
+  }
+  min-height: 300px;
+  color: $footerColor;
+  .row{
+    padding-top: topx($fontSize);
+    padding-bottom: topx($fontSize);
+  }
+  a{
+    @include nakedLink;
+    color: inherit;
+    font-family: $fontfamily;
+    &:hover{
+      color: $linkHoverColor;
+    }
+  }
+  .socials{
+    text-align: center;
+    a{
+      font-size: topx($fontSize * 3);
+      &:hover{
+        color: $linkHoverColor;
+      }
+    }
+  }
+  .legals{
+    text-align: center;
+    font-size: topx($fontSize * 0.66);
+    padding: topx($fontSize / 2);
+    border-top: 1px solid #4b4b4f;
+  }
+}
