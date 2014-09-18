@@ -1,0 +1,7 @@
+parameters:
+#    zpb_sites_ce.example.class: ZPB\Sites\CEBundle\Example
+
+services:
+#    zpb_sites_ce.example:
+#        class: %zpb_sites_ce.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

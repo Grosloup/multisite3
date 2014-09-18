@@ -1,3 +1,28 @@
+zpb_sites_hotels:
+    resource: "@ZPBSitesHotelsBundle/Resources/config/routing.yml"
+    prefix:   /
+    host: "new.leshotelsdebeauval.com"
+    schemes: ["https"]
+
+
+zpb_sites_ce:
+    resource: "@ZPBSitesCEBundle/Resources/config/routing.yml"
+    prefix:   /
+    host: "new.ce.zoobeauval.com"
+    schemes: ["https"]
+
+zpb_sites_scolar:
+    resource: "@ZPBSitesScolarBundle/Resources/config/routing.yml"
+    prefix:   /
+    host: "new.scolaires.zoobeauval.com"
+    schemes: ["https"]
+
+zpb_sites_group:
+    resource: "@ZPBSitesGroupBundle/Resources/config/routing.yml"
+    prefix:   /
+    host: "new.groupes.zoobeauval.com"
+    schemes: ["https"]
+
 zpb_sites_pro:
     resource: "@ZPBSitesProBundle/Resources/config/routing.yml"
     prefix:   /

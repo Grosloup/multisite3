@@ -1,0 +1,3 @@
+zpb_sites_hotels_homepage:
+    path:     /
+    defaults: { _controller: ZPBSitesHotelsBundle:Index:index }

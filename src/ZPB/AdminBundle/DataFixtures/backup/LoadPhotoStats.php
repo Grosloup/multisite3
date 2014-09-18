@@ -56,8 +56,10 @@ class LoadPhotoStats  extends AbstractFixture implements OrderedFixtureInterface
             $day = ($day <10) ? '0' . $day : $day;
             $createdAt = '2014-' . $month .'-' . $day . ' 00:00:00';
             $stat = new PhotoStat();
-            $photoId = rand(1,53);
+            //$photoId = rand(1,53);
+            $photoId = rand(1,37);
             $photo = $manager->getRepository('ZPBAdminBundle:Photo')->find($photoId);
+
             $stat
                 ->setPhotoId($photoId)
                 ->setHost($hosts[$hostId])
