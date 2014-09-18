@@ -49,9 +49,30 @@ a{
   }
 }
 
+small, .small{
+  font-size: topx($fontSize * 0.8);
+}
+
+ul{
+  &.inline{
+    li{
+      display: inline;
+      a, span.alike{
+        display: inline-block;
+        margin: 0 12px;
+      }
+    }
+  }
+}
+
+/*************************************************\
+  helpers
+\*************************************************/
+
 .text-center{
   text-align: center;
 }
+
 
 .page-header{
   text-align: center;
@@ -59,9 +80,21 @@ a{
 
 }
 
+.thumb{
+  img{
+    width: 100%;
+    padding: topx($fontSize / 2);
+    border: 1px solid lighten($grisFonce, 50);
+    &:hover{
+      @include box-shadow(rgba(0,0,0,0.3) 0 0 5px);
+    }
+  }
+}
+
 /*************************************************\
   Pour test
 \*************************************************/
+
 @for $i from 1 through 12{
   .testbox-#{$i}{
     height: topx($i * 50);
@@ -70,7 +103,6 @@ a{
 
 .testbox{
   width: 100%;
-
   background-color: #ddd;
   border: 1px solid #bbb;
 }
@@ -82,4 +114,5 @@ a{
 .slogan{
   color: $bleu;
   text-align: center;
+  padding-bottom: topx($fontSize * 2);
 }

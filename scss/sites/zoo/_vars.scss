@@ -86,7 +86,7 @@ $sh_sticyStuck_boxShadow: rgba(0,0,0,0.5) 0 1px 4px;
 //$sh_sticyStuck_mainMenu_Color: $jaune;
 $sh_sticyStuck_mainMenu_Color: $grisFonce;
 //$sh_sticyStuck_mainMenuLiUnderlineColor: $jaune;
-$sh_sticyStuck_mainMenuLiUnderlineColor: $grisFonce;
+$sh_sticyStuck_mainMenuLiUnderlineColor: $blanc;
 
   /***************************************\
     site-header => boutons spéciaux bs_
@@ -107,4 +107,33 @@ $bs_btnBgColor_1: $jaunePale;
 $bs_btnBgColor_2: $bleuPale;
 $bs_btnBgColor_3: $vertPale;
 $bs_gutter: 10;
+
+/***************************************\
+  footer
+\***************************************/
+
+$footerBgColor: $grisFonce;
+$footerColor: $blanc;
+$footerBgImage: url('../../../img/sites/zoo/strips.png');
+$footerBgImageRepeat: repeat;
+$footerBgImagePosition: top left;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

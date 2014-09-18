@@ -94,7 +94,7 @@
                       padding-left: topx($sh_mainMenu_submenu_linkPadding);
                       padding-right: topx($sh_mainMenu_submenu_linkPadding);
                       &:hover{
-                        background-color: $grisFonce;
+                        background-color: $bleu;
                         color: $blanc;
                       }
                     }
@@ -284,7 +284,7 @@
 
 
 }
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1030px) {
   #site-header{
     height: $sh_height;
   }
