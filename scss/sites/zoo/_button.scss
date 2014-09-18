@@ -1,0 +1,36 @@
+a, button, input[type=button], input[type=submit], input[type=reset]{
+
+  &.btn{
+    @include nakedLink;
+    color: $btn_defaultBtnColor;
+    font-family: $btn_defaultBtnFontFamily;
+    font-size: $btn_defaultBtnFontSize;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: $btn_defaultBtnBgColor;
+    padding: topx($btn_defaultBtnFontSize * 0.33) topx($btn_defaultBtnFontSize * 0.66);
+    border: none;
+    margin: 0;
+
+    &.btn-small{
+      padding: topx($btn_defaultBtnFontSize * 0.25) topx($btn_defaultBtnFontSize * 0.5);
+      font-size: topx($btn_defaultBtnFontSize * 0.75);
+    }
+
+
+
+
+    &.btn-primary{
+      background-color: $btn_primaryBgColor;
+      color: $btn_primaryColor;
+      &:hover{
+        background-color: lighten($btn_primaryBgColor, 15);
+      }
+      &:active{
+        background-color: darken($btn_primaryBgColor, 15);
+      }
+    }
+  }
+
+
+}

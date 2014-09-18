@@ -1,9 +1,12 @@
 @import "compass";
 @import "compass/reset";
 
+@import "utils";
 @import "vars";
+@import "normalize";
 @import "typo";
 @import "grid";
+@import "button";
 
 @import "multisite-menu";
 @import "site-header";
@@ -69,8 +72,14 @@ ul{
   helpers
 \*************************************************/
 
+.text-left{
+  text-align: left;
+}
 .text-center{
   text-align: center;
+}
+.text-right{
+  text-align: right;
 }
 
 
