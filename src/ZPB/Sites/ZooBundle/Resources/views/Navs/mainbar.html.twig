@@ -1,9 +1,9 @@
 
 
 {% set practicle_pages = ["pratique", "tarifs"] %}
-{% set zooparc_pages = ["zooparc"] %}
+{% set zooparc_pages = ["zooparc", "phototheque"] %}
 {% set pedago_pages = ["pedago"] %}
-{% set news_pages = ["news"] %}
+{% set news_pages = ["news","single_post"] %}
 {% set social_pages = ["social"] %}
 {% set shop_pages = ["shop"] %}
 
@@ -31,7 +31,7 @@
                             <li><a href="">Historique</a></li>
                             <li><a href="">La mission</a></li>
                             <li><a href="">Développement durable</a></li>
-                            <li><a href="">Galerie photo</a></li>
+                            <li><a href="{{  path("zpb_sites_zoo_phototheque_index") }}">Galerie photo</a></li>
                         </ul>
                     </li>
                     <li class="dropdown{% if active_page in pedago_pages %} active{% endif %}"><a href="">Pédagogie</a>

@@ -1,0 +1,75 @@
+{% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
+
+{% block title %}Contactez-nous{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% set active_page = "contact" %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="page-header">
+                    <h1>Contact</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-4">
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus assumenda aut dignissimos dolore
+                    error, magnam, molestiae obcaecati perferendis perspiciatis sunt temporibus velit voluptatum.
+                    Accusantium aut deserunt dicta dolorum, laudantium officia pariatur quos sunt suscipit ut.
+                    Asperiores cum dicta est excepturi id quasi quis vero. A aliquid aperiam asperiores assumenda culpa
+                    cum fugit illo illum in inventore ipsam nam non, odio officiis perferendis provident qui quia
+                    quisquam reiciendis repellat, reprehenderit sequi soluta tenetur. Aliquam aperiam dolore incidunt
+                    laborum omnis, quo. Alias assumenda autem, blanditiis commodi consectetur consequatur consequuntur
+                    cum dolores eos illo itaque, iure laboriosam magni minima modi necessitatibus nesciunt numquam
+                    pariatur perferendis quaerat ratione rem repellat repellendus, rerum sed sequi vero vitae. Ab
+                    adipisci amet commodi culpa cum cupiditate dicta distinctio earum ipsa ipsam ipsum maxime nisi
+                    numquam placeat praesentium ratione, reiciendis reprehenderit unde vero voluptatibus. Ab accusamus
+                    at blanditiis corporis dicta dolore dolorum ducimus earum minima, nobis officia placeat quam quidem
+                    quis sit. A alias asperiores culpa dicta dignissimos enim exercitationem fuga incidunt, ipsa ipsam
+                    iste maxime nulla numquam odio officiis porro qui reiciendis sint tempore temporibus? Accusamus aut
+                    blanditiis corporis, debitis deserunt dolor et itaque laborum magni mollitia neque non pariatur
+                    praesentium quos sint tempora, ut vero voluptatum!</p>
+
+                <form action="" method="post">
+
+                    <div class="form-row">
+                        <label for="email">Votre adresse email pour la réponse</label>
+                        <div class="form-field">
+                            <input type="text" name="email" id="email" style="width: 100%;"/>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="raison">Raison de la prise de contact en quelques mots</label>
+                        <div class="form-field">
+                            <input type="text" name="raison" id="raison" style="width: 100%;"/>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="message">Votre message</label>
+                        <div class="form-field">
+                            <textarea name="message" id="message" rows="20" style="width: 100%;"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </div>
+                </form>
+
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+{% endblock %}

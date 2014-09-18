@@ -1,0 +1,3 @@
+zpb_sites_scolar_homepage:
+    path:     /
+    defaults: { _controller: ZPBSitesScolarBundle:Index:index }

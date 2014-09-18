@@ -1,6 +1,10 @@
 {% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
-{% block title %}Photothèque{% endblock %}
 
+{% block title %}Photothèque{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% set active_page = "phototheque" %}
 
 {% block content %}
     <div class="container">
@@ -18,10 +22,10 @@
                         {% set institut = institution.slug %}
 
                         <li>{{ institution.name }}
-                            <ul>
+                            <ul class="inline">
                                 {% for category in institution.photoCategories %}
                                     {% set cat = category.slug %}
-                                    <li><a class="button radius small" href="{{ path("zpb_sites_zoo_phototheque_show_category", {institutslug: institut , catslug: cat}) }}">{{ category }} &raquo;</a></li>
+                                    <li><a class="btn btn-primary" href="{{ path("zpb_sites_zoo_phototheque_show_category", {institutslug: institut , catslug: cat}) }}">{{ category }} &raquo;</a></li>
                                 {% endfor %}
                             </ul>
                         </li>

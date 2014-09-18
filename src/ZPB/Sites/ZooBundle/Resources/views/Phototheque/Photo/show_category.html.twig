@@ -1,6 +1,10 @@
 {% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
-{% block title %}Photothèque{% endblock %}
 
+{% block title %}{{ category }} | {{ institution }} | Photothèque{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% set active_page = "phototheque" %}
 
 {% block content %}
     <div class="container">
@@ -10,7 +14,6 @@
                 <h2>{{ institution }}</h2>
                 <h3>Photos classées dans {{ category }}</h3>
             </div>
-
         </div>
         <div class="row">
             <div class="col-6">
@@ -27,7 +30,7 @@
                 <div class="row">
                     {% for photo in photos %}
                         <div class="col-1">
-                            <a class="th" href="{{ path("zpb_sites_zoo_download_image", {filename: photo.filename}) }}">
+                            <a class="thumb" href="{{ path("zpb_sites_zoo_download_image", {filename: photo.filename}) }}">
                                 <img src="{{ photo_factory.getWebThumb('regular', photo) }}" alt="" title="{{ photo.title~photo.copyright }}" width="100%"/>
                             </a>
                         </div>

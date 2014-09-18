@@ -11,6 +11,13 @@
     color: inherit;
     font-family: inherit;
   }
+  .flag{
+    float: right;
+    height: 35px;
+    img{
+      padding: 11px;
+    }
+  }
   nav{
     width: 100%;
     &>ul{

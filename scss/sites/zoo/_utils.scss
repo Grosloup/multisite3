@@ -1,0 +1,24 @@
+@function  topx($value){
+  @return  $value * 1px;
+}
+
+@mixin nakedLink{
+  outline: none;
+  text-decoration: none;
+}
+@mixin clearfix{
+  *zoom: 1;
+  &:before, &:after{
+    content: " ";
+    display: table;
+  }
+  &:after{
+    clear: both;
+  }
+}
+
+@mixin row{
+  width: 100%;
+  @include clearfix;
+  position: relative;
+}
