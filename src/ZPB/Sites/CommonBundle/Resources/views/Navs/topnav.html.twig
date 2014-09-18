@@ -26,30 +26,35 @@
         </section>
     </nav>
 </div>#}
+{% set host_zoo = "new.zoobeauval.com" %}
+{% set host_bn = "new.beauvalnature.com" %}
+{% set host_hotels = ["new.lesjardinsdebeauval.com","new.lespagodesdebeauval.com","new.leshameauxdebeauval.com"] %}
+{% set host_seminaires = "new.seminaires.zoobeauval.com" %}
+{% set host_com = ["new.ce.zoobeauval.com","new.pro.zoobeauval.com","new.groupes.zoobeauval.com","new.scolaires.zoobeauval.com"] %}
+
 <div class="" id="multisite-menu">
     <div class="flag">
         <a href=""><img src="/img/sites/en.gif" alt=""/></a>
     </div>
     <div class="container">
-
         <nav>
             <ul>
-                <li class="active"><a href="{{path("zpb_sites_zoo_homepage")}}">ZooParc de Beauval</a></li>
-                <li><a href="">Beauval Nature</a></li>
-                <li class="dropdown"><a href="">Les hôtels de Beauval</a>
+                <li class="{% if app.request.host == host_zoo %} active{% endif %}"><a href="{{path("zpb_sites_zoo_homepage")}}">ZooParc de Beauval</a></li>
+                <li class="{% if app.request.host == host_bn %} active{% endif %}"><a href="{{ path("zpb_sites_bn_homepage") }}">Beauval Nature</a></li>
+                <li class="dropdown{% if app.request.host in host_hotels %} active{% endif %}"><a href="javascript:void(0)">Les hôtels de Beauval</a>
                     <ul>
                         <li><a href="">Les Jardins de Beauval</a></li>
                         <li><a href="">Les Pagodes de Beauval</a></li>
                         <li><a href="">Les Hameaux de Beauval</a></li>
                     </ul>
                 </li>
-                <li><a href="">Séminaires</a></li>
-                <li class="dropdown"><a href="">Tarifs spéciaux</a>
+                <li class="{% if app.request.host == host_seminaires %} active{% endif %}"><a href="">Séminaires</a></li>
+                <li class="dropdown{% if app.request.host in host_com %} active{% endif %}"><a href="javascript:void(0)">Tarifs spéciaux</a>
                     <ul>
-                        <li><a href="">Groupes</a></li>
-                        <li><a href="">Comités d'Entreprises</a></li>
-                        <li><a href="">Professionnels</a></li>
-                        <li><a href="">Groupes Enfants</a></li>
+                        <li><a href="{{ path("zpb_sites_group_homepage") }}">Groupes</a></li>
+                        <li><a href="{{ path("zpb_sites_ce_homepage") }}">Comités d'Entreprises</a></li>
+                        <li><a href="{{ path("zpb_sites_pro_homepage") }}">Professionnels</a></li>
+                        <li><a href="{{ path("zpb_sites_scolar_homepage") }}">Groupes Enfants</a></li>
                     </ul>
                 </li>
             </ul>
