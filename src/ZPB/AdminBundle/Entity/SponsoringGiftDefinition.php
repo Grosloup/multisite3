@@ -93,7 +93,7 @@ class SponsoringGiftDefinition
     private $positionGroup;
 
     /**
-     * @ORM\ManyToMany(targetEntity="ZPB\AdminBundle\Entity\SponsoringFormula", mappedBy="giftDesriptions")
+     * @ORM\ManyToMany(targetEntity="ZPB\AdminBundle\Entity\SponsoringFormula", mappedBy="giftDefinitions")
      */
     private $formulas;
 
