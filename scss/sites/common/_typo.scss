@@ -37,3 +37,9 @@
   font-weight:normal;
   font-style:normal
 }
+
+p{
+  &.sautdeligne{
+    margin-bottom: topx($fontSize);
+  }
+}
