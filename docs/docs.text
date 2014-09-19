@@ -30,10 +30,5 @@ LoadAnimations                  => 60
 LoadFaqs                        => 75
 
 
-
-
-
-
-
 LoadStaticPages                 => 200
 LoadPhotoStats                  => 300

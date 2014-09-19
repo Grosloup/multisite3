@@ -10,18 +10,24 @@ $jaunePale: #DDAB33;
 $bleuPale: #4f94b3;
 $vertPale: #87a13e;
 
+$beauvalNature: #ececec;
+$groupes: #f39325;
+$ce: #cf3d5a;
+$groupesEnfants: #8db225;
+$pro: #a866a0;
+
 $fontSize: 16;
 $fontfamily: 'cooper_hewitt_book', Arial, Helvetica, sans-serif;
 $headerFontFamily: 'cooper_hewitt_bold', Arial, Helvetica, sans-serif;
 $fontColor: $grisFonce;
-$headerFontColor: $bleu;
+$headerFontColor: $pro;
 $lineHeight: 1.43;
 
 $headerSize: 50, 45, 30, 25, 20, 15;
 $headers: h1,h2,h3,h4,h5,h6;
 
 $linkFontFamily: 'cooper_hewitt_semi_bold', Arial, Helvetica, sans-serif;
-$linkHoverColor: $bleu;
+$linkHoverColor: $pro;
 
 $gridGutter: 5;
 $numCols: 6;
@@ -74,7 +80,7 @@ $sh_mainMenu_submenu_linkPadding: 10;
 $sh_mainMenu_submenu_linkHoverBgColor: $grisFonce;
 
 //$sh_sticyStuck_bgColor: $bleu;
-$sh_sticyStuck_bgColor: $bleu;
+$sh_sticyStuck_bgColor: $pro;
 $sh_sticyStuck_boxShadow: rgba(0,0,0,0.5) 0 1px 4px;
 //$sh_sticyStuck_mainMenu_Color: $jaune;
 $sh_sticyStuck_mainMenu_Color: $grisFonce;

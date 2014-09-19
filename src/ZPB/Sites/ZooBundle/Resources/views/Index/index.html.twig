@@ -62,17 +62,30 @@
             <div class="row">
                 <div class="col-2">
 
+                    <div class="jqlegender">
                         <img src="/img/sites/fixtures/Ateliers-pedagogiques.jpg" alt="" width="100%"/>
+                        <div class="jqlegend">
+
+                        </div>
+                    </div>
 
                 </div>
                 <div class="col-2">
 
+                    <div class="jqlegender">
                         <img src="/img/sites/fixtures/Carnet-Rose.jpg" alt="" width="100%"/>
+                        <div class="jqlegend">
+
+                        </div>
+                    </div>
 
                 </div>
                 <div class="col-2">
 
+                    <div class="jqlegender">
                         <img src="/img/sites/fixtures/Soigneur-d-un-Jour.jpg" alt="" width="100%"/>
+                        <div class="jqlegend"></div>
+                    </div>
 
                 </div>
             </div>
@@ -112,6 +125,61 @@
         </div>
     </div>
 
+
+
+{% endblock %}
+
+{% block headStyles %}
+    <style>
+        .jqlegender {
+            position: relative;
+            overflow: hidden;
+
+        }
+        .jqlegend {
+            position: absolute;
+            width: 100%;
+            height: 33%;
+            background-color: #ccc;
+            transition: all 0.5s;
+            bottom: -33%;
+            left: 0;
+            right: 0;
+            z-index: 500;
+        }
+    </style>
+{% endblock %}
+{% block footScripts %}
+    {{ parent() }}
+    <script>
+        (function($, w){
+
+            $.fn.jqLegender = function(o){
+
+                var defaults = {};
+                var opts = $.extend({}, defaults, o||{});
+
+                return this.each(function(){
+                    var $this = $(this), legend = $this.find(".jqlegend");
+
+                    $this.on("mouseover", function(e){
+                        legend.css("bottom", 0);
+
+                    });
+                    $this.on("mouseout", function(e){
+                        legend.css("bottom",  -33 + "%");
+
+                    });
+
+                });
+            }
+        }
+        )(jQuery, this);
+        $(function(){
+
+            $(".jqlegender").jqLegender();
+        });
+    </script>
 
 
 {% endblock %}
