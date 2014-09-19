@@ -3,7 +3,7 @@
   padding-top: 25px;
   width: 100%;
   height: $sh_tablet_height;
-  background: transparent url("../../../img/sites/Img-Top_ZooParc-de-Beauval_01.jpg") center center no-repeat;
+  //background: transparent url("../../../img/sites/Img-Top_ZooParc-de-Beauval_01.jpg") center center no-repeat;
   position: relative;
   @if $sh_boxShadow != "none" {
     @include box-shadow($sh_boxShadow);
@@ -29,8 +29,7 @@
           line-height: 50px;
           a{
             @include nakedLink;
-            // color: $grisFonce;
-            color: $blanc;
+            color: $sh_sticyStuck_mainMenu_linkColor;
             font-family: inherit;
           }
           .logo{
@@ -42,9 +41,7 @@
               width: 172px;
               height: 38px;
               path{
-                //fill: $grisFonce;
-                fill: $blanc;
-
+                fill: $sh_sticyStuck_mainMenu_logo_color;
               }
 
             }
@@ -54,7 +51,7 @@
               &>li{
                 &.active{
                   & > a{
-                    color: $jaune;
+                    color: $sh_sticyStuck_mainMenu_activeColor;
                   }
                   &:hover{
                     &:after{
@@ -63,7 +60,7 @@
                       display: block;
                       height: 1px;
                       width: 20%;
-                      background-color: $jaune;
+                      background-color: $sh_sticyStuck_mainMenu_activeColor;
                       bottom: 10px;
                       margin: 0 auto;
                       left: 40%;
@@ -84,7 +81,7 @@
                   }
                 }
                 ul{
-                  background-color: $blanc;
+                  background-color: $sh_mainMenu_submanuBgColor;
                   @include box-shadow(rgba(0,0,0,0.5) 0 3px 4px);
                   min-width: 100%;
                   white-space: nowrap;
@@ -99,8 +96,8 @@
                       padding-left: topx($sh_mainMenu_submenu_linkPadding);
                       padding-right: topx($sh_mainMenu_submenu_linkPadding);
                       &:hover{
-                        background-color: $groupes;
-                        color: $blanc;
+                        background-color: $sh_sticky_mainMenu_submenu_linkHoverBgColor;
+                        color: $sh_sticky_mainMenu_submenu_linkHoverColor;
                       }
                     }
                   }
@@ -130,6 +127,9 @@
       #Calque_1{
         width: 250px;
         height: 55px;
+        path{
+          fill: $sh_mainMenuLogoColor;
+        }
       }
     }
     nav{

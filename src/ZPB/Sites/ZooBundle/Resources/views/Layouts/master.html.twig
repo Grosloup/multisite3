@@ -42,7 +42,7 @@
         </style>
     {% endblock %}
 </head>
-<body class="{% if block('body_class') %}{{ body_class }}{% endif %}">
+<body class="{{ "bg_0"~(random(6)+1) }}">
 {{ render(controller("ZPBSitesCommonBundle:Navs:topnav")) }}
     {% block main %}
         {% block header %}

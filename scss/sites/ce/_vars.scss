@@ -1,11 +1,8 @@
-
-
 $grisFonce: #313133;
 $bleu: #2e85a3;
 $jaune: #ffcb00;
 $blanc: #fff;
 $noir: #000;
-
 $jaunePale: #DDAB33;
 $bleuPale: #4f94b3;
 $vertPale: #87a13e;
@@ -22,13 +19,10 @@ $headerFontFamily: 'cooper_hewitt_bold', Arial, Helvetica, sans-serif;
 $fontColor: $grisFonce;
 $headerFontColor: $ce;
 $lineHeight: 1.43;
-
 $headerSize: 50, 45, 30, 25, 20, 15;
 $headers: h1,h2,h3,h4,h5,h6;
-
 $linkFontFamily: 'cooper_hewitt_semi_bold', Arial, Helvetica, sans-serif;
 $linkHoverColor: $ce;
-
 $gridGutter: 5;
 $numCols: 6;
 
@@ -65,28 +59,35 @@ $mn_submenuLinkHoverColor: $grisFonce;
 /***************************************\
   site-header sh_
 \***************************************/
-$sh_tablet_height: topx(600);
-$sh_height: topx(750);
-$sh_boxShadow: rgba(0,0,0,0.6) 0 50px 70px inset;
 
+$sh_tablet_height: topx(600); // modif hauteur version tablette
+$sh_height: topx(750); // hauteur du header
+$sh_boxShadow: rgba(0,0,0,0.6) 0 50px 70px inset; // ombre interne sur la photo
+
+// non collé
 $sh_mainMenuLineHeight: 35px;
 $sh_mainMenuLinkColor: $blanc;
+$sh_mainMenuLogoColor: $blanc;
 $sh_mainMenuLinkFontFamily: inherit;
 $sh_mainMenuLiUnderlineColor: $blanc;
-$sh_mainMenu_submanuBgColor: rgba(255,255,255,1);
+$sh_mainMenu_submenuBgColor: $blanc;
 $sh_mainMenu_submenu_boxShadow: rgba(0,0,0,0.5) 0 0 4px;
 $sh_mainMenu_submenu_linkColor: $grisFonce;
 $sh_mainMenu_submenu_linkPadding: 10;
 $sh_mainMenu_submenu_linkHoverBgColor: $grisFonce;
+$sh_mainMenu_submenu_linkHoverColor: $blanc;
 
-//$sh_sticyStuck_bgColor: $bleu;
+// collé
 $sh_sticyStuck_bgColor: $ce;
 $sh_sticyStuck_boxShadow: rgba(0,0,0,0.5) 0 1px 4px;
-//$sh_sticyStuck_mainMenu_Color: $jaune;
 $sh_sticyStuck_mainMenu_Color: $grisFonce;
-//$sh_sticyStuck_mainMenuLiUnderlineColor: $jaune;
+$sh_sticyStuck_mainMenu_activeColor: $jaune;
+$sh_sticyStuck_mainMenu_linkColor: $blanc;
 $sh_sticyStuck_mainMenuLiUnderlineColor: $blanc;
-
+$sh_sticyStuck_mainMenu_logo_color: $blanc;
+$sh_sticky_mainMenu_submenu_linkHoverBgColor: $ce;
+$sh_sticky_mainMenu_submenu_linkHoverColor: $blanc;
+$sh_sticky_mainMenu_submenu_linkFontFamily: "cooper_hewitt_book", Arial, Helvetica, sans-serif;
   /***************************************\
     site-header => boutons spéciaux bs_
   \***************************************/

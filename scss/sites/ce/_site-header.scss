@@ -1,9 +1,14 @@
+
+
+
+
+
 #site-header{
   overflow: hidden;
   padding-top: 25px;
   width: 100%;
   height: $sh_tablet_height;
-  background: transparent url("../../../img/sites/Img-Top_Gerard-Lacz.jpg") center center no-repeat;
+  //background: transparent url("../../../img/sites/Img-Top_Gerard-Lacz.jpg") center center no-repeat;
   position: relative;
   @if $sh_boxShadow != "none" {
     @include box-shadow($sh_boxShadow);
@@ -29,8 +34,7 @@
           line-height: 50px;
           a{
             @include nakedLink;
-            // color: $grisFonce;
-            color: $blanc;
+            color: $sh_sticyStuck_mainMenu_linkColor;
             font-family: inherit;
           }
           .logo{
@@ -42,9 +46,7 @@
               width: 172px;
               height: 38px;
               path{
-                //fill: $grisFonce;
-                fill: $blanc;
-
+                fill: $sh_sticyStuck_mainMenu_logo_color;
               }
 
             }
@@ -54,7 +56,7 @@
               &>li{
                 &.active{
                   & > a{
-                    color: $jaune;
+                    color: $sh_sticyStuck_mainMenu_activeColor;
                   }
                   &:hover{
                     &:after{
@@ -63,7 +65,7 @@
                       display: block;
                       height: 1px;
                       width: 20%;
-                      background-color: $jaune;
+                      background-color: $sh_sticyStuck_mainMenu_activeColor;
                       bottom: 10px;
                       margin: 0 auto;
                       left: 40%;
@@ -84,7 +86,7 @@
                   }
                 }
                 ul{
-                  background-color: $blanc;
+                  background-color: $sh_mainMenu_submenuBgColor;
                   @include box-shadow(rgba(0,0,0,0.5) 0 3px 4px);
                   min-width: 100%;
                   white-space: nowrap;
@@ -93,14 +95,14 @@
                     line-height: auto;
                     a{
                       line-height: auto;
-                      color: $grisFonce;
-                      font-family: "cooper_hewitt_book", Arial, Helvetica, sans-serif;
+                      color: $sh_mainMenu_submenu_linkColor;
+                      font-family: $sh_sticky_mainMenu_submenu_linkFontFamily;
                       text-align: left;
                       padding-left: topx($sh_mainMenu_submenu_linkPadding);
                       padding-right: topx($sh_mainMenu_submenu_linkPadding);
                       &:hover{
-                        background-color: $ce;
-                        color: $blanc;
+                        background-color: $sh_sticky_mainMenu_submenu_linkHoverBgColor;
+                        color: $sh_sticky_mainMenu_submenu_linkHoverColor;
                       }
                     }
                   }
@@ -130,6 +132,9 @@
       #Calque_1{
         width: 250px;
         height: 55px;
+        path{
+          fill: $sh_mainMenuLogoColor;
+        }
       }
     }
     nav{
@@ -197,7 +202,7 @@
             margin: 0;
             padding: 0;
             list-style: none;
-            background-color: $sh_mainMenu_submanuBgColor;
+            background-color: $sh_mainMenu_submenuBgColor;
             @if $sh_mainMenu_submenu_boxShadow != "none"{
               @include box-shadow($sh_mainMenu_submenu_boxShadow);
             }
@@ -208,14 +213,14 @@
               a{
                 font-size: 14px;
                 text-transform: none;
-                font-family: "cooper_hewitt_book", Arial, Helvetica, sans-serif;
+                font-family: $sh_sticky_mainMenu_submenu_linkFontFamily;
                 color: $sh_mainMenu_submenu_linkColor;
                 text-align: left;
                 padding-left: topx($sh_mainMenu_submenu_linkPadding);
                 padding-right: topx($sh_mainMenu_submenu_linkPadding);
                 &:hover{
                   background-color: $sh_mainMenu_submenu_linkHoverBgColor;
-                  color: $blanc;
+                  color: $sh_mainMenu_submenu_linkHoverColor;
                 }
               }
             }
@@ -227,67 +232,6 @@
       }
     }
   }
-
-  .tickets{
-    width: topx($bs_width);
-    height: topx($bs_regHeight);
-    position:absolute;
-    bottom: 0;
-    @if $bs_transition != "none"{
-      transition: $bs_transition;
-    }
-    @include box-shadow($bs_outerBoxShadow);
-    font-size: topx($bs_fontSize);
-    @if $bs_textTrasform != "none"{
-      text-transform: $bs_textTrasform;
-    }
-    text-align: center;
-    font-family: $bs_fontFamily;
-    a{
-      color: $bs_linkColor;
-    }
-    &:hover{
-      height: topx($bs_hoverHeight);
-      a{
-        color: $bs_hoverLinkColor;
-      }
-    }
-    .inner{
-      width: topx($bs_width);
-      height: topx($bs_hoverHeight);
-      padding: 15px 25px 0;
-      text-align: center;
-      #dormir-svg, #parrainer-svg, #billet-svg{
-        margin-top: 10px;
-        .main{
-          fill: $bs_svgsFillColor;
-        }
-      }
-    }
-
-    &.tickets-left{
-      $decal: topx($bs_width + ($bs_width / 2) + $bs_gutter);
-      left: calc(50% - #{$decal});
-      .inner{
-        background-color: $bs_btnBgColor_1;
-      }
-    }
-    &.tickets-center{
-      $decal: topx($bs_width / 2);
-      left: calc(50% - #{$decal});
-      .inner{
-        background-color: $bs_btnBgColor_2;
-      }
-    }
-    &.tickets-right{
-      $decal: topx( ($bs_width / 2) + $bs_gutter );
-      left: calc(50% + #{$decal});
-      .inner{
-        background-color: $bs_btnBgColor_3;
-      }
-    }
-  }
-
 
 }
 @media only screen and (min-width: 1030px) {
