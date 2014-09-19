@@ -62,29 +62,40 @@
             <div class="row">
                 <div class="col-2">
 
-                    <div class="jqlegender">
-                        <img src="/img/sites/fixtures/Ateliers-pedagogiques.jpg" alt="" width="100%"/>
+                    <div class="jqlegender jqlegender-atelier">
+                        <a href="#"><img src="/img/sites/fixtures/Ateliers-pedagogiques.jpg" alt="" width="100%"/>
                         <div class="jqlegend">
-
-                        </div>
+                            <div class="title">Ateliers pédagogiques</div>
+                            <div class="icon">
+                                {{ include("ZPBSitesZooBundle:incs:atelier_svg.html.twig") }}
+                            </div>
+                        </div></a>
                     </div>
 
                 </div>
                 <div class="col-2">
 
-                    <div class="jqlegender">
-                        <img src="/img/sites/fixtures/Carnet-Rose.jpg" alt="" width="100%"/>
+                    <div class="jqlegender jqlegender-soigneur">
+                        <a href="#"><img src="/img/sites/fixtures/Soigneur-d-un-Jour.jpg" alt="" width="100%"/>
                         <div class="jqlegend">
-
-                        </div>
+                            <div class="title">Soigneur d'un jour</div>
+                            <div class="icon">
+                                {{ include("ZPBSitesZooBundle:incs:empreinte_svg.html.twig") }}
+                            </div>
+                        </div></a>
                     </div>
 
                 </div>
                 <div class="col-2">
 
-                    <div class="jqlegender">
-                        <img src="/img/sites/fixtures/Soigneur-d-un-Jour.jpg" alt="" width="100%"/>
-                        <div class="jqlegend"></div>
+                    <div class="jqlegender jqlegender-rose">
+                        <a href="#"><img src="/img/sites/fixtures/Carnet-Rose.jpg" alt="" width="100%"/>
+                        <div class="jqlegend">
+                            <div class="title">Carnet Rose</div>
+                            <div class="icon">
+                                {{ include("ZPBSitesZooBundle:incs:cigogne_svg.html.twig") }}
+                            </div>
+                        </div></a>
                     </div>
 
                 </div>
@@ -130,7 +141,7 @@
 {% endblock %}
 
 {% block headStyles %}
-    <style>
+{#    <style>
         .jqlegender {
             position: relative;
             overflow: hidden;
@@ -139,15 +150,16 @@
         .jqlegend {
             position: absolute;
             width: 100%;
-            height: 33%;
+            height: 50%;
             background-color: #ccc;
             transition: all 0.5s;
-            bottom: -33%;
+            bottom: -25%;
             left: 0;
             right: 0;
             z-index: 500;
+            box-shadow: rbga(0,0,0,0.5) ;
         }
-    </style>
+    </style>#}
 {% endblock %}
 {% block footScripts %}
     {{ parent() }}
@@ -167,7 +179,7 @@
 
                     });
                     $this.on("mouseout", function(e){
-                        legend.css("bottom",  -33 + "%");
+                        legend.css("bottom",  -25 + "%");
 
                     });
 
