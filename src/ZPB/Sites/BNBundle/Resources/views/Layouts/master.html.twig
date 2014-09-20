@@ -28,7 +28,9 @@
 {{ render(controller("ZPBSitesCommonBundle:Navs:topnav")) }}
 {% block main %}
     {% block header %}
-
+        <div id="site-header">
+            {{ render(controller("ZPBSitesBNBundle:Navs:mainbar")) }}
+        </div>
     {% endblock %}
 
     {% block content %}{% endblock %}
@@ -39,13 +41,13 @@
 
 {% block footScripts %}
     <script src="/js/vendor/jquery-2.1.1.min.js"></script>
-    {#<script src="/js/vendor/waypoints.min.js"></script>
+    <script src="/js/vendor/waypoints.min.js"></script>
     <script src="/js/vendor/waypoints-sticky.min.js"></script>
     <script>
         $(function(){
             $("#stickytop").waypoint('sticky');
         })
-    </script>#}
+    </script>
 {% endblock %}
 
 </body>

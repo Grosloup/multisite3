@@ -125,3 +125,90 @@ ul{
   text-align: center;
   padding-bottom: topx($fontSize * 2);
 }
+
+/*************************************************\
+  Page accueil jqlegender
+\*************************************************/
+
+.jqlegender{
+  position: relative;
+  overflow: hidden;
+  color: $blanc;
+  &.jqlegender-rose{
+    .jqlegend{
+      background-color: $rose;
+    }
+  }
+  &.jqlegender-soigneur{
+    .jqlegend{
+      background-color: $vertPale;
+    }
+  }
+  &.jqlegender-atelier{
+    .jqlegend{
+      background-color: $rouge;
+    }
+  }
+  &:hover {
+    color: $grisFonce;
+    &:after {
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      @include box-shadow(rgba(0, 0, 0, 0.5) 0 0 10px inset);
+      content: "";
+      z-index: 250;
+    }
+    a, .title {
+      color: $grisFonce;
+    }
+    .jqlegend{
+      top: calc(100% - 170px);
+    }
+  }
+  img{
+    width: 100%;
+  }
+  .jqlegend{
+    width: 100%;
+    position: absolute;
+    z-index: 1000;
+    top: calc(100% - 50px);
+    @include box-shadow(rgba(0,0,0,0.5) 0 0 7px);
+    @include transition(top 0.3s);
+    .title{
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .icon{
+      height: 120px;
+      padding: 15px 0;
+      #atelier, #cigogne, #empreinte{
+        margin: 0 auto;
+        display: block;
+        width: 90px;
+        height: 64px;
+      }
+      .path{
+        fill: $grisFonce;
+      }
+    }
+  }
+}
+
+
+
+@media only screen and (min-width: 1280px){
+  .jqlegender{
+    .jqlegend{
+      .title{
+        font-size: topx($fontSize * 1.25);
+      }
+    }
+  }
+}

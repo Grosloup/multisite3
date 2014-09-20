@@ -19,17 +19,6 @@
             </div>
 
         </div>
-<!--
-        <div class="row">
-            <div class="col-1"></div>
-            <div class="col-4">
-                <div class="testbox testbox-4">
-                    <p>TODO message d'alerte/annonce spéciale</p>
-                    <p>TODO stats articles /nbre vue...</p>
-                </div>
-            </div>
-            <div class="col-1"></div>
-        </div> -->
 
         <div class="row">
             <div class="col-1"></div>
@@ -58,7 +47,7 @@
 
 
     <div class="wrapper">
-        <div class="container"> <!-- Blocks divers -->
+        <div class="container">
             <div class="row">
                 <div class="col-2">
                     <a href="#">
@@ -137,27 +126,7 @@
 
 {% endblock %}
 
-{% block headStyles %}
-{#    <style>
-        .jqlegender {
-            position: relative;
-            overflow: hidden;
 
-        }
-        .jqlegend {
-            position: absolute;
-            width: 100%;
-            height: 50%;
-            background-color: #ccc;
-            transition: all 0.5s;
-            bottom: -25%;
-            left: 0;
-            right: 0;
-            z-index: 500;
-            box-shadow: rbga(0,0,0,0.5) ;
-        }
-    </style>#}
-{% endblock %}
 {% block footScripts %}
     {{ parent() }}
     <script>
@@ -169,24 +138,39 @@
                 var opts = $.extend({}, defaults, o||{});
 
                 return this.each(function(){
-                    var $this = $(this), legend = $this.find(".jqlegend");
+                    var $this = $(this),
+                            legend = $this.find(".jqlegend"),
+                            title = legend.find(".title"),
+                            legendHeight = legend.height(),
+                            titleHeight = title.height();
+
+                    function update(){
+                        legend.css("top", ($this.height() - titleHeight) + "px");
+                    }
+
+
 
                     $this.on("mouseover", function(e){
-                        legend.css("bottom", 0);
+                        legend.css("top", ($this.height() - legendHeight) + "px");
 
                     });
                     $this.on("mouseout", function(e){
-                        legend.css("bottom",  -25 + "%");
+                        legend.css("top",  ($this.height() - titleHeight) + "px");
 
                     });
 
+                    $(w).on("resize", function(){
+                        update();
+                    });
+
+                    update();
                 });
             }
         }
         )(jQuery, this);
         $(function(){
-
             $(".jqlegender").jqLegender();
+
         });
     </script>
 

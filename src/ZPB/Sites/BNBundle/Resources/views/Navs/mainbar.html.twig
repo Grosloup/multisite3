@@ -1,0 +1,34 @@
+{% set practicle_pages = ["pratique", "tarifs"] %}
+{% set zooparc_pages = ["zooparc", "phototheque"] %}
+{% set pedago_pages = ["pedago"] %}
+{% set news_pages = ["news","single_post"] %}
+{% set social_pages = ["social"] %}
+{% set shop_pages = ["shop"] %}
+
+{% set active_page = "none" %}
+
+
+<div id="stickytop">
+    <div class="container">
+        <div id="main-menu">
+            <nav>
+                <a href="{{path("zpb_sites_zoo_homepage")}}" class="logo">{{ include("ZPBSitesZooBundle:incs:logo_zooparc_svg.html.twig") }}</a>
+                <ul>
+                    <li class="{% if active_page in social_pages %}active{% endif %}"><a href="">Beauval Nature</a></li>
+                    <li class="{% if active_page in social_pages %}active{% endif %}"><a href="">Conservation</a></li>
+                    <li class="{% if active_page in social_pages %}active{% endif %}"><a href="">Recherche</a></li>
+                    <li class="dropdown{% if active_page in practicle_pages %} active{% endif %}"><a href="javascript:void(0)">Votre soutien</a>
+                        <ul>
+                            <li><a href="">Parrainages</a></li>
+                            <li><a href="">Campagne</a></li>
+                            <li><a href="">Dons</a></li>
+                            <li><a href="">Partenaires</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="{% if active_page in shop_pages %}active{% endif %}"><a href="">Actualité</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
