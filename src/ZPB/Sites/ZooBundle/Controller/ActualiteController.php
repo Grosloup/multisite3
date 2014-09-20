@@ -56,6 +56,11 @@ class ActualiteController extends BaseController
         return $this->forward('ZPBSitesZooBundle:Actualite:postsByCategory', ['slug'=>'nouveaute']);
     }
 
+    public function carnetRoseAction()
+    {
+        return $this->forward('ZPBSitesZooBundle:Actualite:postsByCategory', ['slug'=>'carnet-rose']);
+    }
+
     public function postsByCategoryAction($slug)
     {
         $category = $this->getRepo('ZPBAdminBundle:PostCategory')->findOneBySlug($slug);

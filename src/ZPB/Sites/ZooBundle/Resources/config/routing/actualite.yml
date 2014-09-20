@@ -30,3 +30,8 @@ zpb_sites_zoo_actualites_nouveautes:
     path: /nouveautes
     defaults: { _controller: ZPBSitesZooBundle:Actualite:nouveautes }
     methods: ["GET"]
+
+zpb_sites_zoo_actualites_carnet_rose:
+    path: /carnet-rose
+    defaults: { _controller: ZPBSitesZooBundle:Actualite:carnetRose }
+    methods: ["GET"]
