@@ -71,6 +71,32 @@ class NewsletterSubscriber
      */
     private $target;
 
+    /**
+     * @var string
+     * @Assert\NotBlank(message="Ce champs est requis.")
+     * @Assert\Choice(choices={"Mme","Mlle","Mr"}, message="Vous devez choisir entre Madame, Mademoiselle et Monsieur")
+     * @ORM\Column(name="civilite", type="string", length=20)
+     */
+    private $civilite;
+
+    /**
+     * @return string
+     */
+    public function getCivilite()
+    {
+        return $this->civilite;
+    }
+
+    /**
+     * @param string $civilite
+     * @return NewsletterSubscriber
+     */
+    public function setCivilite($civilite)
+    {
+        $this->civilite = $civilite;
+        return $this;
+    }
+
 
     /**
      * Get id

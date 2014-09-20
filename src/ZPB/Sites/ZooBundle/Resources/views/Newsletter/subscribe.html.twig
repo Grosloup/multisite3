@@ -20,11 +20,106 @@
 
     <div class="container">
         <div class="row">
+            <div class="col-1"></div>
             <div class="col-4">
-                <div class="page-header">
-                    <h1>Newsletter</h1>
-                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus aliquid aspernatur assumenda
+                    beatae, consequatur corporis debitis dolor, dolore ea expedita explicabo fugiat in maiores natus
+                    provident quas sint tenetur vero voluptate. Aliquid debitis, doloremque dolores eligendi et harum
+                    illum ipsam laborum nam natus nemo recusandae repellendus totam. Assumenda, ipsa!</p>
             </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-4">
+
+
+                {{ form_start(form, {attr:{novalidate: true}}) }}
+                {{ form_errors(form) }}
+
+                <div class="form-row {% if form.civilite.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.civilite) }}
+                    <div class="form-field">
+                        {{ form_widget(form.civilite) }}
+                        {% if form.civilite.vars.errors|length>0 %}
+                            <div class="error-block">
+                                {{ form_errors(form.civilite) }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.firstname.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.firstname) }}
+                    <div class="form-field">
+                        {{ form_widget(form.firstname) }}
+                        {% if form.firstname.vars.errors|length>0 %}
+                        <div class="error-block">
+                            {{ form_errors(form.firstname) }}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.lastname.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.lastname) }}
+                    <div class="form-field">
+                        {{ form_widget(form.lastname) }}
+                        {% if form.lastname.vars.errors|length>0 %}
+                            <div class="error-block">
+                                {{ form_errors(form.lastname) }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.email.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.email) }}
+                    <div class="form-field">
+                        {{ form_widget(form.email) }}
+                        {% if form.email.vars.errors|length>0 %}
+                            <div class="error-block">
+                                {{ form_errors(form.email) }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.bornAt.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.bornAt) }}
+                    <div class="form-field">
+                        {{ form_widget(form.bornAt) }}
+                        {% if form.bornAt.vars.errors|length>0 %}
+                            <div class="error-block">
+                                {{ form_errors(form.bornAt) }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row hide {% if form.name.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.name) }}
+                    <div class="form-field">
+                        {{ form_widget(form.name) }}
+                        {% if form.name.vars.errors|length>0 %}
+                            <div class="error-block">
+                                {{ form_errors(form.name) }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    {{ form_widget(form.save, {attr:{class:"btn btn-primary"}}) }}
+                </div>
+
+                {{ form_end(form) }}
+
+            </div>
+            <div class="col-1"></div>
         </div>
     </div>
 

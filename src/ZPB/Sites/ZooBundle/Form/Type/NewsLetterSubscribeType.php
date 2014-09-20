@@ -29,11 +29,12 @@ class NewsLetterSubscribeType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('civilite', 'civility_type', ['label'=>'Civilité','empty_value'=>'------------'])
             ->add('firstname',null,['label'=>'Prénom*'])
             ->add('lastname', null, ['label'=>'Nom*'])
             ->add('email','email',['label'=>'Adresse email*'])
-            ->add('bornAt','date',['label'=>'Date de naissance (jj/mm/aaaa)*','input'=>'datetime','widget'=>'single_text','format'=>'dd/MM/yyyy'])
-            ->add('name','null',['label'=>'Si vous êtes humain, laissez ce champs vide !', 'mapped'=>false])
+            ->add('bornAt','date',['label'=>'Date de naissance (jj/mm/aaaa)','input'=>'datetime','widget'=>'single_text','format'=>'dd/MM/yyyy'])
+            ->add('name',null,['label'=>'Si vous êtes humain, laissez ce champs vide !', 'mapped'=>false])
             ->add('save', 'submit', ['label'=>'Enregistrement'])
         ;
     }

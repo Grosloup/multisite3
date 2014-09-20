@@ -2,3 +2,10 @@ zpb_sites_zoo_newsletter_subscribe:
     path: /abonnement
     defaults: { _controller: ZPBSitesZooBundle:Newsletter:subscribe }
     methods: ["GET","POST"]
+
+zpb_sites_zoo_newsletter_thanks:
+    path: /abonnement-confirme/{id}
+    defaults: { _controller: ZPBSitesZooBundle:Newsletter:thanksForSubscribe }
+    methods: ["GET"]
+    requirements:
+        id: \d+

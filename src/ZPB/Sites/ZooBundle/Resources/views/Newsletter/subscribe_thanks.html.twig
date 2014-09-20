@@ -1,0 +1,32 @@
+{% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
+
+
+{% block title %}Abonnement à la newsletter{% endblock %}
+
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="page-header">
+                    <h1>Newsletter</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-4">
+                <h3>Votre abonnement est enregistré</h3>
+                <p>{{ subscriber.civilite }} {{ subscriber.firstname|capitalize }} {{ subscriber.lastname|capitalize }} nous vous remercions de votre intérêt pour le ZooParc de Beauval !</p>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+
+
+{% endblock %}
