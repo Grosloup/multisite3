@@ -619,4 +619,17 @@ class Post
 
         return $this;
     }
+
+    public function getWebIllustration()
+    {
+        if($this->getIllustration() != null){
+            return $this->getIllustration()->getImg()->getWebPath();
+        }
+        return null;
+    }
+
+    public function hasIllustration()
+    {
+        return $this->getIllustration() !== null;
+    }
 }

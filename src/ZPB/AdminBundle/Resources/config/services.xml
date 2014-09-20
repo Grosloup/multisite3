@@ -58,7 +58,7 @@
             <parameter key="zpb.pdf.root_dir">%kernel.root_dir%/../web/</parameter>
 
             <parameter key="zpb.image.class">ZPB\AdminBundle\Entity\MediaImage</parameter>
-            <parameter key="zpb.img.web_dir">imgs/</parameter>
+            <parameter key="zpb.img.web_dir">img/</parameter>
             <parameter key="zpb.img.thumbs.upload_dir">imgs/thumbs/</parameter>
             <parameter key="zpb.img.root_dir">%kernel.root_dir%/../web/</parameter>
             <parameter key="zpb.document.default_copyright.text">ZooParc de Beauval</parameter>

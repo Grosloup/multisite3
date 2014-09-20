@@ -3,6 +3,7 @@
 namespace ZPB\AdminBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Query\ResultSetMappingBuilder;
 
 /**
  * PostRepository
@@ -51,7 +52,7 @@ class PostRepository extends EntityRepository
     public function getPublished(PostTarget $target = null)
     {
         $q = $this->_em->createQuery(
-            'SELECT p FROM ZPB\AdminBundle\Entity\Post p JOIN ZPB\AdminBundle\Entity\PostTarget t WHERE p.isPublished=:isPublished AND t.slug=:slug ORDER BY p.publishedAt DESC'
+            'SELECT p FROM ZPB\AdminBundle\Entity\Post p  JOIN p.targets t WHERE p.isPublished=:isPublished AND t.slug=:slug ORDER BY p.publishedAt DESC'
         );
         $q->setParameter('isPublished', true);
         $q->setParameter('slug', $target->getSlug());
@@ -60,5 +61,48 @@ class PostRepository extends EntityRepository
 
     }
 
+    public function getCategoriesByTarget($target)
+    {
+        $sql = "SELECT * FROM zpb_post_categories AS c WHERE c.id IN (SELECT DISTINCT p.category_id FROM zpb_posts AS p WHERE p.id IN (SELECT pt.post_id FROM zpb_posts_targets AS pt WHERE pt.posttarget_id = :id))";
+        $rsm = new ResultSetMappingBuilder($this->_em);
+        $rsm->addRootEntityFromClassMetadata('ZPB\AdminBundle\Entity\PostCategory', 'c');
+        $query = $this->_em->createNativeQuery($sql, $rsm);
+        $query->setParameter('id', $target->getId());
+        return $query->getResult();
+    }
+
+    public function getTagsByTarget($target)
+    {
+        $sql = "SELECT * FROM zpb_post_tags AS t WHERE t.id IN (SELECT DISTINCT p.posttag_id FROM zpb_posts_tags AS p WHERE p.post_id IN (SELECT pt.post_id FROM zpb_posts_targets AS pt WHERE pt.posttarget_id = 1))";
+        $rsm = new ResultSetMappingBuilder($this->_em);
+        $rsm->addRootEntityFromClassMetadata('ZPB\AdminBundle\Entity\PostTag', 't');
+        $query = $this->_em->createNativeQuery($sql, $rsm);
+        $query->setParameter('id', $target->getId());
+        return $query->getResult();
+    }
+
+    public function getPublishedByCategoryAndTarget($category, $target)
+    {
+        $q = $this->_em->createQuery(
+'SELECT p FROM ZPB\AdminBundle\Entity\Post p JOIN p.category c JOIN p.targets t  WHERE p.isPublished=:isPublished AND t.slug=:slug AND c.id=:id ORDER BY p.publishedAt DESC'
+        );
+        $q->setParameter('isPublished', true);
+        $q->setParameter('slug', $target->getSlug());
+        $q->setParameter('id', $category->getId());
+
+        return $q->getResult();
+    }
+
+    public function getPublishedByTagAndTarget($tag, $target)
+    {
+        $q = $this->_em->createQuery(
+            'SELECT p FROM ZPB\AdminBundle\Entity\Post p JOIN p.tags tag JOIN p.targets t  WHERE p.isPublished=:isPublished AND t.slug=:slug AND tag.id=:id ORDER BY p.publishedAt DESC'
+        );
+        $q->setParameter('isPublished', true);
+        $q->setParameter('slug', $target->getSlug());
+        $q->setParameter('id', $tag->getId());
+
+        return $q->getResult();
+    }
 
 }

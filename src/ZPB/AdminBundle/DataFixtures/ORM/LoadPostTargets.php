@@ -62,7 +62,7 @@ class LoadPostTargets  extends AbstractFixture implements OrderedFixtureInterfac
         $manager->persist($pt5);
 
         $pt6 = new PostTarget();
-        $pt6->setName('Pro');
+        $pt6->setName('Professionnels');
         $manager->persist($pt6);
 
         $pt7 = new PostTarget();
@@ -74,7 +74,7 @@ class LoadPostTargets  extends AbstractFixture implements OrderedFixtureInterfac
         $manager->persist($pt8);
 
         $pt9 = new PostTarget();
-        $pt9->setName('CE');
+        $pt9->setName('Comités d\'Entreprises');
         $manager->persist($pt9);
 
         $manager->flush();

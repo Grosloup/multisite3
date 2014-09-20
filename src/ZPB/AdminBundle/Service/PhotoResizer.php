@@ -76,7 +76,7 @@ class PhotoResizer
         } else {
             $x = floor(($size['width'] - $img->getWidth()) / 2);
             $y = floor(($size['height'] - $img->getHeight()) / 2);
-            imagecopyresampled($redim, $filename, $x,$y,0,0, $size["width"], $size['height'], $img->getWidth(), $img->getHeight());
+            imagecopyresampled($redim, $image, $x,$y,0,0, $size["width"], $size['height'], $img->getWidth(), $img->getHeight());
         }
 
 
@@ -101,7 +101,7 @@ class PhotoResizer
         } else {
             $x = floor(($size['width'] - $img->getWidth()) / 2);
             $y = floor(($size['height'] - $img->getHeight()) / 2);
-            imagecopyresampled($redim, $filename, $x,$y,0,0, $size["width"], $size['height'], $img->getWidth(), $img->getHeight());
+            imagecopyresampled($redim, $image, $x,$y,0,0, $size["width"], $size['height'], $img->getWidth(), $img->getHeight());
         }
     }
 
@@ -136,4 +136,4 @@ class PhotoResizer
                 break;
         }
     }
-} 
+}

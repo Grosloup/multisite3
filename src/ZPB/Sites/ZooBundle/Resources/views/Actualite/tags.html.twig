@@ -1,0 +1,6 @@
+<h5>Mots-clés</h5>
+<ul class="post-tags-list">
+    {% for tag in tags %}
+        <li><a href="{{ path("zpb_sites_zoo_actualites_list_by_tag", {slug: tag.slug}) }}">{{ tag.name }}</a></li>
+    {% endfor %}
+</ul>

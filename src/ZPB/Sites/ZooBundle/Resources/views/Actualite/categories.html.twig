@@ -1,0 +1,7 @@
+
+<h5>Catégories</h5>
+<ul class="post-categories-list">
+    {% for category in categories %}
+    <li><a href="{{ path("zpb_sites_zoo_actualites_list_by_category", {slug: category.slug}) }}">{{ category.name }}</a></li>
+    {% endfor %}
+</ul>

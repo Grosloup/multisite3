@@ -1,13 +1,32 @@
 zpb_sites_zoo_actualites_homepage:
-    path: /{page}
+    path: /tous-les-articles/{page}
     defaults: { _controller: ZPBSitesZooBundle:Actualite:index, page: 1}
     methods: ["GET"]
     requirements:
         page: \d+
 
 zpb_sites_zoo_actualites_single:
-    path: /{slug}
+    path: /article/{slug}
     defaults: { _controller:  ZPBSitesZooBundle:Actualite:single }
     methods: ["GET"]
     requirements:
         slug: "^[a-zA-Z0-9_-]+$"
+
+zpb_sites_zoo_actualites_list_by_category:
+    path: /par-categorie/{slug}
+    defaults: { _controller: ZPBSitesZooBundle:Actualite:postsByCategory }
+    methods: ["GET"]
+    requirements:
+        slug: "[a-zA-Z0-9_-]+"
+
+zpb_sites_zoo_actualites_list_by_tag:
+    path: /par-mot-clef/{slug}
+    defaults: { _controller: ZPBSitesZooBundle:Actualite:postsByTag }
+    methods: ["GET"]
+    requirements:
+        slug: "[a-zA-Z0-9_-]+"
+
+zpb_sites_zoo_actualites_nouveautes:
+    path: /nouveautes
+    defaults: { _controller: ZPBSitesZooBundle:Actualite:nouveautes }
+    methods: ["GET"]

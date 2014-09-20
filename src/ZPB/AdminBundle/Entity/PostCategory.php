@@ -40,6 +40,7 @@ class PostCategory
      * @Gedmo\Slug(fields={"name"}, unique=true)
      */
     private $slug;
+
     /**
      * @ORM\OneToMany(targetEntity="ZPB\AdminBundle\Entity\Post", mappedBy="category")
      */

@@ -50,4 +50,49 @@ class ActualiteController extends BaseController
 
         return $this->render('ZPBSitesZooBundle:Actualite:single.html.twig', ['post'=>$post]);
     }
+
+    public function nouveautesAction()
+    {
+        return $this->forward('ZPBSitesZooBundle:Actualite:postsByCategory', ['slug'=>'nouveaute']);
+    }
+
+    public function postsByCategoryAction($slug)
+    {
+        $category = $this->getRepo('ZPBAdminBundle:PostCategory')->findOneBySlug($slug);
+        if(!$category){
+            throw $this->createNotFoundException();
+        }
+        $target = $this->getRepo('ZPBAdminBundle:PostTarget')->findOneByAcronym('zb');
+        $posts = $this->getRepo('ZPBAdminBundle:Post')->getPublishedByCategoryAndTarget($category, $target);
+
+        return $this->render('ZPBSitesZooBundle:Actualite:post_by_category.html.twig', ['posts'=>$posts, 'category'=>$category]);
+    }
+
+    public function postsByTagAction($slug)
+    {
+        $tag = $this->getRepo('ZPBAdminBundle:PostTag')->findOneBySlug($slug);
+        if(!$tag){
+            throw $this->createNotFoundException();
+        }
+        $target = $this->getRepo('ZPBAdminBundle:PostTarget')->findOneByAcronym('zb');
+        $posts = $this->getRepo('ZPBAdminBundle:Post')->getPublishedByTagAndTarget($tag, $target);
+
+        return $this->render('ZPBSitesZooBundle:Actualite:posts_by_tag.html.twig', ['posts'=>$posts, 'tag'=>$tag]);
+    }
+
+    public function listCategoriesAction()
+    {
+        $target = $this->getRepo('ZPBAdminBundle:PostTarget')->findOneByAcronym('zb');
+        $categories = $this->getRepo('ZPBAdminBundle:Post')->getCategoriesByTarget($target);
+
+        return $this->render('ZPBSitesZooBundle:Actualite:categories.html.twig', ['categories'=>$categories]);
+    }
+
+    public function listTagsAction()
+    {
+        $target = $this->getRepo('ZPBAdminBundle:PostTarget')->findOneByAcronym('zb');
+        $tags = $this->getRepo('ZPBAdminBundle:Post')->getTagsByTarget($target);
+
+        return $this->render('ZPBSitesZooBundle:Actualite:tags.html.twig', ['tags'=>$tags]);
+    }
 }

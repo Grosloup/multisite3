@@ -74,6 +74,10 @@ class PostController extends BaseController
             if($form->get('save_publish')->isClicked()){
                 $this->getRepo('ZPBAdminBundle:Post')->publish($entity);
             }
+            $illustration = $this->getRepo('ZPBAdminBundle:PostImg')->findOneByPostLongId($entity->getLongId());
+            if($illustration != null){
+                $entity->setIllustration($illustration);
+            }
             $this->getManager()->persist($entity);
             $this->getManager()->flush();
             $this->setSuccess('Nouvel article d\'actualité bien créé.');
