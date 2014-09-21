@@ -27,7 +27,7 @@ zpb_sites_zoo_download_image:
         filename: ".+"
 
 zpb_sites_zoo_download_pdf:
-    path: /telecharger/image/{filename}
+    path: /telecharger/pdf/{filename}
     defaults: { _controller: ZPBSitesZooBundle:Download:downloadPdf }
     methods: ["GET"]
     requirements:

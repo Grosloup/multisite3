@@ -27,7 +27,8 @@ class PresseController extends BaseController
 {
     public function communiqueAction()
     {
-        return $this->render('ZPBSitesZooBundle:Presse:communiques.html.twig', []);
+        $pr = $this->getRepo('ZPBAdminBundle:PressRelease')->findAll(); //TODO order by updated_at
+        return $this->render('ZPBSitesZooBundle:Presse:communiques.html.twig', ['prs'=>$pr]);
     }
 
     public function dossierAction()

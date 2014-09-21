@@ -47,8 +47,17 @@ class DownloadController extends BaseController
         return $response;
     }
 
-    public function downloadImagePdf($filename, Request $request)
+    public function downloadPdfAction($filename, Request $request)
     {
-        //TODO
+        /** @var \ZPB\AdminBundle\Entity\MediaPdf $pdf */
+        $pdf = $this->getRepo('ZPBAdminBundle:MediaPdf')->findOneByFilename($filename);
+        if(!$pdf || !file_exists($pdf->getAbsolutePath())){
+            throw $this->createNotFoundException();
+        }
+        //TODO stats
+        $response = new BinaryFileResponse($pdf->getAbsolutePath());
+        $response->headers->set('Content-Type', $pdf->getMime());
+        $response->setContentDisposition( ResponseHeaderBag::DISPOSITION_ATTACHMENT, $pdf->getFilename() . '.' .$pdf->getExtension());
+        return $response;
     }
 }

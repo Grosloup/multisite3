@@ -21,7 +21,25 @@
         <div class="container">
             <div class="spaced-row">
                 <div class="col-6">
-                    <div class="testbox testbox-5"></div>
+                    {% if prs|length>0 %}
+                        {% for pr in prs %}
+                            <div class="spaced-row">
+                                <div class="col-1"></div>
+                                <div class="col-4">
+                                    <h4>{{ pr.title }}</h4>
+                                    <p>{{ pr.body|raw }}</p>
+
+                                    <p><a href="/telecharger/pdf/{{ pr.pdfFr }}">Télécharger le pdf</a></p>
+                                    {% if pr.pdfEn != null %}
+                                        <p><a href="/telecharger/pdf/{{ pr.pdfFr }}">Télécharger le pdf en anglais</a></p>
+                                    {% endif %}
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <h1>Oups! il n'y a pas de communiqués de presse</h1>
+                    {% endif %}
                 </div>
             </div>
         </div>
