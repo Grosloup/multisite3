@@ -74,6 +74,8 @@
           .logo{
             padding-top: 8px;
             padding-bottom: 10px;
+            padding-left: topx($shmn_stuck_logo_paddingLeft);
+            padding-right: topx($shmn_stuck_logo_paddingRight);
           }
           &>nav{
             &>ul{
