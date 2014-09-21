@@ -16,13 +16,34 @@
             </div>
         </div>
     </div>
-
+    <div class="wrapper">
+        <div class="container">
+            <div class="col-6">
+                <div class="testbox testbox-5"></div>
+            </div>
+        </div>
+    </div>
     <div class="wrapper">
         <div class="container">
             <div class="spaced-row">
                 <div class="col-6">
                     {% if restos|length > 0 %}
-
+                        {% for resto in restos %}
+                            <div class="spaced-row">
+                                <div class="col-1">
+                                    <img src="{{ resto.visuel.webPath }}" alt="" width="100%"/>
+                                </div>
+                                <div class="col-5">
+                                    <h4>{{ resto.name }}</h4>
+                                    <div>{{ resto.description }}</div>
+                                    {% if resto.isOpen == true %}
+                                        <h5>Ouvert</h5>
+                                    {% else %}
+                                        <h5>Fermé</h5>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
                     {% else %}
                         <h1>Oups! Il n'y a aucun restaurant à Beauval !</h1>
                     {% endif %}
