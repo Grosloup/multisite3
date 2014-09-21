@@ -11,8 +11,9 @@
 <div id="stickytop">
     <div class="container">
         <div id="main-menu">
+            <a href="{{path("zpb_sites_zoo_homepage")}}" class="logo">{{ include("ZPBSitesZooBundle:incs:logo_zooparc_svg.html.twig") }}</a>
+            <button id="menu-toggler"></button>
             <nav>
-                <a href="{{path("zpb_sites_zoo_homepage")}}" class="logo">{{ include("ZPBSitesZooBundle:incs:logo_zooparc_svg.html.twig") }}</a>
                 <ul>
                     <li class="{% if active_page in social_pages %}active{% endif %}"><a href="">Beauval Nature</a></li>
                     <li class="{% if active_page in social_pages %}active{% endif %}"><a href="">Conservation</a></li>

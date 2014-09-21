@@ -10,8 +10,9 @@
 <div id="stickytop">
     <div class="container">
         <div id="main-menu">
+            <a href="{{path("zpb_sites_pro_homepage")}}" class="logo">{{ include("ZPBSitesProBundle:incs:logo_pro_svg.html.twig") }}</a>
+            <button id="menu-toggler"></button>
             <nav>
-                <a href="{{path("zpb_sites_pro_homepage")}}" class="logo">{{ include("ZPBSitesProBundle:incs:logo_pro_svg.html.twig") }}</a>
                 <ul>
                     <li class="dropdown{% if active_page in pro_pages %} active{% endif %}"><a href="">Pro du tourisme</a></li>
                     <li class="dropdown{% if active_page in prest_pages %} active{% endif %}"><a href="javascript:void(0)">Presta touristique</a>

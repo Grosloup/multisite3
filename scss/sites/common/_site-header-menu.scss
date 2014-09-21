@@ -8,6 +8,25 @@
         @include clearfix;
         height: topx($shmn_reg_height);
         line-height: topx($shmn_reg_lineHeight);
+        #menu-toggler{
+          margin-right: topx($gridGutter);
+          width: topx($shmn_reg_height);
+          height: topx($shmn_reg_height);
+          float: right;
+          position: relative;
+          background-color: transparent;
+          border: none;
+          padding: 0;
+          &:after{
+            top: topx(10);
+            left: topx(7);
+            content: "";
+            position: absolute;
+            height: 1px;
+            width: topx($shmn_reg_height - 14);
+            @include box-shadow(rgba(#fff,1) 0 1px 0, rgba(#fff,1) 0 8px 0, rgba(#fff,1) 0 15px 0);
+          }
+        }
         .logo{
           float: left;
           display: block;
@@ -20,6 +39,7 @@
           text-align: center;
         }
         &>nav{
+          display: none;
           &>ul{
             @include clearfix;
             width:100%;
@@ -65,12 +85,20 @@
       left: 0;
       right: 0;
       width: 100%;
-      z-index: 1000;
+      z-index: 10000;
       height: topx($shmn_stickytopHeight);
       .container{
         #main-menu{
           height: topx($shmn_stickytopHeight);
           line-height: topx($shmn_stickytopHeight);
+          #menu-toggler{
+            width: topx($shmn_reg_height);
+            height: topx($shmn_stickytopHeight);
+            &:after{
+              top: topx(17);
+              left: topx(7);
+            }
+          }
           .logo{
             padding-top: 8px;
             padding-bottom: 10px;
@@ -109,6 +137,10 @@
       #main-menu{
         text-transform: $shmn_reg_menu_textTransform;
         font-family: $shmn_reg_menu_fontFamily;
+        #menu-toggler{
+
+
+        }
         .logo{
           #Calque_1{
             width: topx($shmn_reg_logo_width);
@@ -183,6 +215,9 @@
         #main-menu{
           text-transform: $shmn_stuck_menu_textTransform;
           font-family: $shmn_stuck_menu_fontFamily;
+          #menu-toggler{
+
+          }
           .logo{
             #Calque_1{
               width: topx($shmn_stuck_logo_width);
@@ -234,6 +269,23 @@
                 }
               }
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1030px) {
+  #site-header{
+    #stickytop{
+      .container{
+        #main-menu{
+          #menu-toggler{
+            display: none;
+          }
+          nav{
+            display: block;
           }
         }
       }

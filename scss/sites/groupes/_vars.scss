@@ -14,7 +14,7 @@ $headers: h1,h2,h3,h4,h5,h6;
 $linkFontFamily: 'cooper_hewitt_semi_bold', Arial, Helvetica, sans-serif;
 $linkHoverColor: $groupes;
 
-$gridGutter: 5;
+$gridGutter: 20;
 $numCols: 6;
 
 /***************************************\
@@ -93,8 +93,8 @@ $shmn_stuck_subMenu_linkPaddingLeft: 10;
 $shmn_stuck_subMenu_linkColor: $grisFonce;
 $shmn_stuck_subMenu_linkHoverColor: $blanc;
 $shmn_stuck_subMenu_linkHoverBgColor: $groupes;
-$shmn_stuck_logo_paddingLeft: 49;
-$shmn_stuck_logo_paddingRight: 49;
+$shmn_stuck_logo_paddingLeft: $gridGutter;
+$shmn_stuck_logo_paddingRight: 98 - $gridGutter;
 
   /***************************************\
     site-header => boutons spéciaux bs_
