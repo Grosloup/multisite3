@@ -52,30 +52,45 @@ $sh_tablet_height: topx(600); // modif hauteur version tablette
 $sh_height: topx(750); // hauteur du header
 $sh_boxShadow: rgba(0,0,0,0.6) 0 50px 70px inset; // ombre interne sur la photo
 
-// non collé
-$sh_mainMenuLineHeight: 35px;
-$sh_mainMenuLinkColor: $blanc;
-$sh_mainMenuLogoColor: $blanc;
-$sh_mainMenuLinkFontFamily: inherit;
-$sh_mainMenuLiUnderlineColor: $blanc;
-$sh_mainMenu_submenuBgColor: $blanc;
-$sh_mainMenu_submenu_boxShadow: rgba(0,0,0,0.5) 0 0 4px;
-$sh_mainMenu_submenu_linkColor: $grisFonce;
-$sh_mainMenu_submenu_linkPadding: 10;
-$sh_mainMenu_submenu_linkHoverBgColor: $grisFonce;
-$sh_mainMenu_submenu_linkHoverColor: $blanc;
+$shmn_stickytopHeight: 50;
+$shmn_reg_height: 35;
+$shmn_reg_lineHeight: $shmn_reg_height;
+$shmn_reg_menu_textTransform: uppercase;
+$shmn_reg_menu_fontFamily: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+$shmn_reg_menu_linkColor: $blanc;
+$shmn_reg_logo_color: $blanc;
+$shmn_reg_logo_width:250;
+$shmn_reg_logo_height:55;
+$shmn_reg_menu_activeLinkColor: $jaune;
+$shmn_reg_subMenu_bgColor: $blanc;
+$shmn_reg_subMenu_shadow: rgba(0,0,0,0.5) 0 0 4px;
+$shmn_reg_subMenu_fontSize: 14;
+$shmn_reg_subMenu_fontFamily: "cooper_hewitt_book", Arial, Helvetica, sans-serif;
+$shmn_reg_subMenu_linkPaddingRight: 10;
+$shmn_reg_subMenu_linkPaddingLeft: 10;
+$shmn_reg_subMenu_linkColor: $grisFonce;
+$shmn_reg_subMenu_linkHoverColor: $blanc;
+$shmn_reg_subMenu_linkHoverBgColor: $grisFonce;
 
-// collé
-$sh_sticyStuck_bgColor: $ce;
-$sh_sticyStuck_boxShadow: rgba(0,0,0,0.5) 0 1px 4px;
-$sh_sticyStuck_mainMenu_Color: $grisFonce;
-$sh_sticyStuck_mainMenu_activeColor: $jaune;
-$sh_sticyStuck_mainMenu_linkColor: $blanc;
-$sh_sticyStuck_mainMenuLiUnderlineColor: $blanc;
-$sh_sticyStuck_mainMenu_logo_color: $blanc;
-$sh_sticky_mainMenu_submenu_linkHoverBgColor: $ce;
-$sh_sticky_mainMenu_submenu_linkHoverColor: $blanc;
-$sh_sticky_mainMenu_submenu_linkFontFamily: "cooper_hewitt_book", Arial, Helvetica, sans-serif;
+
+$shmn_stuck_menu_textTransform: uppercase;
+$shmn_stuck_menu_fontFamily: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+$shmn_stuck_bgColor: $ce;
+$shmn_stuck_boxShadow: rgba(0,0,0,0.5) 0 1px 4px;
+$shmn_stuck_menu_linkColor: $blanc;
+$shmn_stuck_logo_color: $blanc;
+$shmn_stuck_logo_width:172;
+$shmn_stuck_logo_height:38;
+$shmn_stuck_menu_activeLinkColor: $jaune;
+$shmn_stuck_subMenu_bgColor: $blanc;
+$shmn_stuck_subMenu_shadow: rgba(0,0,0,0.5) 0 1px 4px;
+$shmn_stuck_subMenu_fontSize: 14;
+$shmn_stuck_subMenu_fontFamily: "cooper_hewitt_book", Arial, Helvetica, sans-serif;
+$shmn_stuck_subMenu_linkPaddingRight: 10;
+$shmn_stuck_subMenu_linkPaddingLeft: 10;
+$shmn_stuck_subMenu_linkColor: $grisFonce;
+$shmn_stuck_subMenu_linkHoverColor: $blanc;
+$shmn_stuck_subMenu_linkHoverBgColor: $ce;
   /***************************************\
     site-header => boutons spéciaux bs_
   \***************************************/
