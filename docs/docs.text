@@ -31,4 +31,5 @@ LoadFaqs                        => 75
 
 
 LoadStaticPages                 => 200
+LoadRestos                      => 250
 LoadPhotoStats                  => 300
