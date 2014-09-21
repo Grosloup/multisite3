@@ -40,13 +40,20 @@ class RestaurantController extends BaseController
         $form = $this->createForm(new RestaurantType(), $entity);
         $form->handleRequest($request);
         if($form->isValid()){
+            $imgId = $form->get('imgId')->getData();
+            if($imgId){
+                $image = $this->getRepo('ZPBAdminBundle:MediaImage')->find($imgId);
+                if($image){
+                    $entity->setVisuel($image);
+                }
+            }
             $this->getManager()->persist($entity);
             $this->getManager()->flush();
 
             $this->setSuccess('Nouveau restaurant bien enregistré');
             return $this->redirect($this->generateUrl('zpb_admin_zoo_restaurants_list'));
         }
-        return $this->render('ZPBAdminBundle:Zoo/Restaurant:create.html.twig', ['form'=>$form->createView()]); //4
+        return $this->render('ZPBAdminBundle:Zoo/Restaurant:create.html.twig', ['form'=>$form->createView()]);
     }
 
     public function updateAction($id, Request $request)
@@ -78,6 +85,12 @@ class RestaurantController extends BaseController
         $this->getManager()->flush();
         $this->setSuccess('Restaurant bien supprimé');
         return $this->redirect($this->generateUrl('zpb_admin_zoo_restaurants_list'));
+    }
+
+    public function manageAction()
+    {
+        $entities = $this->getRepo('ZPBAdminBundle:Restaurant')->findAll();
+        return $this->render('ZPBAdminBundle:Zoo/Restaurant:manage.html.twig', ['entities'=>$entities]);
     }
 
 }

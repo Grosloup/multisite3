@@ -13,7 +13,7 @@
         allow: ['image/jpeg', 'image/gif', 'image/png'],
         maxSize: 4500000,
         url: '/xhr/upload/img',
-        deleteImgUrl: '/xhr/supprimer/img',
+        deleteImgUrl: '/xhr/supprimer/img'
 
     };
 

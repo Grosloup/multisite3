@@ -159,10 +159,11 @@
                 <nav class="menu">
                     <h3 class="menu-title">ZooParc</h3>
                     <ul>
-                        <li class="sidebar-dropdown{% if active in ["list_restos","new_restos","update_restos"] %} active{% endif %}"><a href="">Restaurants</a><i class="sidebar-icon fa fa-angle-right"></i>
+                        <li class="sidebar-dropdown{% if active in ["list_restos","new_restos","update_restos", "manage_restos"] %} active{% endif %}"><a href="">Restaurants</a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
                                 <li class="{% if active == "list_restos" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_restaurants_list") }}">Liste</a></li>
                                 <li class="{% if active == "new_restos" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_restaurants_create") }}">Nouveau</a></li>
+                                <li class="{% if active == "manage_restos" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_restaurants_manage") }}">Gérer</a></li>
                             </ul>
                         </li>
                         <li class="sidebar-dropdown{% if active in ["list_static_pages","new_static_page","update_static_page"] %} active{% endif %}"><a href="">Pages statiques</a><i class="sidebar-icon fa fa-angle-right"></i>

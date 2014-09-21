@@ -8,3 +8,17 @@ zpb_admin_xhr_img_delete:
     methods: ["GET"]
     requirements:
         id: \d+
+zpb_admin_xhr_img_resto_upload:
+    path: /upload/resto/img
+    defaults: { _controller: ZPBAdminBundle:General/XHR:imgRestoUpload }
+    methods: ["POST"]
+zpb_admin_xhr_img_resto_delete:
+    path: /supprimer/resto/img/{id}
+    defaults: { _controller: ZPBAdminBundle:General/XHR:imgRestoDelete }
+    methods: ["GET"]
+    requirements:
+        id: \d+
+zpb_admin_xhr_img_get_id:
+    path: /xhr/get-img-id
+    defaults: { _controller: ZPBAdminBundle:General/XHR:getImgId }
+    methods: ["POST"]

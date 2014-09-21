@@ -28,3 +28,8 @@ zpb_admin_zoo_restaurants_delete:
     methods: ["GET"]
     requirements:
         id: \d+
+
+zpb_admin_zoo_restaurants_manage:
+    path: /gerer
+    defaults: { _controller: ZPBAdminBundle:Zoo/Restaurant:manage }
+    methods: ["GET"]

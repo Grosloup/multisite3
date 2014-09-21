@@ -34,7 +34,7 @@ class XHRController extends BaseController
         if(!$request->isMethod("POST") || !$request->isXmlHttpRequest()){
             throw $this->createAccessDeniedException();
         }
-        $response = ['error'=>false,'msg'=>'', 'html'=>''];
+        $response = ['error'=>false,'msg'=>'', 'html'=>'', 'imgId'=>''];
         $fs = $this->get('filesystem');
         $filename = $request->headers->get('X-File-Name');
 
@@ -72,6 +72,7 @@ class XHRController extends BaseController
                         $this->getManager()->flush();
                         $response['html'] = "<img src='" . $webPath . "' width='100%' data-id='" . $image->getId() . "'/>";
                         $response['msg'] = 'Transfert réussi.';
+                        $response['imgId'] = $image->getId();
                     }
                 } catch (\Exception $e){
                     $response = ['error'=>true,'msg'=>$e->getMessage(), 'html'=>''];
@@ -104,5 +105,95 @@ class XHRController extends BaseController
             $response['msg'] = 'Image supprimée.';
         }
         return new JsonResponse($response);
+    }
+
+    public function imgRestoUploadAction(Request $request)
+    {
+        if(!$request->isMethod("POST") || !$request->isXmlHttpRequest()){
+            throw $this->createAccessDeniedException();
+        }
+        $response = ['error'=>false,'msg'=>'', 'html'=>'', 'imgId'=>''];
+        $fs = $this->get('filesystem');
+        $filename = $request->headers->get('X-File-Name');
+
+        $basePath = $this->container->getParameter('zpb.medias.options')['zpb.img.root_dir'] . $this->container->getParameter('zpb.medias.options')['zpb.img.web_dir'];
+        if(!$fs->exists($basePath)){
+            $fs->mkdir($basePath);
+        }
+        $path = $basePath . '/' . $filename;
+        if($fs->exists($path)){
+            $response['error'] = true;
+            $response['msg'] = 'Un fichier du même nom existe déjà.';
+        } else {
+            file_put_contents($path, $request->getContent());
+
+            $file = new File($path);
+            if(!in_array($file->getMimeType(), ['image/jpeg', 'image/gif', 'image/png'])){
+                $fs->remove($path);
+                $file = null;
+                $response['error'] = true;
+                $response['msg'] = 'Le fichier n\'est pas d\'un format acceptable.';
+            } else {
+                $baseWebPath = $this->container->getParameter('zpb.medias.options')['zpb.img.web_dir'];
+                $webPath = '/' . $baseWebPath . $filename;
+
+                $image = $this->get('zpb.image_factory')->createFromFile($file);
+                try{
+                    $this->getManager()->persist($image);
+                    $this->getManager()->flush();
+                    //$this->get('zpb.photo_resizer')->makeThumbnails($image);
+                    if($request->headers->get('X-File-Id', false)){
+
+                        $response['html'] = "<img src='" . $webPath . "' width='100%' data-id='" . $image->getId() . "'/>";
+                        $response['msg'] = 'Transfert réussi.';
+                        $response['imgId'] = $image->getId();
+                    }
+                } catch (\Exception $e){
+                    $response = ['error'=>true,'msg'=>$e->getMessage(), 'html'=>''];
+                }
+            }
+        }
+
+        return new JsonResponse($response);
+    }
+
+    public function imgRestoDeleteAction($id, Request $request)
+    {
+        if(!$request->isMethod("GET") || !$request->isXmlHttpRequest()){
+            throw $this->createAccessDeniedException();
+        }
+        $response = ['error'=>false,'msg'=>'', 'html'=>''];
+        $image = $this->getRepo('ZPBAdminBundle:MediaImage')->find($id);
+        if(!$image){
+            $response = ['error'=>true,'msg'=>'Image introuvable', 'html'=>''];
+        } else {
+
+            $this->getManager()->remove($image);
+            $this->getManager()->flush();
+            $response['msg'] = 'Image supprimée.';
+        }
+        return new JsonResponse($response);
+    }
+
+    public function getImgIdAction(Request $request)
+    {
+        if(!$request->isMethod("POST") || !$request->isXmlHttpRequest()){
+            throw $this->createAccessDeniedException();
+        }
+        $filename = $request->request->get('filename');
+        $response = ['error'=>false,'msg'=>'', 'imgId'=>''];
+        if(!$filename){
+            $response = ['error'=>true,'msg'=>'Données manquantes', 'imgId'=>''];
+        } else {
+            $image = $this->getRepo('ZPBAdminBundle:MediaImage')->findOneByFilename($filename);
+            if(!$image){
+                $response = ['error'=>true,'msg'=>'Image introuvable', 'imgId'=>''];
+            } else {
+                $response = ['error'=>false,'msg'=>'', 'imgId'=>$image->getId()];
+            }
+        }
+
+        return new JsonResponse($response);
+
     }
 }
