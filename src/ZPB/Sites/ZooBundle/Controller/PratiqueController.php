@@ -29,4 +29,26 @@ class PratiqueController extends BaseController
     {
         return $this->render('ZPBSitesZooBundle:Pratique:tarifs.html.twig', []);
     }
+
+    public function animationsAction()
+    {
+        return $this->render('ZPBSitesZooBundle:Pratique:animations.html.twig', []);
+    }
+
+    public function mapAction()
+    {
+        return $this->render('ZPBSitesZooBundle:Pratique:map.html.twig', []);
+    }
+
+    public function restoAction()
+    {
+        return $this->render('ZPBSitesZooBundle:Pratique:resto.html.twig', []);
+    }
+
+    public function servicesAction()
+    {
+        return $this->render('ZPBSitesZooBundle:Pratique:services.html.twig', []);
+    }
+
+
 }

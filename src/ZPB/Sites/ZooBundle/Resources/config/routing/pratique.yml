@@ -2,3 +2,29 @@ zpb_sites_zoo_pratique_acces_tarifs_horaires:
     path: /acces-tarifs-horaires
     defaults: { _controller: ZPBSitesZooBundle:Pratique:accesTarifsHoraires }
     methods: ["GET"]
+
+zpb_sites_zoo_pratique_animations:
+    path: /animations
+    defaults: { _controller: ZPBSitesZooBundle:Pratique:animations }
+    methods: ["GET"]
+
+zpb_sites_zoo_pratique_map:
+    path: /plan-de-visite
+    defaults: { _controller: ZPBSitesZooBundle:Pratique:map }
+    methods: ["GET"]
+
+zpb_sites_zoo_pratique_resto:
+    path: /restauration
+    defaults: { _controller: ZPBSitesZooBundle:Pratique:resto }
+    methods: ["GET"]
+
+zpb_sites_zoo_pratique_services:
+    path: /services
+    defaults: { _controller: ZPBSitesZooBundle:Pratique:services }
+    methods: ["GET"]
+
+
+
+
+
+
