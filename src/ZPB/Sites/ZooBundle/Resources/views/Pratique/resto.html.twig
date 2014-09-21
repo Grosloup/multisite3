@@ -33,18 +33,30 @@
                     {% if restos|length > 0 %}
                         {% for resto in restos %}
                             <div class="spaced-row">
-                                <div class="col-1">
-                                    <img src="{{ resto.visuel.webPath }}" alt="" width="100%"/>
+                                <div class="row">
+                                    <div class="col-2"></div>
+                                    <div class="col-4">
+                                        <h4>{{ resto.name }}</h4>
+                                    </div>
                                 </div>
-                                <div class="col-5">
-                                    <h4>{{ resto.name }}</h4>
-                                    <div>{{ resto.description|raw }}</div>
-                                    {% if resto.isOpen == true %}
-                                        <h5>Ouvert</h5>
-                                    {% else %}
-                                        <h5>Fermé</h5>
-                                    {% endif %}
+                                <div class="row">
+                                    <div class="col-2">
+                                        <img src="{{ resto.visuel.webPath }}" alt="" width="100%"/>
+                                    </div>
+                                    <div class="col-2">
+
+                                        <div>{{ resto.description|raw }}</div>
+
+                                    </div>
+                                    <div class="col-2">
+                                        {% if resto.isOpen == true %}
+                                            <h5>Ouvert</h5>
+                                        {% else %}
+                                            <h5>Fermé</h5>
+                                        {% endif %}
+                                    </div>
                                 </div>
+
                             </div>
                         {% endfor %}
                     {% else %}
