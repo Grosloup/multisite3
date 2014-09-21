@@ -197,6 +197,58 @@ class XHRController extends BaseController
 
     }
 
+    public function uploadPdf(Request $request)
+    {
+        if(!$request->isMethod("POST") || !$request->isXmlHttpRequest()){
+            throw $this->createAccessDeniedException();
+        }
+        $fs = $this->get('filesystem');
+        $filename = $request->headers->get('X-File-Name');
+        $response = ['error'=>false,'msg'=>'', 'pdfFilename'=>''];
+        if(!$filename){
+            $response = ['error'=>true,'msg'=>'Données manquantes', 'pdfFilename'=>''];
+        } else {
+            $basePath = $this->container->getParameter('zpb.medias.options')['zpb.pdf.root_dir'] . $this->container->getParameter('zpb.medias.options')['zpb.pdf.web_dir'];
+            if(!$fs->exists($basePath)){
+                $fs->mkdir($basePath);
+            }
+            $path = $basePath . '/' . $filename;
+            if($fs->exists($path)){
+                $response['error'] = true;
+                $response['msg'] = 'Un fichier du même nom existe déjà.';
+            } else {
+                file_put_contents($path, $request->getContent());
+                $file = new File($path);
+                if(!in_array($file->getMimeType(), ['application/pdf', 'image/gif', 'image/png'])){
+                    $fs->remove($path);
+                    $file = null;
+                    $response['error'] = true;
+                    $response['msg'] = 'Le fichier n\'est pas d\'un format acceptable.';
+                } else {
+
+                    $pdf = $this->get('zpb.pdf_factory')->create();
+                    if(null != $institutionSlug = $request->headers->get('X-File-Institution', null)){
+                        $institution = $this->getRepo('ZPBAdminBundle:Institution')->findOneBySlug($institutionSlug);
+                        if($institution){
+                            $pdf->setInstitution($institution);
+                        }
+
+                    }
+                    try{
+                        $this->getManager()->persist($pdf);
+                        $this->getManager()->flush();
+                        $response = ['error'=>false,'msg'=>'Transfert réussi', 'pdfFilename'=>$pdf->getFilename()];
+                    } catch(\Exception $e){
+                        $response = ['error'=>true,'msg'=>$e->getMessage(), 'pdfFilename'=>''];
+                    }
+                }
+            }
+        }
+
+
+        return new JsonResponse($response);
+    }
+
     public function openRestoAction($id, Request $request)
     {
         if(!$request->isMethod("GET") || !$request->isXmlHttpRequest()){

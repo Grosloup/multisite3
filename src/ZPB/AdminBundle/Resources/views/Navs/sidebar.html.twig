@@ -131,21 +131,21 @@
                 <nav class="menu">
                     <h3 class="menu-title">Animations</h3>
                     <ul>
-                        <li class="sidebar-dropdown{% if active in ["new_animation","list_animations","update_animation","list_animations_days","new_animation_day"] %} active{% endif %}"><a href="">Calendriers</a><i class="sidebar-icon fa fa-angle-right"></i>
+                        <li class="sidebar-dropdown{% if active in ["new_animation","list_animations","update_animation","list_animations_days","new_animation_day"] %} active{% endif %}"><a href="javascript:void(0)">Calendriers</a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
-                                <li class="sidebar-dropdown{% if active in ["new_animation","list_animations","update_animation"] %} active{% endif %}"><a href="">Animations</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                <li class="sidebar-dropdown{% if active in ["new_animation","list_animations","update_animation"] %} active{% endif %}"><a href="javascript:void(0)">Animations</a><i class="sidebar-icon fa fa-angle-right"></i>
                                     <ul>
                                         <li class="{% if active == "list_animations" %}active{% endif %}"><a href="{{ path("zpb_admin_animations_list")}}">Liste</a></li>
                                         <li class="{% if active == "new_animation" %}active{% endif %}"><a href="{{ path("zpb_admin_animations_create")}}">Nouvelle</a></li>
                                     </ul>
                                 </li>
-                                <li class="sidebar-dropdown{% if active in ["list_animations_days","new_animation_day"] %} active{% endif %}"><a href="">Journées</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                <li class="sidebar-dropdown{% if active in ["list_animations_days","new_animation_day"] %} active{% endif %}"><a href="javascript:void(0)">Journées</a><i class="sidebar-icon fa fa-angle-right"></i>
                                     <ul>
                                         <li class="{% if active == "list_animations_days" %}active{% endif %}"><a href="{{ path("zpb_admin_animations_days_list") }}">Liste</a></li>
                                         <li class="{% if active == "new_animation_day" %}active{% endif %}"><a href="{{ path("zpb_admin_animations_days_create") }}">Nouvelle</a></li>
                                     </ul>
                                 </li>
-                                <li class="sidebar-dropdown{% if active in [""] %} active{% endif %}"><a href="">Plannings</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                <li class="sidebar-dropdown{% if active in [""] %} active{% endif %}"><a href="javascript:void(0)">Plannings</a><i class="sidebar-icon fa fa-angle-right"></i>
                                     <ul>
                                         <li><a href="">Liste</a></li>
                                         <li><a href="">Nouveau</a></li>
@@ -159,14 +159,30 @@
                 <nav class="menu">
                     <h3 class="menu-title">ZooParc</h3>
                     <ul>
-                        <li class="sidebar-dropdown{% if active in ["list_restos","new_restos","update_restos", "manage_restos"] %} active{% endif %}"><a href="">Restaurants</a><i class="sidebar-icon fa fa-angle-right"></i>
+                        <li class="sidebar-dropdown{% if active in ["presse_dossier","new_com","list_com","update_com"] %} active{% endif %}"><a href="javascript:void(0)">Presse</a><i class="sidebar-icon fa fa-angle-right"></i>
+                            <ul>
+                                <li class="sidebar-dropdown{% if active in ["presse_dossier"] %} active{% endif %}"><a href="javascript:void(0)">Dossiers</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                    <ul>
+                                        <li class="{% if active == "presse_dossier" %}active{% endif %}"><a href="">Modifier la page</a></li>
+                                    </ul>
+                                </li>
+                                <li class="sidebar-dropdown{% if active in ["new_com","list_com","update_com"] %} active{% endif %}"><a href="javascript:void(0)">Communiqués</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                    <ul>
+                                        <li class="{% if active == "list_com" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_press_release_list") }}">Liste</a></li>
+                                        <li class="{% if active == "new_com" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_press_release_create") }}">Nouveau</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="sidebar-dropdown{% if active in ["list_restos","new_restos","update_restos", "manage_restos"] %} active{% endif %}"><a href="javascript:void(0)">Restaurants</a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
                                 <li class="{% if active == "list_restos" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_restaurants_list") }}">Liste</a></li>
                                 <li class="{% if active == "new_restos" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_restaurants_create") }}">Nouveau</a></li>
                                 <li class="{% if active == "manage_restos" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_restaurants_manage") }}">Gérer</a></li>
                             </ul>
                         </li>
-                        <li class="sidebar-dropdown{% if active in ["list_static_pages","new_static_page","update_static_page"] %} active{% endif %}"><a href="">Pages statiques</a><i class="sidebar-icon fa fa-angle-right"></i>
+                        <li class="sidebar-dropdown{% if active in ["list_static_pages","new_static_page","update_static_page"] %} active{% endif %}"><a href="javascript:void(0)">Pages statiques</a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
                                 <li class="{% if active == "list_static_pages" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_static_pages_list") }}">Liste</a></li>
                                 <li class="{% if active == "new_static_page" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_static_pages_create") }}">Nouvelle</a></li>

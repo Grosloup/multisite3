@@ -1,0 +1,9 @@
+zpb_sites_zoo_presse_dossiers:
+    path: /dossiers-de-presse
+    defaults: { _controller: ZPBSitesZooBundle:Presse:dossier }
+    methods: ["GET"]
+
+zpb_sites_zoo_presse_communiques:
+    path: /communiques-de-presse
+    defaults: { _controller: ZPBSitesZooBundle:Presse:communique }
+    methods: ["GET"]

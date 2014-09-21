@@ -1,0 +1,30 @@
+zpb_admin_zoo_press_release_list:
+    path: /
+    defaults: { _controller: ZPBAdminBundle:Zoo/PressRelease:list}
+    methods: ["GET"]
+
+
+
+zpb_admin_zoo_press_release_create:
+    path: /nouveau
+    defaults: { _controller: ZPBAdminBundle:Zoo/PressRelease:create}
+    methods: ["GET","POST"]
+
+
+
+
+zpb_admin_zoo_press_release_update:
+    path: /modifier/{id}
+    defaults: { _controller: ZPBAdminBundle:Zoo/PressRelease:update}
+    methods: ["GET","POST"]
+    requirements:
+        id: \d+
+
+
+
+zpb_admin_zoo_press_release_delete:
+    path: /supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:Zoo/PressRelease:delete}
+    methods: ["GET"]
+    requirements:
+        id: \d+

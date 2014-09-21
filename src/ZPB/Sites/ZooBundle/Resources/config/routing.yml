@@ -52,3 +52,7 @@ zpb_sites_zoo_pratique_routes:
 zpb_sites_zoo_newsletter_routes:
     prefix: /newsletter
     resource: "@ZPBSitesZooBundle/Resources/config/routing/newsletter.yml"
+
+zpb_sites_zoo_presse_routes:
+    prefix: /presse
+    resource: "@ZPBSitesZooBundle/Resources/config/routing/presse.yml"

@@ -1,0 +1,72 @@
+{% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
+
+{% block title %}Ajouter un communiqué de presse | ZooParc de Beauval{% endblock %}
+{% set active = "new_com" %}
+
+{% block content %}
+    <div class="row">
+        <div class="column-1"></div>
+
+        <div class="column-6">
+            <div class="tile">
+                <div class="tile-header">
+                    Ajouter un communiqué de presse
+                </div>
+
+                {{ form_start(form, {attr:{class: "form",novalidate: true}}) }}
+                {{ form_errors(form) }}
+
+                <div class="form-row {% if form.title.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.title) }}
+                    <div class="form-field">
+                        {{ form_widget(form.title) }}
+                        {% if form.title.vars.errors|length>0 %}
+                            <div class="error-block">
+                                {{ form_errors(form.title)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.body.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.body) }}
+                    <div class="form-field">
+                        {{ form_widget(form.body) }}
+                        {% if form.body.vars.errors|length>0 %}
+                            <div class="error-block">
+                                {{ form_errors(form.body)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    {{ form_widget(form.save, {attr: {class: "btn-flat btn-primary"}})}}
+                </div>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+        <div class="column-4">
+            <div class="tile">
+                <div class="tile-header">
+                    upload pdf en français
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tile-header">
+                    upload pdf en anglais
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tile-header">
+                    upload image d'illustration
+                </div>
+            </div>
+
+        </div>
+        <div class="column-1"></div>
+    </div>
+{% endblock %}

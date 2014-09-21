@@ -21,6 +21,8 @@
 namespace ZPB\AdminBundle\Service;
 
 
+use Symfony\Component\HttpFoundation\File\File;
+
 class PdfFactory
 {
     private $options = [];
@@ -40,8 +42,18 @@ class PdfFactory
         $pdf->setRootDir($this->options['zpb.pdf.root_dir']);
         $pdf->setWebDir($this->options['zpb.pdf.web_dir']);
         $pdf->setCopyright($this->options['zpb.document.default_copyright.text']);
+        $pdf->setMime('appliaction/pdf');
+        return $pdf;
+    }
+
+    public function createFromFile(File $file)
+    {
+        $pdf = $this->create();
+        $pdf->setExtension($file->getExtension());
+        $pdf->setFilename(pathinfo($file->getFilename(), PATHINFO_FILENAME));
 
         return $pdf;
+
     }
 
 
