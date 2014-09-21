@@ -197,7 +197,7 @@ class XHRController extends BaseController
 
     }
 
-    public function uploadPdf(Request $request)
+    public function uploadPdfAction(Request $request)
     {
         if(!$request->isMethod("POST") || !$request->isXmlHttpRequest()){
             throw $this->createAccessDeniedException();
@@ -226,7 +226,7 @@ class XHRController extends BaseController
                     $response['msg'] = 'Le fichier n\'est pas d\'un format acceptable.';
                 } else {
 
-                    $pdf = $this->get('zpb.pdf_factory')->create();
+                    $pdf = $this->get('zpb.pdf_factory')->createFromFile($file);
                     if(null != $institutionSlug = $request->headers->get('X-File-Institution', null)){
                         $institution = $this->getRepo('ZPBAdminBundle:Institution')->findOneBySlug($institutionSlug);
                         if($institution){

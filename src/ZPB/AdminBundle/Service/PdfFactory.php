@@ -42,7 +42,7 @@ class PdfFactory
         $pdf->setRootDir($this->options['zpb.pdf.root_dir']);
         $pdf->setWebDir($this->options['zpb.pdf.web_dir']);
         $pdf->setCopyright($this->options['zpb.document.default_copyright.text']);
-        $pdf->setMime('appliaction/pdf');
+        $pdf->setMime('application/pdf');
         return $pdf;
     }
 

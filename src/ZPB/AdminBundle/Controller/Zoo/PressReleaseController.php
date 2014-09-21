@@ -40,6 +40,13 @@ class PressReleaseController extends BaseController
         $form = $this->createForm(new PressReleaseType(), $entity);
         $form->handleRequest($request);
         if($form->isValid()){
+            $imageName = $form->get('imageName')->getData();
+            if($imageName){
+                $image = $this->getRepo('ZPBAdminBundle:MediaImage')->findOneByFilename($imageName);
+                if($image){
+                    $entity->setImage($image);
+                }
+            }
             $this->getManager()->persist($entity);
             $this->getManager()->flush();
 

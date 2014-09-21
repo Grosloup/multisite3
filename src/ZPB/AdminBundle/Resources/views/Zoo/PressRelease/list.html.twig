@@ -30,9 +30,9 @@
                         {% for entity in entities %}
                             <tr>
                                 <td>{{ entity.id }}</td>
-                                <td>{{ entity.name }}</td>
+                                <td>{{ entity.title }}</td>
                                 <td><a class="btn btn-neutral" href="{{ path("zpb_admin_zoo_press_release_update", {id: entity.id}) }}"><i class="fa fa-edit"></i></a></td>
-                                <td><a class="btn btn-neutral alert-delete" href="{{ path("zpb_admin_zoo_press_release_delete", {id: entity.id, _token: csrf_token('delete_press_release')}) }}" data-name="{{ entity.name }}"><i class="fa fa-trash-o"></i></a></td>
+                                <td><a class="btn btn-neutral alert-delete" href="{{ path("zpb_admin_zoo_press_release_delete", {id: entity.id, _token: csrf_token('delete_press_release')}) }}" data-name="{{ entity.title }}"><i class="fa fa-trash-o"></i></a></td>
                             </tr>
                         {% endfor %}
                     {% endif %}

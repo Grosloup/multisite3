@@ -52,11 +52,35 @@
                 <div class="tile-header">
                     upload pdf en français
                 </div>
+                <div class="dropzone" id="dropzone-pdf-fr">
+                    <div class="dropzone-in" id="dropzone-img">
+                        <div class="dropzone-legend"></div>
+                    </div>
+                    <div class="dropzone-loader">
+                        <div class="dropzone-innerbar" id="dropzone-progress"></div>
+                    </div>
+                    <div class="dropzone-message"></div>
+                    <div class="dropzone-actions hide">
+                        <a class="btn btn-primary dropzone-delete-btn" href="#">Supprimer le fichier</a>
+                    </div>
+                </div>
             </div>
 
             <div class="tile">
                 <div class="tile-header">
                     upload pdf en anglais
+                </div>
+                <div class="dropzone" id="dropzone-pdf-en">
+                    <div class="dropzone-in" id="dropzone-img">
+                        <div class="dropzone-legend"></div>
+                    </div>
+                    <div class="dropzone-loader">
+                        <div class="dropzone-innerbar" id="dropzone-progress"></div>
+                    </div>
+                    <div class="dropzone-message"></div>
+                    <div class="dropzone-actions hide">
+                        <a class="btn btn-primary dropzone-delete-btn" href="#">Supprimer le fichier</a>
+                    </div>
                 </div>
             </div>
 
@@ -64,9 +88,25 @@
                 <div class="tile-header">
                     upload image d'illustration
                 </div>
+                <div class="dropzone" id="dropzone-img">
+                    <div class="dropzone-in" id="dropzone-img">
+                        <div class="dropzone-legend"></div>
+                    </div>
+                    <div class="dropzone-loader">
+                        <div class="dropzone-innerbar" id="dropzone-progress"></div>
+                    </div>
+                    <div class="dropzone-message"></div>
+                    <div class="dropzone-actions hide">
+                        <a class="btn btn-primary dropzone-delete-btn" href="#">Supprimer le fichier</a>
+                    </div>
+                </div>
             </div>
 
         </div>
         <div class="column-1"></div>
     </div>
+{% endblock %}
+{% block footScripts %}
+    {{ parent() }}
+    <script src="/js/admin/newPressRelease.min.js"></script>
 {% endblock %}
