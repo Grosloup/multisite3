@@ -46,8 +46,8 @@ class LoadMediaImage extends AbstractFixture implements OrderedFixtureInterface,
         $imgFactory = $this->container->get('zpb.image_factory');
         //$resizer = $this->container->get('zpb.photo_resizer');
         $finder = new Finder();
-        $fixturesPhotosTmpDir = $this->container->getParameter('zpb.medias.options')['zpb.photo.root_dir'] .
-            'fixtures/photos/tmp/';
+        $fixturesPhotosTmpDir = $this->container->getParameter('zpb.medias.options')['zpb.img.root_dir'] .
+            'fixtures/imgs/tmp/';
         $finder->files()->in($fixturesPhotosTmpDir)->ignoreDotFiles(true);
         $k = 1;
 

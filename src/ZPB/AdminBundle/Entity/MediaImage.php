@@ -143,7 +143,7 @@ class MediaImage implements ResizeableInterface
 
     public function upload()
     {
-        if (!$this->file) {
+        if ($this->file == null) {
             return false;
         }
 
