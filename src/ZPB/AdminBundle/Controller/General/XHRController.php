@@ -196,4 +196,42 @@ class XHRController extends BaseController
         return new JsonResponse($response);
 
     }
+
+    public function openRestoAction($id, Request $request)
+    {
+        if(!$request->isMethod("GET") || !$request->isXmlHttpRequest()){
+            throw $this->createAccessDeniedException();
+        }
+        $response = ['error'=>true, 'msg'=>''];
+        $resto = $this->getRepo('ZPBAdminBundle:Restaurant')->find($id);
+        if(!$resto){
+            $response['msg'] = 'Restaurant introuvable.';
+        } else {
+            $resto->setIsOpen(true);
+            $this->getManager()->persist($resto);
+            $this->getManager()->flush();
+            $response['error'] = false;
+            $response['msg'] = 'Restaurant modifié';
+        }
+        return new JsonResponse($response);
+    }
+
+    public function closeRestoAction($id, Request $request)
+    {
+        if(!$request->isMethod("GET") || !$request->isXmlHttpRequest()){
+            throw $this->createAccessDeniedException();
+        }
+        $response = ['error'=>true, 'msg'=>''];
+        $resto = $this->getRepo('ZPBAdminBundle:Restaurant')->find($id);
+        if(!$resto){
+            $response['msg'] = 'Restaurant introuvable.';
+        } else {
+            $resto->setIsOpen(false);
+            $this->getManager()->persist($resto);
+            $this->getManager()->flush();
+            $response['error'] = false;
+            $response['msg'] = 'Restaurant modifié';
+        }
+        return new JsonResponse($response);
+    }
 }

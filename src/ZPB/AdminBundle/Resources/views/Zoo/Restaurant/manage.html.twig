@@ -19,7 +19,8 @@
                     <tr>
                         <th>#Id</th>
                         <th>Nom</th>
-                        <th>Est ouvert</th>
+                        <th>Etat</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -30,10 +31,15 @@
                             <tr>
                                 <td>{{ entity.id }}</td>
                                 <td>{{ entity.name }}</td>
-                                <td><input type="checkbox" {% if entity.isOpen == true %}checked="checked"{% endif %}/> {% if entity.isOpen == true %}ouvert{% else %}fermé{% endif %}</td>
+                                <td>
+                                    <span id="state-{{ entity.id }}">{% if entity.isOpen == true %}ouvert{% else %}fermé{% endif %}</span></td>
+                                <td class="actions" data-resto="{{ entity.id }}" data-state="{% if entity.isOpen == true %}on{% else %}off{% endif %}">
 
+                                        <button class="btn btn-danger closer" >Fermer ce restaurant</button>
 
+                                        <button class="btn btn-success opener">Ouvrir ce restaurant</button>
 
+                                </td>
                             </tr>
                         {% endfor %}
                     {% endif %}
@@ -43,4 +49,53 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block footScripts %}
+    {{ parent() }}
+
+    <script>
+        $(function(){
+            var actions = $(".actions");
+
+            actions.each(function(){
+                var state = $(this).data("state");
+                var opener = $(this).find(".opener");
+                var closer = $(this).find(".closer");
+                var id = $(this).data("resto");
+                if(state == "on"){
+                    opener.hide();
+                } else {
+                    closer.hide();
+                }
+
+                opener.on('click', function(e){
+                    e.preventDefault();
+                    $.get("/xhr/open-resto/" + id).done(function(response){
+                        if(response.error){
+
+                        } else {
+                            opener.hide();
+                            closer.show();
+                            $("#state-" + id).text("ouvert");
+                        }
+                    });
+                });
+
+                closer.on('click', function(e){
+                    e.preventDefault();
+                    $.get("/xhr/close-resto/" + id).done(function(response){
+                        if(response.error){
+
+                        } else {
+                            closer.hide();
+                            opener.show();
+                            $("#state-" + id).text("fermer");
+                        }
+                    });
+                });
+            });
+
+
+        });
+    </script>
 {% endblock %}

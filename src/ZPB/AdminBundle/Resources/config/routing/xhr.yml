@@ -19,6 +19,21 @@ zpb_admin_xhr_img_resto_delete:
     requirements:
         id: \d+
 zpb_admin_xhr_img_get_id:
-    path: /xhr/get-img-id
+    path: /get-img-id
     defaults: { _controller: ZPBAdminBundle:General/XHR:getImgId }
     methods: ["POST"]
+
+zpb_admin_xhr_open_resto:
+    path: /open-resto/{id}
+    defaults: { _controller: ZPBAdminBundle:General/XHR:openResto }
+    methods: ["GET"]
+    requirements:
+        id: \d+
+
+zpb_admin_xhr_close_resto:
+    path: /close-resto/{id}
+    defaults: { _controller: ZPBAdminBundle:General/XHR:closeResto }
+    methods: ["GET"]
+    requirements:
+        id: \d+
+
