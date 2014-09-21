@@ -80,3 +80,7 @@ zpb_admin_xhrs_routes:
 zpb_admin_zoo_static_pages_routes:
     prefix: /zoo/pages-statiques
     resource: "@ZPBAdminBundle/Resources/config/routing/zoo_static_pages.yml"
+
+zpb_admin_zoo_restaurants_routes:
+    prefix: /zoo/restaurants
+    resource: "@ZPBAdminBundle/Resources/config/routing/zoo_restaurants.yml"

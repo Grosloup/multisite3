@@ -1,0 +1,30 @@
+zpb_admin_zoo_restaurants_list:
+    path: /
+    defaults: { _controller: ZPBAdminBundle:Zoo/Restaurant:list}
+    methods: ["GET"]
+
+
+
+zpb_admin_zoo_restaurants_create:
+    path: /nouveau
+    defaults: { _controller: ZPBAdminBundle:Zoo/Restaurant:create}
+    methods: ["GET","POST"]
+
+
+
+
+zpb_admin_zoo_restaurants_update:
+    path: /modifier/{id}
+    defaults: { _controller: ZPBAdminBundle:Zoo/Restaurant:update}
+    methods: ["GET","POST"]
+    requirements:
+        id: \d+
+
+
+
+zpb_admin_zoo_restaurants_delete:
+    path: /supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:Zoo/Restaurant:delete}
+    methods: ["GET"]
+    requirements:
+        id: \d+

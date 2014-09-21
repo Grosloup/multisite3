@@ -42,7 +42,8 @@ class PratiqueController extends BaseController
 
     public function restoAction()
     {
-        return $this->render('ZPBSitesZooBundle:Pratique:resto.html.twig', []);
+        $restos = $this->getRepo('ZPBAdminBundle:Restaurant')->findAll();
+        return $this->render('ZPBSitesZooBundle:Pratique:resto.html.twig', ['restos'=>$restos]);
     }
 
     public function servicesAction()
