@@ -13,14 +13,16 @@
   @include row;
   .row, .spaced-row{
     [class^="col5-"]:first-child, [class*=" col5-"]:first-child,
-    [class^="col5-"]:first-child, [class*=" col5-"]:first-child
+    [class^="col4-"]:first-child, [class*=" col4-"]:first-child,
+    [class^="col-"]:first-child, [class*=" col-"]:first-child
     {
-      padding: 0;
+      padding-left: 0;
     }
     [class^="col5-"]:last-child, [class*=" col5-"]:last-child,
-    [class^="col5-"]:last-child, [class*=" col5-"]:last-child
+    [class^="col4-"]:last-child, [class*=" col4-"]:last-child,
+    [class^="col-"]:last-child, [class*=" col-"]:last-child
     {
-      padding: 0;
+      padding-right: 0;
     }
 
   }
