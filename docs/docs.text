@@ -28,8 +28,10 @@ LoadSponsoring                  => 50
 LoadAnimations                  => 60
 
 LoadFaqs                        => 75
+LoadMediaPdfs                   => 100
 
 
 LoadStaticPages                 => 200
+LoadPressReleases               => 230
 LoadRestos                      => 250
 LoadPhotoStats                  => 300
