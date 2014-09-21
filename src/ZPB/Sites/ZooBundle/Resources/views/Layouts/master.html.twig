@@ -78,7 +78,7 @@
         {% block content %}{% endblock %}
 
     {% endblock %}
-
+{{ render(controller("ZPBSitesZooBundle:Navs:secondaryMainbar", {active_page: active_page})) }}
 {{ render(controller("ZPBSitesZooBundle:Partials:footer")) }}
 
 {% block footScripts %}

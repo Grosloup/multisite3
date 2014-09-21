@@ -12,3 +12,46 @@
 }
 
 
+#seconday-mainbar-wrapper{
+  background-color: #515151;
+  padding: 50px 0;
+  margin-bottom: -16px;
+  color: $blanc;
+  font-family: "cooper_hewitt_book", Arial, Helvetica, sans-serif;
+  a{
+    color: $blanc;
+    font-family: "cooper_hewitt_book", Arial, Helvetica, sans-serif;
+    &:hover{
+      color: $bleu;
+    }
+    &.menu-block-header{
+      display: block;
+      padding: 15px 0 5px;
+      font-family: "cooper_hewitt_semi_bold", Arial, Helvetica, sans-serif;
+
+    }
+  }
+  .menu-block{
+    &.active{
+      .menu-block-header{
+        color: $jaune;
+      }
+    }
+    ul{
+      li{
+        padding-bottom: 3px;
+        margin-top: 3px;
+        border-bottom: 1px solid rgba($blanc, 0.2);
+        &:first-child{
+          border-bottom: 1px solid rgba($blanc, 0.2);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1030px){
+  #seconday-mainbar-wrapper{
+    display: none;
+  }
+}

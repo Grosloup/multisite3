@@ -4,17 +4,13 @@
 {% set news_pages = ["news","single_post", "cat_posts", "tag_posts"] %}
 {% set social_pages = ["social"] %}
 {% set shop_pages = ["shop"] %}
-
-
-
-<div id="stickytop">
+<div id="seconday-mainbar-wrapper">
     <div class="container">
-        <div id="main-menu">
-            <a href="{{path("zpb_sites_zoo_homepage")}}" class="logo">{{ include("ZPBSitesZooBundle:incs:logo_zooparc_svg.html.twig") }}</a>
-            <a href="#seconday-mainbar-wrapper" id="menu-toggler"></a>
-            <nav>
-                <ul>
-                    <li class="dropdown{% if active_page in practicle_pages %} active{% endif %}"><a href="javascript:void(0)">Pratique</a>
+        <div class="row">
+            <nav id="secondary-mainbar">
+                <div class="col-1">
+                    <div class="menu-block {% if active_page in practicle_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">Pratique</a>
                         <ul>
                             <li><a href="{{ path("zpb_sites_zoo_pratique_acces_tarifs_horaires") }}">Accès, horaires, tarifs</a></li>
                             <li><a href="{{ path("zpb_sites_zoo_pratique_animations") }}">Animations</a></li>
@@ -23,8 +19,12 @@
                             <li><a href="{{ path("zpb_sites_zoo_pratique_services") }}">Services</a></li>
                             <li><a href="{{ url("zpb_sites_hotels_homepage") }}">Dormir à Beauval</a></li>
                         </ul>
-                    </li>
-                    <li class="dropdown{% if active_page in zooparc_pages %} active{% endif %}"><a href="javascript:void(0)">ZooParc</a>
+                    </div>
+
+                </div>
+                <div class="col-1">
+                    <div class="menu-block{% if active_page in zooparc_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">ZooParc</a>
                         <ul>
                             <li><a href="">Les univers</a></li>
                             <li><a href="">Historique</a></li>
@@ -32,25 +32,48 @@
                             <li><a href="">Développement durable</a></li>
                             <li><a href="{{  path("zpb_sites_zoo_phototheque_index") }}">Galerie photo</a></li>
                         </ul>
-                    </li>
-                    <li class="dropdown{% if active_page in pedago_pages %} active{% endif %}"><a href="javascript:void(0)">Pédagogie</a>
+                    </div>
+
+                </div>
+                <div class="col-1">
+                    <div class="menu-block{% if active_page in pedago_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">Pédagogie</a>
                         <ul>
                             <li><a href="">Carnets pédagogiques</a></li>
                             <li><a href="">Activités pédagogiques</a></li>
                             <li><a href="">Panneaux pédagogiques</a></li>
                             <li><a href="">Offres scolaires</a></li>
                         </ul>
-                    </li>
-                    <li class="dropdown{% if active_page in news_pages %} active{% endif %}"><a href="javascript:void(0)">Actualité</a>
+                    </div>
+
+                </div>
+                <div class="col-1">
+                    <div class="menu-block{% if active_page in news_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">Actualité</a>
                         <ul>
                             <li><a href="{{ path("zpb_sites_zoo_actualites_nouveautes") }}">Nouveautés</a></li>
                             <li><a href="{{ path("zpb_sites_zoo_actualites_homepage") }}">Fil d'actualités</a></li>
                         </ul>
-                    </li>
-                    <li class="{% if active_page in social_pages %}active{% endif %}"><a href="">Communauté</a></li>
-                    <li class="{% if active_page in shop_pages %}active{% endif %}"><a href="">Boutique</a></li>
-                </ul>
+                    </div>
+
+                </div>
+                <div class="col-1">
+                    <div class="menu-block{% if active_page in social_pages %} active{% endif %}">
+                        <a href="#" class="menu-block-header">Communauté</a>
+                    </div>
+
+
+                </div>
+                <div class="col-1">
+                    <div class="menu-block{% if active_page in shop_pages %} active{% endif %}">
+                        <a href="#" class="menu-block-header">Boutique</a>
+                    </div>
+
+                </div>
+
             </nav>
         </div>
     </div>
 </div>
+
+
