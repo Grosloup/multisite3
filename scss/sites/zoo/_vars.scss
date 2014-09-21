@@ -92,8 +92,8 @@ $shmn_stuck_subMenu_linkPaddingLeft: 10;
 $shmn_stuck_subMenu_linkColor: $grisFonce;
 $shmn_stuck_subMenu_linkHoverColor: $blanc;
 $shmn_stuck_subMenu_linkHoverBgColor: $bleu;
-$shmn_stuck_logo_paddingLeft: 0;
-$shmn_stuck_logo_paddingRight: 0;
+$shmn_stuck_logo_paddingLeft: $gridGutter;
+$shmn_stuck_logo_paddingRight: 15;
   /***************************************\
     site-header => boutons spéciaux bs_
   \***************************************/
