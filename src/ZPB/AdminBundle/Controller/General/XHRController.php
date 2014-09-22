@@ -249,6 +249,72 @@ class XHRController extends BaseController
         return new JsonResponse($response);
     }
 
+    public function updateCommuniquePdfAction(Request $request)
+    {
+        if(!$request->isMethod("POST") || !$request->isXmlHttpRequest()){
+            throw $this->createAccessDeniedException();
+        }
+        $fs = $this->get('filesystem');
+        $response = ['error'=>false,'msg'=>'', 'pdfFilename'=>''];
+        $id = $request->headers->get('X-File-Id');
+        $filename = $request->headers->get('X-File-Name');
+        if(!$filename){
+            $response = ['error'=>true,'msg'=>'Données insuffisantes', 'pdfFilename'=>''];
+        } else {
+            if(!$id){
+                $response = ['error'=>true,'msg'=>'Données insuffisantes', 'pdfFilename'=>''];
+            } else {
+                $pr = $this->getRepo('ZPBAdminBundle:PressRelease')->find($id);
+                if(!$pr){
+                    $response = ['error'=>true,'msg'=>'Conmmuniqué introuvable', 'pdfFilename'=>''];
+                } else {
+                    $basePath = $this->container->getParameter('zpb.medias.options')['zpb.pdf.root_dir'] . $this->container->getParameter('zpb.medias.options')['zpb.pdf.web_dir'];
+                    if(!$fs->exists($basePath)){
+                        $fs->mkdir($basePath);
+                    }
+                    if(!$fs->exists(rtrim($basePath, '/') . '/backup')){
+                        $fs->mkdir(rtrim($basePath, '/') . '/backup');
+                    }
+                    $path = rtrim($basePath, '/') . '/' . $filename;
+                    if($fs->exists($path)){
+                        $fs->copy($path, rtrim($basePath, '/') . '/backup/' . $filename);
+                        $fs->remove($path);
+                    }
+                    file_put_contents($path, $request->getContent());
+                    $file = new File($path);
+                    if(!in_array($file->getMimeType(), ['application/pdf'])){
+                        $fs->remove($path);
+                        $file = null;
+                        $response['error'] = true;
+                        $response['msg'] = 'Le fichier n\'est pas d\'un format acceptable.';
+                        $fs->rename(rtrim($basePath, '/') . '/backup/' . $filename, $path);
+                    } else {
+                        $pdf = $this->get('zpb.pdf_factory')->createFromFile($file);
+                        if(null != $institutionSlug = $request->headers->get('X-File-Institution', null)){
+                            $institution = $this->getRepo('ZPBAdminBundle:Institution')->findOneBySlug($institutionSlug);
+                            if($institution){
+                                $pdf->setInstitution($institution);
+                            }
+                        }
+                        try{
+                            $test = $this->getRepo('ZPBAdminBundle:MediaPdf')->findOneByFilename($pdf->getFilename());
+                            if($test){
+                                $this->getManager()->remove($test);
+                                $this->getManager()->flush();
+                            }
+                            $this->getManager()->persist($pdf);
+                            $this->getManager()->flush();
+                            $response = ['error'=>false,'msg'=>'Transfert réussi', 'pdfFilename'=>$pdf->getFilename()];
+                        } catch(\Exception $e){
+                            $response = ['error'=>true,'msg'=>$e->getMessage(), 'pdfFilename'=>''];
+                        }
+                    }
+                }
+            }
+        }
+        return new JsonResponse($response);
+    }
+
     public function openRestoAction($id, Request $request)
     {
         if(!$request->isMethod("GET") || !$request->isXmlHttpRequest()){

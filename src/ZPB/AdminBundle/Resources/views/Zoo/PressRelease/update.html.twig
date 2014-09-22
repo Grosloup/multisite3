@@ -1,0 +1,111 @@
+{% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
+
+{% block title %}Modifier un communiqué de presse | ZooParc de Beauval{% endblock %}
+{% set active = "update_com" %}
+
+{% block content %}
+    <div class="row">
+        <div class="column-1"></div>
+        <div class="column-6">
+            <div class="tile">
+                <div class="tile-header">
+                    Modifier un communiqué de presse
+                </div>
+                {{ form_start(form, {attr:{class: "form",novalidate: true}}) }}
+                {{ form_errors(form) }}
+
+                <div class="form-row {% if form.title.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.title) }}
+                    <div class="form-field">
+                        {{ form_widget(form.title) }}
+                        {% if form.title.vars.errors|length>0 %}
+                            <div class="error-block">
+                                {{ form_errors(form.title)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.body.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.body) }}
+                    <div class="form-field">
+                        {{ form_widget(form.body) }}
+                        {% if form.body.vars.errors|length>0 %}
+                            <div class="error-block">
+                                {{ form_errors(form.body)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    {{ form_widget(form.save, {attr: {class: "btn-flat btn-primary"}})}}
+                </div>
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+        <div class="column-4">
+            <div class="tile">
+                <div class="tile-header">
+                    Ajouter/remplacer le pdf en français
+                </div>
+                <div class="dropzone" id="dropzone-pdf-fr" data-id="{{ form.vars.value.id }}" data-pdf="{{ form.vars.value.pdfFr}}">
+                    <div class="dropzone-in" id="dropzone-img">
+                        <div class="dropzone-legend"></div>
+                    </div>
+                    <div class="dropzone-loader">
+                        <div class="dropzone-innerbar" id="dropzone-progress"></div>
+                    </div>
+                    <div class="dropzone-message"></div>
+                    <div class="dropzone-actions hide">
+                        <a class="btn btn-primary dropzone-delete-btn" href="#">Supprimer le fichier</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tile-header">
+                    Ajouter/remplacer le pdf en anglais
+                </div>
+                <div class="dropzone" id="dropzone-pdf-en" data-id="{{ form.vars.value.id }}" data-pdf="{{ form.vars.value.pdfEn}}">
+                    <div class="dropzone-in" id="dropzone-img">
+                        <div class="dropzone-legend"></div>
+                    </div>
+                    <div class="dropzone-loader">
+                        <div class="dropzone-innerbar" id="dropzone-progress"></div>
+                    </div>
+                    <div class="dropzone-message"></div>
+                    <div class="dropzone-actions hide">
+                        <a class="btn btn-primary dropzone-delete-btn" href="#">Supprimer le fichier</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tile-header">
+                    Ajouter/remplacer l'image d'illustration
+                </div>
+                <div class="dropzone" id="dropzone-img">
+                    <div class="dropzone-in" id="dropzone-img" data-id="{{ form.vars.value.id }}" data-img="{% if form.vars.value.image != null %}{{ form.vars.value.image.filename}}{% endif %}">
+                        <div class="dropzone-legend"></div>
+                    </div>
+                    <div class="dropzone-loader">
+                        <div class="dropzone-innerbar" id="dropzone-progress"></div>
+                    </div>
+                    <div class="dropzone-message"></div>
+                    <div class="dropzone-actions hide">
+                        <a class="btn btn-primary dropzone-delete-btn" href="#">Supprimer le fichier</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="column-1"></div>
+    </div>
+{% endblock %}
+
+{% block footScripts %}
+    {{ parent() }}
+    <script src="/js/admin/updatePressRelease.min.js"></script>
+{% endblock %}

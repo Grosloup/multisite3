@@ -28,13 +28,16 @@
             <div class="col-6">
                 <h4>Télécharger</h4>
                 <div class="row">
-                    {% for photo in photos %}
-                        <div class="col-1">
-                            <a class="thumb" href="{{ path("zpb_sites_zoo_download_image", {filename: photo.filename}) }}">
-                                <img src="{{ photo_factory.getWebThumb('regular', photo) }}" alt="" title="{{ photo.title~photo.copyright }}" width="100%"/>
-                            </a>
-                        </div>
-                    {% endfor %}
+                    <ul class="grid-6">
+                        {% for photo in photos %}
+                            <li >
+                                <a class="thumb" href="{{ path("zpb_sites_zoo_download_image", {filename: photo.filename}) }}">
+                                    <img src="{{ photo_factory.getWebThumb('regular', photo) }}" alt="" title="{{ photo.title~photo.copyright }}" width="100%"/>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+
                 </div>
             </div>
         </div>
