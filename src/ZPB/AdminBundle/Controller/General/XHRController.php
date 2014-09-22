@@ -278,7 +278,11 @@ class XHRController extends BaseController
                     $path = rtrim($basePath, '/') . '/' . $filename;
                     if($fs->exists($path)){
                         $fs->copy($path, rtrim($basePath, '/') . '/backup/' . $filename);
-                        $fs->remove($path);
+                        $test = $this->getRepo('ZPBAdminBundle:MediaPdf')->findOneByFilename(pathinfo($filename, PATHINFO_FILENAME));
+                        if($test){
+                            $this->getManager()->remove($test);
+                            $this->getManager()->flush();
+                        }
                     }
                     file_put_contents($path, $request->getContent());
                     $file = new File($path);
@@ -297,11 +301,7 @@ class XHRController extends BaseController
                             }
                         }
                         try{
-                            $test = $this->getRepo('ZPBAdminBundle:MediaPdf')->findOneByFilename($pdf->getFilename());
-                            if($test){
-                                $this->getManager()->remove($test);
-                                $this->getManager()->flush();
-                            }
+
                             $this->getManager()->persist($pdf);
                             $this->getManager()->flush();
                             $response = ['error'=>false,'msg'=>'Transfert réussi', 'pdfFilename'=>$pdf->getFilename()];
