@@ -41,37 +41,30 @@
 
         function loadFunc(e){
             var response = $.parseJSON(e.target.responseText);
-
             if(response.error){
                 message.text(response.msg);
                 progressBar.width(0+"%");
                 zone.data('droppable', true);
             } else {
-                /*dropin.after(response.html);*/
                 dropin.hide();
                 message.text(response.msg);
                 progressBar.width(0+"%");
                 progressBar.parent().hide();
-                /*actions.removeClass("hide").addClass('show');*/
                 zone.data('droppable', false);
                 if(opts.targetId){
                     $(opts.targetId).val(response.pdfFilename);
                 }
             }
         }
-
         function progressFunc(e){
             if(e.lengthComputable){
                 var percent = Math.round((e.loaded/ e.total) * 100) + "%";
                 progressBar.width(percent);
             }
         }
-
         xhr.addEventListener("load", loadFunc, false);
         xhr.upload.addEventListener("progress", progressFunc, false);
-
         xhr.open('post', opts.url, true);
-
         xhr.setRequestHeader('X-Requested-With','XMLHttpRequest');
         xhr.setRequestHeader('Content-Type','multipart/form-data');
         xhr.setRequestHeader('X-File-Name',file.name);
@@ -81,29 +74,21 @@
         if(opts.institution){
             xhr.setRequestHeader('X-File-Institution', opts.institution);
         }
-
-
-        /*xhr.setRequestHeader('X-File-Id',zone.data('longid'));*/
-
         xhr.send(file);
     }
 
     $.fn.uploadPdf = function(options){
         var opts = $.extend({}, uploadPdfOptions, options || {});
-
         this.each(function(){
             var $this = $(this), legend = $this.find(".dropzone-legend");
-            /*var deleteBtn = $this.find(opts.deleteBtn);*/
             var progressBar = $this.find(opts.progressbar);
             var message = $this.find(opts.message);
-            /*var actions = $this.find(opts.actions);*/
             var dropin = $this.find(opts.droparea);
             legend.text(opts.legend);
             $this.data('droppable', true);
             $this.on({
                 dragenter: function(e){
                     e.preventDefault();
-
                 },
                 dragover: function(e){
                     e.preventDefault();
@@ -112,7 +97,6 @@
                 dragleave: function(e){
                     e.preventDefault();
                     $(this).removeClass(opts.hover);
-
                 },
                 drop: function(e){
                     e.preventDefault();
@@ -123,35 +107,9 @@
 
                 }
             });
-
-            /*deleteBtn.on("click", function(e){
-                e.preventDefault();
-                var img = $this.find("img");
-                var id = img.data("id");
-
-                $this.data('droppable', true);
-                if(id){
-                    $.get(opts.deleteImgUrl + '/' + id).done(function(resp){
-                        if(resp.error){
-                            message.text('Une erreur est survenue !');
-                        } else {
-                            img.remove();
-                            progressBar.parent().show();
-                            message.text('');
-                            actions.removeClass("show").addClass("hide");
-                            dropin.show();
-                        }
-                    }).fail(function(){
-                        message.text('Une erreur est survenue !');
-                    });
-                }
-            });*/
         });
-
     }
 })(jQuery, this, document);
-
-
 $(function(){
     var pdfFr = $("#dropzone-pdf-fr");
     var pdfEn = $("#dropzone-pdf-en");
