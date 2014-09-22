@@ -17,7 +17,7 @@
         deleteImgUrl: '',
         institution: '',
         targetId : null,
-        filename: null,
+        lang: 'fr',
         id: null
     };
 
@@ -80,7 +80,7 @@
         xhr.setRequestHeader('X-File-Name',file.name);
         xhr.setRequestHeader('X-File-Type',file.type);
         xhr.setRequestHeader('X-File-Size',file.size);
-        xhr.setRequestHeader('X-File-Filename',opts.filename);
+        xhr.setRequestHeader('X-File-Lang',opts.lang);
         xhr.setRequestHeader('X-File-Id',opts.id);
 
         if(opts.institution){
@@ -131,6 +131,6 @@ $(function(){
     var pdfFr = $("#dropzone-pdf-fr");
     var pdfEn = $("#dropzone-pdf-en");
 
-    pdfFr.uploadPdf({url: "/xhr/update/communique/pdf", institution: "zooparc-de-beauval", targetId: "#press_release_form_pdfFr", filename: pdfFr.data("pdf"), id: pdfFr.data("id")});
-    pdfEn.uploadPdf({url: "/xhr/update/communique/pdf", institution: "zooparc-de-beauval", targetId: "#press_release_form_pdfEn", filename: pdfEn.data("pdf"), id: pdfEn.data("id")});
+    pdfFr.uploadPdf({url: "/xhr/update/communique/pdf", institution: "zooparc-de-beauval", targetId: "#press_release_form_pdfFr", id: pdfFr.data('id')});
+    pdfEn.uploadPdf({url: "/xhr/update/communique/pdf", institution: "zooparc-de-beauval", targetId: "#press_release_form_pdfEn", id: pdfEn.data('id'), lang: 'en'});
 });

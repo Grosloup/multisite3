@@ -212,14 +212,20 @@ class XHRController extends BaseController
             if(!$fs->exists($basePath)){
                 $fs->mkdir($basePath);
             }
-            $path = $basePath . '/' . $filename;
+            $lang = $request->headers->get('X-File-Lang');
+            if($lang && $lang != 'fr'){
+                $lang .= '_';
+            } else {
+                $lang = '';
+            }
+            $path = $basePath . $lang . $filename;
             if($fs->exists($path)){
                 $response['error'] = true;
                 $response['msg'] = 'Un fichier du même nom existe déjà.';
             } else {
                 file_put_contents($path, $request->getContent());
                 $file = new File($path);
-                if(!in_array($file->getMimeType(), ['application/pdf', 'image/gif', 'image/png'])){
+                if(!in_array($file->getMimeType(), ['application/pdf'])){
                     $fs->remove($path);
                     $file = null;
                     $response['error'] = true;
@@ -256,43 +262,51 @@ class XHRController extends BaseController
         }
         $fs = $this->get('filesystem');
         $response = ['error'=>false,'msg'=>'', 'pdfFilename'=>''];
-        $id = $request->headers->get('X-File-Id');
+
         $filename = $request->headers->get('X-File-Name');
+
         if(!$filename){
             $response = ['error'=>true,'msg'=>'Données insuffisantes', 'pdfFilename'=>''];
         } else {
-            if(!$id){
-                $response = ['error'=>true,'msg'=>'Données insuffisantes', 'pdfFilename'=>''];
+            $basePath = $this->container->getParameter('zpb.medias.options')['zpb.pdf.root_dir'] . $this->container->getParameter('zpb.medias.options')['zpb.pdf.web_dir'];
+            if(!$fs->exists($basePath)){
+                $fs->mkdir($basePath);
+            }
+            $tmpPathDir = $basePath . 'tmp/';
+            if(!$fs->exists($tmpPathDir)){
+                $fs->mkdir($tmpPathDir);
+            }
+            $lang = $request->headers->get('X-File-Lang');
+            if($lang && $lang != 'fr'){
+                $lang .= '_';
             } else {
-                $pr = $this->getRepo('ZPBAdminBundle:PressRelease')->find($id);
-                if(!$pr){
-                    $response = ['error'=>true,'msg'=>'Conmmuniqué introuvable', 'pdfFilename'=>''];
-                } else {
-                    $basePath = $this->container->getParameter('zpb.medias.options')['zpb.pdf.root_dir'] . $this->container->getParameter('zpb.medias.options')['zpb.pdf.web_dir'];
-                    if(!$fs->exists($basePath)){
-                        $fs->mkdir($basePath);
+                $lang = '';
+            }
+            $tmpPath = $tmpPathDir . $lang . $filename;
+            $path = $basePath  . $lang . $filename;
+            file_put_contents($tmpPath, $request->getContent());
+            $tmpFile = new File($tmpPath);
+            if(!in_array($tmpFile->getMimeType(), ['application/pdf'])){
+                $fs->remove($tmpPath);
+                $tmpFile = null;
+                $response = ['error'=>true,'msg'=>'Le fichier n\'est pas d\'un format acceptable.', 'pdfFilename'=>''];
+            } else {
+                if($fs->exists($path)){
+                    if($lang == ''){
+                        $testPr = $this->getRepo('ZPBAdminBundle:PressRelease')->findOneByPdfFr(pathinfo($filename, PATHINFO_FILENAME));
+                    } else {
+                        $testPr = $this->getRepo('ZPBAdminBundle:PressRelease')->findOneByPdfEn('en_' . pathinfo($filename, PATHINFO_FILENAME));
                     }
-                    if(!$fs->exists(rtrim($basePath, '/') . '/backup')){
-                        $fs->mkdir(rtrim($basePath, '/') . '/backup');
-                    }
-                    $path = rtrim($basePath, '/') . '/' . $filename;
-                    if($fs->exists($path)){
-                        $fs->copy($path, rtrim($basePath, '/') . '/backup/' . $filename);
+
+                    if(!$testPr || $testPr->getId() == $request->headers->get('X-File-Id')){
                         $test = $this->getRepo('ZPBAdminBundle:MediaPdf')->findOneByFilename(pathinfo($filename, PATHINFO_FILENAME));
                         if($test){
                             $this->getManager()->remove($test);
                             $this->getManager()->flush();
                         }
-                    }
-                    file_put_contents($path, $request->getContent());
-                    $file = new File($path);
-                    if(!in_array($file->getMimeType(), ['application/pdf'])){
                         $fs->remove($path);
-                        $file = null;
-                        $response['error'] = true;
-                        $response['msg'] = 'Le fichier n\'est pas d\'un format acceptable.';
-                        $fs->rename(rtrim($basePath, '/') . '/backup/' . $filename, $path);
-                    } else {
+                        $fs->rename($tmpPath, $path);
+                        $file = new File($path);
                         $pdf = $this->get('zpb.pdf_factory')->createFromFile($file);
                         if(null != $institutionSlug = $request->headers->get('X-File-Institution', null)){
                             $institution = $this->getRepo('ZPBAdminBundle:Institution')->findOneBySlug($institutionSlug);
@@ -300,18 +314,31 @@ class XHRController extends BaseController
                                 $pdf->setInstitution($institution);
                             }
                         }
-                        try{
+                        $this->getManager()->persist($pdf);
+                        $this->getManager()->flush();
+                    } else {
+                        $pdf = $this->getRepo('ZPBAdminBundle:MediaPdf')->findOneByFilename(pathinfo($filename, PATHINFO_FILENAME));
+                    }
 
-                            $this->getManager()->persist($pdf);
-                            $this->getManager()->flush();
-                            $response = ['error'=>false,'msg'=>'Transfert réussi', 'pdfFilename'=>$pdf->getFilename()];
-                        } catch(\Exception $e){
-                            $response = ['error'=>true,'msg'=>$e->getMessage(), 'pdfFilename'=>''];
+
+
+                } else {
+                    $fs->rename($tmpPath, $path);
+                    $file = new File($path);
+                    $pdf = $this->get('zpb.pdf_factory')->createFromFile($file);
+                    if(null != $institutionSlug = $request->headers->get('X-File-Institution', null)){
+                        $institution = $this->getRepo('ZPBAdminBundle:Institution')->findOneBySlug($institutionSlug);
+                        if($institution){
+                            $pdf->setInstitution($institution);
                         }
                     }
+                    $this->getManager()->persist($pdf);
+                    $this->getManager()->flush();
                 }
+                $response = ['error'=>false,'msg'=>'Transfert réussi', 'pdfFilename'=>$pdf->getFilename()];
             }
         }
+
         return new JsonResponse($response);
     }
 
