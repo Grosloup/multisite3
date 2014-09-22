@@ -19,6 +19,8 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            new SunCat\MobileDetectBundle\MobileDetectBundle(),
+
             new ZPB\AdminBundle\ZPBAdminBundle(),
             new ZPB\Sites\ZooBundle\ZPBSitesZooBundle(),
             new ZPB\Sites\BNBundle\ZPBSitesBNBundle(),

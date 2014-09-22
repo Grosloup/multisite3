@@ -35,3 +35,9 @@ LoadStaticPages                 => 200
 LoadPressReleases               => 230
 LoadRestos                      => 250
 LoadPhotoStats                  => 300
+
+knp-snappy => pdf
+mobile detect
+Installer modify headers sur firefox
+list user-agent: http://user-agent-string.info/list-of-ua
+
