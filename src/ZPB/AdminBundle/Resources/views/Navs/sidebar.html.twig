@@ -88,6 +88,9 @@
                         </li>
                     </ul>
                 </nav>
+                //***********************************************************************\\
+                                                PARRAINAGES
+                //***********************************************************************\\
                 <nav class="menu">
                     <h3 class="menu-title">Parrainages</h3>
                     <ul>
@@ -128,6 +131,9 @@
                         </li>
                     </ul>
                 </nav>
+                //***********************************************************************\\
+                                                ANIMATIONS
+                //***********************************************************************\\
                 <nav class="menu">
                     <h3 class="menu-title">Animations</h3>
                     <ul>
@@ -156,9 +162,20 @@
 
                     </ul>
                 </nav>
+
+                //***********************************************************************\\
+                                    ZOO
+                //***********************************************************************\\
                 <nav class="menu">
                     <h3 class="menu-title">ZooParc</h3>
                     <ul>
+                        <li class="sidebar-dropdown{% if active in ["list_restos","new_restos","update_restos", "manage_restos"] %} active{% endif %}"><a href="javascript:void(0)">Restaurants</a><i class="sidebar-icon fa fa-angle-right"></i>
+                            <ul>
+                                <li class="{% if active == "list_restos" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_restaurants_list") }}">Liste</a></li>
+                                <li class="{% if active == "new_restos" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_restaurants_create") }}">Nouveau</a></li>
+                                <li class="{% if active == "manage_restos" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_restaurants_manage") }}">Gérer</a></li>
+                            </ul>
+                        </li>
                         <li class="sidebar-dropdown{% if active in ["presse_dossier","new_com","list_com","update_com"] %} active{% endif %}"><a href="javascript:void(0)">Presse</a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
                                 <li class="sidebar-dropdown{% if active in ["presse_dossier"] %} active{% endif %}"><a href="javascript:void(0)">Dossiers</a><i class="sidebar-icon fa fa-angle-right"></i>
@@ -175,13 +192,6 @@
 
                             </ul>
                         </li>
-                        <li class="sidebar-dropdown{% if active in ["list_restos","new_restos","update_restos", "manage_restos"] %} active{% endif %}"><a href="javascript:void(0)">Restaurants</a><i class="sidebar-icon fa fa-angle-right"></i>
-                            <ul>
-                                <li class="{% if active == "list_restos" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_restaurants_list") }}">Liste</a></li>
-                                <li class="{% if active == "new_restos" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_restaurants_create") }}">Nouveau</a></li>
-                                <li class="{% if active == "manage_restos" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_restaurants_manage") }}">Gérer</a></li>
-                            </ul>
-                        </li>
                         <li class="sidebar-dropdown{% if active in ["list_static_pages","new_static_page","update_static_page"] %} active{% endif %}"><a href="javascript:void(0)">Pages statiques</a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
                                 <li class="{% if active == "list_static_pages" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_static_pages_list") }}">Liste</a></li>
@@ -190,19 +200,54 @@
                         </li>
                     </ul>
                 </nav>
+                //***********************************************************************\\
+                                                BEAUVAL NATURE
+                //***********************************************************************\\
                 <nav class="menu">
                     <h3 class="menu-title">Beauval Nature</h3>
                     <ul>
 
                     </ul>
                 </nav>
+                //***********************************************************************\\
+                                                GROUPEs
+                //***********************************************************************\\
+                <nav class="menu">
+                    <h3 class="menu-title">Groupes</h3>
+                    <ul>
+
+                    </ul>
+                </nav>
+                //***********************************************************************\\
+                                                CE
+                //***********************************************************************\\
+                <nav class="menu">
+                    <h3 class="menu-title">ce</h3>
+                    <ul>
+
+                    </ul>
+                </nav>
+                //***********************************************************************\\
+                                                PRO
+                //***********************************************************************\\
                 <nav class="menu">
                     <h3 class="menu-title">Pro</h3>
                     <ul>
 
                     </ul>
                 </nav>
+                //***********************************************************************\\
+                                            GROUPES ENFANTS
+                //***********************************************************************\\
+                <nav class="menu">
+                    <h3 class="menu-title">Groupes enfants</h3>
+                    <ul>
 
+                    </ul>
+                </nav>
+                //***********************************************************************\\
+                                                    JARDINS
+                //***********************************************************************\\
 
                 <nav class="menu">
                     <h3 class="menu-title">Jardins de B.</h3>
@@ -210,12 +255,18 @@
 
                     </ul>
                 </nav>
+                //***********************************************************************\\
+                                                    HAMEAUX
+                //***********************************************************************\\
                 <nav class="menu">
                     <h3 class="menu-title">Hameaux de B.</h3>
                     <ul>
 
                     </ul>
                 </nav>
+                //***********************************************************************\\
+                                                PAGODES
+                //***********************************************************************\\
                 <nav class="menu">
                     <h3 class="menu-title">Pagodes de B.</h3>
                     <ul>

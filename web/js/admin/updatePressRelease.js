@@ -17,7 +17,7 @@
         deleteImgUrl: '',
         institution: '',
         targetId : null,
-        filename: null,
+        lang: 'fr',
         id: null
     };
 
@@ -39,54 +39,42 @@
         var progressBar = zone.find(opts.progressbar);
         var actions = zone.find(opts.actions);
         var xhr = new XMLHttpRequest();
-
         function loadFunc(e){
             var response = $.parseJSON(e.target.responseText);
-
             if(response.error){
                 message.text(response.msg);
                 progressBar.width(0+"%");
                 zone.data('droppable', true);
             } else {
-                /*dropin.after(response.html);*/
                 dropin.hide();
                 message.text(response.msg);
                 progressBar.width(0+"%");
                 progressBar.parent().hide();
-                /*actions.removeClass("hide").addClass('show');*/
                 zone.data('droppable', false);
                 if(opts.targetId){
                     $(opts.targetId).val(response.pdfFilename);
                 }
             }
-
-
         }
-
         function progressFunc(e){
             if(e.lengthComputable){
                 var percent = Math.round((e.loaded/ e.total) * 100) + "%";
                 progressBar.width(percent);
             }
         }
-
         xhr.addEventListener("load", loadFunc, false);
         xhr.upload.addEventListener("progress", progressFunc, false);
-
         xhr.open('post', opts.url, true);
-
         xhr.setRequestHeader('X-Requested-With','XMLHttpRequest');
         xhr.setRequestHeader('Content-Type','multipart/form-data');
         xhr.setRequestHeader('X-File-Name',file.name);
         xhr.setRequestHeader('X-File-Type',file.type);
         xhr.setRequestHeader('X-File-Size',file.size);
-        xhr.setRequestHeader('X-File-Filename',opts.filename);
+        xhr.setRequestHeader('X-File-Lang',opts.lang);
         xhr.setRequestHeader('X-File-Id',opts.id);
-
         if(opts.institution){
             xhr.setRequestHeader('X-File-Institution', opts.institution);
         }
-
         xhr.send(file);
     }
     $.fn.uploadPdf = function(options){
@@ -119,18 +107,16 @@
                     if($this.data('droppable')){
                         upload(e.dataTransfer.files, $this, 0, opts);
                     }
-
                 }
             });
         });
     }
-
 })(jQuery,this,document);
 
 $(function(){
     var pdfFr = $("#dropzone-pdf-fr");
     var pdfEn = $("#dropzone-pdf-en");
 
-    pdfFr.uploadPdf({url: "/xhr/update/communique/pdf", institution: "zooparc-de-beauval", targetId: "#press_release_form_pdfFr", filename: pdfFr.data("pdf"), id: pdfFr.data("id")});
-    pdfEn.uploadPdf({url: "/xhr/update/communique/pdf", institution: "zooparc-de-beauval", targetId: "#press_release_form_pdfEn", filename: pdfEn.data("pdf"), id: pdfEn.data("id")});
+    pdfFr.uploadPdf({url: "/xhr/update/communique/pdf", institution: "zooparc-de-beauval", targetId: "#press_release_form_pdfFr", id: pdfFr.data('id')});
+    pdfEn.uploadPdf({url: "/xhr/update/communique/pdf", institution: "zooparc-de-beauval", targetId: "#press_release_form_pdfEn", id: pdfEn.data('id'), lang: 'en'});
 });

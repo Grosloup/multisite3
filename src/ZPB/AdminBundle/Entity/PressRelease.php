@@ -236,7 +236,12 @@ class PressRelease
      */
     public function setPdfEn($pdfEn)
     {
-        $this->pdfEn = $pdfEn;
+        if(preg_match('/^en_.+/',$pdfEn)){
+            $this->pdfEn = $pdfEn;
+        } else {
+            $this->pdfEn = 'en_' . $pdfEn;
+        }
+
 
         return $this;
     }

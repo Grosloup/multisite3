@@ -42,7 +42,11 @@
         </style>
     {% endblock %}
 </head>
+{% if is_tablet() %}
+<body class="{{ "bg_tab_0"~(random(6)+1) }}">
+{% else %}
 <body class="{{ "bg_0"~(random(6)+1) }}">
+{% endif %}
 {{ render(controller("ZPBSitesCommonBundle:Navs:topnav")) }}
     {% block main %}
         {% block header %}

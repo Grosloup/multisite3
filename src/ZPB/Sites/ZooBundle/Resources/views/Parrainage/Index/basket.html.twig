@@ -21,69 +21,73 @@
 {% endblock %}
 
 {% block content %}
-    <div class="columns large-12">
-        {% if packs|length > 0 %}
-            {% for id,pack in packs %}
-
-                <div class="row">
-                    <div class="columns large-5">
-                        <div class="row">
-                            <div class="columns large-4">
-                                <img class="th" src="http://lorempicsum.com/rio/180/120/{{ random(5)+1 }}" alt=""/>
-                            </div>
-                            <div class="columns large-8">
-                                {{ pack.animal.longName }}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="columns large-3">
-                        <h4 class="text-center">Formule</h4>
-                        <p class="text-center"><strong>{{ pack.pack.name }}</strong></p>
-
-                        {% if pack.godparent != null %}
-                            <p>Pour {{ pack.godparent.firstname }} {{ pack.godparent.lastname }}</p>
-                        {% endif %}
-
-                        {%  if pack.delayed != null %}
-                            <p>Parrainage différé au {{ pack.delayed|date("d/m/y") }}</p>
-                        {% endif %}
-                    </div>
-                    <div class="columns large-3">
-                        <h4 class="text-center">Montant</h4>
-                        <p class="text-center"><strong>{{ pack.pack.price }}</strong></p>
-                    </div>
-                    <div class="columns large-1">
-                        <a class="btn btn-danger" href="{{ path("zpb_sites_zoo_parrainage_remove_from_basket", {id: id, _token: csrf_token("delete_from_basket")}) }}"><span class="label alert"><i class="fa fa-trash-o"></i></span></a>
-                    </div>
-                </div>
-            {% endfor %}
-            <div class="row pack">
-                <div class="columns large-6">
-                    <p class="text-center"><strong>Montant Total</strong></p>
-                </div>
-                <div class="columns large-3">
-                    {% set price = 0 %}
-                    {% set priceRedux = 0 %}
-                    {% for pack in packs %}
-                        {% set price = price + pack.pack.price %}
-                        {% set priceRedux = priceRedux + pack.pack.taxFreePrice %}
-                    {% endfor %}
-                    <p class="text-center"><strong>{{ price|number_format(2,',','.') }}€</strong></p>
-                </div>
-                <div class="columns large-3">
-                    <p>soit <strong>{{ priceRedux|number_format(2,',','.') }}€</strong> après reduction fiscale</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="page-header">
+                    <h1>Votre Panier</h1>
                 </div>
             </div>
-        {% else %}
-            <p>Votre panier est vide.</p>
-        {% endif %}
-        <hr/>
-        <a class="button success large" href="{{ path("zpb_sites_zoo_parrainages_homepage") }}">Ajouter des parrainages</a>
-        {% if packs|length > 0 %}
-            <a class="button success large" href="{{ path("zpb_sites_zoo_parrainages_login_or_register", {type: "online"}) }}">Regler votre commande par carte</a> {# TODO #}
+        </div>
+        <div class="spaced-row">
+            <div class="col-6">
+                {% if packs|length > 0 %}
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>Animal parrainé</td>
+                            <td>Formule</td>
+                            <td>Bénéficiaire</td>
+                            <td>Différé</td>
+                            <td>Montant</td>
+                            <td></td>
+                        </tr>
 
+                        {% for id,pack in packs %}
+                        <tr>
+                            <td>{{ pack.animal.longName }}</td>
+                            <td><strong>{{ pack.pack.name }}</strong></td>
+                            <td>
+                                {% if pack.godparent != null %}
+                                {{ pack.godparent.firstname }} {{ pack.godparent.lastname }}
+                                {% else %}Vous{% endif %}
+                            </td>
+                            <td>
+                                {%  if pack.delayed != null %}Parrainage différé au {{ pack.delayed|date("d/m/y") }}{% else %} - {% endif %}
+                            </td>
+                            <td>{{ pack.pack.price }}&euro;</td>
+                            <td><a class="btn btn-danger" href="{{ path("zpb_sites_zoo_parrainage_remove_from_basket", {id: id, _token: csrf_token("delete_from_basket")}) }}"><span class="label alert"><i class="fa fa-trash-o"></i></span></a></td>
+                        </tr>
+                        {% endfor %}
 
-        {% endif %}
+                        <tr>
+                            {% set price = 0 %}
+                            {% set priceRedux = 0 %}
+                            {% for pack in packs %}
+                                {% set price = price + pack.pack.price %}
+                                {% set priceRedux = priceRedux + pack.pack.taxFreePrice %}
+                            {% endfor %}
+                            <td colspan="3">Montant total <strong>{{ price|number_format(2,',','.') }}&euro;</strong></td>
+                            <td colspan="2">soit <strong>{{ priceRedux|number_format(2,',','.') }}&euro;</strong> après reduction fiscale</td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                {% else %}
+                    <p>Votre panier est vide.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="spaced-row">
+            <div class="col-6">
+                <a class="btn btn-primary btn-xlarge" href="{{ path("zpb_sites_zoo_parrainages_homepage") }}">Ajouter des parrainages</a>
+                {% if packs|length > 0 %}
+                    <a class="btn btn-primary btn-xlarge" href="{{ path("zpb_sites_zoo_parrainages_login_or_register", {type: "online"}) }}">Regler par carte bancaire</a> {# TODO #}
+                    <a class="btn btn-primary btn-xlarge" href="{{ path("zpb_sites_zoo_parrainages_login_or_register", {type: "online"}) }}">Regler par courrier</a> {# TODO #}
+
+                {% endif %}
+            </div>
+        </div>
     </div>
 {% endblock %}
 

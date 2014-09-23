@@ -20,7 +20,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "stof/doctrine-extensions-bundle": "~1.1@dev",
         "doctrine/doctrine-fixtures-bundle": "2.2.*@dev",
-        "knplabs/knp-snappy-bundle": "dev-master"
+        "knplabs/knp-snappy-bundle": "dev-master",
+        "suncat/mobile-detect-bundle": "0.9.*"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

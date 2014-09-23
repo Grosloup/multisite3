@@ -100,3 +100,9 @@ knp_snappy:
         binary: true
         binary: /usr/local/bin/wkhtmltoimage
         options: []
+
+mobile_detect:
+    redirect:
+        mobile: ~
+        tablet: ~
+    switch_device_view: ~
