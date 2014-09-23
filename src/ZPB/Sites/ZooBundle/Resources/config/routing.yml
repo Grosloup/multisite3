@@ -42,7 +42,7 @@ zpb_sites_zoo_actualites_routes:
     resource: "@ZPBSitesZooBundle/Resources/config/routing/actualite.yml"
 
 zpb_sites_zoo_phototheque_routes:
-    prefix: /phototheque
+    prefix: /galerie-photo
     resource: "@ZPBSitesZooBundle/Resources/config/routing/phototheque.yml"
 
 zpb_sites_zoo_pratique_routes:

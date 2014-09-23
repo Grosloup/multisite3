@@ -1,4 +1,4 @@
-{% set practicle_pages = ["pratique", "tarifs", "animations", "map", "resto","services"] %}
+{% set practicle_pages = ["pratique", "tarifs", "acces", "animations", "map", "resto","services"] %}
 {% set zooparc_pages = ["zooparc", "phototheque"] %}
 {% set pedago_pages = ["pedago"] %}
 {% set news_pages = ["news","single_post", "cat_posts", "tag_posts"] %}
@@ -12,12 +12,13 @@
                     <div class="menu-block {% if active_page in practicle_pages %} active{% endif %}">
                         <a href="javascript:void(0)" class="menu-block-header">Pratique</a>
                         <ul>
-                            <li><a href="{{ path("zpb_sites_zoo_pratique_acces_tarifs_horaires") }}">Accès, horaires, tarifs</a></li>
-                            <li><a href="{{ path("zpb_sites_zoo_pratique_animations") }}">Animations</a></li>
+                            <li><a href="{{ path("zpb_sites_zoo_pratique_acces") }}">Accès</a></li>
+                            <li><a href="{{ path("zpb_sites_zoo_pratique_tarifs_horaires") }}">horaires, tarifs</a></li>
+                            <li><a href="{{ path("zpb_sites_zoo_pratique_animations") }}">Animations et spectacles</a></li>
                             <li><a href="{{ path("zpb_sites_zoo_pratique_map") }}">Plan de visite</a></li>
                             <li><a href="{{ path("zpb_sites_zoo_pratique_resto") }}">Restauration</a></li>
                             <li><a href="{{ path("zpb_sites_zoo_pratique_services") }}">Services</a></li>
-                            <li><a href="{{ url("zpb_sites_hotels_homepage") }}">Dormir à Beauval</a></li>
+                            <li><a href="{{ url("zpb_sites_hotels_homepage") }}">Les Hôtels de Beauval</a></li>
                         </ul>
                     </div>
 
@@ -26,8 +27,8 @@
                     <div class="menu-block{% if active_page in zooparc_pages %} active{% endif %}">
                         <a href="javascript:void(0)" class="menu-block-header">ZooParc</a>
                         <ul>
-                            <li><a href="">Les univers</a></li>
-                            <li><a href="">Historique</a></li>
+                            <li><a href="">Les animaux</a></li>
+                            <li><a href="">L'histoire du ZooParc</a></li>
                             <li><a href="">La mission</a></li>
                             <li><a href="">Développement durable</a></li>
                             <li><a href="{{  path("zpb_sites_zoo_phototheque_index") }}">Galerie photo</a></li>
@@ -39,10 +40,11 @@
                     <div class="menu-block{% if active_page in pedago_pages %} active{% endif %}">
                         <a href="javascript:void(0)" class="menu-block-header">Pédagogie</a>
                         <ul>
-                            <li><a href="">Carnets pédagogiques</a></li>
-                            <li><a href="">Activités pédagogiques</a></li>
+                            <li><a href="">Carnets de jeux</a></li>
+                            <li><a href="">Soigneur d'un Jour</a></li>
+                            <li><a href="">Soigneur d'un Jour Junior</a></li>
                             <li><a href="">Panneaux pédagogiques</a></li>
-                            <li><a href="">Offres scolaires</a></li>
+                            <li><a href="{{ url("zpb_sites_scolar_homepage") }}">Groupes scolaires</a></li>
                         </ul>
                     </div>
 
@@ -52,7 +54,7 @@
                         <a href="javascript:void(0)" class="menu-block-header">Actualité</a>
                         <ul>
                             <li><a href="{{ path("zpb_sites_zoo_actualites_nouveautes") }}">Nouveautés</a></li>
-                            <li><a href="{{ path("zpb_sites_zoo_actualites_homepage") }}">Fil d'actualités</a></li>
+                            <li><a href="{{ path("zpb_sites_zoo_actualites_homepage") }}">News</a></li>
                         </ul>
                     </div>
 

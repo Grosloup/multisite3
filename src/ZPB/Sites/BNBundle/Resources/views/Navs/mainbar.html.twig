@@ -15,15 +15,26 @@
             <button id="menu-toggler"></button>
             <nav>
                 <ul>
-                    <li class="{% if active_page in social_pages %}active{% endif %}"><a href="">Beauval Nature</a></li>
-                    <li class="{% if active_page in social_pages %}active{% endif %}"><a href="">Conservation</a></li>
+                    <li class="dropdown{% if active_page in social_pages %}active{% endif %}"><a href="javascript:void(0)">Beauval Nature</a>
+                        <ul>
+                            <li><a href="">L'histoire de l'association</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown{% if active_page in social_pages %}active{% endif %}"><a href="">Conservation</a>
+                        <ul>
+                            <li><a href="">Les programmes</a></li>
+
+                        </ul>
+                    </li>
                     <li class="{% if active_page in social_pages %}active{% endif %}"><a href="">Recherche</a></li>
                     <li class="dropdown{% if active_page in practicle_pages %} active{% endif %}"><a href="javascript:void(0)">Votre soutien</a>
                         <ul>
-                            <li><a href="">Parrainages</a></li>
-                            <li><a href="">Campagne</a></li>
-                            <li><a href="">Dons</a></li>
-                            <li><a href="">Partenaires</a></li>
+                            <li><a href="">Parrainez un animal</a></li>
+                            <li><a href="">Soutenez nos actions</a></li>
+                            <li><a href="">Faites un don</a></li>
+                            <li><a href="">Devenez partenaires</a></li>
+
                         </ul>
                     </li>
 

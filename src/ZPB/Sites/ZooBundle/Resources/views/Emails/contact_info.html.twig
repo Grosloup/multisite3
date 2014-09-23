@@ -1,0 +1,20 @@
+<table style="width: 600px;margin: 0 auto;">
+    <tr>
+        <td colspan="2" style="padding: 10px;">Email généré pour infos@zoobeauval.com</td>
+    </tr>
+    <tr>
+        <td style="padding: 10px;">Par :</td><td style="padding: 10px;">{{ contact.email }}</td>
+    </tr>
+    <tr>
+        <td style="padding: 10px;">Le :</td><td style="padding: 10px;">{{ contact.createdAt|format("d/m/Y") }}</td>
+    </tr>
+    <tr>
+        <td style="padding: 10px;">Sujet :</td><td style="padding: 10px;">{{ contact.topic }}</td>
+    </tr>
+    <tr>
+        <td colspan="2" style="padding: 10px;">Message :</td>
+    </tr>
+    <tr>
+        <td colspan="2" style="padding: 10px;">{{ contact.message }}</td>
+    </tr>
+</table>

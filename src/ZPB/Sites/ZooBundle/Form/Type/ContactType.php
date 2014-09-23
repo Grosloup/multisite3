@@ -31,8 +31,8 @@ class ContactType extends AbstractType
         $builder
             ->add('email','email', ['label'=>'Votre email'])
             ->add('topic',null, ['label'=>'Sujet en quelques mots'])
-            ->add('topic','textarea', ['label'=>'Sujet en quelques mots'])
-            ->add('save', 'submit', ['label'=>''])
+            ->add('message','textarea', ['label'=>'Sujet en quelques mots'])
+            ->add('save', 'submit', ['label'=>'Envoyer'])
         ;
     }
     
@@ -43,6 +43,6 @@ class ContactType extends AbstractType
     
     public function getName()
     {
-        return '';
+        return 'info_contact_form';
     }
 }

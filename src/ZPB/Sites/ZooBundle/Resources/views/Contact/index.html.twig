@@ -40,33 +40,7 @@
                     blanditiis corporis, debitis deserunt dolor et itaque laborum magni mollitia neque non pariatur
                     praesentium quos sint tempora, ut vero voluptatum!</p>
 
-                <form action="" method="post">
-
-                    <div class="form-row">
-                        <label for="email">Votre adresse email pour la réponse</label>
-                        <div class="form-field">
-                            <input type="text" name="email" id="email" style="width: 100%;"/>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <label for="raison">Raison de la prise de contact en quelques mots</label>
-                        <div class="form-field">
-                            <input type="text" name="raison" id="raison" style="width: 100%;"/>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <label for="message">Votre message</label>
-                        <div class="form-field">
-                            <textarea name="message" id="message" rows="20" style="width: 100%;"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <button type="submit" class="btn btn-primary">Envoyer</button>
-                    </div>
-                </form>
+                {{ form(form) }}
 
             </div>
             <div class="col-1"></div>

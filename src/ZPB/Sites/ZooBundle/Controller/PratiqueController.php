@@ -25,9 +25,14 @@ use ZPB\AdminBundle\Controller\BaseController;
 
 class PratiqueController extends BaseController
 {
-    public function accesTarifsHorairesAction()
+    public function tarifsHorairesAction()
     {
         return $this->render('ZPBSitesZooBundle:Pratique:tarifs.html.twig', []);
+    }
+
+    public function accesAction()
+    {
+        return $this->render('ZPBSitesZooBundle:Pratique:acces.html.twig', []);
     }
 
     public function animationsAction()

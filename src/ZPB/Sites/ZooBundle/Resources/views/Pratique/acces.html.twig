@@ -1,17 +1,17 @@
 {% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
-{% block title %}Tarifs et horaires{% endblock %}
+{% block title %}Accès{% endblock %}
 
 {% block description %}{% endblock %}
 {% block keywords %}{% endblock %}
 
-{% set active_page = "tarifs" %}
+{% set active_page = "acces" %}
 
 {% block content %}
     <div class="container">
         <div class="row">
             <div class="col-6">
                 <div class="page-header">
-                    <h1>Tarifs et horaires</h1>
+                    <h1>Accès</h1>
                 </div>
             </div>
         </div>
@@ -26,7 +26,9 @@
             </div>
         </div>
     </div>
-
+    <div class="wrapper">
+        <div class="testbox testbox-10 dev-map"></div>
+    </div>
     <div class="wrapper">
         <div class="container">
             <div class="col-6">
@@ -34,26 +36,4 @@
             </div>
         </div>
     </div>
-
-
-
-    <div class="wrapper">
-        <div class="container">
-            <div class="spaced-row">
-                <div class="col-6">
-                    <div class="testbox testbox-5"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="wrapper">
-        <div class="container">
-            <div class="col-6">
-                <div class="testbox testbox-5"></div>
-            </div>
-        </div>
-    </div>
-
-
 {% endblock %}

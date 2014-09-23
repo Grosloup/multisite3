@@ -1,10 +1,15 @@
-zpb_sites_zoo_pratique_acces_tarifs_horaires:
-    path: /acces-tarifs-horaires
-    defaults: { _controller: ZPBSitesZooBundle:Pratique:accesTarifsHoraires }
+zpb_sites_zoo_pratique_tarifs_horaires:
+    path: /horaires-tarifs
+    defaults: { _controller: ZPBSitesZooBundle:Pratique:tarifsHoraires }
+    methods: ["GET"]
+
+zpb_sites_zoo_pratique_acces:
+    path: /acces
+    defaults: { _controller: ZPBSitesZooBundle:Pratique:acces }
     methods: ["GET"]
 
 zpb_sites_zoo_pratique_animations:
-    path: /animations
+    path: /animations-spectacles
     defaults: { _controller: ZPBSitesZooBundle:Pratique:animations }
     methods: ["GET"]
 
