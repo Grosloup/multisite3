@@ -48,7 +48,7 @@ class AdminUser implements AdvancedUserInterface, Serializable
     /**
      * @var string
      * @Assert\NotBlank(message="Ce champs est requis")
-     * @Assert\Regex("/^[a-zàéèêëûüîïôöçù0-9,;:!$%?.&#+=\/\\*' -]$/i", message="Ce champs contient des caractères non autorisés")
+     * @Assert\Regex("/^[a-zàéèêëûüîïôöçù0-9,;:!$%?.&#+=\/\\*' _-]$/i", message="Ce champs contient des caractères non autorisés")
      * @ORM\Column(name="username", type="string", length=255, unique=true)
      */
     private $username;
