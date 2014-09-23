@@ -24,7 +24,7 @@
 
     {% endblock %}
 </head>
-<body class="{{ "bg_0"~(random(8)+1) }}">
+<body class="{{ "bg_"~(random(10)+1) }}">
 {{ render(controller("ZPBSitesCommonBundle:Navs:topnav")) }}
 {% block main %}
     {% block header %}

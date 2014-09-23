@@ -29,14 +29,16 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email',null, ['label'=>''])
+            ->add('email','email', ['label'=>'Votre email'])
+            ->add('topic',null, ['label'=>'Sujet en quelques mots'])
+            ->add('topic','textarea', ['label'=>'Sujet en quelques mots'])
             ->add('save', 'submit', ['label'=>''])
         ;
     }
     
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(['data_class'=>'']);
+        $resolver->setDefaults(['data_class'=>'ZPB\AdminBundle\Entity\ContactInfoZoo']);
     }
     
     public function getName()
