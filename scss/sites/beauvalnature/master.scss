@@ -97,6 +97,31 @@ ul{
   }
 }
 
+#site-header{
+  #stickytop{
+    .container{
+      #main-menu{
+        &>nav{
+          &>ul{
+            padding: 7px 0;
+          }
+        }
+      }
+    }
+    &.stuck{
+      .container{
+        #main-menu{
+          &>nav{
+            &>ul{
+              padding: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 /*************************************************\
   Pour test
 \*************************************************/
