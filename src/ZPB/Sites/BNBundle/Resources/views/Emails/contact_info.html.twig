@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width"/>
+    <style>
+        body{
+            width:100% !important;
+            min-width: 100%;
+            margin:0;
+            padding:0;
+        }
+        table.body{
+            width: 100%;
+            height: 100%;
+        }
+        table.wrapper{
+            width: 600px;
+        }
+        table.wrapper tr td{
+            padding: 10px 10px 10px 10px;
+        }
+    </style>
+</head>
+
+<body>
+<table class="body">
+    <tr>
+        <td>
+            <center>
+                <table class="wrapper">
+                    <tr>
+                        <td colspan="2">Email généré pour infos@zoobeauval.com</td>
+                    </tr>
+                    <tr>
+                        <td>Source :</td><td>{{ contact.source }}</td>
+                    </tr>
+                    <tr>
+                        <td>Par :</td><td>{{ contact.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Le :</td><td>{{ contact.createdAt|format("d/m/Y") }}</td>
+                    </tr>
+                    <tr>
+                        <td>Sujet :</td><td>{{ contact.topic }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Message :</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">{{ contact.message }}</td>
+                    </tr>
+                </table>
+            </center>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
+

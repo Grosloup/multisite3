@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: Nicolas Canfrère
- * Date: 23/09/2014
- * Time: 11:37
+ * Date: 24/09/2014
+ * Time: 14:35
  */
   /*
            ____________________
@@ -18,7 +18,7 @@
       (__<  |mm_|mm_|  |mm_|mm_|
 */
 
-namespace ZPB\Sites\ZooBundle\Form\Type;
+namespace ZPB\Sites\BNBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -44,6 +44,6 @@ class ContactType extends AbstractType
     
     public function getName()
     {
-        return 'info_zoo_contact_form';
+        return 'info_bn_contact_form';
     }
 }

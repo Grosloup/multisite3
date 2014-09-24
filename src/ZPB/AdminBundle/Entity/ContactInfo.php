@@ -7,12 +7,12 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * ContactInfoZoo
+ * ContactInfo
  *
- * @ORM\Table(name="zpb_contact_infozoo")
- * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\ContactInfoZooRepository")
+ * @ORM\Table(name="zpb_contact_info")
+ * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\ContactInfoRepository")
  */
-class ContactInfoZoo
+class ContactInfo
 {
     /**
      * @var integer
@@ -63,6 +63,11 @@ class ContactInfoZoo
      */
     private $isSend;
 
+    /**
+     * @ORM\Column(name="source", type="string", length=255, nullable=false )
+     */
+    private $source;
+
     public function __construct()
     {
         $this->isSend = false;
@@ -81,7 +86,7 @@ class ContactInfoZoo
      * Set email
      *
      * @param string $email
-     * @return ContactInfoZoo
+     * @return ContactInfo
      */
     public function setEmail($email)
     {
@@ -104,7 +109,7 @@ class ContactInfoZoo
      * Set topic
      *
      * @param string $topic
-     * @return ContactInfoZoo
+     * @return ContactInfo
      */
     public function setTopic($topic)
     {
@@ -127,7 +132,7 @@ class ContactInfoZoo
      * Set message
      *
      * @param string $message
-     * @return ContactInfoZoo
+     * @return ContactInfo
      */
     public function setMessage($message)
     {
@@ -150,7 +155,7 @@ class ContactInfoZoo
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return ContactInfoZoo
+     * @return ContactInfo
      */
     public function setCreatedAt($createdAt)
     {
@@ -173,7 +178,7 @@ class ContactInfoZoo
      * Set isSend
      *
      * @param boolean $isSend
-     * @return ContactInfoZoo
+     * @return ContactInfo
      */
     public function setIsSend($isSend)
     {
@@ -191,4 +196,24 @@ class ContactInfoZoo
     {
         return $this->isSend;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSource()
+    {
+        return $this->source;
+    }
+
+    /**
+     * @param mixed $source
+     * @return ContactInfo
+     */
+    public function setSource($source)
+    {
+        $this->source = $source;
+        return $this;
+    }
+
+
 }

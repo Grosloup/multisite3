@@ -1,11 +1,11 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Nicolas Canfrere
- * Date: 18/09/2014
- * Time: 06:24
+ * User: Nicolas Canfrère
+ * Date: 24/09/2014
+ * Time: 15:17
  */
- /*
+  /*
            ____________________
   __      /     ______         \
  {  \ ___/___ /       }         \
@@ -18,21 +18,20 @@
       (__<  |mm_|mm_|  |mm_|mm_|
 */
 
-namespace ZPB\Sites\ZooBundle\Controller;
+namespace ZPB\Sites\BNBundle\Controller;
 
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use ZPB\AdminBundle\Controller\BaseController;
 use ZPB\AdminBundle\Entity\ContactInfo;
-use ZPB\Sites\ZooBundle\Form\Type\ContactType;
+use ZPB\Sites\BNBundle\Form\Type\ContactType;
 
 class ContactController extends BaseController
 {
     public function indexAction(Request $request)
     {
         $contact = new ContactInfo();
-        $contact->setSource('ZooParc de Beauval');
+        $contact->setSource('Beauval Nature');
 
         $form = $this->createForm(new ContactType(), $contact);
         $form->handleRequest($request);
@@ -47,7 +46,7 @@ class ContactController extends BaseController
                 ->setContentType('text/html')
                 ->setSubject('mail de contact')
                 ->setFrom('nicolas.canfrere@zoobeauval.com') //TODO adresse mail
-                ->setTo('infos@zoobeauval.com')
+                ->setTo('beauval.nature@zoobeauval.com')
                 ->setBody($this->renderView('ZPBSitesZooBundle:Emails:contact_info.html.twig',['contact'=>$contact]))
             ;
 
@@ -58,8 +57,8 @@ class ContactController extends BaseController
             }else {
                 $this->setError('Un problème est survenu !');
             }
-
         }
-        return $this->render('ZPBSitesZooBundle:Contact:index.html.twig', ['form'=>$form->createView()]);
+
+        return $this->render('ZPBSitesBNBundle:Contact:index.html.twig', ['form'=>$form->createView()]);
     }
-}
+} 

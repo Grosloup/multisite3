@@ -2,3 +2,8 @@ zpb_sites_bn_homepage:
     path:     /
     defaults: { _controller: ZPBSitesBNBundle:Index:index }
     methods: ["GET"]
+
+zpb_sites_bn_contact:
+    path:     /contact
+    defaults: { _controller: ZPBSitesBNBundle:Contact:index }
+    methods: ["GET","POST"]

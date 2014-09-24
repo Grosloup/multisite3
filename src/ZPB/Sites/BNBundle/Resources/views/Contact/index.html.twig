@@ -1,6 +1,7 @@
-{% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
+{% extends "ZPBSitesBNBundle:Layouts:master.html.twig" %}
 
 {% block title %}Contactez-nous{% endblock %}
+
 {% block description %}{% endblock %}
 {% block keywords %}{% endblock %}
 
@@ -43,28 +44,28 @@
                 {{ form_start(form, {attr:{novalidate: true}}) }}
                 {{ form_errors(form) }}
                 <div>
-                    {{ form_label(form.topic) }}
-                    {{ form_widget(form.topic) }}
-                    {{ form_errors(form.topic) }}
+                {{ form_label(form.topic) }}
+                {{ form_widget(form.topic) }}
+                {{ form_errors(form.topic) }}
                 </div>
                 <div>
-                    {{ form_label(form.email) }}
-                    {{ form_widget(form.email) }}
-                    {{ form_errors(form.email) }}
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email) }}
+                {{ form_errors(form.email) }}
                 </div>
                 <div>
-                    {{ form_label(form.message) }}
-                    {{ form_widget(form.message) }}
-                    {{ form_errors(form.message) }}
+                {{ form_label(form.message) }}
+                {{ form_widget(form.message) }}
+                {{ form_errors(form.message) }}
                 </div>
                 <div>
-                    {{ form_label(form.name) }}
-                    {{ form_widget(form.name) }}
-                    {{ form_errors(form.name) }}
-                    <div>
-                        {{ form_widget(form.save) }}
-                    </div>
-                    {{ form_end(form) }}
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name) }}
+                {{ form_errors(form.name) }}
+                <div>
+                {{ form_widget(form.save) }}
+                </div>
+                {{ form_end(form) }}
                 </div>
             </div>
             <div class="col-1"></div>
