@@ -30,7 +30,7 @@
             <center>
                 <table class="wrapper">
                     <tr>
-                        <td colspan="2">Email généré pour infos@zoobeauval.com</td>
+                        <td colspan="2">Email généré pour beauval.nature@zoobeauval.com</td>
                     </tr>
                     <tr>
                         <td>Source :</td><td>{{ contact.source }}</td>
@@ -39,7 +39,7 @@
                         <td>Par :</td><td>{{ contact.email }}</td>
                     </tr>
                     <tr>
-                        <td>Le :</td><td>{{ contact.createdAt|format("d/m/Y") }}</td>
+                        <td>Le :</td><td>{{ contact.createdAt|date("d/m/Y") }}</td>
                     </tr>
                     <tr>
                         <td>Sujet :</td><td>{{ contact.topic }}</td>

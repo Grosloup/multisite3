@@ -39,7 +39,7 @@
                             <td>Par :</td><td>{{ contact.email }}</td>
                         </tr>
                         <tr>
-                            <td>Le :</td><td>{{ contact.createdAt|format("d/m/Y") }}</td>
+                            <td>Le :</td><td>{{ contact.createdAt|date("d/m/Y") }}</td>
                         </tr>
                         <tr>
                             <td>Sujet :</td><td>{{ contact.topic }}</td>

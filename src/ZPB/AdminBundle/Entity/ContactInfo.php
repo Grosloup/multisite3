@@ -44,7 +44,7 @@ class ContactInfo
      *
      * @ORM\Column(name="message", type="text", nullable=false)
      * @Assert\NotBlank(message="Ce champs est requis")
-     * @Assert\Regex("/^[a-zàéèêëûüîïôöçù0-9,;:!$%?.&#+=\/\\*' _-]$/i", message="Ce champs contient des caractères non autorisés")
+     * @Assert\Regex("/^[a-zàéèêëûüîïôöçù0-9,;:!\$%?.&#+=\/\'\s\n\r_-]+$/i", message="Ce champs contient des caractères non autorisés")
      */
     private $message;
 

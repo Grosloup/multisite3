@@ -56,7 +56,10 @@
   }
 }
 
-[class^="grid-"], [class*=" grid-"]{
+[class^="small-grid-"], [class*=" small-grid-"],
+[class^="medium-grid-"], [class*=" medium-grid-"],
+[class^="large-grid-"], [class*=" large-grid-"],
+[class^="xlarge-grid-"], [class*=" xlarge-grid-"]{
   @include clearfix;
   width: 100%;
   &>li,&>div{
@@ -70,7 +73,7 @@
 }
 @for $i from 1 through 6{
 
-  .grid-#{$i}{
+  .small-grid-#{$i}{
 
     &>li,&>div{
       width: percentage(1/$i);
@@ -102,6 +105,22 @@
       width: percentage( $i / 5);
     }
   }
+  @for $i from 1 through 6{
+
+    .medium-grid-#{$i}{
+
+      &>li,&>div{
+        width: percentage(1/$i);
+        $v: 1 + $i;
+        &:nth-of-type(1n){
+          clear: none;
+        }
+        &:nth-of-type(#{$i}n + 1){
+          clear: both;
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (min-width: 960px){
@@ -114,14 +133,46 @@
 
 }
 
+
+
 @media only screen and (min-width: 1280px){
   .container{
     max-width: 1200px;
   }
+  @for $i from 1 through 6{
 
+    .large-grid-#{$i}{
+
+      &>li,&>div{
+        width: percentage(1/$i);
+        $v: 1 + $i;
+        &:nth-of-type(1n){
+          clear: none;
+        }
+        &:nth-of-type(#{$i}n + 1){
+          clear: both;
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (min-width: 1440px){
 
+  @for $i from 1 through 6{
 
+    .xlarge-grid-#{$i}{
+
+      &>li,&>div{
+        width: percentage(1/$i);
+        $v: 1 + $i;
+        &:nth-of-type(1n){
+          clear: none;
+        }
+        &:nth-of-type(#{$i}n + 1){
+          clear: both;
+        }
+      }
+    }
+  }
 }
