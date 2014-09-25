@@ -199,10 +199,16 @@ class Godparent implements AdvancedUserInterface, Serializable
      */
     private $sponsorings;
 
+    /**
+     * @ORM\Column(name="is_enabled", type="boolean", nullable=false)
+     */
+    private $enabled;
+
     public function __construct()
     {
         $this->roles = ['ROLE_GODPARENT'];
         $this->isActive = true;
+        $this->enabled = false;
         $this->country = 'France';
         $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
         $this->sponsorings = new ArrayCollection();
@@ -641,8 +647,28 @@ class Godparent implements AdvancedUserInterface, Serializable
      */
     public function isEnabled()
     {
-        return true;
+        return $this->enabled;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * @param mixed $enabled
+     * @return Godparent
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+        return $this;
+    }
+
+
 
     /**
      * Removes sensitive data from the user.
