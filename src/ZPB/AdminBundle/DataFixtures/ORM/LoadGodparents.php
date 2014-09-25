@@ -56,6 +56,7 @@ class LoadGodparents extends AbstractFixture implements OrderedFixtureInterface,
         $gp1->setPostalCode('41130');
         $gp1->setCity('Selles/Cher');
         $gp1->setCountry('France');
+        $gp1->setEnabled(true);
 
         $manager->persist($gp1);
 
@@ -73,6 +74,7 @@ class LoadGodparents extends AbstractFixture implements OrderedFixtureInterface,
         $gp2->setPostalCode('41130');
         $gp2->setCity('Selles/Cher');
         $gp2->setCountry('France');
+        $gp2->setEnabled(true);
 
         $manager->persist($gp2);
 
