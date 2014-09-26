@@ -1,0 +1,73 @@
+{% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
+{% block title %}Réseaux sociaux{% endblock %}
+
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% set active_page = "reseaux" %}
+
+{% block headScripts %}
+    <script src="/js/vendor/swfobject.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="page-header">
+                    <h1>Réseaux sociaux</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="container">
+            <div class="spaced-row">
+                <div id="ytPlayer"></div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block footScripts %}
+    <script>
+        var params = {
+            allowScriptAccess: "always"
+        };
+
+        var atts = {
+            id: "" +
+            "ytPlayer"
+        };
+        var ytplayer;
+        function loadPalyer(){
+            var videoID = "k1NSvslgGDs";
+            swfobject.embedSWF("http://www.youtube.com/v/"+videoID+"?enablejsapi=1&palyerapiid=ytPlayer&version=3","ytapiplayer", "630", "354","9", null, null, params, atts);
+        }
+
+
+        function onYouTubePlayerReady(playerId){
+            ytplayer = document.getElementById("ytPlayer");
+
+        }
+
+        function play() {
+            if (ytplayer) {
+                ytplayer.playVideo();
+            }
+        }
+
+        function loadVideo(vidId){
+            var videoID = vidId;
+            if(ytplayer){
+                ytplayer.loadVideoById(videoID);
+            }
+        }
+
+        loadPalyer();
+
+    </script>
+{% endblock %}

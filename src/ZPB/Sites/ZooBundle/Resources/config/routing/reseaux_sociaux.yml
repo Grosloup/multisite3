@@ -1,0 +1,4 @@
+zpb_sites_zoo_reseaux_homepage:
+    path: /
+    defaults: { _controller: ZPBSitesZooBundle:Reseaux:index }
+    methods: ["GET"]

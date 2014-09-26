@@ -2,7 +2,7 @@
 {% set zooparc_pages = ["zooparc", "phototheque"] %}
 {% set pedago_pages = ["pedago"] %}
 {% set news_pages = ["news","single_post", "cat_posts", "tag_posts"] %}
-{% set social_pages = ["social"] %}
+{% set social_pages = ["social","reseau"] %}
 {% set shop_pages = ["shop"] %}
 
 
@@ -49,7 +49,7 @@
                             <li><a href="{{ path("zpb_sites_zoo_actualites_homepage") }}">News</a></li>
                         </ul>
                     </li>
-                    <li class="{% if active_page in social_pages %}active{% endif %}"><a href="">Réseaux</a></li>
+                    <li class="{% if active_page in social_pages %}active{% endif %}"><a href="{{ path("zpb_sites_zoo_reseaux_homepage") }}">Réseaux</a></li>
                     <li class="{% if active_page in shop_pages %}active{% endif %}"><a href="">Boutique</a></li>
                 </ul>
             </nav>

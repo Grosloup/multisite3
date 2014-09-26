@@ -2,7 +2,7 @@
 {% set zooparc_pages = ["zooparc", "phototheque"] %}
 {% set pedago_pages = ["pedago"] %}
 {% set news_pages = ["news","single_post", "cat_posts", "tag_posts"] %}
-{% set social_pages = ["social"] %}
+{% set social_pages = ["social","reseau"] %}
 {% set shop_pages = ["shop"] %}
 <div id="seconday-mainbar-wrapper">
     <div class="container">
@@ -61,7 +61,7 @@
                 </div>
                 <div class="col-1">
                     <div class="menu-block{% if active_page in social_pages %} active{% endif %}">
-                        <a href="#" class="menu-block-header">Réseaux</a>
+                        <a href="{{ path("zpb_sites_zoo_reseaux_homepage") }}" class="menu-block-header">Réseaux</a>
                     </div>
 
 

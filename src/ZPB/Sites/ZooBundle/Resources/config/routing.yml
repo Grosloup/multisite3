@@ -56,3 +56,7 @@ zpb_sites_zoo_newsletter_routes:
 zpb_sites_zoo_presse_routes:
     prefix: /presse
     resource: "@ZPBSitesZooBundle/Resources/config/routing/presse.yml"
+
+zpb_sites_zoo_reseaux_sociaux_routes:
+    prefix: /reseaux-sociaux
+    resource: "@ZPBSitesZooBundle/Resources/config/routing/reseaux_sociaux.yml"
