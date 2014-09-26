@@ -647,7 +647,7 @@ class Godparent implements AdvancedUserInterface, Serializable
      */
     public function isEnabled()
     {
-        return $this->enabled;
+        return true;
     }
 
     /**
