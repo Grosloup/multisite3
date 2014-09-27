@@ -10,9 +10,43 @@
         <div class="row">
             <div class="col-6">
                 <div class="page-header">
-                    Récapitulatif avant paiement
+                    <h1>Récapitulatif avant paiement</h1>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <ul>
+                    {% for item in items %}
+                    <li>
+                        <p>Animal parrainé : {{ item.animal.name }}</p>
+
+                        <p>Formule : {{ item.pack.name }}</p>
+
+                        <p>Parrain : {{ item.godparent.firstname }} {{ item.godparent.lastname }}</p>
+
+                        {% if item.delayed != null %}
+                        <p>Début du parrainage : {{ item.delayed|date("d/m/Y") }}</p>
+                        {% endif %}
+                    </li>
+
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <p>J'accepte les conditions générales de ventes</p>
+                <a class="btn btn-primary" href="">Régler</a>
+            </div>
+        </div>
+    </div>
+
+
 {% endblock %}

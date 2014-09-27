@@ -294,4 +294,23 @@ class IndexController extends BaseController
         }
         return $this->render('ZPBSitesZooBundle:Parrainage/Index:recap_order.html.twig', ['items'=>$items]);
     }
+
+    public function paiementCBAction()
+    {
+        try{
+            $command = $this->get('zpb.zoo.basket_to_command')->createCommand($this->container->get('zpb.zoo.sponsor_basket'), "internet",$this->getUser() );
+        } catch (\Exception $e){
+            throw $this->createNotFoundException($e->getMessage()); //TODO page d'erreur pour commande parrainage
+        }
+
+
+        if($command != null){
+            throw $this->createNotFoundException(); //TODO page d'erreur pour commande parrainage
+        }
+        //logic de paiement bancaire
+
+        // après redirection en fonction resultat bank
+
+        return $this->render('ZPBSitesZooBundle:Parrainage/Index:response_paiement_cb.html.twig', []);
+    }
 }

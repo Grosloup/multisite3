@@ -8,10 +8,10 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * CommandItemSponsor
  *
- * @ORM\Table(name="zpb_command_items_sponsoring")
- * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\CommandItemSponsorRepository")
+ * @ORM\Table(name="zpb_command_items")
+ * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\CommandItemRepository")
  */
-class CommandItemSponsor implements CommandItemInterface
+class CommandItem implements CommandItemInterface
 {
     /**
      * @var integer
@@ -87,7 +87,10 @@ class CommandItemSponsor implements CommandItemInterface
      */
     private $delayed_at;
 
-
+    public function __construct()
+    {
+        $this->isPresent = false;
+    }
     /**
      * Get id
      *

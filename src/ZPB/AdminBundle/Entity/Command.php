@@ -34,7 +34,7 @@ class Command
     /**
      * @var string
      *
-     * @ORM\Column(name="def_id", type="string", length=255)
+     * @ORM\Column(name="def_id", type="string", length=255, nullable=true)
      */
     private $defId;
 
@@ -67,9 +67,14 @@ class Command
     private $isValid;
 
     /**
-     * @ORM\OneToMany(targetEntity="ZPB\AdminBundle\Entity\CommandItemSponsor", mappedBy="command")
+     * @ORM\OneToMany(targetEntity="ZPB\AdminBundle\Entity\CommandItem", mappedBy="command")
      */
     private $commandItems;
+
+    /**
+     * @ORM\Column(name="type", type="string", length=50, nullable=false)
+     */
+    private $type;
 
     /**
      * Constructor
@@ -77,6 +82,11 @@ class Command
     public function __construct()
     {
         $this->commandItems = new ArrayCollection();
+        $this->isValid = false;
+        $longId = md5(
+            (new \DateTime('now', new \DateTimeZone('Europe/Paris')))->getTimestamp() . uniqid(mt_rand(), true)
+        );
+        $this->tmpId = substr($longId, 0, 8);
     }
 
     /**
@@ -232,10 +242,10 @@ class Command
     /**
      * Add commandItems
      *
-     * @param CommandItemSponsor $commandItems
+     * @param CommandItem $commandItems
      * @return Command
      */
-    public function addCommandItem(CommandItemSponsor $commandItems)
+    public function addCommandItem(CommandItem $commandItems)
     {
         $this->commandItems[] = $commandItems;
 
@@ -245,9 +255,9 @@ class Command
     /**
      * Remove commandItems
      *
-     * @param CommandItemSponsor $commandItems
+     * @param CommandItem $commandItems
      */
-    public function removeCommandItem(CommandItemSponsor $commandItems)
+    public function removeCommandItem(CommandItem $commandItems)
     {
         $this->commandItems->removeElement($commandItems);
     }
@@ -260,5 +270,28 @@ class Command
     public function getCommandItems()
     {
         return $this->commandItems;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return Command
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

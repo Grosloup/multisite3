@@ -8,12 +8,22 @@
     <parameters>
         <parameter key="zpb.zoo.sponsor_basket.class">ZPB\Sites\ZooBundle\Service\SponsorBasket</parameter>
         <parameter key="zpb.zoo.sponsor_basket_item.class">ZPB\Sites\ZooBundle\Service\SponsorBasketItem</parameter>
+        <parameter key="zpb.zoo.sponsor_basket_to_command.class">ZPB\Sites\ZooBundle\Service\BasketToCommand</parameter>
+        <parameter key="zpb.zoo.command.class">ZPB\AdminBundle\Entity\Command</parameter>
+        <parameter key="zpb.zoo.command_item.class">ZPB\AdminBundle\Entity\CommandItem</parameter>
     </parameters>
 
     <services>
         <service id="zpb.zoo.sponsor_basket" class="%zpb.zoo.sponsor_basket.class%">
             <argument type="service" id="session" />
             <argument>%zpb.zoo.sponsor_basket_item.class%</argument>
+        </service>
+
+        <service id="zpb.zoo.basket_to_command" class="%zpb.zoo.sponsor_basket_to_command.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%zpb.zoo.command.class%</argument>
+            <argument>%zpb.zoo.command_item.class%</argument>
+            <argument>%zpb.sponsoring_type%</argument>
         </service>
     </services>
 

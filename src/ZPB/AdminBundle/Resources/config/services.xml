@@ -89,9 +89,9 @@
         </parameter>
 
         <parameter key="zpb.sponsoring_type" type="collection">
-            <parameter key="poste">poste</parameter>
-            <parameter key="locaux">locaux</parameter>
-            <parameter key="enligne">en ligne</parameter>
+            <parameter key="poste">postal</parameter>
+            <parameter key="locaux">local</parameter>
+            <parameter key="enligne">internet</parameter>
         </parameter>
     </parameters>
 
