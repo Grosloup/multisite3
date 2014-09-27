@@ -62,11 +62,7 @@ class SponsoringFormula
      */
     private $isActive;
 
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="taxFreePrice", type="float", nullable=false)
-     */
+
     private $taxFreePrice;
 
     /**
@@ -76,10 +72,18 @@ class SponsoringFormula
      */
     private $taxRate;
 
-    /**
-     * @ORM\Column(name="price", type="float", nullable=false)
-     */
+
     private $price;
+
+    /**
+     * @ORM\Column(name="tva", type="float", nullable=false)
+     */
+    private $tva;
+
+    /**
+     * @ORM\Column(name="ht_price", type="float", nullable=false)
+     */
+    private $htPrice;
 
     /**
      * @var string
@@ -154,19 +158,10 @@ class SponsoringFormula
      */
     public function getPrice()
     {
-        return $this->price;
+        return $this->htPrice + ($this->htPrice * $this->tva);
     }
 
-    /**
-     * @param mixed $price
-     * @return SponsoringFormula
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
 
-        return $this;
-    }
 
     /**
      * Get slug
@@ -267,21 +262,10 @@ class SponsoringFormula
      */
     public function getTaxFreePrice()
     {
-        return $this->taxFreePrice;
+        return $this->getPrice() * $this->taxRate;
     }
 
-    /**
-     * Set taxFreePrice
-     *
-     * @param float $taxFreePrice
-     * @return SponsoringFormula
-     */
-    public function setTaxFreePrice($taxFreePrice)
-    {
-        $this->taxFreePrice = $taxFreePrice;
 
-        return $this;
-    }
 
     /**
      * Get taxRate
@@ -439,5 +423,51 @@ class SponsoringFormula
     public function getSponsorings()
     {
         return $this->sponsorings;
+    }
+
+    /**
+     * Set tva
+     *
+     * @param float $tva
+     * @return SponsoringFormula
+     */
+    public function setTva($tva)
+    {
+        $this->tva = $tva;
+
+        return $this;
+    }
+
+    /**
+     * Get tva
+     *
+     * @return float 
+     */
+    public function getTva()
+    {
+        return $this->tva;
+    }
+
+    /**
+     * Set htPrice
+     *
+     * @param float $htPrice
+     * @return SponsoringFormula
+     */
+    public function setHtPrice($htPrice)
+    {
+        $this->htPrice = $htPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get htPrice
+     *
+     * @return float 
+     */
+    public function getHtPrice()
+    {
+        return $this->htPrice;
     }
 }

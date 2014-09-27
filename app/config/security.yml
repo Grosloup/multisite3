@@ -39,7 +39,7 @@ security:
 
         sponsorship:
             host: ^(new\.|www\.)?zoobeauval\.com$
-            pattern: ^/parrainages.*
+            pattern: ^/parrainages
             security: true
             provider: sponsorship_provider
             access_denied_url: /

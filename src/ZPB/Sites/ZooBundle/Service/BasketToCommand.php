@@ -63,7 +63,7 @@ class BasketToCommand
                 /** @var \ZPB\AdminBundle\Entity\CommandItem $commandItem */
                 $commandItem = new $commandItemClass();
                 if(null != $item->getGodparent()){
-                    $itemGodparent = $this->em->find(get_class($item->getGoparent()), $item->getGoparent()->getId());
+                    $itemGodparent = $this->em->find(get_class($item->getGodparent()), $item->getGodparent()->getId());
                 } else {
                     $itemGodparent = $godparent;
                 }
@@ -73,11 +73,11 @@ class BasketToCommand
                 $formula = $this->em->find(get_class($item->getPack()), $item->getPack()->getId());
 
                 $delayed = $item->getDelayedAt();
-                $commandItem->setAmountHt($formula->getTaxFreePrice());
-                $totalAmountHT += $formula->getTaxFreePrice();
+                $commandItem->setAmountHt($formula->getHtPrice());
+                $totalAmountHT += $formula->getHtPrice();
                 $commandItem->setAmountTtc($formula->getPrice());
                 $totalAmountTTC += $formula->getPrice();
-                $commandItem->setTva($formula->getTaxRate());
+                $commandItem->setTva($formula->getTva());
 
                 $commandItem->setFormula($formula);
                 $commandItem->setGodparent($itemGodparent);

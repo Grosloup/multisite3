@@ -216,9 +216,10 @@ class IndexController extends BaseController
     public function loginOrRegisterAction(Request $request)
     {
         $type = $request->query->get('type',null);
-        // $user déjà connecté ?
+
+
         if ($this->getUser() && $this->get('security.context')->isGranted('ROLE_GODPARENT')) {
-            $this->redirect($this->generateUrl('zpb_sites_zoo_parrainages_payment_recap',['type'=>$type]));
+            return $this->redirect($this->generateUrl('zpb_sites_zoo_parrainages_payment_recap',['type'=>$type]));
         }
         $goparent = new Godparent();
         $form = $this->createForm(new GodparentType(), $goparent);
@@ -290,23 +291,64 @@ class IndexController extends BaseController
             }
         }
         if($type == 'postal'){
+            try{
+                $command = $this->get('zpb.zoo.basket_to_command')->createCommand($this->container->get('zpb.zoo.sponsor_basket'), "internet",$this->getUser() );
+            } catch (\Exception $e){
+                throw $this->createNotFoundException($e->getMessage()); //TODO page d'erreur pour commande parrainage
+            }
+            if($command != null){
+                throw $this->createNotFoundException(); //TODO page d'erreur pour commande parrainage
+            }
             return $this->render('ZPBSitesZooBundle:Parrainage/Index:recap_order_postal.html.twig', ['items'=>$items]);
         }
-        return $this->render('ZPBSitesZooBundle:Parrainage/Index:recap_order.html.twig', ['items'=>$items]);
-    }
 
-    public function paiementCBAction()
-    {
+
         try{
             $command = $this->get('zpb.zoo.basket_to_command')->createCommand($this->container->get('zpb.zoo.sponsor_basket'), "internet",$this->getUser() );
         } catch (\Exception $e){
             throw $this->createNotFoundException($e->getMessage()); //TODO page d'erreur pour commande parrainage
         }
 
-
-        if($command != null){
+        if($command == null){
             throw $this->createNotFoundException(); //TODO page d'erreur pour commande parrainage
         }
+
+        $bankDatas = $this->container->getParameter('zpb.zoo.bank_datas');
+        $date = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
+        $dateFormated = $date->format('d/m/Y:H:i:s');
+        $freeText = '';
+        $amount = $command->getTotalAmountTtc().'EUR';
+        $refCommand = $command->getTmpId();
+        $userEmail = $this->getUser()->getEmail();
+        $macMaker = $this->get('zpb.zoo.bank_mac_maker');
+
+        $mac = $macMaker->createMac($dateFormated, $amount, $refCommand, $freeText, $userEmail);
+
+        $form = $this->get('form.factory')->createNamedBuilder(null,'form')
+                    ->setAction($bankDatas['url'])
+                    ->add('version', 'hidden', ['data'=>$bankDatas['version']])
+                    ->add('TPE', 'hidden', ['data'=>$bankDatas['TPE']])
+                    ->add('date', 'hidden', ['data'=>$dateFormated])
+                    ->add('montant', 'hidden', ['data'=>$amount])
+                    ->add('reference', 'hidden', ['data'=>$refCommand])
+                    ->add('MAC', 'hidden', ['data'=>$mac])
+                    ->add('url_retour', 'hidden', ['data'=>$bankDatas['url_retour'].'?order='.$refCommand])
+                    ->add('url_retour_ok', 'hidden', ['data'=>$bankDatas['url_retour_ok'].'?order='.$refCommand])
+                    ->add('url_retour_err', 'hidden', ['data'=>$bankDatas['url_retour_err'].'?order='.$refCommand])
+                    ->add('lgue', 'hidden', ['data'=>$bankDatas['lgue']])
+                    ->add('societe', 'hidden', ['data'=>$bankDatas['societe']])
+                    ->add('texte-libre', 'hidden', ['data'=>$freeText])
+                    ->add('mail', 'hidden', ['data'=>$userEmail])
+                    ->add('bouton', 'submit', ['label'=>'Paiement'])
+                    ->getForm()
+            ;
+
+        return $this->render('ZPBSitesZooBundle:Parrainage/Index:recap_order.html.twig', ['items'=>$items, 'form'=>$form->createView()]);
+    }
+
+    public function paiementCBAction()
+    {
+
         //logic de paiement bancaire
 
         // après redirection en fonction resultat bank

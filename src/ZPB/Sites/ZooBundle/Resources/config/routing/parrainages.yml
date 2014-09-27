@@ -75,9 +75,6 @@ zpb_sites_zoo_parrainages_revalidate:
     defaults: { _controller: ZPBSitesZooBundle:Parrainage/Account:activationLink }
     methods: ["GET"]
 
-zpb_sites_zoo_parrainages_payer_cb:
-    path: /paiement/carte-bancaire
-    defaults: { _controller: ZPBSitesZooBundle:Parrainage/Index:paiementCB }
-    methods: ["GET"]
+
 
 
