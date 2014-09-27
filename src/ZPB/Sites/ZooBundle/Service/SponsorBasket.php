@@ -74,6 +74,11 @@ class SponsorBasket
         return false;
     }
 
+    public function flush()
+    {
+        $this->session->set($this->key, []);
+    }
+
     public function count()
     {
         return count($this->session->get($this->key));

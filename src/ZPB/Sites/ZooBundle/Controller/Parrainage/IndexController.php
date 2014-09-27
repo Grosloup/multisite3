@@ -34,8 +34,18 @@ class IndexController extends BaseController
     public function indexAction()
     {
         $animals = $this->getRepo('ZPBAdminBundle:Animal')->findall();
+        return $this->render('ZPBSitesZooBundle:Parrainage/Index:index.html.twig', ['animals' => $animals]);
+    }
+
+    public function connectAction()
+    {
+        return $this->render('ZPBSitesZooBundle:Parrainage/Index:connect_buttons.html.twig', []);
+    }
+
+    public function getBasketAction()
+    {
         $items = $this->get('zpb.zoo.sponsor_basket')->count();
-        return $this->render('ZPBSitesZooBundle:Parrainage/Index:index.html.twig', ['animals' => $animals,'basketCount'=>$items]);
+        return $this->render('ZPBSitesZooBundle:Parrainage/Index:get_basket.html.twig', ['basketCount'=>$items]);
     }
 
     public function showAnimalAction($name = "")
@@ -237,29 +247,6 @@ class IndexController extends BaseController
         );
     }
 
-
-/*    public function registerAction(Request $request)
-    {
-        $godparent = new Godparent();
-        $plainPassword = $this->getRepo('ZPBAdminBundle:Godparent')->createPassword();
-        $godparent->setPlainPassword($plainPassword);
-        $godparent->setTmpPassword($plainPassword);
-        $form = $this->createForm(new GodparentType(), $godparent);
-        $form->handleRequest($request);
-        if ($form->isValid()) {
-            $em = $this->getEm();
-            $em->persist($godparent);
-            $em->flush();
-            $token = new UsernamePasswordToken($godparent,null,'sponsorship',$godparent->getRoles());
-            $this->container->get('security.context')->setToken($token);
-            return $this->redirect($this->generateUrl('zpb_sites_zoo_parrainages_payment_recap')); //=>vers recap
-        }
-        return $this->render(
-            'ZPBSitesZooBundle:Parrainage/Index:login_register.html.twig',
-            ['form' => $form->createView()]
-        );
-    }*/
-
     public function recapOrderAfterLoginAction(Request $request)
     {
         $type = $request->query->get('type');
@@ -292,13 +279,14 @@ class IndexController extends BaseController
         }
         if($type == 'postal'){
             try{
-                $command = $this->get('zpb.zoo.basket_to_command')->createCommand($this->container->get('zpb.zoo.sponsor_basket'), "internet",$this->getUser() );
+                $command = $this->get('zpb.zoo.basket_to_command')->createCommand($this->container->get('zpb.zoo.sponsor_basket'), "postal",$this->getUser() );
             } catch (\Exception $e){
                 throw $this->createNotFoundException($e->getMessage()); //TODO page d'erreur pour commande parrainage
             }
             if($command != null){
                 throw $this->createNotFoundException(); //TODO page d'erreur pour commande parrainage
             }
+
             return $this->render('ZPBSitesZooBundle:Parrainage/Index:recap_order_postal.html.twig', ['items'=>$items]);
         }
 
@@ -342,17 +330,9 @@ class IndexController extends BaseController
                     ->add('bouton', 'submit', ['label'=>'Paiement'])
                     ->getForm()
             ;
-
+        $sb->flush();
         return $this->render('ZPBSitesZooBundle:Parrainage/Index:recap_order.html.twig', ['items'=>$items, 'form'=>$form->createView()]);
     }
 
-    public function paiementCBAction()
-    {
 
-        //logic de paiement bancaire
-
-        // après redirection en fonction resultat bank
-
-        return $this->render('ZPBSitesZooBundle:Parrainage/Index:response_paiement_cb.html.twig', []);
-    }
 }
