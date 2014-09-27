@@ -48,6 +48,7 @@ class GodparentType extends AbstractType
             ->add('postalCode', null, ['label'=>'Code postal*'])
             ->add('city', null, ['label'=>'Ville*'])
             ->add('country', 'country', ['label'=>'Pays*', 'preferred_choices'=>$preferred_choices])
+            ->add('type', 'hidden', ['mapped'=>false])
             ->add('save', 'submit', ['label'=>'Enregistrer'])
         ;
     }

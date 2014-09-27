@@ -27,7 +27,7 @@ class NavsController extends BaseController
 {
     public function topnavAction()
     {
-        $items = $this->get('zpb.zoo.sponsor_basket')->count();
-        return $this->render('ZPBSitesCommonBundle:Navs:topnav.html.twig', ['basketCount'=>$items]);
+
+        return $this->render('ZPBSitesCommonBundle:Navs:topnav.html.twig', []);
     }
-} 
+}

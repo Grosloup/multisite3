@@ -34,7 +34,8 @@ class IndexController extends BaseController
     public function indexAction()
     {
         $animals = $this->getRepo('ZPBAdminBundle:Animal')->findall();
-        return $this->render('ZPBSitesZooBundle:Parrainage/Index:index.html.twig', ['animals' => $animals]);
+        $items = $this->get('zpb.zoo.sponsor_basket')->count();
+        return $this->render('ZPBSitesZooBundle:Parrainage/Index:index.html.twig', ['animals' => $animals,'basketCount'=>$items]);
     }
 
     public function showAnimalAction($name = "")
@@ -214,15 +215,20 @@ class IndexController extends BaseController
 
     public function loginOrRegisterAction(Request $request)
     {
+        $type = $request->query->get('type',null);
         // $user déjà connecté ?
         if ($this->getUser() && $this->get('security.context')->isGranted('ROLE_GODPARENT')) {
-            $this->redirect('zpb_sites_zoo_parrainages_payment_recap');
+            $this->redirect($this->generateUrl('zpb_sites_zoo_parrainages_payment_recap',['type'=>$type]));
         }
         $goparent = new Godparent();
         $form = $this->createForm(new GodparentType(), $goparent);
+        if($type != null){
+            $form->get('type')->setData($type);
+        }
         $form->handleRequest($request);
         if ($form->isValid()) {
-            return $this->redirect($this->generateUrl('zpb_sites_zoo_parrainages_payment_recap'));
+            $type = $form->get('type')->getData();
+            return $this->redirect($this->generateUrl('zpb_sites_zoo_parrainages_payment_recap',['type'=>$type]));
         }
         return $this->render(
             'ZPBSitesZooBundle:Parrainage/Index:login_register.html.twig',
@@ -231,7 +237,7 @@ class IndexController extends BaseController
     }
 
 
-    public function registerAction(Request $request)
+/*    public function registerAction(Request $request)
     {
         $godparent = new Godparent();
         $plainPassword = $this->getRepo('ZPBAdminBundle:Godparent')->createPassword();
@@ -251,10 +257,14 @@ class IndexController extends BaseController
             'ZPBSitesZooBundle:Parrainage/Index:login_register.html.twig',
             ['form' => $form->createView()]
         );
-    }
+    }*/
 
-    public function recapOrderAfterLoginAction()
+    public function recapOrderAfterLoginAction(Request $request)
     {
+        $type = $request->query->get('type');
+        if(!in_array($type, ['internt', 'postal'])){
+            $type = 'internet';
+        }
         $sb = $this->container->get('zpb.zoo.sponsor_basket');
         $items = [];
         if (!$sb->isEmpty()) {
@@ -278,6 +288,9 @@ class IndexController extends BaseController
                     'delayed' => $delayed
                 ];
             }
+        }
+        if($type == 'postal'){
+            return $this->render('ZPBSitesZooBundle:Parrainage/Index:recap_order_postal.html.twig', ['items'=>$items]);
         }
         return $this->render('ZPBSitesZooBundle:Parrainage/Index:recap_order.html.twig', ['items'=>$items]);
     }

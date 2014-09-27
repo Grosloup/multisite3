@@ -82,8 +82,8 @@
             <div class="col-6">
                 <a class="btn btn-primary btn-xlarge" href="{{ path("zpb_sites_zoo_parrainages_homepage") }}">Ajouter des parrainages</a>
                 {% if packs|length > 0 %}
-                    <a class="btn btn-primary btn-xlarge" href="{{ path("zpb_sites_zoo_parrainages_login_or_register", {type: "online"}) }}">Regler par carte bancaire</a> {# TODO #}
-                    <a class="btn btn-primary btn-xlarge" href="{{ path("zpb_sites_zoo_parrainages_login_or_register", {type: "online"}) }}">Regler par courrier</a> {# TODO #}
+                    <a class="btn btn-primary btn-xlarge" href="{{ path("zpb_sites_zoo_parrainages_login_or_register", {type: "internet"}) }}">Regler par carte bancaire</a> {# TODO #}
+                    <a class="btn btn-primary btn-xlarge" href="{{ path("zpb_sites_zoo_parrainages_login_or_register", {type: "postal"}) }}">Regler par courrier</a> {# TODO #}
 
                 {% endif %}
             </div>

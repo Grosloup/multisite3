@@ -13,6 +13,23 @@
             </div>
         </div>
 
+        <div class="spaced-row">
+            <div class="col-4">
+                <a class="btn btn-primary" href="{{ path("zpb_sites_zoo_parrainages_login") }}">Mon compte</a>
+                {% if is_granted("ROLE_GODPARENT") %}
+                    <a class="btn btn-primary" href="{{ path("zpb_sites_zoo_parrainages_logout") }}">Déconnexion</a>
+                {% endif %}
+            </div>
+            <div class="col-2">
+                {% if basketCount<1 %}
+                <a href="javascript:void(0);">Votre panier est vide</a>
+                {% elseif basketCount == 1 %}
+                    <a href="{{ path("zpb_sites_zoo_parrainages_show_basket") }}">Votre panier contient 1 parrainage</a>
+                {% else %}
+                    <a href="{{ path("zpb_sites_zoo_parrainages_show_basket") }}">Votre panier contient {{ basketCount }} parrainages</a>
+                {% endif %}
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-6">

@@ -59,10 +59,33 @@ class CommandItemSponsor implements CommandItemInterface
     private $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\Command", inversedBy="sponsorings")
+     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\Command", inversedBy="commandItems")
      * @ORM\JoinColumn(name="command_id", referencedColumnName="id")
      */
     private $command;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\SponsoringFormula")
+     * @ORM\JoinColumn(name="formula_id", referencedColumnName="id")
+     */
+    private $formula;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\Godparent")
+     * @ORM\JoinColumn(name="client_id", referencedColumnName="id")
+     */
+    private $godparent;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\Animal")
+     * @ORM\JoinColumn(name="animal_id", referencedColumnName="id")
+     */
+    private $animal;
+
+    /**
+     * @ORM\Column(name="delayed_at", type="datetime",nullable=true)
+     */
+    private $delayed_at;
 
 
     /**
@@ -211,5 +234,97 @@ class CommandItemSponsor implements CommandItemInterface
         $this->command = $command;
 
         return $this;
+    }
+
+    /**
+     * Set delayed_at
+     *
+     * @param \DateTime $delayedAt
+     * @return CommandItemSponsor
+     */
+    public function setDelayedAt($delayedAt)
+    {
+        $this->delayed_at = $delayedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get delayed_at
+     *
+     * @return \DateTime
+     */
+    public function getDelayedAt()
+    {
+        return $this->delayed_at;
+    }
+
+    /**
+     * Set formula
+     *
+     * @param SponsoringFormula $formula
+     * @return CommandItemSponsor
+     */
+    public function setFormula(SponsoringFormula $formula = null)
+    {
+        $this->formula = $formula;
+
+        return $this;
+    }
+
+    /**
+     * Get formula
+     *
+     * @return SponsoringFormula
+     */
+    public function getFormula()
+    {
+        return $this->formula;
+    }
+
+    /**
+     * Set godparent
+     *
+     * @param Godparent $godparent
+     * @return CommandItemSponsor
+     */
+    public function setGodparent(Godparent $godparent = null)
+    {
+        $this->godparent = $godparent;
+
+        return $this;
+    }
+
+    /**
+     * Get godparent
+     *
+     * @return Godparent
+     */
+    public function getGodparent()
+    {
+        return $this->godparent;
+    }
+
+    /**
+     * Set animal
+     *
+     * @param Animal $animal
+     * @return CommandItemSponsor
+     */
+    public function setAnimal(Animal $animal = null)
+    {
+        $this->animal = $animal;
+
+        return $this;
+    }
+
+    /**
+     * Get animal
+     *
+     * @return Animal
+     */
+    public function getAnimal()
+    {
+        return $this->animal;
     }
 }

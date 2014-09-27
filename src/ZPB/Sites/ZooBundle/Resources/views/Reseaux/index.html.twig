@@ -10,6 +10,26 @@
     <script src="/js/vendor/swfobject.js"></script>
 {% endblock %}
 
+{% block headStyles %}
+    <style>
+        .vid_16-9{
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            background-color: #ff0000;
+            overflow: hidden;
+            position: relative;
+        }
+        .vid_16-9 iframe{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+{% endblock %}
+
 {% block content %}
     <div class="container">
         <div class="row">
@@ -21,10 +41,23 @@
         </div>
     </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="vid_16-9">
+                    <iframe width="560" height="315" src="//www.youtube.com/embed/videoseries?list=PLyNYhMexX6Q5SjRxhAxpuK_WjuuSh83Kn&showinfo=1" frameborder="0" allowfullscreen></iframe>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="wrapper">
         <div class="container">
-            <div class="spaced-row">
-                <div id="ytPlayer"></div>
+            <div class="spaced-row">{#<div id="ytPlayer"></div>#}
+                <a href="#" id="play">play</a>
+                <a href="#" id="pause">pause</a>
+
             </div>
         </div>
     </div>
@@ -33,41 +66,70 @@
 {% endblock %}
 
 {% block footScripts %}
+    {{ parent() }}
     <script>
-        var params = {
-            allowScriptAccess: "always"
-        };
-
-        var atts = {
-            id: "" +
-            "ytPlayer"
-        };
-        var ytplayer;
-        function loadPalyer(){
+        $(function(){
             var videoID = "k1NSvslgGDs";
-            swfobject.embedSWF("http://www.youtube.com/v/"+videoID+"?enablejsapi=1&palyerapiid=ytPlayer&version=3","ytapiplayer", "630", "354","9", null, null, params, atts);
-        }
+            //var videoID = "9bZkp7q19f0";
+            var params = {
+                allowScriptAccess: "always"
+            };
+
+            var atts = {
+                id: "ytPlayer"
+            };
+            var player;
+            var vids = "PLyNYhMexX6Q5SjRxhAxpuK_WjuuSh83Kn";
+
+            swfobject.embedSWF("https://www.youtube.com/apiplayer?enablejsapi=1&version=3&playerapiid=ytPlayer","ytPlayer", "630", "354","15", null, null, params, atts);
+
+            window.stateChanged = function(state){
+                console.log(state);
+                console.log(player.getDuration());
+                /*if(state==0){
+                    player.playVideo();
+                }*/
+
+            };
+
+            window.onYouTubePlayerReady = function(ytid){
+                player = $("#" + ytid)[0];
+                if(player){
+                    console.log(player);
+                    player.addEventListener("onStateChange", "stateChanged");
+                    player.cueVideoById(videoID, 0);
+                    /*player.cuePlayList({
+                     listType: "playlist",
+                     list: vids
+                     });*/
+
+                    /*if(player.getPlayerState()==5){
+                     player.playVideo();
+                     }*/
+                }
 
 
-        function onYouTubePlayerReady(playerId){
-            ytplayer = document.getElementById("ytPlayer");
+            };
 
-        }
 
-        function play() {
-            if (ytplayer) {
-                ytplayer.playVideo();
-            }
-        }
+            $("#play").on("click", function(e){
+                e.preventDefault();
+                if(player){
+                    player.playVideo();
+                }
+            });
 
-        function loadVideo(vidId){
-            var videoID = vidId;
-            if(ytplayer){
-                ytplayer.loadVideoById(videoID);
-            }
-        }
+            $("#pause").on("click", function(e){
+                e.preventDefault();
+                if(player){
+                    player.pauseVideo();
+                }
+            });
 
-        loadPalyer();
+
+
+
+        });
 
     </script>
 {% endblock %}

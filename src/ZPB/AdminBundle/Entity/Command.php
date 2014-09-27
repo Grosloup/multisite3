@@ -69,14 +69,14 @@ class Command
     /**
      * @ORM\OneToMany(targetEntity="ZPB\AdminBundle\Entity\CommandItemSponsor", mappedBy="command")
      */
-    private $sponsorings;
+    private $commandItems;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->sponsorings = new ArrayCollection();
+        $this->commandItems = new ArrayCollection();
     }
 
     /**
@@ -227,36 +227,38 @@ class Command
         return $this;
     }
 
+
+
     /**
-     * Add sponsorings
+     * Add commandItems
      *
-     * @param CommandItemSponsor $sponsorings
+     * @param CommandItemSponsor $commandItems
      * @return Command
      */
-    public function addSponsoring(CommandItemSponsor $sponsorings)
+    public function addCommandItem(CommandItemSponsor $commandItems)
     {
-        $this->sponsorings[] = $sponsorings;
+        $this->commandItems[] = $commandItems;
 
         return $this;
     }
 
     /**
-     * Remove sponsorings
+     * Remove commandItems
      *
-     * @param CommandItemSponsor $sponsorings
+     * @param CommandItemSponsor $commandItems
      */
-    public function removeSponsoring(CommandItemSponsor $sponsorings)
+    public function removeCommandItem(CommandItemSponsor $commandItems)
     {
-        $this->sponsorings->removeElement($sponsorings);
+        $this->commandItems->removeElement($commandItems);
     }
 
     /**
-     * Get sponsorings
+     * Get commandItems
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSponsorings()
+    public function getCommandItems()
     {
-        return $this->sponsorings;
+        return $this->commandItems;
     }
 }
