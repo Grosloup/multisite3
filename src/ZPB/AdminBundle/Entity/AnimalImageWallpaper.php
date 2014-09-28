@@ -15,6 +15,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 class AnimalImageWallpaper
 {
     /**
+     * @var \Symfony\Component\HttpFoundation\File\UploadedFile
+     * @Assert\Image(maxSize="6M", maxSizeMessage="La taille de votre fichier dépasse le maximum autorisé.", mimeTypes={"image/jpeg"}, mimeTypesMessage="Votre image n\'est pas d\'un type autorisé.")
+     */
+    public $file;
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -22,11 +27,6 @@ class AnimalImageWallpaper
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    /**
-     * @var \Symfony\Component\HttpFoundation\File\UploadedFile
-     * @Assert\Image(maxSize="6M", maxSizeMessage="La taille de votre fichier dépasse le maximum autorisé.", mimeTypes={"image/jpeg"}, mimeTypesMessage="Votre image n\'est pas d\'un type autorisé.")
-     */
-    public $file;
     /**
      * @var string
      *
@@ -94,6 +94,9 @@ class AnimalImageWallpaper
     private $absolutePath;
 
     private $webPath;
+
+    private $webThumbPath;
+
     /**
      * Get id
      *
@@ -105,14 +108,20 @@ class AnimalImageWallpaper
     }
 
     /**
-     * Set filename
-     *
-     * @param string $filename
+     * @return mixed
+     */
+    public function getWebThumbPath()
+    {
+        return $this->webThumbPath;
+    }
+
+    /**
+     * @param mixed $webThumbPath
      * @return AnimalImageWallpaper
      */
-    public function setFilename($filename)
+    public function setWebThumbPath($webThumbPath)
     {
-        $this->filename = $filename;
+        $this->webThumbPath = $webThumbPath;
 
         return $this;
     }
@@ -132,6 +141,7 @@ class AnimalImageWallpaper
     public function setAbsolutePath($absolutePath)
     {
         $this->absolutePath = $absolutePath;
+
         return $this;
     }
 
@@ -150,6 +160,7 @@ class AnimalImageWallpaper
     public function setWebPath($webPath)
     {
         $this->webPath = $webPath;
+
         return $this;
     }
 
@@ -161,6 +172,29 @@ class AnimalImageWallpaper
     public function getFilename()
     {
         return $this->filename;
+    }
+
+    /**
+     * Set filename
+     *
+     * @param string $filename
+     * @return AnimalImageWallpaper
+     */
+    public function setFilename($filename)
+    {
+        $this->filename = $filename;
+
+        return $this;
+    }
+
+    /**
+     * Get extension
+     *
+     * @return string
+     */
+    public function getExtension()
+    {
+        return $this->extension;
     }
 
     /**
@@ -177,13 +211,13 @@ class AnimalImageWallpaper
     }
 
     /**
-     * Get extension
+     * Get width
      *
-     * @return string
+     * @return integer
      */
-    public function getExtension()
+    public function getWidth()
     {
-        return $this->extension;
+        return $this->width;
     }
 
     /**
@@ -200,13 +234,13 @@ class AnimalImageWallpaper
     }
 
     /**
-     * Get width
+     * Get height
      *
      * @return integer
      */
-    public function getWidth()
+    public function getHeight()
     {
-        return $this->width;
+        return $this->height;
     }
 
     /**
@@ -223,13 +257,13 @@ class AnimalImageWallpaper
     }
 
     /**
-     * Get height
+     * Get createdAt
      *
-     * @return integer
+     * @return \DateTime
      */
-    public function getHeight()
+    public function getCreatedAt()
     {
-        return $this->height;
+        return $this->createdAt;
     }
 
     /**
@@ -246,16 +280,14 @@ class AnimalImageWallpaper
     }
 
     /**
-     * Get createdAt
+     * Get rootDir
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getCreatedAt()
+    public function getRootDir()
     {
-        return $this->createdAt;
+        return $this->rootDir;
     }
-
-
 
     /**
      * Set rootDir
@@ -271,13 +303,13 @@ class AnimalImageWallpaper
     }
 
     /**
-     * Get rootDir
+     * Get webDir
      *
      * @return string
      */
-    public function getRootDir()
+    public function getWebDir()
     {
-        return $this->rootDir;
+        return $this->webDir;
     }
 
     /**
@@ -294,13 +326,13 @@ class AnimalImageWallpaper
     }
 
     /**
-     * Get webDir
+     * Get thumbDir
      *
      * @return string
      */
-    public function getWebDir()
+    public function getThumbDir()
     {
-        return $this->webDir;
+        return $this->thumbDir;
     }
 
     /**
@@ -317,13 +349,13 @@ class AnimalImageWallpaper
     }
 
     /**
-     * Get thumbDir
+     * Get animal
      *
-     * @return string
+     * @return Animal
      */
-    public function getThumbDir()
+    public function getAnimal()
     {
-        return $this->thumbDir;
+        return $this->animal;
     }
 
     /**
@@ -337,15 +369,5 @@ class AnimalImageWallpaper
         $this->animal = $animal;
 
         return $this;
-    }
-
-    /**
-     * Get animal
-     *
-     * @return Animal
-     */
-    public function getAnimal()
-    {
-        return $this->animal;
     }
 }

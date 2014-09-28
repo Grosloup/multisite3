@@ -5,6 +5,7 @@ namespace ZPB\AdminBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * AnimalImageFront
  *
@@ -14,6 +15,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 class AnimalImageFront
 {
     /**
+     * @var \Symfony\Component\HttpFoundation\File\UploadedFile
+     * @Assert\Image(maxSize="6M", maxSizeMessage="La taille de votre fichier dépasse le maximum autorisé.", mimeTypes={"image/jpeg"}, mimeTypesMessage="Votre image n\'est pas d\'un type autorisé.")
+     */
+    public $file;
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -21,12 +27,6 @@ class AnimalImageFront
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    /**
-     * @var \Symfony\Component\HttpFoundation\File\UploadedFile
-     * @Assert\Image(maxSize="6M", maxSizeMessage="La taille de votre fichier dépasse le maximum autorisé.", mimeTypes={"image/jpeg"}, mimeTypesMessage="Votre image n\'est pas d\'un type autorisé.")
-     */
-    public $file;
-
     /**
      * @var string
      *
@@ -96,6 +96,8 @@ class AnimalImageFront
 
     private $webPath;
 
+    private $webThumbPath;
+
 
     /**
      * Get id
@@ -108,14 +110,20 @@ class AnimalImageFront
     }
 
     /**
-     * Set filename
-     *
-     * @param string $filename
+     * @return mixed
+     */
+    public function getWebThumbPath()
+    {
+        return $this->webThumbPath;
+    }
+
+    /**
+     * @param mixed $webThumbPath
      * @return AnimalImageFront
      */
-    public function setFilename($filename)
+    public function setWebThumbPath($webThumbPath)
     {
-        $this->filename = $filename;
+        $this->webThumbPath = $webThumbPath;
 
         return $this;
     }
@@ -135,6 +143,7 @@ class AnimalImageFront
     public function setAbsolutePath($absolutePath)
     {
         $this->absolutePath = $absolutePath;
+
         return $this;
     }
 
@@ -153,6 +162,7 @@ class AnimalImageFront
     public function setWebPath($webPath)
     {
         $this->webPath = $webPath;
+
         return $this;
     }
 
@@ -164,6 +174,29 @@ class AnimalImageFront
     public function getFilename()
     {
         return $this->filename;
+    }
+
+    /**
+     * Set filename
+     *
+     * @param string $filename
+     * @return AnimalImageFront
+     */
+    public function setFilename($filename)
+    {
+        $this->filename = $filename;
+
+        return $this;
+    }
+
+    /**
+     * Get rootDir
+     *
+     * @return string
+     */
+    public function getRootDir()
+    {
+        return $this->rootDir;
     }
 
     /**
@@ -180,13 +213,13 @@ class AnimalImageFront
     }
 
     /**
-     * Get rootDir
+     * Get webDir
      *
      * @return string
      */
-    public function getRootDir()
+    public function getWebDir()
     {
-        return $this->rootDir;
+        return $this->webDir;
     }
 
     /**
@@ -203,13 +236,13 @@ class AnimalImageFront
     }
 
     /**
-     * Get webDir
+     * Get thumbDir
      *
      * @return string
      */
-    public function getWebDir()
+    public function getThumbDir()
     {
-        return $this->webDir;
+        return $this->thumbDir;
     }
 
     /**
@@ -226,13 +259,13 @@ class AnimalImageFront
     }
 
     /**
-     * Get thumbDir
+     * Get extension
      *
      * @return string
      */
-    public function getThumbDir()
+    public function getExtension()
     {
-        return $this->thumbDir;
+        return $this->extension;
     }
 
     /**
@@ -249,13 +282,13 @@ class AnimalImageFront
     }
 
     /**
-     * Get extension
+     * Get createdAt
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getExtension()
+    public function getCreatedAt()
     {
-        return $this->extension;
+        return $this->createdAt;
     }
 
     /**
@@ -272,16 +305,14 @@ class AnimalImageFront
     }
 
     /**
-     * Get createdAt
+     * Get width
      *
-     * @return \DateTime
+     * @return integer
      */
-    public function getCreatedAt()
+    public function getWidth()
     {
-        return $this->createdAt;
+        return $this->width;
     }
-
-
 
     /**
      * Set width
@@ -297,13 +328,13 @@ class AnimalImageFront
     }
 
     /**
-     * Get width
+     * Get height
      *
      * @return integer
      */
-    public function getWidth()
+    public function getHeight()
     {
-        return $this->width;
+        return $this->height;
     }
 
     /**
@@ -320,13 +351,13 @@ class AnimalImageFront
     }
 
     /**
-     * Get height
+     * Get animal
      *
-     * @return integer
+     * @return Animal
      */
-    public function getHeight()
+    public function getAnimal()
     {
-        return $this->height;
+        return $this->animal;
     }
 
     /**
@@ -340,15 +371,5 @@ class AnimalImageFront
         $this->animal = $animal;
 
         return $this;
-    }
-
-    /**
-     * Get animal
-     *
-     * @return Animal
-     */
-    public function getAnimal()
-    {
-        return $this->animal;
     }
 }

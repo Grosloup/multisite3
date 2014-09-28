@@ -35,7 +35,20 @@
                 {% endif %}
             </div>
         </div>
-        <div class="column-4"></div>
+        <div class="column-4">
+            <div class="tile">
+                <div class="dropzone" id="hd-drop" data-id="{{ animal.id }}">
+                    <div class="dropzone-in">
+                        <div class="dropzone-legend"></div>
+                    </div>
+                    <div class="dropzone-loader">
+                        <div class="dropzone-innerbar"></div>
+                    </div>
+                    <div class="dropzone-message"></div>
+                </div>
+
+            </div>
+        </div>
     </div>
 
     <div class="row">
@@ -53,13 +66,29 @@
                 {% if wallpapers|length <1 %}
                     <p class="text-warning">Il n'y a pas de fonds d'écran</p>
                 {% else %}
-                    {% for wallpaper in wallpapers %}
-
-                    {% endfor %}
+                    <ul>
+                        {% for wallpaper in wallpapers %}
+                            <li><img src="{{ wallpaper.getWebPath() }}" alt=""/></li>
+                        {% endfor %}
+                    </ul>
+                    
                 {% endif %}
             </div>
         </div>
-        <div class="column-4"></div>
+        <div class="column-4">
+            <div class="tile">
+                <div class="dropzone" id="wallpaper-drop" data-id="{{ animal.id }}">
+                    <div class="dropzone-in">
+                        <div class="dropzone-legend"></div>
+                    </div>
+                    <div class="dropzone-loader">
+                        <div class="dropzone-innerbar"></div>
+                    </div>
+                    <div class="dropzone-message"></div>
+                </div>
+
+            </div>
+        </div>
     </div>
 
     <div class="row">
@@ -84,6 +113,23 @@
                 {% endif %}
             </div>
         </div>
-        <div class="column-4"></div>
+        <div class="column-4">
+            <div class="tile">
+                <div class="dropzone" id="front-drop" data-id="{{ animal.id }}">
+                    <div class="dropzone-in">
+                        <div class="dropzone-legend"></div>
+                    </div>
+                    <div class="dropzone-loader">
+                        <div class="dropzone-innerbar"></div>
+                    </div>
+                    <div class="dropzone-message"></div>
+                </div>
+
+            </div>
+        </div>
     </div>
+{% endblock %}
+{% block footScripts %}
+    {{ parent() }}
+    <script src="/js/admin/animal-image-app.min.js"></script>
 {% endblock %}

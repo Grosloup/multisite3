@@ -15,6 +15,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 class AnimalImageHd
 {
     /**
+     * @var \Symfony\Component\HttpFoundation\File\UploadedFile
+     * @Assert\Image(maxSize="6M", maxSizeMessage="La taille de votre fichier dépasse le maximum autorisé.", mimeTypes={"image/jpeg"}, mimeTypesMessage="Votre image n\'est pas d\'un type autorisé.")
+     */
+    public $file;
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -22,12 +27,6 @@ class AnimalImageHd
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var \Symfony\Component\HttpFoundation\File\UploadedFile
-     * @Assert\Image(maxSize="6M", maxSizeMessage="La taille de votre fichier dépasse le maximum autorisé.", mimeTypes={"image/jpeg"}, mimeTypesMessage="Votre image n\'est pas d\'un type autorisé.")
-     */
-    public $file;
     /**
      * @var string
      *
@@ -95,6 +94,9 @@ class AnimalImageHd
     private $absolutePath;
 
     private $webPath;
+
+    private $webThumbPath;
+
     /**
      * Get id
      *
@@ -106,14 +108,20 @@ class AnimalImageHd
     }
 
     /**
-     * Set filename
-     *
-     * @param string $filename
+     * @return mixed
+     */
+    public function getWebThumbPath()
+    {
+        return $this->webThumbPath;
+    }
+
+    /**
+     * @param mixed $webThumbPath
      * @return AnimalImageHd
      */
-    public function setFilename($filename)
+    public function setWebThumbPath($webThumbPath)
     {
-        $this->filename = $filename;
+        $this->webThumbPath = $webThumbPath;
 
         return $this;
     }
@@ -133,6 +141,7 @@ class AnimalImageHd
     public function setAbsolutePath($absolutePath)
     {
         $this->absolutePath = $absolutePath;
+
         return $this;
     }
 
@@ -151,10 +160,9 @@ class AnimalImageHd
     public function setWebPath($webPath)
     {
         $this->webPath = $webPath;
+
         return $this;
     }
-
-
 
     /**
      * Get filename
@@ -164,6 +172,29 @@ class AnimalImageHd
     public function getFilename()
     {
         return $this->filename;
+    }
+
+    /**
+     * Set filename
+     *
+     * @param string $filename
+     * @return AnimalImageHd
+     */
+    public function setFilename($filename)
+    {
+        $this->filename = $filename;
+
+        return $this;
+    }
+
+    /**
+     * Get extension
+     *
+     * @return string
+     */
+    public function getExtension()
+    {
+        return $this->extension;
     }
 
     /**
@@ -180,13 +211,13 @@ class AnimalImageHd
     }
 
     /**
-     * Get extension
+     * Get width
      *
-     * @return string
+     * @return integer
      */
-    public function getExtension()
+    public function getWidth()
     {
-        return $this->extension;
+        return $this->width;
     }
 
     /**
@@ -203,13 +234,13 @@ class AnimalImageHd
     }
 
     /**
-     * Get width
+     * Get height
      *
      * @return integer
      */
-    public function getWidth()
+    public function getHeight()
     {
-        return $this->width;
+        return $this->height;
     }
 
     /**
@@ -226,13 +257,13 @@ class AnimalImageHd
     }
 
     /**
-     * Get height
+     * Get createdAt
      *
-     * @return integer
+     * @return \DateTime
      */
-    public function getHeight()
+    public function getCreatedAt()
     {
-        return $this->height;
+        return $this->createdAt;
     }
 
     /**
@@ -249,16 +280,14 @@ class AnimalImageHd
     }
 
     /**
-     * Get createdAt
+     * Get rootDir
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getCreatedAt()
+    public function getRootDir()
     {
-        return $this->createdAt;
+        return $this->rootDir;
     }
-
-
 
     /**
      * Set rootDir
@@ -274,13 +303,13 @@ class AnimalImageHd
     }
 
     /**
-     * Get rootDir
+     * Get webDir
      *
      * @return string
      */
-    public function getRootDir()
+    public function getWebDir()
     {
-        return $this->rootDir;
+        return $this->webDir;
     }
 
     /**
@@ -297,13 +326,13 @@ class AnimalImageHd
     }
 
     /**
-     * Get webDir
+     * Get thumbDir
      *
      * @return string
      */
-    public function getWebDir()
+    public function getThumbDir()
     {
-        return $this->webDir;
+        return $this->thumbDir;
     }
 
     /**
@@ -320,13 +349,13 @@ class AnimalImageHd
     }
 
     /**
-     * Get thumbDir
+     * Get animal
      *
-     * @return string
+     * @return Animal
      */
-    public function getThumbDir()
+    public function getAnimal()
     {
-        return $this->thumbDir;
+        return $this->animal;
     }
 
     /**
@@ -340,15 +369,5 @@ class AnimalImageHd
         $this->animal = $animal;
 
         return $this;
-    }
-
-    /**
-     * Get animal
-     *
-     * @return Animal
-     */
-    public function getAnimal()
-    {
-        return $this->animal;
     }
 }
