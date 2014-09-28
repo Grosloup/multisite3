@@ -33,6 +33,10 @@ class AnimalImageController extends BaseController
             throw $this->createNotFoundException();
         }
 
-        return $this->render('ZPBAdminBundle:Parrainage/AnimalImage:images_by_animal.html.twig', []);
+        $hds = $this->getRepo('ZPBAdminBundle:AnimalImageHd')->findByAnimal($animal);
+        $fronts = $this->getRepo('ZPBAdminBundle:AnimalImageFront')->findByAnimal($animal);
+        $wallpapers = $this->getRepo('ZPBAdminBundle:AnimalImageWallpaper')->findByAnimal($animal);
+
+        return $this->render('ZPBAdminBundle:Parrainage/AnimalImage:images_by_animal.html.twig', ['hds'=>$hds, 'fronts'=>$fronts, 'wallpapers'=>$wallpapers, 'animal'=>$animal]);
     }
 }

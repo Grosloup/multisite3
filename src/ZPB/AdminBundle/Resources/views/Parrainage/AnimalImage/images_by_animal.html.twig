@@ -1,0 +1,89 @@
+{% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
+
+{% block title %}Toutes les images associées à {{ animal.longName }} | Parrainages{% endblock %}
+{% set active = "sponsor_img_by_animal" %}
+
+{% block content %}
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <div class="tile-header">
+                    Toutes les images associées à {{ animal.longName }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <div class="tile-header">
+                    Images HD (spéciales parrains)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column-8">
+            <div class="tile">
+                {% if hds|length <1 %}
+                    <p class="text-warning">Il n'y a pas d'images hd</p>
+                {% else %}
+                    {% for hd in hds %}
+
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="column-4"></div>
+    </div>
+
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <div class="tile-header">
+                    Fonds d'écran (spéciales parrains)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column-8">
+            <div class="tile">
+                {% if wallpapers|length <1 %}
+                    <p class="text-warning">Il n'y a pas de fonds d'écran</p>
+                {% else %}
+                    {% for wallpaper in wallpapers %}
+
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="column-4"></div>
+    </div>
+
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <div class="tile-header">
+                    Images de présentation (front end)
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="column-8">
+            <div class="tile">
+                {% if fronts|length <1 %}
+                    <p class="text-warning">Il n'y a pas d'images de présentation</p>
+                {% else %}
+                    {% for front in fronts %}
+
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="column-4"></div>
+    </div>
+{% endblock %}
