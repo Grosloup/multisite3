@@ -35,25 +35,18 @@
             }
             var dropin = zone.find(opts.droparea);
             var progressBar = zone.find(opts.progressbar);
+            var target = $(opts.target), el;
             var xhr = new XMLHttpRequest();
 
             function loadFunc(e){
                 var response = $.parseJSON(e.target.responseText);
-                if(response.error){
-                    message.text(response.msg);
-                    progressBar.width(0+"%");
-                    zone.data('droppable', true);
-                } else {
-                    dropin.after(response.html);
-                    dropin.hide();
-                    message.text(response.msg);
-                    progressBar.width(0+"%");
-                    progressBar.parent().hide();
-                    actions.removeClass("hide").addClass('show');
-                    zone.data('droppable', false);
-                    if(opts.targetId){
-                        $(opts.targetId).val(response.imgId);
-                    }
+                message.text(response.msg);
+                progressBar.width(0+"%");
+                zone.data('droppable', true);
+                if(!response.error){
+                    el = $(d.createElement(opts.element));
+                    el.html(response.html);
+                    target.append(el);
                 }
             }
             function progressFunc(e){
@@ -122,19 +115,19 @@ $(function(){
     hdDropZone.animalImageUploader({
         url: "",
         type: "hd",
-        target: "",
+        target: "#hd-list",
         element: "li"
     });
     wpDropZone.animalImageUploader({
         url: "",
         type: "wallpaper",
-        target: "",
+        target: "#wp-list",
         element: "li"
     });
     frontDropZone.animalImageUploader({
         url: "",
         type: "front",
-        target: "",
+        target: "#front-list",
         element: "li"
     });
 });

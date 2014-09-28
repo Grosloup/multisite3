@@ -29,9 +29,12 @@
                 {% if hds|length <1 %}
                     <p class="text-warning">Il n'y a pas d'images hd</p>
                 {% else %}
-                    {% for hd in hds %}
+                    <ul id="hd-list">
+                        {% for hd in hds %}
+                            <li><img src="{{ hd.getWebThumbPath() }}" alt=""/></li>
+                        {% endfor %}
+                    </ul>
 
-                    {% endfor %}
                 {% endif %}
             </div>
         </div>
@@ -66,12 +69,12 @@
                 {% if wallpapers|length <1 %}
                     <p class="text-warning">Il n'y a pas de fonds d'écran</p>
                 {% else %}
-                    <ul>
+                    <ul id="wp-list">
                         {% for wallpaper in wallpapers %}
-                            <li><img src="{{ wallpaper.getWebPath() }}" alt=""/></li>
+                            <li><img src="{{ wallpaper.getWebThumbPath() }}" alt=""/></li>
                         {% endfor %}
                     </ul>
-                    
+
                 {% endif %}
             </div>
         </div>
@@ -107,9 +110,12 @@
                 {% if fronts|length <1 %}
                     <p class="text-warning">Il n'y a pas d'images de présentation</p>
                 {% else %}
-                    {% for front in fronts %}
+                    <ul id="front-list">
+                        {% for front in fronts %}
+                            <li><img src="{{ front.getWebThumbPath() }}" alt=""/></li>
+                        {% endfor %}
+                    </ul>
 
-                    {% endfor %}
                 {% endif %}
             </div>
         </div>
