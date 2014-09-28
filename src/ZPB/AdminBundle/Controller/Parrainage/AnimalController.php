@@ -33,9 +33,9 @@ class AnimalController extends BaseController
 {
     public function listAction()
     {
-        //TODO html.twig
+        $categories = $this->getRepo('ZPBAdminBundle:AnimalCategory')->findAll();
         $animals = $this->getRepo('ZPBAdminBundle:Animal')->findAll();
-        return $this->render('ZPBAdminBundle:Parrainage/Animal:list.html.twig', ['animals'=>$animals]);
+        return $this->render('ZPBAdminBundle:Parrainage/Animal:list.html.twig', ['animals'=>$animals, 'categories'=>$categories]);
     }
 
     public function createAction(Request $request)
@@ -61,4 +61,4 @@ class AnimalController extends BaseController
     {
         //TODO
     }
-} 
+}

@@ -19,6 +19,7 @@
                     <tr>
                         <th>#Id</th>
                         <th>Nom</th>
+                        <th colspan="3">Changer la catégorie</th>
 
                         <th>Modifier</th>
                         <th>Supprimer</th>
@@ -32,7 +33,18 @@
                             <tr>
                                 <td>{{ animal.id }}</td>
                                 <td>{{ animal.longName }}</td>
+                                <td>
+                                    <div class="form">
+                                        <select id="{{ animal.id }}" class="select-category">
+                                            {% for cat in categories %}
+                                                <option value="{{ cat.id }}" {% if animal.category.id == cat.id %}selected="selected"{% endif %}>{{ cat.name }}</option>
+                                            {% endfor %}
+                                        </select>
 
+                                    </div>
+                                </td>
+                                <td><span class="success text-success hide"><i class="fa fa-check"></i></span><span class="error text-error hide"><i class="fa fa-times"></i></span></td>
+                                <td><span class="message"></span></td>
                                 <td><a class="btn btn-neutral" href="#"{# href="{{ path("zpb_admin_animations_update", {id: specie.id}) }}"#}><i class="fa fa-edit"></i></a></td>
                                 <td><a class="btn btn-neutral alert-delete" href="#"{#href="{{ path("zpb_admin_animations_delete", {id: specie.id, _token: csrf_token('delete_animation')}) }}"#} data-name="{{ animal.name }}"><i class="fa fa-trash-o"></i></a></td>
                             </tr>
@@ -44,4 +56,48 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block footScripts %}
+    {{ parent() }}
+
+    <script>
+        $(function(){
+
+            var selects = $(".select-category");
+
+            selects.on("change", function(e){
+                e.preventDefault();
+                var $this = $(this);
+                $(this).attr("disabled", true);
+                var animalId = $(this).attr("id");
+                var newCatId = $(this).find("option:selected").val();
+                var error = $(this).parents("tr").find("span.error");
+                error.removeClass("show").addClass("hide");
+                var success = $(this).parents("tr").find("span.success");
+                success.removeClass("show").addClass("hide");
+                var msg = $(this).parents("tr").find("span.message");
+                msg.text("");
+
+                $.post("{{ path("zpb_admin_sponsor_animals_xhr_update_category") }}", {animalId: animalId, categoryId: newCatId})
+                        .done(function(response){
+                            if(response.error){
+                                error.removeClass("hide").addClass("show");
+                                success.removeClass("show").addClass("hide");
+                                msg.text(response.message);
+                            }else{
+                                success.removeClass("hide").addClass("show");
+                                error.removeClass("show").addClass("hide");
+                            }
+                            msg.text(response.message);
+                            $this.removeAttr("disabled");
+                        })
+                        .fail(function(response){
+                            error.removeClass("hide").addClass("show");
+                            success.removeClass("show").addClass("hide");
+                            msg.text(response.message);
+                            $this.removeAttr("disabled");
+                        });
+            })
+        });
+    </script>
 {% endblock %}

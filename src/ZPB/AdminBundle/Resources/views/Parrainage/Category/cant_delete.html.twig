@@ -76,7 +76,7 @@
                 success.removeClass("show").addClass("hide");
                 var msg = $(this).parents("tr").find("span.message");
                 msg.text("");
-                console.log(animalId, newCatId);
+
                 $.post("{{ path("zpb_admin_sponsor_animals_xhr_update_category") }}", {animalId: animalId, categoryId: newCatId})
                         .done(function(response){
                             if(response.error){

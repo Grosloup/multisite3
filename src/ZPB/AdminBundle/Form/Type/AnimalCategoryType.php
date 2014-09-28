@@ -29,17 +29,18 @@ class AnimalCategoryType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('',null,['label'=>''])
+            ->add('name',null,['label'=>'Nom*'])
+            ->add('save', 'submit', ['label'=>'Enregistrer'])
         ;
     }
 
 	public function setDefaultOptions(OptionsResolverInterface $resolver)
 	{
-		$resolver->setDefaults(['data_class'=>'']);
+		$resolver->setDefaults(['data_class'=>'ZPB\AdminBundle\Entity\AnimalCategory']);
 	}
 
 	public function getName()
 	{
-		return '';
+		return 'animal_category_form';
 	}
 }
