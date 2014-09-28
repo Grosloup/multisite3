@@ -1,3 +1,4 @@
+######################################################### crud AnimalSpecies
 zpb_admin_sponsor_species_list:
    path: /especes/liste
    defaults: { _controller: ZPBAdminBundle:Parrainage/Species:list }
@@ -23,6 +24,41 @@ zpb_admin_sponsor_species_delete:
         id: \d+
 
 
+######################################################### crud AnimalCategory
+zpb_admin_sponsor_animals_categories_list:
+   path: /categories-animaux/liste
+   defaults: { _controller: ZPBAdminBundle:Parrainage/Category:list }
+   methods: ["GET"]
+
+zpb_admin_sponsor_animals_categories_create:
+    path: /categories-animaux/nouvelle
+    defaults: { _controller: ZPBAdminBundle:Parrainage/Category:create }
+    methods: ["GET", "POST"]
+
+zpb_admin_sponsor_animals_categories_update:
+   path: /categories-animaux/modifier/{id}
+   defaults: { _controller: ZPBAdminBundle:Parrainage/Category:update }
+   methods: ["GET","POST"]
+   requirements:
+       id: \d+
+
+zpb_admin_sponsor_animals_categories_delete:
+    path: /categories-animaux/supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:Parrainage/Category:delete }
+    methods: ["GET"]
+    requirements:
+        id: \d+
+
+
+######################################################### XHR AnimalCategory
+zpb_admin_sponsor_animals_xhr_update_category:
+    path: /xhr/modifier/animal-categorie
+    defaults: { _controller: ZPBAdminBundle:Parrainage/XHR:animalChangeCategory }
+    methods: ["POST"]
+
+
+
+######################################################### crud Animal
 zpb_admin_sponsor_animals_list:
    path: /animaux/liste
    defaults: { _controller: ZPBAdminBundle:Parrainage/Animal:list }

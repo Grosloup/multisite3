@@ -138,7 +138,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="sidebar-dropdown{% if active in ["sponsor_list_species", "sponsor_new_species","sponsor_list_animals","sponsor_new_animal"] %} active{% endif %}"><a href="javascript:void(0)">Gestion des animaux</a><i class="sidebar-icon fa fa-angle-right"></i>
+                        <li class="sidebar-dropdown{% if active in ["sponsor_list_species", "sponsor_new_species","sponsor_list_animals","sponsor_new_animal","sponsor_list_animal_cat", "sponsor_new_animal_cat", "sponsor_update_animal_cat","sponsor_delete_animal_cat"] %} active{% endif %}"><a href="javascript:void(0)">Gestion des animaux</a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
 
                                 <li class="sidebar-dropdown{% if active in ["sponsor_list_animals","sponsor_new_animal"] %} active{% endif %}"><a href="javascript:void(0)">Animaux</a><i class="sidebar-icon fa fa-angle-right"></i>
@@ -154,6 +154,12 @@
                                     <ul>
                                         <li class="{% if active == "sponsor_list_species" %}active{% endif %}"><a href="{{ path("zpb_admin_sponsor_species_list") }}">Liste</a></li>
                                         <li class="{% if active == "sponsor_new_species" %}active{% endif %}"><a href="{{ path("zpb_admin_sponsor_species_create") }}">Nouvelle</a></li>
+                                    </ul>
+                                </li>
+                                <li class="sidebar-dropdown{% if active in ["sponsor_list_animal_cat", "sponsor_new_animal_cat", "sponsor_update_animal_cat"] %} active{% endif %}"><a href="javascript:void(0)">Catégories</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                    <ul>
+                                        <li class="{% if active == "sponsor_list_animal_cat" %}active{% endif %}"><a href="{{ path("zpb_admin_sponsor_animals_categories_list") }}">Liste</a></li>
+                                        <li class="{% if active == "sponsor_new_animal_cat" %}active{% endif %}"><a href="{{ path("zpb_admin_sponsor_animals_categories_create") }}">Nouvelle</a></li>
                                     </ul>
                                 </li>
                             </ul>

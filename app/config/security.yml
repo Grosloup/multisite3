@@ -55,7 +55,7 @@ security:
         administration:
             host: ^(new\.|www\.)?admin.zooparc\.com$
             pattern: ^/
-            security: true
+            security: false
             provider: adminuser_provider
             anonymous: ~
             form_login:

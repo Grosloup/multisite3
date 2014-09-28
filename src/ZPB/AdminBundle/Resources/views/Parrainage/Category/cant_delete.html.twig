@@ -1,0 +1,102 @@
+{% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
+
+{% block title %}Suppression impossible Catégorie d'animal | Parrainages{% endblock %}
+{% set active = "sponsor_delete_animal_cat" %}
+
+{% block content %}
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <div class="tile-header">Suppression de &laquo;{{ category.name }}&raquo;</div>
+                <p>Il n'est pas possible de supprimer cette catégorie car des animaux sont enregistrés sous celle-ci. Modifiez les tous d'abord.</p>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>Nom de l'animal</th>
+                        <th>Changer la catégorie</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for animal in animals %}
+                        <tr>
+                            <td>{{ animal.name }}</td>
+                            <td>
+                                <div class="form">
+                                    <select id="{{ animal.id }}" class="select-category">
+                                        {% for cat in categories %}
+                                            <option value="{{ cat.id }}" {% if animal.category.id == cat.id %}selected="selected"{% endif %}>{{ cat.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </td>
+                            <td><span class="success text-success hide"><i class="fa fa-check"></i></span><span class="error text-error hide"><i class="fa fa-times"></i></span></td>
+                            <td><span class="message"></span></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="tile">
+                <a class="btn btn-danger" href="{{ path("zpb_admin_sponsor_animals_categories_delete", {id: category.id, _token: csrf_token("delete_category")}) }}">Supprimer la catégorie</a>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block footScripts %}
+    {{ parent() }}
+
+    <script>
+        $(function(){
+
+            var selects = $(".select-category");
+
+            selects.on("change", function(e){
+                e.preventDefault();
+                var $this = $(this);
+                $(this).attr("disabled", true);
+                var animalId = $(this).attr("id");
+                var newCatId = $(this).find("option:selected").val();
+                var error = $(this).parents("tr").find("span.error");
+                error.removeClass("show").addClass("hide");
+                var success = $(this).parents("tr").find("span.success");
+                success.removeClass("show").addClass("hide");
+                var msg = $(this).parents("tr").find("span.message");
+                msg.text("");
+                console.log(animalId, newCatId);
+                $.post("{{ path("zpb_admin_sponsor_animals_xhr_update_category") }}", {animalId: animalId, categoryId: newCatId})
+                        .done(function(response){
+                            if(response.error){
+                                error.removeClass("hide").addClass("show");
+                                success.removeClass("show").addClass("hide");
+                                msg.text(response.message);
+                            }else{
+                                success.removeClass("hide").addClass("show");
+                                error.removeClass("show").addClass("hide");
+                            }
+                            msg.text(response.message);
+                            $this.removeAttr("disabled");
+                        })
+                        .fail(function(response){
+                            error.removeClass("hide").addClass("show");
+                            success.removeClass("show").addClass("hide");
+                            msg.text(response.message);
+                            $this.removeAttr("disabled");
+                        });
+            })
+        });
+    </script>
+{% endblock %}
