@@ -12,4 +12,28 @@ use Doctrine\ORM\EntityRepository;
  */
 class CommandRepository extends EntityRepository
 {
+
+
+    public function validateCommand(Command $command)
+    {
+        //recup derniere commande validée de l'année en cours
+            //année en cours
+        $createdAt = $command->getCreatedAt();
+        $year = $createdAt->format('Y');
+
+        // regex dans query sur defId qd defId != null "^".year
+        // classement date validation plus recente->plus ancienne order by validateAt Desc
+        // premier resultat limit 1
+        // SELECT * FROM zpb_commands AS c WHERE c.def_id REGEX "^2014" ORDER BY c.validate_at DESC LIMIT 1" ?
+
+        // si existe recup num
+
+        // sinon num == 1
+
+        //construction du defId
+
+        //maj defId command
+
+        //save command
+    }
 }

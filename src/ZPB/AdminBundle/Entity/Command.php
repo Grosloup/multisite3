@@ -82,6 +82,11 @@ class Command
     private $type;
 
     /**
+     * @ORM\Column(name="num_in_year", type="integer", nullable=true)
+     */
+    private $numInYear;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -124,6 +129,24 @@ class Command
     {
         $this->createdAt = $createdAt;
 
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNumInYear()
+    {
+        return $this->numInYear;
+    }
+
+    /**
+     * @param mixed $numInYear
+     * @return Command
+     */
+    public function setNumInYear($numInYear)
+    {
+        $this->numInYear = $numInYear;
         return $this;
     }
 
