@@ -15,7 +15,8 @@
 
         <parameter type="collection" key="zpb.zoo.bank_datas">
             <parameter key="securityKey">0123456789abcdef0123456789abcdef01234567</parameter>
-            <parameter key="url">https://paiement.creditmutuel.fr/paiement.cgi</parameter>
+            <parameter key="url_prod">https://paiement.creditmutuel.fr/paiement.cgi</parameter>
+            <parameter key="url_test">https://new.zoobeauval.com/test/parrainage/paiement</parameter>
             <parameter key="version">3.0</parameter>
             <parameter key="TPE">1234567</parameter>
             <parameter key="lgue">FR</parameter>

@@ -35,7 +35,7 @@ class LoadAnimals extends AbstractFixture implements OrderedFixtureInterface, Co
     {
         $this->container = $container;
     }
-    
+
     public function load(ObjectManager $manager)
     {
         $animal1 = new Animal();
@@ -49,6 +49,7 @@ class LoadAnimals extends AbstractFixture implements OrderedFixtureInterface, Co
         $animal1->setHistory('<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>');
         $animal1->setIsAvailable(true);
         $animal1->setSpecies($this->getReference('sponsor-species-1'));
+        $animal1->setCategory($this->getReference('zpb-animal-cat-1'));
 
         $manager->persist($animal1);
 
@@ -63,6 +64,7 @@ class LoadAnimals extends AbstractFixture implements OrderedFixtureInterface, Co
         $animal2->setHistory('<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>');
         $animal2->setIsAvailable(true);
         $animal2->setSpecies($this->getReference('sponsor-species-2'));
+        $animal2->setCategory($this->getReference('zpb-animal-cat-2'));
 
         $manager->persist($animal2);
 
@@ -77,6 +79,7 @@ class LoadAnimals extends AbstractFixture implements OrderedFixtureInterface, Co
         $animal3->setHistory('<p>Pellentesque eu venenatis massa. Etiam tempus ipsum odio, quis venenatis mi blandit et. Suspendisse dapibus urna eu pharetra elementum. Quisque tempus feugiat magna ac condimentum. In dolor enim, posuere ut pharetra sit amet, malesuada vitae augue. Nulla id nisl vulputate, scelerisque mauris et, suscipit dolor. Curabitur rhoncus porta eros, eu tempor tortor tincidunt vitae. Curabitur blandit porta quam. Donec aliquet, enim id lobortis sagittis, odio orci tincidunt libero, vitae placerat magna elit sed magna. Vestibulum placerat nec massa nec luctus. Morbi quis convallis augue, eu hendrerit elit. Fusce ac nibh faucibus tortor molestie ultricies eget faucibus turpis. </p>');
         $animal3->setIsAvailable(true);
         $animal3->setSpecies($this->getReference('sponsor-species-3'));
+        $animal3->setCategory($this->getReference('zpb-animal-cat-5'));
 
         $manager->persist($animal3);
 
@@ -86,7 +89,7 @@ class LoadAnimals extends AbstractFixture implements OrderedFixtureInterface, Co
         $this->addReference('sponsor-animal-2',$animal2);
         $this->addReference('sponsor-animal-3',$animal3);
     }
-    
+
     public function getOrder()
     {
         return 35;

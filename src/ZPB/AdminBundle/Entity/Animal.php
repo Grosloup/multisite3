@@ -95,6 +95,12 @@ class Animal
      */
     private $isDropped;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\AnimalCategory", inversedBy="animals")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    private $category;
+
     public function __construct()
     {
         $this->setIsAvailable(true);
@@ -448,5 +454,28 @@ class Animal
         $this->bornAt = $bornAt;
 
         return $this;
+    }
+
+    /**
+     * Set category
+     *
+     * @param AnimalCategory $category
+     * @return Animal
+     */
+    public function setCategory(AnimalCategory $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return AnimalCategory
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

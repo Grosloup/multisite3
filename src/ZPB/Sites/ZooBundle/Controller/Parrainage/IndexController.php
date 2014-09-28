@@ -313,7 +313,7 @@ class IndexController extends BaseController
         $mac = $macMaker->createMac($dateFormated, $amount, $refCommand, $freeText, $userEmail);
 
         $form = $this->get('form.factory')->createNamedBuilder(null,'form')
-                    ->setAction($bankDatas['url'])
+                    ->setAction($bankDatas['url_test'])
                     ->add('version', 'hidden', ['data'=>$bankDatas['version']])
                     ->add('TPE', 'hidden', ['data'=>$bankDatas['TPE']])
                     ->add('date', 'hidden', ['data'=>$dateFormated])

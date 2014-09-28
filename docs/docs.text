@@ -15,8 +15,9 @@ LoadPostTargets                 => 20
 LoadPostCategories              => 21
 LoadPostTags                    => 22
 
-LoadPosts                       => 28
-LoadMediaImages                 => 29
+LoadPosts                       => 27
+LoadMediaImages                 => 28
+LoadAnimalCategories            => 29
 LoadSpecies                     => 30
 LoadAnimals                     => 35
 LoadSponsoringGiftDefinitions   => 37

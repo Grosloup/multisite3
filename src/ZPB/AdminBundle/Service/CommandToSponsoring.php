@@ -45,10 +45,6 @@ class CommandToSponsoring
         foreach($items as $item){
             $this->transformCommandItem($item, $command->getValidateAt());
         }
-        /*$repo = $this->em->getRepository(get_class($command));
-        $repo->createDefId($command);
-        $this->em->persist($command);
-        $this->em->flush();*/
     }
 
     private function transformCommandItem(CommandItem $item, \DateTime $validateAt)

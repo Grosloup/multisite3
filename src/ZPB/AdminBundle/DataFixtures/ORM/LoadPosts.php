@@ -141,7 +141,7 @@ class LoadPosts  extends AbstractFixture implements OrderedFixtureInterface, Con
 
     public function getOrder()
     {
-        return 28;
+        return 27;
     }
 
     private $text1 = '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque posuere, lorem id faucibus euismod, dui ex tempor velit, vitae imperdiet erat purus vel tellus. Fusce sed turpis urna. Suspendisse ac velit eu erat molestie tempor ac vitae magna. Pellentesque ultricies ante sed nulla ultrices, eu scelerisque ex consequat.</p>';

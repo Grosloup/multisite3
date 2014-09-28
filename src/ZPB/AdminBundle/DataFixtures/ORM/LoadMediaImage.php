@@ -70,7 +70,7 @@ class LoadMediaImage extends AbstractFixture implements OrderedFixtureInterface,
 
     public function getOrder()
     {
-        return 29;
+        return 28;
     }
 
     private function reloadAssets()
