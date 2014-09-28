@@ -4,10 +4,10 @@ namespace ZPB\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Serializable;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Serializable;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use ZPB\AdminBundle\Validator\Constraints as ZPBAssert;
 
 /**

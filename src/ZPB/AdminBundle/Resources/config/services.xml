@@ -97,6 +97,27 @@
             <parameter key="enligne">internet</parameter>
         </parameter>
 
+        <parameter key="zpb.sponsoring.animal_image_hd_factory.class">ZPB\AdminBundle\Service\AnimalImageHdFactory</parameter>
+        <parameter key="zpb.sponsoring.animal_image_front_factory.class">ZPB\AdminBundle\Service\AnimalImageFrontFactory</parameter>
+        <parameter key="zpb.sponsoring.animal_image_wallpaper_factory.class">ZPB\AdminBundle\Service\AnimalImageWallpaperFactory</parameter>
+
+        <parameter key="zpb.sponsoring.animal_images" type="collection">
+            <parameter key="zpb.hd.class">ZPB\AdminBundle\Entity\AnimalImageHd</parameter>
+            <parameter key="zpb.hd.root_dir">%kernel.root_dir%/../web/</parameter>
+            <parameter key="zpb.hd.web_dir">img/sponsorings/hd/</parameter>
+            <parameter key="zpb.hd.thumb_dir">img/sponsorings/hd/thumb/</parameter>
+
+            <parameter key="zpb.front.class">ZPB\AdminBundle\Entity\AnimalImageFront</parameter>
+            <parameter key="zpb.front.root_dir">%kernel.root_dir%/../web/</parameter>
+            <parameter key="zpb.front.web_dir">img/sponsorings/front/</parameter>
+            <parameter key="zpb.front.thumb_dir">img/sponsorings/front/thumb/</parameter>
+
+            <parameter key="zpb.wallpaper.class">ZPB\AdminBundle\Entity\AnimalImageWallpaper</parameter>
+            <parameter key="zpb.wallpaper.root_dir">%kernel.root_dir%/../web/</parameter>
+            <parameter key="zpb.wallpaper.web_dir">img/sponsorings/wallpaper/</parameter>
+            <parameter key="zpb.wallpaper.thumb_dir">img/sponsorings/wallpaper/thumb/</parameter>
+        </parameter>
+
 
 
     </parameters>

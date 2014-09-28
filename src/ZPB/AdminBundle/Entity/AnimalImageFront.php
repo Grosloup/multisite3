@@ -1,0 +1,354 @@
+<?php
+
+namespace ZPB\AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+/**
+ * AnimalImageFront
+ *
+ * @ORM\Table(name="zpb_animal_images_front")
+ * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\AnimalImageFrontRepository")
+ */
+class AnimalImageFront
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    /**
+     * @var \Symfony\Component\HttpFoundation\File\UploadedFile
+     * @Assert\Image(maxSize="6M", maxSizeMessage="La taille de votre fichier dépasse le maximum autorisé.", mimeTypes={"image/jpeg"}, mimeTypesMessage="Votre image n\'est pas d\'un type autorisé.")
+     */
+    public $file;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="filename", type="string", length=255, nullable=false, unique=true)
+     */
+    private $filename;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="root_dir", type="string", length=255, nullable=false)
+     */
+    private $rootDir;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="web_dir", type="string", length=255, nullable=false)
+     */
+    private $webDir;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="thumb_dir", type="string", length=255, nullable=false)
+     */
+    private $thumbDir;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="extension", type="string", length=10, nullable=false)
+     */
+    private $extension;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     * @Gedmo\Timestampable(on="create")
+     */
+    private $createdAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\Animal")
+     * @ORM\JoinColumn(name="animal_id", referencedColumnName="id")
+     */
+    private $animal;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="width", type="integer", nullable=false)
+     */
+    private $width;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="height", type="integer", nullable=false)
+     */
+    private $height;
+
+    private $absolutePath;
+
+    private $webPath;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set filename
+     *
+     * @param string $filename
+     * @return AnimalImageFront
+     */
+    public function setFilename($filename)
+    {
+        $this->filename = $filename;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAbsolutePath()
+    {
+        return $this->absolutePath;
+    }
+
+    /**
+     * @param mixed $absolutePath
+     * @return AnimalImageFront
+     */
+    public function setAbsolutePath($absolutePath)
+    {
+        $this->absolutePath = $absolutePath;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWebPath()
+    {
+        return $this->webPath;
+    }
+
+    /**
+     * @param mixed $webPath
+     * @return AnimalImageFront
+     */
+    public function setWebPath($webPath)
+    {
+        $this->webPath = $webPath;
+        return $this;
+    }
+
+    /**
+     * Get filename
+     *
+     * @return string
+     */
+    public function getFilename()
+    {
+        return $this->filename;
+    }
+
+    /**
+     * Set rootDir
+     *
+     * @param string $rootDir
+     * @return AnimalImageFront
+     */
+    public function setRootDir($rootDir)
+    {
+        $this->rootDir = $rootDir;
+
+        return $this;
+    }
+
+    /**
+     * Get rootDir
+     *
+     * @return string
+     */
+    public function getRootDir()
+    {
+        return $this->rootDir;
+    }
+
+    /**
+     * Set webDir
+     *
+     * @param string $webDir
+     * @return AnimalImageFront
+     */
+    public function setWebDir($webDir)
+    {
+        $this->webDir = $webDir;
+
+        return $this;
+    }
+
+    /**
+     * Get webDir
+     *
+     * @return string
+     */
+    public function getWebDir()
+    {
+        return $this->webDir;
+    }
+
+    /**
+     * Set thumbDir
+     *
+     * @param string $thumbDir
+     * @return AnimalImageFront
+     */
+    public function setThumbDir($thumbDir)
+    {
+        $this->thumbDir = $thumbDir;
+
+        return $this;
+    }
+
+    /**
+     * Get thumbDir
+     *
+     * @return string
+     */
+    public function getThumbDir()
+    {
+        return $this->thumbDir;
+    }
+
+    /**
+     * Set extension
+     *
+     * @param string $extension
+     * @return AnimalImageFront
+     */
+    public function setExtension($extension)
+    {
+        $this->extension = $extension;
+
+        return $this;
+    }
+
+    /**
+     * Get extension
+     *
+     * @return string
+     */
+    public function getExtension()
+    {
+        return $this->extension;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return AnimalImageFront
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+
+
+    /**
+     * Set width
+     *
+     * @param integer $width
+     * @return AnimalImageFront
+     */
+    public function setWidth($width)
+    {
+        $this->width = $width;
+
+        return $this;
+    }
+
+    /**
+     * Get width
+     *
+     * @return integer
+     */
+    public function getWidth()
+    {
+        return $this->width;
+    }
+
+    /**
+     * Set height
+     *
+     * @param integer $height
+     * @return AnimalImageFront
+     */
+    public function setHeight($height)
+    {
+        $this->height = $height;
+
+        return $this;
+    }
+
+    /**
+     * Get height
+     *
+     * @return integer
+     */
+    public function getHeight()
+    {
+        return $this->height;
+    }
+
+    /**
+     * Set animal
+     *
+     * @param Animal $animal
+     * @return AnimalImageFront
+     */
+    public function setAnimal(Animal $animal = null)
+    {
+        $this->animal = $animal;
+
+        return $this;
+    }
+
+    /**
+     * Get animal
+     *
+     * @return Animal
+     */
+    public function getAnimal()
+    {
+        return $this->animal;
+    }
+}

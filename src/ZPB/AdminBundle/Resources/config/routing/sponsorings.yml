@@ -82,7 +82,15 @@ zpb_admin_sponsor_animals_delete:
     methods: ["GET"]
     requirements:
         id: \d+
+######################################################### Animals Images
+zpb_admin_sponsor_animals_images:
+   path: /animal/{id}/images
+   defaults: { _controller: ZPBAdminBundle:Parrainage/AnimalImage:imagesByAnimal }
+   methods: ["GET"]
+   requirements:
+       id: \d+
 
+######################################################### Sponsorings
 zpb_admin_sponsor_sponsorings_list:
    path: /formules/liste
    defaults: { _controller: ZPBAdminBundle:Parrainage/Sponsoring:list }

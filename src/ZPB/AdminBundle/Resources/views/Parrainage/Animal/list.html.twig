@@ -19,6 +19,7 @@
                     <tr>
                         <th>#Id</th>
                         <th>Nom</th>
+                        <th>Gestion des images</th>
                         <th colspan="3">Changer la catégorie</th>
 
                         <th>Modifier</th>
@@ -33,6 +34,7 @@
                             <tr>
                                 <td>{{ animal.id }}</td>
                                 <td>{{ animal.longName }}</td>
+                                <td><a class="btn btn-neutral" href="{{ path("zpb_admin_sponsor_animals_images", {id: animal.id}) }}"><i class="fa fa-picture-o"></i></a></td>
                                 <td>
                                     <div class="form">
                                         <select id="{{ animal.id }}" class="select-category">
