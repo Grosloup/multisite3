@@ -20,6 +20,8 @@
         <parameter key="zpb.form.type.institution_choice_type.class">ZPB\AdminBundle\Form\Type\SimpleInstitutionsChoiceType</parameter>
         <parameter key="zpb.validator.password_validator.class">ZPB\AdminBundle\Validator\Constraints\PasswordValidator</parameter>
         <parameter key="zpb.validator.civility_validator.class">ZPB\AdminBundle\Validator\Constraints\CivilityValidator</parameter>
+        <parameter key="zpb.sponsoring.command_transformer.class">ZPB\AdminBundle\Service\CommandToSponsoring</parameter>
+        <parameter key="zpb.sponsoring.sponsoring.class">ZPB\AdminBundle\Entity\Sponsoring</parameter>
 
 
         <parameter key="zpb.civility" type="collection">
@@ -100,7 +102,10 @@
     </parameters>
 
     <services>
-
+        <service id="zpb.sponsoring.command_transformer" class="%zpb.sponsoring.command_transformer.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%zpb.sponsoring.sponsoring.class%</argument>
+        </service>
 
         <service id="zpb.form.type.iucn_status" class="%zpb.form.type.iucn_status.class%">
             <argument type="string">%zpb.iucn_status%</argument>

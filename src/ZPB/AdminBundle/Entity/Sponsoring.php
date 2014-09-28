@@ -93,6 +93,18 @@ class Sponsoring
      */
     private $delayedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\Animal")
+     * @ORM\JoinColumn(name="animal_id", referencedColumnName="id")
+     */
+    private $animal;
+
+    /**
+     * @ORM\MAnyToOne(targetEntity="ZPB\AdminBundle\Entity\Command")
+     * @ORM\JoinColumn(name="command_id", referencedColumnName="id")
+     */
+    private $command;
+
     public function __construct()
     {
         $this->isPresent = false;
@@ -349,5 +361,51 @@ class Sponsoring
         $this->isPresent = $isPresent;
 
         return $this;
+    }
+
+    /**
+     * Set animal
+     *
+     * @param Animal $animal
+     * @return Sponsoring
+     */
+    public function setAnimal(Animal $animal = null)
+    {
+        $this->animal = $animal;
+
+        return $this;
+    }
+
+    /**
+     * Get animal
+     *
+     * @return Animal
+     */
+    public function getAnimal()
+    {
+        return $this->animal;
+    }
+
+    /**
+     * Set command
+     *
+     * @param Command $command
+     * @return Sponsoring
+     */
+    public function setCommand(Command $command = null)
+    {
+        $this->command = $command;
+
+        return $this;
+    }
+
+    /**
+     * Get command
+     *
+     * @return Command
+     */
+    public function getCommand()
+    {
+        return $this->command;
     }
 }

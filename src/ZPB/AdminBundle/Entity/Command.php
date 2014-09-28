@@ -67,6 +67,11 @@ class Command
     private $isValid;
 
     /**
+     * @ORM\Column(name="validate_at", type="datetime", nullable=true)
+     */
+    private $validateAt;
+
+    /**
      * @ORM\OneToMany(targetEntity="ZPB\AdminBundle\Entity\CommandItem", mappedBy="command")
      */
     private $commandItems;
@@ -121,6 +126,26 @@ class Command
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getValidateAt()
+    {
+        return $this->validateAt;
+    }
+
+    /**
+     * @param mixed $validateAt
+     * @return Command
+     */
+    public function setValidateAt($validateAt)
+    {
+        $this->validateAt = $validateAt;
+        return $this;
+    }
+
+
 
     /**
      * Get defId

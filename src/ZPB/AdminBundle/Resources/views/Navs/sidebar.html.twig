@@ -94,18 +94,69 @@
                 <nav class="menu">
                     <h3 class="menu-title">Parrainages</h3>
                     <ul>
-                        <li class="sidebar-dropdown{% if active in ["bla"] %} active{% endif %}"><a href="">Parrains</a><i class="sidebar-icon fa fa-angle-right"></i>
-
-                        </li>
-                        <li class="sidebar-dropdown{% if active in ["bla"] %} active{% endif %}"><a href="">Formules & cadeaux</a><i class="sidebar-icon fa fa-angle-right"></i>
+                        <li class="sidebar-dropdown{% if active in ["none"] %} active{% endif %}"><a href="javascript:void(0)">Parrains</a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
-                                <li class="sidebar-dropdown{% if active in ["bla"] %} active{% endif %}"><a href="#">Formules</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                <li><a href="">Liste internet</a></li>
+                                <li><a href="">Liste postale</a></li>
+                                <li><a href="">Liste locale</a></li>
+                                <li><a href="">Liste des offrants</a></li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-dropdown{% if active in ["none"] %} active{% endif %}"><a href="javascript:void(0)">Parrainages</a><i class="sidebar-icon fa fa-angle-right"></i>
+                            <ul>
+                                <li class="{% if active == "blu" %}active{% endif %}"><a href="">Internet</a></li>
+                                <li class="{% if active == "blu" %}active{% endif %}"><a href="">Postaux</a></li>
+                                <li class="{% if active == "blu" %}active{% endif %}"><a href="">locaux</a></li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-dropdown{% if active in ["none"] %} active{% endif %}"><a href="javascript:void(0)">Commandes</a><i class="sidebar-icon fa fa-angle-right"></i>
+                            <ul>
+                                <li class="sidebar-dropdown{% if active in ["none"] %} active{% endif %}"><a href="javascript:void(0)">Internet</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                    <ul>
+                                        <li class="{% if active == "blu" %}active{% endif %}"><a href="">Liste des commandes</a></li>
+                                        <li class="{% if active == "blu" %}active{% endif %}"><a href="">Commandes en attente</a></li>
+                                    </ul>
+                                </li>
+                                <li class="sidebar-dropdown{% if active in ["none"] %} active{% endif %}"><a href="javascript:void(0)">Postales</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                    <ul>
+                                        <li class="{% if active == "blu" %}active{% endif %}"><a href="">Entrer une commande</a></li>
+                                        <li class="{% if active == "blu" %}active{% endif %}"><a href="">Liste des commandes</a></li>
+                                        <li class="{% if active == "blu" %}active{% endif %}"><a href="">Commandes en attente</a></li>
+                                    </ul>
+                                </li>
+                                <li class="sidebar-dropdown{% if active in ["none"] %} active{% endif %}"><a href="javascript:void(0)">Locales</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                    <ul>
+                                        <li class="{% if active == "blu" %}active{% endif %}"><a href="">Entrer une commande</a></li>
+                                        <li class="{% if active == "blu" %}active{% endif %}"><a href="">Liste des commandes</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-dropdown{% if active in ["sponsor_list_species", "sponsor_new_species","sponsor_list_animals","sponsor_new_animal"] %} active{% endif %}"><a href="javascript:void(0)">Gestion des animaux</a><i class="sidebar-icon fa fa-angle-right"></i>
+                            <ul>
+                                <li class="sidebar-dropdown{% if active in ["sponsor_list_species", "sponsor_new_species"] %} active{% endif %}"><a href="javascript:void(0)">Espèces</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                    <ul>
+                                        <li class="{% if active == "sponsor_list_species" %}active{% endif %}"><a href="{{ path("zpb_admin_sponsor_species_list") }}">Liste</a></li>
+                                        <li class="{% if active == "sponsor_new_species" %}active{% endif %}"><a href="{{ path("zpb_admin_sponsor_species_create") }}">Nouvelle</a></li>
+                                    </ul>
+                                </li>
+                                <li class="sidebar-dropdown{% if active in ["sponsor_list_animals","sponsor_new_animal"] %} active{% endif %}"><a href="javascript:void(0)">Animaux</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                    <ul>
+                                        <li class="{% if active == "sponsor_list_animals" %}active{% endif %}"><a href="{{ path("zpb_admin_sponsor_animals_list") }}">Liste</a></li>
+                                        <li class="{% if active == "sponsor_new_animal" %}active{% endif %}"><a href="{{ path("zpb_admin_sponsor_animals_create") }}">Nouveau</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-dropdown{% if active in ["none"] %} active{% endif %}"><a href="javascript:void(0)">Formules & cadeaux</a><i class="sidebar-icon fa fa-angle-right"></i>
+                            <ul>
+                                <li class="sidebar-dropdown{% if active in ["none"] %} active{% endif %}"><a href="javascript:void(0)">Formules</a><i class="sidebar-icon fa fa-angle-right"></i>
                                     <ul>
                                         <li class="{% if active == "blu" %}active{% endif %}"><a href="">Liste</a></li>
                                         <li class="{% if active == "blu" %}active{% endif %}"><a href="">Nouvelle</a></li>
                                     </ul>
                                 </li>
-                                <li class="sidebar-dropdown{% if active in ["bla"] %} active{% endif %}"><a href="#">Cadeaux</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                <li class="sidebar-dropdown{% if active in ["bla"] %} active{% endif %}"><a href="javascript:void(0)">Cadeaux</a><i class="sidebar-icon fa fa-angle-right"></i>
                                     <ul>
                                         <li class="{% if active == "blu" %}active{% endif %}"><a href="">Liste</a></li>
                                         <li class="{% if active == "blu" %}active{% endif %}"><a href="">Nouveau</a></li>
@@ -113,20 +164,13 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="sidebar-dropdown{% if active in ["sponsor_list_species", "sponsor_new_species","sponsor_list_animals","sponsor_new_animal"] %} active{% endif %}"><a href="#">Gestion des animaux</a><i class="sidebar-icon fa fa-angle-right"></i>
+
+
+                        <li class="sidebar-dropdown{% if active in ["none"] %} active{% endif %}"><a href="javascript:void(0)">Stats</a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
-                                <li class="sidebar-dropdown{% if active in ["sponsor_list_species", "sponsor_new_species"] %} active{% endif %}"><a href="#">Espèces</a><i class="sidebar-icon fa fa-angle-right"></i>
-                                    <ul>
-                                        <li class="{% if active == "sponsor_list_species" %}active{% endif %}"><a href="{{ path("zpb_admin_sponsor_species_list") }}">Liste</a></li>
-                                        <li class="{% if active == "sponsor_new_species" %}active{% endif %}"><a href="{{ path("zpb_admin_sponsor_species_create") }}">Nouvelle</a></li>
-                                    </ul>
-                                </li>
-                                <li class="sidebar-dropdown{% if active in ["sponsor_list_animals","sponsor_new_animal"] %} active{% endif %}"><a href="#">Animaux</a><i class="sidebar-icon fa fa-angle-right"></i>
-                                    <ul>
-                                        <li class="{% if active == "sponsor_list_animals" %}active{% endif %}"><a href="{{ path("zpb_admin_sponsor_animals_list") }}">Liste</a></li>
-                                        <li class="{% if active == "sponsor_new_animal" %}active{% endif %}"><a href="{{ path("zpb_admin_sponsor_animals_create") }}">Nouveau</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="">Par mois</a></li>
+                                <li><a href="">Par an</a></li>
+                                <li><a href="">Animaux</a></li>
                             </ul>
                         </li>
                     </ul>
