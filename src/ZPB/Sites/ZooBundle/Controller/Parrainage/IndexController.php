@@ -34,7 +34,8 @@ class IndexController extends BaseController
     public function indexAction()
     {
         $animals = $this->getRepo('ZPBAdminBundle:Animal')->findall();
-        return $this->render('ZPBSitesZooBundle:Parrainage/Index:index.html.twig', ['animals' => $animals]);
+        $categories = $this->getRepo('ZPBAdminBundle:AnimalCategory')->findall();
+        return $this->render('ZPBSitesZooBundle:Parrainage/Index:index.html.twig', ['animals' => $animals, 'categories'=>$categories]);
     }
 
     public function connectAction()

@@ -128,7 +128,17 @@
                     </div>
                 </div>
 
-
+                <div class="form-row {% if form.category.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.category) }}
+                    <div class="form-field">
+                        {{ form_widget(form.category) }}
+                        {% if form.category.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.category)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
 
                 <div class="form-row">
                     {{ form_widget(form.save, {attr: {class: "btn btn-primary"}})}}

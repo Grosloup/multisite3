@@ -22,17 +22,30 @@
             </div>
         </div>
 
+        <div class="spaced-row">
+            <p>Filtre :</p>
+            <ul>
+                {% for cat in categories %}
+                    <li><label for="{{ cat.slug }}"><input type="checkbox" id="{{ cat.slug }}" class="category-filter" checked="checked"/>{{ cat.name }}</label></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <style>
+            .animal-box{
+                height: 370px;
+            }
+        </style>
         <div class="row">
             <div class="col-6">
                 <ul class="small-grid-1 medium-grid-3 large-grid-4">
                     {% for animal in animals %}
-                        <li>
+                        <li class="animal-box {{ animal.category.slug }}">
 
                             <img class="th" src="http://lorempicsum.com/nemo/600/450/{{ random(5) + 1 }}" alt="" width="100%"/>
                             <h5>{{ animal.longName }}</h5>
                             {{ animal.shortDescription|raw }}
-
-                            <a class="button success expand"
+                            <p>{{ animal.category.name }}</p>
+                            <a class="btn btn-primary"
                                href="{{ path("zpb_sites_zoo_parrainages_animal_show", {name: animal.canonicalLongName}) }}">Plus
                                 d'infos</a>
 
@@ -40,7 +53,8 @@
                         </li>
                     {% endfor %}
                     {% for n in 1..18 %}
-                        <li>
+
+                        <li class="animal-box {{ categories[random((categories|length) -1)].slug }}">
                             <div class="testbox testbox-6"></div>
                         </li>
                     {% endfor %}
@@ -50,21 +64,33 @@
         </div>
     </div>
 
-
-
-
-
-
-
-
-
-
-    <div class="columns large-9">
-
-    </div>
-    <div class="columns large-3"></div>
 {% endblock %}
 {% block footScripts%}
     {{ parent() }}
     <script src="/js/app.min.js"></script>
+    <script>
+        $(function(){
+           var catFilters = $(".category-filter");
+            var animalsBoxes = $(".animal-box");
+            catFilters.on('change', function(e){
+                e.preventDefault();
+                var targetsID = $(this).attr("id");
+                if($(this).is(":checked")){
+                    console.log(targetsID, "checked");
+                    animalsBoxes.each(function(){
+                        if($(this).hasClass(targetsID) && $(this).is(":hidden")){
+                            $(this).fadeIn();
+                        }
+                    });
+                } else {
+                    console.log(targetsID, "unchecked");
+                    animalsBoxes.each(function(){
+                        if($(this).hasClass(targetsID) && $(this).is(":visible")){
+                            $(this).fadeOut();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 {% endblock %}
