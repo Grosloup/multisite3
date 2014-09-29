@@ -10,9 +10,6 @@
       <option name="immediateSync" value="true" />
       <option name="name" value="compass scss" />
       <option name="output" value="$PROJECT_DIR$" />
-      <option name="outputFilters">
-        <array />
-      </option>
       <option name="outputFromStdout" value="false" />
       <option name="passParentEnvs" value="true" />
       <option name="program" value="C:/Ruby193/bin/compass.bat" />

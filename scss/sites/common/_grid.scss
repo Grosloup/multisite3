@@ -28,7 +28,7 @@
   }
 }
 .spaced-row{
-  margin-bottom: topx($gridGutter * 2);
+  margin-bottom: topx($gridGutter);
 }
 [class^="col-"], [class*=" col-"],[class^="col4-"], [class*=" col4-"], [class^="col5-"], [class*=" col5-"]{
   float: left;

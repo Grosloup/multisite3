@@ -21,119 +21,48 @@
                 {{ render(controller("ZPBSitesZooBundle:Parrainage/Index:getBasket")) }}
             </div>
         </div>
-        <style>
-            .filter{
-                padding: 4px 8px;
-                color: #fff;
-                font-size: 14px;
-                background-color: #313133;
-                font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
-                text-transform: uppercase;
-            }
-            .filter:hover{
-                background-color:#2e85a3;
-
-            }
-            .filter input[type=checkbox]{
-                display: none;
-            }
-        </style>
 
         <div class="spaced-row">
-            <div class="col-6">
-                <ul class="inline-list">
-                    {% for cat in categories %}
-                        <li class="filter">
-                            <label for="{{ cat.slug }}">
-                                <input type="checkbox" id="{{ cat.slug }}" class="category-filter" checked="checked"/>{{ cat.name }}
-                            </label>
-                        </li>
-                    {% endfor %}
-                </ul>
+            <div class="col-6" id="filters">
+
+                <button class="btn btn-grisfonce btn-small"  data-filter="*">tous</button>
+                {% for cat in categories %}
+                    <button class="btn btn-grisfonce btn-small" id="{{ cat.slug }}" data-filter=".{{ cat.slug }}">{{ cat.name }}</button>
+                {% endfor %}
             </div>
         </div>
 
-        <style>
-            .animal-box{
-                height: 370px;
-            }
-            .animal-card{
-                border: 1px solid transparent;
-                padding: 10px;
-            }
-            .animal-card img{
-                width: 100%;
-                height: auto;
-            }
-            
-            
-            .animal-card p{
-                margin: 10px 0;
-            }
-            .animal-card p:last-of-type{
-                margin: 10px 0 0 0;
-            }
-
-            .animal-card:hover{
-                border: 1px solid #2e85a3;
-            }
-
-            .shade{
-                position: relative;
-            }
-
-            .shade:after{
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                display: block;
-                content: "";
-                z-index: 1000;
-
-            }
-            .animal-card:hover .shade:after{
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) inset;
-            }
-
-            .animal-card:hover .btn-grisfonce{
-                background-color: #2e85a3;
-            }
-        </style>
-
         <div class="row">
             <div class="col-6">
-                <ul class="small-grid-1 medium-grid-3 large-grid-4">
+                <div id="iso-container">
                     {% for animal in animals %}
-                        <li class="animal-box {{ animal.category.slug }}">
+                        <div class="animal-box {{ animal.category.slug }}" >
                             <div class="animal-card">
                                 <div class="shade">
                                     <img class="th" src="http://lorempicsum.com/nemo/600/450/{{ random(5) + 1 }}" alt=""/>
                                 </div>
-
                                 <h5>{{ animal.longName }}</h5>
                                 {{ animal.shortDescription|raw }}
-                                {#<p>{{ animal.category.name }}</p>#}
                                 <p><a class="btn btn-grisfonce" href="{{ path("zpb_sites_zoo_parrainages_animal_show", {name: animal.canonicalLongName}) }}">Plus d'infos</a></p>
-
                             </div>
-
-
-
-                        </li>
+                        </div>
                     {% endfor %}
                     {% for n in 1..18 %}
 
-                        <li class="animal-box {{ categories[random((categories|length) -1)].slug }}">
+                        <div class="animal-box {{ categories[random((categories|length) -1)].slug }}" >
                             <div class="animal-card">
-                                <div class="testbox testbox-6"></div>
+                                <div class="shade">
+                                    <img class="th" src="http://lorempicsum.com/nemo/600/450/{{ random(5) + 1 }}" alt=""/>
+                                </div>
+                                <h5>Lorem ipsum dolor.</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid asperiores exercitationem iusto.</p>
+                                <p><a class="btn btn-grisfonce" href="javascript:void(0)">Plus d'infos</a></p>
                             </div>
 
-                        </li>
+                        </div>
                     {% endfor %}
+                </div>
 
-                </ul>
             </div>
         </div>
     </div>
@@ -141,30 +70,20 @@
 {% endblock %}
 {% block footScripts%}
     {{ parent() }}
+    <script src="/js/vendor/isotope.pkgd.min.js"></script>
     <script src="/js/app.min.js"></script>
     <script>
         $(function(){
-           var catFilters = $(".category-filter");
-            var animalsBoxes = $(".animal-box");
-            catFilters.on('change', function(e){
-                e.preventDefault();
-                var targetsID = $(this).attr("id");
-                if($(this).is(":checked")){
-                    console.log(targetsID, "checked");
-                    animalsBoxes.each(function(){
-                        if($(this).hasClass(targetsID) && $(this).is(":hidden")){
-                            $(this).fadeIn();
-                        }
-                    });
-                } else {
-                    console.log(targetsID, "unchecked");
-                    animalsBoxes.each(function(){
-                        if($(this).hasClass(targetsID) && $(this).is(":visible")){
-                            $(this).fadeOut();
-                        }
-                    });
-                }
+            var isoContainer = $("#iso-container").isotope({
+                itemSelector: '.animal-box',
+                layoutMode: 'fitRows'
             });
+            var btns = $("#filters");
+            btns.on("click", "button", function(){
+                var filterVal = $(this).attr("data-filter");
+                isoContainer.isotope({filter: filterVal});
+            });
+
         });
     </script>
 {% endblock %}
