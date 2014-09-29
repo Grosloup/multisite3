@@ -21,15 +21,38 @@
                 {{ render(controller("ZPBSitesZooBundle:Parrainage/Index:getBasket")) }}
             </div>
         </div>
+        <style>
+            .filter{
+                padding: 4px 8px;
+                color: #fff;
+                font-size: 14px;
+                background-color: #313133;
+                font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+                text-transform: uppercase;
+            }
+            .filter:hover{
+                background-color:#2e85a3;
+
+            }
+            .filter input[type=checkbox]{
+                display: none;
+            }
+        </style>
 
         <div class="spaced-row">
-            <p>Filtre :</p>
-            <ul>
-                {% for cat in categories %}
-                    <li><label for="{{ cat.slug }}"><input type="checkbox" id="{{ cat.slug }}" class="category-filter" checked="checked"/>{{ cat.name }}</label></li>
-                {% endfor %}
-            </ul>
+            <div class="col-6">
+                <ul class="inline-list">
+                    {% for cat in categories %}
+                        <li class="filter">
+                            <label for="{{ cat.slug }}">
+                                <input type="checkbox" id="{{ cat.slug }}" class="category-filter" checked="checked"/>{{ cat.name }}
+                            </label>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
+
         <style>
             .animal-box{
                 height: 370px;
