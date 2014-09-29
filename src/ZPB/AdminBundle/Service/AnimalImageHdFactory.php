@@ -21,7 +21,32 @@
 namespace ZPB\AdminBundle\Service;
 
 
+use Symfony\Component\HttpFoundation\File\File;
+
 class AnimalImageHdFactory
 {
+    /**
+     * @var array
+     */
+    private $options;
 
+    public function __construct($options)
+    {
+        $this->options = $options;
+    }
+
+    public function getBasePath()
+    {
+        return $this->options['zpb.hd.root_dir'] . $this->options['zpb.hd.web_dir'];
+    }
+
+    public function path()
+    {
+
+    }
+
+    public function createFromFile(File $file)
+    {
+
+    }
 }

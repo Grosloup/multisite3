@@ -131,13 +131,24 @@
             </parameter>
         </parameter>
 
+        <parameter key="zpb.sponsoring.image_hd_factory.class">ZPB\AdminBundle\Service\AnimalImageHdFactory</parameter>
+        <parameter key="zpb.sponsoring.image_front_factory.class">ZPB\AdminBundle\Service\AnimalImageFrontFactory</parameter>
+        <parameter key="zpb.sponsoring.image_wallpaper_factory.class">ZPB\AdminBundle\Service\AnimalImageWallpaperFactory</parameter>
 
 
     </parameters>
 
     <services>
 
-        <service id="zpb.sponsoring.image_hd_factory" class="%zpb.image_factory.class%">
+        <service id="zpb.sponsoring.image_hd_factory" class="%zpb.sponsoring.image_hd_factory.class%">
+            <argument>%zpb.sponsoring.animal_images%</argument>
+        </service>
+
+        <service id="zpb.sponsoring.image_front_factory" class="%zpb.sponsoring.image_front_factory.class%">
+            <argument>%zpb.sponsoring.animal_images%</argument>
+        </service>
+
+        <service id="zpb.sponsoring.image_wallpaper_factory" class="%zpb.sponsoring.image_wallpaper_factory.class%">
             <argument>%zpb.sponsoring.animal_images%</argument>
         </service>
 

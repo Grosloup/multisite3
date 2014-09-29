@@ -21,6 +21,15 @@
 namespace ZPB\AdminBundle\Service;
 
 
-class AnimalImageWallpaperFactory {
+class AnimalImageWallpaperFactory
+{
+    /**
+     * @var array
+     */
+    private $options;
 
+    public function __construct($options)
+    {
+        $this->options = $options;
+    }
 }
