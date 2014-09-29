@@ -3,7 +3,9 @@ a, button, input[type=button], input[type=submit], input[type=reset]{
   &.btn{
     @include nakedLink;
     color: $btn_defaultBtnColor;
-    font-family: $btn_defaultBtnFontFamily;
+    //font-family: $btn_defaultBtnFontFamily;
+    font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
     font-size: $btn_defaultBtnFontSize;
     display: inline-block;
     vertical-align: middle;
@@ -25,7 +27,16 @@ a, button, input[type=button], input[type=submit], input[type=reset]{
 
     }
 
-
+    &.btn-grisfonce{
+      background-color: $grisFonce;
+      color: $blanc;
+      &:hover{
+        background-color: $bleu;
+      }
+      &:active{
+        background-color: $bleu;
+      }
+    }
 
 
     &.btn-primary{
@@ -42,6 +53,7 @@ a, button, input[type=button], input[type=submit], input[type=reset]{
     &.btn-warning{
       background-color: $btn_warningBgColor;
       color: $btn_warningColor;
+
       &:hover{
         background-color: lighten($btn_warningBgColor, 15);
       }

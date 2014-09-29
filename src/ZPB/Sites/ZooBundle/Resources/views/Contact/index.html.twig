@@ -23,49 +23,51 @@
             <div class="col-1"></div>
             <div class="col-4">
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus assumenda aut dignissimos dolore
-                    error, magnam, molestiae obcaecati perferendis perspiciatis sunt temporibus velit voluptatum.
-                    Accusantium aut deserunt dicta dolorum, laudantium officia pariatur quos sunt suscipit ut.
-                    Asperiores cum dicta est excepturi id quasi quis vero. A aliquid aperiam asperiores assumenda culpa
-                    cum fugit illo illum in inventore ipsam nam non, odio officiis perferendis provident qui quia
-                    quisquam reiciendis repellat, reprehenderit sequi soluta tenetur. Aliquam aperiam dolore incidunt
-                    laborum omnis, quo. Alias assumenda autem, blanditiis commodi consectetur consequatur consequuntur
-                    cum dolores eos illo itaque, iure laboriosam magni minima modi necessitatibus nesciunt numquam
-                    pariatur perferendis quaerat ratione rem repellat repellendus, rerum sed sequi vero vitae. Ab
-                    adipisci amet commodi culpa cum cupiditate dicta distinctio earum ipsa ipsam ipsum maxime nisi
-                    numquam placeat praesentium ratione, reiciendis reprehenderit unde vero voluptatibus. Ab accusamus
-                    at blanditiis corporis dicta dolore dolorum ducimus earum minima, nobis officia placeat quam quidem
-                    quis sit. A alias asperiores culpa dicta dignissimos enim exercitationem fuga incidunt, ipsa ipsam
-                    iste maxime nulla numquam odio officiis porro qui reiciendis sint tempore temporibus? Accusamus aut
-                    blanditiis corporis, debitis deserunt dolor et itaque laborum magni mollitia neque non pariatur
-                    praesentium quos sint tempora, ut vero voluptatum!</p>
 
-                {{ form_start(form, {attr:{novalidate: true}}) }}
+
+                {{ form_start(form, {attr:{novalidate: true, class:"form"}}) }}
+
                 {{ form_errors(form) }}
-                <div>
+                <div class="form-row">
+
                     {{ form_label(form.topic) }}
-                    {{ form_widget(form.topic) }}
-                    {{ form_errors(form.topic) }}
-                </div>
-                <div>
-                    {{ form_label(form.email) }}
-                    {{ form_widget(form.email) }}
-                    {{ form_errors(form.email) }}
-                </div>
-                <div>
-                    {{ form_label(form.message) }}
-                    {{ form_widget(form.message) }}
-                    {{ form_errors(form.message) }}
-                </div>
-                <div>
-                    {{ form_label(form.name) }}
-                    {{ form_widget(form.name) }}
-                    {{ form_errors(form.name) }}
-                    <div>
-                        {{ form_widget(form.save) }}
+                    <div class="form-field">
+                        {{ form_widget(form.topic) }}
+                        {{ form_errors(form.topic) }}
                     </div>
-                    {{ form_end(form) }}
+
                 </div>
+                <div class="form-row">
+                    {{ form_label(form.email) }}
+                    <div class="form-field">
+                        {{ form_widget(form.email) }}
+                        {{ form_errors(form.email) }}
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    {{ form_label(form.message) }}
+                    <div class="form-field">
+                        {{ form_widget(form.message) }}
+                        {{ form_errors(form.message) }}
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    {{ form_label(form.name) }}
+                    <div class="form-field">
+                        {{ form_widget(form.name) }}
+                        {{ form_errors(form.name) }}
+                    </div>
+
+
+                </div>
+                <div class="form-row">
+                    {{ form_widget(form.save, {attr:{class:"btn btn-grisfonce"}}) }}
+                </div>
+                
+                {{ form_end(form) }}
+
             </div>
             <div class="col-1"></div>
         </div>

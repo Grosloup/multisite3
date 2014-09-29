@@ -42,7 +42,7 @@ class LoadAnimalCategories extends AbstractFixture implements OrderedFixtureInte
     public function load(ObjectManager $manager)
     {
         $c1 = new AnimalCategory();
-        $c1->setName("Primates");
+        $c1->setName("Vedettes");
         $manager->persist($c1);
 
         $c2 = new AnimalCategory();
@@ -50,16 +50,20 @@ class LoadAnimalCategories extends AbstractFixture implements OrderedFixtureInte
         $manager->persist($c2);
 
         $c3 = new AnimalCategory();
-        $c3->setName("Oiseaux");
+        $c3->setName("Herbivores");
         $manager->persist($c3);
 
         $c4 = new AnimalCategory();
-        $c4->setName("Reptiles");
+        $c4->setName("Primates");
         $manager->persist($c4);
 
         $c5 = new AnimalCategory();
-        $c5->setName("Herbivores");
+        $c5->setName("Aquatiques");
         $manager->persist($c5);
+
+        $c6 = new AnimalCategory();
+        $c6->setName("Insolites");
+        $manager->persist($c6);
 
         $manager->flush();
 
@@ -68,6 +72,7 @@ class LoadAnimalCategories extends AbstractFixture implements OrderedFixtureInte
         $this->addReference('zpb-animal-cat-3', $c3);
         $this->addReference('zpb-animal-cat-4', $c4);
         $this->addReference('zpb-animal-cat-5', $c5);
+        $this->addReference('zpb-animal-cat-6', $c6);
     }
 
     public function getOrder()
