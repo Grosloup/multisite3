@@ -113,19 +113,19 @@ $(function(){
     var frontDropZone = $("#front-drop");
 
     hdDropZone.animalImageUploader({
-        url: "",
+        url: "/parrainages/xhr/animal/ajouter/hd-images",
         type: "hd",
         target: "#hd-list",
         element: "li"
     });
     wpDropZone.animalImageUploader({
-        url: "",
+        url: "/parrainages/xhr/animal/ajouter/front-images",
         type: "wallpaper",
         target: "#wp-list",
         element: "li"
     });
     frontDropZone.animalImageUploader({
-        url: "",
+        url: "/parrainages/xhr/animal/ajouter/wallpaper-images",
         type: "front",
         target: "#front-list",
         element: "li"

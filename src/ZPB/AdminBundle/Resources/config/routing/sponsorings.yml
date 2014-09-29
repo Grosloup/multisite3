@@ -82,6 +82,7 @@ zpb_admin_sponsor_animals_delete:
     methods: ["GET"]
     requirements:
         id: \d+
+
 ######################################################### Animals Images
 zpb_admin_sponsor_animals_images:
    path: /animal/{id}/images
@@ -89,6 +90,22 @@ zpb_admin_sponsor_animals_images:
    methods: ["GET"]
    requirements:
        id: \d+
+
+zpb_admin_sponsor_animals_add_xhr_hd_images:
+   path: /xhr/animal/ajouter/hd-images
+   defaults: { _controller: ZPBAdminBundle:Parrainage/AnimalImage:addHdXhr }
+   methods: ["POST"]
+
+zpb_admin_sponsor_animals_add_xhr_front_images:
+   path: /xhr/animal/ajouter/front-images
+   defaults: { _controller: ZPBAdminBundle:Parrainage/AnimalImage:addFrontXhr }
+   methods: ["POST"]
+
+zpb_admin_sponsor_animals_add_xhr_wallpaper_images:
+   path: /xhr/animal/ajouter/wallpaper-images
+   defaults: { _controller: ZPBAdminBundle:Parrainage/AnimalImage:addWallpaperXhr }
+   methods: ["POST"]
+
 
 ######################################################### Sponsorings
 zpb_admin_sponsor_sponsorings_list:

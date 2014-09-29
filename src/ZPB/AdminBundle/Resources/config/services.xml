@@ -136,6 +136,11 @@
     </parameters>
 
     <services>
+
+        <service id="zpb.sponsoring.image_hd_factory" class="%zpb.image_factory.class%">
+            <argument>%zpb.sponsoring.animal_images%</argument>
+        </service>
+
         <service id="zpb.sponsoring.command_transformer" class="%zpb.sponsoring.command_transformer.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument>%zpb.sponsoring.sponsoring.class%</argument>

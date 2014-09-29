@@ -21,6 +21,7 @@
 namespace ZPB\AdminBundle\Service;
 
 
-class AnimalImageHdFactory {
+class AnimalImageHdFactory
+{
 
 }

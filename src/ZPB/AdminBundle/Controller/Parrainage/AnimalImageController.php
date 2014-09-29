@@ -39,4 +39,39 @@ class AnimalImageController extends BaseController
 
         return $this->render('ZPBAdminBundle:Parrainage/AnimalImage:images_by_animal.html.twig', ['hds'=>$hds, 'fronts'=>$fronts, 'wallpapers'=>$wallpapers, 'animal'=>$animal]);
     }
+
+    public function addHdXhrAction(Request $request)
+    {
+        if(!$request->isMethod("POST") || !$request->isXmlHttpRequest()){
+            throw $this->createAccessDeniedException();
+        }
+        $response = ['error'=>false, 'message'=>'','html'=>''];
+        //verif des données
+        $filename = $request->headers->get('X-File-Name', false);
+        $filetype = $request->headers->get('X-File-Type', false);
+        $filesize = $request->headers->get('X-File-Size', false);
+        $animalId = $request->headers->get('X-File-AnimalId', false);
+        if(!$filename || !$filesize || !$filetype || !$animalId){
+            $response['error'] = true;
+            $response['msg' ]= 'Données insuffisante';
+        } else {
+
+        }
+    }
+
+    public function addFrontXhrAction(Request $request)
+    {
+        if(!$request->isMethod("POST") || !$request->isXmlHttpRequest()){
+            throw $this->createAccessDeniedException();
+        }
+
+    }
+
+    public function addWallpaperXhrAction(Request $request)
+    {
+        if(!$request->isMethod("POST") || !$request->isXmlHttpRequest()){
+            throw $this->createAccessDeniedException();
+        }
+
+    }
 }
