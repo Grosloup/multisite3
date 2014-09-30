@@ -49,7 +49,7 @@ class LoadAnimals extends AbstractFixture implements OrderedFixtureInterface, Co
         $animal1->setHistory('<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>');
         $animal1->setIsAvailable(true);
         $animal1->setSpecies($this->getReference('sponsor-species-1'));
-        $animal1->setCategory($this->getReference('zpb-animal-cat-1'));
+        $animal1->setCategory($this->getReference('zpb-animal-cat-4'));
 
         $manager->persist($animal1);
 

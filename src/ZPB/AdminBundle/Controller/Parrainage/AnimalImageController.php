@@ -21,6 +21,8 @@
 namespace ZPB\AdminBundle\Controller\Parrainage;
 
 
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use ZPB\AdminBundle\Controller\BaseController;
 
@@ -53,10 +55,45 @@ class AnimalImageController extends BaseController
         $animalId = $request->headers->get('X-File-AnimalId', false);
         if(!$filename || !$filesize || !$filetype || !$animalId){
             $response['error'] = true;
-            $response['msg' ]= 'Données insuffisante';
+            $response['msg' ]= 'Données insuffisantes';
         } else {
+            $animal = $this->getRepo('ZPBAdminBundle:Animal')->find($animalId);
+            if(!$animal){
+                $response['error'] = true;
+                $response['msg' ]= 'Animal inconnu';
+            }else {
+                $fs = $this->get('filesystem');
+                $imgFactory = $this->get('zpb.sponsoring.image_hd_factory');
+                $basePath = $imgFactory->getBasePath();
+                $thumbPath = $imgFactory->getThumbPath();
+
+                if(!$fs->exists($thumbPath)){
+                    $fs->mkdir($thumbPath);
+                }
+                if(!$fs->exists($basePath)){
+                    $fs->mkdir($basePath);
+                }
+                $file = $imgFactory->getPath();
+                file_put_contents($file, $request->getContent());
+                $file = new File($file);
+                if(!in_array($file->getMimeType(), ['image/jpeg'])){
+                    $fs->remove($file);
+                    $file = null;
+                    $response['error'] = true;
+                    $response['msg'] = 'Le fichier n\'est pas d\'un format acceptable.';
+                } else {
+                    $image = $imgFactory->createFromFile($file);
+                    $image->setAnimal($animal);
+                    $this->getManager()->persist($image);
+                    $this->getManager()->flush();
+                    $imgFactory->makeThumb($image);
+                    $html = '<img src="'.$image->getWebThumbPath().'"  />';
+                    $response = ['error'=>false, 'message'=>'','html'=>$html];
+                }
+            }
 
         }
+        return new JsonResponse($response);
     }
 
     public function addFrontXhrAction(Request $request)

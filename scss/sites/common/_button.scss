@@ -38,6 +38,16 @@ a, button, input[type=button], input[type=submit], input[type=reset]{
       }
     }
 
+    &.btn-grisclair{
+      background-color: $grisBB;
+      color: $blanc;
+      &:hover{
+        background-color: $bleu;
+      }
+      &:active{
+        background-color: $bleu;
+      }
+    }
 
     &.btn-primary{
       background-color: $btn_primaryBgColor;

@@ -1,3 +1,11 @@
+.filters-bar{
+  padding: 0 11px;
+}
+
+button.btn.is-filter{
+  background-color: $bleu;
+}
+
 #iso-container{
   position: relative;
   @include clearfix;

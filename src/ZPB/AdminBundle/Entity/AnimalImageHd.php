@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="zpb_animal_images_hd")
  * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\AnimalImageHdRepository")
  */
-class AnimalImageHd
+class AnimalImageHd implements ResizeableInterface
 {
     /**
      * @var \Symfony\Component\HttpFoundation\File\UploadedFile
@@ -91,11 +91,11 @@ class AnimalImageHd
      */
     private $thumbDir;
 
-    private $absolutePath;
+    /**
+     * @ORM\Column(name="mime", type="string", length=30, nullable=false)
+     */
+    private $mime;
 
-    private $webPath;
-
-    private $webThumbPath;
 
     /**
      * Get id
@@ -112,57 +112,27 @@ class AnimalImageHd
      */
     public function getWebThumbPath()
     {
-        return $this->webThumbPath;
+        return '/' . $this->thumbDir . $this->filename . '.' .$this->extension;
     }
 
-    /**
-     * @param mixed $webThumbPath
-     * @return AnimalImageHd
-     */
-    public function setWebThumbPath($webThumbPath)
-    {
-        $this->webThumbPath = $webThumbPath;
-
-        return $this;
-    }
 
     /**
      * @return mixed
      */
     public function getAbsolutePath()
     {
-        return $this->absolutePath;
+        return $this->rootDir . $this->webDir . $this->filename . '.' .$this->extension;
     }
 
-    /**
-     * @param mixed $absolutePath
-     * @return AnimalImageHd
-     */
-    public function setAbsolutePath($absolutePath)
-    {
-        $this->absolutePath = $absolutePath;
-
-        return $this;
-    }
 
     /**
      * @return mixed
      */
     public function getWebPath()
     {
-        return $this->webPath;
+        return '/' . $this->webDir . $this->filename . '.' .$this->extension;
     }
 
-    /**
-     * @param mixed $webPath
-     * @return AnimalImageHd
-     */
-    public function setWebPath($webPath)
-    {
-        $this->webPath = $webPath;
-
-        return $this;
-    }
 
     /**
      * Get filename
@@ -368,6 +338,24 @@ class AnimalImageHd
     {
         $this->animal = $animal;
 
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMime()
+    {
+        return $this->mime;
+    }
+
+    /**
+     * @param $mime
+     * @return AnimalImageHd
+     */
+    public function setMime($mime)
+    {
+        $this->mime = $mime;
         return $this;
     }
 }

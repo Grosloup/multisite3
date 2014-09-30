@@ -71,15 +71,15 @@ class PhotoResizer
             $newHeight  = $img->getHeight() * $ratio;
             $y = floor(($size['height'] - $newHeight) / 2);
             imagecopyresampled($redim, $image, 0,$y,0,0, $size["width"], $newHeight, $img->getWidth(), $img->getHeight());
-            $this->save($redim, $dest, $img->getMime());
-            imagedestroy($redim);
+
         } else {
             $x = floor(($size['width'] - $img->getWidth()) / 2);
             $y = floor(($size['height'] - $img->getHeight()) / 2);
             imagecopyresampled($redim, $image, $x,$y,0,0, $size["width"], $size['height'], $img->getWidth(), $img->getHeight());
         }
 
-
+        $this->save($redim, $dest, $img->getMime());
+        imagedestroy($redim);
     }
 
     public function portrait(ResizeableInterface $img, $size, $key)
