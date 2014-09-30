@@ -87,7 +87,7 @@ class AnimalImageController extends BaseController
                     $this->getManager()->persist($image);
                     $this->getManager()->flush();
                     $imgFactory->makeThumb($image);
-                    $html = '<img src="'.$image->getWebThumbPath().'"  />';
+                    $html = '<img src="'.$image->getWebThumbPath().'" width="100%" />';
                     $response = ['error'=>false, 'message'=>'','html'=>$html];
                 }
             }

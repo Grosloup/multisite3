@@ -29,11 +29,12 @@
                 {% if hds|length <1 %}
                     <p class="text-warning">Il n'y a pas d'images hd</p>
                 {% else %}
-                    <ul id="hd-list">
+                    <div class="row"  id="hd-list">
                         {% for hd in hds %}
-                            <li><img src="{{ hd.getWebThumbPath() }}" alt=""/></li>
+                            <div class="column-2"><img src="{{ hd.getWebThumbPath() }}" alt="" width="100%"/></div>
                         {% endfor %}
-                    </ul>
+                    </div>
+
 
                 {% endif %}
             </div>

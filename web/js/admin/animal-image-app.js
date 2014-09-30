@@ -44,8 +44,9 @@
                 progressBar.width(0+"%");
                 zone.data('droppable', true);
                 if(!response.error){
-                    el = $(d.createElement(opts.element));
+                    el = $(opts.element);
                     el.html(response.html);
+                    console.log(el);
                     target.append(el);
                 }
             }
@@ -116,7 +117,7 @@ $(function(){
         url: "/parrainages/xhr/animal/ajouter/hd-images",
         type: "hd",
         target: "#hd-list",
-        element: "li"
+        element: "<div class='column-2'></div>"
     });
     wpDropZone.animalImageUploader({
         url: "/parrainages/xhr/animal/ajouter/front-images",
