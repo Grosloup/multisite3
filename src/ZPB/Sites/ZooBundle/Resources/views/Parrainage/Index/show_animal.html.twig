@@ -87,6 +87,32 @@
     </div>
 
     <div class="container">
+        <div class="spaced-row">
+            <div class="col-6">
+                <div class="row">
+                    <form action="{{ path("zpb_sites_zoo_parrainages_add_to_basket") }}" method="post">
+                        <div class="col-3"> <!-- formules -->
+                            {% for formula in formulas %}
+                                <div>
+                                    <input type="radio" name="sponsorship_form[pack]" id="sponsorship_{{ formula.id }}" value="{{ formula.id }}"/>
+                                    <label for="sponsorship_{{ formula.id }}">{{ formula.price }}€ {{ formula.name }}</label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-3"> <!-- cadeaux -->
+                            {% for gift in gifts %}
+                                <div class="gift">
+                                    <span>{{ gift.name }}</span>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {#<div class="container">
 
         <div class="spaced-row">
             <div class="col-6">
@@ -101,7 +127,8 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="offer{% if loop.first == true %} active{% endif %}" id="{{ formula.slug }}">
-                                                    <input type="radio" name="sponsorship_form[pack]" id="sponsorship_{{ formula.id }}" value="{{ formula.id }}"/><label for="sponsorship_{{ formula.id }}">{{ formula.price }}€ {{ formula.name }}</label>
+                                                    <input type="radio" name="sponsorship_form[pack]" id="sponsorship_{{ formula.id }}" value="{{ formula.id }}"/>
+                                                    <label for="sponsorship_{{ formula.id }}">{{ formula.price }}€ {{ formula.name }}</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -134,7 +161,7 @@
             </div>
 
         </div>
-    </div>
+    </div>#}
 
 {% endblock %}
 {% block footScripts %}

@@ -79,7 +79,10 @@
             </div>
         {% endblock %}
 
-        {% block content %}{% endblock %}
+        <div class="main-content">
+            {% block content %}{% endblock %}
+        </div>
+
 
     {% endblock %}
 {{ render(controller("ZPBSitesZooBundle:Navs:secondaryMainbar", {active_page: active_page})) }}
