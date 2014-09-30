@@ -131,4 +131,23 @@ $(function(){
         target: "#front-list",
         element: "li"
     });
+
+    $(document).on("click", "a.delete-hd", function(e){
+        e.preventDefault();
+        var target = $("#" + $(this).data("target"));
+        var loader = $("<span class='loader'></span>");
+        var $this = $(this);
+        $(this).after(loader);
+        $(this).hide();
+        $.get($(this).attr("href"))
+            .done(function(response){
+                if(!response.error){
+                    target.remove();
+                }
+            })
+            .fail(function(response){
+                $this.show();
+                loader.remove();
+            });
+    });
 });

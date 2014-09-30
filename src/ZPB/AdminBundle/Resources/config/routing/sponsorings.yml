@@ -85,16 +85,24 @@ zpb_admin_sponsor_animals_delete:
 
 ######################################################### Animals Images
 zpb_admin_sponsor_animals_images:
-   path: /animal/{id}/images
-   defaults: { _controller: ZPBAdminBundle:Parrainage/AnimalImage:imagesByAnimal }
-   methods: ["GET"]
-   requirements:
+    path: /animal/{id}/images
+    defaults: { _controller: ZPBAdminBundle:Parrainage/AnimalImage:imagesByAnimal }
+    methods: ["GET"]
+    requirements:
        id: \d+
 
 zpb_admin_sponsor_animals_add_xhr_hd_images:
-   path: /xhr/animal/ajouter/hd-images
-   defaults: { _controller: ZPBAdminBundle:Parrainage/AnimalImage:addHdXhr }
-   methods: ["POST"]
+    path: /xhr/animal/ajouter/hd-images
+    defaults: { _controller: ZPBAdminBundle:Parrainage/AnimalImage:addHdXhr }
+    methods: ["POST"]
+
+zpb_admin_sponsor_animals_delete_xhr_hd_images:
+    path: /xhr/animal/supprimer/hd-images/{id}
+    defaults: { _controller: ZPBAdminBundle:Parrainage/AnimalImage:deleteHdXhr }
+    methods: ["GET"]
+    requirements:
+        id: \d+
+
 
 zpb_admin_sponsor_animals_add_xhr_front_images:
    path: /xhr/animal/ajouter/front-images

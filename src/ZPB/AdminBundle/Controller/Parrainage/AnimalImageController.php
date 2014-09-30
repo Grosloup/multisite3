@@ -42,6 +42,25 @@ class AnimalImageController extends BaseController
         return $this->render('ZPBAdminBundle:Parrainage/AnimalImage:images_by_animal.html.twig', ['hds'=>$hds, 'fronts'=>$fronts, 'wallpapers'=>$wallpapers, 'animal'=>$animal]);
     }
 
+    public function deleteHdXhrAction($id, Request $request)
+    {
+        if(!$request->isMethod("GET") || !$request->isXmlHttpRequest()){
+            throw $this->createAccessDeniedException();
+        }
+
+        $image = $this->getRepo('ZPBAdminBundle:AnimalImageHd')->find($id);
+        if(!$image){
+            $response = ['error'=>true, 'message'=>'Image inconnue'];
+        } else {
+            $this->getManager()->remove($image);
+            $this->getManager()->flush();
+            $response = ['error'=>false, 'message'=>'Image supprimée'];
+        }
+
+        return new JsonResponse($response);
+
+    }
+
     public function addHdXhrAction(Request $request)
     {
         if(!$request->isMethod("POST") || !$request->isXmlHttpRequest()){

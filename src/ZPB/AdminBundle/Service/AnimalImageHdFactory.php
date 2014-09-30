@@ -21,6 +21,7 @@
 namespace ZPB\AdminBundle\Service;
 
 
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\File\File;
 use ZPB\AdminBundle\Entity\AnimalImageHd;
 use ZPB\AdminBundle\Entity\ResizeableInterface;
@@ -32,9 +33,12 @@ class AnimalImageHdFactory
      */
     private $options;
 
-    public function __construct($options)
+    private $fs;
+
+    public function __construct($options, $fs)
     {
         $this->options = $options;
+        $this->fs = $fs;
     }
 
     public function getBasePath()

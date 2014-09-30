@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="zpb_animal_images_hd")
  * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\AnimalImageHdRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class AnimalImageHd implements ResizeableInterface
 {
@@ -96,7 +97,33 @@ class AnimalImageHd implements ResizeableInterface
      */
     private $mime;
 
+    private $absolutePath;
 
+    private $thumbPath;
+
+
+    /**
+     * @ORM\PreRemove()
+     */
+    public function storePathes()
+    {
+        $this->absolutePath = $this->getAbsolutePath();
+        $this->thumbPath = $this->getRootDir() . $this->getThumbDir() . $this->getFilename() . '.' . $this->getExtension();
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function deleteFile()
+    {
+        if (file_exists($this->absolutePath)) {
+            unlink($this->absolutePath);
+        }
+        if(file_exists($this->thumbPath)){
+            unlink($this->thumbPath);
+        }
+
+    }
     /**
      * Get id
      *

@@ -3,6 +3,18 @@
 {% block title %}Toutes les images associées à {{ animal.longName }} | Parrainages{% endblock %}
 {% set active = "sponsor_img_by_animal" %}
 
+{% block headStyles%}
+    <style>
+        .loader{
+            display: inline-block;
+            vert-align: middle;
+            width: 16px;
+            height: 16px;
+            background: transparent url("/img/sites/ajax-loader.gif") no-repeat 0 0;
+        }
+    </style>
+{% endblock %}
+
 {% block content %}
     <div class="row">
         <div class="column-12">
@@ -31,11 +43,16 @@
                 {% else %}
                     <div class="row"  id="hd-list">
                         {% for hd in hds %}
-                            <div class="column-2"><img src="{{ hd.getWebThumbPath() }}" alt="" width="100%"/></div>
+                            <div class="column-2" id="img-hd-{{ hd.id }}">
+                                <div>
+                                    <img src="{{ hd.getWebThumbPath() }}" alt="" width="100%"/>
+                                    <div>
+                                        <a class="btn btn-flat delete-hd" data-target="img-hd-{{ hd.id }}" href="{{ path("zpb_admin_sponsor_animals_delete_xhr_hd_images", {id: hd.id}) }}"><i class="fa fa-trash-o"></i></a>
+                                    </div>
+                                </div>
+                            </div>
                         {% endfor %}
                     </div>
-
-
                 {% endif %}
             </div>
         </div>
