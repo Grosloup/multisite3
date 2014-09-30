@@ -1,79 +1,6 @@
 {% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
 {% block title %}{{animal.name}} | Parrainez un animal{% endblock %}
-{% block headStyles %}
-    {{ parent() }}
-    <style>
-        .two-column {
-            -webkit-column-count: 2;
-            -moz-column-count: 2;
-            -ms-column-count: 2;
-            -o-column-count: 2;
-            column-count: 2;
-            -webkit-column-gap: 15px;
-            -moz-column-gap: 15px;
-            -ms-column-gap: 15px;
-            -o-column-gap: 15px;
-            column-gap: 15px;
-        }
-        .offers{
-            padding: 15px 0;
-            background-color: #d9d9d9;
-        }
-        .offer{
-            padding: 0 16px;
-            background-color: #f2f2f2;
-            /*border: 1px solid #cdcdcd;*/
-            height: 46px;
-            line-height: 46px;
-            margin-bottom: 2px;
-            position: relative;
-        }
-        .offer:last-child{
-            margin-bottom: 0;
-        }
-        .offer.active{
-            background-color: #fff;
-        }
-        .offer.active:after{
-            position: absolute;
-            content: "";
-            border-right: none;
-            border-left: #fff 12px solid;
-            border-top: transparent 23px solid;
-            border-bottom: transparent 23px solid;
-            top:0;
-            left: 100%;
 
-        }
-        .offer label{
-            display: inline-block;
-            padding-left: 5px;
-
-        }
-        .gift{
-            padding: 5px 16px;
-            margin-bottom: 1px;
-            background-color: #fff;
-        }
-        .gift:last-child{
-            margin-bottom: 0;
-        }
-        .giftName{
-            color: #bbb;
-        }
-        .isChecked{
-            display: inline-block;
-            padding-right: 16px;
-            color: #fff;
-        }
-        .isChecked.inPack{
-            color: #409c70;
-        }
-        .isChecked.inPack + .giftName{
-            color: #000;
-        }
-    </style>
-{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -84,7 +11,9 @@
                 </div>
             </div>
         </div>
+    </div>
 
+    <div class="container">
         <div class="spaced-row">
             <div class="col-4">
                 {{ render(controller("ZPBSitesZooBundle:Parrainage/Index:connect")) }}
@@ -93,11 +22,16 @@
                 {{ render(controller("ZPBSitesZooBundle:Parrainage/Index:getBasket")) }}
             </div>
         </div>
+    </div>
+
+    <div class="container">
 
         <div class="row">
-            <div class="col-4">
-                <h2>{{ animal.longName }}</h2>
+            <div class="col-6">
+                <h2 class="text-center">{{ animal.longName }}</h2>
+            </div>
 
+            <div class="col-6">
                 <div class="two-column">
                     <h4>Description</h4>
                     {{ animal.longDescription|raw }}
@@ -109,14 +43,33 @@
                     {{ animal.history|raw }}
 
                 </div>
-                <div>
-                    <img class="th" src="http://lorempicsum.com/simpsons/900/500/{{ random(5)+1 }}" alt="" width="100%"/>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="wrapper" style="background-color: #2e85a3;">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <img class="th" src="/img/sites/fixtures/fake.jpg" alt="" style="width: 100%; display: block;"/>
                 </div>
+            </div>
+        </div>
+    </div>
 
-                <h2 id="je-parraine">Je parraine</h2>
+    <div class="container">
+        <div class="row">
+            <div id="je-parraine" class="col-6">
+                <h2 class="text-center">Comment parrainer ?</h2>
+            </div>
+        </div>
+    </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
                 <div class="panel">
-                    <h4>Comment parrainer ?</h4>
                     <ul>
                         <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem culpa eum eveniet ipsa
                             iusto nihil perspiciatis quas sint vero.
@@ -129,6 +82,15 @@
                         </li>
                     </ul>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="spaced-row">
+            <div class="col-6">
+
 
                 {% if formulas|length>0 %}
                     <form action="{{ path("zpb_sites_zoo_parrainages_add_to_basket") }}" method="post">
@@ -138,7 +100,6 @@
                                     {% for formula in formulas %}
                                         <div class="row">
                                             <div class="col-6">
-
                                                 <div class="offer{% if loop.first == true %} active{% endif %}" id="{{ formula.slug }}">
                                                     <input type="radio" name="sponsorship_form[pack]" id="sponsorship_{{ formula.id }}" value="{{ formula.id }}"/><label for="sponsorship_{{ formula.id }}">{{ formula.price }}€ {{ formula.name }}</label>
                                                 </div>
@@ -160,7 +121,6 @@
                                 <div class="offer active">
                                     Soit <strong><span class="redux">00.00</span></strong>€ après reduction fiscale
                                 </div>
-
                             </div>
                             <div class="col-3">
                                 <input name="sponsorship_form[animal]" type="hidden" value="{{ animal.id }}"/>
@@ -172,7 +132,7 @@
                 {% endif %}
 
             </div>
-            <div class="col-2"></div>
+
         </div>
     </div>
 

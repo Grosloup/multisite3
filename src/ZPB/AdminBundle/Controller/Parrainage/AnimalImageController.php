@@ -66,7 +66,7 @@ class AnimalImageController extends BaseController
         if(!$request->isMethod("POST") || !$request->isXmlHttpRequest()){
             throw $this->createAccessDeniedException();
         }
-        $response = ['error'=>false, 'message'=>'','html'=>''];
+        $response = ['error'=>false, 'message'=>''];
         //verif des données
         $filename = $request->headers->get('X-File-Name', false);
         $filetype = $request->headers->get('X-File-Type', false);
@@ -107,7 +107,7 @@ class AnimalImageController extends BaseController
                     $this->getManager()->flush();
                     $imgFactory->makeThumb($image);
                     $html = '<img src="'.$image->getWebThumbPath().'" width="100%" />';
-                    $response = ['error'=>false, 'message'=>'','html'=>$html];
+                    $response = ['error'=>false, 'message'=>'','url'=>$image->getWebThumbPath(),'href'=>$this->generateUrl('zpb_admin_sponsor_animals_delete_xhr_hd_images', ['id'=>$image->getId()]), 'id'=>$image->getId()];
                 }
             }
 

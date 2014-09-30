@@ -44,10 +44,11 @@
                 progressBar.width(0+"%");
                 zone.data('droppable', true);
                 if(!response.error){
-                    el = $(opts.element);
-                    el.html(response.html);
-                    console.log(el);
-                    target.append(el);
+                    el = opts.template.replace(/__url__/,response.url);
+                    el = el.replace(/__id__/g,response.id);
+                    el = el.replace(/__href__/,response.href);
+
+                    target.append($(el));
                 }
             }
             function progressFunc(e){
@@ -97,6 +98,7 @@
                 drop: function(e){
                     e.preventDefault();
                     $(this).removeClass(opts.hover);
+                    message.text();
                     if($this.data('droppable')){
                         upload(e.dataTransfer.files, $this, 0, opts);
                     }
@@ -117,7 +119,16 @@ $(function(){
         url: "/parrainages/xhr/animal/ajouter/hd-images",
         type: "hd",
         target: "#hd-list",
-        element: "<div class='column-2'></div>"
+        template:   "<div class='column-2' id='img-hd-__id__'>" +
+                        "<div>" +
+                            "<img src='__url__' width='100%'/>" +
+                            "<div>" +
+                                "<a class='btn btn-flat delete-hd' href='__href__' data-target='img-hd-__id__'>" +
+                                    "<i class='fa fa-trash-o'></i>" +
+                                "</a>" +
+                            "</div>" +
+                        "</div>" +
+                    "</div>"
     });
     wpDropZone.animalImageUploader({
         url: "/parrainages/xhr/animal/ajouter/front-images",
