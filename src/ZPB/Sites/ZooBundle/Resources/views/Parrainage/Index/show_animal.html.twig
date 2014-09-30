@@ -89,25 +89,36 @@
     <div class="container">
         <div class="spaced-row">
             <div class="col-6">
+                <form action="{{ path("zpb_sites_zoo_parrainages_add_to_basket") }}" method="post">
                 <div class="row">
-                    <form action="{{ path("zpb_sites_zoo_parrainages_add_to_basket") }}" method="post">
-                        <div class="col-3"> <!-- formules -->
-                            {% for formula in formulas %}
-                                <div>
-                                    <input type="radio" name="sponsorship_form[pack]" id="sponsorship_{{ formula.id }}" value="{{ formula.id }}"/>
-                                    <label for="sponsorship_{{ formula.id }}">{{ formula.price }}€ {{ formula.name }}</label>
-                                </div>
-                            {% endfor %}
-                        </div>
-                        <div class="col-3"> <!-- cadeaux -->
-                            {% for gift in gifts %}
-                                <div class="gift">
-                                    <span>{{ gift.name }}</span>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </form>
+                    <div class="col-3"> <!-- formules -->
+                        {% for formula in formulas %}
+                            <div>
+                                <input type="radio" name="sponsorship_form[pack]" id="sponsorship_{{ formula.id }}" value="{{ formula.id }}"/>
+                                <label for="sponsorship_{{ formula.id }}">{{ formula.price }}€ {{ formula.name }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="col-3"> <!-- cadeaux -->
+                        {% for gift in gifts %}
+                            <div class="gift">
+                                <span>{{ gift.name }}</span>
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="col-2">
+                        lorem
+                    </div>
+                    <div class="col-4">
+                        <input name="sponsorship_form[animal]" type="hidden" value="{{ animal.id }}"/>
+                        <input name="sponsorship_form[_token]" type="hidden" value="{{ csrf_token("add_sponsorship") }}"/>
+                        <button type="submit" class="btn btn-primary btn-xlarge" name="sponsorship_form[submit]" value="offer">J'offre ce parrainage</button>
+                        <button type="submit" class="btn btn-primary btn-xlarge" name="sponsorship_form[submit]" value="forme">Je parraine</button>
+                    </div>
+                </div>
+            </form>
             </div>
         </div>
     </div>
@@ -152,7 +163,8 @@
                             <div class="col-3">
                                 <input name="sponsorship_form[animal]" type="hidden" value="{{ animal.id }}"/>
                                 <input name="sponsorship_form[_token]" type="hidden" value="{{ csrf_token("add_sponsorship") }}"/>
-                                <button type="submit" class="button success large" name="sponsorship_form[submit]" value="offer">J'offre ce parrainage</button><button type="submit" class="button success large" name="sponsorship_form[submit]" value="forme">Je parraine</button>
+                                <button type="submit" class="button success large" name="sponsorship_form[submit]" value="offer">J'offre ce parrainage</button>
+                                <button type="submit" class="button success large" name="sponsorship_form[submit]" value="forme">Je parraine</button>
                             </div>
                         </div>
                     </form>
@@ -166,7 +178,7 @@
 {% endblock %}
 {% block footScripts %}
 {{ parent() }}
-    <script>
+    {#<script>
         var $offers, $radios,$isChecked, giftsByOffer, $redux;
         giftsByOffer = {
             {% for offer in formulas %}
@@ -208,5 +220,5 @@
                 markFormula($el);
             });
         });
-    </script>
+    </script>#}
 {% endblock %}
