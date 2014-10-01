@@ -7,3 +7,29 @@ zpb_sites_bn_contact:
     path:     /contact
     defaults: { _controller: ZPBSitesBNBundle:Contact:index }
     methods: ["GET","POST"]
+
+zpb_sites_bn_faq:
+    path:     /faq
+    defaults: { _controller: ZPBSitesBNBundle:FAQ:index }
+    methods: ["GET"]
+
+zpb_sites_bn_cgv:
+    path: /conditions-generales-de-vente
+    defaults: { _controller: ZPBSitesBNBundle:CGV:index }
+    methods: ["GET"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
