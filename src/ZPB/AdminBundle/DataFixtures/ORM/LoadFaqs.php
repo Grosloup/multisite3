@@ -78,6 +78,36 @@ class LoadFaqs extends AbstractFixture implements OrderedFixtureInterface, Conta
         ->setInstitution($this->getReference('zpb-instit-4'));
         $manager->persist($faq8);
 
+        $faq9 = new FAQ();
+        $faq9->setQuestion('Lorem ipsum dolor sit amet, consectetur adipiscing elit ?')->setResponse('Nunc congue id lorem vitae fermentum. Curabitur et est finibus, sodales libero sed, vestibulum odio. Phasellus ac tellus ac lacus maximus consequat. Nullam in nunc viverra, maximus orci id, pellentesque ante. Morbi quis blandit elit, quis tincidunt justo')
+            ->setInstitution($this->getReference('zpb-instit-1'));
+        $manager->persist($faq9);
+
+        $faq10 = new FAQ();
+        $faq10->setQuestion('Lorem ipsum dolor sit amet, consectetur adipiscing elit ?')->setResponse('Nunc congue id lorem vitae fermentum. Curabitur et est finibus, sodales libero sed, vestibulum odio. Phasellus ac tellus ac lacus maximus consequat. Nullam in nunc viverra, maximus orci id, pellentesque ante. Morbi quis blandit elit, quis tincidunt justo')
+            ->setInstitution($this->getReference('zpb-instit-1'));
+        $manager->persist($faq10);
+
+        $faq11 = new FAQ();
+        $faq11->setQuestion('Lorem ipsum dolor sit amet, consectetur adipiscing elit ?')->setResponse('Nunc congue id lorem vitae fermentum. Curabitur et est finibus, sodales libero sed, vestibulum odio. Phasellus ac tellus ac lacus maximus consequat. Nullam in nunc viverra, maximus orci id, pellentesque ante. Morbi quis blandit elit, quis tincidunt justo')
+            ->setInstitution($this->getReference('zpb-instit-1'));
+        $manager->persist($faq11);
+
+        $faq12 = new FAQ();
+        $faq12->setQuestion('Lorem ipsum dolor sit amet, consectetur adipiscing elit ?')->setResponse('Nunc congue id lorem vitae fermentum. Curabitur et est finibus, sodales libero sed, vestibulum odio. Phasellus ac tellus ac lacus maximus consequat. Nullam in nunc viverra, maximus orci id, pellentesque ante. Morbi quis blandit elit, quis tincidunt justo')
+            ->setInstitution($this->getReference('zpb-instit-1'));
+        $manager->persist($faq12);
+
+        $faq13 = new FAQ();
+        $faq13->setQuestion('Lorem ipsum dolor sit amet, consectetur adipiscing elit ?')->setResponse('Nunc congue id lorem vitae fermentum. Curabitur et est finibus, sodales libero sed, vestibulum odio. Phasellus ac tellus ac lacus maximus consequat. Nullam in nunc viverra, maximus orci id, pellentesque ante. Morbi quis blandit elit, quis tincidunt justo')
+            ->setInstitution($this->getReference('zpb-instit-1'));
+        $manager->persist($faq13);
+
+        $faq14 = new FAQ();
+        $faq14->setQuestion('Lorem ipsum dolor sit amet, consectetur adipiscing elit ?')->setResponse('Nunc congue id lorem vitae fermentum. Curabitur et est finibus, sodales libero sed, vestibulum odio. Phasellus ac tellus ac lacus maximus consequat. Nullam in nunc viverra, maximus orci id, pellentesque ante. Morbi quis blandit elit, quis tincidunt justo')
+            ->setInstitution($this->getReference('zpb-instit-1'));
+        $manager->persist($faq14);
+
         $manager->flush();
 
         $this->addReference('zpb-faq-1', $faq1);
@@ -88,6 +118,11 @@ class LoadFaqs extends AbstractFixture implements OrderedFixtureInterface, Conta
         $this->addReference('zpb-faq-6', $faq6);
         $this->addReference('zpb-faq-7', $faq7);
         $this->addReference('zpb-faq-8', $faq8);
+        $this->addReference('zpb-faq-10', $faq10);
+        $this->addReference('zpb-faq-11', $faq11);
+        $this->addReference('zpb-faq-12', $faq12);
+        $this->addReference('zpb-faq-13', $faq13);
+        $this->addReference('zpb-faq-14', $faq14);
     }
 
     public function getOrder()

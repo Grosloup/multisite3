@@ -10,49 +10,63 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-4">
-                <ul>
-                    {% for faq in faqs %}
-                        <li>{{ faq.question }}</li>
-                    {% endfor %}
-                    {% if cfaqs|length > 0 %}
 
-                        {% for cfaq in cfaqs %}
-                            <li>{{ cfaq.question }}</li>
-                        {% endfor %}
-
-                    {% endif %}
-                </ul>
-
-            </div>
-            <div class="col-2"></div>
-        </div>
 
         <div class="row">
-            <div class="col-4">
+            <div class="col-6">
                 {% for faq in faqs %}
                     <div class="faq">
-                        <h5>{{ faq.question }}</h5>
-                        <p>{{ faq.response }}</p>
+                        <div class="faq-question">
+                            {{ faq.question }}
+                        </div>
+                        <div class="faq-response is-hide">
+                            {{ faq.response }}
+                        </div>
+
                     </div>
                 {% endfor %}
                 {% if cfaqs|length > 0 %}
 
                     {% for cfaq in cfaqs %}
                         <div class="faq">
-                            <h5>{{ cfaq.question }}</h5>
-                            <p>{{ cfaq.response }}</p>
+                            <div class="faq-question">
+                                {{ cfaq.question }}
+                            </div>
+                            <div class="faq-response is-hide">
+                                {{ cfaq.response }}
+                            </div>
                         </div>
                     {% endfor %}
 
                 {% endif %}
             </div>
-            <div class="col-4"></div>
         </div>
     </div>
 
 
 
 
+{% endblock %}
+{% block footScripts %}
+    {{ parent() }}
+    <script>
+        $(function(){
+            $(".faq-question").on("click", function(e){
+                e.preventDefault();
+                var response = $(this).next(".faq-response");
+
+                if(response.hasClass("is-hide")){
+                    $(this).addClass("is-active");
+                    response.slideDown(200, function(){
+                        response.removeClass("is-hide").addClass("is-shown");
+                    });
+                } else {
+                    $(this).removeClass("is-active");
+                    response.slideUp(200, function(){
+                        response.removeClass("is-shown").addClass("is-hide");
+                    });
+                }
+            })
+        });
+    </script>
 {% endblock %}
