@@ -1,3 +1,31 @@
 zpb_sites_ce_homepage:
     path:     /
     defaults: { _controller: ZPBSitesCEBundle:Index:index }
+
+zpb_sites_ce_faq:
+    path:     /faq
+    defaults: { _controller: ZPBSitesCEBundle:FAQ:index }
+    methods: ["GET"]
+
+zpb_sites_ce_cgv:
+    path: /conditions-generales-de-vente
+    defaults: { _controller: ZPBSitesCEBundle:CGV:index }
+    methods: ["GET"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
