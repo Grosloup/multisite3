@@ -7,15 +7,7 @@
     }
 </style>
 
-<a  href="{{ path("zpb_sites_zoo_parrainages_login") }}">
-    <svg class="icon" version="1.1" id="mon-compte" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-         width="30px" height="30px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
-<path d="M0,0v40h40V0H0z M20,7.375c3.318,0.013,5.996,2.743,5.974,6.095c0.022,3.385-2.655,6.115-5.974,6.097
-	c-3.318,0.017-5.995-2.712-5.974-6.097C14.005,10.118,16.682,7.388,20,7.375z M5.781,33c-0.014-5,3.689-12,7.89-12h12.657
-	c4.201,0,7.904,7,7.891,12H5.781z"/>
-</svg>
-
-</a>
+<a  href="{{ path("zpb_sites_zoo_parrainages_login") }}" class="btn btn-grisfonce" style="font-size: 16px;"><i class="icon icon-account-o"></i> Mon Compte</a>
 {% if is_granted("ROLE_GODPARENT") %}
     <a class="btn btn-primary" href="{{ path("zpb_sites_zoo_parrainages_logout") }}">Déconnexion</a>
 {% endif %}
