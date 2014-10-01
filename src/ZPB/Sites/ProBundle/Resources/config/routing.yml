@@ -1,3 +1,23 @@
 zpb_sites_pro_homepage:
     path:     /
     defaults: { _controller: ZPBSitesProBundle:Index:index }
+
+zpb_sites_pro_faq:
+    path:     /faq
+    defaults: { _controller: ZPBSitesProBundle:FAQ:index }
+    methods: ["GET"]
+
+zpb_sites_pro_cgv:
+    path: /conditions-generales-de-vente
+    defaults: { _controller: ZPBSitesProBundle:CGV:index }
+    methods: ["GET"]
+
+
+
+
+
+
+
+
+
+

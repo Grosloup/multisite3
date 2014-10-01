@@ -108,6 +108,58 @@ class LoadFaqs extends AbstractFixture implements OrderedFixtureInterface, Conta
             ->setInstitution($this->getReference('zpb-instit-1'));
         $manager->persist($faq14);
 
+
+        $faq15 = new FAQ();
+        $faq15->setQuestion('Lorem ipsum dolor sit amet, consectetur adipiscing elit ?')
+            ->setResponse('Lorem ipsum dolor sit amet, consectetur adipiscing elit ?')->setResponse('Nunc congue id lorem vitae fermentum. Curabitur et est finibus, sodales libero sed, vestibulum odio. Phasellus ac tellus ac lacus maximus consequat. Nullam in nunc viverra, maximus orci id, pellentesque ante. Morbi quis blandit elit, quis tincidunt justoQuisque sit amet odio pellentesque, tempus nulla id, ultrices dolor. Ut porta magna nec dui congue sodales imperdiet non metus. In pharetra non lectus id ullamcorper. Praesent vel consectetur elit. Proin dignissim eleifend orci, vel vestibulum nunc malesuada et. Vivamus consectetur ipsum sed sapien tincidunt, a malesuada est elementum. Sed facilisis congue ante ut finibus. Donec tincidunt tortor in nisl auctor, ut facilisis nisl sagittis.')
+            ->setInstitution($this->getReference('zpb-instit-5'));
+        $manager->persist($faq15);
+
+        $faq16 = new FAQ();
+        $faq16->setQuestion('Lorem ipsum dolor sit amet, consectetur adipiscing elit ?')
+            ->setResponse('Lorem ipsum dolor sit amet, consectetur adipiscing elit ?')->setResponse('Nunc congue id lorem vitae fermentum. Curabitur et est finibus, sodales libero sed, vestibulum odio. Phasellus ac tellus ac lacus maximus consequat. Nullam in nunc viverra, maximus orci id, pellentesque ante. Morbi quis blandit elit, quis tincidunt justoQuisque sit amet odio pellentesque, tempus nulla id, ultrices dolor. Ut porta magna nec dui congue sodales imperdiet non metus. In pharetra non lectus id ullamcorper. Praesent vel consectetur elit. Proin dignissim eleifend orci, vel vestibulum nunc malesuada et. Vivamus consectetur ipsum sed sapien tincidunt, a malesuada est elementum. Sed facilisis congue ante ut finibus. Donec tincidunt tortor in nisl auctor, ut facilisis nisl sagittis.')
+            ->setInstitution($this->getReference('zpb-instit-6'));
+        $manager->persist($faq16);
+
+        $faq17 = new FAQ();
+        $faq17->setQuestion('Lorem ipsum dolor sit amet, consectetur adipiscing elit ?')
+            ->setResponse('Lorem ipsum dolor sit amet, consectetur adipiscing elit ?')->setResponse('Nunc congue id lorem vitae fermentum. Curabitur et est finibus, sodales libero sed, vestibulum odio. Phasellus ac tellus ac lacus maximus consequat. Nullam in nunc viverra, maximus orci id, pellentesque ante. Morbi quis blandit elit, quis tincidunt justoQuisque sit amet odio pellentesque, tempus nulla id, ultrices dolor. Ut porta magna nec dui congue sodales imperdiet non metus. In pharetra non lectus id ullamcorper. Praesent vel consectetur elit. Proin dignissim eleifend orci, vel vestibulum nunc malesuada et. Vivamus consectetur ipsum sed sapien tincidunt, a malesuada est elementum. Sed facilisis congue ante ut finibus. Donec tincidunt tortor in nisl auctor, ut facilisis nisl sagittis.')
+            ->setInstitution($this->getReference('zpb-instit-7'));
+        $manager->persist($faq17);
+
+        $faq18 = new FAQ();
+        $faq18->setQuestion('Lorem ipsum dolor sit amet, consectetur adipiscing elit ?')
+            ->setResponse('Lorem ipsum dolor sit amet, consectetur adipiscing elit ?')->setResponse('Nunc congue id lorem vitae fermentum. Curabitur et est finibus, sodales libero sed, vestibulum odio. Phasellus ac tellus ac lacus maximus consequat. Nullam in nunc viverra, maximus orci id, pellentesque ante. Morbi quis blandit elit, quis tincidunt justoQuisque sit amet odio pellentesque, tempus nulla id, ultrices dolor. Ut porta magna nec dui congue sodales imperdiet non metus. In pharetra non lectus id ullamcorper. Praesent vel consectetur elit. Proin dignissim eleifend orci, vel vestibulum nunc malesuada et. Vivamus consectetur ipsum sed sapien tincidunt, a malesuada est elementum. Sed facilisis congue ante ut finibus. Donec tincidunt tortor in nisl auctor, ut facilisis nisl sagittis.')
+            ->setInstitution($this->getReference('zpb-instit-8'));
+        $manager->persist($faq18);
+
+
+        $faq19 = new FAQ();
+        $faq19->setQuestion('Lorem ipsum dolor sit amet, consectetur adipiscing elit ?')
+            ->setResponse('Lorem ipsum dolor sit amet, consectetur adipiscing elit ?')->setResponse('Nunc congue id lorem vitae fermentum. Curabitur et est finibus, sodales libero sed, vestibulum odio. Phasellus ac tellus ac lacus maximus consequat. Nullam in nunc viverra, maximus orci id, pellentesque ante. Morbi quis blandit elit, quis tincidunt justoQuisque sit amet odio pellentesque, tempus nulla id, ultrices dolor. Ut porta magna nec dui congue sodales imperdiet non metus. In pharetra non lectus id ullamcorper. Praesent vel consectetur elit. Proin dignissim eleifend orci, vel vestibulum nunc malesuada et. Vivamus consectetur ipsum sed sapien tincidunt, a malesuada est elementum. Sed facilisis congue ante ut finibus. Donec tincidunt tortor in nisl auctor, ut facilisis nisl sagittis.')
+            ->setInstitution($this->getReference('zpb-instit-5'));
+        $manager->persist($faq19);
+
+        $faq20 = new FAQ();
+        $faq20->setQuestion('Lorem ipsum dolor sit amet, consectetur adipiscing elit ?')
+            ->setResponse('Lorem ipsum dolor sit amet, consectetur adipiscing elit ?')->setResponse('Nunc congue id lorem vitae fermentum. Curabitur et est finibus, sodales libero sed, vestibulum odio. Phasellus ac tellus ac lacus maximus consequat. Nullam in nunc viverra, maximus orci id, pellentesque ante. Morbi quis blandit elit, quis tincidunt justoQuisque sit amet odio pellentesque, tempus nulla id, ultrices dolor. Ut porta magna nec dui congue sodales imperdiet non metus. In pharetra non lectus id ullamcorper. Praesent vel consectetur elit. Proin dignissim eleifend orci, vel vestibulum nunc malesuada et. Vivamus consectetur ipsum sed sapien tincidunt, a malesuada est elementum. Sed facilisis congue ante ut finibus. Donec tincidunt tortor in nisl auctor, ut facilisis nisl sagittis.')
+            ->setInstitution($this->getReference('zpb-instit-6'));
+        $manager->persist($faq20);
+
+        $faq21 = new FAQ();
+        $faq21->setQuestion('Lorem ipsum dolor sit amet, consectetur adipiscing elit ?')
+            ->setResponse('Lorem ipsum dolor sit amet, consectetur adipiscing elit ?')->setResponse('Nunc congue id lorem vitae fermentum. Curabitur et est finibus, sodales libero sed, vestibulum odio. Phasellus ac tellus ac lacus maximus consequat. Nullam in nunc viverra, maximus orci id, pellentesque ante. Morbi quis blandit elit, quis tincidunt justoQuisque sit amet odio pellentesque, tempus nulla id, ultrices dolor. Ut porta magna nec dui congue sodales imperdiet non metus. In pharetra non lectus id ullamcorper. Praesent vel consectetur elit. Proin dignissim eleifend orci, vel vestibulum nunc malesuada et. Vivamus consectetur ipsum sed sapien tincidunt, a malesuada est elementum. Sed facilisis congue ante ut finibus. Donec tincidunt tortor in nisl auctor, ut facilisis nisl sagittis.')
+            ->setInstitution($this->getReference('zpb-instit-7'));
+        $manager->persist($faq21);
+
+        $faq22 = new FAQ();
+        $faq22->setQuestion('Lorem ipsum dolor sit amet, consectetur adipiscing elit ?')
+            ->setResponse('Lorem ipsum dolor sit amet, consectetur adipiscing elit ?')->setResponse('Nunc congue id lorem vitae fermentum. Curabitur et est finibus, sodales libero sed, vestibulum odio. Phasellus ac tellus ac lacus maximus consequat. Nullam in nunc viverra, maximus orci id, pellentesque ante. Morbi quis blandit elit, quis tincidunt justoQuisque sit amet odio pellentesque, tempus nulla id, ultrices dolor. Ut porta magna nec dui congue sodales imperdiet non metus. In pharetra non lectus id ullamcorper. Praesent vel consectetur elit. Proin dignissim eleifend orci, vel vestibulum nunc malesuada et. Vivamus consectetur ipsum sed sapien tincidunt, a malesuada est elementum. Sed facilisis congue ante ut finibus. Donec tincidunt tortor in nisl auctor, ut facilisis nisl sagittis.')
+            ->setInstitution($this->getReference('zpb-instit-8'));
+        $manager->persist($faq22);
+
+
+
         $manager->flush();
 
         $this->addReference('zpb-faq-1', $faq1);
@@ -123,6 +175,14 @@ class LoadFaqs extends AbstractFixture implements OrderedFixtureInterface, Conta
         $this->addReference('zpb-faq-12', $faq12);
         $this->addReference('zpb-faq-13', $faq13);
         $this->addReference('zpb-faq-14', $faq14);
+        $this->addReference('zpb-faq-15', $faq15);
+        $this->addReference('zpb-faq-16', $faq16);
+        $this->addReference('zpb-faq-17', $faq17);
+        $this->addReference('zpb-faq-18', $faq18);
+        $this->addReference('zpb-faq-19', $faq19);
+        $this->addReference('zpb-faq-20', $faq20);
+        $this->addReference('zpb-faq-21', $faq21);
+        $this->addReference('zpb-faq-22', $faq22);
     }
 
     public function getOrder()

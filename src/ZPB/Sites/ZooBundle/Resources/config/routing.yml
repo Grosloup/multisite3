@@ -18,6 +18,11 @@ zpb_sites_zoo_contact:
     defaults: { _controller: ZPBSitesZooBundle:Contact:index }
     methods: ["GET","POST"]
 
+zpb_sites_zoo_cgv:
+    path: /conditions-generales-de-vente
+    defaults: { _controller: ZPBSitesZooBundle:CGV:index }
+    methods: ["GET"]
+
 
 zpb_sites_zoo_download_image:
     path: /telecharger/image/{filename}

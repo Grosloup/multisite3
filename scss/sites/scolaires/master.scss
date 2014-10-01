@@ -20,98 +20,9 @@
   @include box-sizing(border-box);
 }
 
-body{
-  font-size: topx($fontSize);
-  font-family: $fontfamily;
-  color: $fontColor;
-  line-height: $lineHeight;
-}
-
-h1,h2,h3,h4,h5,h6{
-  text-transform: uppercase;
-  font-family: $headerFontFamily;
-  color: $headerFontColor;
-  a{
-    color: inherit;
-  }
-}
-@for $h from 1 through 6 {
-  h#{$h}{
-    font-size: topx(55 - ($h * 8));
-  }
-}
-
-a{
-  @include  nakedLink;
-  font-family: $linkFontFamily;
-  color: $grisFonce;
-  &:hover{
-    color: $linkHoverColor;
-  }
-}
-
-small, .small{
-  font-size: topx($fontSize * 0.8);
-}
-
-ul{
-  &.inline{
-    li{
-      display: inline;
-      a, span.alike{
-        display: inline-block;
-        margin: 0 12px;
-      }
-    }
-  }
-}
-
-/*************************************************\
-  helpers
-\*************************************************/
-
-.text-left{
-  text-align: left;
-}
-.text-center{
-  text-align: center;
-}
-.text-right{
-  text-align: right;
-}
+@import "../common/base";
 
 
-.page-header{
-  text-align: center;
-  padding: topx($fontSize / 2) 0;
 
-}
-
-.thumb{
-  img{
-    width: 100%;
-    padding: topx($fontSize / 2);
-    border: 1px solid lighten($grisFonce, 50);
-    &:hover{
-      @include box-shadow(rgba(0,0,0,0.3) 0 0 5px);
-    }
-  }
-}
-
-/*************************************************\
-  Pour test
-\*************************************************/
-
-@for $i from 1 through 12{
-  .testbox-#{$i}{
-    height: topx($i * 50);
-  }
-}
-
-.testbox{
-  width: 100%;
-  background-color: #ddd;
-  border: 1px solid #bbb;
-}
 
 

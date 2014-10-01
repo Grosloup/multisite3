@@ -32,12 +32,14 @@
             {{ render(controller("ZPBSitesScolarBundle:Navs:mainbar")) }}
         </div>
     {% endblock %}
+    <div class="main-content">
+        {% block content %}{% endblock %}
+    </div>
 
-    {% block content %}{% endblock %}
 
 {% endblock %}
 
-{{ render(controller("ZPBSitesZooBundle:Partials:footer")) }}
+{{ render(controller("ZPBSitesScolarBundle:Partials:footer")) }}
 
 {% block footScripts %}
     <script src="/js/vendor/jquery-2.1.1.min.js"></script>

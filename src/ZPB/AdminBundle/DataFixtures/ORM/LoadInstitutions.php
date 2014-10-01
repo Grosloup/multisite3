@@ -65,12 +65,41 @@ class LoadInstitutions extends AbstractFixture implements OrderedFixtureInterfac
         ->setHost('new.leshameauxbeauval.com');
         $manager->persist($inst4);
 
+
+        $inst5 = new Institution();
+        $inst5->setName('Groupes Enfants')
+            ->setDescription('Suspendisse fermentum malesuada feugiat. Etiam volutpat porta orci, quis mollis sem viverra in. In ultricies vulputate ipsum et tincidunt. Maecenas nisl felis, feugiat sit amet rutrum eget, fringilla non ipsum. ')
+            ->setHost('new.scolaires.zoobeauval.com');
+        $manager->persist($inst5);
+
+        $inst6 = new Institution();
+        $inst6->setName('Groupes')
+            ->setDescription('Suspendisse fermentum malesuada feugiat. Etiam volutpat porta orci, quis mollis sem viverra in. In ultricies vulputate ipsum et tincidunt. Maecenas nisl felis, feugiat sit amet rutrum eget, fringilla non ipsum. ')
+            ->setHost('new.groupes.zoobeauval.com');
+        $manager->persist($inst6);
+
+        $inst7 = new Institution();
+        $inst7->setName('Professionnels')
+            ->setDescription('Suspendisse fermentum malesuada feugiat. Etiam volutpat porta orci, quis mollis sem viverra in. In ultricies vulputate ipsum et tincidunt. Maecenas nisl felis, feugiat sit amet rutrum eget, fringilla non ipsum. ')
+            ->setHost('new.pro.zoobeauval.com');
+        $manager->persist($inst7);
+
+        $inst8 = new Institution();
+        $inst8->setName('Comités d\'Entreprises')
+            ->setDescription('Suspendisse fermentum malesuada feugiat. Etiam volutpat porta orci, quis mollis sem viverra in. In ultricies vulputate ipsum et tincidunt. Maecenas nisl felis, feugiat sit amet rutrum eget, fringilla non ipsum. ')
+            ->setHost('new.ce.zoobeauval.com');
+        $manager->persist($inst8);
+
         $manager->flush();
 
         $this->addReference('zpb-instit-1', $inst1);
         $this->addReference('zpb-instit-2', $inst2);
         $this->addReference('zpb-instit-3', $inst3);
         $this->addReference('zpb-instit-4', $inst4);
+        $this->addReference('zpb-instit-5', $inst5);
+        $this->addReference('zpb-instit-6', $inst6);
+        $this->addReference('zpb-instit-7', $inst7);
+        $this->addReference('zpb-instit-8', $inst8);
     }
 
     public function getOrder()

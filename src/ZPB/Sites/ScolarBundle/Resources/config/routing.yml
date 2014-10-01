@@ -1,3 +1,17 @@
 zpb_sites_scolar_homepage:
     path:     /
     defaults: { _controller: ZPBSitesScolarBundle:Index:index }
+
+zpb_sites_scolar_faq:
+    path:     /faq
+    defaults: { _controller: ZPBSitesScolarBundle:FAQ:index }
+    methods: ["GET"]
+
+zpb_sites_scolar_cgv:
+    path: /conditions-generales-de-vente
+    defaults: { _controller: ZPBSitesScolarBundle:CGV:index }
+    methods: ["GET"]
+
+
+
+
