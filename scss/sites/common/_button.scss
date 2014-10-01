@@ -31,10 +31,10 @@ a, button, input[type=button], input[type=submit], input[type=reset]{
       background-color: $grisFonce;
       color: $blanc;
       &:hover{
-        background-color: $bleu;
+        background-color: $btn_grisFonceHover;
       }
       &:active{
-        background-color: $bleu;
+        background-color: $btn_grisFonceActive;
       }
     }
 
@@ -42,10 +42,10 @@ a, button, input[type=button], input[type=submit], input[type=reset]{
       background-color: $grisBB;
       color: $blanc;
       &:hover{
-        background-color: $bleu;
+        background-color: $btn_grisBBHover;
       }
       &:active{
-        background-color: $bleu;
+        background-color: $btn_grisBBActive;
       }
     }
 

@@ -4,14 +4,14 @@ $fontSize: 16;
 $fontfamily: 'cooper_hewitt_book', Arial, Helvetica, sans-serif;
 $headerFontFamily: 'cooper_hewitt_bold', Arial, Helvetica, sans-serif;
 $fontColor: $grisFonce;
-$headerFontColor: $bleu;
+$headerFontColor: $ocean;
 $lineHeight: 1.43;
 
 $headerSize: 50, 45, 30, 25, 20, 15;
 $headers: h1,h2,h3,h4,h5,h6;
 
 $linkFontFamily: 'cooper_hewitt_semi_bold', Arial, Helvetica, sans-serif;
-$linkHoverColor: $bleu;
+$linkHoverColor: $ocean;
 
 $gridGutter: 20;
 $numCols: 6;
@@ -26,11 +26,14 @@ $btn_defaultBtnFontFamily: $fontfamily;
 $btn_defaultBtnFontSize: $fontSize;
 
 $btn_primaryColor: $blanc;
-$btn_primaryBgColor: $bleu;
+$btn_primaryBgColor: $ocean;
 
 $btn_warningColor: $grisFonce;
 $btn_warningBgColor: $jaune;
-
+$btn_grisFonceHover: $ocean;
+$btn_grisFonceActive: $ocean;
+$btn_grisBBHover: $ocean;
+$btn_grisBBActive: $ocean;
 
 /***************************************\
   multisite-menu mn_
@@ -76,7 +79,7 @@ $shmn_reg_subMenu_linkHoverBgColor: $grisFonce;
 
 $shmn_stuck_menu_textTransform: uppercase;
 $shmn_stuck_menu_fontFamily: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
-$shmn_stuck_bgColor: $bleu;
+$shmn_stuck_bgColor: $ocean;
 $shmn_stuck_boxShadow: rgba(0,0,0,0.5) 0 1px 4px;
 $shmn_stuck_menu_linkColor: $blanc;
 $shmn_stuck_logo_color: $blanc;
@@ -91,7 +94,7 @@ $shmn_stuck_subMenu_linkPaddingRight: 10;
 $shmn_stuck_subMenu_linkPaddingLeft: 10;
 $shmn_stuck_subMenu_linkColor: $grisFonce;
 $shmn_stuck_subMenu_linkHoverColor: $blanc;
-$shmn_stuck_subMenu_linkHoverBgColor: $bleu;
+$shmn_stuck_subMenu_linkHoverBgColor: $ocean;
 $shmn_stuck_logo_paddingLeft: $gridGutter;
 $shmn_stuck_logo_paddingRight: 15;
   /***************************************\
@@ -119,7 +122,7 @@ $bs_gutter: 10;
 \***************************************/
 
 $faq_defaultBgColor: $grisBB;
-$faq_activeBgColor: $bleu;
+$faq_activeBgColor: $ocean;
 
 
 
