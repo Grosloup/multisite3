@@ -1,0 +1,69 @@
+<?php
+#parse("PHP File Header.php")
+
+#if (${NAMESPACE})
+
+namespace ${NAMESPACE};
+
+#end
+
+use Symfony\Component\HttpFoundation\Request;
+use ZPB\AdminBundle\Controller\BaseController;
+use ZPB\AdminBundle\Entity\\${ENTITY};
+use ZPB\AdminBundle\Form\Type\\${ENTITY}Type;
+
+class ${NAME} extends BaseController
+{
+    public function listAction()
+    {
+        \$entities = \$this->getRepo('${BASEREPO}:${ENTITY}')->findAll(); //->findBy([], ['name'=> 'ASC']);
+        return \$this->render('list.html.twig', ['entities'=>\$entities]); //1
+    }
+
+    public function createAction(Request \$request)
+    {
+        \$entity = new ${ENTITY}();
+        \$form = \$this->createForm(new ${ENTITY}Type(), \$entity);
+        \$form->handleRequest(\$request);
+        if(\$form->isValid()){
+            \$this->getManager()->persist(\$entity);
+            \$this->getManager()->flush();
+
+            \$this->setSuccess('Nouvelle entité bien enregistrée'); //2
+            return \$this->redirect(\$this->generateUrl('')); //3
+        }
+        return \$this->render('create.html.twig', ['form'=>\$form->createView()]); //4
+    }
+
+    public function updateAction(\$id, Request \$request)
+    {
+        \$entity = \$this->getRepo('${BASEREPO}:${ENTITY}')->find(\$id);
+        if(!\$entity){
+            throw \$this->createNotFoundException();
+        }
+        \$form = \$this->createForm(new ${ENTITY}Type(), \$entity);
+        \$form->handleRequest(\$request);
+        if(\$form->isValid()){
+            \$this->getManager()->persist(\$entity);
+            \$this->getManager()->flush();
+            \$this->setSuccess('Entité bien modifiée'); //5
+            return \$this->redirect(\$this->generateUrl('')); //6
+        }
+        return \$this->render('update.html.twig', ['form'=>\$form->createView()]); //7
+    }
+
+    public function deleteAction(\$id, Request \$request)
+    {
+        if(!\$this->validateToken(\$request->query->get('_token'), 'delete_')){ //8 intention
+            throw \$this->createAccessDeniedException();
+        }
+        if(null == \$entity = \$this->getRepo('${BASEREPO}:${ENTITY}')->find(\$id)){
+            throw \$this->createNotFoundException();
+        }
+        \$this->getManager()->remove(\$entity);
+        \$this->getManager()->flush();
+        \$this->setSuccess('Entité bien supprimée'); //9
+        return \$this->redirect(\$this->generateUrl('')); //10
+    }
+
+}

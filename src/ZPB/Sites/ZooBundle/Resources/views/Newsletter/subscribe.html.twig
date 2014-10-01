@@ -19,7 +19,7 @@
 </div>
 
     <div class="container">
-        <div class="row">
+        <div class="spaced-row">
             <div class="col-1"></div>
             <div class="col-4">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus aliquid aspernatur assumenda
@@ -32,24 +32,44 @@
     </div>
 
     <div class="container">
-        <div class="row">
+        <div class="spaced-row">
             <div class="col-1"></div>
             <div class="col-4">
 
 
-                {{ form_start(form, {attr:{novalidate: true}}) }}
+                {{ form_start(form, {attr:{novalidate: true, class:"form"}}) }}
                 {{ form_errors(form) }}
 
-                <div class="form-row {% if form.civilite.vars.errors|length>0 %}has-error{% endif %}">
-                    {{ form_label(form.civilite) }}
-                    <div class="form-field">
-                        {{ form_widget(form.civilite) }}
-                        {% if form.civilite.vars.errors|length>0 %}
-                            <div class="error-block">
-                                {{ form_errors(form.civilite) }}
+                <div class="row">
+
+                    <div class="col-3">
+                        <div class="form-row {% if form.civilite.vars.errors|length>0 %}has-error{% endif %}">
+                            {{ form_label(form.civilite) }}
+                            <div class="form-field">
+                                {{ form_widget(form.civilite) }}
+                                {% if form.civilite.vars.errors|length>0 %}
+                                    <div class="error-block">
+                                        {{ form_errors(form.civilite) }}
+                                    </div>
+                                {% endif %}
                             </div>
-                        {% endif %}
+                        </div>
                     </div>
+
+                    <div class="col-3">
+                        <div class="form-row {% if form.bornAt.vars.errors|length>0 %}has-error{% endif %}">
+                            {{ form_label(form.bornAt) }}
+                            <div class="form-field">
+                                {{ form_widget(form.bornAt) }}
+                                {% if form.bornAt.vars.errors|length>0 %}
+                                    <div class="error-block">
+                                        {{ form_errors(form.bornAt) }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="form-row {% if form.firstname.vars.errors|length>0 %}has-error{% endif %}">
@@ -88,17 +108,7 @@
                     </div>
                 </div>
 
-                <div class="form-row {% if form.bornAt.vars.errors|length>0 %}has-error{% endif %}">
-                    {{ form_label(form.bornAt) }}
-                    <div class="form-field">
-                        {{ form_widget(form.bornAt) }}
-                        {% if form.bornAt.vars.errors|length>0 %}
-                            <div class="error-block">
-                                {{ form_errors(form.bornAt) }}
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
+
 
                 <div class="form-row hide {% if form.name.vars.errors|length>0 %}has-error{% endif %}">
                     {{ form_label(form.name) }}
@@ -113,7 +123,7 @@
                 </div>
 
                 <div class="form-row">
-                    {{ form_widget(form.save, {attr:{class:"btn btn-primary"}}) }}
+                    {{ form_widget(form.save, {attr:{class:"btn btn-grisfonce"}}) }}
                 </div>
 
                 {{ form_end(form) }}
