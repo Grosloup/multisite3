@@ -80,16 +80,19 @@
     <div class="row">
         <div class="column-8">
             <div class="tile">
-                {% if wallpapers|length <1 %}
-                    <p class="text-warning">Il n'y a pas de fonds d'écran</p>
-                {% else %}
-                    <ul id="wp-list">
-                        {% for wallpaper in wallpapers %}
-                            <li><img src="{{ wallpaper.getWebThumbPath() }}" alt=""/></li>
-                        {% endfor %}
-                    </ul>
+                <div class="row" id="wp-list">
+                    {% for wallpaper in wallpapers %}
+                        <div class="column-2" id="img-wp-{{ wallpaper.id }}">
+                            <div>
+                                <img src="{{ wallpaper.getWebThumbPath() }}" alt="" width="100%"/>
+                                <div>
+                                    <a class="btn btn-flat delete-wp" data-target="img-wp-{{ wallpaper.id }}" href="{{ path("zpb_admin_sponsor_animals_delete_xhr_wallpaper_images", {id: wallpaper.id}) }}"><i class="fa fa-trash-o"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
 
-                {% endif %}
             </div>
         </div>
         <div class="column-4">
@@ -128,16 +131,18 @@
                 </div>
             </div>
             <div class="tile">
-                {% if fronts|length <1 %}
-                    <p class="text-warning">Il n'y a pas d'images de présentation</p>
-                {% else %}
-                    <ul id="front-list">
-                        {% for front in fronts %}
-                            <li><img src="{{ front.getWebThumbPath() }}" alt=""/></li>
-                        {% endfor %}
-                    </ul>
-
-                {% endif %}
+                <div class="row" id="front-list">
+                    {% for front in fronts %}
+                        <div class="column-2" id="img-front-{{ front.id }}">
+                            <div>
+                                <img src="{{ front.getWebThumbPath() }}" alt="" width="100%"/>
+                                <div>
+                                    <a class="btn btn-flat delete-front" data-target="img-front-{{ front.id }}" href="{{ path("zpb_admin_sponsor_animals_delete_xhr_front_images", {id: front.id}) }}"><i class="fa fa-trash-o"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
         <div class="column-4">

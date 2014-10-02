@@ -115,12 +115,26 @@ class AnimalImageController extends BaseController
         return new JsonResponse($response);
     }
 
+    public function deleteFrontXhrAction($id, Request $request)
+    {
+        if(!$request->isMethod("GET") || !$request->isXmlHttpRequest()){
+            throw $this->createAccessDeniedException();
+        }
+    }
+
     public function addFrontXhrAction(Request $request)
     {
         if(!$request->isMethod("POST") || !$request->isXmlHttpRequest()){
             throw $this->createAccessDeniedException();
         }
 
+    }
+
+    public function deleteWallpaperXhrAction($id, Request $request)
+    {
+        if(!$request->isMethod("GET") || !$request->isXmlHttpRequest()){
+            throw $this->createAccessDeniedException();
+        }
     }
 
     public function addWallpaperXhrAction(Request $request)

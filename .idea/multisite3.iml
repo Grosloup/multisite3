@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
   <component name="CompassSettings">
-    <option name="compassConfigPath" value="H:\virtualhosts\sf-projects\beauval\multisite3\config.rb" />
+    <option name="compassConfigPath" value="$MODULE_DIR$/config.rb" />
     <option name="compassExecutableFilePath" value="C:/Ruby193/bin/compass.bat" />
     <option name="compassSupportEnabled" value="true" />
     <option name="importPaths">
       <list>
-        <option value="C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/blueprint/stylesheets" />
-        <option value="C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets" />
+        <option value="C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.5/frameworks/blueprint/stylesheets" />
+        <option value="C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.5/frameworks/compass/stylesheets" />
       </list>
     </option>
   </component>

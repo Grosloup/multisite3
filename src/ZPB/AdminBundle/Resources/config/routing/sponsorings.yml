@@ -109,10 +109,24 @@ zpb_admin_sponsor_animals_add_xhr_front_images:
    defaults: { _controller: ZPBAdminBundle:Parrainage/AnimalImage:addFrontXhr }
    methods: ["POST"]
 
+zpb_admin_sponsor_animals_delete_xhr_front_images:
+    path: /xhr/animal/supprimer/front-images/{id}
+    defaults: { _controller: ZPBAdminBundle:Parrainage/AnimalImage:deleteFrontXhr }
+    methods: ["GET"]
+    requirements:
+        id: \d+
+
 zpb_admin_sponsor_animals_add_xhr_wallpaper_images:
    path: /xhr/animal/ajouter/wallpaper-images
    defaults: { _controller: ZPBAdminBundle:Parrainage/AnimalImage:addWallpaperXhr }
    methods: ["POST"]
+
+zpb_admin_sponsor_animals_delete_xhr_wallpaper_images:
+    path: /xhr/animal/supprimer/wallpaper-images/{id}
+    defaults: { _controller: ZPBAdminBundle:Parrainage/AnimalImage:deleteWallpaperXhr }
+    methods: ["GET"]
+    requirements:
+        id: \d+
 
 
 ######################################################### Sponsorings

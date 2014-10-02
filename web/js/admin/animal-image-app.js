@@ -134,13 +134,31 @@ $(function(){
         url: "/parrainages/xhr/animal/ajouter/front-images",
         type: "wallpaper",
         target: "#wp-list",
-        element: "li"
+       template:    "<div class='column-2' id='img-wp-__id__'>" +
+                        "<div>" +
+                            "<img src='__url__' width='100%'/>" +
+                            "<div>" +
+                                "<a class='btn btn-flat delete-wp' href='__href__' data-target='img-wp-__id__'>" +
+                                    "<i class='fa fa-trash-o'></i>" +
+                                "</a>" +
+                            "</div>" +
+                        "</div>" +
+                    "</div>"
     });
     frontDropZone.animalImageUploader({
         url: "/parrainages/xhr/animal/ajouter/wallpaper-images",
         type: "front",
         target: "#front-list",
-        element: "li"
+        template:   "<div class='column-2' id='img-front-__id__'>" +
+                        "<div>" +
+                            "<img src='__url__' width='100%'/>" +
+                            "<div>" +
+                                "<a class='btn btn-flat delete-front' href='__href__' data-target='img-front-__id__'>" +
+                                    "<i class='fa fa-trash-o'></i>" +
+                                "</a>" +
+                            "</div>" +
+                        "</div>" +
+                    "</div>"
     });
 
     $(document).on("click", "a.delete-hd", function(e){
