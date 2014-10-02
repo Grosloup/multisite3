@@ -31,27 +31,27 @@ class AnimalImageWallpaperFactory extends AbstractAnimalImageFactory
 
     public function getBasePath()
     {
-        return $this->options['zpb.front.root_dir'] . $this->options['zpb.front.web_dir'];
+        return $this->options['zpb.wallpaper.root_dir'] . $this->options['zpb.wallpaper.web_dir'];
     }
 
     public function getPath()
     {
-        return $this->getBasePath() . 'front_' . time() . '.jpg';
+        return $this->getBasePath() . 'wallpaper_' . time() . '.jpg';
     }
 
     public function getThumbPath()
     {
-        return $this->options['zpb.front.root_dir']  . $this->options['zpb.front.thumb_dir'];
+        return $this->options['zpb.wallpaper.root_dir']  . $this->options['zpb.wallpaper.thumb_dir'];
     }
 
     public function createFromFile(File $file)
     {
-        $class = $this->options['zpb.hd.class'];
+        $class = $this->options['zpb.wallpaper.class'];
         /** @var AnimalImageWallpaper $image */
         $image = new $class();
-        $image->setRootDir($this->options['zpb.hd.root_dir']);
-        $image->setWebDir($this->options['zpb.hd.web_dir']);
-        $image->setThumbDir($this->options['zpb.hd.thumb_dir']);
+        $image->setRootDir($this->options['zpb.wallpaper.root_dir']);
+        $image->setWebDir($this->options['zpb.wallpaper.web_dir']);
+        $image->setThumbDir($this->options['zpb.wallpaper.thumb_dir']);
         $image->setFilename(pathinfo($file->getFilename(), PATHINFO_FILENAME));
         $image->setExtension($file->getExtension());
         $image->setMime($file->getMimeType());

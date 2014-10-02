@@ -106,7 +106,6 @@ class AnimalImageController extends BaseController
                     $this->getManager()->persist($image);
                     $this->getManager()->flush();
                     $imgFactory->makeThumb($image);
-                    $html = '<img src="'.$image->getWebThumbPath().'" width="100%" />';
                     $response = ['error'=>false, 'message'=>'','url'=>$image->getWebThumbPath(),'href'=>$this->generateUrl('zpb_admin_sponsor_animals_delete_xhr_hd_images', ['id'=>$image->getId()]), 'id'=>$image->getId()];
                 }
             }
@@ -120,6 +119,16 @@ class AnimalImageController extends BaseController
         if(!$request->isMethod("GET") || !$request->isXmlHttpRequest()){
             throw $this->createAccessDeniedException();
         }
+        $image = $this->getRepo('ZPBAdminBundle:AnimalImageFront')->find($id);
+        if(!$image){
+            $response = ['error'=>true, 'message'=>'Image inconnue'];
+        } else {
+            $this->getManager()->remove($image);
+            $this->getManager()->flush();
+            $response = ['error'=>false, 'message'=>'Image supprimée'];
+        }
+
+        return new JsonResponse($response);
     }
 
     public function addFrontXhrAction(Request $request)
@@ -146,9 +155,34 @@ class AnimalImageController extends BaseController
             }else {
                 $fs = $this->get('filesystem');
                 $imgFactory = $this->get('zpb.sponsoring.image_front_factory');
+                $basePath = $imgFactory->getBasePath();
+                $thumbPath = $imgFactory->getThumbPath();
+                if(!$fs->exists($thumbPath)){
+                    $fs->mkdir($thumbPath);
+                }
+                if(!$fs->exists($basePath)){
+                    $fs->mkdir($basePath);
+                }
+                $file = $imgFactory->getPath();
+                file_put_contents($file, $request->getContent());
+                $file = new File($file);
+                if(!in_array($file->getMimeType(), ['image/jpeg'])){
+                    $fs->remove($file);
+                    $file = null;
+                    $response['error'] = true;
+                    $response['msg'] = 'Le fichier n\'est pas d\'un format acceptable.';
+                } else {
+                    $image = $imgFactory->createFromFile($file);
+                    $image->setAnimal($animal);
+                    $this->getManager()->persist($image);
+                    $this->getManager()->flush();
+                    $imgFactory->makeThumb($image);
+                    $response = ['error'=>false, 'message'=>'','url'=>$image->getWebThumbPath(),'href'=>$this->generateUrl('zpb_admin_sponsor_animals_delete_xhr_front_images', ['id'=>$image->getId()]), 'id'=>$image->getId()];
+                }
             }
-        }
 
+        }
+        return new JsonResponse($response);
     }
 
     public function deleteWallpaperXhrAction($id, Request $request)
@@ -156,6 +190,16 @@ class AnimalImageController extends BaseController
         if(!$request->isMethod("GET") || !$request->isXmlHttpRequest()){
             throw $this->createAccessDeniedException();
         }
+        $image = $this->getRepo('ZPBAdminBundle:AnimalImageWallpaper')->find($id);
+        if(!$image){
+            $response = ['error'=>true, 'message'=>'Image inconnue'];
+        } else {
+            $this->getManager()->remove($image);
+            $this->getManager()->flush();
+            $response = ['error'=>false, 'message'=>'Image supprimée'];
+        }
+
+        return new JsonResponse($response);
     }
 
     public function addWallpaperXhrAction(Request $request)
@@ -163,6 +207,51 @@ class AnimalImageController extends BaseController
         if(!$request->isMethod("POST") || !$request->isXmlHttpRequest()){
             throw $this->createAccessDeniedException();
         }
+        $response = ['error'=>false, 'message'=>''];
+        //verif des données
+        $filename = $request->headers->get('X-File-Name', false);
+        $filetype = $request->headers->get('X-File-Type', false);
+        $filesize = $request->headers->get('X-File-Size', false);
+        $animalId = $request->headers->get('X-File-AnimalId', false);
+        if(!$filename || !$filesize || !$filetype || !$animalId){
+            $response['error'] = true;
+            $response['msg' ]= 'Données insuffisantes';
+        } else {
+            $animal = $this->getRepo('ZPBAdminBundle:Animal')->find($animalId);
+            if(!$animal){
+                $response['error'] = true;
+                $response['msg' ]= 'Animal inconnu';
+            }else {
+                $fs = $this->get('filesystem');
+                $imgFactory = $this->get('zpb.sponsoring.image_wallpaper_factory');
+                $basePath = $imgFactory->getBasePath();
+                $thumbPath = $imgFactory->getThumbPath();
 
+                if(!$fs->exists($thumbPath)){
+                    $fs->mkdir($thumbPath);
+                }
+                if(!$fs->exists($basePath)){
+                    $fs->mkdir($basePath);
+                }
+                $file = $imgFactory->getPath();
+                file_put_contents($file, $request->getContent());
+                $file = new File($file);
+                if(!in_array($file->getMimeType(), ['image/jpeg'])){
+                    $fs->remove($file);
+                    $file = null;
+                    $response['error'] = true;
+                    $response['msg'] = 'Le fichier n\'est pas d\'un format acceptable.';
+                } else {
+                    $image = $imgFactory->createFromFile($file);
+                    $image->setAnimal($animal);
+                    $this->getManager()->persist($image);
+                    $this->getManager()->flush();
+                    $imgFactory->makeThumb($image);
+                    $response = ['error'=>false, 'message'=>'','url'=>$image->getWebThumbPath(),'href'=>$this->generateUrl('zpb_admin_sponsor_animals_delete_xhr_wallpaper_images', ['id'=>$image->getId()]), 'id'=>$image->getId()];
+                }
+            }
+
+        }
+        return new JsonResponse($response);
     }
 }

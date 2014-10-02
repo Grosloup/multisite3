@@ -46,12 +46,12 @@ class AnimalImageFrontFactory extends AbstractAnimalImageFactory
 
     public function createFromFile(File $file)
     {
-        $class = $this->options['zpb.hd.class'];
+        $class = $this->options['zpb.front.class'];
         /** @var AnimalImageFront $image */
         $image = new $class();
-        $image->setRootDir($this->options['zpb.hd.root_dir']);
-        $image->setWebDir($this->options['zpb.hd.web_dir']);
-        $image->setThumbDir($this->options['zpb.hd.thumb_dir']);
+        $image->setRootDir($this->options['zpb.front.root_dir']);
+        $image->setWebDir($this->options['zpb.front.web_dir']);
+        $image->setThumbDir($this->options['zpb.front.thumb_dir']);
         $image->setFilename(pathinfo($file->getFilename(), PATHINFO_FILENAME));
         $image->setExtension($file->getExtension());
         $image->setMime($file->getMimeType());

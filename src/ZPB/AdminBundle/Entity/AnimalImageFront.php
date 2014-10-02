@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\AnimalImageFrontRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class AnimalImageFront
+class AnimalImageFront implements ResizeableInterface
 {
     /**
      * @var \Symfony\Component\HttpFoundation\File\UploadedFile

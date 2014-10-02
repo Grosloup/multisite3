@@ -131,7 +131,7 @@ $(function(){
                     "</div>"
     });
     wpDropZone.animalImageUploader({
-        url: "/parrainages/xhr/animal/ajouter/front-images",
+        url: "/parrainages/xhr/animal/ajouter/wallpaper-images",
         type: "wallpaper",
         target: "#wp-list",
        template:    "<div class='column-2' id='img-wp-__id__'>" +
@@ -146,7 +146,7 @@ $(function(){
                     "</div>"
     });
     frontDropZone.animalImageUploader({
-        url: "/parrainages/xhr/animal/ajouter/wallpaper-images",
+        url: "/parrainages/xhr/animal/ajouter/front-images",
         type: "front",
         target: "#front-list",
         template:   "<div class='column-2' id='img-front-__id__'>" +
@@ -162,6 +162,44 @@ $(function(){
     });
 
     $(document).on("click", "a.delete-hd", function(e){
+        e.preventDefault();
+        var target = $("#" + $(this).data("target"));
+        var loader = $("<span class='loader'></span>");
+        var $this = $(this);
+        $(this).after(loader);
+        $(this).hide();
+        $.get($(this).attr("href"))
+            .done(function(response){
+                if(!response.error){
+                    target.remove();
+                }
+            })
+            .fail(function(response){
+                $this.show();
+                loader.remove();
+            });
+    });
+
+    $(document).on("click", "a.delete-front", function(e){
+        e.preventDefault();
+        var target = $("#" + $(this).data("target"));
+        var loader = $("<span class='loader'></span>");
+        var $this = $(this);
+        $(this).after(loader);
+        $(this).hide();
+        $.get($(this).attr("href"))
+            .done(function(response){
+                if(!response.error){
+                    target.remove();
+                }
+            })
+            .fail(function(response){
+                $this.show();
+                loader.remove();
+            });
+    });
+
+    $(document).on("click", "a.delete-wp", function(e){
         e.preventDefault();
         var target = $("#" + $(this).data("target"));
         var loader = $("<span class='loader'></span>");

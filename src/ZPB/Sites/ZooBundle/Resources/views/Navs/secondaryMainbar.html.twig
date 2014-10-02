@@ -11,51 +11,28 @@
                 <div class="col-1">
                     <div class="menu-block {% if active_page in practicle_pages %} active{% endif %}">
                         <a href="javascript:void(0)" class="menu-block-header">Pratique</a>
-                        <ul>
-                            <li><a href="{{ path("zpb_sites_zoo_pratique_acces") }}">Accès</a></li>
-                            <li><a href="{{ path("zpb_sites_zoo_pratique_tarifs_horaires") }}">horaires, tarifs</a></li>
-                            <li><a href="{{ path("zpb_sites_zoo_pratique_animations") }}">Animations et spectacles</a></li>
-                            <li><a href="{{ path("zpb_sites_zoo_pratique_map") }}">Plan de visite</a></li>
-                            <li><a href="{{ path("zpb_sites_zoo_pratique_resto") }}">Restauration</a></li>
-                            <li><a href="{{ path("zpb_sites_zoo_pratique_services") }}">Services</a></li>
-                            <li><a href="{{ url("zpb_sites_hotels_homepage") }}">Les Hôtels de Beauval</a></li>
-                        </ul>
+                        {{ include("ZPBSitesZooBundle:Navs:pratique.html.twig") }}
                     </div>
 
                 </div>
                 <div class="col-1">
                     <div class="menu-block{% if active_page in zooparc_pages %} active{% endif %}">
                         <a href="javascript:void(0)" class="menu-block-header">ZooParc</a>
-                        <ul>
-                            <li><a href="">Les animaux</a></li>
-                            <li><a href="">L'histoire du ZooParc</a></li>
-                            <li><a href="">La mission</a></li>
-                            <li><a href="">Développement durable</a></li>
-                            <li><a href="{{  path("zpb_sites_zoo_phototheque_index") }}">Galerie photo</a></li>
-                        </ul>
+                        {{ include("ZPBSitesZooBundle:Navs:zooparc.html.twig") }}
                     </div>
 
                 </div>
                 <div class="col-1">
                     <div class="menu-block{% if active_page in pedago_pages %} active{% endif %}">
                         <a href="javascript:void(0)" class="menu-block-header">Pédagogie</a>
-                        <ul>
-                            <li><a href="">Carnets de jeux</a></li>
-                            <li><a href="">Soigneur d'un Jour</a></li>
-                            <li><a href="">Soigneur d'un Jour Junior</a></li>
-                            <li><a href="">Panneaux pédagogiques</a></li>
-                            <li><a href="{{ url("zpb_sites_scolar_homepage") }}">Groupes scolaires</a></li>
-                        </ul>
+                        {{ include("ZPBSitesZooBundle:Navs:pedagogie.html.twig") }}
                     </div>
 
                 </div>
                 <div class="col-1">
                     <div class="menu-block{% if active_page in news_pages %} active{% endif %}">
                         <a href="javascript:void(0)" class="menu-block-header">Actualité</a>
-                        <ul>
-                            <li><a href="{{ path("zpb_sites_zoo_actualites_nouveautes") }}">Nouveautés</a></li>
-                            <li><a href="{{ path("zpb_sites_zoo_actualites_homepage") }}">News</a></li>
-                        </ul>
+                        {{ include("ZPBSitesZooBundle:Navs:actualite.html.twig") }}
                     </div>
 
                 </div>
