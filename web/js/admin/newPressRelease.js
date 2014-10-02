@@ -79,7 +79,13 @@
 
     $.fn.uploadPdf = function(options){
         var opts = $.extend({}, uploadPdfOptions, options || {});
-        this.each(function(){
+        this.setInstitution = function(id){
+            opts.institution = id;
+        };
+        return this.each(function(){
+
+
+
             var $this = $(this), legend = $this.find(".dropzone-legend");
             var progressBar = $this.find(opts.progressbar);
             var message = $this.find(opts.message);
@@ -100,10 +106,17 @@
                 },
                 drop: function(e){
                     e.preventDefault();
-                    $(this).removeClass(opts.hover);
-                    if($this.data('droppable')){
-                        upload(e.dataTransfer.files, $this, 0, opts);
+                    if(opts.institution != null){
+                        message.text("");
+                        $(this).removeClass(opts.hover);
+                        if($this.data('droppable')){
+                            upload(e.dataTransfer.files, $this, 0, opts);
+                        }
+                    } else {
+                        $(this).removeClass(opts.hover);
+                        message.text("Choisissez une institution !");
                     }
+
 
                 }
             });
@@ -114,6 +127,31 @@ $(function(){
     var pdfFr = $("#dropzone-pdf-fr");
     var pdfEn = $("#dropzone-pdf-en");
 
-    pdfFr.uploadPdf({url: "/xhr/upload/pdf", institution: "zooparc-de-beauval", targetId: "#press_release_form_pdfFr"});
-    pdfEn.uploadPdf({url: "/xhr/upload/pdf", institution: "zooparc-de-beauval", targetId: "#press_release_form_pdfEn", lang: 'en'});
+    var uploadfr = {
+        url: "/zoo/communiques-de-presse/xhr/upload/pdf",
+        institution: null,
+        targetId: "#press_release_form_pdfFr"
+    };
+
+    var uploaden = {
+        url: "/zoo/communiques-de-presse/xhr/upload/pdf",
+        institution: null,
+        targetId: "#press_release_form_pdfEn",
+        lang: 'en'
+    };
+    var uploadPdfFr = pdfFr.uploadPdf(uploadfr);
+    console.log(uploadPdfFr);
+    var uploadPdfEn = pdfEn.uploadPdf(uploaden);
+
+    $("#press_release_form_institution").on("change", function(e){
+        e.preventDefault();
+        var id = $(this).find("option:selected").val();
+        if(id != null){
+            uploadPdfFr.setInstitution(id);
+            uploadPdfEn.setInstitution(id);
+        }
+
+    });
+
+
 });

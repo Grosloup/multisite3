@@ -42,7 +42,8 @@ class PressReleaseType extends AbstractType
                         'label'=>'Institution',
                         'class'=>'ZPBAdminBundle:Institution',
                         'data_class'=>'ZPB\AdminBundle\Entity\Institution',
-                        'property'=>'name'
+                        'property'=>'name',
+                        'empty_value' => 'Choisissez une institution'
                     ]
                 )->addModelTransformer($institutionTransformer)
             )

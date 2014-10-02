@@ -37,12 +37,4 @@ zpb_admin_xhr_close_resto:
     requirements:
         id: \d+
 
-zpb_admin_xhr_upload_pdf:
-   path: /upload/pdf
-   defaults: { _controller: ZPBAdminBundle:General/XHR:uploadPdf }
-   methods: ["POST"]
 
-zpb_admin_xhr_update_com_pdf:
-   path: /update/communique/pdf
-   defaults: { _controller: ZPBAdminBundle:General/XHR:updateCommuniquePdf }
-   methods: ["POST"]
