@@ -84,6 +84,11 @@ class Institution
     private $pdfs;
 
     /**
+     * @ORM\OneToMany(targetEntity="ZPB\AdminBundle\Entity\PressRelease", mappedBy="institution")
+     */
+    private $pressRelease;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -91,6 +96,7 @@ class Institution
         $this->photoCategories = new ArrayCollection();
         $this->faqs = new ArrayCollection();
         $this->pdfs = new ArrayCollection();
+        $this->pressRelease = new ArrayCollection();
     }
 
     /**
@@ -344,5 +350,38 @@ class Institution
     public function getPdfs()
     {
         return $this->pdfs;
+    }
+
+    /**
+     * Add pressRelease
+     *
+     * @param PressRelease $pressRelease
+     * @return Institution
+     */
+    public function addPressRelease(PressRelease $pressRelease)
+    {
+        $this->pressRelease[] = $pressRelease;
+
+        return $this;
+    }
+
+    /**
+     * Remove pressRelease
+     *
+     * @param PressRelease $pressRelease
+     */
+    public function removePressRelease(PressRelease $pressRelease)
+    {
+        $this->pressRelease->removeElement($pressRelease);
+    }
+
+    /**
+     * Get pressRelease
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPressRelease()
+    {
+        return $this->pressRelease;
     }
 }

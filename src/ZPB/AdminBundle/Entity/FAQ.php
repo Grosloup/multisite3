@@ -36,7 +36,7 @@ class FAQ
     private $response;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\Institution", inversedBy="faqs")
+     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\Institution", inversedBy="pressRelease")
      * @ORM\JoinColumn(name="institution_id", referencedColumnName="id")
      */
     private $institution;

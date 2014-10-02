@@ -79,6 +79,12 @@ class PressRelease
      */
     private $pdfEn;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\Institution", inversedBy="faqs")
+     * @ORM\JoinColumn(name="institution_id", referencedColumnName="id")
+     */
+    private $institution;
+
 
     /**
      * Get id
@@ -277,5 +283,28 @@ class PressRelease
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set institution
+     *
+     * @param Institution $institution
+     * @return PressRelease
+     */
+    public function setInstitution(Institution $institution = null)
+    {
+        $this->institution = $institution;
+
+        return $this;
+    }
+
+    /**
+     * Get institution
+     *
+     * @return Institution
+     */
+    public function getInstitution()
+    {
+        return $this->institution;
     }
 }

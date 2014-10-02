@@ -37,7 +37,7 @@ class PressReleaseController extends BaseController
     public function createAction(Request $request)
     {
         $entity = new PressRelease();
-        $form = $this->createForm(new PressReleaseType(), $entity);
+        $form = $this->createForm(new PressReleaseType(), $entity, ['em'=>$this->getManager()]);
         $form->handleRequest($request);
         if($form->isValid()){
             $imageName = $form->get('imageName')->getData();
@@ -62,7 +62,7 @@ class PressReleaseController extends BaseController
         if(!$entity){
             throw $this->createNotFoundException();
         }
-        $form = $this->createForm(new PressReleaseType(), $entity);
+        $form = $this->createForm(new PressReleaseType(), $entity, ['em'=>$this->getManager()]);
         $form->handleRequest($request);
         if($form->isValid()){
             $imageName = $form->get('imageName')->getData();

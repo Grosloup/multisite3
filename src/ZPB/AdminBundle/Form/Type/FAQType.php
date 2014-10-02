@@ -40,7 +40,6 @@ class FAQType extends AbstractType
                     'entity',
                     [
                         'label'=>'Institution',
-
                         'class'=>'ZPBAdminBundle:Institution',
                         'data_class'=>'ZPB\AdminBundle\Entity\Institution',
                         'property'=>'name'
