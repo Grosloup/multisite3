@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="zpb_animal_images_wallpaper")
  * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\AnimalImageWallpaperRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class AnimalImageWallpaper
 {
@@ -91,11 +92,14 @@ class AnimalImageWallpaper
      */
     private $thumbDir;
 
+    /**
+     * @ORM\Column(name="mime", type="string", length=30, nullable=false)
+     */
+    private $mime;
+
     private $absolutePath;
 
-    private $webPath;
-
-    private $webThumbPath;
+    private $thumbPath;
 
     /**
      * Get id
@@ -108,61 +112,73 @@ class AnimalImageWallpaper
     }
 
     /**
+     * @ORM\PreRemove()
+     */
+    public function storePathes()
+    {
+        $this->absolutePath = $this->getAbsolutePath();
+        $this->thumbPath = $this->getRootDir() . $this->getThumbDir() . $this->getFilename() . '.' . $this->getExtension();
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function deleteFile()
+    {
+        if (file_exists($this->absolutePath)) {
+            unlink($this->absolutePath);
+        }
+        if(file_exists($this->thumbPath)){
+            unlink($this->thumbPath);
+        }
+
+    }
+
+    /**
      * @return mixed
      */
     public function getWebThumbPath()
     {
-        return $this->webThumbPath;
+        return '/' . $this->thumbDir . $this->filename . '.' .$this->extension;
     }
 
-    /**
-     * @param mixed $webThumbPath
-     * @return AnimalImageWallpaper
-     */
-    public function setWebThumbPath($webThumbPath)
-    {
-        $this->webThumbPath = $webThumbPath;
-
-        return $this;
-    }
 
     /**
      * @return mixed
      */
     public function getAbsolutePath()
     {
-        return $this->absolutePath;
+        return $this->rootDir . $this->webDir . $this->filename . '.' .$this->extension;
     }
 
-    /**
-     * @param mixed $absolutePath
-     * @return AnimalImageWallpaper
-     */
-    public function setAbsolutePath($absolutePath)
-    {
-        $this->absolutePath = $absolutePath;
-
-        return $this;
-    }
 
     /**
      * @return mixed
      */
     public function getWebPath()
     {
-        return $this->webPath;
+        return '/' . $this->webDir . $this->filename . '.' .$this->extension;
     }
 
     /**
-     * @param mixed $webPath
+     * @return mixed
+     */
+    public function getMime()
+    {
+        return $this->mime;
+    }
+
+    /**
+     * @param mixed $mime
      * @return AnimalImageWallpaper
      */
-    public function setWebPath($webPath)
+    public function setMime($mime)
     {
-        $this->webPath = $webPath;
-
+        $this->mime = $mime;
         return $this;
     }
+
+
 
     /**
      * Get filename

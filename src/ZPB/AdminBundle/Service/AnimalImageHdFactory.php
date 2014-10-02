@@ -21,25 +21,13 @@
 namespace ZPB\AdminBundle\Service;
 
 
-use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\File\File;
 use ZPB\AdminBundle\Entity\AnimalImageHd;
 use ZPB\AdminBundle\Entity\ResizeableInterface;
 
-class AnimalImageHdFactory
+class AnimalImageHdFactory extends AbstractAnimalImageFactory
 {
-    /**
-     * @var array
-     */
-    private $options;
 
-    private $fs;
-
-    public function __construct($options, $fs)
-    {
-        $this->options = $options;
-        $this->fs = $fs;
-    }
 
     public function getBasePath()
     {
@@ -104,35 +92,4 @@ class AnimalImageHdFactory
 
     }
 
-    private function createImage($file, $mime = 'image/jpeg')
-    {
-        $img = null;
-        switch ($mime) {
-            case 'image/png':
-                $img = imagecreatefrompng($file);
-                break;
-            case 'image/gif':
-                $img = imagecreatefromgif($file);
-                break;
-            case 'image/jpeg':
-                $img = imagecreatefromjpeg($file);
-                break;
-        }
-        return $img;
-    }
-
-    private function save($image, $destination, $mime = 'image/jpeg', $quality = 100)
-    {
-        switch ($mime) {
-            case 'image/png':
-                imagepng($image, $destination);
-                break;
-            case 'image/gif':
-                imagegif($image, $destination);
-                break;
-            case 'image/jpeg':
-                imagejpeg($image, $destination, $quality);
-                break;
-        }
-    }
 }

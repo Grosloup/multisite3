@@ -140,10 +140,12 @@
 
         <service id="zpb.sponsoring.image_front_factory" class="%zpb.sponsoring.image_front_factory.class%">
             <argument>%zpb.sponsoring.animal_images%</argument>
+            <argument type="service" id="filesystem"/>
         </service>
 
         <service id="zpb.sponsoring.image_wallpaper_factory" class="%zpb.sponsoring.image_wallpaper_factory.class%">
             <argument>%zpb.sponsoring.animal_images%</argument>
+            <argument type="service" id="filesystem"/>
         </service>
 
         <service id="zpb.sponsoring.command_transformer" class="%zpb.sponsoring.command_transformer.class%">

@@ -128,6 +128,27 @@ class AnimalImageController extends BaseController
             throw $this->createAccessDeniedException();
         }
 
+        $response = ['error'=>false, 'message'=>''];
+        //verif des données
+        $filename = $request->headers->get('X-File-Name', false);
+        $filetype = $request->headers->get('X-File-Type', false);
+        $filesize = $request->headers->get('X-File-Size', false);
+        $animalId = $request->headers->get('X-File-AnimalId', false);
+
+        if(!$filename || !$filesize || !$filetype || !$animalId){
+            $response['error'] = true;
+            $response['msg' ]= 'Données insuffisantes';
+        } else {
+            $animal = $this->getRepo('ZPBAdminBundle:Animal')->find($animalId);
+            if(!$animal){
+                $response['error'] = true;
+                $response['msg' ]= 'Animal inconnu';
+            }else {
+                $fs = $this->get('filesystem');
+                $imgFactory = $this->get('zpb.sponsoring.image_front_factory');
+            }
+        }
+
     }
 
     public function deleteWallpaperXhrAction($id, Request $request)

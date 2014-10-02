@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="zpb_animal_images_front")
  * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\AnimalImageFrontRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class AnimalImageFront
 {
@@ -92,11 +93,14 @@ class AnimalImageFront
      */
     private $height;
 
+    /**
+     * @ORM\Column(name="mime", type="string", length=30, nullable=false)
+     */
+    private $mime;
+
     private $absolutePath;
 
-    private $webPath;
-
-    private $webThumbPath;
+    private $thumbPath;
 
 
     /**
@@ -112,58 +116,70 @@ class AnimalImageFront
     /**
      * @return mixed
      */
-    public function getWebThumbPath()
+    public function getMime()
     {
-        return $this->webThumbPath;
+        return $this->mime;
     }
 
     /**
-     * @param mixed $webThumbPath
+     * @param mixed $mime
      * @return AnimalImageFront
      */
-    public function setWebThumbPath($webThumbPath)
+    public function setMime($mime)
     {
-        $this->webThumbPath = $webThumbPath;
-
+        $this->mime = $mime;
         return $this;
     }
+
+
+
+    /**
+     * @ORM\PreRemove()
+     */
+    public function storePathes()
+    {
+        $this->absolutePath = $this->getAbsolutePath();
+        $this->thumbPath = $this->getRootDir() . $this->getThumbDir() . $this->getFilename() . '.' . $this->getExtension();
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function deleteFile()
+    {
+        if (file_exists($this->absolutePath)) {
+            unlink($this->absolutePath);
+        }
+        if(file_exists($this->thumbPath)){
+            unlink($this->thumbPath);
+        }
+
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWebThumbPath()
+    {
+        return '/' . $this->thumbDir . $this->filename . '.' .$this->extension;
+    }
+
 
     /**
      * @return mixed
      */
     public function getAbsolutePath()
     {
-        return $this->absolutePath;
+        return $this->rootDir . $this->webDir . $this->filename . '.' .$this->extension;
     }
 
-    /**
-     * @param mixed $absolutePath
-     * @return AnimalImageFront
-     */
-    public function setAbsolutePath($absolutePath)
-    {
-        $this->absolutePath = $absolutePath;
-
-        return $this;
-    }
 
     /**
      * @return mixed
      */
     public function getWebPath()
     {
-        return $this->webPath;
-    }
-
-    /**
-     * @param mixed $webPath
-     * @return AnimalImageFront
-     */
-    public function setWebPath($webPath)
-    {
-        $this->webPath = $webPath;
-
-        return $this;
+        return '/' . $this->webDir . $this->filename . '.' .$this->extension;
     }
 
     /**

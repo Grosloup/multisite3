@@ -21,15 +21,75 @@
 namespace ZPB\AdminBundle\Service;
 
 
-class AnimalImageFrontFactory
-{
-    /**
-     * @var array
-     */
-    private $options;
+use Symfony\Component\HttpFoundation\File\File;
+use ZPB\AdminBundle\Entity\AnimalImageFront;
+use ZPB\AdminBundle\Entity\ResizeableInterface;
 
-    public function __construct($options)
+class AnimalImageFrontFactory extends AbstractAnimalImageFactory
+{
+
+
+    public function getBasePath()
     {
-        $this->options = $options;
+        return $this->options['zpb.front.root_dir'] . $this->options['zpb.front.web_dir'];
     }
+
+    public function getPath()
+    {
+        return $this->getBasePath() . 'front_' . time() . '.jpg';
+    }
+
+    public function getThumbPath()
+    {
+        return $this->options['zpb.front.root_dir']  . $this->options['zpb.front.thumb_dir'];
+    }
+
+    public function createFromFile(File $file)
+    {
+        $class = $this->options['zpb.hd.class'];
+        /** @var AnimalImageFront $image */
+        $image = new $class();
+        $image->setRootDir($this->options['zpb.hd.root_dir']);
+        $image->setWebDir($this->options['zpb.hd.web_dir']);
+        $image->setThumbDir($this->options['zpb.hd.thumb_dir']);
+        $image->setFilename(pathinfo($file->getFilename(), PATHINFO_FILENAME));
+        $image->setExtension($file->getExtension());
+        $image->setMime($file->getMimeType());
+        $size = getimagesize($file->getPathname());
+        $image->setWidth($size[0]);
+        $image->setHeight($size[1]);
+
+        return $image;
+    }
+
+    public function makeThumb(ResizeableInterface $image)
+    {
+        $file = $image->getAbsolutePath();
+        $dest = $image->getRootDir() . $image->getThumbDir() . $image->getFilename() . '.' . $image->getExtension();
+        $img = $this->createImage($file, $image->getMime());
+
+        $newWidth = $this->options['front_thumb_max_width'];
+        $newHeight = $this->options['front_thumb_max_width'];
+        $redim = imagecreatetruecolor($newWidth, $newHeight);
+
+        $white = imagecolorallocate($redim, 255,255,255);
+
+        imagefill($redim,0,0, $white);
+        if($image->getWidth() > $newWidth){
+            $ratio = $newWidth / $image->getWidth();
+            $calcHeight  = $image->getHeight() * $ratio;
+            $y = floor(($newHeight - $calcHeight) / 2);
+            imagecopyresampled($redim, $img, 0,$y,0,0, $newWidth, $calcHeight, $image->getWidth(), $image->getHeight());
+
+        } else {
+            $x = floor(($newWidth - $image->getWidth()) / 2);
+            $y = floor(($newHeight - $image->getHeight()) / 2);
+            imagecopyresampled($redim, $img, $x,$y,0,0, $newWidth, $newHeight, $image->getWidth(), $image->getHeight());
+        }
+
+        $this->save($redim, $dest, $image->getMime());
+        imagedestroy($redim);
+    }
+
+
 }
