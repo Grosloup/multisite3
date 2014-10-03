@@ -48,12 +48,14 @@
 
     </div>
 
-    <div class="wrapper" style="background-color: #2e85a3;">
+    <div class="wrapper" style="background-color: #313133;">
         <div class="container">
             <div class="row">
-                <div class="col-6">
+                <div class="col-1"></div>
+                <div class="col-4">
                     <img class="th" src="/img/sites/fixtures/fake.jpg" alt="" style="width: 100%; display: block;"/>
                 </div>
+                <div class="col-1"></div>
             </div>
         </div>
     </div>
@@ -61,125 +63,101 @@
     <div class="container">
         <div class="row">
             <div id="je-parraine" class="col-6">
-                <h2 class="text-center">Comment parrainer ?</h2>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-6">
-                <div class="panel">
-                    <ul>
-                        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem culpa eum eveniet ipsa
-                            iusto nihil perspiciatis quas sint vero.
-                        </li>
-                        <li>Animi atque earum et eum excepturi exercitationem facilis illo ipsam maiores nobis nulla,
-                            possimus quaerat repellat sequi sunt tenetur voluptas.
-                        </li>
-                        <li>Blanditiis esse id maiores nam nobis pariatur quaerat quas? Ab aspernatur consequuntur
-                            cupiditate iusto minus obcaecati perspiciatis quisquam suscipit ut.
-                        </li>
-                    </ul>
-                </div>
+                <h2 class="text-center">Je parraine !</h2>
             </div>
         </div>
     </div>
 
     <div class="container">
         <div class="spaced-row">
-            <div class="col-6">
-                <form action="{{ path("zpb_sites_zoo_parrainages_add_to_basket") }}" method="post">
-                <div class="row">
-                    <div class="col-3"> <!-- formules -->
-                        {% for formula in formulas %}
-                            <div>
-                                <input type="radio" name="sponsorship_form[pack]" id="sponsorship_{{ formula.id }}" value="{{ formula.id }}"/>
-                                <label for="sponsorship_{{ formula.id }}">{{ formula.price }}€ {{ formula.name }}</label>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <div class="col-3"> <!-- cadeaux -->
-                        {% for gift in gifts %}
-                            <div class="gift">
-                                <span>{{ gift.name }}</span>
-                            </div>
-                        {% endfor %}
-                    </div>
+            <div class="col-1"></div>
+            <div class="col-4">
+                <div class="panel text-center">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur deleniti enim est et nam
+                        optio possimus, quibusdam quis tempore velit.</p>
+
+                    <p>At consectetur culpa distinctio dolor dolorem earum facilis iste labore neque nesciunt officiis
+                        quibusdam quis quod, saepe, sequi totam, vitae.</p>
+
+                    <p>Deleniti deserunt eum, magni minus ratione tempora tenetur. Autem cumque dolores, enim mollitia
+                        odit quaerat tempore? Ipsa ipsum quod voluptatum?</p>
                 </div>
-                <div class="row">
-                    <div class="col-2">
-                        lorem
-                    </div>
-                    <div class="col-4">
-                        <input name="sponsorship_form[animal]" type="hidden" value="{{ animal.id }}"/>
-                        <input name="sponsorship_form[_token]" type="hidden" value="{{ csrf_token("add_sponsorship") }}"/>
-                        <button type="submit" class="btn btn-primary btn-xlarge" name="sponsorship_form[submit]" value="offer">J'offre ce parrainage</button>
-                        <button type="submit" class="btn btn-primary btn-xlarge" name="sponsorship_form[submit]" value="forme">Je parraine</button>
-                    </div>
-                </div>
-            </form>
             </div>
+            <div class="col-1"></div>
         </div>
     </div>
 
-    {#<div class="container">
-
+    <div class="container">
+        <form action="{{ path("zpb_sites_zoo_parrainages_add_to_basket") }}" method="post">
         <div class="spaced-row">
-            <div class="col-6">
+            <div class="col-1"></div>
+            <div class="col-4">
+                <div id="parrainage-chooser">
 
+                        <div class="row">
+                            <div class="col-3"> <!-- formules -->
+                                {% for formula in formulas %}
+                                    <div id="" class="sponsoring-tag">
+                                        <label for="sponsorship_{{ formula.id }}" class="offer" id="{{ formula.slug }}"><input type="radio" name="sponsorship_form[pack]" id="sponsorship_{{ formula.id }}" value="{{ formula.id }}"/> <div class="sponsoring-price">{{ formula.price }} &euro;</div><div class="sponsoring-name"> {{ formula.name }}</div></label>
+                                    </div>
+                                {% endfor %}
 
-                {% if formulas|length>0 %}
-                    <form action="{{ path("zpb_sites_zoo_parrainages_add_to_basket") }}" method="post">
-                        <div class="row offers">
-                            <div class="col-3">
-                                <div id="in-offers">
-                                    {% for formula in formulas %}
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="offer{% if loop.first == true %} active{% endif %}" id="{{ formula.slug }}">
-                                                    <input type="radio" name="sponsorship_form[pack]" id="sponsorship_{{ formula.id }}" value="{{ formula.id }}"/>
-                                                    <label for="sponsorship_{{ formula.id }}">{{ formula.price }}€ {{ formula.name }}</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    {% endfor %}
+                                <div id="main-reduc" class="reduc-impot">
+                                    <p>Soit</p>
+                                    <p class="reduc-impot-value"><span class="reduc-impot-value-in"></span> €</p>
+                                    <p>après déduction fiscale</p>
                                 </div>
+
                             </div>
-                            <div class="col-3">
+                            <div class="col-3"> <!-- cadeaux -->
                                 {% for gift in gifts %}
-                                    <div class="gift">
-                                        <span class="isChecked" id="mark-{{ gift.id }}"><i class="fa fa-check"></i></span><span class="giftName">{{ gift.name }}</span>
+                                    <div class="gift" id="mark-{{ gift.id }}">
+                                        <span><span class="marks"><i class="fa fa-check"></i><i class="fa fa-times"></i></span>{{ gift.name }}</span>
                                     </div>
                                 {% endfor %}
                             </div>
                         </div>
-                        <div class="row offers">
-                            <div class="col-3">
-                                <div class="offer active">
-                                    Soit <strong><span class="redux">00.00</span></strong>€ après reduction fiscale
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <input name="sponsorship_form[animal]" type="hidden" value="{{ animal.id }}"/>
-                                <input name="sponsorship_form[_token]" type="hidden" value="{{ csrf_token("add_sponsorship") }}"/>
-                                <button type="submit" class="button success large" name="sponsorship_form[submit]" value="offer">J'offre ce parrainage</button>
-                                <button type="submit" class="button success large" name="sponsorship_form[submit]" value="forme">Je parraine</button>
+
+                    <div id="second-reduc" class="row ">
+                        <div class="col-6">
+                            <div class="reduc-impot">
+                                <p>Soit <span class="reduc-impot-value" id="reduc-impot-value"><span class="reduc-impot-value-in"></span> €</span> après déduction fiscale</p>
                             </div>
                         </div>
-                    </form>
-                {% endif %}
+                    </div>
 
+
+                </div>
             </div>
-
+                <input name="sponsorship_form[animal]" type="hidden" value="{{ animal.id }}"/>
+                <input name="sponsorship_form[_token]" type="hidden" value="{{ csrf_token("add_sponsorship") }}"/>
+            <div class="col-1"></div>
         </div>
-    </div>#}
+            <div class="spaced-row">
+                <div class="col-1"></div>
+                <div class="col-4">
+                    <div id="parrainage-actions">
+                        <div class="row text-center">
+                            <button type="submit" class="btn btn-grisfonce btn-xlarge" name="sponsorship_form[submit]" value="forme">Je parraine</button><button type="submit" class="btn btn-grisfonce btn-xlarge" name="sponsorship_form[submit]" value="offer">J'offre ce parrainage</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+            </div>
+        </form>
+    </div>
+
 
 {% endblock %}
 {% block footScripts %}
 {{ parent() }}
-    {#<script>
-        var $offers, $radios,$isChecked, giftsByOffer, $redux;
+
+    <script>
+        var $offers, $radios,$gifts, giftsByOffer, $redux;
+        $offers = $(".offer");
+        $radios = $offers.find("input[type='radio']");
+        $redux = $(".reduc-impot-value-in");
+        $gifts = $(".gift");
         giftsByOffer = {
             {% for offer in formulas %}
             "{{ offer.slug }}" : {"price":"{{ offer.taxFreePrice|number_format(2,',','.') }}", "gifts" : [
@@ -189,20 +167,14 @@
             ]}{% if loop.last != true %},{% endif %}
             {% endfor %}
         };
-        $offers = $("#in-offers .offer");
-        $isChecked = $(".isChecked");
-        $radios = $offers.find("input[type='radio']");
-        $redux = $(".redux");
-        $offers.removeClass("active");
-        $radios.prop("checked", null);
+
         function markFormula($el){
-            $offers.removeClass("active");
+            $offers.removeClass("isChecked");
+            $el.addClass("isChecked");
             $radios.prop("checked", null);
-            $isChecked.removeClass("inPack");
+            $gifts.removeClass("inPack");
             var radio = $el.find("input[type='radio']");
             radio.prop("checked", "checked");
-            $el.addClass("active");
-
             var marked = giftsByOffer[$el.attr("id")]["gifts"];
             if(marked.length){
                 $.each(marked,function(i,e){
@@ -211,14 +183,17 @@
             }
             $redux.text(giftsByOffer[$el.attr("id")]["price"]);
         }
-        console.log($offers);
-        markFormula($offers.first());
+
         $(function(){
+            markFormula($offers.first());
+
             $offers.on("click", function(e){
                 e.preventDefault();
                 var $el = $(e.currentTarget);
                 markFormula($el);
             });
         });
-    </script>#}
+
+
+    </script>
 {% endblock %}

@@ -160,7 +160,7 @@ class LoadSponsoringFormulas extends AbstractFixture implements OrderedFixtureIn
         $sf5->setIsActive(true);
         $sf5->setTaxRate(0.34);
         $sf5->setTva(0.2);
-        $sf5->setHtPrice(500/1.2);
+        $sf5->setHtPrice(300/1.2);
         $sf5->addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-1'));
         $this->getReference('zpb-sponsor-gift-desc-1')->addFormula($sf5);
         $sf5->addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-2'));

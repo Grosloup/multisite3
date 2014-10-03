@@ -11,24 +11,10 @@
 }
 .row, .spaced-row{
   @include row;
-  .row, .spaced-row{
-    [class^="col5-"]:first-child, [class*=" col5-"]:first-child,
-    [class^="col4-"]:first-child, [class*=" col4-"]:first-child,
-    [class^="col-"]:first-child, [class*=" col-"]:first-child
-    {
-      padding-left: 0;
-    }
-    [class^="col5-"]:last-child, [class*=" col5-"]:last-child,
-    [class^="col4-"]:last-child, [class*=" col4-"]:last-child,
-    [class^="col-"]:last-child, [class*=" col-"]:last-child
-    {
-      padding-right: 0;
-    }
-
-  }
 }
+
 .spaced-row{
-  margin-bottom: topx($gridGutter);
+  margin-bottom: topx($gridGutter * 2);
 }
 [class^="col-"], [class*=" col-"],[class^="col4-"], [class*=" col4-"], [class^="col5-"], [class*=" col5-"]{
   float: left;
@@ -90,6 +76,24 @@
 
 
 @media only screen and (min-width: 768px){
+  .row, .spaced-row{
+
+    .row, .spaced-row{
+      [class^="col5-"]:first-child, [class*=" col5-"]:first-child,
+      [class^="col4-"]:first-child, [class*=" col4-"]:first-child,
+      [class^="col-"]:first-child, [class*=" col-"]:first-child
+      {
+        padding-left: 0;
+      }
+      [class^="col5-"]:last-child, [class*=" col5-"]:last-child,
+      [class^="col4-"]:last-child, [class*=" col4-"]:last-child,
+      [class^="col-"]:last-child, [class*=" col-"]:last-child
+      {
+        padding-right: 0;
+      }
+
+    }
+  }
   @for $i from 1 through $numCols{
     .col-#{$i}{
       width: percentage( $i / $numCols);

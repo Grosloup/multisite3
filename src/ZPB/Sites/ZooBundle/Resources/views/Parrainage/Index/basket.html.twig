@@ -40,20 +40,27 @@
         <div class="spaced-row">
             <div class="col-6">
                 {% if packs|length > 0 %}
-                    <table style="width: 100%;">
+                    <table style="width: 100%;" id="cart">
+
+                        <thead>
                         <tr>
-                            <td>Animal parrainé</td>
-                            <td>Formule</td>
-                            <td>Bénéficiaire</td>
-                            <td>Différé</td>
-                            <td>Montant</td>
-                            <td></td>
+                            <th colspan="2">Animal</th>
+                            <th>Formule</th>
+                            <th>Bénéficiaire</th>
+                            <th>Différé</th>
+                            <th  class="text-right">Montant</th>
                         </tr>
+                        </thead>
+                        <tbody>
+
+
 
                         {% for id,pack in packs %}
                         <tr>
-                            <td>{{ pack.animal.longName }}</td>
-                            <td><strong>{{ pack.pack.name }}</strong></td>
+                            <td><img src="http://lorempicsum.com/nemo/80/60/1" alt="" width="100%"/></td>
+                            <td class="bold">{{ pack.animal.name }}</td>
+
+                            <td>{{ pack.pack.name }}</td>
                             <td>
                                 {% if pack.godparent != null %}
                                 {{ pack.godparent.firstname }} {{ pack.godparent.lastname }}
@@ -62,8 +69,17 @@
                             <td>
                                 {%  if pack.delayed != null %}Parrainage différé au {{ pack.delayed|date("d/m/y") }}{% else %} - {% endif %}
                             </td>
-                            <td>{{ pack.pack.price }}&euro;</td>
-                            <td><a class="btn btn-danger" href="{{ path("zpb_sites_zoo_parrainage_remove_from_basket", {id: id, _token: csrf_token("delete_from_basket")}) }}"><span class="label alert"><i class="fa fa-trash-o"></i></span></a></td>
+                            <td class="bold">
+                                <table>
+                                    <tr>
+                                        <td class="text-right">{{ pack.pack.price }}&euro;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right"><a class="btn btn-grisfonce" href="{{ path("zpb_sites_zoo_parrainage_remove_from_basket", {id: id, _token: csrf_token("delete_from_basket")}) }}">Supprimer cet article</a></td>
+                                    </tr>
+                                </table>
+                            </td>
+                            {#<td><a class="btn btn-danger" href="{{ path("zpb_sites_zoo_parrainage_remove_from_basket", {id: id, _token: csrf_token("delete_from_basket")}) }}"><span class="label alert"><i class="fa fa-trash-o"></i></span></a></td>#}
                         </tr>
                         {% endfor %}
 
@@ -78,6 +94,7 @@
                             <td colspan="2">soit <strong>{{ priceRedux|number_format(2,',','.') }}&euro;</strong> après reduction fiscale</td>
                             <td></td>
                         </tr>
+                        </tbody>
                     </table>
 
                 {% else %}

@@ -208,7 +208,7 @@ class IndexController extends BaseController
                 ];
             }
         }
-        return $this->render('ZPBSitesZooBundle:PArrainage/Index:basket.html.twig', ['packs' => $items]);
+        return $this->render('ZPBSitesZooBundle:Parrainage/Index:basket.html.twig', ['packs' => $items]);
     }
 
     public function removeSponsoringFromBasketAction($id, Request $request)
