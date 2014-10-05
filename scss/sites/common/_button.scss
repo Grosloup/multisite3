@@ -13,6 +13,7 @@ a, button, input[type=button], input[type=submit], input[type=reset]{
     padding: topx($btn_defaultBtnFontSize * 0.33) topx($btn_defaultBtnFontSize * 0.66);
     border: none;
     margin: 0;
+    position: relative;
 
     &.btn-small{
       padding: topx($btn_defaultBtnFontSize * 0.25) topx($btn_defaultBtnFontSize * 0.5);
@@ -27,9 +28,7 @@ a, button, input[type=button], input[type=submit], input[type=reset]{
 
     }
 
-    &.btn-full{
-      width: 100%;
-    }
+
 
     &.btn-grisfonce{
       background-color: $grisFonce;
@@ -54,13 +53,19 @@ a, button, input[type=button], input[type=submit], input[type=reset]{
     }
 
     &.btn-primary{
+
       background-color: $btn_primaryBgColor;
       color: $btn_primaryColor;
+      @include box-shadow(darken($btn_primaryBgColor, 7) 0 5px 0);
       &:hover{
-        background-color: lighten($btn_primaryBgColor, 15);
+        //background-color: lighten($btn_primaryBgColor, 15);
+        top: 1px;
+        @include box-shadow(darken($btn_primaryBgColor, 7) 0 4px 0);
       }
       &:active{
-        background-color: darken($btn_primaryBgColor, 15);
+        //background-color: darken($btn_primaryBgColor, 15);
+        top: 5px;
+        @include box-shadow(none);
       }
     }
 

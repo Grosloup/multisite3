@@ -12,7 +12,7 @@ form.form{
 
 
   }
-  input[type=text],input[type=email], textarea{
+  input[type=text],input[type=email],input[type=password], textarea, select{
     border: 1px $grisBB solid;
     font-size: topx($fontSize);
     color: $grisFonce;

@@ -144,8 +144,8 @@ button.btn.is-filter{
     position: relative;
 
     &:hover{
-      top: 2px;
-      @include box-shadow(darken($grisBB, 7) 0 3px 0);
+      top: 1px;
+      @include box-shadow(darken($grisBB, 7) 0 4px 0);
     }
     &:active{
       top: 5px;
