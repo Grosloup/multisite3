@@ -65,7 +65,7 @@
                             <ul>
                                 <li class="sidebar-dropdown{% if active in ["list_photos_hd","new_photo_hd","stats_photo_hd","inscrits_photo_hd","new_inscrit_photo_hd"] %} active{% endif %}"><a href="javascript:void(0)">Photothèque HD</a><i class="sidebar-icon fa fa-angle-right"></i>
                                     <ul>
-                                        <li class="{% if active == "list_photos_hd" %}active{% endif %}"><a href="">Liste</a></li>
+                                        <li class="{% if active == "list_photos_hd" %}active{% endif %}"><a href="{{ path("zpb_admin_photos_hd_choose_list") }}">Liste</a></li>
                                         <li class="{% if active == "new_photo_hd" %}active{% endif %}"><a href="">Upload</a></li>
                                         <li class="{% if active == "stats_photo_hd" %}active{% endif %}"><a href="">Stats</a></li>
                                         <li class="{% if active == "inscrits_photo_hd" %}active{% endif %}"><a href="">Liste des inscrits</a></li>

@@ -1,0 +1,5 @@
+zpb_admin_photos_hd_choose_list:
+    path: /choix_liste
+    defaults: { _controller: ZPBAdminBundle:General/PhotoHd:list }
+    methods: ["GET"]
+

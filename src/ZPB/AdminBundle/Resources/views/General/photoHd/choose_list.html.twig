@@ -8,7 +8,7 @@
         <div class="column-12">
             <div class="tile">
                 <div class="tile-header">
-                    Choisir une liste
+                    Choisir une liste de photo
                 </div>
             </div>
         </div>
@@ -17,16 +17,19 @@
     <div class="row">
         <div class="column-12">
             <div class="tile">
-                <table class="table table-striped table-hover">
-                    <tbody>
+                <ul>
                     {% for inst in institutions %}
-                        <tr>
-                            <td>{{ inst.name }}</td>
-                            <td><a class="btn btn-neutral" href="{{ path("zpb_admin_photos_create", {institution_slug: inst.slug}) }}">Choisir</a></td>
-                        </tr>
+                    <li><h4>{{ inst.name }}</h4>
+                        {% if inst.photoCategories|length > 0 %}
+
+                            {% for cat in inst.photoCategories %}
+                                <a class="btn btn-primary" href="">{{ cat.name }}</a>
+                            {% endfor %}
+
+                        {% endif %}
+                    </li>
                     {% endfor %}
-                    </tbody>
-                </table>
+                </ul>
             </div>
         </div>
     </div>

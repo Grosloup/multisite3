@@ -273,14 +273,14 @@ button.btn.is-filter{
   #cart-footer{
     margin-top: 10px;
     @include clearfix;
-    background-color: $grisFonce;
+    background-color: lighten($ocean, 10);
     font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
 
     .col-cart-footer{
       text-transform: uppercase;
       padding: 4px;
       text-align: center;
-      background-color: $grisFonce;
+
       color: $blanc;
     }
     .col-cart-footer-value{
@@ -294,16 +294,20 @@ button.btn.is-filter{
 
   }
   #cart-footer-reduc{
-    background-color: $vertParrainage;
+    margin-top: 10px;
+    background-color: lighten($vertParrainage, 10);
     color: $blanc;
     @include clearfix;
     [class^="col-"], [class*=" col-"]{
-      background-color: $vertParrainage;
+
       color: $blanc;
       padding: 4px;
       text-transform: uppercase;
       text-align: center;
       font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+      &.cart-footer-reduc-value{
+        background-color: $vertParrainage;
+      }
     }
   }
   /*#total-cart{
@@ -316,6 +320,14 @@ button.btn.is-filter{
     font-size: topx($fontSize * 1.5);
   }*/
 
+}
+.cart-actions{
+  .btn{
+    margin-right: 10px;
+    &:last-of-type{
+      margin-right: 0;
+    }
+  }
 }
 
 

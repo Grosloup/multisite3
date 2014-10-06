@@ -89,6 +89,8 @@ class LoadSponsoringFormulas extends AbstractFixture implements OrderedFixtureIn
         $this->getReference('zpb-sponsor-gift-desc-7')->addFormula($sf2);
         $sf2->addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-8'));
         $this->getReference('zpb-sponsor-gift-desc-8')->addFormula($sf2);
+        $sf2->addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-17'));
+        $this->getReference('zpb-sponsor-gift-desc-17')->addFormula($sf2);
 
 
         $sf3 = new SponsoringFormula();
@@ -119,6 +121,8 @@ class LoadSponsoringFormulas extends AbstractFixture implements OrderedFixtureIn
         $this->getReference('zpb-sponsor-gift-desc-9')->addFormula($sf3);
         $sf3-> addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-13'));
         $this->getReference('zpb-sponsor-gift-desc-13')->addFormula($sf3);
+        $sf3->addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-17'));
+        $this->getReference('zpb-sponsor-gift-desc-17')->addFormula($sf3);
 
 
         $sf4 = new SponsoringFormula();
@@ -151,6 +155,8 @@ class LoadSponsoringFormulas extends AbstractFixture implements OrderedFixtureIn
         $this->getReference('zpb-sponsor-gift-desc-13')->addFormula($sf4);
         $sf4->addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-14'));
         $this->getReference('zpb-sponsor-gift-desc-14')->addFormula($sf4);
+        $sf4->addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-17'));
+        $this->getReference('zpb-sponsor-gift-desc-17')->addFormula($sf4);
 
 
         $sf5 = new SponsoringFormula();
@@ -185,6 +191,8 @@ class LoadSponsoringFormulas extends AbstractFixture implements OrderedFixtureIn
         $this->getReference('zpb-sponsor-gift-desc-14')->addFormula($sf5);
         $sf5->addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-15'));
         $this->getReference('zpb-sponsor-gift-desc-15')->addFormula($sf5);
+        $sf5->addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-17'));
+        $this->getReference('zpb-sponsor-gift-desc-17')->addFormula($sf5);
 
 
         $sf6 = new SponsoringFormula();
@@ -219,6 +227,8 @@ class LoadSponsoringFormulas extends AbstractFixture implements OrderedFixtureIn
         $this->getReference('zpb-sponsor-gift-desc-14')->addFormula($sf6);
         $sf6->addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-16'));
         $this->getReference('zpb-sponsor-gift-desc-16')->addFormula($sf6);
+        $sf6->addGiftDefinitions($this->getReference('zpb-sponsor-gift-desc-17'));
+        $this->getReference('zpb-sponsor-gift-desc-17')->addFormula($sf6);
 
 
 
@@ -238,6 +248,7 @@ class LoadSponsoringFormulas extends AbstractFixture implements OrderedFixtureIn
         $manager->persist($this->getReference('zpb-sponsor-gift-desc-14'));
         $manager->persist($this->getReference('zpb-sponsor-gift-desc-15'));
         $manager->persist($this->getReference('zpb-sponsor-gift-desc-16'));
+        $manager->persist($this->getReference('zpb-sponsor-gift-desc-17'));
 
         $manager->persist($sf1);
         $manager->persist($sf2);

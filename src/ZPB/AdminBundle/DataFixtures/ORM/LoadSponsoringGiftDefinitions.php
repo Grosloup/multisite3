@@ -99,21 +99,21 @@ class LoadSponsorGiftDefinitions extends AbstractFixture implements OrderedFixtu
         $manager->persist($g8);
 
         $g9 = new SponsoringGiftDefinition();
-        $g9->setName('1 entrée gratuite');
+        $g9->setName('1 entrée gratuite adultes');
         $g9->setShortDescription('<p>Praesent faucibus, risus id elementum viverra, purus purus pharetra leo, a porta tortor risus quis lacus. Donec quis rhoncus libero, at venenatis orci. Vestibulum vestibulum elementum quam nec volutpat. </p>');
         $g9->setLongDescription('<p>Nunc sed tortor a nulla euismod adipiscing sed eu leo. Aliquam erat volutpat. Donec fringilla at purus quis tincidunt. Duis iaculis ac sapien ut adipiscing. In hac habitasse platea dictumst. Aliquam quis mauris justo. Ut dui enim, ullamcorper iaculis diam in, vehicula aliquam massa. Aliquam erat volutpat. Morbi dignissim malesuada viverra. Nulla tristique sem in turpis ornare volutpat. Donec sed metus tristique, commodo diam sed, auctor arcu. Morbi a orci sapien. Mauris blandit ultrices ornare. Vivamus vel dui ac dolor euismod pulvinar nec vitae velit. Donec tempus, sapien quis porttitor feugiat, neque neque lacinia dui, vitae tincidunt nibh ante non tellus. In cursus posuere varius.</p><p>Nulla consequat ullamcorper sem, vitae pulvinar arcu gravida ac. Nullam aliquet, nisi sed ultricies rutrum, dui lectus varius risus, sit amet vulputate dolor quam in arcu. Duis arcu lorem, feugiat sit amet tortor eu, iaculis suscipit turpis. Donec pulvinar sagittis urna, quis rutrum est blandit nec. Donec in odio diam. Curabitur quis ullamcorper nulla. Vestibulum sit amet bibendum mi. Phasellus congue malesuada augue nec elementum. Proin vel elit a lacus adipiscing sagittis. Donec malesuada in urna ultrices laoreet. Etiam in nulla a est iaculis blandit non id turpis.</p>');
         $g9->setLegend("Sagittis pellentesque non vitae eros");
         $manager->persist($g9);
 
         $g10 = new SponsoringGiftDefinition();
-        $g10->setName('2 entrées gratuites');
+        $g10->setName('2 entrées gratuites adultes');
         $g10->setShortDescription('<p>Praesent faucibus, risus id elementum viverra, purus purus pharetra leo, a porta tortor risus quis lacus. Donec quis rhoncus libero, at venenatis orci. Vestibulum vestibulum elementum quam nec volutpat. </p>');
         $g10->setLongDescription('<p>Nunc sed tortor a nulla euismod adipiscing sed eu leo. Aliquam erat volutpat. Donec fringilla at purus quis tincidunt. Duis iaculis ac sapien ut adipiscing. In hac habitasse platea dictumst. Aliquam quis mauris justo. Ut dui enim, ullamcorper iaculis diam in, vehicula aliquam massa. Aliquam erat volutpat. Morbi dignissim malesuada viverra. Nulla tristique sem in turpis ornare volutpat. Donec sed metus tristique, commodo diam sed, auctor arcu. Morbi a orci sapien. Mauris blandit ultrices ornare. Vivamus vel dui ac dolor euismod pulvinar nec vitae velit. Donec tempus, sapien quis porttitor feugiat, neque neque lacinia dui, vitae tincidunt nibh ante non tellus. In cursus posuere varius.</p><p>Nulla consequat ullamcorper sem, vitae pulvinar arcu gravida ac. Nullam aliquet, nisi sed ultricies rutrum, dui lectus varius risus, sit amet vulputate dolor quam in arcu. Duis arcu lorem, feugiat sit amet tortor eu, iaculis suscipit turpis. Donec pulvinar sagittis urna, quis rutrum est blandit nec. Donec in odio diam. Curabitur quis ullamcorper nulla. Vestibulum sit amet bibendum mi. Phasellus congue malesuada augue nec elementum. Proin vel elit a lacus adipiscing sagittis. Donec malesuada in urna ultrices laoreet. Etiam in nulla a est iaculis blandit non id turpis.</p>');
         $g10->setLegend("Sagittis pellentesque non vitae eros");
         $manager->persist($g10);
 
         $g11 = new SponsoringGiftDefinition();
-        $g11->setName('3 entrées gratuites');
+        $g11->setName('3 entrées gratuites adultes');
         $g11->setShortDescription('<p>Praesent faucibus, risus id elementum viverra, purus purus pharetra leo, a porta tortor risus quis lacus. Donec quis rhoncus libero, at venenatis orci. Vestibulum vestibulum elementum quam nec volutpat. </p>');
         $g11->setLongDescription('<p>Nunc sed tortor a nulla euismod adipiscing sed eu leo. Aliquam erat volutpat. Donec fringilla at purus quis tincidunt. Duis iaculis ac sapien ut adipiscing. In hac habitasse platea dictumst. Aliquam quis mauris justo. Ut dui enim, ullamcorper iaculis diam in, vehicula aliquam massa. Aliquam erat volutpat. Morbi dignissim malesuada viverra. Nulla tristique sem in turpis ornare volutpat. Donec sed metus tristique, commodo diam sed, auctor arcu. Morbi a orci sapien. Mauris blandit ultrices ornare. Vivamus vel dui ac dolor euismod pulvinar nec vitae velit. Donec tempus, sapien quis porttitor feugiat, neque neque lacinia dui, vitae tincidunt nibh ante non tellus. In cursus posuere varius.</p><p>Nulla consequat ullamcorper sem, vitae pulvinar arcu gravida ac. Nullam aliquet, nisi sed ultricies rutrum, dui lectus varius risus, sit amet vulputate dolor quam in arcu. Duis arcu lorem, feugiat sit amet tortor eu, iaculis suscipit turpis. Donec pulvinar sagittis urna, quis rutrum est blandit nec. Donec in odio diam. Curabitur quis ullamcorper nulla. Vestibulum sit amet bibendum mi. Phasellus congue malesuada augue nec elementum. Proin vel elit a lacus adipiscing sagittis. Donec malesuada in urna ultrices laoreet. Etiam in nulla a est iaculis blandit non id turpis.</p>');
         $g11->setLegend("Sagittis pellentesque non vitae eros");
@@ -154,6 +154,13 @@ class LoadSponsorGiftDefinitions extends AbstractFixture implements OrderedFixtu
         $g16->setLegend("Sagittis pellentesque non vitae eros");
         $manager->persist($g16);
 
+        $g17 = new SponsoringGiftDefinition();
+        $g17->setName('Autocollant');
+        $g17->setShortDescription('<p>Praesent faucibus, risus id elementum viverra, purus purus pharetra leo, a porta tortor risus quis lacus. Donec quis rhoncus libero, at venenatis orci. Vestibulum vestibulum elementum quam nec volutpat. </p>');
+        $g17->setLongDescription('<p>Nunc sed tortor a nulla euismod adipiscing sed eu leo. Aliquam erat volutpat. Donec fringilla at purus quis tincidunt. Duis iaculis ac sapien ut adipiscing. In hac habitasse platea dictumst. Aliquam quis mauris justo. Ut dui enim, ullamcorper iaculis diam in, vehicula aliquam massa. Aliquam erat volutpat. Morbi dignissim malesuada viverra. Nulla tristique sem in turpis ornare volutpat. Donec sed metus tristique, commodo diam sed, auctor arcu. Morbi a orci sapien. Mauris blandit ultrices ornare. Vivamus vel dui ac dolor euismod pulvinar nec vitae velit. Donec tempus, sapien quis porttitor feugiat, neque neque lacinia dui, vitae tincidunt nibh ante non tellus. In cursus posuere varius.</p><p>Nulla consequat ullamcorper sem, vitae pulvinar arcu gravida ac. Nullam aliquet, nisi sed ultricies rutrum, dui lectus varius risus, sit amet vulputate dolor quam in arcu. Duis arcu lorem, feugiat sit amet tortor eu, iaculis suscipit turpis. Donec pulvinar sagittis urna, quis rutrum est blandit nec. Donec in odio diam. Curabitur quis ullamcorper nulla. Vestibulum sit amet bibendum mi. Phasellus congue malesuada augue nec elementum. Proin vel elit a lacus adipiscing sagittis. Donec malesuada in urna ultrices laoreet. Etiam in nulla a est iaculis blandit non id turpis.</p>');
+        $g17->setLegend("Sagittis pellentesque non vitae eros");
+        $manager->persist($g17);
+
         $manager->flush();
 
         $this->addReference('zpb-sponsor-gift-desc-1',$g1);
@@ -172,6 +179,7 @@ class LoadSponsorGiftDefinitions extends AbstractFixture implements OrderedFixtu
         $this->addReference('zpb-sponsor-gift-desc-14',$g14);
         $this->addReference('zpb-sponsor-gift-desc-15',$g15);
         $this->addReference('zpb-sponsor-gift-desc-16',$g16);
+        $this->addReference('zpb-sponsor-gift-desc-17',$g17);
     }
     
     public function getOrder()

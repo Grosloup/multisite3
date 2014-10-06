@@ -17,11 +17,18 @@
         </div>
         <div class="row">
             <div class="col-6">
+                {% for institution in institutions %}
+                    <a href="">{{ institution.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
                 <ul>
                     {% for institution in institutions %}
                         {% set institut = institution.slug %}
 
-                        <li>{{ institution.name }}
+                        <li>
                             <ul class="inline">
                                 {% for category in institution.photoCategories %}
                                     {% set cat = category.slug %}
@@ -29,6 +36,8 @@
                                 {% endfor %}
                             </ul>
                         </li>
+
+
                     {% endfor %}
                 </ul>
 
