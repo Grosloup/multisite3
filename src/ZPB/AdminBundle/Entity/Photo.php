@@ -89,21 +89,25 @@ class Photo implements ResizeableInterface
     private $updatedAt;
     /**
      * @var string
+     * @Assert\Regex("[a-zA-Z0-9éèêëàçâûüîïôö,;.?!&\'\"\/:+*_ -]*", message="Ce champs contient des caractères non autorisés.")
      * @ORM\Column(name="title", type="text", nullable=true)
      */
     private $title;
     /**
      * @var string
+     * @Assert\Regex("[a-zA-Z0-9éèêëàçâûüîïôö_ -]*", message="Ce champs contient des caractères non autorisés.")
      * @ORM\Column(name="copyright", type="string", nullable=false, length=255)
      */
     private $copyright;
     /**
      * @var string
+     * @Assert\Regex("[a-zA-Z0-9éèêëàçâûüîïôö,;.?!&\'\"\/:+*_ -]*", message="Ce champs contient des caractères non autorisés.")
      * @ORM\Column(name="legend", type="text", nullable=true)
      */
     private $legend;
     /**
      * @var string
+     * @Assert\Regex("[a-zA-Z0-9éèêëàçâûüîïôö,;.?!&\'\"\/:+*_ -]*", message="Ce champs contient des caractères non autorisés.")
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
@@ -248,7 +252,7 @@ class Photo implements ResizeableInterface
     public function setCopyright($copyright)
     {
         $year = (new \DateTime())->format('Y');
-        $this->copyright = '@ ' . trim($copyright, ' @') . ' - ' . $year;
+        $this->copyright = '&copy; ' . preg_replace('/^\s+|\s+$/','',str_replace('&copy; ','', $copyright)) . ' - ' . $year;
 
         return $this;
     }

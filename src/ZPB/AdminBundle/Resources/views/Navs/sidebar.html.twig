@@ -61,23 +61,30 @@
                                 <li class="{% if active == "new_institution" %}active{% endif %}"><a href="{{ path("zpb_admin_institutions_create") }}">Nouvelle</a></li>
                             </ul>
                         </li>
-                        <li class="sidebar-dropdown{% if active in ["list_photos", "new_photo", "update_photo","list_photos_cats", "new_photo_cats", "update_photo_cats", "stats_photo"] %} active{% endif %}"><a href="">Photothèque</a><i class="sidebar-icon fa fa-angle-right"></i>
+                        <li class="sidebar-dropdown{% if active in ["list_photos", "new_photo", "update_photo","list_photos_cats", "new_photo_cats", "update_photo_cats", "stats_photo","list_photos_hd","new_photo_hd","stats_photo_hd","inscrits_photo_hd","new_inscrit_photo_hd"] %} active{% endif %}"><a href="">Photothèques</a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
-                                <li class="sidebar-dropdown{% if active in ["list_photos", "new_photo", "update_photo", "stats_photo"] %} active{% endif %}"><a href="">Photos</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                <li class="sidebar-dropdown{% if active in ["list_photos_hd","new_photo_hd","stats_photo_hd","inscrits_photo_hd","new_inscrit_photo_hd"] %} active{% endif %}"><a href="javascript:void(0)">Photothèque HD</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                    <ul>
+                                        <li class="{% if active == "list_photos_hd" %}active{% endif %}"><a href="">Liste</a></li>
+                                        <li class="{% if active == "new_photo_hd" %}active{% endif %}"><a href="">Upload</a></li>
+                                        <li class="{% if active == "stats_photo_hd" %}active{% endif %}"><a href="">Stats</a></li>
+                                        <li class="{% if active == "inscrits_photo_hd" %}active{% endif %}"><a href="">Liste des inscrits</a></li>
+                                        <li class="{% if active == "new_inscrit_photo_hd" %}active{% endif %}"><a href="">Nouvelle inscription</a></li>
+                                    </ul>
+                                </li>
+                                <li class="sidebar-dropdown{% if active in ["list_photos", "new_photo", "update_photo", "stats_photo"] %} active{% endif %}"><a href="javascript:void(0)">Photothèque normale</a><i class="sidebar-icon fa fa-angle-right"></i>
                                     <ul>
                                         <li class="{% if active == "list_photos" %}active{% endif %}"><a href="{{ path("zpb_admin_photos_list") }}">Liste</a></li>
                                         <li class="{% if active == "new_photo" %}active{% endif %}"><a href="{{ path("zpb_admin_photos_choose_institution") }}">Upload</a></li>
                                         <li class="{% if active == "stats_photo" %}active{% endif %}"><a href="{{ path("zpb_admin_photos_stats_homepage") }}">Stats</a></li>
-
                                     </ul>
                                 </li>
-                                <li class="sidebar-dropdown{% if active in ["list_photos_cats", "new_photo_cats", "update_photo_cats"] %} active{% endif %}"><a href="">Catégories</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                <li class="sidebar-dropdown{% if active in ["list_photos_cats", "new_photo_cats", "update_photo_cats"] %} active{% endif %}"><a href="javascript:void(0)">Catégories</a><i class="sidebar-icon fa fa-angle-right"></i>
                                     <ul>
                                         <li class="{% if active == "list_photos_cats" %}active{% endif %}"><a href="{{ path("zpb_admin_photos_categories_list") }}">Liste</a></li>
                                         <li class="{% if active == "new_photo_cats" %}active{% endif %}"><a href="{{ path("zpb_admin_photos_categories_create") }}">Nouvelle</a></li>
                                     </ul>
                                 </li>
-
                             </ul>
                         </li>
                         <li class="sidebar-dropdown{% if active in ["list_faq", "new_faq"] %} active{% endif %}"><a href="#">Faq</a><i class="sidebar-icon fa fa-angle-right"></i>
