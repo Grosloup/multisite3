@@ -61,7 +61,7 @@ class PhotoCategory
 
     /**
      * @var string
-     * @Assert\Regex("[a-zA-Z0-9éèêëàçâûüîïôö,;.?!&\'\"\/:+*_ -]*", message="Ce champs contient des caractères non autorisés.")
+     * @Assert\Regex("[a-zA-Z0-9éèêëàçâûüîïôö,;.?!&':+*_ -]*", message="Ce champs contient des caractères non autorisés.")
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
@@ -72,7 +72,7 @@ class PhotoCategory
     private $photos;
 
     /**
-     * @ORM\OneToMany(targetEntity="ZPB\AdminBundle\Entity\Photo", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="ZPB\AdminBundle\Entity\PhotoHd", mappedBy="category")
      */
     private $photosHd;
 
@@ -250,29 +250,6 @@ class PhotoCategory
     }
 
     /**
-     * Add photosHd
-     *
-     * @param PhotoHd $photosHd
-     * @return PhotoCategory
-     */
-    public function addPhotoHd(PhotoHd $photosHd)
-    {
-        $this->photosHd[] = $photosHd;
-
-        return $this;
-    }
-
-    /**
-     * Remove photosHd
-     *
-     * @param PhotoHd $photosHd
-     */
-    public function removePhotoHd(PhotoHd $photosHd)
-    {
-        $this->photosHd->removeElement($photosHd);
-    }
-
-    /**
      * Get photosHd
      *
      * @return \Doctrine\Common\Collections\Collection
@@ -314,5 +291,28 @@ class PhotoCategory
     public function hasPhotos()
     {
         return count($this->getPhotos()) > 0;
+    }
+
+    /**
+     * Add photosHd
+     *
+     * @param PhotoHd $photosHd
+     * @return PhotoCategory
+     */
+    public function addPhotosHd(PhotoHd $photosHd)
+    {
+        $this->photosHd[] = $photosHd;
+
+        return $this;
+    }
+
+    /**
+     * Remove photosHd
+     *
+     * @param PhotoHd $photosHd
+     */
+    public function removePhotosHd(PhotoHd $photosHd)
+    {
+        $this->photosHd->removeElement($photosHd);
     }
 }

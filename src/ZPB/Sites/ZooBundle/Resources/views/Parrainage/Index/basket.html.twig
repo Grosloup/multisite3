@@ -38,9 +38,77 @@
             </div>
         </div>
         <div class="spaced-row">
-            <div class="col-6">
+            <div id="cart">
+                <div class="col-6">
                 {% if packs|length > 0 %}
-                    <table style="width: 100%;" id="cart">
+
+                    <div class="row">
+                        <div id="cart-header">
+
+                            <div class="col-1 col-cart-header">Animal</div>
+                            <div class="col-1 col-cart-header">Formule</div>
+                            <div class="col-1 col-cart-header">Bénéficiaire</div>
+                            <div class="col-1 col-cart-header">Différé</div>
+                            <div class="col-1 col-cart-header">Montant</div>
+                            <div class="col-1 col-cart-header"></div>
+                        </div>
+                    </div>
+                {% for id,pack in packs %}
+
+                    <div class="row">
+                        <div class="cart-article-row">
+                            <div class="col-1 text-center">
+                                <div>{{ pack.animal.name }}</div>
+                                <img src="http://lorempicsum.com/nemo/80/60/1" alt=""/>
+                            </div>
+
+                            <div class="col-1 text-center">{{ pack.pack.name }}</div>
+                            <div class="col-1 text-center">
+                                {% if pack.godparent != null %}
+                                    {{ pack.godparent.firstname }} {{ pack.godparent.lastname }}
+                                {% else %}Vous{% endif %}
+                            </div>
+                            <div class="col-1 text-center">
+                                {%  if pack.delayed != null %}Parrainage différé au {{ pack.delayed|date("d/m/y") }}{% else %} - {% endif %}
+                            </div>
+                            <div class="col-1 text-center">
+                                {{ pack.pack.price }}&euro;
+                            </div>
+                            <div class="col-1 text-center">
+                                <a class="btn btn-primary" href="{{ path("zpb_sites_zoo_parrainage_remove_from_basket", {id: id, _token: csrf_token("delete_from_basket")}) }}"><i class="fa fa-trash-o"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                {% endfor %}
+                    {% set price = 0 %}
+                    {% set priceRedux = 0 %}
+                    {% for pack in packs %}
+                        {% set price = price + pack.pack.price %}
+                        {% set priceRedux = priceRedux + pack.pack.taxFreePrice %}
+                    {% endfor %}
+                    <div class="row">
+                        <div id="cart-footer">
+                            <div class="col-3 col-cart-footer"></div>
+                            <div class="col-1 col-cart-footer">Total</div>
+                            <div class="col-1 col-cart-footer-value ">{{ price|number_format(2,',','.') }}&euro;</div>
+                            <div class="col-1 col-cart-footer"></div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div id="cart-footer-reduc">
+                            <div class="col-2"></div>
+                            <div class="col-2">Soit après déduction fiscale</div>
+                            <div class="col-1">{{ priceRedux|number_format(2,',','.') }}&euro;</div>
+                            <div class="col-1"></div>
+                        </div>
+                    </div>
+
+                    {#<table style="width: 100%;" id="cart">
 
                         <thead>
                         <tr>
@@ -79,7 +147,7 @@
                                     </tr>
                                 </table>
                             </td>
-                            {#<td><a class="btn btn-danger" href="{{ path("zpb_sites_zoo_parrainage_remove_from_basket", {id: id, _token: csrf_token("delete_from_basket")}) }}"><span class="label alert"><i class="fa fa-trash-o"></i></span></a></td>#}
+                            &#123;&#35;<td><a class="btn btn-danger" href="{{ path("zpb_sites_zoo_parrainage_remove_from_basket", {id: id, _token: csrf_token("delete_from_basket")}) }}"><span class="label alert"><i class="fa fa-trash-o"></i></span></a></td>&#35;&#125;
                         </tr>
                         {% endfor %}
 
@@ -95,11 +163,12 @@
                             <td></td>
                         </tr>
                         </tbody>
-                    </table>
+                    </table>#}
 
                 {% else %}
                     <p>Votre panier est vide.</p>
                 {% endif %}
+            </div>
             </div>
         </div>
 

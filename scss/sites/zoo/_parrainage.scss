@@ -247,41 +247,75 @@ button.btn.is-filter{
     PANIER
 \******************************************************/
 
-
-
 #cart{
-  /*table-layout: fixed;*/
+  #cart-header{
+    @include clearfix;
+    background-color: $grisFonce;
+    color: $blanc;
+    font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    .col-cart-header{
+      padding: 4px;
+      text-align: center;
+    }
+  }
 
-  thead{
-    tr{
+  .cart-article-row{
+    @include clearfix;
+    margin-top: 10px;
+    //padding: 4px;
+    background-color: $grisDF;
+    [class^="col-"], [class*="col-"]{
+      padding: 4px;
+    }
+  }
+
+  #cart-footer{
+    margin-top: 10px;
+    @include clearfix;
+    background-color: $grisFonce;
+    font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+
+    .col-cart-footer{
+      text-transform: uppercase;
+      padding: 4px;
+      text-align: center;
       background-color: $grisFonce;
       color: $blanc;
-      font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
-      text-transform: uppercase;
-      th{
-        padding: 4px;
-        text-align: center;
-      }
     }
-  }
-
-  tbody{
-    tr{}
-    tr td{
+    .col-cart-footer-value{
+      background-color: $ocean;
+      color: $blanc;
       padding: 4px;
-      background-color: $grisDF;
-      border-top: 4px solid $blanc;
-      //border-bottom: 4px solid $blanc;
-      table{
-        tr{
-          td{
-            border: none;
-          }
-        }
-
-      }
+      text-transform: uppercase;
+      text-align: center;
     }
 
+
   }
+  #cart-footer-reduc{
+    background-color: $vertParrainage;
+    color: $blanc;
+    @include clearfix;
+    [class^="col-"], [class*=" col-"]{
+      background-color: $vertParrainage;
+      color: $blanc;
+      padding: 4px;
+      text-transform: uppercase;
+      text-align: center;
+      font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+    }
+  }
+  /*#total-cart{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    background-color: $ocean;
+    color: $blanc;
+    font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+    font-size: topx($fontSize * 1.5);
+  }*/
+
 }
+
 

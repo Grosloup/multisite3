@@ -28,9 +28,9 @@ class PhotoHdController extends BaseController
 {
     public function listAction()
     {
-        $photos = $this->getRepo('ZPBAdminBundle:PhotoHd')->findAll();
+        $institutions = $this->getRepo('ZPBAdminBundle:Institution')->findAll();
 
-        return $this->render('', []);
+        return $this->render('ZPBAdminBundle:General/PhotoHd:choose_list.html.twig', ['institutions'=>$institutions]);
     }
 
     public function createAction(Request $request)
