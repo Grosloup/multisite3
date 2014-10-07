@@ -16,7 +16,29 @@
 .spaced-row{
   margin-bottom: topx($gridGutter * 2);
 }
+
 [class^="col-"], [class*=" col-"],[class^="col4-"], [class*=" col4-"], [class^="col5-"], [class*=" col5-"]{
+
+  padding-left: topx($gridGutter);
+  padding-right: topx($gridGutter);
+}
+
+.row, .spaced-row{
+
+  .row, .spaced-row{
+    [class^="col5-"], [class*=" col5-"],
+    [class^="col4-"], [class*=" col4-"],
+    [class^="col-"], [class*=" col-"]
+    {
+      padding-left: 0;
+    }
+
+  }
+}
+
+
+
+[class^="col_sm-"], [class*=" col_sm-"]{
   float: left;
   min-height: 1px;
   padding-left: topx($gridGutter);
@@ -25,22 +47,32 @@
 }
 
 @for $i from 1 through $numCols{
-  .col-#{$i}{
-    width: 100%;
+  .col_sm-#{$i}{
+    width: percentage( $i / $numCols);
   }
+}
+/*@for $i from 1 through $numCols{
+  .col-#{$i}{
+    //width: 100%;
+    float: none;
+  }
+
+
 }
 
 @for $i from 1 through 4{
   .col4-#{$i}{
-    width: 100%;
+    //width: 100%;
+    float: none;
   }
 }
 
 @for $i from 1 through 5{
   .col5-#{$i}{
-    width: 100%;
+    //width: 100%;
+    float: none;
   }
-}
+}*/
 
 [class^="small-grid-"], [class*=" small-grid-"],
 [class^="medium-grid-"], [class*=" medium-grid-"],
@@ -76,6 +108,14 @@
 
 
 @media only screen and (min-width: 768px){
+  [class^="col-"], [class*=" col-"],[class^="col4-"], [class*=" col4-"], [class^="col5-"], [class*=" col5-"]{
+    float: left;
+    min-height: 1px;
+    padding-left: topx($gridGutter);
+    padding-right: topx($gridGutter);
+    position: relative;
+  }
+
   .row, .spaced-row{
 
     .row, .spaced-row{
@@ -97,16 +137,19 @@
   @for $i from 1 through $numCols{
     .col-#{$i}{
       width: percentage( $i / $numCols);
+      float: left;
     }
   }
   @for $i from 1 through 4{
     .col4-#{$i}{
       width: percentage( $i / 4);
+      float: left;
     }
   }
   @for $i from 1 through 5{
     .col5-#{$i}{
       width: percentage( $i / 5);
+      float: left;
     }
   }
   @for $i from 1 through 6{
