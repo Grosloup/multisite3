@@ -9,7 +9,7 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-6">
+            <div class="col-md-6">
                 <div class="page-header">
                     <h1>Restauration</h1>
                 </div>
@@ -19,7 +19,7 @@
     <div class="wrapper">
         <div class="container">
             <div class="row">
-                <div class="col-6">
+                <div class="col-sm-6 col-md-6">
                     <div class="testbox testbox-5"></div>
                 </div>
             </div>
@@ -29,34 +29,31 @@
     <div class="wrapper">
         <div class="container">
             <div class="spaced-row">
-                <div class="col-6">
+                <div class="col-sm-6 col-md-6">
                     {% if restos|length > 0 %}
                         {% for resto in restos %}
                             <div class="spaced-row">
-                                <div class="row">
-                                    <div class="col-2"></div>
-                                    <div class="col-4">
-                                        <h4>{{ resto.name }}</h4>
-                                    </div>
+                                <div class="col-sm-2 col-md-2"></div>
+                                <div class="col-sm-4 col-md-4">
+                                    <h4>{{ resto.name }}</h4>
                                 </div>
-                                <div class="row">
-                                    <div class="col-2">
-                                        <img src="{{ resto.visuel.webPath }}" alt="" width="100%"/>
-                                    </div>
-                                    <div class="col-2">
-
-                                        <div>{{ resto.description|raw }}</div>
-
-                                    </div>
-                                    <div class="col-2">
-                                        {% if resto.isOpen == true %}
-                                            <h5>Ouvert</h5>
-                                        {% else %}
-                                            <h5>Fermé</h5>
-                                        {% endif %}
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 col-md-2">
+                                    <img src="{{ resto.visuel.webPath }}" alt="" width="100%"/>
                                 </div>
+                                <div class="col-sm-4 col-md-2">
 
+                                    <div>{{ resto.description|raw }}</div>
+
+                                </div>
+                                <div class="col-sm-2 col-md-2">
+                                    {% if resto.isOpen == true %}
+                                        <h5>Ouvert</h5>
+                                    {% else %}
+                                        <h5>Fermé</h5>
+                                    {% endif %}
+                                </div>
                             </div>
                         {% endfor %}
                     {% else %}
@@ -70,7 +67,7 @@
     <div class="wrapper">
         <div class="container">
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
                     <div class="testbox testbox-5"></div>
                 </div>
             </div>
