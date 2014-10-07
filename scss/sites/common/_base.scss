@@ -107,16 +107,7 @@ strong{
 
 }
 
-.thumb{
-  img{
-    width: 100%;
-    padding: topx($fontSize / 2);
-    border: 1px solid lighten($grisFonce, 50);
-    &:hover{
-      @include box-shadow(rgba(0,0,0,0.3) 0 0 5px);
-    }
-  }
-}
+
 
 ul{
   &.inline-list{

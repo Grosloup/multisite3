@@ -15,33 +15,70 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6">
+        <div class="spaced-row">
+            <div class="col-md-6 text-center">Filtrer par :</div>
+            <div class="col-md-6 text-center" id="filters">
+                <button class="btn btn-filtre is-filter" data-filter="*">Tous</button>
                 {% for institution in institutions %}
-                    <a href="">{{ institution.name }}</a>
+                    <button class="btn btn-filtre" data-filter=".{{ institution.slug }}">{{ institution.name }}</button>
                 {% endfor %}
             </div>
         </div>
         <div class="row">
+
             <div class="col-md-6">
-                <ul>
-                    {% for institution in institutions %}
-                        {% set institut = institution.slug %}
+                <div id="iso-container">
+                    <ul class="grid-sm-2 grid-md-4">
+                        {% for institution in institutions %}
+                            {% set institut = institution.slug %}
+                            {% for category in institution.photoCategories %}
+                                {% set cat = category.slug %}
+                                <li class="category-box {{ institut }}" >
+                                    <a class="" href="{{ path("zpb_sites_zoo_phototheque_show_category", {institutslug: institut , catslug: cat}) }}">
+                                        <div class="photo-category-box">
+                                            <div class="photo-category-card">
 
-                        <li>
-                            <ul class="inline">
-                                {% for category in institution.photoCategories %}
-                                    {% set cat = category.slug %}
-                                    <li><a class="btn btn-primary" href="{{ path("zpb_sites_zoo_phototheque_show_category", {institutslug: institut , catslug: cat}) }}">{{ category }} &raquo;</a></li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-
-
-                    {% endfor %}
-                </ul>
+                                                {% if category.hasPhotos == true %}
+                                                    <div class="shade">
+                                                        <img src="{{ category.firstPhoto.webPath }}" alt="" width="100%"/>
+                                                    </div>
+                                                {% endif %}
+                                                <p class="text-center">
+                                                    <a href="{{ path("zpb_sites_zoo_phototheque_show_category", {institutslug: institut , catslug: cat}) }}" class="btn btn-primary">{{ category }}</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
 
             </div>
         </div>
     </div>
+{% endblock %}
+{% block footScripts%}
+    {{ parent() }}
+    <script src="/js/vendor/isotope.pkgd.min.js"></script>
+    <script src="/js/app.min.js"></script>
+    <script>
+        $(function(){
+            var isoContainer = $("#iso-container").isotope({
+                itemSelector: '.category-box',
+                layoutMode: 'fitRows'
+            });
+            var btns = $("#filters");
+            btns.on("click", "button", function(){
+                var filterVal = $(this).attr("data-filter");
+                isoContainer.isotope({filter: filterVal});
+            });
+            btns.on("click", "button", function(){
+                btns.find(".is-filter").removeClass("is-filter");
+                $(this).addClass("is-filter");
+            });
+
+        });
+    </script>
 {% endblock %}

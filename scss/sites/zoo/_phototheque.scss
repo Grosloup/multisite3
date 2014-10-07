@@ -1,0 +1,21 @@
+
+
+.photo-category-card{
+  border: 1px solid transparent;
+  padding: 10px;
+
+  &:hover{
+    border: 1px solid #2e85a3;
+
+    .shade:after{
+      @include box-shadow(rgba(0, 0, 0, 0.5)  0 0 10px  inset);
+    }
+  }
+
+  img{
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+  }
+}

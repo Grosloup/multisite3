@@ -293,6 +293,27 @@ class PhotoCategory
         return count($this->getPhotos()) > 0;
     }
 
+    public function hasPhotosHd()
+    {
+        return count($this->getPhotosHd()) > 0;
+    }
+
+    public function getFirstPhoto()
+    {
+        if($this->hasPhotos()){
+            return $this->getPhotos()[0];
+        }
+        return null;
+    }
+
+    public function getFirstPhotoHd()
+    {
+        if($this->hasPhotosHd()){
+            return $this->getPhotosHd()[0];
+        }
+        return null;
+    }
+
     /**
      * Add photosHd
      *
