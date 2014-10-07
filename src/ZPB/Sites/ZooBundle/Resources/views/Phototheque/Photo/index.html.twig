@@ -9,21 +9,21 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-6">
+            <div class="col-md-6">
                 <div class="page-header">
                     <h1>Galerie photo</h1>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-6">
+            <div class="col-md-6">
                 {% for institution in institutions %}
                     <a href="">{{ institution.name }}</a>
                 {% endfor %}
             </div>
         </div>
         <div class="row">
-            <div class="col-6">
+            <div class="col-md-6">
                 <ul>
                     {% for institution in institutions %}
                         {% set institut = institution.slug %}

@@ -1,0 +1,225 @@
+.wrapper{
+  width: 100%;
+  @include clearfix;
+  margin: topx($fontSize * 3) 0;
+}
+.container{
+  width: 100%;
+  margin: 0 auto;
+  @include clearfix;
+  position: relative;
+}
+.row, .spaced-row{
+  @include row;
+}
+
+.spaced-row{
+  margin-bottom: topx($gridGutter * 2);
+}
+
+[class^="col-"], [class*=" col-"],[class^="col4-"], [class*=" col4-"], [class^="col5-"], [class*=" col5-"]{
+
+  padding-left: topx($gridGutter);
+  padding-right: topx($gridGutter);
+}
+
+.row, .spaced-row{
+
+  .row, .spaced-row{
+    [class^="col5-"], [class*=" col5-"],
+    [class^="col4-"], [class*=" col4-"],
+    [class^="col-"], [class*=" col-"]
+    {
+      padding-left: 0;
+    }
+
+  }
+}
+
+
+
+[class^="col_sm-"], [class*=" col_sm-"]{
+  float: left;
+  min-height: 1px;
+  padding-left: topx($gridGutter);
+  padding-right: topx($gridGutter);
+  position: relative;
+}
+
+@for $i from 1 through $numCols{
+  .col_sm-#{$i}{
+    width: percentage( $i / $numCols);
+  }
+}
+/*@for $i from 1 through $numCols{
+  .col-#{$i}{
+    //width: 100%;
+    float: none;
+  }
+
+
+}
+
+@for $i from 1 through 4{
+  .col4-#{$i}{
+    //width: 100%;
+    float: none;
+  }
+}
+
+@for $i from 1 through 5{
+  .col5-#{$i}{
+    //width: 100%;
+    float: none;
+  }
+}*/
+
+[class^="small-grid-"], [class*=" small-grid-"],
+[class^="medium-grid-"], [class*=" medium-grid-"],
+[class^="large-grid-"], [class*=" large-grid-"],
+[class^="xlarge-grid-"], [class*=" xlarge-grid-"]{
+  @include clearfix;
+  width: 100%;
+  &>li,&>div{
+    float: left;
+    min-height: 1px;
+    padding-right: topx($gridGutter);
+    padding-left: topx($gridGutter);
+    margin-bottom: topx(2 * $gridGutter);
+  }
+
+}
+@for $i from 1 through 6{
+
+  .small-grid-#{$i}{
+
+    &>li,&>div{
+      width: percentage(1/$i);
+      $v: 1 + $i;
+      &:nth-of-type(1n){
+        clear: none;
+      }
+      &:nth-of-type(#{$i}n + 1){
+        clear: both;
+      }
+    }
+  }
+}
+
+
+@media only screen and (min-width: 768px){
+  [class^="col-"], [class*=" col-"],[class^="col4-"], [class*=" col4-"], [class^="col5-"], [class*=" col5-"]{
+    float: left;
+    min-height: 1px;
+    padding-left: topx($gridGutter);
+    padding-right: topx($gridGutter);
+    position: relative;
+  }
+
+  .row, .spaced-row{
+
+    .row, .spaced-row{
+      [class^="col5-"]:first-child, [class*=" col5-"]:first-child,
+      [class^="col4-"]:first-child, [class*=" col4-"]:first-child,
+      [class^="col-"]:first-child, [class*=" col-"]:first-child
+      {
+        padding-left: 0;
+      }
+      [class^="col5-"]:last-child, [class*=" col5-"]:last-child,
+      [class^="col4-"]:last-child, [class*=" col4-"]:last-child,
+      [class^="col-"]:last-child, [class*=" col-"]:last-child
+      {
+        padding-right: 0;
+      }
+
+    }
+  }
+  @for $i from 1 through $numCols{
+    .col-#{$i}{
+      width: percentage( $i / $numCols);
+      float: left;
+    }
+  }
+  @for $i from 1 through 4{
+    .col4-#{$i}{
+      width: percentage( $i / 4);
+      float: left;
+    }
+  }
+  @for $i from 1 through 5{
+    .col5-#{$i}{
+      width: percentage( $i / 5);
+      float: left;
+    }
+  }
+  @for $i from 1 through 6{
+
+    .medium-grid-#{$i}{
+
+      &>li,&>div{
+        width: percentage(1/$i);
+        $v: 1 + $i;
+        &:nth-of-type(1n){
+          clear: none;
+        }
+        &:nth-of-type(#{$i}n + 1){
+          clear: both;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 960px){
+  .container{
+    max-width: 1020px;
+  }
+}
+
+@media only screen and (min-width: 1024px){
+
+}
+
+
+
+@media only screen and (min-width: 1280px){
+  .container{
+    max-width: 1200px;
+  }
+  @for $i from 1 through 6{
+
+    .large-grid-#{$i}{
+
+      &>li,&>div{
+        width: percentage(1/$i);
+        $v: 1 + $i;
+        &:nth-of-type(1n){
+          clear: none;
+        }
+        &:nth-of-type(#{$i}n + 1){
+          clear: both;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1440px){
+
+  @for $i from 1 through 6{
+
+    .xlarge-grid-#{$i}{
+
+      &>li,&>div{
+        width: percentage(1/$i);
+        $v: 1 + $i;
+        &:nth-of-type(1n){
+          clear: none;
+        }
+        &:nth-of-type(#{$i}n + 1){
+          clear: both;
+        }
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-6">
+            <div class="col-md-6">
                 <div class="page-header">
                     <h1>Parrainages</h1>
                 </div>
@@ -14,16 +14,16 @@
         </div>
 
         <div class="spaced-row">
-            <div class="col-4">
+            <div class="col-md-4">
                 {{ render(controller("ZPBSitesZooBundle:Parrainage/Index:connect")) }}
             </div>
-            <div class="col-2">
+            <div class="col-md-2">
                 {{ render(controller("ZPBSitesZooBundle:Parrainage/Index:getBasket")) }}
             </div>
         </div>
 
         <div class="spaced-rox">
-            <div class="col-6">
+            <div class="col-md-6">
                 <div class="test-box">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, sint ullam? Esse fuga quo totam. Autem consequatur esse explicabo fuga ratione rem repudiandae sed suscipit!
                 </div>
@@ -31,7 +31,7 @@
         </div>
 
         <div class="spaced-row">
-            <div class="col-6" id="filters">
+            <div class="col-md-6" id="filters">
                 <div class="filters-bar">
                     <button class="btn btn-grisclair btn-small"  data-filter="*">tous</button>
                     {% for cat in categories %}
@@ -43,7 +43,7 @@
         </div>
 
         <div class="row">
-            <div class="col-6">
+            <div class="col-md-6">
                 <div id="iso-container">
                     {% for animal in animals %}
                         <div class="animal-box {{ animal.category.slug }}" >

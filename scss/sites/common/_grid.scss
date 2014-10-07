@@ -35,7 +35,9 @@
   margin: 0 auto;
   @include clearfix;
 }
-
+.spaced-row{
+  margin-bottom: topx($gridGutter * 2);
+}
 .row, .spaced-row{
   @include row;
   [class^="col-md-"], [class*=" col-md-"],

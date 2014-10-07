@@ -5,7 +5,7 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-6">
+            <div class="col-md-6">
                 <div class="page-header">
                     <h1>Parrainages</h1>
                 </div>
@@ -15,10 +15,10 @@
 
     <div class="container">
         <div class="spaced-row">
-            <div class="col-4">
+            <div class="col-md-4">
                 {{ render(controller("ZPBSitesZooBundle:Parrainage/Index:connect")) }}
             </div>
-            <div class="col-2">
+            <div class="col-md-2">
                 {{ render(controller("ZPBSitesZooBundle:Parrainage/Index:getBasket")) }}
             </div>
         </div>
@@ -27,11 +27,11 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-6">
+            <div class="col-md-6">
                 <h2 class="text-center">{{ animal.longName }}</h2>
             </div>
 
-            <div class="col-6">
+            <div class="col-md-6">
                 <div class="two-column">
                     <h4>Description</h4>
                     {{ animal.longDescription|raw }}
@@ -51,18 +51,18 @@
     <div class="wrapper" style="background-color: #313133;">
         <div class="container">
             <div class="row">
-                <div class="col-1"></div>
-                <div class="col-4">
+                <div class="col-md-1"></div>
+                <div class="col-md-4">
                     <img class="th" src="/img/sites/fixtures/fake.jpg" alt="" style="width: 100%; display: block;"/>
                 </div>
-                <div class="col-1"></div>
+                <div class="col-md-1"></div>
             </div>
         </div>
     </div>
 
     <div class="container">
         <div class="row">
-            <div id="je-parraine" class="col-6">
+            <div id="je-parraine" class="col-md-6">
                 <h2 class="text-center">Je parraine !</h2>
             </div>
         </div>
@@ -70,8 +70,8 @@
 
     <div class="container">
         <div class="spaced-row">
-            <div class="col-1"></div>
-            <div class="col-4">
+            <div class="col-md-1"></div>
+            <div class="col-md-4">
                 <div class="panel text-center">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur deleniti enim est et nam
                         optio possimus, quibusdam quis tempore velit.</p>
@@ -83,66 +83,62 @@
                         odit quaerat tempore? Ipsa ipsum quod voluptatum?</p>
                 </div>
             </div>
-            <div class="col-1"></div>
+            <div class="col-md-1"></div>
         </div>
     </div>
 
     <div class="container">
         <form action="{{ path("zpb_sites_zoo_parrainages_add_to_basket") }}" method="post">
-        <div class="spaced-row">
-            <div class="col-1"></div>
-            <div class="col-4">
-                <div id="parrainage-chooser">
-
+            <div class="spaced-row">
+                <div class="col-md-1"></div>
+                <div class="col-md-4">
+                    <div id="parrainage-chooser">
                         <div class="row">
-                            <div class="col-3"> <!-- formules -->
-                                {% for formula in formulas %}
-                                    <div id="" class="sponsoring-tag">
-                                        <label for="sponsorship_{{ formula.id }}" class="offer" id="{{ formula.slug }}"><input type="radio" name="sponsorship_form[pack]" id="sponsorship_{{ formula.id }}" value="{{ formula.id }}"/> <div class="sponsoring-price">{{ formula.price }} &euro;</div><div class="sponsoring-name"> {{ formula.name }}</div></label>
-                                    </div>
-                                {% endfor %}
+                                <div class="col-md-3"> <!-- formules -->
+                                    {% for formula in formulas %}
+                                        <div id="" class="sponsoring-tag">
+                                            <label for="sponsorship_{{ formula.id }}" class="offer" id="{{ formula.slug }}"><input type="radio" name="sponsorship_form[pack]" id="sponsorship_{{ formula.id }}" value="{{ formula.id }}"/> <div class="sponsoring-price">{{ formula.price }} &euro;</div><div class="sponsoring-name"> {{ formula.name }}</div></label>
+                                        </div>
+                                    {% endfor %}
 
-                                <div id="main-reduc" class="reduc-impot">
-                                    <p>Soit</p>
-                                    <p class="reduc-impot-value"><span class="reduc-impot-value-in"></span> €</p>
-                                    <p>après déduction fiscale</p>
+                                    <div id="main-reduc" class="reduc-impot">
+                                        <p>Soit</p>
+                                        <p class="reduc-impot-value"><span class="reduc-impot-value-in"></span> €</p>
+                                        <p>après déduction fiscale</p>
+                                    </div>
+
                                 </div>
-
+                                <div class="col-md-3"> <!-- cadeaux -->
+                                    {% for gift in gifts %}
+                                        <div class="gift" id="mark-{{ gift.id }}">
+                                            <span><span class="marks"><i class="fa fa-check"></i><i class="fa fa-times"></i></span>{{ gift.name }}</span>
+                                        </div>
+                                    {% endfor %}
+                                </div>
                             </div>
-                            <div class="col-3"> <!-- cadeaux -->
-                                {% for gift in gifts %}
-                                    <div class="gift" id="mark-{{ gift.id }}">
-                                        <span><span class="marks"><i class="fa fa-check"></i><i class="fa fa-times"></i></span>{{ gift.name }}</span>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-
-                    <div id="second-reduc" class="row ">
-                        <div class="col-6">
-                            <div class="reduc-impot">
-                                <p>Soit <span class="reduc-impot-value" id="reduc-impot-value"><span class="reduc-impot-value-in"></span> €</span> après déduction fiscale</p>
+                        <div id="second-reduc" class="row">
+                            <div class="col-md-6">
+                                <div class="reduc-impot">
+                                    <p>Soit <span class="reduc-impot-value" id="reduc-impot-value"><span class="reduc-impot-value-in"></span> €</span> après déduction fiscale</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
-            </div>
                 <input name="sponsorship_form[animal]" type="hidden" value="{{ animal.id }}"/>
                 <input name="sponsorship_form[_token]" type="hidden" value="{{ csrf_token("add_sponsorship") }}"/>
-            <div class="col-1"></div>
-        </div>
+                <div class="col-md-1"></div>
+            </div>
             <div class="spaced-row">
-                <div class="col-1"></div>
-                <div class="col-4">
+                <div class="col-md-1"></div>
+                <div class="col-md-4">
                     <div id="parrainage-actions">
                         <div class="row text-center">
                             <button type="submit" class="btn btn-primary btn-xlarge" name="sponsorship_form[submit]" value="forme">Je parraine</button><button type="submit" class="btn btn-primary btn-xlarge" name="sponsorship_form[submit]" value="offer">J'offre ce parrainage</button>
                         </div>
                     </div>
                 </div>
-                <div class="col-1"></div>
+                <div class="col-md-1"></div>
             </div>
         </form>
     </div>
