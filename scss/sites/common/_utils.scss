@@ -17,16 +17,13 @@
   }
 }
 
-@mixin row{
-  width: 100%;
-  @include clearfix;
-  position: relative;
-}
-
 .hide{
   display: none;
 }
 
+.show{
+  display: block;
+}
 
 $btn_vertBgColor: #54b45b !default;
 $btn_vertColor: #fff !default;

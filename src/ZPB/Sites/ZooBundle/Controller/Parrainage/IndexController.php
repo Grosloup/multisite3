@@ -57,7 +57,7 @@ class IndexController extends BaseController
             throw $this->createNotFoundException();
         }
         $formulas = $this->getRepo('ZPBAdminBundle:SponsoringFormula')->findByIsActive(true);
-        $gifts = $this->getRepo('ZPBAdminBundle:SponsoringGiftDefinition')->findAll();
+        $gifts = $this->getRepo('ZPBAdminBundle:SponsoringGiftDefinition')->getSortedResult();
         return $this->render(
             'ZPBSitesZooBundle:Parrainage/Index:show_animal.html.twig',
             ['animal' => $animal, 'formulas' => $formulas, 'gifts' => $gifts]

@@ -1,44 +1,11 @@
-.wrapper{
+
+@mixin row{
   width: 100%;
-  @include clearfix;
-  margin: topx($fontSize * 3) 0;
-}
-.container{
-  width: 100%;
-  margin: 0 auto;
   @include clearfix;
   position: relative;
 }
-.row, .spaced-row{
-  @include row;
-}
 
-.spaced-row{
-  margin-bottom: topx($gridGutter * 2);
-}
-
-[class^="col-"], [class*=" col-"],[class^="col4-"], [class*=" col4-"], [class^="col5-"], [class*=" col5-"]{
-
-  padding-left: topx($gridGutter);
-  padding-right: topx($gridGutter);
-}
-
-.row, .spaced-row{
-
-  .row, .spaced-row{
-    [class^="col5-"], [class*=" col5-"],
-    [class^="col4-"], [class*=" col4-"],
-    [class^="col-"], [class*=" col-"]
-    {
-      padding-left: 0;
-    }
-
-  }
-}
-
-
-
-[class^="col_sm-"], [class*=" col_sm-"]{
+@mixin column{
   float: left;
   min-height: 1px;
   padding-left: topx($gridGutter);
@@ -46,38 +13,7 @@
   position: relative;
 }
 
-@for $i from 1 through $numCols{
-  .col_sm-#{$i}{
-    width: percentage( $i / $numCols);
-  }
-}
-/*@for $i from 1 through $numCols{
-  .col-#{$i}{
-    //width: 100%;
-    float: none;
-  }
-
-
-}
-
-@for $i from 1 through 4{
-  .col4-#{$i}{
-    //width: 100%;
-    float: none;
-  }
-}
-
-@for $i from 1 through 5{
-  .col5-#{$i}{
-    //width: 100%;
-    float: none;
-  }
-}*/
-
-[class^="small-grid-"], [class*=" small-grid-"],
-[class^="medium-grid-"], [class*=" medium-grid-"],
-[class^="large-grid-"], [class*=" large-grid-"],
-[class^="xlarge-grid-"], [class*=" xlarge-grid-"]{
+@mixin grid{
   @include clearfix;
   width: 100%;
   &>li,&>div{
@@ -87,12 +23,60 @@
     padding-left: topx($gridGutter);
     margin-bottom: topx(2 * $gridGutter);
   }
-
 }
+
+.wrapper{
+  width: 100%;
+  @include clearfix;
+  margin: topx($fontSize * 3) 0;
+}
+.container{
+  @include row;
+  margin: 0 auto;
+  @include clearfix;
+}
+
+.row, .spaced-row{
+  @include row;
+  [class^="col-md-"], [class*=" col-md-"],
+  [class^="col4-md-"], [class*=" col4-md-"]{
+    padding-left: topx($gridGutter);
+    padding-right: topx($gridGutter);
+  }
+  .row, .spaced-row{
+    [class^="col-md-"], [class*=" col-md-"],
+    [class^="col4-md-"], [class*=" col4-md-"]{
+      padding-left: topx($gridGutter);
+      padding-right: topx($gridGutter);
+    }
+  }
+}
+
+[class^="col-sm-"], [class*=" col-sm-"]{
+  @include column;
+}
+
+@for $i from 1 through $numCols{
+  .col-sm-#{$i}{
+    width: percentage( $i / $numCols);
+  }
+}
+
+.hide-only-sm, .show-only-md{
+  display: none;
+}
+
+.show-only-sm, .hide-only-md{
+  display: inherit;
+}
+
+[class^="grid-sm-"], [class*=" grid-sm-"]{
+  @include grid;
+}
+
 @for $i from 1 through 6{
 
-  .small-grid-#{$i}{
-
+  .grid-sm-#{$i}{
     &>li,&>div{
       width: percentage(1/$i);
       $v: 1 + $i;
@@ -106,56 +90,40 @@
   }
 }
 
-
 @media only screen and (min-width: 768px){
-  [class^="col-"], [class*=" col-"],[class^="col4-"], [class*=" col4-"], [class^="col5-"], [class*=" col5-"]{
-    float: left;
-    min-height: 1px;
-    padding-left: topx($gridGutter);
-    padding-right: topx($gridGutter);
-    position: relative;
+
+  [class^="col-md-"], [class*=" col-md-"],
+  [class^="col4-md-"], [class*=" col4-md-"]{
+    @include column;
   }
 
-  .row, .spaced-row{
-
-    .row, .spaced-row{
-      [class^="col5-"]:first-child, [class*=" col5-"]:first-child,
-      [class^="col4-"]:first-child, [class*=" col4-"]:first-child,
-      [class^="col-"]:first-child, [class*=" col-"]:first-child
-      {
-        padding-left: 0;
-      }
-      [class^="col5-"]:last-child, [class*=" col5-"]:last-child,
-      [class^="col4-"]:last-child, [class*=" col4-"]:last-child,
-      [class^="col-"]:last-child, [class*=" col-"]:last-child
-      {
-        padding-right: 0;
-      }
-
-    }
-  }
   @for $i from 1 through $numCols{
-    .col-#{$i}{
+    .col-md-#{$i}{
       width: percentage( $i / $numCols);
       float: left;
     }
   }
   @for $i from 1 through 4{
-    .col4-#{$i}{
+    .col4-md-#{$i}{
       width: percentage( $i / 4);
       float: left;
     }
   }
-  @for $i from 1 through 5{
-    .col5-#{$i}{
-      width: percentage( $i / 5);
-      float: left;
-    }
+
+  .hide-only-sm,.show-only-md{
+    display: inherit !important;
   }
+
+  .show-only-sm, .hide-only-md{
+    display: none !important;
+  }
+
+  [class^="grid-md-"], [class*=" grid-md-"]{
+    @include grid;
+  }
+
   @for $i from 1 through 6{
-
-    .medium-grid-#{$i}{
-
+    .grid-md-#{$i}{
       &>li,&>div{
         width: percentage(1/$i);
         $v: 1 + $i;
@@ -180,16 +148,17 @@
 
 }
 
-
-
 @media only screen and (min-width: 1280px){
   .container{
     max-width: 1200px;
   }
+
+  [class^="grid-lg-"], [class*=" grid-lg-"]{
+    @include grid;
+  }
+
   @for $i from 1 through 6{
-
-    .large-grid-#{$i}{
-
+    .grid-lg-#{$i}{
       &>li,&>div{
         width: percentage(1/$i);
         $v: 1 + $i;
@@ -206,10 +175,12 @@
 
 @media only screen and (min-width: 1440px){
 
+  [class^="grid-xlg-"], [class*=" grid-xlg-"]{
+    @include grid;
+  }
+
   @for $i from 1 through 6{
-
-    .xlarge-grid-#{$i}{
-
+    .grid-xlg-#{$i}{
       &>li,&>div{
         width: percentage(1/$i);
         $v: 1 + $i;

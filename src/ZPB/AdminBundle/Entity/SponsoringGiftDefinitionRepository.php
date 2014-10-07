@@ -13,4 +13,8 @@ use Gedmo\Sortable\Entity\Repository\SortableRepository;
  */
 class SponsoringGiftDefinitionRepository extends SortableRepository
 {
+    public function getSortedResult()
+    {
+        return $this->getBySortableGroupsQuery(['positionGroup'=>'sponsoring-gifts'])->getResult();
+    }
 }
