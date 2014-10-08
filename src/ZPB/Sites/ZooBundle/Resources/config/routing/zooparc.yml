@@ -1,0 +1,19 @@
+zpb_sites_zoo_zooparc_histoire:
+    path: /histoire
+    defaults: { _controller: ZPBSitesZooBundle:ZooParc:histoireZoo }
+    methods: ["GET"]
+
+zpb_sites_zoo_zooparc_animaux:
+    path: /les-animaux
+    defaults: { _controller: ZPBSitesZooBundle:ZooParc:animaux }
+    methods: ["GET"]
+
+zpb_sites_zoo_zooparc_mission:
+    path: /la-mission
+    defaults: { _controller: ZPBSitesZooBundle:ZooParc:mission }
+    methods: ["GET"]
+
+zpb_sites_zoo_zooparc_dev_durable:
+    path: /developpement-durable
+    defaults: { _controller: ZPBSitesZooBundle:ZooParc:devDurable }
+    methods: ["GET"]
