@@ -46,3 +46,25 @@
     }
   }
 }
+
+._tabs-small{
+  @include clearfix;
+  text-align: center;
+  ._tab{
+    display: inline-block;
+    vertical-align: bottom;
+    padding: topx($fontSize / 2);
+    cursor: pointer;
+    background-color: $grisBB;
+    //margin-right: -3px;
+    font-size: topx($fontSize);
+    color: $blanc;
+    text-transform: uppercase;
+    font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+
+    &.active{
+
+      background-color: $ocean;
+    }
+  }
+}
