@@ -11,6 +11,7 @@ module.exports = function(grunt){
                     'web/js/admin/newPressRelease.min.js': ['web/js/admin/newPressRelease.js'],
                     'web/js/admin/updatePressRelease.min.js': ['web/js/admin/updatePressRelease.js'],
                     'web/js/admin/animal-image-app.min.js': ['web/js/admin/animal-image-app.js'],
+                    'web/js/tabs.min.js': ['web/js/tabs.js'],
                     'web/js/app.min.js' : ['web/js/app.js']
                 }
             }
@@ -25,6 +26,7 @@ module.exports = function(grunt){
                     'web/js/admin/newPressRelease.js',
                     'web/js/admin/updatePressRelease.js',
                     'web/js/admin/animal-image-app.js',
+                    'web/js/tabs.js',
                     'web/js/app.js'
                 ],
                 tasks: ['uglify:scripts']

@@ -31,3 +31,13 @@
     </div>
 
 {% endblock %}
+{% block footScripts %}
+    {{ parent() }}
+    <script src="/js/tabs.min.js"></script>
+    <script>
+        $(function(){
+
+
+        });
+    </script>
+{% endblock %}
