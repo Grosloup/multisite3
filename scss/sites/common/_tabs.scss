@@ -1,0 +1,48 @@
+
+._tabs{
+  @include clearfix;
+  text-align: center;
+  ._tab{
+    display: inline-block;
+    vertical-align: bottom;
+    padding: topx($fontSize);
+    cursor: pointer;
+    background-color: $grisBB;
+    margin-right: -3px;
+    font-size: topx(25);
+    color: $blanc;
+    text-transform: uppercase;
+    font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+
+    &.active{
+      font-size: topx(40);
+      background-color: $ocean;
+    }
+  }
+
+}
+._tabs-content{
+  border-top: 5px solid $ocean;
+  ._tab-panel{
+    display: none;
+
+    &.active{
+      display: block;
+    }
+
+    ._tab-header{
+      margin-bottom: 40px;
+    }
+    ._tab-body{
+      .tab-encart{
+        background-color: $grisDF;
+        padding: topx(20);
+
+        &.tab-encart-blue{
+          background-color: $ocean;
+          color: $blanc;
+        }
+      }
+    }
+  }
+}

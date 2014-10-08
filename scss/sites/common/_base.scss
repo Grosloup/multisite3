@@ -53,6 +53,10 @@ small, .small{
 }
 
 ul{
+  &.disc-list{
+    list-style-type: disc;
+    list-style-position: inside;
+  }
   &.inline{
     li{
       display: inline;
