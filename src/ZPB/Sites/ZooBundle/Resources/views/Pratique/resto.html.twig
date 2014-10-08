@@ -16,62 +16,65 @@
             </div>
         </div>
     </div>
-    <div class="wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-md-6">
-                    <div class="testbox testbox-5"></div>
-                </div>
-            </div>
 
+    <div class="container">
+        <div class="spaced-row">
+            <div class="col-md-1"></div>
+            <div class="col-md-4 text-center bold">
+                <p>Sur place ou à emporter, en restauration rapide ou dans notre self-service, choisissez la restauration qui vous convient&nbsp;! Tous les points de restauration ne sont pas ouverts chaque jour ; pensez à bien vous renseigner à l'entrée du parc.</p>
+            </div>
+            <div class="col-md-1"></div>
         </div>
     </div>
-    <div class="wrapper">
+    <div class="container">
+        <div class="spaced-row">
+            <div class="col-sm-6 col-md-6">
+                {% if restos|length > 0 %}
+                <ul class="grid-sm-1 grid-md-3">
+                    {% for resto in restos %}
+                        <li class="resto-card {% if resto.isOpen == true %}is-open{% else %}is-close{% endif %}">
+                            <div class="wrapper-resto-card">
+                                <div class="inner-resto-card">
+                                    <img src="{{ resto.visuel.webPath }}" alt="" width="100%"/>
+                                    <h4 class="text-center">{{ resto.name }}</h4>
+                                    <div class="text-center">{{ resto.description|raw }}</div>
+
+                                </div>
+                                <div class="resto-state-info text-center bold">
+                                    <p>Aujourd'hui ce restaurant est</p>
+                                    <p class="resto-state">
+                                        {% if resto.isOpen == true %}ouvert{% else %}fermé{% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                    <h1>Oups! Il n'y a aucun restaurant à Beauval !</h1>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+
         <div class="container">
             <div class="spaced-row">
-                <div class="col-sm-6 col-md-6">
-                    {% if restos|length > 0 %}
-                        {% for resto in restos %}
-                            <div class="spaced-row">
-                                <div class="col-sm-2 col-md-2"></div>
-                                <div class="col-sm-4 col-md-4">
-                                    <h4>{{ resto.name }}</h4>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6 col-md-2">
-                                    <img src="{{ resto.visuel.webPath }}" alt="" width="100%"/>
-                                </div>
-                                <div class="col-sm-4 col-md-2">
-
-                                    <div>{{ resto.description|raw }}</div>
-
-                                </div>
-                                <div class="col-sm-2 col-md-2">
-                                    {% if resto.isOpen == true %}
-                                        <h5>Ouvert</h5>
-                                    {% else %}
-                                        <h5>Fermé</h5>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        {% endfor %}
-                    {% else %}
-                        <h1>Oups! Il n'y a aucun restaurant à Beauval !</h1>
-                    {% endif %}
+                <div class="col-md-3">
+                    <div class="panel panel-grey">
+                        <h4 class="panel-title">Les châlets</h4>
+                        <p>Sur la terrasse de l'Eucalyptus et face aux enclos extérieurs des okapis, de petits chalets de bois vous proposent en chemin sandwichs, boissons fraîches, glaces, confiseries... Pour vous restaurer tout en poursuivant votre visite !</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="testbox testbox-5"></div>
+                <div class="col-md-3">
+                    <div class="panel panel-grey">
+                        <h4 class="panel-title">Pique-nique</h4>
+                        <p>Une aire de pique-nique abritée de 300 places, des tables et des bancs sont à votre disposition sur le parking du zoo. Vous pouvez entrer le matin et ressortir pique-niquer sans problème, à condition de vous faire délivrer un tampon de sortie à la boutique.</p>
+                    </div>
                 </div>
             </div>
 
         </div>
-    </div>
+
 {% endblock %}

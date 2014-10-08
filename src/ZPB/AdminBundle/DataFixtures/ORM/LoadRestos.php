@@ -47,15 +47,14 @@ class LoadRestos  extends AbstractFixture implements OrderedFixtureInterface, Co
     {
         $names = [
             "Self-service Le Tropical",
-            "Restaurant Le Kilimandjaro",
+            "Fast-food Le Kilimandjaro",
             "Crêperie La Roseraie",
             "L'Eucalyptus",
             "La Pagode",
             "La Savane",
             "Les Orangs-outans",
             "Les Lamantins",
-            "Les Chats Pêcheurs",
-            "Les Chalets"
+            "Les Chats Pêcheurs"
         ];
         $descs = [
             "Au carrefour de nombreuses allées du ZooParc, Le Tropical propose <strong>entrées</strong>,<strong> plats chauds, desserts, glaces et boissons</strong>. Vous pouvez profiter d'une vue panoramique sur la piscine des otaries (premier étage) ou bien préférer les terrasses extérieures qui donnent sur le cours d’eau et  ses îles investies par macaques et atèles. Un lieu d'accueil idéal pour les groupes.",
@@ -67,9 +66,10 @@ class LoadRestos  extends AbstractFixture implements OrderedFixtureInterface, Co
             "Devant l’île des orangs-outans, une terrasse ombragée vous permet de consommer en toute tranquillité <strong>plats chauds, salades, pizzas, glaces et boissons.</strong>",
             "À la sortie de la serre tropicale des lamantins, découvrez un petit coin à part où vous pouvez acheter<strong> glaces, boissons et granités</strong>. Quelques tables, avec vue sur l’île des gorilles, vous offrent un repos agréable.",
             "Un point de restauration rapide près de la nouvelle plaine asiatique. Déjeunez  rapidement et profitez pleinement de votre journée en vous promenant. <strong>Hot-dogs,  gaufres, glaces et boissons</strong> réjouiront petits et grands.",
-            "Sur la terrasse de l'Eucalyptus et face aux enclos extérieurs des okapis, de petits chalets de bois vous proposent en chemin sandwichs, boissons fraîches, glaces, confiseries... Pour vous restaurer tout en poursuivant votre visite !"
+
         ];
-        for($i=0;$i<10;$i++){
+        $c = count($names);
+        for($i=0;$i<$c;$i++){
             $resto = new Restaurant();
             $k = $i+1;
             $resto->setName($names[$i])->setDescription($descs[$i])->setMapNum($k)->setVisuel($this->getReference('zpb-image-' . $k));
