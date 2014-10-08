@@ -16,21 +16,20 @@
 
     <div class="row">
         <div class="column-12">
-            <div class="tile">
-                <ul>
-                    {% for inst in institutions %}
-                    <li><h4>{{ inst.name }}</h4>
+            <ul>
+                {% for inst in institutions %}
+                <li>
+                    <div class="tile">
+                        <h4>{{ inst.name }}</h4>
                         {% if inst.photoCategories|length > 0 %}
-
                             {% for cat in inst.photoCategories %}
-                                <a class="btn btn-primary" href="">{{ cat.name }}</a>
+                                <a class="btn btn-primary" href="{{ path("zpb_admin_photos_hd_list", {id: cat.id}) }}">{{ cat.name }}</a>
                             {% endfor %}
-
                         {% endif %}
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 {% endblock %}

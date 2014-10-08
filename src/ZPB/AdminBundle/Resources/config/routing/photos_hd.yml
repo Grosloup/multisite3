@@ -1,5 +1,25 @@
 zpb_admin_photos_hd_choose_list:
     path: /choix_liste
-    defaults: { _controller: ZPBAdminBundle:General/PhotoHd:list }
+    defaults: { _controller: ZPBAdminBundle:General/PhotoHd:chooseList }
     methods: ["GET"]
 
+zpb_admin_photos_hd_list:
+    path: /liste/categorie/{id}
+    defaults: { _controller: ZPBAdminBundle:General/PhotoHd:list }
+    methods: ["GET"]
+    requirements:
+        id: \d+
+
+zpb_admin_photos_hd_update:
+    path: /mise-a-jour/{id}
+    defaults: { _controller: ZPBAdminBundle:General/PhotoHd:update }
+    methods: ["GET"]
+    requirements:
+        id: \d+
+
+zpb_admin_photos_hd_delete:
+    path: /supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:General/PhotoHd:delete }
+    methods: ["GET"]
+    requirements:
+        id: \d+

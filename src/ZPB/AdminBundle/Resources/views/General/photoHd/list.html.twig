@@ -1,0 +1,63 @@
+{% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
+
+{% block title %}Photos dans {{ category.name }} | Photothèque HD{% endblock %}
+{% set active = "list_photos_hd" %}
+
+{% block content %}
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <div class="tile-header">
+                    Photos HD pour {{ category.name }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Position</th>
+                            <th>Vignette</th>
+                            <th>Largeur x Hauteur</th>
+                            <th>Institution</th>
+                            <th>Catégorie</th>
+                            <th>Modifier</th>
+                            <th>Supprimer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for photo in photos %}
+                            <tr>
+                                <td class="handle"><i class="fa fa-arrows-v"></i>
+                                <td>{{ photo.position }}</td>
+                                <td></td>
+                                <td>{{ photo.width }} x {{ photo.height }}</td>
+                                <td>{{ photo.category.institution }}</td>
+                                <td>{{ photo.category.name }}</td>
+                                <td><a class="btn btn-neutral" href="{{ path("zpb_admin_photos_hd_update", {id: photo.id}) }}"><i class="fa fa-edit"></i></a></td>
+                                <td><a class="btn btn-neutral delete-alert" href="{{ path("zpb_admin_photos_hd_delete", {id: photo.id, _token: csrf_token('delete_photo_hd')}) }}" data-name="{{ photo.filename }}"><i class="fa fa-trash-o"></i></a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block headStyles %}
+    <style>
+        .droprow{
+            height: 75px;
+            background-color: #eee;
+            border: 1px solid #bbb;
+        }
+        td.handle{
+            cursor: move;
+        }
+    </style>
+{% endblock %}

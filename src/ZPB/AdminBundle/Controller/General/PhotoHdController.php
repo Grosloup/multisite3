@@ -26,11 +26,22 @@ use ZPB\AdminBundle\Controller\BaseController;
 
 class PhotoHdController extends BaseController
 {
-    public function listAction()
+    public function chooseListAction()
     {
         $institutions = $this->getRepo('ZPBAdminBundle:Institution')->findAll();
 
         return $this->render('ZPBAdminBundle:General/PhotoHd:choose_list.html.twig', ['institutions'=>$institutions]);
+    }
+
+    public function listAction($id)
+    {
+        $category = $this->getRepo('ZPBAdminBundle:PhotoCategory')->find($id);
+        if(!$category){
+            throw $this->createNotFoundException();
+        }
+
+        $photos = $this->getRepo('ZPBAdminBundle:PhotoHd')->findBy(['category'=>$category], ['position'=>'ASC']);
+        return $this->render('ZPBAdminBundle:General/PhotoHd:list.html.twig', ['photos'=>$photos, 'category'=>$category]);
     }
 
     public function createAction(Request $request)
@@ -45,6 +56,6 @@ class PhotoHdController extends BaseController
 
     public function deleteAction($id, Request $request)
     {
-
+        //delete_photo_hd
     }
 } 
