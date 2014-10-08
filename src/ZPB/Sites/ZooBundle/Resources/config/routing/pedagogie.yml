@@ -1,0 +1,19 @@
+zpb_sites_zoo_pedagogie_carnet:
+    path: /carnets-de-jeux
+    defaults: { _controller: ZPBSitesZooBundle:Pedagogie:carnet }
+    methods: ["GET"]
+
+zpb_sites_zoo_pedagogie_soigneur:
+    path: /soigneur-un-jour
+    defaults: { _controller: ZPBSitesZooBundle:Pedagogie:soigneur }
+    methods: ["GET"]
+
+zpb_sites_zoo_pedagogie_soigneur_jr:
+    path: /soigneur-un-jour-junior
+    defaults: { _controller: ZPBSitesZooBundle:Pedagogie:soigneurJr }
+    methods: ["GET"]
+
+zpb_sites_zoo_pedagogie_parcours:
+    path: /parcours-pedagogiques
+    defaults: { _controller: ZPBSitesZooBundle:Pedagogie:parcours }
+    methods: ["GET"]
