@@ -12,7 +12,66 @@
                 <div class="tile-header">
                     Nouvelle photo HD
                 </div>
+                {{ form_start(form, {attr:{class: "form", novalidate:true}}) }}
+                {{ form_errors(form) }}
+                <div class="form-row {% if form.file.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.file) }}
+                    <div class="form-field">
+                        {{ form_widget(form.file)}}
+                        {% if form.file.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.file)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-row {% if form.filename.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.filename) }}
+                    <div class="form-field">
+                        {{ form_widget(form.filename)}}
+                        {% if form.filename.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.filename)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-row">
+                    {{ form_label(form.category) }}
+                    <div class="form-field">
+                        {{ form_widget(form.category)}}
+                    </div>
+                </div>
 
+                <div class="form-row">
+                    {{ form_label(form.copyright) }}
+                    <div class="form-field">
+                        {{ form_widget(form.copyright)}}
+                    </div>
+                </div>
+                <div class="form-row">
+                    {{ form_label(form.title) }}
+                    <div class="form-field">
+                        {{ form_widget(form.title)}}
+                    </div>
+                </div>
+                <div class="form-row">
+                    {{ form_label(form.legend) }}
+                    <div class="form-field">
+                        {{ form_widget(form.legend)}}
+                    </div>
+                </div>
+                <div class="form-row">
+                    {{ form_label(form.description) }}
+                    <div class="form-field">
+                        {{ form_widget(form.description)}}
+                    </div>
+                </div>
+                <div class="form-row">
+                    {{ form_widget(form.save, {attr: {class: "btn-flat btn-primary"}})}}
+                </div>
+
+                {{ form_end(form) }}
 
 
 
