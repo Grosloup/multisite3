@@ -1,11 +1,11 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Nicolas Canfrere
- * Date: 13/09/2014
- * Time: 16:54
+ * User: Nicolas Canfrère
+ * Date: 09/10/2014
+ * Time: 12:40
  */
- /*
+  /*
            ____________________
   __      /     ______         \
  {  \ ___/___ /       }         \
@@ -18,19 +18,17 @@
       (__<  |mm_|mm_|  |mm_|mm_|
 */
 
-namespace ZPB\Sites\ZooBundle\Controller\Phototheque;
+namespace ZPB\Sites\ZooBundle\Controller\PhotothequeHd;
 
 
 use ZPB\AdminBundle\Controller\BaseController;
 
-class PhotoController extends BaseController
+class PhotoHdController extends BaseController
 {
     public function indexAction()
     {
-        $institutions = $this->getRepo('ZPBAdminBundle:Institution')->findAll();
-        return $this->render('ZPBSitesZooBundle:Phototheque/Photo:index.html.twig', ['institutions'=>$institutions]);
+        return $this->render('ZPBSitesZooBundle:PhotothequeHd/PhotoHd:index.html.twig', []);
     }
-
 
     public function showCategoryAction($institutslug, $catslug)
     {
@@ -42,7 +40,7 @@ class PhotoController extends BaseController
         if(!$institution){
             throw $this->createNotFoundException();
         }
-        $photos = $this->getRepo('ZPBAdminBundle:Photo')->findBy(['category'=>$category], ['position'=>'ASC']);
-        return $this->render('ZPBSitesZooBundle:Phototheque/Photo:show_category.html.twig', ['photos'=>$photos, 'category'=>$category, 'institution'=>$institution]);
+        $photos = $this->getRepo('ZPBAdminBundle:PhotoHd')->findBy(['category'=>$category], ['position'=>'ASC']);
+        return $this->render('ZPBSitesZooBundle:PhotothequeHd/PhotoHd:show_category.html.twig', ['photos'=>$photos, 'category'=>$category, 'institution'=>$institution]);
     }
 }

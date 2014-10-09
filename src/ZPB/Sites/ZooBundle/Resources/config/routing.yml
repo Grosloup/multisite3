@@ -50,6 +50,10 @@ zpb_sites_zoo_phototheque_routes:
     prefix: /galerie-photo
     resource: "@ZPBSitesZooBundle/Resources/config/routing/phototheque.yml"
 
+zpb_sites_zoo_phototheque_hd_routes:
+    prefix: /presse/galerie-photo
+    resource: "@ZPBSitesZooBundle/Resources/config/routing/phototheque_hd.yml"
+
 zpb_sites_zoo_pratique_routes:
     prefix: /pratique
     resource: "@ZPBSitesZooBundle/Resources/config/routing/pratique.yml"
