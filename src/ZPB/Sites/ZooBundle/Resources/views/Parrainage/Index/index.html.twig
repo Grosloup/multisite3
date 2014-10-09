@@ -34,7 +34,7 @@
             <div class="col-md-6 text-center">Filtrer par :</div>
             <div class="col-md-6 text-center" id="filters">
                 <div class="filters-bar">
-                    <button class="btn btn-filtre is-filter"  data-filter="*">tous</button>
+                    <button class="btn btn-filtre is-filter"  data-filter="*">Tous</button>
                     {% for cat in categories %}
                         <button class="btn btn-filtre" id="{{ cat.slug }}" data-filter=".{{ cat.slug }}">{{ cat.name }}</button>
                     {% endfor %}

@@ -1,8 +1,39 @@
 .posts{
+  .post-col{
+    float: left;
+    width: 50%;
+    padding: 0 10px;
+  }
   .post{
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid lighten($grisFonce, 70);
+
+
+    &:hover{
+      border: 1px solid $ocean;
+      .post-date{
+        background-color: $ocean;
+      }
+      .post-title{
+
+        a{
+          color: $ocean;
+        }
+      }
+      .post-excerpt{
+
+
+        .post-more{
+          background-color: $ocean;
+          a{
+
+            color: $blanc;
+          }
+        }
+      }
+    }
+    padding: 20px;
+    margin: 30px 0 10px;
+    border: 1px solid $grisBB;
+    position: relative;
     @include clearfix;
     .post-category{
       font-size: topx($fontSize * 0.75);
@@ -15,26 +46,48 @@
       }
     }
     .post-title{
-      font-size: topx($fontSize * 2);
+      font-size: topx($fontSize * 1.25);
+      margin: 0 0 20px 0;
+      a{
+        color: $grisFonce;
+      }
     }
-    .post-details{
+    .post-date{
+      position: absolute;
+      height: 30px;
+      line-height: 30px;
+      width: 105px;
       font-size: topx($fontSize * 0.75);
+      top: -30px;
+      text-align: center;
+      background-color: $grisBB;
+      color: $blanc;
     }
     .post-thumbnail{
       float: left;
-      width: 300px;
+      width: 105px;
       img{
         width: 100%;
       }
     }
     .post-excerpt{
-      margin-left: 20px;
-      margin-right: 100px;
+     margin-left: 125px;
+      /* margin-right: 100px;*/
       &.post-has-thumbnail{
         margin-left: 330px;
       }
       .post-more{
-        padding-top: 8px;
+        margin-top: 20px;
+        display: inline-block;
+        background-color: $grisBB;
+        //border: 1px solid $grisBB;
+        line-height: 25px;
+        height: 25px;
+        padding: 0 5px;
+        font-size: topx($fontSize * 0.75);
+        a{
+          color: $blanc;
+        }
       }
     }
     .post-tags{
