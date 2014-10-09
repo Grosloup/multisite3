@@ -23,6 +23,7 @@ namespace ZPB\AdminBundle\Controller\General;
 
 use Symfony\Component\HttpFoundation\Request;
 use ZPB\AdminBundle\Controller\BaseController;
+use ZPB\AdminBundle\Form\Type\PhotoHdType;
 
 class PhotoHdController extends BaseController
 {
@@ -44,9 +45,31 @@ class PhotoHdController extends BaseController
         return $this->render('ZPBAdminBundle:General/PhotoHd:list.html.twig', ['photos'=>$photos, 'category'=>$category]);
     }
 
-    public function createAction(Request $request)
+    public function chooseInstitutionAction()
     {
+        $institutions = $this->getRepo('ZPBAdminBundle:Institution')->findAll();
+        return $this->render('ZPBAdminBundle:General/PhotoHd:choose_institution.html.twig', ['institutions'=>$institutions]);
+    }
 
+    public function createAction($institution_slug, Request $request)
+    {
+        $institution = $this->getRepo('ZPBAdminBundle:Institution')->findOneBySlug($institution_slug);
+        if(!$institution){
+            throw $this->createNotFoundException();
+        }
+        $photo = $this->get('zpb.photo_hd_factory')->create($institution->getId());
+        $form = $this->createForm(new PhotoHdType(), $photo, ['em'=>$this->getManager(), 'slug'=>$institution_slug]);
+
+        $form->handleRequest($request);
+        if($form->isValid()){
+            $this->get('zpb.photo_hd_factory')->createDirs($this->get('filesystem'));
+            $photo->upload();
+            $this->getManager()->persist($photo);
+            $this->getManager()->flush();
+            $this->get('zpb.photo_hd_resizer')->makeThumbnails($photo);
+            return $this->redirect($this->generateUrl('zpb_admin_photos_hd_choose_list'));
+        }
+        return $this->render('ZPBAdminBundle:General/PhotoHd:create.html.twig', ['form'=>$form->createView()]);
     }
 
     public function updateAction($id, Request $request)

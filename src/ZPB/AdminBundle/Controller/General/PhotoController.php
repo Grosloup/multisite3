@@ -88,30 +88,29 @@ class PhotoController extends BaseController
         if(!$category){
             throw $this->createNotFoundException();
         }
-        /*$photos = $this->getRepo('ZPBAdminBundle:Photo')->findBy(['category'=>$category], ['position'=>'ASC']);
-
-        return $this->render('ZPBAdminBundle:General/photo:list_by_category.html.twig', ['photo_factory'=>$this->get('zpb.photo_factory'),'photos'=>$photos, 'category'=>$category]);*/
         return $this->forward('ZPBAdminBundle:General/Photo:getListByCategory', ['categoryId'=>$category->getId()]);
     }
 
     public function chooseInstitutionAction()
     {
         $institutions = $this->getRepo('ZPBAdminBundle:Institution')->findAll();
-
         return $this->render('ZPBAdminBundle:General/Photo:choose_institution.html.twig', ['institutions'=>$institutions]);
     }
 
     public function createAction($institution_slug, Request $request)
     {
-        $photo = $this->get('zpb.photo_factory')->create();
+        $institution = $this->getRepo('ZPBAdminBundle:Institution')->findOneBySlug($institution_slug);
+        if(!$institution){
+            throw $this->createNotFoundException();
+        }
+        $photo = $this->get('zpb.photo_factory')->create($institution->getId());
         $form = $this->createForm(new PhotoType(), $photo, ['em'=>$this->getManager(), 'slug'=>$institution_slug]);
         $form->handleRequest($request);
         if($form->isValid()){
+            $this->get('zpb.photo_factory')->createDirs($this->get('filesystem'));
             $photo->upload();
-
             $this->getManager()->persist($photo);
             $this->getManager()->flush();
-
             $this->get('zpb.photo_resizer')->makeThumbnails($photo);
             return $this->redirect($this->generateUrl('zpb_admin_photos_list'));
         }

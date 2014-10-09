@@ -10,6 +10,26 @@ zpb_admin_photos_hd_list:
     requirements:
         id: \d+
 
+zpb_admin_photos_hd_choose_institution:
+    path: /choix-institution
+    defaults: { _controller: ZPBAdminBundle:General/PhotoHd:chooseInstitution }
+    methods: ["GET"]
+
+zpb_admin_photos_hd_create:
+    path: /nouvelle/{institution_slug}
+    defaults: { _controller: ZPBAdminBundle:General/PhotoHd:create }
+    methods: ["GET", "POST"]
+    requirements:
+        institution_slug: "^[a-zA-Z0-9_-]+$"
+
+
+
+
+
+
+
+
+
 zpb_admin_photos_hd_update:
     path: /mise-a-jour/{id}
     defaults: { _controller: ZPBAdminBundle:General/PhotoHd:update }

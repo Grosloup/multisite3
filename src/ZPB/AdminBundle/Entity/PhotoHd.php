@@ -70,21 +70,21 @@ class PhotoHd implements ResizeableInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="rootDir", type="string", length=255, nullable=false)
+     * @ORM\Column(name="root_dir", type="string", length=255, nullable=false)
      */
     private $rootDir;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="webDir", type="string", length=255, nullable=false)
+     * @ORM\Column(name="web_dir", type="string", length=255, nullable=false)
      */
     private $webDir;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="thumbDir", type="string", length=255, nullable=false)
+     * @ORM\Column(name="thumb_dir", type="string", length=255, nullable=false)
      */
     private $thumbDir;
 
@@ -153,9 +153,31 @@ class PhotoHd implements ResizeableInterface
      */
     private $institutionId;
 
+    /**
+     * @ORM\Column(name="sizes_keys", type="array")
+     */
+    private $sizes;
+
     private $absolutePath;
 
-    private $thumbPath;
+    private $thumbPaths = [];
+
+    /**
+     * @return mixed
+     */
+    public function getSizes()
+    {
+        return $this->sizes;
+    }
+
+    /**
+     * @param mixed $sizes
+     */
+    public function setSizes($sizes)
+    {
+        $this->sizes = $sizes;
+    }
+
 
 
     /**
@@ -202,7 +224,7 @@ class PhotoHd implements ResizeableInterface
     public function storeAbsolutePath()
     {
         $this->absolutePath = $this->getAbsolutePath();
-        $this->thumbPath = $this->getAbsThumbPath();
+        $this->thumbPaths = $this->getAbsThumbPaths();
     }
 
     /**
@@ -213,9 +235,12 @@ class PhotoHd implements ResizeableInterface
         if (file_exists($this->absolutePath)) {
             unlink($this->absolutePath);
         }
-        if(file_exists($this->thumbPath)){
-            unlink($this->thumbPath);
+        foreach($this->thumbPaths as $path){
+            if(file_exists($path)){
+                unlink($path);
+            }
         }
+
     }
 
     public function getAbsolutePath()
@@ -223,14 +248,23 @@ class PhotoHd implements ResizeableInterface
         return $this->rootDir . $this->webDir . $this->filename . '.' .$this->extension;
     }
 
-    public function getAbsThumbPath()
+    public function getAbsThumbPaths()
     {
-        return $this->rootDir . $this->thumbDir . $this->filename . '.' .$this->extension;
+        $paths = [];
+        foreach($this->sizes as $size){
+            $paths[] = $this->rootDir . $this->thumbDir . $size . '_' . $this->filename . '.' .$this->extension;
+        }
+        return $paths;
     }
 
     public function getWebPath()
     {
         return '/' . $this->webDir . $this->filename . '.' .$this->extension;
+    }
+
+    public function getWebThumbPath($key)
+    {
+        return '/' . $this->thumbDir . $key . '_' . $this->filename . '.' .$this->extension;
     }
 
     /**
