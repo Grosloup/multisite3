@@ -23,6 +23,10 @@ zpb_sites_zoo_cgv:
     defaults: { _controller: ZPBSitesZooBundle:CGV:index }
     methods: ["GET"]
 
+zpb_sites_zoo_legales:
+    path: /mentions-legales
+    defaults: { _controller: ZPBSitesZooBundle:Legales:index }
+    methods: ["GET"]
 
 zpb_sites_zoo_download_image:
     path: /telecharger/image/{filename}
