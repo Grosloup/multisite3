@@ -34,6 +34,7 @@ class PhotoHdType extends AbstractType
         $categoryTransformer = new PhotoCategoryTransformer($em);
         $slug = $options['slug'];
         $builder
+            ->setAction($options['action'])
             ->add('file', 'file', ['label'=>'Fichier photo'])
             ->add('filename',null, ['label'=>'Nom du fichier'])
             ->add('title', 'textarea', ['label'=>'Texte de l\'attribut title'])
@@ -68,7 +69,7 @@ class PhotoHdType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(['data_class'=>'ZPB\AdminBundle\Entity\PhotoHd']);
-        $resolver->setRequired(['em', 'slug']);
+        $resolver->setRequired(['em', 'slug', 'action']);
         $resolver->setAllowedTypes(['em'=>'\Doctrine\Common\Persistence\ObjectManager']);
     }
     

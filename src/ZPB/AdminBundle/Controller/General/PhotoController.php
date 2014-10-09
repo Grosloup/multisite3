@@ -104,7 +104,7 @@ class PhotoController extends BaseController
             throw $this->createNotFoundException();
         }
         $photo = $this->get('zpb.photo_factory')->create($institution->getId());
-        $form = $this->createForm(new PhotoType(), $photo, ['em'=>$this->getManager(), 'slug'=>$institution_slug]);
+        $form = $this->createForm(new PhotoType(), $photo, ['em'=>$this->getManager(), 'slug'=>$institution_slug, 'action'=>$this->generateUrl('zpb_admin_photos_hd_create', ['institution_slug'=>$institution_slug])]);
         $form->handleRequest($request);
         if($form->isValid()){
             $this->get('zpb.photo_factory')->createDirs($this->get('filesystem'));
