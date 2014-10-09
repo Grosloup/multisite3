@@ -4,43 +4,59 @@
 
 
 {% block content %}
-<div class="columns large-12">
+<div class="container">
     <div class="row">
-        <div class="columns large-12">
-            <h1>Identifiez-vous</h1>
+        <div class="col-md-6">
+            <div class="page-header">
+                <h1>Identifiez-vous</h1>
+            </div>
         </div>
         <hr/>
     </div>
 
-    <div class="row">
-        <div class="columns large-8 large-centered">
-            <form action="{{ path("zpb_sites_zoo_parrainages_login_check") }}" method="post">
-                <div class="row">
-                    <div class="columns large-12">
-                        <label for="username">Nom d'utilisateur (pseudo) ou adresse email</label>
-                        <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control"/>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="columns large-12">
-                        <label for="password">Mot de passe</label>
-                        <input type="password" id="password" name="_password" class="form-control"/>
-                    </div>
-                </div>
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" >
-                <input type="hidden" name="_target_path" value="/parrainages/mon_compte" />
 
-                <div class="row">
-                    <div class="column large-12">
-                        <p><a href="{{ path("zpb_sites_zoo_parrainages_lost_password") }}">j'ai perdu mes identifiants !</a></p>
+
+    <div class="container">
+        <div class="spaced-row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <p class="text-center bold">Pour vous connecter à votre compte parrainage</p>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <form action="{{ path("zpb_sites_zoo_parrainages_login_check") }}" method="post" class="form">
+                    <div class="form-row">
+                        <label for="username">Nom d'utilisateur (pseudo) ou adresse email</label>
+                        <div class="form-field">
+                            <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control"/>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="column large-12">
-                        <button type="submit" class="button">login</button>
+                    <div class="form-row">
+                        <label for="password">Mot de passe</label>
+                        <div class="form-field">
+                            <input type="password" id="password" name="_password" class="form-control"/>
+                        </div>
                     </div>
-                </div>
-            </form>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" >
+                    <input type="hidden" name="_target_path" value="/parrainages/mon_compte" />
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <p><a href="{{ path("zpb_sites_zoo_parrainages_lost_password") }}">j'ai perdu mes identifiants !</a></p>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <button type="submit" class="btn btn-primary">Connexion</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
         </div>
     </div>
 
