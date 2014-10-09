@@ -91,20 +91,48 @@
       }
     }
     .post-tags{
-      padding: 8px 0;
+      padding: 8px 0 0 0 ;
       ul{
         li{
           display: inline-block;
           font-size: topx($fontSize * 0.75);
-          color: lighten($grisFonce, 50);
+          color: $grisBB;
           a{
-            color: lighten($grisFonce, 50);
+            color: $grisBB;
             &:hover{
-              color: $bleu;
+              color: $ocean;
             }
           }
         }
       }
     }
+  }
+}
+
+.single-post{
+  .post-thumbnail{
+    margin-bottom: 20px;
+    img{
+      width: 100%;
+    }
+  }
+  .post-category{
+    font-size: topx($fontSize * 0.75);
+    color: $grisBB;
+    a{
+      color: lighten($grisFonce, 50);
+      &:hover{
+        color: $bleu;
+      }
+    }
+  }
+  .post-title{
+    margin: 0;
+  }
+  .post-date{
+    color: $grisBB;
+  }
+  .post-body{
+    margin-top: 20px;
   }
 }
