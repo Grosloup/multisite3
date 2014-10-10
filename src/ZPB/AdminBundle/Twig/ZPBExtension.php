@@ -57,7 +57,7 @@ class ZPBExtension extends \Twig_Extension{
         if(!$img){
             return null;
         }
-        return '/telecharger/image/' . $img->getFilename();
+        return '/telecharger/image/' . $img->getFilename();  //TODO set extension
     }
 
     public function getName()
