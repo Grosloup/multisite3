@@ -30,7 +30,26 @@ use ZPB\AdminBundle\Form\Type\PhotoUpdateType;
 
 class PhotoController extends BaseController
 {
-    public function listAction()
+
+    public function chooseListAction()
+    {
+        $institutions = $this->getRepo('ZPBAdminBundle:Institution')->findAll();
+
+        return $this->render('ZPBAdminBundle:General/Photo:choose_list.html.twig', ['institutions'=>$institutions]);
+    }
+
+    public function listAction($id)
+    {
+        $category = $this->getRepo('ZPBAdminBundle:PhotoCategory')->find($id);
+        if(!$category){
+            throw $this->createNotFoundException();
+        }
+
+        $photos = $this->getRepo('ZPBAdminBundle:Photo')->findBy(['category'=>$category], ['position'=>'ASC']);
+        return $this->render('ZPBAdminBundle:General/Photo:list.html.twig', ['photos'=>$photos, 'category'=>$category]);
+    }
+
+    /*public function listAction()
     {
         $photos = $this->getRepo('ZPBAdminBundle:Photo')->findAll();
         $filterInstitutionForm = $this->createForm(new InstitutionChoiceType(), null, [
@@ -42,7 +61,7 @@ class PhotoController extends BaseController
                 'photo_factory'=>$this->get('zpb.photo_factory'),
                 'institutionFilter'=>$filterInstitutionForm->createView()
             ]);
-    }
+    }*/
 
     public function listByInstitutionAction(Request $request)
     {

@@ -1,0 +1,35 @@
+{% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
+
+{% block title %}Photothèque{% endblock %}
+{% set active = "list_photos" %}
+
+{% block content %}
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <div class="tile-header">
+                    Choisir une liste de photo
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column-12">
+            <ul>
+                {% for inst in institutions %}
+                    <li>
+                        <div class="tile">
+                            <h4>{{ inst.name }}</h4>
+                            {% if inst.photoCategories|length > 0 %}
+                                {% for cat in inst.photoCategories %}
+                                    <a class="btn btn-primary" href="{{ path("zpb_admin_photos_list", {id: cat.id}) }}">{{ cat.name }}</a>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
