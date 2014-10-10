@@ -43,19 +43,21 @@
 
 .row, .spaced-row{
   @include row;
+  [class^="col-sm-"], [class*=" col-sm-"],
   [class^="col-md-"], [class*=" col-md-"],
   [class^="col4-md-"], [class*=" col4-md-"]{
     padding-left: topx($gridGutter);
     padding-right: topx($gridGutter);
   }
   .row, .spaced-row{
-    [class^="col-sm-"]:first-child, [class*=" col-sm-"]:first-child{
+    [class^="col-xs-"]:first-child, [class*=" col-xs-"]:first-child{
       padding-left: 0;
     }
-    [class^="col-sm-"]:last-child, [class*=" col-sm-"]:last-child{
+    [class^="col-xs-"]:last-child, [class*=" col-xs-"]:last-child{
       padding-right: 0;
     }
 
+    [class^="col-sm-"], [class*=" col-sm-"],
     [class^="col-md-"], [class*=" col-md-"],
     [class^="col4-md-"], [class*=" col4-md-"]{
       padding-left: topx($gridGutter);
@@ -64,42 +66,76 @@
   }
 }
 
-[class^="col-sm-"], [class*=" col-sm-"]{
+[class^="col-xs-"], [class*=" col-xs-"]{
   @include column;
 }
 
 @for $i from 1 through $numCols{
-  .col-sm-#{$i}{
+  .col-xs-#{$i}{
     width: percentage( $i / $numCols);
   }
 }
 
-.hide-only-sm, .show-only-md{
+.hide-only-xs, .show-only-sm, .show-only-md{
   display: none;
 }
 
-.show-only-sm, .hide-only-md{
+.show-only-xs, .hide-only-sm, .hide-only-md{
   display: inherit;
 }
 
-[class^="grid-sm-"], [class*=" grid-sm-"]{
-  @include grid;
-}
+@media only screen and (min-width: 640px) {
 
-@for $i from 1 through 6{
+  [class^="col-sm-"], [class*=" col-sm-"]{
+    @include column;
+  }
 
-  .grid-sm-#{$i}{
-    &>li,&>div{
-      width: percentage(1/$i);
-      $v: 1 + $i;
-      &:nth-of-type(1n){
-        clear: none;
+  @for $i from 1 through $numCols{
+    .col-sm-#{$i}{
+      width: percentage( $i / $numCols);
+    }
+  }
+
+
+  [class^="grid-sm-"], [class*=" grid-sm-"]{
+    @include grid;
+  }
+
+  .row, .spaced-row{
+    .row, .spaced-row{
+      [class^="col-sm-"]:first-child, [class*=" col-sm-"]:first-child{
+        padding-left: 0;
       }
-      &:nth-of-type(#{$i}n + 1){
-        clear: both;
+      [class^="col-sm-"]:last-child, [class*=" col-sm-"]:last-child{
+        padding-right: 0;
       }
     }
   }
+
+
+  @for $i from 1 through 6{
+    .grid-sm-#{$i}{
+      &>li,&>div{
+        width: percentage(1/$i);
+        $v: 1 + $i;
+        &:nth-of-type(1n){
+          clear: none;
+        }
+        &:nth-of-type(#{$i}n + 1){
+          clear: both;
+        }
+      }
+    }
+  }
+
+  .hide-only-sm, .show-only-md, .show-only-xs{
+    display: none;
+  }
+
+  .show-only-sm, .hide-only-md, .hide-only-xs{
+    display: inherit;
+  }
+
 }
 
 @media only screen and (min-width: 768px){
@@ -122,11 +158,11 @@
     }
   }
 
-  .hide-only-sm,.show-only-md{
+  .hide-only-xs, .hide-only-sm,.show-only-md{
     display: inherit !important;
   }
 
-  .show-only-sm, .hide-only-md{
+  .show-only-xs, .show-only-sm, .hide-only-md{
     display: none !important;
   }
 
