@@ -59,7 +59,7 @@ class PhotoHdResizer
 
     public function landscape(ResizeableInterface $img, $size, $key)
     {
-        $dest = $this->options['zpb.photo.root_dir'] . $this->options['zpb.photo.thumbs.upload_dir'] . $key . '_' . $img->getFilename() . '.' . $img->getExtension();
+        $dest = $this->options['zpb.photo_hd.root_dir'] . $this->options['zpb.photo_hd.thumbs.upload_dir'] . $key . '_' . $img->getFilename() . '.' . $img->getExtension();
         $filename = $img->getAbsolutePath();
         $image = $this->createImage($filename, $img->getMime());
         $redim = imagecreatetruecolor($size["width"], $size["height"]);
@@ -84,7 +84,7 @@ class PhotoHdResizer
 
     public function portrait(ResizeableInterface $img, $size, $key)
     {
-        $dest = $this->options['zpb.photo.root_dir'] . $this->options['zpb.photo.thumbs.upload_dir'] . $key . '_' . $img->getFilename() . '.' . $img->getExtension();
+        $dest = $this->options['zpb.photo_hd.root_dir'] . $this->options['zpb.photo_hd.thumbs.upload_dir'] . $key . '_' . $img->getFilename() . '.' . $img->getExtension();
         $filename = $img->getAbsolutePath();
         $image = $this->createImage($filename, $img->getMime());
         $redim = imagecreatetruecolor($size["width"], $size["height"]);

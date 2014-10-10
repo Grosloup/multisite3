@@ -108,27 +108,27 @@ class PhotoHd implements ResizeableInterface
      * @var string
      *
      * @ORM\Column(name="title", type="text", nullable=true)
-     * @Assert\Regex("[a-zA-Z0-9éèêëàçâûüîïôö,;.?!&':+*_ -]*", message="Ce champs contient des caractères non autorisés.")
+     * @Assert\Regex("/^[a-zA-Z0-9éèêëàçâûüîïôö,;.?!&':+_ -]*$/", message="Ce champs contient des caractères non autorisés.")
      */
     private $title;
 
     /**
      * @var string
-     * @Assert\Regex("[a-zA-Z0-9éèêëàçâûüîïôö_ -]*", message="Ce champs contient des caractères non autorisés.")
+     * @Assert\Regex("/^[a-zA-Z0-9éèêëàçâûüîïôö&;_ -]*$/", message="Ce champs contient des caractères non autorisés.")
      * @ORM\Column(name="copyright", type="string", length=255, nullable=false)
      */
     private $copyright;
 
     /**
      * @var string
-     * @Assert\Regex("[a-zA-Z0-9éèêëàçâûüîïôö,;.?!&':+*_ -]*", message="Ce champs contient des caractères non autorisés.")
+     * @Assert\Regex("/^[a-zA-Z0-9éèêëàçâûüîïôö,;.?!&':+_ -]*$/", message="Ce champs contient des caractères non autorisés.")
      * @ORM\Column(name="legend", type="text", nullable=true)
      */
     private $legend;
 
     /**
      * @var string
-     * @Assert\Regex("[a-zA-Z0-9éèêëàçâûüîïôö,;.?!&':+*_ -]*", message="Ce champs contient des caractères non autorisés.")
+     * @Assert\Regex("/^[a-zA-Z0-9éèêëàçâûüîïôö,;.?!&':+_ -]*$/", message="Ce champs contient des caractères non autorisés.")
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
