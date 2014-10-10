@@ -20,6 +20,14 @@ zpb_admin_homepage:
     defaults: { _controller: ZPBAdminBundle:Index:index }
     methods: ["GET"]
 
+zpb_admin_download_pdf:
+    path: /telecharger/pdf/{filename}.{_format}
+    defaults: { _controller: ZPBAdminBundle:General/Download:pdf, _format: pdf }
+    methods: ["GET"]
+    requirements:
+        filename: ".+"
+        _format: pdf
+
 zpb_admin_posts_routes:
     prefix: /actualites
     resource: "@ZPBAdminBundle/Resources/config/routing/posts.yml"

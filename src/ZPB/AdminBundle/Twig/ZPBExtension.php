@@ -48,7 +48,7 @@ class ZPBExtension extends \Twig_Extension{
         if(!$pdf){
             return null;
         }
-        return '/telecharger/pdf/' . $pdf->getFilename();
+        return '/telecharger/pdf/' . $pdf->getFilename() . '.pdf';
     }
 
     public function imgUrl($id)

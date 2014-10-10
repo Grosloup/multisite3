@@ -43,11 +43,12 @@ zpb_sites_zoo_download_image_hd:
         filename: ".+"
 
 zpb_sites_zoo_download_pdf:
-    path: /telecharger/pdf/{filename}
-    defaults: { _controller: ZPBSitesZooBundle:Download:downloadPdf }
+    path: /telecharger/pdf/{filename}.{_format}
+    defaults: { _controller: ZPBSitesZooBundle:Download:downloadPdf, _format: pdf }
     methods: ["GET"]
     requirements:
         filename: ".+"
+        _format: pdf
 
 zpb_sites_zoo_parrainages_routes:
     prefix: /parrainages
