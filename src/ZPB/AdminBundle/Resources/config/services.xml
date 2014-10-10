@@ -24,6 +24,7 @@
         <parameter key="zpb.validator.civility_validator.class">ZPB\AdminBundle\Validator\Constraints\CivilityValidator</parameter>
         <parameter key="zpb.sponsoring.command_transformer.class">ZPB\AdminBundle\Service\CommandToSponsoring</parameter>
         <parameter key="zpb.sponsoring.sponsoring.class">ZPB\AdminBundle\Entity\Sponsoring</parameter>
+        <parameter key="zpb.twig.zpb_extension.class">ZPB\AdminBundle\Twig\ZPBExtension</parameter>
 
 
         <parameter key="zpb.civility" type="collection">
@@ -157,6 +158,11 @@
     </parameters>
 
     <services>
+
+        <service id="zpb.twig.zpb_extension" class="%zpb.twig.zpb_extension.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="twig.extension" />
+        </service>
 
         <service id="zpb.sponsoring.image_hd_factory" class="%zpb.sponsoring.image_hd_factory.class%">
             <argument>%zpb.sponsoring.animal_images%</argument>

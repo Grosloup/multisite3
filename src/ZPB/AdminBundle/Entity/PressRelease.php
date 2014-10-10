@@ -62,20 +62,19 @@ class PressRelease
     private $body;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\MediaImage")
-     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
+     * @ORM\Column(name="image_id", type="integer", nullable=true)
      */
     private $image;
 
     /**
-     * @ORM\Column(name="pdf_fr", type="string", length=255, nullable=false)
+     * @ORM\Column(name="pdf_fr_id", type="integer", nullable=false)
      * @Assert\NotBlank(message="Ce champs est requis.")
      *
      */
     private $pdfFr;
 
     /**
-     * @ORM\Column(name="pdf_en", type="string", length=255, nullable=true)
+     * @ORM\Column(name="pdf_en_id", type="integer", nullable=true)
      */
     private $pdfEn;
 

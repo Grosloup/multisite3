@@ -128,13 +128,13 @@ $(function(){
     var pdfEn = $("#dropzone-pdf-en");
 
     var uploadfr = {
-        url: "/zoo/communiques-de-presse/xhr/upload/pdf",
+        url: pdfUploadUrl,
         institution: null,
         targetId: "#press_release_form_pdfFr"
     };
 
     var uploaden = {
-        url: "/zoo/communiques-de-presse/xhr/upload/pdf",
+        url: pdfUploadUrl,
         institution: null,
         targetId: "#press_release_form_pdfEn",
         lang: 'en'

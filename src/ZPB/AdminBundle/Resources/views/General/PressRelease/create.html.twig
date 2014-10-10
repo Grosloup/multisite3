@@ -120,5 +120,8 @@
 {% endblock %}
 {% block footScripts %}
     {{ parent() }}
+    <script>
+        var pdfUploadUrl = "{{ path("zpb_admin_general_press_upload_pdf") }}";
+    </script>
     <script src="/js/admin/newPressRelease.min.js"></script>
 {% endblock %}

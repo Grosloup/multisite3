@@ -62,7 +62,7 @@ espèce très menacée dans son environnement naturel et rarissime en France... 
             $pr->setTitle($titles[$i]);
             $pr->setBody($bodies[$i]);
             $k = $i+1;
-            $pr->setPdfFr($this->getReference('zpb-pdf-'.$k)->getFilename());
+            $pr->setPdfFr($this->getReference('zpb-pdf-'.$k)->getId());
             $pr->setInstitution($this->getReference('zpb-instit-' . $k));
             $manager->persist($pr);
             $this->addReference('zpb-pr-' . $k, $pr);

@@ -29,9 +29,9 @@
                                     <h4>{{ pr.title }}</h4>
                                     <p>{{ pr.body|raw }}</p>
 
-                                    <p><a href="/telecharger/pdf/{{ pr.pdfFr }}">Télécharger le pdf</a></p>
+                                    <p><a href="{{ pdf_url(pr.pdfFr) }}">Télécharger le pdf</a></p>
                                     {% if pr.pdfEn != null %}
-                                        <p><a href="/telecharger/pdf/{{ pr.pdfEn }}">Télécharger le pdf en anglais</a></p>
+                                        <p><a href="{{ pdf_url(pdfEn) }}">Télécharger le pdf en anglais</a></p>
                                     {% endif %}
                                 </div>
                                 <div class="col-1"></div>

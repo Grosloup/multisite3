@@ -1,0 +1,61 @@
+zpb_admin_general_press_release_list:
+    path: /
+    defaults: { _controller: ZPBAdminBundle:General/PressRelease:list}
+    methods: ["GET"]
+
+
+
+zpb_admin_general_press_release_create:
+    path: /nouveau
+    defaults: { _controller: ZPBAdminBundle:General/PressRelease:create}
+    methods: ["GET","POST"]
+
+
+
+
+zpb_admin_general_press_release_update:
+    path: /modifier/{id}
+    defaults: { _controller: ZPBAdminBundle:General/PressRelease:update}
+    methods: ["GET","POST"]
+    requirements:
+        id: \d+
+
+
+
+zpb_admin_general_press_release_delete:
+    path: /supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:General/PressRelease:delete}
+    methods: ["GET"]
+    requirements:
+        id: \d+
+
+
+zpb_admin_general_press_upload_pdf:
+   path: /upload/pdf
+   defaults: { _controller: ZPBAdminBundle:General/PressRelease:uploadPdf }
+   methods: ["POST"]
+
+zpb_admin_general_press_update_com_pdf:
+   path: /update/pdf
+   defaults: { _controller: ZPBAdminBundle:General/PressRelease:updateCommuniquePdf }
+   methods: ["POST"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

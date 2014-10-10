@@ -89,6 +89,6 @@ zpb_admin_zoo_restaurants_routes:
     prefix: /zoo/restaurants
     resource: "@ZPBAdminBundle/Resources/config/routing/zoo_restaurants.yml"
 
-zpb_admin_zoo_press_release_routes:
-    prefix: /zoo/communiques-de-presse
-    resource: "@ZPBAdminBundle/Resources/config/routing/zoo_press_release.yml"
+zpb_admin_general_press_release_routes:
+    prefix: /communiques-de-presse
+    resource: "@ZPBAdminBundle/Resources/config/routing/press_release.yml"

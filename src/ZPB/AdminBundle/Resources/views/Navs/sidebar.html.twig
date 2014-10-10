@@ -54,8 +54,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="sidebar-dropdown{% if active in ["list_institutions", "new_institution", "update_institution"] %} active{% endif %}">
-                            <a href="">Institutions</a><i class="sidebar-icon fa fa-angle-right"></i>
+                        <li class="sidebar-dropdown{% if active in ["list_institutions", "new_institution", "update_institution"] %} active{% endif %}"><a href="">Institutions</a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
                                 <li class="{% if active == "list_institutions" %}active{% endif %}"><a href="{{ path("zpb_admin_institutions_list") }}">Liste</a></li>
                                 <li class="{% if active == "new_institution" %}active{% endif %}"><a href="{{ path("zpb_admin_institutions_create") }}">Nouvelle</a></li>
@@ -91,6 +90,22 @@
                             <ul>
                                 <li class="{% if active == "list_faq" %}active{% endif %}"><a href="{{ path("zpb_admin_faq_list") }}">Liste</a></li>
                                 <li class="{% if active == "new_faq" %}active{% endif %}"><a href="{{ path("zpb_admin_faq_create") }}">Nouvelle</a></li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-dropdown{% if active in ["presse_dossier","new_com","list_com","update_com"] %} active{% endif %}"><a href="javascript:void(0)">Presse</a><i class="sidebar-icon fa fa-angle-right"></i>
+                            <ul>
+                                <li class="sidebar-dropdown{% if active in ["presse_dossier"] %} active{% endif %}"><a href="javascript:void(0)">Dossiers</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                    <ul>
+                                        <li class="{% if active == "presse_dossier" %}active{% endif %}"><a href="">Modifier la page</a></li>
+                                    </ul>
+                                </li>
+                                <li class="sidebar-dropdown{% if active in ["new_com","list_com","update_com"] %} active{% endif %}"><a href="javascript:void(0)">Communiqués</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                    <ul>
+                                        <li class="{% if active == "list_com" %}active{% endif %}"><a href="{{ path("zpb_admin_general_press_release_list") }}">Liste</a></li>
+                                        <li class="{% if active == "new_com" %}active{% endif %}"><a href="{{ path("zpb_admin_general_press_release_create") }}">Nouveau</a></li>
+                                    </ul>
+                                </li>
+
                             </ul>
                         </li>
                     </ul>
@@ -241,22 +256,7 @@
                                 <li class="{% if active == "manage_restos" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_restaurants_manage") }}">Gérer</a></li>
                             </ul>
                         </li>
-                        <li class="sidebar-dropdown{% if active in ["presse_dossier","new_com","list_com","update_com"] %} active{% endif %}"><a href="javascript:void(0)">Presse</a><i class="sidebar-icon fa fa-angle-right"></i>
-                            <ul>
-                                <li class="sidebar-dropdown{% if active in ["presse_dossier"] %} active{% endif %}"><a href="javascript:void(0)">Dossiers</a><i class="sidebar-icon fa fa-angle-right"></i>
-                                    <ul>
-                                        <li class="{% if active == "presse_dossier" %}active{% endif %}"><a href="">Modifier la page</a></li>
-                                    </ul>
-                                </li>
-                                <li class="sidebar-dropdown{% if active in ["new_com","list_com","update_com"] %} active{% endif %}"><a href="javascript:void(0)">Communiqués</a><i class="sidebar-icon fa fa-angle-right"></i>
-                                    <ul>
-                                        <li class="{% if active == "list_com" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_press_release_list") }}">Liste</a></li>
-                                        <li class="{% if active == "new_com" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_press_release_create") }}">Nouveau</a></li>
-                                    </ul>
-                                </li>
 
-                            </ul>
-                        </li>
                         <li class="sidebar-dropdown{% if active in ["list_static_pages","new_static_page","update_static_page"] %} active{% endif %}"><a href="javascript:void(0)">Pages statiques</a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
                                 <li class="{% if active == "list_static_pages" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_static_pages_list") }}">Liste</a></li>
