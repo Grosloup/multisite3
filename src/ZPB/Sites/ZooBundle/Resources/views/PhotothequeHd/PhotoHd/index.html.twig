@@ -1,0 +1,84 @@
+{% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
+
+{% block title %}Galerie photo | Presse{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% set active_page = "phototheque" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="page-header">
+                    <h1>Galerie photo</h1>
+                </div>
+            </div>
+        </div>
+        <div class="spaced-row">
+            <div class="col-md-6 text-center">Filtrer par :</div>
+            <div class="col-md-6 text-center" id="filters">
+                <button class="btn btn-filtre is-filter" data-filter="*">Tous</button>
+                {% for institution in institutions %}
+                    <button class="btn btn-filtre" data-filter=".{{ institution.slug }}">{{ institution.name }}</button>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-6">
+                <div id="iso-container">
+                    <ul class="grid-sm-2 grid-md-4">
+                        {% for institution in institutions %}
+                            {% set institut = institution.slug %}
+                            {% for category in institution.photoCategories %}
+                                {% set cat = category.slug %}
+                                <li class="category-box {{ institut }}" >
+                                    <a class="" href="{{ path("zpb_sites_zoo_phototheque_hd_show_category", {institutslug: institut , catslug: cat}) }}">
+                                        <div class="photo-category-box">
+                                            <div class="photo-category-card">
+
+                                                {% if category.hasPhotosHd == true %}
+                                                    <div class="shade">
+                                                        <img src="{{ category.firstPhotoHd.webPath }}" alt="" width="100%"/>
+                                                    </div>
+                                                {% endif %}
+                                                <p class="text-center">
+                                                    <a href="{{ path("zpb_sites_zoo_phototheque_hd_show_category", {institutslug: institut , catslug: cat}) }}" class="btn btn-primary">{{ category }}</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footScripts%}
+    {{ parent() }}
+    <script src="/js/vendor/isotope.pkgd.min.js"></script>
+    <script src="/js/app.min.js"></script>
+    <script>
+        $(function(){
+            var isoContainer = $("#iso-container").isotope({
+                itemSelector: '.category-box',
+                layoutMode: 'fitRows'
+            });
+            var btns = $("#filters");
+            btns.on("click", "button", function(){
+                var filterVal = $(this).attr("data-filter");
+                isoContainer.isotope({filter: filterVal});
+            });
+            btns.on("click", "button", function(){
+                btns.find(".is-filter").removeClass("is-filter");
+                $(this).addClass("is-filter");
+            });
+
+        });
+    </script>
+{% endblock %}

@@ -176,7 +176,7 @@ class PhotoController extends BaseController
         return $this->render('ZPBAdminBundle:General/photo:list_by_category.html.twig', ['photo_factory'=>$this->get('zpb.photo_factory'),'photos'=>$photos, 'category'=>$category, 'stats'=>$stats]);
     }
 
-    public function positionChangeApiAction(Request $request)
+    public function positionChangeXhrAction(Request $request)
     {
         if(!$request->isMethod("post") || !$request->isXmlHttpRequest()){
             throw $this->createAccessDeniedException();
@@ -184,7 +184,7 @@ class PhotoController extends BaseController
         $id = intval($request->request->get('id', false));
         $position = intval($request->request->get('position', false));
         $response = ['error'=>'ok', 'oldPosition'=>null, 'id'=>null, 'newPosition'=>null];
-        if(!$id || $position === false){
+        if($id === false || $position === false){
             $response['error'] = 'Données manquantes';
             return new JsonResponse($response);
         }

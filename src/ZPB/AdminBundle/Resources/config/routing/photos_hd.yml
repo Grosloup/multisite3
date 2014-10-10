@@ -25,7 +25,10 @@ zpb_admin_photos_hd_create:
 
 
 
-
+zpb_admin_photos_hd_position_xhr_change:
+    path: /xhr/position/modifier
+    defaults: { _controller: ZPBAdminBundle:General/PhotoHd:positionChangeXhr }
+    methods: ["POST"]
 
 
 

@@ -96,7 +96,7 @@
             sortable.sortable({
                 handle: ".handle",
                 cursor: "move",
-                placeholder: "dropprow",
+                placeholder: "droprow",
                 update: function(evt, ui){
                     var it = ui.item;
                     var list = ui.item.parent("tbody");
@@ -111,7 +111,7 @@
 
                     $.post("{{ path("zpb_admin_photos_position_xhr_change") }}", {id:id, position: position})
                             .done(function(response){
-                                console.log(response);
+
                                 var message = "";
                                 if(response.error == "ok"){
                                     sortable.sortable("enable");

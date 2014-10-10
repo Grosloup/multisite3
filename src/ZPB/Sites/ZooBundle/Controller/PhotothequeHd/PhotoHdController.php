@@ -27,7 +27,8 @@ class PhotoHdController extends BaseController
 {
     public function indexAction()
     {
-        return $this->render('ZPBSitesZooBundle:PhotothequeHd/PhotoHd:index.html.twig', []);
+        $institutions = $this->getRepo('ZPBAdminBundle:Institution')->findAll();
+        return $this->render('ZPBSitesZooBundle:PhotothequeHd/PhotoHd:index.html.twig', ['institutions'=>$institutions]);
     }
 
     public function showCategoryAction($institutslug, $catslug)

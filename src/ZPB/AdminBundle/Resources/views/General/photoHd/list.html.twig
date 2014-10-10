@@ -6,6 +6,11 @@
 {% block content %}
     <div class="row">
         <div class="column-12">
+            <div class="jsDialog"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column-12">
             <div class="tile">
                 <div class="tile-header">
                     Photos HD pour {{ category.name }}
@@ -30,11 +35,11 @@
                             <th>Supprimer</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="table-sortable">
                         {% for photo in photos %}
-                            <tr>
+                            <tr id="{{ photo.id }}">
                                 <td class="handle"><i class="fa fa-arrows-v"></i>
-                                <td>{{ photo.position }}</td>
+                                <td class="position-sortable">{{ photo.position }}</td>
                                 <td><img src="{{ photo.getWebThumbPath('small') }}" alt=""  width="50"/></td>
                                 <td>{{ photo.width }} x {{ photo.height }}</td>
                                 <td>{{ photo.category.institution }}</td>
@@ -60,4 +65,77 @@
             cursor: move;
         }
     </style>
+{% endblock %}
+{% block footScripts %}
+    {{ parent() }}
+    <script src="/js/vendor/ui/jquery-ui.min.js"></script>
+    <script>
+        $(function(){
+            var dialogsPlaceholder = $(".jsDialog");
+
+            var dialogs = $("<div class='dialogs'></div>");
+
+            dialogs.appendTo(dialogsPlaceholder);
+
+            function getSuccess(){
+                return $("<div class='dialog dialog-success'><div class='message'></div></div>");
+            }
+
+            function getError(){
+                return $("<div class='dialog dialog-error'><div class='message'></div></div>");
+            }
+
+            var sortable = $("#table-sortable");
+            sortable.sortable({
+                handle: ".handle",
+                cursor: "move",
+                placeholder: "droprow",
+                update: function(evt, ui){
+                    var it = ui.item;
+                    var list = ui.item.parent("tbody");
+                    var pos = 0;
+                    list.find("tr").each(function(){
+                        $(this).find(".position-sortable").text(pos);
+                        pos++;
+                    });
+                    var id = parseInt(it.attr("id"));
+                    var position = parseInt(it.find(".position-sortable").text());
+                    sortable.sortable("disable");
+
+                    $.post("{{ path("zpb_admin_photos_hd_position_xhr_change") }}", {id:id, position: position})
+                            .done(function(response){
+                                var message = "";
+                                if(response.error == "ok"){
+                                    sortable.sortable("enable");
+                                    message = "Position mise à jour avec image " + response.id + " ancienne position " + response.oldPosition + ", nouvelle position " + response.newPosition;
+                                    var dialogSuccess = getSuccess();
+                                    dialogSuccess.find(".message").text(message);
+                                    dialogSuccess.appendTo(dialogs);
+                                    dialogs.appendTo(dialogsPlaceholder);
+                                    dialogSuccess.fadeOut(5000, function(){
+                                        dialogs.empty();
+                                    });
+                                } else {
+                                    message = "Une erreur est survenue ! " + response.error;
+                                    var dialogError = getError();
+                                    dialogError.find(".message").text(message);
+                                    dialogError.appendTo(dialogs);
+                                    dialogError.fadeOut(5000, function(){
+                                        dialogs.empty();
+                                    });
+                                }
+                            })
+                            .fail(function(response){
+                                var dialogError = getError();
+                                dialogError.find(".message").text("Une erreur est survenue ! ");
+                                dialogError.appendTo(dialogs);
+                                dialogError.fadeOut(5000, function(){
+                                    dialogs.empty();
+                                });
+                            });
+                }
+            })
+        });
+    </script>
+
 {% endblock %}

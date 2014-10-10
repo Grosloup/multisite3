@@ -58,7 +58,7 @@
                     {% for photo in photos %}
                         <tr>
                             <td>{{ photo.id }}</td>
-                            <td><a href="#"><img src="{{ photo_factory.getWebThumb("small", photo) }}" alt="" width="50"/></a></td>
+                            <td><a href="#"><img src="{{ photo.getWebThumbPath("small") }}" alt="" width="50"/></a></td>
                             <td>{{ photo.filename }}</td>
                             <td>{{ photo.category.institution }}</td>
                             <td>{{ photo.category.name }}</td>

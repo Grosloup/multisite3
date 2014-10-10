@@ -21,6 +21,7 @@
 namespace ZPB\AdminBundle\Controller\General;
 
 
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use ZPB\AdminBundle\Controller\BaseController;
 use ZPB\AdminBundle\Form\Type\PhotoHdType;
@@ -71,6 +72,37 @@ class PhotoHdController extends BaseController
             return $this->redirect($this->generateUrl('zpb_admin_photos_hd_choose_list'));
         }
         return $this->render('ZPBAdminBundle:General/PhotoHd:create.html.twig', ['form'=>$form->createView()]);
+    }
+
+    public function positionChangeXhrAction(Request $request)
+    {
+        if(!$request->isMethod("post") || !$request->isXmlHttpRequest()){
+            throw $this->createAccessDeniedException();
+        }
+
+        $id = intval($request->request->get('id', false));
+        $position = intval($request->request->get('position', false));
+        $response = ['error'=>'ok', 'oldPosition'=>null, 'id'=>null, 'newPosition'=>null];
+        if($id === false || $position === false){
+            $response['error'] = 'Données manquantes';
+            return new JsonResponse($response);
+        }
+
+        $photo = $this->getRepo('ZPBAdminBundle:PhotoHd')->find($id);
+        if(!$photo){
+            $response['error'] = 'Photo introuvable';
+            return new JsonResponse($response);
+        }
+
+        $oldPos = $photo->getPosition();
+        $photo->setPosition($position);
+        $this->getManager()->persist($photo);
+        $this->getManager()->flush();
+        $response['oldPosition'] = $oldPos;
+        $response['newPosition'] = $position;
+        $response['id'] = $id;
+        return new JsonResponse($response);
+
     }
 
     public function updateAction($id, Request $request)

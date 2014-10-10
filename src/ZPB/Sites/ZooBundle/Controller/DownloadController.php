@@ -47,6 +47,11 @@ class DownloadController extends BaseController
         return $response;
     }
 
+    public function downloadHDImageAction($filename, Request $request)
+    {
+
+    }
+
     public function downloadPdfAction($filename, Request $request)
     {
         /** @var \ZPB\AdminBundle\Entity\MediaPdf $pdf */

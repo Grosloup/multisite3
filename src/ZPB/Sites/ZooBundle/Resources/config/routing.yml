@@ -35,6 +35,13 @@ zpb_sites_zoo_download_image:
     requirements:
         filename: ".+"
 
+zpb_sites_zoo_download_image_hd:
+    path: /telecharger/image/{filename}
+    defaults: { _controller: ZPBSitesZooBundle:Download:downloadHDImage }
+    methods: ["GET"]
+    requirements:
+        filename: ".+"
+
 zpb_sites_zoo_download_pdf:
     path: /telecharger/pdf/{filename}
     defaults: { _controller: ZPBSitesZooBundle:Download:downloadPdf }

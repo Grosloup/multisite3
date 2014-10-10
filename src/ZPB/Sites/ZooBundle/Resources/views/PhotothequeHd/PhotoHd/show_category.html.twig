@@ -1,0 +1,78 @@
+{% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
+
+{% block title %}{{ category }} | {{ institution }} | Galerie photo | Presse{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% set active_page = "phototheque" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="page-header">
+                    <h1>Galerie photo </h1>
+                </div>
+                <h2 class="text-center">{{ institution }}</h2>
+                <h3 class="text-center">{{ category }}</h3>
+            </div>
+        </div>
+        <div class="spaced-row">
+            <div class="col-md-6">
+                <div id="slider">
+                    {% for photo in photos %}
+                        <div>
+                            <img src="{{ photo.getWebThumbPath('xlarge') }}" alt="slide {{ loop.index }}" width="100%"/>
+                            <div style="position: relative; height: 15%; bottom: 0; padding: 15px; width: 100%; text-align: center;">
+                                {{ photo.legend }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="spaced-row">
+            <div class="col-md-6">
+                <h4 class="text-center">Télécharger</h4>
+                <p class="text-center">Cliquez sur la photo de votre choix pour la télécharger.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="grid-sm-2 grid-md-6">
+                    {% for photo in photos %}
+                        <li >
+                            <a class="thumb" href="{{ path("zpb_sites_zoo_download_image_hd", {filename: photo.filename}) }}">
+                                <img src="{{ photo.getWebThumbPath('regular') }}" alt="" title="{{ photo.title }}{{ photo.copyright|raw }}" width="100%"/>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+{% block headLinks %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/js/vendor/slick/slick.css"/>
+{% endblock %}
+{% block footScripts %}
+    {{ parent() }}
+    <script src="/js/vendor/slick/slick.min.js"></script>
+    <script>
+        $(function(){
+            $("#slider").slick({
+                dots: false,
+                fade: true,
+                infinite: true,
+                autoplay: true,
+                autoplaySpeed: 5000
+
+            });
+        });
+    </script>
+{% endblock %}
