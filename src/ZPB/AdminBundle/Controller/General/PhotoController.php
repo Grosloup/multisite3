@@ -34,7 +34,6 @@ class PhotoController extends BaseController
     public function chooseListAction()
     {
         $institutions = $this->getRepo('ZPBAdminBundle:Institution')->findAll();
-
         return $this->render('ZPBAdminBundle:General/Photo:choose_list.html.twig', ['institutions'=>$institutions]);
     }
 
@@ -47,67 +46,6 @@ class PhotoController extends BaseController
 
         $photos = $this->getRepo('ZPBAdminBundle:Photo')->findBy(['category'=>$category], ['position'=>'ASC']);
         return $this->render('ZPBAdminBundle:General/Photo:list.html.twig', ['photos'=>$photos, 'category'=>$category]);
-    }
-
-    /*public function listAction()
-    {
-        $photos = $this->getRepo('ZPBAdminBundle:Photo')->findAll();
-        $filterInstitutionForm = $this->createForm(new InstitutionChoiceType(), null, [
-                'action'=>$this->generateUrl('zpb_admin_photos_list_by_institution')
-            ]);
-        return $this->render('ZPBAdminBundle:General:photo/list.html.twig',
-            [
-                'photos'=>$photos,
-                'photo_factory'=>$this->get('zpb.photo_factory'),
-                'institutionFilter'=>$filterInstitutionForm->createView()
-            ]);
-    }*/
-
-    public function listByInstitutionAction(Request $request)
-    {
-        $formDatas = $request->get('institution_filter_form');
-        if(!$formDatas || empty($formDatas) || empty($formDatas['institution'])){
-            $this->setError('Recherche impossible');
-            return $this->redirect($this->generateUrl('zpb_admin_photos_list'));
-        }
-        $photos = $this->getRepo('ZPBAdminBundle:Photo')->findBy(['institutionId'=>intval($formDatas['institution'])]) ;
-        $institution = $this->getRepo('ZPBAdminBundle:Institution')->find(intval($formDatas['institution']));
-        if(!$institution){
-            throw $this->createNotFoundException();
-        }
-        $categories = $institution->getPhotoCategories();
-        $choices = [];
-        foreach($categories as $category){
-            $choices[$category->getId()] = $category->getName();
-        }
-        $filterByCategory = $this->get('form.factory')->createNamedBuilder('category_filter_form','form')
-            ->setAction($this->generateUrl('zpb_admin_photos_list_by_category'))
-            ->add('category', 'choice', ['label'=>'Catégories', 'expanded'=>false, 'multiple'=>false,'choices'=>$choices ])
-            ->add('search', 'submit', ['label'=>'Filtrer'])
-            ->getForm();
-        $photos = $this->getRepo('ZPBAdminBundle:Photo')->findBy(['institutionId'=>intval($formDatas['institution'])]) ;
-        return $this->render('ZPBAdminBundle:General/Photo:list_by_institution.html.twig',
-            [
-                'photo_factory'=>$this->get('zpb.photo_factory'),
-                'photos'=>$photos,
-                'institution'=>$institution,
-                'filterCategory'=>$filterByCategory->createView()
-            ]
-        );
-    }
-
-    public function listByCategoryAction(Request $request)
-    {
-        $formDatas = $request->get('category_filter_form');
-        if(!$formDatas || empty($formDatas) || empty($formDatas['category'])){
-            $this->setError('Recherche impossible');
-            return $this->redirect($this->generateUrl('zpb_admin_photos_list'));
-        }
-        $category = $this->getRepo('ZPBAdminBundle:PhotoCategory')->find(intval($formDatas['category']));
-        if(!$category){
-            throw $this->createNotFoundException();
-        }
-        return $this->forward('ZPBAdminBundle:General/Photo:getListByCategory', ['categoryId'=>$category->getId()]);
     }
 
     public function chooseInstitutionAction()

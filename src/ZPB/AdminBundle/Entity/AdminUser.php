@@ -108,7 +108,7 @@ class AdminUser implements AdvancedUserInterface, Serializable
      *
      * @ORM\Column(name="is_active", type="boolean")
      */
-    private $isActive;
+    private $is_active;
 
     /**
      * @var boolean
@@ -222,7 +222,7 @@ class AdminUser implements AdvancedUserInterface, Serializable
      */
     public function isIsActive()
     {
-        return $this->isActive;
+        return $this->is_active;
     }
 
     /**
@@ -232,7 +232,7 @@ class AdminUser implements AdvancedUserInterface, Serializable
      */
     public function getIsActive()
     {
-        return $this->isActive;
+        return $this->is_active;
     }
 
     /**
@@ -241,7 +241,7 @@ class AdminUser implements AdvancedUserInterface, Serializable
      */
     public function setIsActive($isActive)
     {
-        $this->isActive = $isActive;
+        $this->is_active = $isActive;
 
         return $this;
     }
@@ -537,7 +537,7 @@ class AdminUser implements AdvancedUserInterface, Serializable
 
     public function isEnabled()
     {
-        return $this->isActive;
+        return $this->is_active;
     }
 
     public function eraseCredentials()

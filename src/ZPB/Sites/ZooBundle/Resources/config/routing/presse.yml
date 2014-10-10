@@ -7,3 +7,38 @@ zpb_sites_zoo_presse_communiques:
     path: /communiques-de-presse
     defaults: { _controller: ZPBSitesZooBundle:Presse:communique }
     methods: ["GET"]
+
+zpb_sites_zoo_phototheque_hd_index:
+    path: /galerie-photo
+    defaults: { _controller: ZPBSitesZooBundle:PhotothequeHd/PhotoHd:index }
+    methods: ["GET"]
+
+zpb_sites_zoo_phototheque_hd_show_category:
+    path: /galerie-photo/{institutslug}/{catslug}
+    defaults: { _controller: ZPBSitesZooBundle:PhotothequeHd/PhotoHd:showCategory }
+    methods: ["GET"]
+    requirements:
+        institutslug: "[a-zA-Z_-]+"
+        catslug: "[a-zA-Z_-]+"
+
+zpb_sites_zoo_phototheque_hd_login:
+    path: /galerie-photo/login
+    defaults: { _controller: ZPBSitesZooBundle:Presse:login }
+    methods: ["GET"]
+
+zpb_sites_zoo_phototheque_hd_login_check:
+    path: /galerie-photo/login_check
+    methods: ["POST"]
+
+zpb_sites_zoo_phototheque_hd_logout:
+    path: /galerie-photo/logout
+    methods: ["GET"]
+
+
+
+
+
+
+
+
+

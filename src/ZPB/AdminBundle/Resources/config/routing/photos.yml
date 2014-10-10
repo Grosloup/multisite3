@@ -10,17 +10,6 @@ zpb_admin_photos_choose_list:
     defaults: { _controller: ZPBAdminBundle:General/Photo:chooseList }
     methods: ["GET"]
 
-zpb_admin_photos_list_by_institution:
-    path: /liste/par-institution
-    defaults: { _controller: ZPBAdminBundle:General/Photo:listByInstitution }
-    methods: ["POST"]
-
-zpb_admin_photos_list_by_category:
-    path: /list/par-category
-    defaults: { _controller: ZPBAdminBundle:General/Photo:listByCategory }
-    methods: ["POST", "GET"]
-
-
 zpb_admin_photos_choose_institution:
     path: /choix-institution
     defaults: { _controller: ZPBAdminBundle:General/Photo:chooseInstitution }
@@ -46,7 +35,6 @@ zpb_admin_photos_delete:
     methods: ["GET"]
     requirements:
         id: \d+
-
 
 zpb_admin_photos_position_up:
     path: /position/remonter/{id}

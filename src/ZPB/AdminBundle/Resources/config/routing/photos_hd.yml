@@ -46,3 +46,30 @@ zpb_admin_photos_hd_delete:
     methods: ["GET"]
     requirements:
         id: \d+
+
+zpb_admin_photos_hd_delete_users_list:
+    path: /utilisateurs/liste
+    defaults: { _controller: ZPBAdminBundle:General/PhotoHd:listUsers }
+    methods: ["GET"]
+
+zpb_admin_photos_hd_delete_users_create:
+    path: /utilisateurs/nouveau
+    defaults: { _controller: ZPBAdminBundle:General/PhotoHd:createUser }
+    methods: ["GET", "POST"]
+
+zpb_admin_photos_hd_delete_users_update:
+    path: /utilisateurs/modifier/{id}
+    defaults: { _controller: ZPBAdminBundle:General/PhotoHd:updateUser }
+    methods: ["GET","POST"]
+    requirements:
+        id: \d+
+
+zpb_admin_photos_hd_delete_users_delete:
+    path: /utilisateurs/supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:General/PhotoHd:deleteUser }
+    methods: ["GET"]
+    requirements:
+        id: \d+
+
+
+

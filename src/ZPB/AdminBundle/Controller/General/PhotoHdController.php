@@ -114,4 +114,24 @@ class PhotoHdController extends BaseController
     {
         //delete_photo_hd
     }
+
+    public function listUsersAction()
+    {
+
+    }
+
+    public function createUserAction(Request $request)
+    {
+
+    }
+
+    public function updateUserAction($id, Request $request)
+    {
+
+    }
+
+    public function deleteUserAction($id, Request $request)
+    {
+
+    }
 } 
