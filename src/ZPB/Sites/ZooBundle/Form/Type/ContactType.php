@@ -30,8 +30,8 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('email','email', ['label'=>'Votre email'])
-            ->add('topic',null, ['label'=>'Sujet en quelques mots'])
-            ->add('message','textarea', ['label'=>'Sujet en quelques mots'])
+            ->add('topic',null, ['label'=>'Objet'])
+            ->add('message','textarea', ['label'=>'Votre message'])
             ->add('name','text',['label'=>'Si vous êtes un humain ne remplissez pas ce champs', 'mapped'=>false])
             ->add('save', 'submit', ['label'=>'Envoyer'])
         ;

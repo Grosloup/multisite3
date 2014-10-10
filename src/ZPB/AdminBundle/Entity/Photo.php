@@ -64,13 +64,13 @@ class Photo implements ResizeableInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="rootDir", type="string", length=255, nullable=false)
+     * @ORM\Column(name="root_dir", type="string", length=255, nullable=false)
      */
     private $rootDir;
     /**
      * @var string
      *
-     * @ORM\Column(name="webDir", type="string", length=255, nullable=false)
+     * @ORM\Column(name="web_dir", type="string", length=255, nullable=false)
      */
     private $webDir;
     /**
@@ -79,6 +79,14 @@ class Photo implements ResizeableInterface
      * @ORM\Column(name="created_at", type="datetime")
      * @Gedmo\Timestampable(on="create")
      */
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="thumb_dir", type="string", length=255, nullable=false)
+     */
+    private $thumbDir;
+
     private $createdAt;
     /**
      * @var \DateTime
@@ -89,7 +97,7 @@ class Photo implements ResizeableInterface
     private $updatedAt;
     /**
      * @var string
-     * @Assert\Regex("[a-zA-Z0-9éèêëàçâûüîïôö,;.?!&':+*_ -]*", message="Ce champs contient des caractères non autorisés.")
+     * @Assert\Regex("[a-zA-Z0-9éèêëàçâûüîïôö,;.?!&':+_ -]*", message="Ce champs contient des caractères non autorisés.")
      * @ORM\Column(name="title", type="text", nullable=true)
      */
     private $title;
@@ -101,13 +109,13 @@ class Photo implements ResizeableInterface
     private $copyright;
     /**
      * @var string
-     * @Assert\Regex("[a-zA-Z0-9éèêëàçâûüîïôö,;.?!&':+*_ -]*", message="Ce champs contient des caractères non autorisés.")
+     * @Assert\Regex("[a-zA-Z0-9éèêëàçâûüîïôö,;.?!&':+_ -]*", message="Ce champs contient des caractères non autorisés.")
      * @ORM\Column(name="legend", type="text", nullable=true)
      */
     private $legend;
     /**
      * @var string
-     * @Assert\Regex("[a-zA-Z0-9éèêëàçâûüîïôö,;.?!&':+*_ -]*", message="Ce champs contient des caractères non autorisés.")
+     * @Assert\Regex("[a-zA-Z0-9éèêëàçâûüîïôö,;.?!&':+_ -]*", message="Ce champs contient des caractères non autorisés.")
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
@@ -127,6 +135,9 @@ class Photo implements ResizeableInterface
      * @var string
      */
     private $absolutePath;
+
+    private $thumbPaths = [];
+
     /**
      * @var string
      * @ORM\Column(name="long_id", type="string", length=15, nullable=false, unique=true)
@@ -137,6 +148,11 @@ class Photo implements ResizeableInterface
      * @ORM\Column(name="institution_id", type="integer", nullable=true)
      */
     private $institutionId;
+
+    /**
+     * @ORM\Column(name="sizes_keys", type="array")
+     */
+    private $sizes;
 
 
     public function __construct()
@@ -149,6 +165,40 @@ class Photo implements ResizeableInterface
     {
         return $this->longId;
     }
+
+    /**
+     * @return string
+     */
+    public function getThumbDir()
+    {
+        return $this->thumbDir;
+    }
+
+    /**
+     * @param string $thumbDir
+     */
+    public function setThumbDir($thumbDir)
+    {
+        $this->thumbDir = $thumbDir;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSizes()
+    {
+        return $this->sizes;
+    }
+
+    /**
+     * @param mixed $sizes
+     */
+    public function setSizes($sizes)
+    {
+        $this->sizes = $sizes;
+    }
+
+
 
     /**
      * Set longId
@@ -214,9 +264,23 @@ class Photo implements ResizeableInterface
         return $this->rootDir . $this->webDir . $this->filename . "." . $this->extension;
     }
 
+    public function getAbsThumbPaths()
+    {
+        $paths = [];
+        foreach($this->sizes as $size){
+            $paths[] = $this->rootDir . $this->thumbDir . $size . '_' . $this->filename . '.' .$this->extension;
+        }
+        return $paths;
+    }
+
     public function getWebPath()
     {
         return '/' . $this->webDir . $this->filename . "." . $this->extension;
+    }
+
+    public function getWebThumbPath($key)
+    {
+        return '/' . $this->thumbDir . $key . '_' . $this->filename . '.' .$this->extension;
     }
 
     /**
@@ -225,6 +289,7 @@ class Photo implements ResizeableInterface
     public function storeAbsolutePath()
     {
         $this->absolutePath = $this->getAbsolutePath();
+        $this->thumbPaths = $this->getAbsThumbPaths();
     }
 
     /**
@@ -234,6 +299,11 @@ class Photo implements ResizeableInterface
     {
         if (file_exists($this->absolutePath)) {
             unlink($this->absolutePath);
+        }
+        foreach($this->thumbPaths as $path){
+            if(file_exists($path)){
+                unlink($path);
+            }
         }
     }
 

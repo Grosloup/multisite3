@@ -52,11 +52,12 @@ class LoadPhotos extends AbstractFixture implements OrderedFixtureInterface, Con
         $k = 1;
         $c = 1;
         foreach($finder as $file){
+            $category = $this->getReference('zpb-photo-cat-' . $c);
             /** @var \SplFileInfo $file */
-            $img = $photoFactory->create();
+            $img = $photoFactory->create($category->getInstitution()->getId());
             $img->setFilename('image_' . $k)
             ->setTitle('Etiam sodales eget nunc ut bibendum')
-            ->setCategory($this->getReference('zpb-photo-cat-' . $c))
+            ->setCategory($category)
             ->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pulvinar dui vel urna sodales porta. Etiam non neque nec tortor elementum scelerisque sit amet a nunc. Nunc a odio tempor sapien interdum convallis.')
             ->setLegend('Suspendisse fermentum malesuada feugiat.')
             ->file = new UploadedFile($file->getRealPath(), pathinfo($file->getRealPath(), PATHINFO_FILENAME), null, null, null, true);

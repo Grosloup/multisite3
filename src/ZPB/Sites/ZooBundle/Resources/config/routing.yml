@@ -23,10 +23,21 @@ zpb_sites_zoo_cgv:
     defaults: { _controller: ZPBSitesZooBundle:CGV:index }
     methods: ["GET"]
 
+zpb_sites_zoo_legales:
+    path: /mentions-legales
+    defaults: { _controller: ZPBSitesZooBundle:Legales:index }
+    methods: ["GET"]
 
 zpb_sites_zoo_download_image:
     path: /telecharger/image/{filename}
     defaults: { _controller: ZPBSitesZooBundle:Download:downloadImage }
+    methods: ["GET"]
+    requirements:
+        filename: ".+"
+
+zpb_sites_zoo_download_image_hd:
+    path: /telecharger/image/{filename}
+    defaults: { _controller: ZPBSitesZooBundle:Download:downloadHDImage }
     methods: ["GET"]
     requirements:
         filename: ".+"
@@ -49,6 +60,7 @@ zpb_sites_zoo_actualites_routes:
 zpb_sites_zoo_phototheque_routes:
     prefix: /galerie-photo
     resource: "@ZPBSitesZooBundle/Resources/config/routing/phototheque.yml"
+
 
 zpb_sites_zoo_pratique_routes:
     prefix: /pratique

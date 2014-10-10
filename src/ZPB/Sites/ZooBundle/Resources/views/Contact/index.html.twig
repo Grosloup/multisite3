@@ -19,15 +19,123 @@
     </div>
 
     <div class="container">
+
+        <style>
+            address p{
+                text-align: center;
+            }
+        </style>
+
+        <div class="spaced-row">
+            <div class="col-md-6">
+                <h4>Renseignements</h4>
+            </div>
+        </div>
+
+        <div class="spaced-row">
+            <div class="col-md-2">
+                <img src="/tests/contact/contact_8.jpg" alt="" width="100%"/>
+                <h4 class="text-center">Ressources Humaines</h4>
+                <address>
+                    <p><strong>Sophie</strong> <span class="bold">Delord</span></p>
+                    <p><strong>Directrice des Ressources Humaines</strong></p>
+                    <p>Tél : 02 54 75 62 14</p>
+                    <p>Email : emploi@zoobeauval.com</p>
+
+
+                </address>
+            </div>
+            <div class="col-md-2">
+                <img src="/tests/contact/contact_3.JPG" alt="" width="100%"/>
+                <h4 class="text-center">Achats</h4>
+                <address>
+                    <p><strong>Samuel</strong> <span class="bold">Leroux</span></p>
+                    <p><strong>Responsable des achats</strong></p>
+                    <p>Tél/Fax : 02 54 71 25 19</p>
+                    <p>Mobile : 06 76 11 91 04</p>
+                    <p>Email : samuel.leroux@zoobeauval.com</p>
+
+
+                </address>
+            </div>
+            <div class="col-md-2">
+                <img src="/tests/contact/contact_6.jpg" alt="" width="100%"/>
+                <h4 class="text-center">Service Commercial</h4>
+                <address>
+                    <p class="bold">Stephanie Neuer</p>
+                    <p><strong>Directrice commerciale</strong></p>
+                    <p>Tél : 02 54 75 74 26</p>
+                    <p>Fax : 02 54 75 74 30</p>
+                    <p>Email : service.commercial@zoobeauval.com</p>
+
+
+                </address>
+            </div>
+        </div>
+
+        <div class="spaced-row">
+            <div class="col-md-2">
+                <img src="/tests/contact/contact_1.JPG" alt="" width="100%"/>
+                <h4 class="text-center">Pédagogie</h4>
+                <address>
+                    <p class="bold">Véronique Baudouin </p>
+                    {#<p><strong>Responsable des achats</strong></p>#}
+                    <p>Tél : 02 54 75 74 25</p>
+                    <p>Email : pedagogie@zoobeauval.com</p>
+
+
+                </address>
+            </div>
+            <div class="col-md-2">
+                <img src="/tests/contact/contact_4.JPG" alt="" width="100%"/>
+                <h4 class="text-center">Communication</h4>
+                <address>
+                    <p class="bold">Delphine Delord</p>
+                    <p><strong>Directrice de la Communication</strong></p>
+                    <p>Tél : 01 40 56 01 53</p>
+                    <p>Email : delphine.delord@zoobeauval.com</p>
+
+
+                </address>
+            </div>
+            <div class="col-md-2">
+                <img src="/tests/contact/contact_5.JPG" alt="" width="100%"/>
+                <h4 class="text-center">Presse</h4>
+                <address>
+                    <p class="bold">Priscille Lacoste</p>
+                    <p><strong>Attachée de presse</strong></p>
+                    <p>Tél : 01 48 01 00 34</p>
+                    <p>Mobile : 06 62 25 51 60</p>
+                    <p>Email : pl-communication@allegria.fr</p>
+
+
+                </address>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
         <div class="row">
-            <div class="col-1"></div>
-            <div class="col-4">
+            <div class="col-md-1"></div>
+            <div class="col-md-4">
 
 
 
                 {{ form_start(form, {attr:{novalidate: true, class:"form"}}) }}
 
                 {{ form_errors(form) }}
+
+                <div class="form-row">
+                    {{ form_label(form.email) }}
+                    <div class="form-field">
+                        {{ form_widget(form.email) }}
+                        <div class="error-block">
+                            {{ form_errors(form.email) }}
+                        </div>
+
+                    </div>
+
+                </div>
                 <div class="form-row">
 
                     {{ form_label(form.topic) }}
@@ -35,17 +143,6 @@
                         {{ form_widget(form.topic) }}
                         <div class="error-block">
                             {{ form_errors(form.topic) }}
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="form-row">
-                    {{ form_label(form.email) }}
-                    <div class="form-field">
-                        {{ form_widget(form.email) }}
-                        <div class="error-block">
-                            {{ form_errors(form.email) }}
                         </div>
 
                     </div>
@@ -72,13 +169,13 @@
 
                 </div>
                 <div class="form-row">
-                    {{ form_widget(form.save, {attr:{class:"btn btn-grisfonce"}}) }}
+                    {{ form_widget(form.save, {attr:{class:"btn btn-primary"}}) }}
                 </div>
 
                 {{ form_end(form) }}
 
             </div>
-            <div class="col-1"></div>
+            <div class="col-md-1"></div>
         </div>
     </div>
 {% endblock %}

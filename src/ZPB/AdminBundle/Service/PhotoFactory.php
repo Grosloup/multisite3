@@ -21,6 +21,8 @@
 namespace ZPB\AdminBundle\Service;
 
 
+use Symfony\Component\Filesystem\Filesystem;
+
 class PhotoFactory
 {
     private $sizes = [];
@@ -35,22 +37,36 @@ class PhotoFactory
     /**
      * @return \ZPB\AdminBundle\Entity\Photo
      */
-    public function create()
+    public function create($institutionId)
     {
 
         $class = $this->options['zpb.photo.class'];
         /** @var \ZPB\AdminBundle\Entity\Photo $photo */
         $photo = new $class();
-
+        $photo->setInstitutionId($institutionId);
         $photo->setRootDir($this->options['zpb.photo.root_dir']);
         $photo->setWebDir($this->options['zpb.photo.web_dir']);
+        $photo->setThumbDir($this->options['zpb.photo.thumbs.upload_dir']);
         $photo->setCopyright($this->options['zpb.document.default_copyright.text']);
+        $sizes = [];
+        foreach ($this->sizes as $k => $v) {
+            $sizes[] = $k;
+        }
 
+        $photo->setSizes($sizes);
         return $photo;
     }
 
-    public function getWebThumb($key, $img)
+    public function createDirs(Filesystem $fs)
     {
-        return '/' . $this->options['zpb.photo.thumbs.upload_dir'] . $key . '_' .$img->getFilename() . '.' .$img->getExtension();
+        $rootDir = rtrim($this->options['zpb.photo.root_dir'] . $this->options['zpb.photo.web_dir'], '/');
+        $thumbDir = rtrim($this->options['zpb.photo.root_dir'] . $this->options['zpb.photo.thumbs.upload_dir'], '/');
+        if(!$fs->exists($rootDir)){
+            $fs->mkdir($rootDir);
+        }
+
+        if(!$fs->exists($thumbDir)){
+            $fs->mkdir($thumbDir);
+        }
     }
 } 

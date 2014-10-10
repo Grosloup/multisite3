@@ -7,7 +7,7 @@
     }
 </style>
 
-<a  href="{{ path("zpb_sites_zoo_parrainages_login") }}" class="btn btn-grisfonce" style="font-size: 16px;"><i class="icon icon-account-o"></i> Mon Compte</a>
+<a  href="{{ path("zpb_sites_zoo_parrainages_login") }}" class="btn btn-primary" style="font-size: 16px;"><i class="icon icon-account-o"></i> Mon Compte</a>
 {% if is_granted("ROLE_GODPARENT") %}
     <a class="btn btn-primary" href="{{ path("zpb_sites_zoo_parrainages_logout") }}">Déconnexion</a>
 {% endif %}

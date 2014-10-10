@@ -43,6 +43,6 @@ class PhotoController extends BaseController
             throw $this->createNotFoundException();
         }
         $photos = $this->getRepo('ZPBAdminBundle:Photo')->findBy(['category'=>$category], ['position'=>'ASC']);
-        return $this->render('ZPBSitesZooBundle:Phototheque/Photo:show_category.html.twig', ['photo_factory'=>$this->get('zpb.photo_factory'),'photos'=>$photos, 'category'=>$category, 'institution'=>$institution]);
+        return $this->render('ZPBSitesZooBundle:Phototheque/Photo:show_category.html.twig', ['photos'=>$photos, 'category'=>$category, 'institution'=>$institution]);
     }
 }

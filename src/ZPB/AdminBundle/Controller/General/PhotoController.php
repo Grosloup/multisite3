@@ -30,88 +30,44 @@ use ZPB\AdminBundle\Form\Type\PhotoUpdateType;
 
 class PhotoController extends BaseController
 {
-    public function listAction()
+
+    public function chooseListAction()
     {
-        $photos = $this->getRepo('ZPBAdminBundle:Photo')->findAll();
-        $filterInstitutionForm = $this->createForm(new InstitutionChoiceType(), null, [
-                'action'=>$this->generateUrl('zpb_admin_photos_list_by_institution')
-            ]);
-        return $this->render('ZPBAdminBundle:General:photo/list.html.twig',
-            [
-                'photos'=>$photos,
-                'photo_factory'=>$this->get('zpb.photo_factory'),
-                'institutionFilter'=>$filterInstitutionForm->createView()
-            ]);
+        $institutions = $this->getRepo('ZPBAdminBundle:Institution')->findAll();
+        return $this->render('ZPBAdminBundle:General/Photo:choose_list.html.twig', ['institutions'=>$institutions]);
     }
 
-    public function listByInstitutionAction(Request $request)
+    public function listAction($id)
     {
-        $formDatas = $request->get('institution_filter_form');
-        if(!$formDatas || empty($formDatas) || empty($formDatas['institution'])){
-            $this->setError('Recherche impossible');
-            return $this->redirect($this->generateUrl('zpb_admin_photos_list'));
-        }
-        $photos = $this->getRepo('ZPBAdminBundle:Photo')->findBy(['institutionId'=>intval($formDatas['institution'])]) ;
-        $institution = $this->getRepo('ZPBAdminBundle:Institution')->find(intval($formDatas['institution']));
-        if(!$institution){
-            throw $this->createNotFoundException();
-        }
-        $categories = $institution->getPhotoCategories();
-        $choices = [];
-        foreach($categories as $category){
-            $choices[$category->getId()] = $category->getName();
-        }
-        $filterByCategory = $this->get('form.factory')->createNamedBuilder('category_filter_form','form')
-            ->setAction($this->generateUrl('zpb_admin_photos_list_by_category'))
-            ->add('category', 'choice', ['label'=>'Catégories', 'expanded'=>false, 'multiple'=>false,'choices'=>$choices ])
-            ->add('search', 'submit', ['label'=>'Filtrer'])
-            ->getForm();
-        $photos = $this->getRepo('ZPBAdminBundle:Photo')->findBy(['institutionId'=>intval($formDatas['institution'])]) ;
-        return $this->render('ZPBAdminBundle:General/Photo:list_by_institution.html.twig',
-            [
-                'photo_factory'=>$this->get('zpb.photo_factory'),
-                'photos'=>$photos,
-                'institution'=>$institution,
-                'filterCategory'=>$filterByCategory->createView()
-            ]
-        );
-    }
-
-    public function listByCategoryAction(Request $request)
-    {
-        $formDatas = $request->get('category_filter_form');
-        if(!$formDatas || empty($formDatas) || empty($formDatas['category'])){
-            $this->setError('Recherche impossible');
-            return $this->redirect($this->generateUrl('zpb_admin_photos_list'));
-        }
-        $category = $this->getRepo('ZPBAdminBundle:PhotoCategory')->find(intval($formDatas['category']));
+        $category = $this->getRepo('ZPBAdminBundle:PhotoCategory')->find($id);
         if(!$category){
             throw $this->createNotFoundException();
         }
-        /*$photos = $this->getRepo('ZPBAdminBundle:Photo')->findBy(['category'=>$category], ['position'=>'ASC']);
 
-        return $this->render('ZPBAdminBundle:General/photo:list_by_category.html.twig', ['photo_factory'=>$this->get('zpb.photo_factory'),'photos'=>$photos, 'category'=>$category]);*/
-        return $this->forward('ZPBAdminBundle:General/Photo:getListByCategory', ['categoryId'=>$category->getId()]);
+        $photos = $this->getRepo('ZPBAdminBundle:Photo')->findBy(['category'=>$category], ['position'=>'ASC']);
+        return $this->render('ZPBAdminBundle:General/Photo:list.html.twig', ['photos'=>$photos, 'category'=>$category]);
     }
 
     public function chooseInstitutionAction()
     {
         $institutions = $this->getRepo('ZPBAdminBundle:Institution')->findAll();
-
         return $this->render('ZPBAdminBundle:General/Photo:choose_institution.html.twig', ['institutions'=>$institutions]);
     }
 
     public function createAction($institution_slug, Request $request)
     {
-        $photo = $this->get('zpb.photo_factory')->create();
-        $form = $this->createForm(new PhotoType(), $photo, ['em'=>$this->getManager(), 'slug'=>$institution_slug]);
+        $institution = $this->getRepo('ZPBAdminBundle:Institution')->findOneBySlug($institution_slug);
+        if(!$institution){
+            throw $this->createNotFoundException();
+        }
+        $photo = $this->get('zpb.photo_factory')->create($institution->getId());
+        $form = $this->createForm(new PhotoType(), $photo, ['em'=>$this->getManager(), 'slug'=>$institution_slug, 'action'=>$this->generateUrl('zpb_admin_photos_hd_create', ['institution_slug'=>$institution_slug])]);
         $form->handleRequest($request);
         if($form->isValid()){
+            $this->get('zpb.photo_factory')->createDirs($this->get('filesystem'));
             $photo->upload();
-
             $this->getManager()->persist($photo);
             $this->getManager()->flush();
-
             $this->get('zpb.photo_resizer')->makeThumbnails($photo);
             return $this->redirect($this->generateUrl('zpb_admin_photos_list'));
         }
@@ -177,7 +133,7 @@ class PhotoController extends BaseController
         return $this->render('ZPBAdminBundle:General/photo:list_by_category.html.twig', ['photo_factory'=>$this->get('zpb.photo_factory'),'photos'=>$photos, 'category'=>$category, 'stats'=>$stats]);
     }
 
-    public function positionChangeApiAction(Request $request)
+    public function positionChangeXhrAction(Request $request)
     {
         if(!$request->isMethod("post") || !$request->isXmlHttpRequest()){
             throw $this->createAccessDeniedException();
@@ -185,7 +141,7 @@ class PhotoController extends BaseController
         $id = intval($request->request->get('id', false));
         $position = intval($request->request->get('position', false));
         $response = ['error'=>'ok', 'oldPosition'=>null, 'id'=>null, 'newPosition'=>null];
-        if(!$id || $position === false){
+        if($id === false || $position === false){
             $response['error'] = 'Données manquantes';
             return new JsonResponse($response);
         }

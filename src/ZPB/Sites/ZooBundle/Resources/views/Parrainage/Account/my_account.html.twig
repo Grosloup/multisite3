@@ -15,6 +15,17 @@
     </div>
 
     <div class="container">
+        <div class="spaced-row">
+            <div class="col-md-4">
+                {{ render(controller("ZPBSitesZooBundle:Parrainage/Index:connect")) }}
+            </div>
+            <div class="col-md-2">
+                {{ render(controller("ZPBSitesZooBundle:Parrainage/Index:getBasket")) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
     <div class="col-md-6">
         <dl class="_tabs-small " data-tabs="">
             <dd class="_tab  active" data-target="#tab_1">Mes parrainages</dd>
@@ -23,171 +34,232 @@
         </dl>
         <div class="_tabs-content">
             <div class="_tab-panel active" id="tab_1">
-                <div class="columns large-6 large-centered">
-                    <h3>Mes parrainages</h3>
+                <div class="spaced-row">
+                    <div class="col-md-6">
+                        <h3 class="text-center">Mes parrainages</h3>
+                    </div>
+
                 </div>
             </div>
             <div class="_tab-panel" id="tab_2">
+                <div class="spaced-row">
+                    <div class="col-md-6">
+                        <h3 class="text-center">Modifier mon compte</h3>
+                    </div>
+                </div>
                 <div class="row">
-                    <div class="columns large-6 large-centered">
-                        <h3>Modifier mon compte</h3>
+                    <div class="col-md-1"></div>
 
-                        {{ form_start(form, {attr:{novalidate:true}}) }}
-                        <div class="row">
-                            <div class="column large-4">
-                                {{ form_label(form.civilite) }}
+                    <div class="col-md-4">
+
+
+                        {{ form_start(form, {attr:{novalidate:true, class:"form"}}) }}
+                        <div class="form-row">
+                            {{ form_label(form.civilite) }}
+                            <div class="form-field">
                                 {{ form_widget(form.civilite) }}
-                                {{ form_errors(form.civilite) }}
+                                <div class="error-block">
+                                    {{ form_errors(form.civilite) }}
+                                </div>
                             </div>
+                        </div>
 
-                            <div class="column large-8">
-                                {{ form_label(form.birthdate) }}
+                        <div class="form-row">
+                            {{ form_label(form.birthdate) }}
+                            <div class="form-field">
                                 {{ form_widget(form.birthdate) }}
-                                {{ form_errors(form.birthdate) }}
+                                <div class="error-block">
+                                    {{ form_errors(form.birthdate) }}
+                                </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="column large-12">
-                                {{ form_label(form.firstname) }}
+                        <div class="form-row">
+                            {{ form_label(form.firstname) }}
+                            <div class="form-field">
                                 {{ form_widget(form.firstname) }}
+                                <div class="error-block">
                                 {{ form_errors(form.firstname) }}
+                                </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="column large-12">
-                                {{ form_label(form.lastname) }}
+                        <div class="form-row">
+                            {{ form_label(form.lastname) }}
+                            <div class="form-field">
                                 {{ form_widget(form.lastname) }}
+                                <div class="error-block">
                                 {{ form_errors(form.lastname) }}
+                                </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="column large-12">
-                                {{ form_label(form.username) }}
+                        <div class="form-row">
+                            {{ form_label(form.username) }}
+                            <div class="form-field">
                                 {{ form_widget(form.username) }}
+                                <div class="error-block">
                                 {{ form_errors(form.username) }}
+                                </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="column large-12">
-                                {{ form_label(form.email) }}
+                        <div class="form-row">
+                            {{ form_label(form.email) }}
+                            <div class="form-field">
                                 {{ form_widget(form.email) }}
+                                <div class="error-block">
                                 {{ form_errors(form.email) }}
+                                </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="column large-12">
-                                {{ form_label(form.phone) }}
+                        <div class="form-row">
+                            {{ form_label(form.phone) }}
+                            <div class="form-field">
                                 {{ form_widget(form.phone) }}
-                                {{ form_errors(form.phone) }}
+                                <div class="error-block">
+                                    {{ form_errors(form.phone) }}
+                                </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="column large-12">
-                                {{ form_label(form.address) }}
+                        <div class="form-row">
+                            {{ form_label(form.address) }}
+                            <div class="form-field">
                                 {{ form_widget(form.address) }}
-                                {{ form_errors(form.address) }}
+                                <div class="error-block">
+                                    {{ form_errors(form.address) }}
+                                </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="column large-12">
-                                {{ form_label(form.address2) }}
+                        <div class="form-row">
+                            {{ form_label(form.address2) }}
+                            <div class="form-field">
                                 {{ form_widget(form.address2) }}
-                                {{ form_errors(form.address2) }}
+                                <div class="error-block">
+                                    {{ form_errors(form.address2) }}
+                                </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="column large-4">
-                                {{ form_label(form.batiment) }}
+                        <div class="form-row">
+                            {{ form_label(form.batiment) }}
+                            <div class="form-field">
                                 {{ form_widget(form.batiment) }}
+                                <div class="error-block">
                                 {{ form_errors(form.batiment) }}
+                                </div>
                             </div>
+                        </div>
 
-                            <div class="column large-4">
-                                {{ form_label(form.door) }}
+                        <div class="form-row">
+                            {{ form_label(form.door) }}
+                            <div class="form-field">
                                 {{ form_widget(form.door) }}
+                                <div class="error-block">
                                 {{ form_errors(form.door) }}
+                                </div>
                             </div>
+                        </div>
 
-                            <div class="column large-4">
-                                {{ form_label(form.floor) }}
+                        <div class="form-row">
+                            {{ form_label(form.floor) }}
+                            <div class="form-field">
                                 {{ form_widget(form.floor) }}
+                                <div class="error-block">
                                 {{ form_errors(form.floor) }}
+                                </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="column large-4">
-                                {{ form_label(form.postalCode) }}
+                        <div class="form-row">
+                            {{ form_label(form.postalCode) }}
+                            <div class="form-field">
                                 {{ form_widget(form.postalCode) }}
+                                <div class="error-block">
                                 {{ form_errors(form.postalCode) }}
+                                </div>
                             </div>
+                        </div>
 
-                            <div class="column large-8">
-                                {{ form_label(form.city) }}
+                        <div class="form-row">
+                            {{ form_label(form.city) }}
+                            <div class="form-field">
                                 {{ form_widget(form.city) }}
+                                <div class="error-block">
                                 {{ form_errors(form.city) }}
+                                </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="column large-4">
-                                {{ form_label(form.country) }}
+                        <div class="form-row">
+                            {{ form_label(form.country) }}
+                            <div class="form-field">
                                 {{ form_widget(form.country) }}
-                                {{ form_errors(form.country) }}
+                                <div class="error-block">
+                                    {{ form_errors(form.country) }}
+                                </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="column large-12">
-                                {{ form_widget(form.save, {attr:{class: "button"}}) }}
+                        <div class="form-row">
+                            <div class="form-field">
+                                {{ form_widget(form.save, {attr:{class: "btn btn-primary"}}) }}
                             </div>
                         </div>
 
 
                         {{ form_end(form) }}
                     </div>
+
+                    <div class="col-md-1"></div>
                 </div>
             </div>
             <div class="_tab-panel" id="tab_3">
+                <div class="spaced-row">
+                    <h3 class="text-center">Modifier mon mot de passe</h3>
+                </div>
                 <div class="row">
-                    <div class="columns large-6 large-centered">
-                        <h3>Modifier mon mot de passe</h3>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4">
 
-                        <div class="row">
-                            <div class="column large-12">
-                                {{ form_label(pw_form.oldPassword) }}
+                        {{ form_start(pw_form, {attr:{novalidate:true, class:"form"}}) }}
+                        <div class="form-row">
+                            {{ form_label(pw_form.oldPassword) }}
+                            <div class="form-field">
                                 {{ form_widget(pw_form.oldPassword) }}
-                                {{ form_errors(pw_form.oldPassword) }}
+                                <div class="error-block">
+                                    {{ form_errors(pw_form.oldPassword) }}
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="column large-12">
-                                {{ form_label(pw_form.newPassword.first) }}
+                        <div class="form-row">
+                            {{ form_label(pw_form.newPassword.first) }}
+                            <div class="form-field">
                                 {{ form_widget(pw_form.newPassword.first) }}
-                                {{ form_errors(pw_form.newPassword.first) }}
+                                <div class="error-block">
+                                    {{ form_errors(pw_form.newPassword.first) }}
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="column large-12">
-                                {{ form_label(pw_form.newPassword.second) }}
+                        <div class="form-row">
+                            {{ form_label(pw_form.newPassword.second) }}
+                            <div class="form-field">
                                 {{ form_widget(pw_form.newPassword.second) }}
-                                {{ form_errors(pw_form.newPassword.second) }}
+                                <div class="error-block">
+                                    {{ form_errors(pw_form.newPassword.second) }}
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="column large-12">
-                                {{ form_widget(pw_form.save, {attr:{class: "button"}}) }}
+                        <div class="form-row">
+                            <div class="form-field">
+                                {{ form_widget(pw_form.save, {attr:{class: "btn btn-primary"}}) }}
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-1"></div>
                 </div>
             </div>
             <div class="_tab-panel" id="tab_4">

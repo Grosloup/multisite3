@@ -59,7 +59,8 @@ class LoadMediaImage extends AbstractFixture implements OrderedFixtureInterface,
 
                 ->file = new UploadedFile($file->getRealPath(), pathinfo($file->getRealPath(), PATHINFO_FILENAME), null, null, null, true);
             $img->upload();
-            //$resizer->makeThumbnails($img);
+            $resizer = $this->container->get('zpb.image_resizer');
+            // $resizer->makeThumbnails($img);
             $manager->persist($img);
             $this->addReference('zpb-image-' . $k, $img);
             $k++;

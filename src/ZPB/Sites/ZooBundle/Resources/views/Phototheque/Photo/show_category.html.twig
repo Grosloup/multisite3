@@ -1,6 +1,6 @@
 {% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
 
-{% block title %}{{ category }} | {{ institution }} | Photothèque{% endblock %}
+{% block title %}{{ category }} | {{ institution }} | Galerie photo{% endblock %}
 {% block description %}{% endblock %}
 {% block keywords %}{% endblock %}
 
@@ -22,7 +22,7 @@
                 <div id="slider">
                     {% for photo in photos %}
                         <div>
-                            <img src="{{ photo_factory.getWebThumb('xlarge', photo) }}" alt="slide {{ loop.index }}" width="100%"/>
+                            <img src="{{ photo.getWebThumbPath('xlarge') }}" alt="slide {{ loop.index }}" width="100%"/>
                             <div style="position: relative; height: 15%; bottom: 0; padding: 15px; width: 100%; text-align: center;">
                                 {{ photo.legend }}
                             </div>
@@ -45,7 +45,7 @@
                     {% for photo in photos %}
                         <li >
                             <a class="thumb" href="{{ path("zpb_sites_zoo_download_image", {filename: photo.filename}) }}">
-                                <img src="{{ photo_factory.getWebThumb('regular', photo) }}" alt="" title="{{ photo.title }}{{ photo.copyright|raw }}" width="100%"/>
+                                <img src="{{ photo.getWebThumbPath('regular') }}" alt="" title="{{ photo.title }}{{ photo.copyright|raw }}" width="100%"/>
                             </a>
                         </li>
                     {% endfor %}
