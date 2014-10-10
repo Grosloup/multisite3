@@ -15,6 +15,23 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class ReporterRepository extends EntityRepository
 {
+
+    public function generatePassword()
+    {
+        $qb = $this->createQueryBuilder('r')->select('COUNT(s.id)');
+        $count = $qb->getQuery()->getSingleScalarResult();
+
+        $password = 'zoobeauval';
+        if($count<10){
+            $password .= '00' . $count;
+        } elseif($count>= 10 && $count<100 ){
+            $password .= '0' . $count;
+        } else {
+            $password .= $count;
+        }
+        return $password;
+    }
+
     public function loadUserByUsername($username)
     {
         $user = $this->findOneByEmailOrUsername($username);
