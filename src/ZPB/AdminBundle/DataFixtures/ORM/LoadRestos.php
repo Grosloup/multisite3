@@ -46,9 +46,9 @@ class LoadRestos  extends AbstractFixture implements OrderedFixtureInterface, Co
     public function load(ObjectManager $manager)
     {
         $names = [
-            "Self-service Le Tropical",
-            "Fast-food Le Kilimandjaro",
-            "Crêperie La Roseraie",
+            "Le Tropical",
+            "Le Kilimandjaro",
+            "La Roseraie",
             "L'Eucalyptus",
             "La Pagode",
             "La Savane",
