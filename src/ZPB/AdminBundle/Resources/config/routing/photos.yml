@@ -1,6 +1,13 @@
 zpb_admin_photos_list:
-    path: /
+    path: /liste/categorie/{id}
     defaults: { _controller: ZPBAdminBundle:General/Photo:list }
+    methods: ["GET"]
+    requirements:
+        id: \d+
+
+zpb_admin_photos_choose_list:
+    path: /choix_liste
+    defaults: { _controller: ZPBAdminBundle:General/Photo:chooseList }
     methods: ["GET"]
 
 zpb_admin_photos_list_by_institution:

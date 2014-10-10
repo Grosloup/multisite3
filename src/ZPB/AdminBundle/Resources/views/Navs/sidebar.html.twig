@@ -74,7 +74,7 @@
                                 </li>
                                 <li class="sidebar-dropdown{% if active in ["list_photos", "new_photo", "update_photo", "stats_photo"] %} active{% endif %}"><a href="javascript:void(0)">Photothèque normale</a><i class="sidebar-icon fa fa-angle-right"></i>
                                     <ul>
-                                        <li class="{% if active == "list_photos" %}active{% endif %}"><a href="{{ path("zpb_admin_photos_list") }}">Liste</a></li>
+                                        <li class="{% if active == "list_photos" %}active{% endif %}"><a href="{{ path("zpb_admin_photos_choose_list") }}">Liste</a></li>
                                         <li class="{% if active == "new_photo" %}active{% endif %}"><a href="{{ path("zpb_admin_photos_choose_institution") }}">Upload</a></li>
                                         <li class="{% if active == "stats_photo" %}active{% endif %}"><a href="{{ path("zpb_admin_photos_stats_homepage") }}">Stats</a></li>
                                     </ul>
