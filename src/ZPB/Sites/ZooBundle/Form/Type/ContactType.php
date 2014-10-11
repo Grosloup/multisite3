@@ -29,6 +29,7 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('interlocutor', 'contact_interlocutors_type', ['label'=>'Choisissez votre interlocuteur'])
             ->add('email','email', ['label'=>'Votre email'])
             ->add('topic',null, ['label'=>'Objet'])
             ->add('message','textarea', ['label'=>'Votre message'])
@@ -36,12 +37,12 @@ class ContactType extends AbstractType
             ->add('save', 'submit', ['label'=>'Envoyer'])
         ;
     }
-    
+
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(['data_class'=>'ZPB\AdminBundle\Entity\ContactInfo']);
     }
-    
+
     public function getName()
     {
         return 'info_zoo_contact_form';

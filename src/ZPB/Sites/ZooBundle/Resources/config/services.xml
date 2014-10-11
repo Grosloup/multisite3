@@ -12,6 +12,7 @@
         <parameter key="zpb.zoo.command.class">ZPB\AdminBundle\Entity\Command</parameter>
         <parameter key="zpb.zoo.command_item.class">ZPB\AdminBundle\Entity\CommandItem</parameter>
         <parameter key="zpb.zoo.bank_mac_maker.class">ZPB\Sites\ZooBundle\Service\BankMacMaker</parameter>
+        <parameter key="zpb.form.type.contact_interlocutors.class">ZPB\Sites\ZooBundle\Form\Type\ContactInterlocutorType</parameter>
 
         <parameter type="collection" key="zpb.zoo.bank_datas">
             <parameter key="securityKey">0123456789abcdef0123456789abcdef01234567</parameter>
@@ -25,6 +26,16 @@
             <parameter key="url_retour_ok">https://new.zoobeauval.com/parrainages</parameter>
             <parameter key="url_retour_err">https://new.zoobeauval.com/parrainages</parameter>
         </parameter>
+
+        <parameter type="collection" key="zpb.zoo.contact_interlocutors">
+            <parameter key="info">Information</parameter>
+            <parameter key="rh">Ressources Humaines</parameter>
+            <parameter key="achats">Achats</parameter>
+            <parameter key="commerciaux">Service commercial</parameter>
+            <parameter key="pedagogie">Pédagogie</parameter>
+            <parameter key="communication">Communication</parameter>
+            <parameter key="presse">Presse</parameter>
+        </parameter>
     </parameters>
 
     <services>
@@ -36,6 +47,11 @@
         <service id="zpb.zoo.sponsor_basket" class="%zpb.zoo.sponsor_basket.class%">
             <argument type="service" id="session" />
             <argument>%zpb.zoo.sponsor_basket_item.class%</argument>
+        </service>
+
+        <service id="zpb.form.type.contact_interlocutors" class="%zpb.form.type.contact_interlocutors.class%">
+            <argument type="string">%zpb.zoo.contact_interlocutors%</argument>
+            <tag name="form.type" alias="contact_interlocutors_type" />
         </service>
 
         <service id="zpb.zoo.basket_to_command" class="%zpb.zoo.sponsor_basket_to_command.class%">

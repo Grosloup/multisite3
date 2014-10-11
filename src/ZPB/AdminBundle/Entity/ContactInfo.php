@@ -24,6 +24,11 @@ class ContactInfo
     private $id;
 
     /**
+     * @ORM\Column(name="interlocutor", type="string", nullable=false, length=100)
+     */
+    private $interlocutor;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=false)
@@ -75,12 +80,31 @@ class ContactInfo
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getInterlocutor()
+    {
+        return $this->interlocutor;
+    }
+
+    /**
+     * @param mixed $interlocutor
+     * @return ContactInfo
+     */
+    public function setInterlocutor($interlocutor)
+    {
+        $this->interlocutor = $interlocutor;
+        return $this;
+    }
+
 
     /**
      * Set email
@@ -98,7 +122,7 @@ class ContactInfo
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -121,7 +145,7 @@ class ContactInfo
     /**
      * Get topic
      *
-     * @return string 
+     * @return string
      */
     public function getTopic()
     {
@@ -144,7 +168,7 @@ class ContactInfo
     /**
      * Get message
      *
-     * @return string 
+     * @return string
      */
     public function getMessage()
     {
@@ -167,7 +191,7 @@ class ContactInfo
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -190,7 +214,7 @@ class ContactInfo
     /**
      * Get isSend
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsSend()
     {

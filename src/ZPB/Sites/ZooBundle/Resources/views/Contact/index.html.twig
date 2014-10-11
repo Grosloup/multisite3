@@ -125,28 +125,35 @@
                 {{ form_errors(form) }}
 
                 <div class="form-row">
+                    {{ form_label(form.interlocutor) }}
+                    <div class="form-field">
+                        {{ form_widget(form.interlocutor) }}
+                        <div class="error-block">
+                            {{ form_errors(form.interlocutor) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
                     {{ form_label(form.email) }}
                     <div class="form-field">
                         {{ form_widget(form.email) }}
                         <div class="error-block">
                             {{ form_errors(form.email) }}
                         </div>
-
                     </div>
-
                 </div>
-                <div class="form-row">
 
+                <div class="form-row">
                     {{ form_label(form.topic) }}
                     <div class="form-field">
                         {{ form_widget(form.topic) }}
                         <div class="error-block">
                             {{ form_errors(form.topic) }}
                         </div>
-
                     </div>
-
                 </div>
+
                 <div class="form-row">
                     {{ form_label(form.message) }}
                     <div class="form-field">
@@ -154,19 +161,17 @@
                         <div class="error-block">
                             {{ form_errors(form.message) }}
                         </div>
-
                     </div>
-
                 </div>
+
                 <div class="form-row hide">
                     {{ form_label(form.name) }}
                     <div class="form-field">
                         {{ form_widget(form.name) }}
                         {{ form_errors(form.name) }}
                     </div>
-
-
                 </div>
+
                 <div class="form-row">
                     {{ form_widget(form.save, {attr:{class:"btn btn-primary"}}) }}
                 </div>
