@@ -40,7 +40,7 @@
                     <p><strong>Sophie</strong> <span class="bold">Delord</span></p>
                     <p><strong>Directrice des Ressources Humaines</strong></p>
                     <p>Tél : 02 54 75 62 14</p>
-                    <p>Email : emploi@zoobeauval.com</p>
+                    <p><button class="btn btn-primary contact" data-id="rh">Contacter</button></p>
 
 
                 </address>
@@ -53,7 +53,7 @@
                     <p><strong>Responsable des achats</strong></p>
                     <p>Tél/Fax : 02 54 71 25 19</p>
                     <p>Mobile : 06 76 11 91 04</p>
-                    <p>Email : samuel.leroux@zoobeauval.com</p>
+                    <p><button class="btn btn-primary contact" data-id="achats">Contacter</button></p>
 
 
                 </address>
@@ -66,7 +66,7 @@
                     <p><strong>Directrice commerciale</strong></p>
                     <p>Tél : 02 54 75 74 26</p>
                     <p>Fax : 02 54 75 74 30</p>
-                    <p>Email : service.commercial@zoobeauval.com</p>
+                    <p><button class="btn btn-primary contact" data-id="commerciaux">Contacter</button></p>
 
 
                 </address>
@@ -80,7 +80,7 @@
                 <address>
                     <p><strong>Véronique</strong> <span class="bold">Baudouin</span> </p>
                     <p>Tél : 02 54 75 74 25</p>
-                    <p>Email : pedagogie@zoobeauval.com</p>
+                    <p><button class="btn btn-primary contact" data-id="pedagogie">Contacter</button></p>
 
 
                 </address>
@@ -92,7 +92,7 @@
                     <p><strong>Delphine</strong> <span class="bold">Delord</span></p>
                     <p><strong>Directrice de la Communication</strong></p>
                     <p>Tél : 01 40 56 01 53</p>
-                    <p>Email : delphine.delord@zoobeauval.com</p>
+                    <p><button class="btn btn-primary contact" data-id="communication">Contacter</button></p>
 
 
                 </address>
@@ -105,7 +105,7 @@
                     <p><strong>Attachée de presse</strong></p>
                     <p>Tél : 01 48 01 00 34</p>
                     <p>Mobile : 06 62 25 51 60</p>
-                    <p>Email : pl-communication@allegria.fr</p>
+                    <p><button class="btn btn-primary contact" data-id="presse">Contacter</button></p>
 
 
                 </address>
@@ -113,17 +113,13 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="modal">
+        <a class="modal-close-btn" href="">&times;</a>
         <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-4">
 
-
-
+            <div class="col-md-6">
                 {{ form_start(form, {attr:{novalidate: true, class:"form"}}) }}
-
                 {{ form_errors(form) }}
-
                 <div class="form-row">
                     {{ form_label(form.interlocutor) }}
                     <div class="form-field">
@@ -133,7 +129,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="form-row">
                     {{ form_label(form.email) }}
                     <div class="form-field">
@@ -143,7 +138,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="form-row">
                     {{ form_label(form.topic) }}
                     <div class="form-field">
@@ -153,7 +147,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="form-row">
                     {{ form_label(form.message) }}
                     <div class="form-field">
@@ -163,7 +156,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="form-row hide">
                     {{ form_label(form.name) }}
                     <div class="form-field">
@@ -171,15 +163,38 @@
                         {{ form_errors(form.name) }}
                     </div>
                 </div>
-
                 <div class="form-row">
                     {{ form_widget(form.save, {attr:{class:"btn btn-primary"}}) }}
                 </div>
-
                 {{ form_end(form) }}
-
             </div>
-            <div class="col-md-1"></div>
+
         </div>
     </div>
+
+{% endblock %}
+{% block footScripts %}
+    {{ parent() }}
+    <script src="/js/modal.js"></script>
+    <script>
+        $(function(){
+            function selectInterloc(value){
+                var options = $("#info_zoo_contact_form_interlocutor").find("option");
+                options.attr("selected", false);
+                options.each(function(){
+                    if($(this).val() === value){
+                        $(this).attr("selected", true);
+                    }
+                });
+            }
+            var $modal = $(".modal");
+            $modal.zpbModal();
+            var modal = $modal.data("zpbModal");
+            $(".contact").on("click", function(e){
+                e.preventDefault();
+                modal.open(selectInterloc($(this).data("id")));
+            })
+        })
+    </script>
+
 {% endblock %}

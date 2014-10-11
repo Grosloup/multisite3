@@ -47,8 +47,8 @@ class ContactController extends BaseController
                 ->setContentType('text/html')
                 ->setSubject('mail de contact')
                 ->setFrom('nicolas.canfrere@zoobeauval.com') //TODO adresse mail
-                ->setTo('infos@zoobeauval.com')
-                ->setBody($this->renderView('ZPBSitesZooBundle:Emails:contact_info.html.twig',['contact'=>$contact]))
+                ->setTo($this->container->getParameter('zpb.zoo.contact_interlocutors_emails')[$contact->getInterlocutor()])
+                ->setBody($this->renderView('ZPBSitesZooBundle:Emails:contact_info.html.twig',['contact'=>$contact, 'email'=>$this->container->getParameter('zpb.zoo.contact_interlocutors_emails')[$contact->getInterlocutor()]]))
             ;
 
             $sent = $this->get('mailer')->send($message);

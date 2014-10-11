@@ -36,6 +36,16 @@
             <parameter key="communication">Communication</parameter>
             <parameter key="presse">Presse</parameter>
         </parameter>
+
+        <parameter type="collection" key="zpb.zoo.contact_interlocutors_emails">
+            <parameter key="info">infos@zoobeauval.com</parameter>
+            <parameter key="rh">emploi@zoobeauval.com</parameter>
+            <parameter key="achats">samuel.leroux@zoobeauval.com</parameter>
+            <parameter key="commerciaux">service.commercial@zoobeauval.com</parameter>
+            <parameter key="pedagogie">pedagogie@zoobeauval.com</parameter>
+            <parameter key="communication">delphine.delord@zoobeauval.com</parameter>
+            <parameter key="presse">pl-communication@allegria.fr</parameter>
+        </parameter>
     </parameters>
 
     <services>
