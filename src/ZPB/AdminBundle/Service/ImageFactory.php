@@ -23,7 +23,6 @@ namespace ZPB\AdminBundle\Service;
 
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\File;
-use ZPB\AdminBundle\Entity\ResizeableInterface;
 
 class ImageFactory
 {

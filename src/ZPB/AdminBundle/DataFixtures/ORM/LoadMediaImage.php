@@ -44,7 +44,7 @@ class LoadMediaImage extends AbstractFixture implements OrderedFixtureInterface,
     {
         $this->reloadAssets();
         $imgFactory = $this->container->get('zpb.image_factory');
-        //$resizer = $this->container->get('zpb.photo_resizer');
+        $resizer = $this->container->get('zpb.image_resizer');
         $finder = new Finder();
         $fixturesPhotosTmpDir = $this->container->getParameter('zpb.medias.options')['zpb.img.root_dir'] .
             'fixtures/imgs/tmp/';
@@ -59,10 +59,10 @@ class LoadMediaImage extends AbstractFixture implements OrderedFixtureInterface,
 
                 ->file = new UploadedFile($file->getRealPath(), pathinfo($file->getRealPath(), PATHINFO_FILENAME), null, null, null, true);
             $img->upload();
-            $resizer = $this->container->get('zpb.image_resizer');
-            // $resizer->makeThumbnails($img);
+
             $manager->persist($img);
             $this->addReference('zpb-image-' . $k, $img);
+            $resizer->makeThumbnails($img);
             $k++;
 
         }
