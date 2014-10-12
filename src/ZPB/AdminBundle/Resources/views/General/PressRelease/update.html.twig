@@ -49,11 +49,44 @@
                         {% endif %}
                     </div>
                 </div>
-
+                {{ form_end(form) }}
                 <div class="form-row">
                     {{ form_widget(form.save, {attr: {class: "btn-flat btn-primary"}})}}
                 </div>
-                {{ form_end(form) }}
+
+            </div>
+
+            <div class="tile">
+                <div class="tile-header">
+                    Pdf en français
+                </div>
+                {% if form.vars.value.pdfFr != null %}
+                    <a class="btn btn-neutral" href="{{ reel_pdf_url(form.vars.value.pdfFr) }}" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
+                {% else %}
+                    Ce communiqué n'a pas de pdf en français associé.
+                {% endif %}
+            </div>
+
+            <div class="tile">
+                <div class="tile-header">
+                    Pdf en anglais
+                </div>
+                {% if form.vars.value.pdfEn != null %}
+                    <a class="btn btn-neutral" href="{{ reel_pdf_url(form.vars.value.pdfEn) }}" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
+                {% else %}
+                    Ce communiqué n'a pas de pdf en anglais associé.
+                {% endif %}
+            </div>
+
+            <div class="tile">
+                <div class="tile-header">
+                    Vignette
+                </div>
+                {% if form.vars.value.image != null %}
+                    <a class="btn btn-neutral" href="{{ img_thmb(form.vars.value.iamge, 'regular') }}" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
+                {% else %}
+                    Ce communiqué n'a pas d'image associée.
+                {% endif %}
             </div>
 
         </div>

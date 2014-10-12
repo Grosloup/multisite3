@@ -19,6 +19,7 @@
                     <tr>
                         <th>#Id</th>
                         <th>Titre</th>
+                        <th>Vignette</th>
                         <th>Pdf fr</th>
                         <th>Pdf en</th>
                         <th>Modifier</th>
@@ -33,6 +34,7 @@
                             <tr>
                                 <td>{{ entity.id }}</td>
                                 <td>{{ entity.title }}</td>
+                                <td>{% if entity.image != null %}<img src="{{ img_thmb(entity.image, 'small') }}" alt=""/>{% else %} - {% endif %}</td>
                                 <td><a class="btn btn-neutral" href="{{ pdf_url(entity.pdfFr) }}"><i class="fa fa-file-pdf-o"></i></a></td>
                                 <td>{% if entity.pdfEn != null %}<a class="btn btn-neutral" href="{{ pdf_url(entity.pdfEn) }}"><i class="fa fa-file-pdf-o"></i></a>{% else %}-{% endif %}</td>
                                 <td><a class="btn btn-neutral" href="{{ path("zpb_admin_general_press_release_update", {id: entity.id}) }}"><i class="fa fa-edit"></i></a></td>
