@@ -1,157 +1,161 @@
-(function($,w, d){
+(function($,w){
 
     jQuery.event.props.push( "dataTransfer" );
-    var uploadPdfOptions = {
-        multiple: false,
-        droparea: '.dropzone-in',
-        droploader: '.dropzone-loader',
-        progressbar: '.dropzone-innerbar',
-        actions: '.dropzone-actions',
-        message: '.dropzone-message',
-        deleteBtn: '.dropzone-delete-btn',
+    var defaults = {
         hover: 'hover',
-        legend: 'Déposez votre pdf ici',
+        progressBar: '.dropzone-innerbar',
+        url: null,
+        lang: 'fr',
+        maxSize: 6000000,
         allow: ['application/pdf'],
-        maxSize: 4500000,
-        url: '',
-        deleteImgUrl: '',
-        institution: '',
-        targetId : null,
-        lang: 'fr'
+        errorMessage: function(message){},
+        loadDone: function(response){},
+        loadFail: function(response){}
     };
 
-    function upload(files, zone, idx, opts){
-        var file = files[idx], message= zone.find(opts.message);
-        if(!'size' in file){
-            message.text("L'élément déposé n'est pas un fichier");
-            return false;
-        }
-        if(file.size > opts.maxSize){
-            message.text("L'élément déposé est trop lourd");
-            return false;
-        }
-        if(opts.allow.indexOf(file.type) < 0 ){
-            message.text("L'élément déposé n'est pas du bon type");
-            return false;
-        }
-        var dropin = zone.find(opts.droparea);
-        var progressBar = zone.find(opts.progressbar);
-        var actions = zone.find(opts.actions);
-        var xhr = new XMLHttpRequest();
+    function PdfUploader(el, options){
+        this.$el = $(el);
+        this.options = $.extend({}, defaults, options || {});
+        this.init();
+    }
 
-        function loadFunc(e){
-            var response = $.parseJSON(e.target.responseText);
-            if(response.error){
-                message.text(response.msg);
-                progressBar.width(0+"%");
-                zone.data('droppable', true);
-            } else {
-                dropin.hide();
-                message.text(response.msg);
-                progressBar.width(0+"%");
-                progressBar.parent().hide();
-                zone.data('droppable', false);
-                if(opts.targetId){
-                    $(opts.targetId).val(response.pdfFilename);
-                }
+    PdfUploader.prototype.dragenter = function(e){
+        e.preventDefault();
+    };
+
+    PdfUploader.prototype.dragover = function(e){
+        e.preventDefault();
+        var self = $(this).data("zpbUploadPdf");
+        $(this).addClass(self.options.hover);
+    };
+
+    PdfUploader.prototype.dragleave = function(e){
+        e.preventDefault();
+        var self = $(this).data("zpbUploadPdf");
+        $(this).removeClass(self.options.hover);
+    };
+
+    PdfUploader.prototype.drop = function(e){
+        e.preventDefault();
+        var self = $(this).data("zpbUploadPdf");
+        $(this).removeClass(self.options.hover);
+        self.options.errorMessage('');
+        if(self.isDroppable === true){
+            self.isDroppable = false;
+            self.upload(e.dataTransfer.files);
+        } else {
+            if(self.institution == null){
+                self.options.errorMessage('Choisissez une institution !');
             }
         }
-        function progressFunc(e){
+    };
+
+    PdfUploader.prototype.upload = function(files){
+        var file = files[0];
+        var self = this;
+        if(!'size' in file){
+            this.options.errorMessage('');
+            this.options.errorMessage('L\'élément déposé n\'est pas un fichier');
+            return false;
+        }
+        if(this.options.allow.indexOf(file.type)<0){
+            this.options.errorMessage('');
+            this.options.errorMessage('L\'élément déposé n\'est pas du bon type');
+            return false;
+        }
+        if(file.size > this.options.maxSize){
+            this.options.errorMessage('');
+            this.options.errorMessage('L\'élément déposé est trop lourd');
+            return false;
+        }
+
+        function load(e){
+            var response = $.parseJSON(e.target.responseText);
+            self.isDroppable = true;
+            if(!response.error){
+                self.options.loadDone(response);
+            } else {
+                self.options.loadFail(response);
+            }
+        }
+
+        function progress(e){
             if(e.lengthComputable){
                 var percent = Math.round((e.loaded/ e.total) * 100) + "%";
-                progressBar.width(percent);
+                self.progressBar.width(percent);
             }
         }
-        xhr.addEventListener("load", loadFunc, false);
-        xhr.upload.addEventListener("progress", progressFunc, false);
-        xhr.open('post', opts.url, true);
-        xhr.setRequestHeader('X-Requested-With','XMLHttpRequest');
-        xhr.setRequestHeader('Content-Type','multipart/form-data');
-        xhr.setRequestHeader('X-File-Name',file.name);
-        xhr.setRequestHeader('X-File-Type',file.type);
-        xhr.setRequestHeader('X-File-Size',file.size);
-        xhr.setRequestHeader('X-File-Lang',opts.lang);
-        if(opts.institution){
-            xhr.setRequestHeader('X-File-Institution', opts.institution);
-        }
-        xhr.send(file);
-    }
 
-    $.fn.uploadPdf = function(options){
-        var opts = $.extend({}, uploadPdfOptions, options || {});
-        this.setInstitution = function(id){
-            opts.institution = id;
-        };
-        return this.each(function(){
+        this.xhr = new XMLHttpRequest();
 
+        this.xhr.upload.addEventListener("progress", progress, false);
 
+        this.xhr.open('post', this.options.url, true);
 
-            var $this = $(this), legend = $this.find(".dropzone-legend");
-            var progressBar = $this.find(opts.progressbar);
-            var message = $this.find(opts.message);
-            var dropin = $this.find(opts.droparea);
-            legend.text(opts.legend);
-            $this.data('droppable', true);
-            $this.on({
-                dragenter: function(e){
-                    e.preventDefault();
-                },
-                dragover: function(e){
-                    e.preventDefault();
-                    $(this).addClass(opts.hover);
-                },
-                dragleave: function(e){
-                    e.preventDefault();
-                    $(this).removeClass(opts.hover);
-                },
-                drop: function(e){
-                    e.preventDefault();
-                    if(opts.institution != null){
-                        message.text("");
-                        $(this).removeClass(opts.hover);
-                        if($this.data('droppable')){
-                            upload(e.dataTransfer.files, $this, 0, opts);
-                        }
+        this.xhr.onreadystatechange = function (e) {
+            if(self.xhr.readyState == 4){
+                self.isDroppable = true;
+                if(self.xhr.status == 200){
+                    var response = $.parseJSON(e.target.responseText);
+                    if(!response.error){
+                        self.options.loadDone(response);
                     } else {
-                        $(this).removeClass(opts.hover);
-                        message.text("Choisissez une institution !");
+                        self.options.loadFail(response);
                     }
+                } else {
+                    self.options.errorMessage('');
+                    self.options.errorMessage(self.xhr.status + " " + self.xhr.statusText);
+                }
+            }
+        };
+        this.xhr.setRequestHeader('X-Requested-With','XMLHttpRequest');
+        this.xhr.setRequestHeader('Content-Type','multipart/form-data');
+        this.xhr.setRequestHeader('X-File-Name',file.name);
+        this.xhr.setRequestHeader('X-File-Type',file.type);
+        this.xhr.setRequestHeader('X-File-Size',file.size);
+        this.xhr.setRequestHeader('X-File-Institution', this.institution);
+        this.xhr.setRequestHeader('X-File-Lang', this.options.lang);
+        this.xhr.send(file);
+
+    };
+
+    PdfUploader.prototype.setInstitution = function(institution){
+        if(institution){
+            this.institution = institution;
+            this.isDroppable = true;
+        }
+    };
 
 
+
+    PdfUploader.prototype.init = function(){
+        var el = this.$el;
+        var self = this;
+        this.isDroppable = false;
+        this.institution = null;
+        this.progressBar = el.find(this.options.progressBar);
+        el.on({
+            dragenter: self.dragenter,
+            dragover: self.dragover,
+            dragleave: self.dragleave,
+            drop: self.drop
+        });
+    };
+
+
+
+    $.fn.zpbUploadPdf = function(options){
+        if(!options.url){
+            console.error('url non définie !');
+        } else {
+            return this.each(function(){
+                if(!$.data(this, "zpbUploadPdf")){
+                    $.data(this, "zpbUploadPdf", new PdfUploader(this, options));
                 }
             });
-        });
-    }
-})(jQuery, this, document);
-$(function(){
-    var pdfFr = $("#dropzone-pdf-fr");
-    var pdfEn = $("#dropzone-pdf-en");
-
-    var uploadfr = {
-        url: pdfUploadUrl,
-        institution: null,
-        targetId: "#press_release_form_pdfFr"
-    };
-
-    var uploaden = {
-        url: pdfUploadUrl,
-        institution: null,
-        targetId: "#press_release_form_pdfEn",
-        lang: 'en'
-    };
-    var uploadPdfFr = pdfFr.uploadPdf(uploadfr);
-    console.log(uploadPdfFr);
-    var uploadPdfEn = pdfEn.uploadPdf(uploaden);
-
-    $("#press_release_form_institution").on("change", function(e){
-        e.preventDefault();
-        var id = $(this).find("option:selected").val();
-        if(id != null){
-            uploadPdfFr.setInstitution(id);
-            uploadPdfEn.setInstitution(id);
         }
+    }
 
-    });
+})(jQuery, this);
 
 
-});

@@ -47,7 +47,7 @@ class PressReleaseType extends AbstractType
                     ]
                 )->addModelTransformer($institutionTransformer)
             )
-            ->add('imageName','hidden',['mapped'=>false])
+            ->add('imageId','hidden',['mapped'=>false])
             ->add('pdfFr','hidden',[])
             ->add('pdfEn','hidden',[])
             ->add('save','submit',['label'=>'Enregistrer'])

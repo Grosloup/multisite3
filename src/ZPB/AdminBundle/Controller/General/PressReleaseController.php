@@ -42,9 +42,9 @@ class PressReleaseController extends BaseController
         $form = $this->createForm(new PressReleaseType(), $entity, ['em'=>$this->getManager()]);
         $form->handleRequest($request);
         if($form->isValid()){
-            $imageName = $form->get('imageName')->getData();
-            if($imageName){
-                $image = $this->getRepo('ZPBAdminBundle:MediaImage')->findOneByFilename($imageName);
+            $imageId = $form->get('imageId')->getData();
+            if($imageId){
+                $image = $this->getRepo('ZPBAdminBundle:MediaImage')->find($imageId);
                 if($image){
                     $entity->setImage($image);
                 }
@@ -103,9 +103,9 @@ class PressReleaseController extends BaseController
         }
         $fs = $this->get('filesystem');
         $filename = $request->headers->get('X-File-Name');
-        $response = ['error'=>false,'msg'=>'', 'pdfFilename'=>''];
+        $response = ['error'=>false,'msg'=>'', 'pdfId'=>''];
         if(!$filename){
-            $response = ['error'=>true,'msg'=>'Données manquantes', 'pdfFilename'=>''];
+            $response = ['error'=>true,'msg'=>'Données manquantes', 'pdfId'=>''];
         } else {
             $basePath = $this->container->getParameter('zpb.medias.options')['zpb.pdf.root_dir'] . $this->container->getParameter('zpb.medias.options')['zpb.pdf.web_dir'];
             if(!$fs->exists($basePath)){
@@ -119,35 +119,38 @@ class PressReleaseController extends BaseController
             }
             $path = $basePath . $lang . $filename;
             if($fs->exists($path)){
+
+                $filenameNoExtension = preg_replace('/\.pdf$/i','',$filename);
+                $old = $this->getRepo('ZPBAdminBundle:MediaPdf')->findOneByFilename($filenameNoExtension);
+                $this->getManager()->remove($old);
+                $this->getManager()->flush();
+            }
+            file_put_contents($path, $request->getContent());
+            $file = new File($path);
+            if(!in_array($file->getMimeType(), ['application/pdf'])){
+                $fs->remove($path);
+                $file = null;
                 $response['error'] = true;
-                $response['msg'] = 'Un fichier du même nom existe déjà.';
+                $response['msg'] = 'Le fichier n\'est pas d\'un format acceptable.';
             } else {
-                file_put_contents($path, $request->getContent());
-                $file = new File($path);
-                if(!in_array($file->getMimeType(), ['application/pdf'])){
-                    $fs->remove($path);
-                    $file = null;
-                    $response['error'] = true;
-                    $response['msg'] = 'Le fichier n\'est pas d\'un format acceptable.';
-                } else {
 
-                    $pdf = $this->get('zpb.pdf_factory')->createFromFile($file);
-                    if(null != $institutionSlug = $request->headers->get('X-File-Institution', null)){
-                        $institution = $this->getRepo('ZPBAdminBundle:Institution')->findOneBySlug($institutionSlug);
-                        if($institution){
-                            $pdf->setInstitution($institution);
-                        }
+                $pdf = $this->get('zpb.pdf_factory')->createFromFile($file);
+                if(null != $institutionId = $request->headers->get('X-File-Institution', null)){
+                    $institution = $this->getRepo('ZPBAdminBundle:Institution')->find($institutionId);
+                    if($institution){
+                        $pdf->setInstitution($institution);
+                    }
 
-                    }
-                    try{
-                        $this->getManager()->persist($pdf);
-                        $this->getManager()->flush();
-                        $response = ['error'=>false,'msg'=>'Transfert réussi', 'pdfFilename'=>$pdf->getId()];
-                    } catch(\Exception $e){
-                        $response = ['error'=>true,'msg'=>$e->getMessage(), 'pdfFilename'=>''];
-                    }
+                }
+                try{
+                    $this->getManager()->persist($pdf);
+                    $this->getManager()->flush();
+                    $response = ['error'=>false,'msg'=>'Transfert réussi', 'pdfId'=>$pdf->getId()];
+                } catch(\Exception $e){
+                    $response = ['error'=>true,'msg'=>$e->getMessage(), 'pdfId'=>''];
                 }
             }
+
         }
 
 

@@ -192,7 +192,8 @@
             var modal = $modal.data("zpbModal");
             $(".contact").on("click", function(e){
                 e.preventDefault();
-                modal.open(selectInterloc($(this).data("id")));
+                selectInterloc($(this).data("id"));
+                modal.open();
             })
         })
     </script>
