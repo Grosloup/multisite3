@@ -33,6 +33,26 @@
             <parameter key="Mr">Monsieur</parameter>
         </parameter>
 
+
+        <parameter key="zpb.image.thumbnails" type="collection">
+            <parameter key="small" type="collection">
+                <parameter key="width">200</parameter>
+                <parameter key="height">200</parameter>
+            </parameter>
+            <parameter key="regular" type="collection">
+                <parameter key="width">400</parameter>
+                <parameter key="height">400</parameter>
+            </parameter>
+            <parameter key="large" type="collection">
+                <parameter key="width">600</parameter>
+                <parameter key="height">450</parameter>
+            </parameter>
+            <parameter key="xlarge" type="collection">
+                <parameter key="width">900</parameter>
+                <parameter key="height">600</parameter>
+            </parameter>
+        </parameter>
+
         <parameter key="zpb.photo.thumbnails" type="collection">
             <parameter key="small" type="collection">
                 <parameter key="width">200</parameter>
@@ -205,7 +225,7 @@
         </service>
 
         <service id="zpb.image_resizer" class="%zpb.image_resizer.class%">
-            <argument>%zpb.photo.thumbnails%</argument>
+            <argument>%zpb.image.thumbnails%</argument>
             <argument>%zpb.medias.options%</argument>
         </service>
 
@@ -234,7 +254,7 @@
         </service>
 
         <service id="zpb.image_factory" class="%zpb.image_factory.class%">
-            <argument>%zpb.photo.thumbnails%</argument>
+            <argument>%zpb.image.thumbnails%</argument>
             <argument>%zpb.medias.options%</argument>
         </service>
 

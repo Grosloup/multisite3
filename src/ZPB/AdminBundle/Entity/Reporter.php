@@ -313,4 +313,27 @@ class Reporter implements \Serializable, AdvancedUserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
+
+    /**
+     * Set is_active
+     *
+     * @param boolean $isActive
+     * @return Reporter
+     */
+    public function setIsActive($isActive)
+    {
+        $this->is_active = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get is_active
+     *
+     * @return boolean 
+     */
+    public function getIsActive()
+    {
+        return $this->is_active;
+    }
 }

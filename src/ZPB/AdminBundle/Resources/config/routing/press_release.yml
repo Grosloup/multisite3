@@ -31,9 +31,14 @@ zpb_admin_general_press_release_delete:
 
 
 zpb_admin_general_press_upload_pdf:
-   path: /upload/pdf
-   defaults: { _controller: ZPBAdminBundle:General/PressRelease:uploadPdf }
-   methods: ["POST"]
+    path: /upload/pdf
+    defaults: { _controller: ZPBAdminBundle:General/PressRelease:uploadPdf }
+    methods: ["POST"]
+
+zpb_admin_general_press_upload_img:
+    path: /upload/image
+    defaults: { _controller: ZPBAdminBundle:General/PressRelease:uploadImage }
+    methods: ["POST"]
 
 zpb_admin_general_press_update_com_pdf:
    path: /update/pdf

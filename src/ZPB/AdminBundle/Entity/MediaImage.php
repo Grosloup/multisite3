@@ -2,6 +2,7 @@
 
 namespace ZPB\AdminBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -74,6 +75,12 @@ class MediaImage implements ResizeableInterface
      */
     private $webDir;
     /**
+     * @var string
+     *
+     * @ORM\Column(name="thumb_dir", type="string", length=255, nullable=false)
+     */
+    private $thumbDir;
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
@@ -107,10 +114,23 @@ class MediaImage implements ResizeableInterface
      */
     private $longId;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ZPB\AdminBundle\Entity\MediaImageUseCase", mappedBy="image")
+     */
+    private $use_cases;
+
+    /**
+     * @ORM\Column(name="sizes_keys", type="array")
+     */
+    private $sizes;
+
+    private $thumbPaths = [];
+
     public function __construct()
     {
         $now = (new \DateTime())->getTimestamp();
         $this->longId = substr(base_convert(sha1(uniqid($now, true)), 16, 36), 0, 15);
+        $this->use_cases = new ArrayCollection();
     }
 
     /**
@@ -173,9 +193,23 @@ class MediaImage implements ResizeableInterface
         return $this->rootDir . $this->webDir . $this->filename . "." . $this->extension;
     }
 
+    public function getAbsThumbPaths()
+    {
+        $paths = [];
+        foreach($this->sizes as $size){
+            $paths[] = $this->rootDir . $this->thumbDir . $size . '_' . $this->filename . '.' .$this->extension;
+        }
+        return $paths;
+    }
+
     public function getWebPath()
     {
         return '/' . $this->webDir . $this->filename . "." . $this->extension;
+    }
+
+    public function getWebThumbPath($key)
+    {
+        return '/' . $this->thumbDir . $key . '_' . $this->filename . '.' .$this->extension;
     }
 
     /**
@@ -184,6 +218,7 @@ class MediaImage implements ResizeableInterface
     public function storeAbsolutePath()
     {
         $this->absolutePath = $this->getAbsolutePath();
+        $this->thumbPaths = $this->getAbsThumbPaths();
     }
 
     /**
@@ -194,7 +229,50 @@ class MediaImage implements ResizeableInterface
         if (file_exists($this->absolutePath)) {
             unlink($this->absolutePath);
         }
+        foreach($this->thumbPaths as $path){
+            if(file_exists($path)){
+                unlink($path);
+            }
+        }
     }
+
+    /**
+     * @return string
+     */
+    public function getThumbDir()
+    {
+        return $this->thumbDir;
+    }
+
+    /**
+     * @param string $thumbDir
+     * @return MediaImage
+     */
+    public function setThumbDir($thumbDir)
+    {
+        $this->thumbDir = $thumbDir;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSizes()
+    {
+        return $this->sizes;
+    }
+
+    /**
+     * @param mixed $sizes
+     * @return MediaImage
+     */
+    public function setSizes($sizes)
+    {
+        $this->sizes = $sizes;
+        return $this;
+    }
+
+
 
     /**
      * @return string
@@ -443,4 +521,37 @@ class MediaImage implements ResizeableInterface
     }
 
 
+
+    /**
+     * Add use_cases
+     *
+     * @param MediaImageUseCase $useCases
+     * @return MediaImage
+     */
+    public function addUseCase(MediaImageUseCase $useCases)
+    {
+        $this->use_cases[] = $useCases;
+
+        return $this;
+    }
+
+    /**
+     * Remove use_cases
+     *
+     * @param MediaImageUseCase $useCases
+     */
+    public function removeUseCase(MediaImageUseCase $useCases)
+    {
+        $this->use_cases->removeElement($useCases);
+    }
+
+    /**
+     * Get use_cases
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUseCases()
+    {
+        return $this->use_cases;
+    }
 }

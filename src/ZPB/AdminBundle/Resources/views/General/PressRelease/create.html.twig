@@ -120,9 +120,7 @@
 {% endblock %}
 {% block footScripts %}
     {{ parent() }}
-    <script>
-        var pdfUploadUrl = "{{ path("zpb_admin_general_press_upload_pdf") }}";
-    </script>
+
     <script src="/js/admin/newPressRelease.min.js"></script>
     <script>
         $(function(){
@@ -130,6 +128,7 @@
             submit.attr("disabled", true);
             var pdfFr = $("#dropzone-pdf-fr");
             var pdfEn = $("#dropzone-pdf-en");
+            var img = $("#dropzone-img");
 
             function loadDoneFr(response){
                 var submit = $("#press_release_form_save");
@@ -160,7 +159,17 @@
                 pdfEn.find(".dropzone-message").text(response.msg);
             }
 
+            function errorMessageImg(message){
 
+            }
+
+            function loadDoneImg(response){
+
+            }
+
+            function loadFailImg(response){
+
+            }
 
             pdfFr.zpbUploadPdf(
                     {
@@ -174,9 +183,18 @@
                     {
                         url: '{{ path("zpb_admin_general_press_upload_pdf") }}',
                         loadDone: loadDoneEn,
-                        loadFail: loadDoneEn,
+                        loadFail: loadFailEn,
                         errorMessage: errorMessageEn,
                         lang: 'en'
+                    }
+            );
+
+            img.zpbUploadImage(
+                    {
+                        url: '{{ path("zpb_admin_general_press_upload_img") }}',
+                        errorMessage: errorMessageImg,
+                        loadDone: loadDoneImg,
+                        loadFail: loadFailImg
                     }
             );
 

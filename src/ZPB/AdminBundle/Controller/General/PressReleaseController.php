@@ -42,13 +42,7 @@ class PressReleaseController extends BaseController
         $form = $this->createForm(new PressReleaseType(), $entity, ['em'=>$this->getManager()]);
         $form->handleRequest($request);
         if($form->isValid()){
-            $imageId = $form->get('imageId')->getData();
-            if($imageId){
-                $image = $this->getRepo('ZPBAdminBundle:MediaImage')->find($imageId);
-                if($image){
-                    $entity->setImage($image);
-                }
-            }
+
             $this->getManager()->persist($entity);
             $this->getManager()->flush();
 
@@ -160,7 +154,20 @@ class PressReleaseController extends BaseController
 
     public function uploadImageAction(Request $request)
     {
+        if(!$request->isMethod("POST") || !$request->isXmlHttpRequest()){
+            throw $this->createAccessDeniedException();
+        }
+        $fs = $this->get('filesystem');
+        $filename = $request->headers->get('X-File-Name', false);
+        $response = ['error'=>false,'msg'=>'', 'imgId'=>''];
 
+        if(!$filename){
+            $response = ['error'=>true,'msg'=>'Données manquantes', 'imgId'=>''];
+        }
+        // image_factory createDir, createFromFile
+        //TODO image use case
+
+        return new JsonResponse($response);
     }
 
 }
