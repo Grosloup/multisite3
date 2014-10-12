@@ -48,7 +48,7 @@ class Institution
     private $slug;
 
     /**
-     * @ORM\Column(name="host", type="string", length=255, nullable=false)
+     * @ORM\Column(name="host", type="string", length=255, nullable=true)
      */
     private $host;
 
@@ -378,7 +378,7 @@ class Institution
     /**
      * Get pressRelease
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPressRelease()
     {

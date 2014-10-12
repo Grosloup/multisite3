@@ -90,6 +90,12 @@ class LoadInstitutions extends AbstractFixture implements OrderedFixtureInterfac
             ->setHost('new.ce.zoobeauval.com');
         $manager->persist($inst8);
 
+        $inst9 = new Institution();
+        $inst9->setName('Commune')
+            ->setDescription('Suspendisse fermentum malesuada feugiat. Etiam volutpat porta orci, quis mollis sem viverra in. In ultricies vulputate ipsum et tincidunt. Maecenas nisl felis, feugiat sit amet rutrum eget, fringilla non ipsum. ');
+
+        $manager->persist($inst9);
+
         $manager->flush();
 
         $this->addReference('zpb-instit-1', $inst1);
@@ -100,6 +106,7 @@ class LoadInstitutions extends AbstractFixture implements OrderedFixtureInterfac
         $this->addReference('zpb-instit-6', $inst6);
         $this->addReference('zpb-instit-7', $inst7);
         $this->addReference('zpb-instit-8', $inst8);
+        $this->addReference('zpb-instit-9', $inst9);
     }
 
     public function getOrder()

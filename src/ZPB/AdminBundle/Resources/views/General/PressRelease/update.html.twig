@@ -49,11 +49,11 @@
                         {% endif %}
                     </div>
                 </div>
-                {{ form_end(form) }}
+
                 <div class="form-row">
                     {{ form_widget(form.save, {attr: {class: "btn-flat btn-primary"}})}}
                 </div>
-
+                {{ form_end(form) }}
             </div>
 
             <div class="tile">
@@ -132,7 +132,7 @@
                     Ajouter/remplacer l'image d'illustration
                 </div>
                 <div class="dropzone" id="dropzone-img">
-                    <div class="dropzone-in" id="dropzone-img" data-id="{{ form.vars.value.id }}" data-img="{% if form.vars.value.image != null %}{{ form.vars.value.image.filename}}{% endif %}">
+                    <div class="dropzone-in" id="dropzone-image" data-id="{{ form.vars.value.id }}" data-img="{% if form.vars.value.image != null %}{{ form.vars.value.image.filename}}{% endif %}">
                         <div class="dropzone-legend"></div>
                     </div>
                     <div class="dropzone-loader">
@@ -152,5 +152,95 @@
 
 {% block footScripts %}
     {{ parent() }}
-    <script src="/js/admin/updatePressRelease.min.js"></script>
+    <script src="/js/admin/newPressRelease.min.js"></script>
+    <script>
+        $(function(){
+            var submit = $("#press_release_form_save");
+            submit.attr("disabled", true);
+            var pdfFr = $("#dropzone-pdf-fr");
+            var pdfEn = $("#dropzone-pdf-en");
+            var img = $("#dropzone-img");
+
+            function loadDoneFr(response){
+                var submit = $("#press_release_form_save");
+                submit.attr("disabled", false);
+                $("#press_release_form_pdfFr").val(response.pdfId);
+                pdfFr.find(".dropzone-message").text(response.msg);
+            }
+
+            function loadFailFr(response){
+
+                pdfFr.find(".dropzone-message").text(response.msg);
+            }
+
+            function errorMessageFr(message){
+                pdfFr.find(".dropzone-message").text(message);
+            }
+            function errorMessageEn(message){
+                pdfEn.find(".dropzone-message").text(message);
+            }
+
+            function loadDoneEn(response){
+                $("#press_release_form_pdfEn").val(response.pdfId);
+                pdfEn.find(".dropzone-message").text(response.msg);
+            }
+
+            function loadFailEn(response){
+
+                pdfEn.find(".dropzone-message").text(response.msg);
+            }
+
+            function errorMessageImg(message){
+
+            }
+
+            function loadDoneImg(response){
+
+            }
+
+            function loadFailImg(response){
+
+            }
+
+            pdfFr.zpbUploadPdf(
+                    {
+                        url: '{{ path("zpb_admin_general_press_upload_pdf") }}',
+                        loadDone: loadDoneFr,
+                        loadFail: loadFailFr,
+                        errorMessage: errorMessageFr
+                    }
+            );
+            pdfEn.zpbUploadPdf(
+                    {
+                        url: '{{ path("zpb_admin_general_press_upload_pdf") }}',
+                        loadDone: loadDoneEn,
+                        loadFail: loadFailEn,
+                        errorMessage: errorMessageEn,
+                        lang: 'en'
+                    }
+            );
+
+            img.zpbUploadImage(
+                    {
+                        url: '{{ path("zpb_admin_general_press_upload_img") }}',
+                        errorMessage: errorMessageImg,
+                        loadDone: loadDoneImg,
+                        loadFail: loadFailImg
+                    }
+            );
+
+            var pdfUploder_fr = pdfFr.data("zpbUploadPdf");
+            var pdfUploder_en = pdfEn.data("zpbUploadPdf");
+            var institutionSelect = $("#press_release_form_institution");
+
+            institutionSelect.on("change", function(e){
+                e.preventDefault();
+                var value = $(this).find("option:selected").val();
+                pdfUploder_fr.setInstitution(value);
+                pdfUploder_en.setInstitution(value);
+            });
+
+
+        });
+    </script>
 {% endblock %}
