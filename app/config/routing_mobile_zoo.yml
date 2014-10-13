@@ -1,0 +1,5 @@
+zpb_sites_zoo_mobile:
+    resource: "@ZPBSitesZooMobileBundle/Resources/config/routing.yml"
+    prefix:   /
+    host: "new.mobile.zoobeauval.com"
+    schemes: ["https"]
