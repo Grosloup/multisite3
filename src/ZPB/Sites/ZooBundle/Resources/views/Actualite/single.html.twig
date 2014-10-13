@@ -5,7 +5,9 @@
 {% block keywords %}{% endblock %}
 
 {% set active_page = "single_post" %}
-
+{% block meta_fb%}
+    {{ include("ZPBSitesZooBundle:incs/facebook:metas.html.twig", {title: post.title, type: "article", description: post.excerpt}) }}
+{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -27,6 +29,11 @@
             </div>
             <div class="col-md-1"></div>
         </div>#}
+        <div class="spaced-row">
+            <div class="col-md-6">
+                <a href="http://www.facebook.com/share.php?u={{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" target="_blank" class="btn btn-primary btn-xlarge"><i class="fa fa-facebook"></i> Share</a>
+            </div>
+        </div>
 
         <div class="row">
 

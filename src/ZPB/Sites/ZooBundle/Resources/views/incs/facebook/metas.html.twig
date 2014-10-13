@@ -1,0 +1,7 @@
+{% set type = (type is defined) ? type : "website" %}
+{{ include("ZPBSitesZooBundle:incs/facebook:base_metas.html.twig") }}
+<meta property="og:title" content="{{ title }}"/>
+<meta property="og:type" content="{{ type }}"/>
+<meta property="og:url" content="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"/>
+<meta property="og:description" content="{{ description }}" />
+
