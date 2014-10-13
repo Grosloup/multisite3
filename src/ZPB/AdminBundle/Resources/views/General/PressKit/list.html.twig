@@ -38,7 +38,7 @@
                                 <td><a class="btn btn-neutral" href="{{ pdf_url(entity.pdfFr) }}"><i class="fa fa-file-pdf-o"></i></a></td>
                                 <td>{% if entity.pdfEn != null %}<a class="btn btn-neutral" href="{{ pdf_url(entity.pdfEn) }}"><i class="fa fa-file-pdf-o"></i></a>{% else %}-{% endif %}</td>
                                 <td><a class="btn btn-neutral" href="{{ path("zpb_admin_general_press_kit_update", {id: entity.id}) }}"><i class="fa fa-edit"></i></a></td>
-                                <td><a class="btn btn-neutral alert-delete" href="{{ path("zpb_admin_general_press_kit_delete", {id: entity.id, _token: csrf_token('delete_press_release')}) }}" data-name="{{ entity.title }}"><i class="fa fa-trash-o"></i></a></td>
+                                <td><a class="btn btn-neutral alert-delete" href="{{ path("zpb_admin_general_press_kit_delete", {id: entity.id, _token: csrf_token('delete_press_kit')}) }}" data-name="{{ entity.title }}"><i class="fa fa-trash-o"></i></a></td>
                             </tr>
                         {% endfor %}
                     {% endif %}

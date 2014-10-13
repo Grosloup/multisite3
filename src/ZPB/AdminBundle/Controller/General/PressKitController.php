@@ -23,6 +23,8 @@ namespace ZPB\AdminBundle\Controller\General;
 
 use Symfony\Component\HttpFoundation\Request;
 use ZPB\AdminBundle\Controller\BaseController;
+use ZPB\AdminBundle\Entity\PressKit;
+use ZPB\AdminBundle\Form\Type\PressKitType;
 
 class PressKitController extends BaseController
 {
@@ -35,15 +37,45 @@ class PressKitController extends BaseController
 
     public function createAction(Request $request)
     {
-        return $this->render('ZPBAdminBundle:General/PressKit:create.html.twig', []);
+        $entity = new PressKit();
+        $form = $this->createForm(new PressKitType(), $entity, ['em'=>$this->getManager()]);
+        $form->handleRequest($request);
+        if($form->isValid()){
+
+            $this->getManager()->persist($entity);
+            $this->getManager()->flush();
+
+            $this->setSuccess('Nouveau dossier bien enregistré');
+            return $this->redirect($this->generateUrl('zpb_admin_general_press_kit_list'));
+        }
+        return $this->render('ZPBAdminBundle:General/PressKit:create.html.twig', ['form'=>$form->createView()]);
     }
 
     public function updateAction($id, Request $request)
     {
-
+        $entity = $this->getRepo('ZPBAdminBundle:PressKit')->find($id);
+        if(!$entity){
+            throw $this->createNotFoundException();
+        }
+        return $this->render('ZPBAdminBundle:General/PressKit:update.html.twig', []);
     }
 
     public function deleteAction($id,Request $request)
+    {
+        if(!$this->validateToken($request->query->get('_token'), 'delete_press_kit')){
+            throw $this->createAccessDeniedException();
+        }
+        if(null == $entity = $this->getRepo('ZPBAdminBundle:PressKit')->find($id)){
+            throw $this->createNotFoundException();
+        }
+    }
+
+    public function uploadPdfAction(Request $request)
+    {
+
+    }
+
+    public function uploadImageAction(Request $request)
     {
 
     }

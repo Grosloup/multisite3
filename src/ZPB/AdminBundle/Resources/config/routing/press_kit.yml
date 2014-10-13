@@ -21,3 +21,15 @@ zpb_admin_general_press_kit_delete:
     methods: ["GET"]
     requirements:
         id: \d+
+
+zpb_admin_general_press_kit_upload_pdf:
+    path: /upload/pdf
+    defaults: { _controller: ZPBAdminBundle:General/PressKit:uploadPdf }
+    methods: ["POST"]
+
+zpb_admin_general_press_kit_upload_img:
+    path: /upload/image
+    defaults: { _controller: ZPBAdminBundle:General/PressKit:uploadImage }
+    methods: ["POST"]
+
+

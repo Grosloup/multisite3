@@ -1,0 +1,215 @@
+{% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
+
+{% block title %}Ajouter un dossier de presse | ZooParc de Beauval{% endblock %}
+{% set active = "new_com" %}
+
+{% block content %}
+    <div class="row">
+        <div class="column-1"></div>
+
+        <div class="column-6">
+            <div class="tile">
+                <div class="tile-header">
+                    Ajouter un dossier de presse
+                </div>
+
+                {{ form_start(form, {attr:{class: "form",novalidate: true}}) }}
+                {{ form_errors(form) }}
+
+                <div class="form-row {% if form.institution.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.institution) }}
+                    <div class="form-field">
+                        {{ form_widget(form.institution) }}
+                        {% if form.institution.vars.errors|length>0 %}
+                            <div class="error-block">
+                                {{ form_errors(form.institution)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.title.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.title) }}
+                    <div class="form-field">
+                        {{ form_widget(form.title) }}
+                        {% if form.title.vars.errors|length>0 %}
+                            <div class="error-block">
+                                {{ form_errors(form.title)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.body.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.body) }}
+                    <div class="form-field">
+                        {{ form_widget(form.body) }}
+                        {% if form.body.vars.errors|length>0 %}
+                            <div class="error-block">
+                                {{ form_errors(form.body)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    {{ form_widget(form.save, {attr: {class: "btn-flat btn-primary"}})}}
+                </div>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+        <div class="column-4">
+            <div class="tile">
+                <div class="tile-header">
+                    upload pdf en français
+                </div>
+                <div class="dropzone" id="dropzone-pdf-fr">
+                    <div class="dropzone-in" id="dropzone-img">
+                        <div class="dropzone-legend"></div>
+                    </div>
+                    <div class="dropzone-loader">
+                        <div class="dropzone-innerbar" id="dropzone-progress"></div>
+                    </div>
+                    <div class="dropzone-message"></div>
+                    <div class="dropzone-actions hide">
+                        <a class="btn btn-primary dropzone-delete-btn" href="#">Supprimer le fichier</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tile-header">
+                    upload pdf en anglais
+                </div>
+                <div class="dropzone" id="dropzone-pdf-en">
+                    <div class="dropzone-in" id="dropzone-img">
+                        <div class="dropzone-legend"></div>
+                    </div>
+                    <div class="dropzone-loader">
+                        <div class="dropzone-innerbar" id="dropzone-progress"></div>
+                    </div>
+                    <div class="dropzone-message"></div>
+                    <div class="dropzone-actions hide">
+                        <a class="btn btn-primary dropzone-delete-btn" href="#">Supprimer le fichier</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tile-header">
+                    upload image d'illustration
+                </div>
+                <div class="dropzone" id="dropzone-img">
+                    <div class="dropzone-in" id="dropzone-image">
+                        <div class="dropzone-legend"></div>
+                    </div>
+                    <div class="dropzone-loader">
+                        <div class="dropzone-innerbar" id="dropzone-progress"></div>
+                    </div>
+                    <div class="dropzone-message"></div>
+                    <div class="dropzone-actions hide">
+                        <a class="btn btn-primary dropzone-delete-btn" href="#">Supprimer le fichier</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="column-1"></div>
+    </div>
+{% endblock %}
+{% block footScripts %}
+    {{ parent() }}
+
+    <script src="/js/admin/newPressRelease.min.js"></script>
+    <script>
+        $(function(){
+            var submit = $("#press_release_form_save");
+            submit.attr("disabled", true);
+            var pdfFr = $("#dropzone-pdf-fr");
+            var pdfEn = $("#dropzone-pdf-en");
+            var img = $("#dropzone-img");
+
+            function loadDoneFr(response){
+                var submit = $("#press_release_form_save");
+                submit.attr("disabled", false);
+                $("#press_release_form_pdfFr").val(response.pdfId);
+                pdfFr.find(".dropzone-message").text(response.msg);
+            }
+
+            function loadFailFr(response){
+
+                pdfFr.find(".dropzone-message").text(response.msg);
+            }
+
+            function errorMessageFr(message){
+                pdfFr.find(".dropzone-message").text(message);
+            }
+            function errorMessageEn(message){
+                pdfEn.find(".dropzone-message").text(message);
+            }
+
+            function loadDoneEn(response){
+                $("#press_release_form_pdfEn").val(response.pdfId);
+                pdfEn.find(".dropzone-message").text(response.msg);
+            }
+
+            function loadFailEn(response){
+
+                pdfEn.find(".dropzone-message").text(response.msg);
+            }
+
+            function errorMessageImg(message){
+
+            }
+
+            function loadDoneImg(response){
+
+            }
+
+            function loadFailImg(response){
+
+            }
+
+            pdfFr.zpbUploadPdf(
+                    {
+                        url: '{{ path("zpb_admin_general_press_kit_upload_pdf") }}',
+                        loadDone: loadDoneFr,
+                        loadFail: loadFailFr,
+                        errorMessage: errorMessageFr
+                    }
+            );
+            pdfEn.zpbUploadPdf(
+                    {
+                        url: '{{ path("zpb_admin_general_press_kit_upload_pdf") }}',
+                        loadDone: loadDoneEn,
+                        loadFail: loadFailEn,
+                        errorMessage: errorMessageEn,
+                        lang: 'en'
+                    }
+            );
+
+            img.zpbUploadImage(
+                    {
+                        url: '{{ path("zpb_admin_general_press_kit_upload_img") }}',
+                        errorMessage: errorMessageImg,
+                        loadDone: loadDoneImg,
+                        loadFail: loadFailImg
+                    }
+            );
+
+            var pdfUploder_fr = pdfFr.data("zpbUploadPdf");
+            var pdfUploder_en = pdfEn.data("zpbUploadPdf");
+            var institutionSelect = $("#press_release_form_institution");
+
+            institutionSelect.on("change", function(e){
+                e.preventDefault();
+                var value = $(this).find("option:selected").val();
+                pdfUploder_fr.setInstitution(value);
+                pdfUploder_en.setInstitution(value);
+            });
+
+
+        });
+    </script>
+{% endblock %}
