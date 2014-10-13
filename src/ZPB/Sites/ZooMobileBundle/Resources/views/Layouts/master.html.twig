@@ -24,6 +24,7 @@
 {% block main %}
     {% block header%}{% endblock %}
     <div class="main-content">
+        {{ render(controller("ZPBSitesZooMobileBundle:Nav:topbar")) }}
         {% block content %}{% endblock %}
     </div>
 {% endblock %}

@@ -10,7 +10,5 @@ mobile_detect:
         tablet:
             is_enabled: false
         full:
-            is_enabled: true
-            host: https://new.zoobeauval.com
-            action: redirect_without_path
+            is_enabled: false
     switch_device_view: ~
