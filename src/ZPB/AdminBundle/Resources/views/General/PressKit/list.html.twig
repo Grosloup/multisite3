@@ -1,13 +1,13 @@
 {% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
 
-{% block title %}Liste des communiqués de presse | ZooParc de Beauval{% endblock %}
-{% set active = "list_com" %}
+{% block title %}Liste des dossiers de presse | ZooParc de Beauval{% endblock %}
+{% set active = "list_press_kit" %}
 
 {% block content %}
     <div class="row">
         <div class="column-12">
             <div class="tile">
-                <div class="tile-header">Liste des communiqués de presse</div>
+                <div class="tile-header">Liste des dossiers de presse</div>
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
                     </thead>
                     <tbody>
                     {% if entities|length < 1 %}
-                        <tr class="warning"><td colspan="7">Il n'y a pas de communiqués de presse enregistrés.</td></tr>
+                        <tr class="warning"><td colspan="7">Il n'y a pas de dossiers de presse enregistrés.</td></tr>
                     {% else %}
                         {% for entity in entities %}
                             <tr>
@@ -37,8 +37,8 @@
                                 <td>{% if entity.image != null %}<img src="{{ img_thmb(entity.image, 'small') }}" alt=""/>{% else %} - {% endif %}</td>
                                 <td><a class="btn btn-neutral" href="{{ pdf_url(entity.pdfFr) }}"><i class="fa fa-file-pdf-o"></i></a></td>
                                 <td>{% if entity.pdfEn != null %}<a class="btn btn-neutral" href="{{ pdf_url(entity.pdfEn) }}"><i class="fa fa-file-pdf-o"></i></a>{% else %}-{% endif %}</td>
-                                <td><a class="btn btn-neutral" href="{{ path("zpb_admin_general_press_release_update", {id: entity.id}) }}"><i class="fa fa-edit"></i></a></td>
-                                <td><a class="btn btn-neutral alert-delete" href="{{ path("zpb_admin_general_press_release_delete", {id: entity.id, _token: csrf_token('delete_press_release')}) }}" data-name="{{ entity.title }}"><i class="fa fa-trash-o"></i></a></td>
+                                <td><a class="btn btn-neutral" href="{{ path("zpb_admin_general_press_kit_update", {id: entity.id}) }}"><i class="fa fa-edit"></i></a></td>
+                                <td><a class="btn btn-neutral alert-delete" href="{{ path("zpb_admin_general_press_kit_delete", {id: entity.id, _token: csrf_token('delete_press_release')}) }}" data-name="{{ entity.title }}"><i class="fa fa-trash-o"></i></a></td>
                             </tr>
                         {% endfor %}
                     {% endif %}

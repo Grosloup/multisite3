@@ -100,3 +100,7 @@ zpb_admin_zoo_restaurants_routes:
 zpb_admin_general_press_release_routes:
     prefix: /communiques-de-presse
     resource: "@ZPBAdminBundle/Resources/config/routing/press_release.yml"
+
+zpb_admin_general_press_kit_routes:
+    prefix: /dossiers-de-presse
+    resource: "@ZPBAdminBundle/Resources/config/routing/press_kit.yml"

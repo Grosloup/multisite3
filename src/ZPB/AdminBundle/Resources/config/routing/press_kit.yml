@@ -1,0 +1,23 @@
+zpb_admin_general_press_kit_list:
+    path: /
+    defaults: { _controller: ZPBAdminBundle:General/PressKit:list}
+    methods: ["GET"]
+
+zpb_admin_general_press_kit_create:
+    path: /nouveau
+    defaults: { _controller: ZPBAdminBundle:General/PressKit:create}
+    methods: ["GET","POST"]
+
+zpb_admin_general_press_kit_update:
+    path: /modifier/{id}
+    defaults: { _controller: ZPBAdminBundle:General/PressKit:update}
+    methods: ["GET","POST"]
+    requirements:
+        id: \d+
+
+zpb_admin_general_press_kit_delete:
+    path: /supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:General/PressKit:delete}
+    methods: ["GET"]
+    requirements:
+        id: \d+

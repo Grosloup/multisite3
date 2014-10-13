@@ -92,11 +92,12 @@
                                 <li class="{% if active == "new_faq" %}active{% endif %}"><a href="{{ path("zpb_admin_faq_create") }}">Nouvelle</a></li>
                             </ul>
                         </li>
-                        <li class="sidebar-dropdown{% if active in ["presse_dossier","new_com","list_com","update_com"] %} active{% endif %}"><a href="javascript:void(0)">Presse</a><i class="sidebar-icon fa fa-angle-right"></i>
+                        <li class="sidebar-dropdown{% if active in ["list_press_kit","new_press_kit","new_com","list_com","update_com"] %} active{% endif %}"><a href="javascript:void(0)">Presse</a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
-                                <li class="sidebar-dropdown{% if active in ["presse_dossier"] %} active{% endif %}"><a href="javascript:void(0)">Dossiers</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                <li class="sidebar-dropdown{% if active in ["list_press_kit"] %} active{% endif %}"><a href="javascript:void(0)">Dossiers</a><i class="sidebar-icon fa fa-angle-right"></i>
                                     <ul>
-                                        <li class="{% if active == "presse_dossier" %}active{% endif %}"><a href="">Modifier la page</a></li>
+                                        <li class="{% if active == "list_press_kit" %}active{% endif %}"><a href="{{ path("zpb_admin_general_press_kit_list") }}">Liste</a></li>
+                                        <li class="{% if active == "new_press_kit" %}active{% endif %}"><a href="{{ path("zpb_admin_general_press_kit_create") }}">Nouveau</a></li>
                                     </ul>
                                 </li>
                                 <li class="sidebar-dropdown{% if active in ["new_com","list_com","update_com"] %} active{% endif %}"><a href="javascript:void(0)">Communiqués</a><i class="sidebar-icon fa fa-angle-right"></i>
