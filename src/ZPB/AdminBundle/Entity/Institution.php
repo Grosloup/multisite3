@@ -86,7 +86,12 @@ class Institution
     /**
      * @ORM\OneToMany(targetEntity="ZPB\AdminBundle\Entity\PressRelease", mappedBy="institution")
      */
-    private $pressRelease;
+    private $pressReleases;
+
+    /**
+     * @ORM\OneToMany(targetEntity="ZPB\AdminBundle\Entity\PressKit", mappedBy="institution")
+     */
+    private $pressKits;
 
     /**
      * Constructor
@@ -96,7 +101,8 @@ class Institution
         $this->photoCategories = new ArrayCollection();
         $this->faqs = new ArrayCollection();
         $this->pdfs = new ArrayCollection();
-        $this->pressRelease = new ArrayCollection();
+        $this->pressReleases = new ArrayCollection();
+        $this->pressKits = new ArrayCollection();
     }
 
     /**
@@ -353,35 +359,68 @@ class Institution
     }
 
     /**
-     * Add pressRelease
+     * Add pressReleases
      *
-     * @param PressRelease $pressRelease
+     * @param PressRelease $pressReleases
      * @return Institution
      */
-    public function addPressRelease(PressRelease $pressRelease)
+    public function addPressRelease(PressRelease $pressReleases)
     {
-        $this->pressRelease[] = $pressRelease;
+        $this->pressReleases[] = $pressReleases;
 
         return $this;
     }
 
     /**
-     * Remove pressRelease
+     * Get pressReleases
      *
-     * @param PressRelease $pressRelease
+     * @return \Doctrine\Common\Collections\Collection 
      */
-    public function removePressRelease(PressRelease $pressRelease)
+    public function getPressReleases()
     {
-        $this->pressRelease->removeElement($pressRelease);
+        return $this->pressReleases;
     }
 
     /**
-     * Get pressRelease
+     * Add pressKits
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @param PressKit $pressKits
+     * @return Institution
      */
-    public function getPressRelease()
+    public function addPressKit(PressKit $pressKits)
     {
-        return $this->pressRelease;
+        $this->pressKits[] = $pressKits;
+
+        return $this;
+    }
+
+    /**
+     * Remove pressKits
+     *
+     * @param PressKit $pressKits
+     */
+    public function removePressKit(PressKit $pressKits)
+    {
+        $this->pressKits->removeElement($pressKits);
+    }
+
+    /**
+     * Get pressKits
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPressKits()
+    {
+        return $this->pressKits;
+    }
+
+    /**
+     * Remove pressReleases
+     *
+     * @param PressRelease $pressReleases
+     */
+    public function removePressRelease(PressRelease $pressReleases)
+    {
+        $this->pressReleases->removeElement($pressReleases);
     }
 }

@@ -7,12 +7,12 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * PressRelease
+ * PressKit
  *
- * @ORM\Table(name="zpb_press_releases")
- * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\PressReleaseRepository")
+ * @ORM\Table(name="zpb_press_kits")
+ * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\PressKitRepository")
  */
-class PressRelease
+class PressKit
 {
     /**
      * @var integer
@@ -56,31 +56,37 @@ class PressRelease
     private $updatedAt;
 
     /**
-     * @ORM\Column(name="body", type="text", nullable=false)
+     * @var string
+     *
+     * @ORM\Column(name="body", type="text")
      * @Assert\NotBlank(message="Ce champs est requis.")
      */
     private $body;
 
     /**
-     * @ORM\Column(name="image_id", type="integer", nullable=true)
+     * @var integer
+     *
+     * @ORM\Column(name="image", type="integer")
      */
     private $image;
 
     /**
-     * @ORM\Column(name="pdf_fr_id", type="integer", nullable=false)
-     * @Assert\NotBlank(message="Ce champs est requis.")
+     * @var integer
      *
+     * @ORM\Column(name="pdf_fr_id", type="integer")
      */
     private $pdfFr;
 
     /**
-     * @ORM\Column(name="pdf_en_id", type="integer", nullable=true)
+     * @var integer
+     *
+     * @ORM\Column(name="pdf_en_id", type="integer")
      */
     private $pdfEn;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\Institution", inversedBy="pressReleases")
-     * @ORM\JoinColumn(name="institution_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\Institution", inversedBy="pressKits")
+     * @ORM\JoinColumn(name="institution_id")
      */
     private $institution;
 
@@ -88,7 +94,7 @@ class PressRelease
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -99,7 +105,7 @@ class PressRelease
      * Set title
      *
      * @param string $title
-     * @return PressRelease
+     * @return PressKit
      */
     public function setTitle($title)
     {
@@ -111,7 +117,7 @@ class PressRelease
     /**
      * Get title
      *
-     * @return string
+     * @return string 
      */
     public function getTitle()
     {
@@ -122,7 +128,7 @@ class PressRelease
      * Set slug
      *
      * @param string $slug
-     * @return PressRelease
+     * @return PressKit
      */
     public function setSlug($slug)
     {
@@ -134,7 +140,7 @@ class PressRelease
     /**
      * Get slug
      *
-     * @return string
+     * @return string 
      */
     public function getSlug()
     {
@@ -145,7 +151,7 @@ class PressRelease
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return PressRelease
+     * @return PressKit
      */
     public function setCreatedAt($createdAt)
     {
@@ -157,7 +163,7 @@ class PressRelease
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getCreatedAt()
     {
@@ -168,7 +174,7 @@ class PressRelease
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
-     * @return PressRelease
+     * @return PressKit
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -180,7 +186,7 @@ class PressRelease
     /**
      * Get updatedAt
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getUpdatedAt()
     {
@@ -191,7 +197,7 @@ class PressRelease
      * Set body
      *
      * @param string $body
-     * @return PressRelease
+     * @return PressKit
      */
     public function setBody($body)
     {
@@ -203,7 +209,7 @@ class PressRelease
     /**
      * Get body
      *
-     * @return string
+     * @return string 
      */
     public function getBody()
     {
@@ -211,10 +217,33 @@ class PressRelease
     }
 
     /**
+     * Set image
+     *
+     * @param integer $image
+     * @return PressKit
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return integer 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
      * Set pdfFr
      *
-     * @param string $pdfFr
-     * @return PressRelease
+     * @param integer $pdfFr
+     * @return PressKit
      */
     public function setPdfFr($pdfFr)
     {
@@ -226,7 +255,7 @@ class PressRelease
     /**
      * Get pdfFr
      *
-     * @return string
+     * @return integer 
      */
     public function getPdfFr()
     {
@@ -236,17 +265,12 @@ class PressRelease
     /**
      * Set pdfEn
      *
-     * @param string $pdfEn
-     * @return PressRelease
+     * @param integer $pdfEn
+     * @return PressKit
      */
     public function setPdfEn($pdfEn)
     {
-        if(preg_match('/^en_.+/',$pdfEn)){
-            $this->pdfEn = $pdfEn;
-        } else {
-            $this->pdfEn = 'en_' . $pdfEn;
-        }
-
+        $this->pdfEn = $pdfEn;
 
         return $this;
     }
@@ -254,7 +278,7 @@ class PressRelease
     /**
      * Get pdfEn
      *
-     * @return string
+     * @return integer 
      */
     public function getPdfEn()
     {
@@ -262,33 +286,10 @@ class PressRelease
     }
 
     /**
-     * Set image
-     *
-     * @param MediaImage $image
-     * @return PressRelease
-     */
-    public function setImage(MediaImage $image = null)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return MediaImage
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
      * Set institution
      *
      * @param Institution $institution
-     * @return PressRelease
+     * @return PressKit
      */
     public function setInstitution(Institution $institution = null)
     {
