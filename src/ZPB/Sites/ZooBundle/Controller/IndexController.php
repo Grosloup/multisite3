@@ -8,6 +8,7 @@ class IndexController extends BaseController
 {
     public function indexAction()
     {
+
         return $this->render('ZPBSitesZooBundle:Index:index.html.twig',[]);
     }
 
