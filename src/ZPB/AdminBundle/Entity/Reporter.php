@@ -4,12 +4,16 @@ namespace ZPB\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Reporter
  *
  * @ORM\Table(name="zpb_reporters")
  * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\ReporterRepository")
+ * @UniqueEntity("email", message="Cet email est déjà utilisé.")
  */
 class Reporter implements \Serializable, AdvancedUserInterface
 {
@@ -52,7 +56,8 @@ class Reporter implements \Serializable, AdvancedUserInterface
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="Ce champs est requis")
+     * @Assert\Email(checkHost=true, checkMX=true, message="Ce n'est pas une adresse email valide.")
      * @ORM\Column(name="email", type="string", length=255)
      */
     private $email;
@@ -61,6 +66,7 @@ class Reporter implements \Serializable, AdvancedUserInterface
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
+     * @Gedmo\Timestampable(on="create")
      */
     private $createdAt;
 

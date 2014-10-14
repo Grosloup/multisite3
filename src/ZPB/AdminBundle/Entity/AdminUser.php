@@ -31,24 +31,24 @@ class AdminUser implements AdvancedUserInterface, Serializable
 
     /**
      * @var string
-     * @Assert\NotBlank(message="Ce champs est requis")
-     * @Assert\Regex("/^[a-zàéèêëûüîïôöçù' -]$/i", message="Ce champs contient des caractères non autorisés")
+     * @Assert\NotBlank(message="Ce champs est requis.")
+     * @Assert\Regex("/^[a-zàéèêëûüîïôöçù' -]$/i", message="Ce champs contient des caractères non autorisés.")
      * @ORM\Column(name="firstname", type="string", length=255, nullable=false)
      */
     private $firstname;
 
     /**
      * @var string
-     * @Assert\NotBlank(message="Ce champs est requis")
-     * @Assert\Regex("/^[a-zàéèêëûüîïôöçù' -]$/i", message="Ce champs contient des caractères non autorisés")
+     * @Assert\NotBlank(message="Ce champs est requis.")
+     * @Assert\Regex("/^[a-zàéèêëûüîïôöçù' -]$/i", message="Ce champs contient des caractères non autorisés.")
      * @ORM\Column(name="lastname", type="string", length=255, nullable=false)
      */
     private $lastname;
 
     /**
      * @var string
-     * @Assert\NotBlank(message="Ce champs est requis")
-     * @Assert\Regex("/^[a-zàéèêëûüîïôöçù0-9,;:!$%?.&#+=\/\\*' _-]$/i", message="Ce champs contient des caractères non autorisés")
+     * @Assert\NotBlank(message="Ce champs est requis.")
+     * @Assert\Regex("/^[a-zàéèêëûüîïôöçù0-9,;:!$%?.&#+=\/\\*' _-]$/i", message="Ce champs contient des caractères non autorisés.")
      * @ORM\Column(name="username", type="string", length=255, unique=true)
      */
     private $username;
@@ -83,7 +83,7 @@ class AdminUser implements AdvancedUserInterface, Serializable
 
     /**
      * @var string
-     * @Assert\NotBlank(message="Ce champs est requis")
+     * @Assert\NotBlank(message="Ce champs est requis.")
      * @Assert\Email(checkHost=true, checkMX=true, message="Ce n'est pas une adresse email valide.")
      * @ORM\Column(name="email", type="string", length=255, nullable=false, unique=true)
      */

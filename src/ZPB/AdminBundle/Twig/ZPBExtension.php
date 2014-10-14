@@ -65,11 +65,20 @@ class ZPBExtension extends \Twig_Extension{
 
     public function imgUrl($id)
     {
-        $img = $this->em->getRepository('ZPBAdminBundle:MediaImage')->find($id);
+        $img = $this->em->getRepository('ZPBAdminBundle:Photo')->find($id);
         if(!$img){
             return null;
         }
-        return '/telecharger/image/' . $img->getFilename();  //TODO set extension
+        return '/telecharger/image/' . $img->getFilename() . $img->getExtension();  //TODO set extension
+    }
+
+    public function imgHdUrl($id)
+    {
+        $img = $this->em->getRepository('ZPBAdminBundle:Photo')->find($id);
+        if(!$img){
+            return null;
+        }
+        return '/telecharger/image-hd/' . $img->getFilename() . $img->getExtension();  //TODO set extension
     }
 
     public function imgThumb($id, $size='regular')

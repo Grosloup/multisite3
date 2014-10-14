@@ -1,0 +1,14 @@
+username : /^[a-zàéèêëûüîïôöçù0-9,;:!$%?.&#+=\/\\*' _-]$/i
+
+firstname : /^[a-zàéèêëûüîïôöçù' -]$/i
+
+lastname : /^[a-zàéèêëûüîïôöçù' -]$/i
+
+phone :
+
+texte :
+
+
+messages :
+    message="Ce champs est requis."
+    message="Ce champs contient des caractères non autorisés."
