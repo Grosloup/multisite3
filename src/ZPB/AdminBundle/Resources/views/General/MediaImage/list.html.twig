@@ -22,6 +22,7 @@
                         <th>#Id</th>
                         <th>Vignette</th>
                         <th>Fichier</th>
+                        <th>Utilisation(s)</th>
                         <th>Largeur x Hauteur</th>
                         <th>Modifier</th>
                         <th>Supprimer</th>
@@ -33,9 +34,15 @@
                         <td>{{ image.id }}</td>
                         <td><img src="{{ image.webThumbPath('small') }}" alt="" width="50"/></td>
                         <td>{{ image.filename }}</td>
+                        <td>{{ image.inUseCounter }}</td>
                         <td>{{ image.width }} x {{ image.height }}</td>
                         <td><a class="btn btn-neutral" href="{{ path("zpb_admin_media_image_update", {id: image.id}) }}"><i class="fa fa-edit"></i></a></td>
-                        <td><a class="btn btn-neutral delete-alert" href="{{ path("zpb_admin_media_image_delete", {id: image.id, _token: csrf_token('delete_media_image')}) }}" data-name="{{ image.filename }}"><i class="fa fa-trash-o"></i></a></td>
+                        <td>
+                            {% if image.inUseCounter == 0 %}
+                            <a class="btn btn-neutral delete-alert" href="{{ path("zpb_admin_media_image_delete", {id: image.id, _token: csrf_token('delete_media_image')}) }}" data-name="{{ image.filename }}"><i class="fa fa-trash-o"></i></a>
+                            {% else %} - {% endif %}
+
+                        </td>
                     </tr>
                     {% endfor %}
                     </tbody>

@@ -44,6 +44,7 @@ class ImageFactory
         $image->setWebDir($this->options['zpb.img.web_dir']);
         $image->setThumbDir($this->options['zpb.img.thumbs.upload_dir']);
         $image->setCopyright($this->options['zpb.document.default_copyright.text']);
+        $image->setInUseCounter(0);
         $sizes = [];
         foreach ($this->sizes as $k => $v) {
             $sizes[] = $k;
@@ -52,9 +53,12 @@ class ImageFactory
         return $image;
     }
 
-    public function createFromFile(File $file)
+    public function createFromFile(File $file, $addInUse = true)
     {
         $image = $this->create();
+        if($addInUse){
+            $image->addInUse();
+        }
         $image->setExtension($file->getExtension());
         $image->setFilename(pathinfo($file->getFilename(), PATHINFO_FILENAME));
         $image->setMime($file->getMimeType());

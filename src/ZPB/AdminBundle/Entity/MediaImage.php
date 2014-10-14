@@ -124,6 +124,11 @@ class MediaImage implements ResizeableInterface
      */
     private $sizes;
 
+    /**
+     * @ORM\Column(name="in_use_counter", type="integer", nullable=true)
+     */
+    private $inUseCounter;
+
     private $thumbPaths = [];
 
     public function __construct()
@@ -187,6 +192,40 @@ class MediaImage implements ResizeableInterface
     {
         return preg_replace('/[^a-zA-Z0-9._-]/', '', $string);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getInUseCounter()
+    {
+        return $this->inUseCounter;
+    }
+
+    /**
+     * @param mixed $inUseCounter
+     * @return MediaImage
+     */
+    public function setInUseCounter($inUseCounter)
+    {
+        $this->inUseCounter = $inUseCounter;
+        return $this;
+    }
+
+    public function addInUse()
+    {
+        $this->inUseCounter += 1;
+        return $this;
+    }
+
+    public function subInUse()
+    {
+        if($this->inUseCounter > 0){
+            $this->inUseCounter -= 1;
+        }
+        return $this;
+    }
+
+
 
     public function getAbsolutePath()
     {

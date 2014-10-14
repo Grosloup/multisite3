@@ -72,7 +72,10 @@ class LoadRestos  extends AbstractFixture implements OrderedFixtureInterface, Co
         for($i=0;$i<$c;$i++){
             $resto = new Restaurant();
             $k = $i+1;
-            $resto->setName($names[$i])->setDescription($descs[$i])->setMapNum($k)->setVisuel($this->getReference('zpb-image-' . $k));
+            $image = $this->getReference('zpb-image-' . $k);
+            $resto->setName($names[$i])->setDescription($descs[$i])->setMapNum($k)->setVisuel($image);
+            $image->addInUse();
+            $manager->persist($image);
             $manager->persist($resto);
             $this->addReference('zpb-resto-' . $k, $resto);
         }
