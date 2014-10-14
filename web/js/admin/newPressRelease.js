@@ -147,7 +147,7 @@
         progressBar: '.dropzone-innerbar',
         url: null,
         maxSize: 200000,
-        allow: ['iamge/jpg', 'image/gif', 'image/png'],
+        allow: ['image/jpg', 'image/gif', 'image/png'],
         errorMessage: function(message){},
         loadDone: function(response){},
         loadFail: function(response){}

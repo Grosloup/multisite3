@@ -160,15 +160,16 @@
             }
 
             function errorMessageImg(message){
-
+                img.find(".dropzone-message").text(message);
             }
 
             function loadDoneImg(response){
-
+                $("#press_release_form_image").val(response.imageId);
+                img.find(".dropzone-message").text(response.msg);
             }
 
             function loadFailImg(response){
-
+                img.find(".dropzone-message").text(response.msg);
             }
 
             pdfFr.zpbUploadPdf(
