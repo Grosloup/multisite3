@@ -25,6 +25,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use ZPB\AdminBundle\Controller\BaseController;
 use ZPB\AdminBundle\Form\Type\PhotoHdType;
+use ZPB\AdminBundle\Form\Type\PhotoHdUpdateType;
 
 class PhotoHdController extends BaseController
 {
@@ -107,12 +108,35 @@ class PhotoHdController extends BaseController
 
     public function updateAction($id, Request $request)
     {
+        $entity = $this->getRepo('ZPBAdminBundle:PhotoHd')->find($id);
+        if(!$entity){
+            throw $this->createNotFoundException();
+        }
+        $form = $this->createForm(new PhotoHdUpdateType(), $entity, ['em'=>$this->getManager(), 'slug'=>$entity->getCategory()->getInstitution()->getSlug()]);
+        $form->handleRequest($request);
+        if($form->isValid()){
 
+            $this->getManager()->persist($entity);
+            $this->getManager()->flush();
+            $this->setSuccess('Photo bien modifiée.');
+            return $this->redirect($this->generateUrl('zpb_admin_photos_hd_choose_list'));
+        }
+        return $this->render('ZPBAdminBundle:General/photoHd:update.html.twig', ['form'=> $form->createView()]);
     }
 
     public function deleteAction($id, Request $request)
     {
-        //delete_photo_hd
+        if(!$this->validateToken($request->query->get('_token', false), 'delete_photo_hd')){
+            throw $this->createAccessDeniedException();
+        }
+        $photo = $this->getRepo('ZPBAdminBundle:PhotoHd')->find($id);
+        if(!$photo){
+            throw $this->createNotFoundException();
+        }
+        $this->getManager()->remove($photo);
+        $this->getManager()->flush();
+        $this->setSuccess('Photo bien supprimée');
+        return $this->redirect($this->generateUrl('zpb_admin_photos_hd_choose_list'));
     }
 
     public function listUsersAction()
