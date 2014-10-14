@@ -27,6 +27,9 @@
                                 <div class="col-1"></div>
                                 <div class="col-4">
                                     <h4>{{ pr.title }}</h4>
+                                    {% if pr.image != null %}
+                                    <img src="{{ img_thumb(pr.image, 'regular') }}" alt=""/>
+                                    {% endif %}
                                     <p>{{ pr.body|raw }}</p>
 
                                     <p><a href="{{ pdf_url(pr.pdfFr) }}">Télécharger le pdf</a></p>

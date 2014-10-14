@@ -93,12 +93,12 @@ class PressReleaseController extends BaseController
         $filename = $request->headers->get('X-File-Name');
         $fileType = $request->headers->get('X-File-Type', false);
         $response = ['error'=>false,'msg'=>'', 'pdfId'=>''];
-        if(!$filename || $fileType){
+        if(!$filename || !$fileType){
             $response = ['error'=>true,'msg'=>'Données manquantes', 'pdfId'=>''];
         } elseif(!in_array($fileType, ['application/pdf'])){
             $response = ['error'=>true,'msg'=>'Données érronées', 'imgId'=>''];
         } else {
-            $basePath = $this->container->getParameter('hosts.mobile_redirect')['zpb.pdf.root_dir'] . $this->container->getParameter('zpb.medias.options')['zpb.pdf.web_dir'];
+            $basePath = $this->container->getParameter('zpb.medias.options')['zpb.pdf.root_dir'] . $this->container->getParameter('zpb.medias.options')['zpb.pdf.web_dir'];
             if(!$fs->exists($basePath)){
                 $fs->mkdir($basePath);
             }
@@ -151,14 +151,14 @@ class PressReleaseController extends BaseController
         $fileType = $request->headers->get('X-File-Type', false);
         $response = ['error'=>false,'msg'=>'', 'imgId'=>''];
 
-        if(!$filename || $fileType){
+        if(!$filename || !$fileType){
             $response = ['error'=>true,'msg'=>'Données manquantes', 'imgId'=>''];
-        } elseif(!in_array($fileType, ['image/jpg', 'image/gif', 'image/png'])){
+        } elseif(!in_array($fileType, ['image/jpeg', 'image/gif', 'image/png'])){
             $response = ['error'=>true,'msg'=>'Données érronées', 'imgId'=>''];
         } else {
             $basePath =
-                $this->container->getParameter('hosts.mobile_redirect')['zpb.img.root_dir']
-                . $this->container->getParameter('hosts.mobile_redirect')['zpb.img.web_dir']
+                $this->container->getParameter('zpb.medias.options')['zpb.img.root_dir']
+                . $this->container->getParameter('zpb.medias.options')['zpb.img.web_dir']
             ;
             if($fs->exists($basePath)){
                 $fs->mkdir($basePath);
@@ -175,6 +175,7 @@ class PressReleaseController extends BaseController
             file_put_contents($path, $request->getContent());
             $file = new File($path);
             $image = $this->get('zpb.image_factory')->createFromFile($file);
+            $this->get('zpb.image_resizer')->makeThumbnails($image);
             try{
                 $this->getManager()->persist($image);
                 $this->getManager()->flush();

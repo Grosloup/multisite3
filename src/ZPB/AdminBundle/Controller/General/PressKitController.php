@@ -31,7 +31,6 @@ class PressKitController extends BaseController
     public function listAction()
     {
         $entities = $this->getRepo('ZPBAdminBundle:PressKit')->findAll();
-
         return $this->render('ZPBAdminBundle:General/PressKit:list.html.twig', ['entities'=>$entities]);
     }
 
@@ -41,10 +40,8 @@ class PressKitController extends BaseController
         $form = $this->createForm(new PressKitType(), $entity, ['em'=>$this->getManager()]);
         $form->handleRequest($request);
         if($form->isValid()){
-
             $this->getManager()->persist($entity);
             $this->getManager()->flush();
-
             $this->setSuccess('Nouveau dossier bien enregistré');
             return $this->redirect($this->generateUrl('zpb_admin_general_press_kit_list'));
         }

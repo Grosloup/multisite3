@@ -41,7 +41,7 @@ class ZPBExtension extends \Twig_Extension{
             new \Twig_SimpleFunction('pdf_url', [$this, 'pdfUrl']),
             new \Twig_SimpleFunction('reel_pdf_url', [$this, 'reelPdfUrl']),
             new \Twig_SimpleFunction('img_url', [$this, 'imgUrl']),
-            new \Twig_SimpleFunction('img_thmb', [$this, 'imgThumb'])
+            new \Twig_SimpleFunction('img_thumb', [$this, 'imgThumb'])
         ];
     }
 

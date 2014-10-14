@@ -83,7 +83,7 @@
                     Vignette
                 </div>
                 {% if form.vars.value.image != null %}
-                    <a class="btn btn-neutral" href="{{ img_thmb(form.vars.value.iamge, 'regular') }}" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
+                    <a class="btn btn-neutral" href="{{ img_thmb(form.vars.value.image, 'regular') }}" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
                 {% else %}
                     Ce communiqué n'a pas d'image associée.
                 {% endif %}
@@ -95,8 +95,8 @@
                 <div class="tile-header">
                     Ajouter/remplacer le pdf en français
                 </div>
-                <div class="dropzone" id="dropzone-pdf-fr" data-id="{{ form.vars.value.id }}" data-pdf="{{ form.vars.value.pdfFr}}">
-                    <div class="dropzone-in" id="dropzone-img">
+                <div class="dropzone" id="dropzone-pdf-fr">
+                    <div class="dropzone-in">
                         <div class="dropzone-legend"></div>
                     </div>
                     <div class="dropzone-loader">
@@ -113,8 +113,8 @@
                 <div class="tile-header">
                     Ajouter/remplacer le pdf en anglais
                 </div>
-                <div class="dropzone" id="dropzone-pdf-en" data-id="{{ form.vars.value.id }}" data-pdf="{{ form.vars.value.pdfEn}}">
-                    <div class="dropzone-in" id="dropzone-img">
+                <div class="dropzone" id="dropzone-pdf-en">
+                    <div class="dropzone-in">
                         <div class="dropzone-legend"></div>
                     </div>
                     <div class="dropzone-loader">
@@ -132,7 +132,7 @@
                     Ajouter/remplacer l'image d'illustration
                 </div>
                 <div class="dropzone" id="dropzone-img">
-                    <div class="dropzone-in" id="dropzone-image" data-id="{{ form.vars.value.id }}" data-img="{% if form.vars.value.image != null %}{{ form.vars.value.image.filename}}{% endif %}">
+                    <div class="dropzone-in" data-id="{{ form.vars.value.id }}">
                         <div class="dropzone-legend"></div>
                     </div>
                     <div class="dropzone-loader">

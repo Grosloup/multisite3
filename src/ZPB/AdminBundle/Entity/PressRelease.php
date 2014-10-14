@@ -213,7 +213,7 @@ class PressRelease
     /**
      * Set pdfFr
      *
-     * @param string $pdfFr
+     * @param integer $pdfFr
      * @return PressRelease
      */
     public function setPdfFr($pdfFr)
@@ -226,7 +226,7 @@ class PressRelease
     /**
      * Get pdfFr
      *
-     * @return string
+     * @return integer
      */
     public function getPdfFr()
     {
@@ -236,7 +236,7 @@ class PressRelease
     /**
      * Set pdfEn
      *
-     * @param string $pdfEn
+     * @param integer $pdfEn
      * @return PressRelease
      */
     public function setPdfEn($pdfEn)
@@ -254,7 +254,7 @@ class PressRelease
     /**
      * Get pdfEn
      *
-     * @return string
+     * @return integer
      */
     public function getPdfEn()
     {
@@ -264,10 +264,10 @@ class PressRelease
     /**
      * Set image
      *
-     * @param MediaImage $image
+     * @param integer $image
      * @return PressRelease
      */
-    public function setImage(MediaImage $image = null)
+    public function setImage($image = null)
     {
         $this->image = $image;
 
@@ -277,7 +277,7 @@ class PressRelease
     /**
      * Get image
      *
-     * @return MediaImage
+     * @return integer
      */
     public function getImage()
     {

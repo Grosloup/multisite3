@@ -146,8 +146,8 @@
         hover: 'hover',
         progressBar: '.dropzone-innerbar',
         url: null,
-        maxSize: 200000,
-        allow: ['image/jpg', 'image/gif', 'image/png'],
+        maxSize: 1000000,
+        allow: ['image/jpeg', 'image/gif', 'image/png'],
         errorMessage: function(message){},
         loadDone: function(response){},
         loadFail: function(response){}
@@ -162,7 +162,7 @@
     ImageUploader.prototype.init = function(){
         var el = this.$el;
         var self = this;
-        this.isDroppable = false;
+        this.isDroppable = true;
 
         this.progressBar = el.find(this.options.progressBar);
         el.on({
@@ -172,6 +172,7 @@
             drop: self.drop
         });
     };
+
 
     ImageUploader.prototype.dragenter = function(e){
         e.preventDefault();
@@ -210,7 +211,7 @@
         }
         if(this.options.allow.indexOf(file.type)<0){
             this.options.errorMessage('');
-            this.options.errorMessage('L\'élément déposé n\'est pas du bon type');
+            this.options.errorMessage('L\'élément déposé n\'est pas du bon type ' + file.type);
             return false;
         }
         if(file.size > this.options.maxSize){
