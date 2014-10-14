@@ -44,3 +44,12 @@ list user-agent: http://user-agent-string.info/list-of-ua
 Mozilla/5.0 (iPhone; U; ru; CPU iPhone OS 4_2_1 like Mac OS X; ru) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8C148a Safari/6533.18.5
 
 liste animaux parrainages utiliser isotope.js jquery plugin
+
+generateur de site map
+http://www.sitemaps.org/fr/protocol.html
+entity:
+Sitemap : root, filename, loc, lastmod
+SitemapUrl : loc, lastmod, changefreq, priority
+
+robot.txt => dir web/robots/ zoobeauval.txt... jdb.txt...
+regles de redirection dans nginx => https://zoobeauval.com/robot.txt => https://zoobeauval.com/robots/zoobeauval.txt ..etc...
