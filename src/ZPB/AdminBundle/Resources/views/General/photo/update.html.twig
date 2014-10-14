@@ -7,7 +7,7 @@
 
     <div class="row">
         <div class="column-3">
-            <img src="{{ photo_factory.webThumb('regular', form.vars.value) }}" alt="" width="100%" title="{{ form.vars.value.title ~ form.vars.value.copyright }}"/>
+            <img src="{{ form.vars.value.webThumbPath('regular') }}" alt="" width="100%" title="{{ form.vars.value.title}}{{form.vars.value.copyright|raw }}"/>
         </div>
         <div class="column-6">
             <div class="tile">
