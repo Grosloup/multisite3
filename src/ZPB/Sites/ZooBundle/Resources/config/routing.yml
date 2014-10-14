@@ -29,18 +29,20 @@ zpb_sites_zoo_legales:
     methods: ["GET"]
 
 zpb_sites_zoo_download_image:
-    path: /telecharger/image/{filename}
-    defaults: { _controller: ZPBSitesZooBundle:Download:downloadImage }
+    path: /telecharger/image/{filename}.{_format}
+    defaults: { _controller: ZPBSitesZooBundle:Download:downloadImage, _format: jpg }
     methods: ["GET"]
     requirements:
         filename: ".+"
+        _format: jpg|JPG|jpeg|JPEG|gif|GIF|png|PNG
 
 zpb_sites_zoo_download_image_hd:
-    path: /telecharger/image/{filename}
-    defaults: { _controller: ZPBSitesZooBundle:Download:downloadHDImage }
+    path: /telecharger/image-hd/{filename}.{_format}
+    defaults: { _controller: ZPBSitesZooBundle:Download:downloadHDImage, _format: jpg }
     methods: ["GET"]
     requirements:
         filename: ".+"
+        _format: jpg|JPG|jpeg|JPEG|gif|GIF|png|PNG
 
 zpb_sites_zoo_download_pdf:
     path: /telecharger/pdf/{filename}.{_format}

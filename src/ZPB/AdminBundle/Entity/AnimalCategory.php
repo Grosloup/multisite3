@@ -30,7 +30,8 @@ class AnimalCategory
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true, nullable=false)
-     * @Assert\NotBlank(message="Ce champs est requis")
+     * @Assert\NotBlank(message="Ce champs est requis.")
+     * @Assert\Regex("/^[a-zàéèêëûüîïôöçù0-9,;:!$%?.&#+=\/\\*' _-]$/i", message="Ce champs contient des caractères non autorisés.")
      */
     private $name;
 

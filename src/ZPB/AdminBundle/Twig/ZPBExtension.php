@@ -41,7 +41,7 @@ class ZPBExtension extends \Twig_Extension{
             new \Twig_SimpleFunction('pdf_url', [$this, 'pdfUrl']),
             new \Twig_SimpleFunction('reel_pdf_url', [$this, 'reelPdfUrl']),
             new \Twig_SimpleFunction('img_url', [$this, 'imgUrl']),
-            new \Twig_SimpleFunction('img_thmb', [$this, 'imgThumb'])
+            new \Twig_SimpleFunction('img_thumb', [$this, 'imgThumb'])
         ];
     }
 
@@ -65,11 +65,20 @@ class ZPBExtension extends \Twig_Extension{
 
     public function imgUrl($id)
     {
-        $img = $this->em->getRepository('ZPBAdminBundle:MediaImage')->find($id);
+        $img = $this->em->getRepository('ZPBAdminBundle:Photo')->find($id);
         if(!$img){
             return null;
         }
-        return '/telecharger/image/' . $img->getFilename();  //TODO set extension
+        return '/telecharger/image/' . $img->getFilename() . '.' . $img->getExtension();
+    }
+
+    public function imgHdUrl($id)
+    {
+        $img = $this->em->getRepository('ZPBAdminBundle:Photo')->find($id);
+        if(!$img){
+            return null;
+        }
+        return '/telecharger/image-hd/' . $img->getFilename() . '.' . $img->getExtension();
     }
 
     public function imgThumb($id, $size='regular')

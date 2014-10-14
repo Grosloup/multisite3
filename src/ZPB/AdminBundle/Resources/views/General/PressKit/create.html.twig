@@ -65,7 +65,7 @@
                     upload pdf en français
                 </div>
                 <div class="dropzone" id="dropzone-pdf-fr">
-                    <div class="dropzone-in" id="dropzone-img">
+                    <div class="dropzone-in">
                         <div class="dropzone-legend"></div>
                     </div>
                     <div class="dropzone-loader">
@@ -83,7 +83,7 @@
                     upload pdf en anglais
                 </div>
                 <div class="dropzone" id="dropzone-pdf-en">
-                    <div class="dropzone-in" id="dropzone-img">
+                    <div class="dropzone-in">
                         <div class="dropzone-legend"></div>
                     </div>
                     <div class="dropzone-loader">
@@ -101,7 +101,7 @@
                     upload image d'illustration
                 </div>
                 <div class="dropzone" id="dropzone-img">
-                    <div class="dropzone-in" id="dropzone-image">
+                    <div class="dropzone-in">
                         <div class="dropzone-legend"></div>
                     </div>
                     <div class="dropzone-loader">
@@ -124,16 +124,16 @@
     <script src="/js/admin/newPressRelease.min.js"></script>
     <script>
         $(function(){
-            var submit = $("#press_release_form_save");
+            var submit = $("#press_kit_form_save");
             submit.attr("disabled", true);
             var pdfFr = $("#dropzone-pdf-fr");
             var pdfEn = $("#dropzone-pdf-en");
             var img = $("#dropzone-img");
 
             function loadDoneFr(response){
-                var submit = $("#press_release_form_save");
+                var submit = $("#press_kit_form_save");
                 submit.attr("disabled", false);
-                $("#press_release_form_pdfFr").val(response.pdfId);
+                $("#press_kit_form_pdfFr").val(response.pdfId);
                 pdfFr.find(".dropzone-message").text(response.msg);
             }
 
@@ -150,7 +150,7 @@
             }
 
             function loadDoneEn(response){
-                $("#press_release_form_pdfEn").val(response.pdfId);
+                $("#press_kit_form_pdfEn").val(response.pdfId);
                 pdfEn.find(".dropzone-message").text(response.msg);
             }
 
@@ -160,15 +160,16 @@
             }
 
             function errorMessageImg(message){
-
+                img.find(".dropzone-message").text(message);
             }
 
             function loadDoneImg(response){
-
+                $("#press_kit_form_image").val(response.imageId);
+                img.find(".dropzone-message").text(response.msg);
             }
 
             function loadFailImg(response){
-
+                img.find(".dropzone-message").text(response.msg);
             }
 
             pdfFr.zpbUploadPdf(
@@ -200,7 +201,7 @@
 
             var pdfUploder_fr = pdfFr.data("zpbUploadPdf");
             var pdfUploder_en = pdfEn.data("zpbUploadPdf");
-            var institutionSelect = $("#press_release_form_institution");
+            var institutionSelect = $("#press_kit_form_institution");
 
             institutionSelect.on("change", function(e){
                 e.preventDefault();

@@ -25,7 +25,8 @@ class Animal
 
     /**
      * @var string
-     *
+     * @Assert\Regex("/^[a-zàéèêëûüîïôöçù' -]$/i", message="Ce champs contient des caractères non autorisés.")
+     * @Assert\NotBlank(message="Ce champs est requis.")
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
      */
     private $name;
@@ -37,7 +38,8 @@ class Animal
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="Ce champs est requis.")
+     * @Assert\Regex("/^[a-zàéèêëûüîïôöçù0-9,;:!$%?.&#+=\/\\*' _-]$/i", message="Ce champs contient des caractères non autorisés.")
      * @ORM\Column(name="long_name", type="string", length=255, nullable=false)
      */
     private $longName;
@@ -61,7 +63,7 @@ class Animal
     /**
      * @var string
      *
-     * @ORM\Column(name="sex", type="string", length=255)
+     * @ORM\Column(name="sex", type="string", length=255, nullable=false)
      */
     private $sex;
 
@@ -79,7 +81,7 @@ class Animal
      */
     private $shortDescription;
     /**
-     * @ORM\Column(name="history", type="text")
+     * @ORM\Column(name="history", type="text",nullable=true)
      */
     private $history;
     /**

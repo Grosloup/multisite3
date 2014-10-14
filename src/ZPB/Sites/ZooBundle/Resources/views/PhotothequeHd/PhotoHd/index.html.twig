@@ -32,24 +32,23 @@
                         {% for institution in institutions %}
                             {% set institut = institution.slug %}
                             {% for category in institution.photoCategories %}
-                                {% set cat = category.slug %}
-                                <li class="category-box {{ institut }}" >
-                                    <a class="" href="{{ path("zpb_sites_zoo_phototheque_hd_show_category", {institutslug: institut , catslug: cat}) }}">
-                                        <div class="photo-category-box">
-                                            <div class="photo-category-card">
-
-                                                {% if category.hasPhotosHd == true %}
+                                {% if category.hasPhotosHd == true %}
+                                    {% set cat = category.slug %}
+                                    <li class="category-box {{ institut }}" >
+                                        <a class="" href="{{ path("zpb_sites_zoo_phototheque_hd_show_category", {institutslug: institut , catslug: cat}) }}">
+                                            <div class="photo-category-box">
+                                                <div class="photo-category-card">
                                                     <div class="shade">
                                                         <img src="{{ category.firstPhotoHd.webPath }}" alt="" width="100%"/>
                                                     </div>
-                                                {% endif %}
-                                                <p class="text-center">
-                                                    <a href="{{ path("zpb_sites_zoo_phototheque_hd_show_category", {institutslug: institut , catslug: cat}) }}" class="btn btn-primary">{{ category }}</a>
-                                                </p>
+                                                    <p class="text-center">
+                                                        <a href="{{ path("zpb_sites_zoo_phototheque_hd_show_category", {institutslug: institut , catslug: cat}) }}" class="btn btn-primary">{{ category }}</a>
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </li>
+                                        </a>
+                                    </li>
+                                {% endif %}
                             {% endfor %}
                         {% endfor %}
                     </ul>

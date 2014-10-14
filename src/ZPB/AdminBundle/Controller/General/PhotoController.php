@@ -82,6 +82,13 @@ class PhotoController extends BaseController
             $this->createNotFoundException();
         }
         $form = $this->createForm(new PhotoUpdateType(), $photo, ['em'=>$this->getManager(), 'slug'=>$photo->getCategory()->getInstitution()->getSlug()]);
+        $form->handleRequest($request);
+        if($form->isValid()){
+            $this->getManager()->persist($photo);
+            $this->getManager()->flush();
+            $this->setSuccess('Photo bien modifiée.');
+            return $this->redirect($this->generateUrl('zpb_admin_photos_list'));
+        }
         return $this->render('ZPBAdminBundle:General:photo/update.html.twig', ['form'=>$form->createView(), 'photo_factory'=>$this->get('zpb.photo_factory')]);
     }
 

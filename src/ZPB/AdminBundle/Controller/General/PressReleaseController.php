@@ -91,9 +91,12 @@ class PressReleaseController extends BaseController
         }
         $fs = $this->get('filesystem');
         $filename = $request->headers->get('X-File-Name');
+        $fileType = $request->headers->get('X-File-Type', false);
         $response = ['error'=>false,'msg'=>'', 'pdfId'=>''];
-        if(!$filename){
+        if(!$filename || !$fileType){
             $response = ['error'=>true,'msg'=>'Données manquantes', 'pdfId'=>''];
+        } elseif(!in_array($fileType, ['application/pdf'])){
+            $response = ['error'=>true,'msg'=>'Données érronées', 'imgId'=>''];
         } else {
             $basePath = $this->container->getParameter('zpb.medias.options')['zpb.pdf.root_dir'] . $this->container->getParameter('zpb.medias.options')['zpb.pdf.web_dir'];
             if(!$fs->exists($basePath)){
@@ -110,35 +113,27 @@ class PressReleaseController extends BaseController
 
                 $filenameNoExtension = preg_replace('/\.pdf$/i','',$filename);
                 $old = $this->getRepo('ZPBAdminBundle:MediaPdf')->findOneByFilename($filenameNoExtension);
-                $this->getManager()->remove($old);
-                $this->getManager()->flush();
+                if($old){
+                    $this->getManager()->remove($old);
+                    $this->getManager()->flush();
+                }
             }
             file_put_contents($path, $request->getContent());
             $file = new File($path);
-            if(!in_array($file->getMimeType(), ['application/pdf'])){
-                $fs->remove($path);
-                $file = null;
-                $response['error'] = true;
-                $response['msg'] = 'Le fichier n\'est pas d\'un format acceptable.';
-            } else {
-
-                $pdf = $this->get('zpb.pdf_factory')->createFromFile($file);
-                if(null != $institutionId = $request->headers->get('X-File-Institution', null)){
-                    $institution = $this->getRepo('ZPBAdminBundle:Institution')->find($institutionId);
-                    if($institution){
-                        $pdf->setInstitution($institution);
-                    }
-
-                }
-                try{
-                    $this->getManager()->persist($pdf);
-                    $this->getManager()->flush();
-                    $response = ['error'=>false,'msg'=>'Transfert réussi', 'pdfId'=>$pdf->getId()];
-                } catch(\Exception $e){
-                    $response = ['error'=>true,'msg'=>$e->getMessage(), 'pdfId'=>''];
+            $pdf = $this->get('zpb.pdf_factory')->createFromFile($file);
+            if(null != $institutionId = $request->headers->get('X-File-Institution', null)){
+                $institution = $this->getRepo('ZPBAdminBundle:Institution')->find($institutionId);
+                if($institution){
+                    $pdf->setInstitution($institution);
                 }
             }
-
+            try{
+                $this->getManager()->persist($pdf);
+                $this->getManager()->flush();
+                $response = ['error'=>false,'msg'=>'Transfert réussi', 'pdfId'=>$pdf->getId()];
+            } catch(\Exception $e){
+                $response = ['error'=>true,'msg'=>$e->getMessage(), 'pdfId'=>''];
+            }
         }
 
 
@@ -153,13 +148,42 @@ class PressReleaseController extends BaseController
         }
         $fs = $this->get('filesystem');
         $filename = $request->headers->get('X-File-Name', false);
+        $fileType = $request->headers->get('X-File-Type', false);
         $response = ['error'=>false,'msg'=>'', 'imgId'=>''];
 
-        if(!$filename){
+        if(!$filename || !$fileType){
             $response = ['error'=>true,'msg'=>'Données manquantes', 'imgId'=>''];
+        } elseif(!in_array($fileType, ['image/jpeg', 'image/gif', 'image/png'])){
+            $response = ['error'=>true,'msg'=>'Données érronées', 'imgId'=>''];
+        } else {
+            $basePath =
+                $this->container->getParameter('zpb.medias.options')['zpb.img.root_dir']
+                . $this->container->getParameter('zpb.medias.options')['zpb.img.web_dir']
+            ;
+            if($fs->exists($basePath)){
+                $fs->mkdir($basePath);
+            }
+            $path = $basePath . $filename;
+            if($fs->exists($path)){
+                $filenameNoExtension = pathinfo($filename, PATHINFO_FILENAME);
+                $old = $this->getRepo('ZPBAdminBundle:MediaImage')->findOneByFilename($filenameNoExtension);
+                if($old){
+                    $this->getManager()->remove($old);
+                    $this->getManager()->flush();
+                }
+            }
+            file_put_contents($path, $request->getContent());
+            $file = new File($path);
+            $image = $this->get('zpb.image_factory')->createFromFile($file);
+            $this->get('zpb.image_resizer')->makeThumbnails($image);
+            try{
+                $this->getManager()->persist($image);
+                $this->getManager()->flush();
+                $response = ['error'=>false,'msg'=>'Transfert réussi', 'imageId'=>$image->getId()];
+            } catch(\Exception $e){
+                $response = ['error'=>true,'msg'=>$e->getMessage(), 'imageId'=>''];
+            }
         }
-        // image_factory createDir, createFromFile
-        //TODO image use case
 
         return new JsonResponse($response);
     }
