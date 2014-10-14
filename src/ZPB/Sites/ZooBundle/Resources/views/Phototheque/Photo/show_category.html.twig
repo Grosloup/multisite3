@@ -44,7 +44,7 @@
                 <ul class="grid-sm-2 grid-md-6">
                     {% for photo in photos %}
                         <li >
-                            <a class="thumb" href="{{ path("zpb_sites_zoo_download_image", {filename: photo.filename}) }}">
+                            <a class="thumb" href="{{ path("zpb_sites_zoo_download_image", {filename: photo.filename~'.'~photo.extension}) }}">
                                 <img src="{{ photo.getWebThumbPath('regular') }}" alt="" title="{{ photo.title }}{{ photo.copyright|raw }}" width="100%"/>
                             </a>
                         </li>

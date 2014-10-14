@@ -69,7 +69,7 @@ class ZPBExtension extends \Twig_Extension{
         if(!$img){
             return null;
         }
-        return '/telecharger/image/' . $img->getFilename() . $img->getExtension();  //TODO set extension
+        return '/telecharger/image/' . $img->getFilename() . '.' . $img->getExtension();
     }
 
     public function imgHdUrl($id)
@@ -78,7 +78,7 @@ class ZPBExtension extends \Twig_Extension{
         if(!$img){
             return null;
         }
-        return '/telecharger/image-hd/' . $img->getFilename() . $img->getExtension();  //TODO set extension
+        return '/telecharger/image-hd/' . $img->getFilename() . '.' . $img->getExtension();
     }
 
     public function imgThumb($id, $size='regular')

@@ -34,15 +34,15 @@ zpb_sites_zoo_download_image:
     methods: ["GET"]
     requirements:
         filename: ".+"
-        _format: jpg|jpeg|gif|png
+        _format: jpg|JPG|jpeg|JPEG|gif|GIF|png|PNG
 
 zpb_sites_zoo_download_image_hd:
-    path: /telecharger/image/{filename}.{_format}
+    path: /telecharger/image-hd/{filename}.{_format}
     defaults: { _controller: ZPBSitesZooBundle:Download:downloadHDImage, _format: jpg }
     methods: ["GET"]
     requirements:
         filename: ".+"
-        _format: jpg|jpeg|gif|png
+        _format: jpg|JPG|jpeg|JPEG|gif|GIF|png|PNG
 
 zpb_sites_zoo_download_pdf:
     path: /telecharger/pdf/{filename}.{_format}
