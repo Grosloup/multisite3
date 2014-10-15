@@ -7,6 +7,7 @@
 @import "../../common/normalize";
 @import "../../common/grid";
 @import "main_menu";
+@import "faq";
 
 
 
@@ -23,6 +24,42 @@ body{
   line-height: 1.5;
   color: $grisFonce;
 }
+h1,h2,h3,h4,h5,h6{
+  font-weight: 700;
+}
+
+h1{
+  font-size: topx(22);
+}
+
+h2{
+  font-size: topx(20);
+}
+
+h3{
+  font-size: topx(18);
+}
+
+h4{
+  font-size: topx(16);
+}
+
+h5{
+  font-size: topx(14);
+}
+
+h6{
+  font-size: topx(12);
+}
+
+
+
+
+
+
+
+
+
 
 .text-center{
   text-align: center;
@@ -31,9 +68,8 @@ body{
 .page-header{
   margin: 10px 0;
   h1{
-    font-size: 16px;
     text-transform: uppercase;
-    font-weight: 700;
+
     text-align: center;
     color: $ocean;
   }
@@ -86,4 +122,10 @@ body{
       @include box-shadow(rgba(#fff,1) 0 1px 0, rgba(#fff,1) 0 8px 0, rgba(#fff,1) 0 15px 0);
     }
   }
+}
+
+#main-footer{
+  height: 50px;
+  background-color: $ocean;
+  margin-top: 30px;
 }

@@ -42,7 +42,8 @@ class PratiqueController extends BaseController
 
     public function restaurationAction()
     {
-        return $this->render('ZPBSitesZooMobileBundle:Pratique:restauration.html.twig', []);
+        $restos = $this->getRepo('ZPBAdminBundle:Restaurant')->findAll();
+        return $this->render('ZPBSitesZooMobileBundle:Pratique:restauration.html.twig', ['restos'=>$restos]);
     }
 
     public function servicesAction()
@@ -52,7 +53,15 @@ class PratiqueController extends BaseController
 
     public function faqAction()
     {
-        return $this->render('ZPBSitesZooMobileBundle:Pratique:faq.html.twig', []);
+        $institution = $this->getRepo('ZPBAdminBundle:Institution')->findOneByName('ZooParc de Beauval');
+        $faqs = $this->getRepo('ZPBAdminBundle:FAQ')->findByInstitution($institution);
+        $commune = $this->getRepo('ZPBAdminBundle:Institution')->findOneBySlug('commune');
+        $cfaqs = [];
+        if($commune){
+            $cfaqs = $this->getRepo('ZPBAdminBundle:FAQ')->findByInstitution($commune);
+        }
+
+        return $this->render('ZPBSitesZooMobileBundle:Pratique:faq.html.twig', ['faqs'=>$faqs, 'cfaqs'=>$cfaqs]);
     }
 
 }

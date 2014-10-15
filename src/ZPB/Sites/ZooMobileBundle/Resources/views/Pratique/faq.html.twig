@@ -6,5 +6,68 @@
 {% set active_page = "" %}
 
 {% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="page-header">
+                    <h1>Questions Fréquentes</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                {% for faq in faqs %}
+                    <div class="faq">
+                        <div class="faq-question">
+                            {{ faq.question }}
+                        </div>
+                        <div class="faq-response is-hide">
+                            {{ faq.response }}
+                        </div>
+
+                    </div>
+                {% endfor %}
+                {% if cfaqs|length > 0 %}
+
+                    {% for cfaq in cfaqs %}
+                        <div class="faq">
+                            <div class="faq-question">
+                                {{ cfaq.question }}
+                            </div>
+                            <div class="faq-response is-hide">
+                                {{ cfaq.response }}
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footScripts %}
+    {{ parent() }}
+    <script>
+        $(function(){
+            $(".faq-question").on("click", function(e){
+                e.preventDefault();
+                var response = $(this).next(".faq-response");
+
+                if(response.hasClass("is-hide")){
+                    $(this).addClass("is-active");
+                    response.slideDown(200, function(){
+                        response.removeClass("is-hide").addClass("is-shown");
+                    });
+                } else {
+                    $(this).removeClass("is-active");
+                    response.slideUp(200, function(){
+                        response.removeClass("is-shown").addClass("is-hide");
+                    });
+                }
+            })
+        });
+    </script>
 {% endblock %}
