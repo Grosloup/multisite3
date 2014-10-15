@@ -41,7 +41,8 @@ class ZPBExtension extends \Twig_Extension{
             new \Twig_SimpleFunction('pdf_url', [$this, 'pdfUrl']),
             new \Twig_SimpleFunction('reel_pdf_url', [$this, 'reelPdfUrl']),
             new \Twig_SimpleFunction('img_url', [$this, 'imgUrl']),
-            new \Twig_SimpleFunction('img_thumb', [$this, 'imgThumb'])
+            new \Twig_SimpleFunction('img_thumb', [$this, 'imgThumb']),
+            new \Twig_SimpleFunction('post_img_url', [$this, 'postImgUrl']),
         ];
     }
 
@@ -93,5 +94,17 @@ class ZPBExtension extends \Twig_Extension{
     public function getName()
     {
         return 'zpb_extension';
+    }
+
+    public function postImgUrl($id)
+    {
+        if(!$id){
+            return null;
+        }
+        $img = $this->em->getRepository('ZPBAdminBundle:MediaImage')->find($id);
+        if(!$img){
+            return null;
+        }
+        return $img->getWebThumbPath('regular');
     }
 }

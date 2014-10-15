@@ -24,9 +24,9 @@
                                 <div class="post-category"><a href="{{ path("zpb_sites_zoo_actualites_list_by_category", {slug: post.category.slug}) }}">{{ post.category }}</a></div>
                                 <h1 class="post-title"><a href="{{ path("zpb_sites_zoo_actualites_single", {slug: post.slug }) }}">{{ post.title }}</a></h1>
                                 <div class="post-date">{{ post.publishedAt|date("d/m/y") }}</div>
-                                {% if post.hasIllustration == true %}
+                                {% if post.squarreThumb != null %}
                                     <div class="post-thumbnail">
-                                        <img src="{{ post.getWebIllustration() }}" alt=""/>
+                                        <img src="{{ post_img_url(post.squarreThumb) }}" alt=""/>
                                     </div>
                                 {% endif %}
 
@@ -34,8 +34,8 @@
                                     <img src="http://lorempicsum.com/rio/200/200/2" alt=""/>
                                 </div>
 
-                                <div class="post-excerpt {% if post.hasIllustration == true %}post-has-thumbnail{% endif %}">
-                                    {{ post.excerpt|raw }}
+                                <div class="post-excerpt">
+                                    <p>{{ post.excerpt }}</p>
                                     <div class="post-more"><a href="{{ path("zpb_sites_zoo_actualites_single", {slug: post.slug }) }}">Lire plus...</a></div>
                                 </div>
 
@@ -258,4 +258,60 @@
         </div>
 
     </div>
+{% endblock %}
+
+{% block footScripts %}
+    {{ parent() }}
+    <script>
+        (function($,w){
+            function ExcerptShortener(el, options){
+                this.options = $.extend({}, excerptShortenerDefaults, options || {});
+                this.$el = $(el);
+                this.chars = [];
+                this.init();
+            }
+
+            ExcerptShortener.prototype.init = function(){
+                this.originalText = this.$el.text();
+                this.finalText = this.$el.text();
+                if(this.originalText.length > this.options.maxLength){
+                    this.reduce();
+                }
+            };
+
+            ExcerptShortener.prototype.reduce = function(){
+                this.finalText =
+                        "<p>"
+                        + this.originalText.substr(0, this.options.maxLength)
+                        + "<span class='excerpt-more'>" + this.options.replacementText + "</span>"
+                        +"</p>";
+                this.$el.hide();
+                this.$el.before(this.finalText);
+            };
+
+            var excerptShortenerDefaults = {
+                maxLength: 200,
+                replacementText: " ... "
+            };
+
+            $.fn.excerptShortener = function(options){
+
+                return this.each(function(){
+
+                    if(!$.data(this, "excerptShortener")){
+                        $.data(this, "excerptShortener", new ExcerptShortener(this, options));
+                    }
+                });
+            };
+
+        })(jQuery, this);
+    </script>
+    <script>
+        $(function(){
+
+            var excerpts = $(".post-excerpt > p");
+            excerpts.excerptShortener();
+
+        });
+    </script>
 {% endblock %}

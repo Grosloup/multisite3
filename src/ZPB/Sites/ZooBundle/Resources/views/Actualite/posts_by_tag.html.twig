@@ -26,14 +26,14 @@
                                     <div class="post-category"><a href="{{ path("zpb_sites_zoo_actualites_list_by_category", {slug: post.category.slug}) }}">{{ post.category }}</a></div>
                                     <a href="{{ path("zpb_sites_zoo_actualites_single", {slug: post.slug }) }}" class="post-title">{{ post.title }}</a>
                                     <div class="post-details">{{ post.publishedAt|date("d/m/y") }}</div>
-                                    {% if post.hasIllustration == true %}
+                                    {% if post.squarreThumb != null %}
                                         <div class="post-thumbnail">
-                                            <img src="{{ post.getWebIllustration() }}" alt=""/>
+                                            <img src="{{ post_img_url(post.squarreThumb) }}" alt=""/>
                                         </div>
                                     {% endif %}
 
-                                    <div class="post-excerpt {% if post.hasIllustration == true %}post-has-thumbnail{% endif %}">
-                                        {{ post.excerpt|raw }}
+                                    <div class="post-excerpt">
+                                        <p>{{ post.excerpt|raw }}</p>
                                         <div class="post-more"><a href="{{ path("zpb_sites_zoo_actualites_single", {slug: post.slug }) }}">Lire plus...</a></div>
                                     </div>
                                     {% if post.tags|length > 0 %}

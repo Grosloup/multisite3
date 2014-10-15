@@ -39,21 +39,17 @@
 
             <div class="col-md-6">
                 <div class="single-post">
-                    {% if post.hasIllustration == true %}
+                    {% if post.bandeau != null %}
                         <div class="post-thumbnail">
-                            <img src="{{ post.getWebIllustration() }}" alt=""/>
+                            <img src="{{ post_img_url(post.bandeau) }}" alt=""/>
                         </div>
                     {% endif %}
                     <div class="post-thumbnail">
-                        <img src="http://lorempicsum.com/up/1400/400/3" alt=""/>
+                        <img src="http://lorempicsum.com/up/1200/300/3" alt=""/>
                     </div>
                     <div class="post-category">{{ post.category }}</div>
                     <h3 class="post-title">{{ post.title }}</h3>
-                    {% if post.hasIllustration == true %}
-                        <div class="post-thumbnail">
-                            <img src="{{ post.getWebIllustration() }}" alt=""/>
-                        </div>
-                    {% endif %}
+
                     <p class="post-date"><small>Publié le : {{ post.publishedAt|date("d/m/y") }} à {{ post.publishedAt|date("H:i:s") }}</small></p>
                     <div class="post-body">
                         <div class="row">

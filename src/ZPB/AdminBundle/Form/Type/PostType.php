@@ -38,7 +38,9 @@ class PostType extends AbstractType
             ->add($builder->create('category', 'entity',['label'=>'Catégorie','empty_value'=>'Choisir une catégorie', 'class'=>'ZPBAdminBundle:PostCategory', 'data_class'=>'ZPB\AdminBundle\Entity\PostCategory', 'property'=>'name'])->addModelTransformer($categoryTransformer))
             ->add('targets', 'entity', ['label'=>'Sites cibles','class'=>'ZPBAdminBundle:PostTarget','property'=>'name', 'multiple'=>true, 'expanded'=>true])
             ->add('tags', 'collection', ['label'=>'Mots-clés', 'type'=>new SimplePostTagType(),'allow_add'=>true,'allow_delete'=>true, 'by_reference'=>false])
-            ->add('longId','hidden')
+            ->add('bandeau', 'hidden')
+            ->add('squarreThumb', 'hidden')
+            ->add('fbThumb', 'hidden')
             ->add('save','submit',['label'=>'Enregistrer'])
             ->add('save_publish','submit',['label'=>'Publier'])
         ;

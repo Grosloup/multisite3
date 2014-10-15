@@ -24,12 +24,6 @@ class Post
      */
     private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="long_id", type="string",length=255, nullable=false, unique=true)
-     */
-    private $longId;
 
     /**
      * @var string
@@ -57,6 +51,7 @@ class Post
      * @var string
      *
      * @ORM\Column(name="excerpt", type="text", nullable=true)
+     * @Assert\Length(max="300", maxMessage="Votre texte est trop long. 300 caractères maximum.")
      */
     private $excerpt;
 
@@ -144,9 +139,23 @@ class Post
     private $tags;
 
     /**
-     * @ORM\OneToOne(targetEntity="ZPB\AdminBundle\Entity\PostImg")
+     * @ORM\Column(name="image_bandeau_id", type="integer", nullable=true)
      */
-    private $illustration;
+    private $bandeau;
+
+    /**
+     * @ORM\Column(name="squarre_thumb_id", type="integer", nullable=true)
+     */
+    private $squarreThumb;
+
+    /**
+     * @ORM\Column(name="fb_thumb_id", type="integer", nullable=true)
+     */
+    private $fbThumb;
+
+
+
+
 
     /**
      * Constructor
@@ -159,10 +168,7 @@ class Post
         $this->isDropped = false;
         $this->isArchived = false;
         $this->isPublished = false;
-        $longId = md5(
-            (new \DateTime('now', new \DateTimeZone('Europe/Paris')))->getTimestamp() . uniqid(mt_rand(), true)
-        );
-        $this->longId = substr($longId, 0, 8);
+
     }
 
     public function getStatus()
@@ -190,24 +196,7 @@ class Post
         return $this->id;
     }
 
-    /**
-     * @return string
-     */
-    public function getLongId()
-    {
-        return $this->longId;
-    }
 
-    /**
-     * @param string $longId
-     * @return Post
-     */
-    public function setLongId($longId)
-    {
-        $this->longId = $longId;
-
-        return $this;
-    }
 
     /**
      * Get title
@@ -598,38 +587,58 @@ class Post
     }
 
     /**
-     * Get illustration
-     *
-     * @return PostImg
+     * @return mixed
      */
-    public function getIllustration()
+    public function getBandeau()
     {
-        return $this->illustration;
+        return $this->bandeau;
     }
 
     /**
-     * Set illustration
-     *
-     * @param PostImg $illustration
+     * @param mixed $bandeau
      * @return Post
      */
-    public function setIllustration(PostImg $illustration = null)
+    public function setBandeau($bandeau)
     {
-        $this->illustration = $illustration;
-
+        $this->bandeau = $bandeau;
         return $this;
     }
 
-    public function getWebIllustration()
+    /**
+     * @return mixed
+     */
+    public function getSquarreThumb()
     {
-        if($this->getIllustration() != null){
-            return $this->getIllustration()->getImg()->getWebPath();
-        }
-        return null;
+        return $this->squarreThumb;
     }
 
-    public function hasIllustration()
+    /**
+     * @param mixed $squarreThumb
+     * @return Post
+     */
+    public function setSquarreThumb($squarreThumb)
     {
-        return $this->getIllustration() !== null;
+        $this->squarreThumb = $squarreThumb;
+        return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getFbThumb()
+    {
+        return $this->fbThumb;
+    }
+
+    /**
+     * @param mixed $fbThumb
+     * @return Post
+     */
+    public function setFbThumb($fbThumb)
+    {
+        $this->fbThumb = $fbThumb;
+        return $this;
+    }
+
+
 }
