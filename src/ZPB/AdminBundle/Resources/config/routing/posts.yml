@@ -36,3 +36,8 @@ zpb_admin_posts_delete:
     methods: ["GET"]
     requirements:
         id: \d+
+
+zpb_admin_posts_img_upload:
+    path: /image/upload
+    defaults: { _controller: ZPBAdminBundle:General/Post:uploadImage }
+    methods: ["POST"]
