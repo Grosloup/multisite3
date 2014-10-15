@@ -1,13 +1,18 @@
 {% extends "ZPBSitesZooMobileBundle:Layouts:master.html.twig" %}
 
+{% block title %}Accueil{% endblock %}
 {% block description %}{% endblock %}
 {% block keywords %}{% endblock %}
 
-{% set active_page = "" %}
+{% set active_page = "home" %}
+
+{% block header %}
+    <img src="http://lorempicsum.com/rio/768/768/3" alt="" width="100%"/>
+{% endblock %}
 
 {% block content %}
 
-    <img src="http://lorempicsum.com/rio/768/768/3" alt="" width="100%"/>
+
     <div class="row">
         <div class="col-md-6">
             <div class="page-header">
@@ -29,5 +34,9 @@
     </div>
 
 
+
+{% endblock %}
+{% block footScripts %}
+    {{ parent() }}
 
 {% endblock %}

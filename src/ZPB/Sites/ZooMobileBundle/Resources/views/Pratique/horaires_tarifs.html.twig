@@ -1,10 +1,21 @@
 {% extends "ZPBSitesZooMobileBundle:Layouts:master.html.twig" %}
 
+{% block title %}Horaires et tarifs{% endblock %}
 {% block description %}{% endblock %}
 {% block keywords %}{% endblock %}
 
-{% set active_page = "" %}
-
+{% set active_page = "horaires_tarifs" %}
+{% block header %}
+    <img src="http://lorempicsum.com/rio/768/768/3" alt="" width="100%"/>
+{% endblock %}
 {% block content %}
-
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="page-header">
+                    <h1>Horaires et tarifs</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

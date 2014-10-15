@@ -1,34 +1,5 @@
 <div id="topbar">
-    <a class="logo" href="">{{ include("ZPBSitesZooMobileBundle:incs:logo_zooparc_svg.html.twig") }}</a>
-    <button id="menu"></button>
+    <a class="logo" href="{{ path("zpb_sites_zoo_mobile_homepage") }}">{{ include("ZPBSitesZooMobileBundle:incs:logo_zooparc_svg.html.twig") }}</a>
+    <button id="toggle-menu"></button>
 </div>
-<div id="main-menu">
-    {#<ul>
 
-        <li><a href="javascript:void(0)">Pratique</a>
-            <ul>
-                <li><a href="{{ path("zpb_sites_zoo_mobile_acces") }}">Accès</a></li>
-                <li><a href="{{ path("zpb_sites_zoo_mobile_horaires_tarifs") }}">Horaires et tarifs</a></li>
-                <li><a href="{{ path("zpb_sites_zoo_mobile_animations_spectacles") }}">Animations et spectacles</a></li>
-                <li><a href="{{ path("zpb_sites_zoo_mobile_restauration") }}">Restauration</a></li>
-                <li><a href="{{ path("zpb_sites_zoo_mobile_services") }}">Services</a></li>
-                <li><a href="{{ path("zpb_sites_zoo_mobile_faq") }}">FAQ</a></li>
-            </ul>
-        </li>
-
-        <li><a href="#">ZooParc</a></li>
-        <li><a href="#">Nouveautés</a></li>
-        <li><a href="#">Actualité</a></li>
-        <li><a href="#">Pédagogie</a></li>
-
-
-        <li><a href="#">Dormir à Beauval</a>
-            <ul>
-                <li><a href="#">Les Jardins de Beauval</a></li>
-                <li><a href="#">Les Hameaux de Beauval</a></li>
-                <li><a href="http://lespagodesdebeauval.com">Les Pagodes de Beauval</a></li>
-            </ul>
-        </li>
-
-    </ul>#}
-</div>

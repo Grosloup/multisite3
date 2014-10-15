@@ -22,16 +22,74 @@
 </head>
 <body>
 {% block main %}
-    {% block header%}{% endblock %}
-    <div class="main-content">
+    <div id="wrapper">
+        <div class="site-pusher">
         {{ render(controller("ZPBSitesZooMobileBundle:Nav:topbar")) }}
 
-        {% block content %}{% endblock %}
+            <div id="main-menu">
+                <ul>
+                    <li class="dropdown"><a href="javascript:void(0)">Pratique</a>
+                        <ul class="hide">
+                            <li><a href="{{ path("zpb_sites_zoo_mobile_acces") }}">Accès</a></li>
+                            <li><a href="{{ path("zpb_sites_zoo_mobile_horaires_tarifs") }}">Horaires et tarifs</a></li>
+                            <li><a href="{{ path("zpb_sites_zoo_mobile_animations_spectacles") }}">Animations et spectacles</a></li>
+                            <li><a href="{{ path("zpb_sites_zoo_mobile_restauration") }}">Restauration</a></li>
+                            <li><a href="{{ path("zpb_sites_zoo_mobile_services") }}">Services</a></li>
+                            <li><a href="{{ path("zpb_sites_zoo_mobile_faq") }}">FAQ</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">ZooParc</a></li>
+                    <li><a href="#">Nouveautés</a></li>
+                    <li><a href="#">Actualité</a></li>
+                    <li><a href="#">Pédagogie</a></li>
+                    <li class="dropdown"><a href="#">Dormir à Beauval</a>
+                        <ul class="hide">
+                            <li><a href="#">Les Jardins de Beauval</a></li>
+                            <li><a href="#">Les Hameaux de Beauval</a></li>
+                            <li><a href="http://lespagodesdebeauval.com">Les Pagodes de Beauval</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="app">
+                {% block header%}{% endblock %}
+
+                <div class="main-content">
+                    {% block content %}{% endblock %}
+                </div>
+            {% endblock %}
+            {{ render(controller("ZPBSitesZooMobileBundle:Partials:footer")) }}
+            </div>
+        </div>
     </div>
-{% endblock %}
-{{ render(controller("ZPBSitesZooMobileBundle:Partials:footer")) }}
 {% block footScripts %}
     <script src="/js/vendor/jquery-2.1.1.min.js"></script>
+    <script>
+        $(function(){
+            $("#toggle-menu").on("click", function(e){
+                e.preventDefault();
+                $("body").toggleClass("with-sidebar");
+            });
+
+            var dropdowns = $(".dropdown>a");
+            var uls = dropdowns.next("ul");
+
+
+            dropdowns.on("click", function(e){
+                e.preventDefault();
+                if($(this).hasClass("open")){
+                    $(this).removeClass("open");
+                    $(this).next("ul").slideUp();
+                } else {
+                    dropdowns.removeClass("open");
+                    uls.slideUp();
+                    $(this).addClass("open");
+                    $(this).next("ul").slideDown();
+                }
+
+            })
+        })
+    </script>
 {% endblock %}
 </body>
 </html>

@@ -1,7 +1,22 @@
+.with-sidebar{
+  .site-pusher{
+    @include transform(translateX(topx($menuWidth)));
+  }
+}
+
 #main-menu{
+  width: topx($menuWidth);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: $grisFonce;
+  position: absolute;
+  z-index: 1100;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling:touch;
+  @include transform(translateX(topx($menuWidth * -1)));
   a{
     text-decoration: none;
-
     font-size: 16px;
   }
   &>ul{
@@ -15,7 +30,14 @@
         text-transform: uppercase;
         font-weight: 700;
       }
+      &.dropdown{
+        ul{
+          display: none;
+        }
+
+      }
       ul{
+
         li{
           a{
             display: block;
