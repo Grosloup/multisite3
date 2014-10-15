@@ -1,0 +1,31 @@
+#main-menu{
+  a{
+    text-decoration: none;
+
+    font-size: 16px;
+  }
+  &>ul{
+    &>li{
+      &>a{
+        display: block;
+        padding: 10px 8px;
+        border-bottom: 1px solid lighten($grisFonce, 5);
+        background-color: $grisFonce;
+        color: $blanc;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+      ul{
+        li{
+          a{
+            display: block;
+            padding: 10px 8px;
+            border-bottom: 1px solid lighten($grisBB, 5);
+            background-color: $grisBB;
+            color: $blanc;
+          }
+        }
+      }
+    }
+  }
+}

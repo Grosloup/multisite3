@@ -2,3 +2,46 @@ zpb_sites_zoo_mobile_homepage:
     path:     /
     defaults: { _controller: ZPBSitesZooMobileBundle:Default:index }
     methods: ["GET"]
+
+zpb_sites_zoo_mobile_acces:
+    path:     /pratique/acces
+    defaults: { _controller: ZPBSitesZooMobileBundle:Pratique:acces }
+    methods: ["GET"]
+
+zpb_sites_zoo_mobile_horaires_tarifs:
+    path:     /pratique/horaires-tarifs
+    defaults: { _controller: ZPBSitesZooMobileBundle:Pratique:horairesTarifs }
+    methods: ["GET"]
+
+zpb_sites_zoo_mobile_animations_spectacles:
+    path:     /pratique/animations-spectacles
+    defaults: { _controller: ZPBSitesZooMobileBundle:Pratique:animationsSpectacles }
+    methods: ["GET"]
+
+zpb_sites_zoo_mobile_restauration:
+    path:     /pratique/restauration
+    defaults: { _controller: ZPBSitesZooMobileBundle:Pratique:restauration }
+    methods: ["GET"]
+
+zpb_sites_zoo_mobile_services:
+    path:     /pratique/services
+    defaults: { _controller: ZPBSitesZooMobileBundle:Pratique:services }
+    methods: ["GET"]
+
+zpb_sites_zoo_mobile_faq:
+    path:     /pratique/questions-frequentes
+    defaults: { _controller: ZPBSitesZooMobileBundle:Pratique:faq }
+    methods: ["GET"]
+
+
+
+
+
+
+
+
+
+
+
+
+

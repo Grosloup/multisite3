@@ -6,6 +6,7 @@
 @import "vars";
 @import "../../common/normalize";
 @import "../../common/grid";
+@import "main_menu";
 
 
 
@@ -16,16 +17,37 @@
 
 
 body{
-  padding-top: 60px;
+  padding-top: 50px;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.5;
+  color: $grisFonce;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.page-header{
+  margin: 10px 0;
+  h1{
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    color: $ocean;
+  }
+
+
+}
+.slogan{
+  text-align: center;
 }
 #topbar{
   background-color: $ocean;
   height: 50px;
   line-height: 50px;
-
+  @include box-shadow(rgba(0,0,0,0.5) 0 3px 5px);
   padding: 0 5px;
   position: fixed;
   left: 0;
@@ -36,11 +58,12 @@ body{
   a.logo{
     float: left;
     display: block;
+    padding: 5px 0;
     #Calque_1{
       display: block;
-      width: 250px;
+      width: 185px;
       padding: 9px 0;
-      height: 50px;
+      height: 40px;
     }
   }
   button#menu{
