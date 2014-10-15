@@ -30,7 +30,7 @@ zpb_sites_zoo_legales:
 
 zpb_sites_zoo_sitemap:
     path: /plan-du-site
-    defaults: { _controller: ZPBSitesZooBundle:Sitemap:index }
+    defaults: { _controller: ZPBSitesZooBundle:Index:sitemap }
     methods: ["GET"]
 
 zpb_sites_zoo_download_image:
