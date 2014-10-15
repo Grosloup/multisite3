@@ -33,6 +33,11 @@ zpb_sites_zoo_sitemap:
     defaults: { _controller: ZPBSitesZooBundle:Index:sitemap }
     methods: ["GET"]
 
+zpb_sites_zoo_robot_text:
+    path: /robot.txt
+    defaults: { _controller: ZPBSitesZooBundle:Index:robot }
+    methods: ["GET"]
+
 zpb_sites_zoo_download_image:
     path: /telecharger/image/{filename}.{_format}
     defaults: { _controller: ZPBSitesZooBundle:Download:downloadImage, _format: jpg }

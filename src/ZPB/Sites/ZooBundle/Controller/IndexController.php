@@ -2,6 +2,7 @@
 
 namespace ZPB\Sites\ZooBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Response;
 use ZPB\AdminBundle\Controller\BaseController;
 
 class IndexController extends BaseController
@@ -18,7 +19,10 @@ class IndexController extends BaseController
 
     public function robotAction()
     {
+        $response = new Response();
+        $response->headers->add(['Content-Type'=>'text/plain']);
 
+        return $this->render('ZPBSitesZooBundle:Index:robot.txt.twig', []);
     }
 
 }
