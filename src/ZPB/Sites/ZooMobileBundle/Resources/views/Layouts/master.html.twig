@@ -23,7 +23,7 @@
 <body>
 {% block main %}
     <div id="wrapper">
-        <div class="site-pusher">
+        <div class="site-pusher" id="site-pusher">
         {{ render(controller("ZPBSitesZooMobileBundle:Nav:topbar")) }}
 
             <div id="main-menu">
@@ -51,7 +51,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="app">
+            <div class="app" id="app">
                 {% block header%}{% endblock %}
 
                 <div class="main-content">
@@ -64,6 +64,7 @@
     </div>
 {% block footScripts %}
     <script src="/js/vendor/jquery-2.1.1.min.js"></script>
+
     <script>
         $(function(){
             $("#toggle-menu").on("click", function(e){
@@ -75,19 +76,22 @@
             var uls = dropdowns.next("ul");
 
 
+
             dropdowns.on("click", function(e){
                 e.preventDefault();
                 if($(this).hasClass("open")){
                     $(this).removeClass("open");
-                    $(this).next("ul").slideUp();
+                    $(this).next("ul").slideUp(150);
                 } else {
                     dropdowns.removeClass("open");
-                    uls.slideUp();
+                    uls.slideUp(150);
                     $(this).addClass("open");
-                    $(this).next("ul").slideDown();
+                    $(this).next("ul").slideDown(150);
                 }
 
-            })
+            });
+
+
         })
     </script>
 {% endblock %}

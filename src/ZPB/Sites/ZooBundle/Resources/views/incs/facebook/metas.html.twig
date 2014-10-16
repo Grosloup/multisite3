@@ -4,4 +4,6 @@
 <meta property="og:type" content="{{ type }}"/>
 <meta property="og:url" content="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"/>
 <meta property="og:description" content="{{ description }}" />
-
+{% if imageUrl != null %}
+<meta property="og:image" content="{{ imageUrl }}"/>
+{% endif %}

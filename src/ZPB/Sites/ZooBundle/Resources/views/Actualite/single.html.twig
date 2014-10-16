@@ -3,10 +3,12 @@
 
 {% block description %}{% endblock %}
 {% block keywords %}{% endblock %}
-
+{% set host = app.request.scheme~"://"~app.request.host %}
+{% set imageUrl = (post_img_url(post.fbThumb) != null) ? host~post_img_url(post.fbThumb) : "" %}
 {% set active_page = "single_post" %}
 {% block meta_fb%}
-    {{ include("ZPBSitesZooBundle:incs/facebook:metas.html.twig", {title: post.title, type: "article", description: post.excerpt}) }}
+
+    {{ include("ZPBSitesZooBundle:incs/facebook:metas.html.twig", {title: post.title, type: "article", description: post.excerpt, imageUrl: imageUrl}) }}
 {% endblock %}
 
 {% block content %}
