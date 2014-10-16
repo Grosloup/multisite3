@@ -52,31 +52,29 @@
                 </ul>
             </div>
             <div class="app" id="app">
-                {% block header%}{% endblock %}
+                <div id="header">
+                    {% block header%}{% endblock %}
+                </div>
 
                 <div class="main-content">
                     {% block content %}{% endblock %}
                 </div>
             {% endblock %}
-            {{ render(controller("ZPBSitesZooMobileBundle:Partials:footer")) }}
             </div>
+            {{ render(controller("ZPBSitesZooMobileBundle:Partials:footer")) }}
+
         </div>
     </div>
 {% block footScripts %}
     <script src="/js/vendor/jquery-2.1.1.min.js"></script>
-
     <script>
         $(function(){
             $("#toggle-menu").on("click", function(e){
                 e.preventDefault();
                 $("body").toggleClass("with-sidebar");
             });
-
             var dropdowns = $(".dropdown>a");
             var uls = dropdowns.next("ul");
-
-
-
             dropdowns.on("click", function(e){
                 e.preventDefault();
                 if($(this).hasClass("open")){
@@ -88,10 +86,7 @@
                     $(this).addClass("open");
                     $(this).next("ul").slideDown(150);
                 }
-
             });
-
-
         })
     </script>
 {% endblock %}

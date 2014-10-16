@@ -35,6 +35,8 @@
             <parameter key="pedagogie">Pédagogie</parameter>
             <parameter key="communication">Communication</parameter>
             <parameter key="presse">Presse</parameter>
+            <parameter key="accueil">Accueil</parameter>
+            <parameter key="science">Science et conservation</parameter>
         </parameter>
 
         <parameter type="collection" key="zpb.zoo.contact_interlocutors_emails">
@@ -45,6 +47,9 @@
             <parameter key="pedagogie">pedagogie@zoobeauval.com</parameter>
             <parameter key="communication">delphine.delord@zoobeauval.com</parameter>
             <parameter key="presse">pl-communication@allegria.fr</parameter>
+            <parameter key="accueil">info@zoobeauval.com</parameter>
+            <parameter key="boutique">boutique@zoobeauval.com</parameter>
+            <parameter key="science">eric@zoobeauval.com</parameter>
         </parameter>
     </parameters>
 

@@ -23,16 +23,19 @@
         <div class="row">
             <div class="col-xs-6">
                 {% for resto in restos %}
-                    <img src="{{ resto.visuel.webPath }}" alt="" width="100%"/>
-                    <h4 class="text-center">{{ resto.name }}</h4>
-                    <div class="text-center">{{ resto.description|raw }}</div>
+                    <div class="card resto-card {% if resto.isOpen == true %}is-open{% else %}is-close{% endif %}">
+                        <img src="{{ resto.visuel.webPath }}" alt="" width="100%"/>
+                        <h3 class="text-center">{{ resto.name }}</h3>
+                        <div class="card-description-centered">{{ resto.description|raw }}</div>
 
-                    <div class="resto-state-info text-center bold">
-                        <p>Aujourd'hui ce restaurant est</p>
-                        <p class="resto-state">
-                            {% if resto.isOpen == true %}ouvert{% else %}fermé{% endif %}
-                        </p>
+                        <div class="resto-state-info text-center bold">
+                            <p>Aujourd'hui ce restaurant est</p>
+                            <p class="resto-state">
+                                {% if resto.isOpen == true %}ouvert{% else %}fermé{% endif %}
+                            </p>
+                        </div>
                     </div>
+
                 {% endfor %}
             </div>
         </div>
