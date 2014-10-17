@@ -1,7 +1,9 @@
 {% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
 
-{% block title %}Nouvelle Catégories d'actualité | Actualités{% endblock %}
+{% block title %}Nouvel article | Actualités{% endblock %}
 {% set active = "write_post" %}
+
+{% block angular %}PostApp{% endblock %}
 
 {% block headStyles %}
     <style>
@@ -69,6 +71,72 @@
                     </div>
                 </div>
             </div>
+
+            {#<div class="tile" ng-controller="TagCtrl">
+                <div class="tile-header">
+                    Mots-clés
+                </div>
+                <div>
+                    &#123;&#35;<a class="btn btn-primary" ng-click="newtag()"><i class="fa fa-tag"></i></a>&#35;&#125;
+                    <div tags-builder></div>
+                    &#123;&#35;<div tag-builder tag-builder-datalist="tags-list"></div>&#35;&#125;
+
+                    <datalist id="tags-list">
+                        <option value="{$ tag.name $}" ng-repeat="tag in tags">{$ tag.name $}</option>
+                    </datalist>
+
+                </div>
+            </div>#}
+            <style>
+                .tags-container:before, .tags-container:after{
+                    *zoom: 1;
+                    display: table;
+                    content: " ";
+                }
+                .tags-container:after{
+                    clear: both;
+                }
+                .tags-container{
+                    border: 1px solid #ccc;
+                    padding: 5px;
+                }
+                .form input[type="text"].tag-input{
+                    border: 1px solid #ccc;
+                    padding: 5px;
+                    display: inline-block;
+                    float: left;
+                }
+                .tag-box{
+                    border-radius: 3px;
+                    background-color: #03a9f4;
+                    color: #fff;
+                    padding: 5px;
+                    float: left;
+                    display: inline-block;
+                    margin-right: 2px;
+                    margin-bottom: 2px;
+                }
+                .tag-box span{
+                    cursor: pointer;
+                    border-left: 1px solid #32b2f4;
+                    display: inline-block;
+                    padding: 0 3px;
+                }
+            </style>
+
+            <div class="tile" ng-controller="TagCtrl">
+                <div class="tile-header">
+                    Mots-clés
+                </div>
+                <div class="tags-container">
+                    <div class="tag-box" ng-repeat="(key,tag) in tags">{$ tag.name $} <span ng-click="deleteTag(key)">&times</span></div>
+                    <input type="text" class="tag-input" tag-input ng-model="tagText" ng-style="{width: iptWidth}" new-tag="addTag()" delete-tag="deleteTag()" list="tag-list"/>
+                </div>
+                <datalist id="tag-list">
+                    <option value="{$ itag.name $}" ng-repeat="itag in initTags" />
+                </datalist>
+            </div>
+
 
             <div class="tile">
                 <div class="tile-header">
@@ -216,6 +284,10 @@
     <script src="/js/vendor/ace/ace.js" type="text/javascript" charset="utf-8"></script>
     <script src="/js/vendor/ace/ext-emmet.js"></script>
     <script src="/js/vendor/emmet.js"></script>
+    <script src="/js/vendor/angular/angular.min.js"></script>
+    <script src="/js/vendor/angular/angular-resource.min.js"></script>
+    <script src="/js/vendor/angular/angular-route.min.js"></script>
     <script src="/js/admin/newPost.min.js"></script>
     <script src="/js/admin/createPostApp.min.js"></script>
+    <script src="/js/admin/post/app.js"></script>
 {% endblock %}

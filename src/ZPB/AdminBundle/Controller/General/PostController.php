@@ -56,6 +56,7 @@ class PostController extends BaseController
 
     public function createAction(Request $request)
     {
+        $tags = $this->getRepo("ZPBAdminBundle:PostTag")->findAll();
         $entity = new Post();
         $form = $this->createForm(new PostType(), $entity, ['em'=>$this->getManager()]);
         $form->handleRequest($request);
@@ -85,7 +86,7 @@ class PostController extends BaseController
             $this->setSuccess('Nouvel article d\'actualité bien créé.');
             return $this->redirect($this->generateUrl('zpb_admin_posts_list'));
         }
-        return $this->render('ZPBAdminBundle:General:post/create.html.twig', ['form'=>$form->createView()]);
+        return $this->render('ZPBAdminBundle:General:post/create.html.twig', ['form'=>$form->createView(), 'tags'=>$tags]);
     }
 
     public function uploadImageAction(Request $request)

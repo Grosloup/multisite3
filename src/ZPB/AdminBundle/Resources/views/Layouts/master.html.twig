@@ -1,6 +1,6 @@
 {% set active = (active is defined) ? active : "none" %}
 <!doctype html>
-<html lang="fr">
+<html lang="fr" {% if block("angular") %}ng-app="{{ block("angular") }}"{% endif %}>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
