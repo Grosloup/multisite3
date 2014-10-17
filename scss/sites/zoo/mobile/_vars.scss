@@ -5,9 +5,33 @@ $numCols: 6;
 
 $topBarHeight: 50;
 $menuWidth: 250;
+
+$fontfamily: 'cooper_hewitt_book', Arial, Helvetica, sans-serif;
 /***************************************\
   faq
 \***************************************/
 
 $faq_defaultBgColor: $grisBB;
 $faq_activeBgColor: $ocean;
+
+/***************************************\
+  boutons btn_
+\***************************************/
+
+$btn_defaultBtnBgColor: #ddd;
+$btn_defaultBtnColor: $grisFonce;
+$btn_defaultBtnFontFamily: $fontfamily;
+$btn_defaultBtnFontSize: $fontSize;
+
+$btn_primaryColor: $blanc;
+$btn_primaryBgColor: $ocean;
+
+$btn_warningColor: $grisFonce;
+$btn_warningBgColor: $jaune;
+$btn_grisFonceHover: $ocean;
+$btn_grisFonceActive: $ocean;
+$btn_grisBBHover: $ocean;
+$btn_grisBBActive: $ocean;
+
+$btn_vertBgColor: $vertParrainage;
+$btn_vertColor: $blanc;

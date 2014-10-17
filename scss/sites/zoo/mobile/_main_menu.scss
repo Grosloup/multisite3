@@ -5,6 +5,7 @@
 }
 
 #main-menu{
+
   width: topx($menuWidth);
   top: 0;
   left: 0;
@@ -21,6 +22,13 @@
   }
   &>ul{
     &>li{
+
+      &.active{
+        &>a{
+          border-bottom: 1px solid darken($ocean, 5);
+          background-color: $ocean;
+        }
+      }
       &>a{
         display: block;
         padding: 10px 8px;
@@ -28,6 +36,7 @@
         background-color: $grisFonce;
         color: $blanc;
         text-transform: uppercase;
+        font-family: 'cooper_hewitt_bold', Arial, Helvetica, sans-serif;
         font-weight: 700;
       }
       &.dropdown{
@@ -39,6 +48,11 @@
       ul{
 
         li{
+          &.active{
+            a{
+              background-color: darken($grisBB, 5);
+            }
+          }
           a{
             display: block;
             padding: 10px 8px;

@@ -64,4 +64,9 @@ class PratiqueController extends BaseController
         return $this->render('ZPBSitesZooMobileBundle:Pratique:faq.html.twig', ['faqs'=>$faqs, 'cfaqs'=>$cfaqs]);
     }
 
+    public function contactAction()
+    {
+
+    }
+
 }
