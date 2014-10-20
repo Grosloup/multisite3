@@ -88,15 +88,35 @@ class Post
      */
     private $slug;
 
+    /**
+     * @ORM\Column(name="is_published", type="boolean", nullable=false)
+     */
+    private $isPublished;
+
+
+    public function __construct()
+    {
+        $this->isPublished = false;
+    }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 
     /**
@@ -113,13 +133,13 @@ class Post
     }
 
     /**
-     * Get title
+     * Get body
      *
-     * @return string 
+     * @return string
      */
-    public function getTitle()
+    public function getBody()
     {
-        return $this->title;
+        return $this->body;
     }
 
     /**
@@ -136,13 +156,13 @@ class Post
     }
 
     /**
-     * Get body
+     * Get excerpt
      *
-     * @return string 
+     * @return string
      */
-    public function getBody()
+    public function getExcerpt()
     {
-        return $this->body;
+        return $this->excerpt;
     }
 
     /**
@@ -159,13 +179,13 @@ class Post
     }
 
     /**
-     * Get excerpt
+     * Get bandeau
      *
-     * @return string 
+     * @return string
      */
-    public function getExcerpt()
+    public function getBandeau()
     {
-        return $this->excerpt;
+        return $this->bandeau;
     }
 
     /**
@@ -182,13 +202,13 @@ class Post
     }
 
     /**
-     * Get bandeau
+     * Get squarreThumb
      *
-     * @return string 
+     * @return string
      */
-    public function getBandeau()
+    public function getSquarreThumb()
     {
-        return $this->bandeau;
+        return $this->squarreThumb;
     }
 
     /**
@@ -205,13 +225,13 @@ class Post
     }
 
     /**
-     * Get squarreThumb
+     * Get fbThumb
      *
-     * @return string 
+     * @return string
      */
-    public function getSquarreThumb()
+    public function getFbThumb()
     {
-        return $this->squarreThumb;
+        return $this->fbThumb;
     }
 
     /**
@@ -228,13 +248,13 @@ class Post
     }
 
     /**
-     * Get fbThumb
+     * Get createdAt
      *
-     * @return string 
+     * @return \DateTime
      */
-    public function getFbThumb()
+    public function getCreatedAt()
     {
-        return $this->fbThumb;
+        return $this->createdAt;
     }
 
     /**
@@ -251,13 +271,13 @@ class Post
     }
 
     /**
-     * Get createdAt
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getUpdatedAt()
     {
-        return $this->createdAt;
+        return $this->updatedAt;
     }
 
     /**
@@ -274,13 +294,13 @@ class Post
     }
 
     /**
-     * Get updatedAt
+     * Get slug
      *
-     * @return \DateTime 
+     * @return string
      */
-    public function getUpdatedAt()
+    public function getSlug()
     {
-        return $this->updatedAt;
+        return $this->slug;
     }
 
     /**
@@ -297,12 +317,22 @@ class Post
     }
 
     /**
-     * Get slug
-     *
-     * @return string 
+     * @return mixed
      */
-    public function getSlug()
+    public function getIsPublished()
     {
-        return $this->slug;
+        return $this->isPublished;
     }
+
+    /**
+     * @param mixed $isPublished
+     * @return Post
+     */
+    public function setIsPublished($isPublished)
+    {
+        $this->isPublished = $isPublished;
+        return $this;
+    }
+
+
 }

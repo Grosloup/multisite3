@@ -33,6 +33,17 @@
             <parameter key="Mr">Monsieur</parameter>
         </parameter>
 
+        <parameter key="zpb.post_targets" type="collection">
+            <parameter key="zoo">ZooParc de Beauval</parameter>
+            <parameter key="bn">Beauval Nature</parameter>
+            <parameter key="jdb">Les Jardins de Beauval</parameter>
+            <parameter key="hdb">Les Hameaux de Beauval</parameter>
+            <parameter key="pdb">Les Pagodes de Beauval</parameter>
+            <parameter key="ce">Comités d'entreprises</parameter>
+            <parameter key="pro">Professionnels </parameter>
+            <parameter key="scolaires">Groupes enfants</parameter>
+        </parameter>
+
 
         <parameter key="zpb.image.thumbnails" type="collection">
             <parameter key="small" type="collection">

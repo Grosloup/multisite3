@@ -40,6 +40,7 @@ class PostController extends BaseController
 
         $form->handleRequest($request);
         if($form->isValid()){
+
             $this->getManager()->persist($post);
             $this->getManager()->flush();
 
@@ -49,15 +50,26 @@ class PostController extends BaseController
             }
 
             if($form->get('publish')->isClicked()){
-
+                return $this->redirect($this->generateUrl('zpb_sites_zoo_actualites_publier'));
             }
         }
-        return $this->render('ZPBAdminBundle:General/Post:create.html.twig', []);
+        return $this->render('ZPBAdminBundle:General/Post:create.html.twig', ['form'=>$form->createView()]);
     }
 
     public function publishAction($id)
     {
-        return $this->render('ZPBAdminBundle:General/Post:publish.html.twig', []);
+        $post = $this->getRepo('ZPBAdminBundle:Post')->find($id);
+        if(!$post){
+            throw $this->createNotFoundException();
+        }
+
+        return $this->render('ZPBAdminBundle:General/Post:publish.html.twig',
+            [
+                'targets'=>$this->getTargets(),
+                'categories'=>$this->getCategoriesByTarget(),
+                'tags'=>$this->getTagsByTarget()
+            ]
+        );
     }
 
     public function updateAction($id, Request $request)
@@ -67,6 +79,40 @@ class PostController extends BaseController
 
     public function deleteAction($id, Request $request)
     {
+    }
 
+    public function listPublishedAction()
+    {
+        return $this->render('ZPBAdminBundle:General/Post:list_published.html.twig', []);
+    }
+
+    public function listArchivedAction()
+    {
+        return $this->render('ZPBAdminBundle:General/Post:list_archived.html.twig', []);
+    }
+
+    private function getTargets()
+    {
+        return $this->container->getParameter('zpb.post_targets');
+    }
+
+    private function getCategoriesByTarget()
+    {
+        $targets = $this->getTargets();
+        $result = [];
+        foreach($targets as $k=>$v){
+            $result[$k] = $this->getRepo('ZPBAdminBundle:PostCategory')->findBy(['target'=>$k, ['name'=>'ASC']]);
+        }
+        return $result;
+    }
+
+    private function getTagsByTarget()
+    {
+        $targets = $this->getTargets();
+        $result = [];
+        foreach($targets as $k=>$v){
+            $result[$k] = $this->getRepo('ZPBAdminBundle:PostTag')->findBy(['target'=>$k, ['name'=>'ASC']]);
+        }
+        return $result;
     }
 }

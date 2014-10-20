@@ -1,6 +1,16 @@
 zpb_sites_zoo_actualites_list:
-    path: /
+    path: /liste/brouillons
     defaults: { _controller: ZPBAdminBundle:General/Post:list }
+    methods: ["GET"]
+
+zpb_sites_zoo_actualites_list_published:
+    path: /liste/publications
+    defaults: { _controller: ZPBAdminBundle:General/Post:listPublished }
+    methods: ["GET"]
+
+zpb_sites_zoo_actualites_list_archived:
+    path: /liste/archives
+    defaults: { _controller: ZPBAdminBundle:General/Post:listArchived }
     methods: ["GET"]
 
 zpb_sites_zoo_actualites_create:
