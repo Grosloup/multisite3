@@ -1,18 +1,18 @@
 {% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
-{% block title %}{{ post.title }} | Actualités{% endblock %}
+{% block title %}{#{{ post.title }} |#} Actualités{% endblock %}
 
 {% block description %}{% endblock %}
 {% block keywords %}{% endblock %}
-{% set host = app.request.scheme~"://"~app.request.host %}
-{% set imageUrl = (post_img_url(post.fbThumb) != null) ? host~post_img_url(post.fbThumb) : "" %}
+{#{% set host = app.request.scheme~"://"~app.request.host %}
+{% set imageUrl = (post_img_url(post.fbThumb) != null) ? host~post_img_url(post.fbThumb) : "" %}#}
 {% set active_page = "single_post" %}
 {% block meta_fb%}
 
-    {{ include("ZPBSitesZooBundle:incs/facebook:metas.html.twig", {title: post.title, type: "article", description: post.excerpt, imageUrl: imageUrl}) }}
+    {#{{ include("ZPBSitesZooBundle:incs/facebook:metas.html.twig", {title: post.title, type: "article", description: post.excerpt, imageUrl: imageUrl}) }}#}
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    {#<div class="container">
         <div class="row">
             <div class="col-md-6">
                 <div class="page-header">
@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        {#<div class="row">
+        &#123;&#35;<div class="row">
             <div class="col-md-5">
                 <div class="row">
                     <div class="col-sm-2 col-md-2 text-left"><a class="btn btn-primary btn-small" href="">&laquo; <span class="hide-only-sm">précédent</span></a></div>
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="col-md-1"></div>
-        </div>#}
+        </div>&#35;&#125;
         <div class="spaced-row">
             <div class="col-md-6">
                 <a href="http://www.facebook.com/share.php?u={{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" target="_blank" class="btn btn-primary btn-xlarge"><i class="fa fa-facebook"></i> Share</a>
@@ -74,13 +74,13 @@
                     {% endif %}
                 </div>
             </div>
-            {#<div class="col-md-1">
+            &#123;&#35;<div class="col-md-1">
                 {{ render(controller("ZPBSitesZooBundle:Actualite:listCategories")) }}
                 {{ render(controller("ZPBSitesZooBundle:Actualite:listTags")) }}
-            </div>#}
+            </div>&#35;&#125;
         </div>
 
-    </div>
+    </div>#}
 
 
 {% endblock %}

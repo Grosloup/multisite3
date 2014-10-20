@@ -18,7 +18,7 @@
         <parameter key="zpb.form.type.civility.class">ZPB\AdminBundle\Form\Type\CivilityType</parameter>
         <parameter key="zpb.listener.entity.godparent_listener.class">ZPB\AdminBundle\Listener\Entities\GodparentListener</parameter>
         <parameter key="zpb.listener.entity.adminuser_listener.class">ZPB\AdminBundle\Listener\Entities\AdminUserListener</parameter>
-        <parameter key="zpb.form.type.target_choice_type.class">ZPB\AdminBundle\Form\Type\TargetChoiceType</parameter>
+        <!--<parameter key="zpb.form.type.target_choice_type.class">ZPB\AdminBundle\Form\Type\TargetChoiceType</parameter>-->
         <parameter key="zpb.form.type.institution_choice_type.class">ZPB\AdminBundle\Form\Type\SimpleInstitutionsChoiceType</parameter>
         <parameter key="zpb.validator.password_validator.class">ZPB\AdminBundle\Validator\Constraints\PasswordValidator</parameter>
         <parameter key="zpb.validator.civility_validator.class">ZPB\AdminBundle\Validator\Constraints\CivilityValidator</parameter>
@@ -214,10 +214,10 @@
             <tag name="form.type" alias="sexe_type" />
         </service>
 
-        <service id="zpb.form.type.target_choice" class="%zpb.form.type.target_choice_type.class%">
+        <!--<service id="zpb.form.type.target_choice" class="%zpb.form.type.target_choice_type.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <tag name="form.type" alias="target_choice_type"/>
-        </service>
+        </service>-->
 
         <service id="zpb.form.type.institution_choice" class="%zpb.form.type.institution_choice_type.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
