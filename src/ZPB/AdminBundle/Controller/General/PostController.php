@@ -33,12 +33,12 @@ class PostController extends BaseController
 
     public function createAction(Request $request)
     {
-
+        return $this->render('ZPBAdminBundle:General/Post:create.html.twig', []);
     }
 
     public function updateAction($id, Request $request)
     {
-
+        return $this->render('ZPBAdminBundle:General/Post:update.html.twig', []);
     }
 
     public function deleteAction($id, Request $request)

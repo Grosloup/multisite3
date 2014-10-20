@@ -66,8 +66,7 @@ class NewsletterSubscriber
     private $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\PostTarget")
-     * @ORM\JoinColumn(name="target_id")
+     * @ORM\Column(name="target", type="string", length=50, nullable=false)
      */
     private $target;
 
