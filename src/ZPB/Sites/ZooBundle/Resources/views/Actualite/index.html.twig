@@ -4,7 +4,7 @@
 {% set active_page = "news" %}
 
 {% block content %}
-    <div class="container">
+    {#<div class="container">
         <div class="row">
             <div class="col-md-6">
                 <div class="page-header">
@@ -56,7 +56,7 @@
 
                     <div class="post-col">
                         <div class="post">
-                            {#<div class="post-category"><a href="{{ path("zpb_sites_zoo_actualites_list_by_category", {slug: post.category.slug}) }}">{{ post.category }}</a></div>#}
+                            &#123;&#35;<div class="post-category"><a href="{{ path("zpb_sites_zoo_actualites_list_by_category", {slug: post.category.slug}) }}">{{ post.category }}</a></div>&#35;&#125;
                             <h1 class="post-title"><a href="#">Lorem ipsum dolor</a></h1>
                             <div class="post-date">10/1014</div>
 
@@ -88,7 +88,7 @@
                     </div>
                     <div class="post-col">
                         <div class="post">
-                            {#<div class="post-category"><a href="{{ path("zpb_sites_zoo_actualites_list_by_category", {slug: post.category.slug}) }}">{{ post.category }}</a></div>#}
+                            &#123;&#35;<div class="post-category"><a href="{{ path("zpb_sites_zoo_actualites_list_by_category", {slug: post.category.slug}) }}">{{ post.category }}</a></div>&#35;&#125;
                             <h1 class="post-title"><a href="#">Lorem ipsum dolor</a></h1>
                             <div class="post-date">10/1014</div>
 
@@ -120,7 +120,7 @@
                     </div>
                         <div class="post-col">
                             <div class="post">
-                                {#<div class="post-category"><a href="{{ path("zpb_sites_zoo_actualites_list_by_category", {slug: post.category.slug}) }}">{{ post.category }}</a></div>#}
+                                &#123;&#35;<div class="post-category"><a href="{{ path("zpb_sites_zoo_actualites_list_by_category", {slug: post.category.slug}) }}">{{ post.category }}</a></div>&#35;&#125;
                                 <h1 class="post-title"><a href="#">Lorem ipsum dolor</a></h1>
                                 <div class="post-date">10/1014</div>
 
@@ -152,7 +152,7 @@
                         </div>
                         <div class="post-col">
                             <div class="post">
-                                {#<div class="post-category"><a href="{{ path("zpb_sites_zoo_actualites_list_by_category", {slug: post.category.slug}) }}">{{ post.category }}</a></div>#}
+                                &#123;&#35;<div class="post-category"><a href="{{ path("zpb_sites_zoo_actualites_list_by_category", {slug: post.category.slug}) }}">{{ post.category }}</a></div>&#35;&#125;
                                 <h1 class="post-title"><a href="#">Lorem ipsum dolor</a></h1>
                                 <div class="post-date">10/1014</div>
 
@@ -184,7 +184,7 @@
                         </div>
                         <div class="post-col">
                             <div class="post">
-                                {#<div class="post-category"><a href="{{ path("zpb_sites_zoo_actualites_list_by_category", {slug: post.category.slug}) }}">{{ post.category }}</a></div>#}
+                                &#123;&#35;<div class="post-category"><a href="{{ path("zpb_sites_zoo_actualites_list_by_category", {slug: post.category.slug}) }}">{{ post.category }}</a></div>&#35;&#125;
                                 <h1 class="post-title"><a href="#">Lorem ipsum dolor</a></h1>
                                 <div class="post-date">10/1014</div>
 
@@ -216,7 +216,7 @@
                         </div>
                     <div class="post-col">
                         <div class="post">
-                            {#<div class="post-category"><a href="{{ path("zpb_sites_zoo_actualites_list_by_category", {slug: post.category.slug}) }}">{{ post.category }}</a></div>#}
+                            &#123;&#35;<div class="post-category"><a href="{{ path("zpb_sites_zoo_actualites_list_by_category", {slug: post.category.slug}) }}">{{ post.category }}</a></div>&#35;&#125;
                             <h1 class="post-title"><a href="#">Lorem ipsum dolor</a></h1>
                             <div class="post-date">10/1014</div>
 
@@ -251,18 +251,18 @@
                     </div>
                 </div>
             </div>
-            {#<div class="col-md-1">
+            &#123;&#35;<div class="col-md-1">
                 {{ render(controller("ZPBSitesZooBundle:Actualite:listCategories")) }}
                 {{ render(controller("ZPBSitesZooBundle:Actualite:listTags")) }}
-            </div>#}
+            </div>&#35;&#125;
         </div>
 
-    </div>
+    </div>#}
 {% endblock %}
 
 {% block footScripts %}
     {{ parent() }}
-    <script>
+    {#<script>
         (function($,w){
             function ExcerptShortener(el, options){
                 this.options = $.extend({}, excerptShortenerDefaults, options || {});
@@ -313,5 +313,5 @@
             excerpts.excerptShortener();
 
         });
-    </script>
+    </script>#}
 {% endblock %}
