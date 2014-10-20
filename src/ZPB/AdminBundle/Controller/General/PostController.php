@@ -23,6 +23,8 @@ namespace ZPB\AdminBundle\Controller\General;
 
 use Symfony\Component\HttpFoundation\Request;
 use ZPB\AdminBundle\Controller\BaseController;
+use ZPB\AdminBundle\Entity\Post;
+use ZPB\AdminBundle\Form\type\PostType;
 
 class PostController extends BaseController
 {
@@ -33,7 +35,29 @@ class PostController extends BaseController
 
     public function createAction(Request $request)
     {
+        $post = new Post();
+        $form = $this->createForm(new PostType(), $post);
+
+        $form->handleRequest($request);
+        if($form->isValid()){
+            $this->getManager()->persist($post);
+            $this->getManager()->flush();
+
+
+            if($form->get('save')->isClicked()){
+                return $this->redirect($this->generateUrl('zpb_sites_zoo_actualites_list'));
+            }
+
+            if($form->get('publish')->isClicked()){
+
+            }
+        }
         return $this->render('ZPBAdminBundle:General/Post:create.html.twig', []);
+    }
+
+    public function publishAction($id)
+    {
+        return $this->render('ZPBAdminBundle:General/Post:publish.html.twig', []);
     }
 
     public function updateAction($id, Request $request)

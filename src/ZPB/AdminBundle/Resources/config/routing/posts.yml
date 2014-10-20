@@ -8,7 +8,12 @@ zpb_sites_zoo_actualites_create:
     defaults: { _controller: ZPBAdminBundle:General/Post:create }
     methods: ["GET","POST"]
 
-
+zpb_sites_zoo_actualites_publier:
+    path: /publier/{id}
+    defaults: { _controller: ZPBAdminBundle:General/Post:publish }
+    methods: ["GET"]
+    requirements:
+        id: \d+
 
 
 
