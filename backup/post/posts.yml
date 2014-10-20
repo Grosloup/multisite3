@@ -1,0 +1,43 @@
+zpb_admin_posts_list:
+    path: /
+    defaults: { _controller: ZPBAdminBundle:General/Post:list }
+    methods: ["GET"]
+
+zpb_admin_posts_list_draft:
+    path: /brouillons
+    defaults: { _controller: ZPBAdminBundle:General/Post:listDraft }
+    methods: ["GET"]
+
+zpb_admin_posts_list_archived:
+    path: /archives
+    defaults: { _controller: ZPBAdminBundle:General/Post:listArchived }
+    methods: ["GET"]
+
+zpb_admin_posts_list_dropped:
+    path: /corbeille
+    defaults: { _controller: ZPBAdminBundle:General/Post:listDropped }
+    methods: ["GET"]
+
+zpb_admin_posts_create:
+    path: /ecrire
+    defaults: { _controller: ZPBAdminBundle:General/Post:create }
+    methods: ["GET","POST"]
+
+zpb_admin_posts_update:
+    path: /modifier/{id}
+    defaults: { _controller: ZPBAdminBundle:General/Post:update }
+    methods: ["GET","POST"]
+    requirements:
+        id: \d+
+
+zpb_admin_posts_delete:
+    path: /supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:General/Post:delete }
+    methods: ["GET"]
+    requirements:
+        id: \d+
+
+zpb_admin_posts_img_upload:
+    path: /image/upload
+    defaults: { _controller: ZPBAdminBundle:General/Post:uploadImage }
+    methods: ["POST"]
