@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65f47da9-4957-4172-a319-22ff74061384" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/list_archived.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/list_published.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/Post.php" afterPath="$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/Post.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ZPB/AdminBundle/Controller/General/PostController.php" afterPath="$PROJECT_DIR$/src/ZPB/AdminBundle/Controller/General/PostController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/create.html.twig" afterPath="$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/create.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/config/routing/posts.yml" afterPath="$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/config/routing/posts.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/publish.html.twig" afterPath="$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/publish.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/config/services.xml" afterPath="$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/config/services.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/Navs/sidebar.html.twig" afterPath="$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/Navs/sidebar.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="multisite3.iws" />
@@ -39,47 +35,7 @@
                 <provider selected="true" editor-type-id="text-editor">
                   <state vertical-scroll-proportion="-5.12" vertical-offset="0" max-vertical-offset="6080">
                     <caret line="8" column="58" selection-start-line="8" selection-start-column="58" selection-end-line="8" selection-end-column="58" />
-                    <folding>
-                      <element signature="e#1166#1197#0#Twig" expanded="true" />
-                      <element signature="e#1336#1365#0#Twig" expanded="true" />
-                      <element signature="e#1514#1553#0#Twig" expanded="true" />
-                      <element signature="e#1699#1737#0#Twig" expanded="true" />
-                      <element signature="e#6134#6154#0#Twig" expanded="true" />
-                      <element signature="e#7022#7048#0#Twig" expanded="true" />
-                      <element signature="e#7195#7223#0#Twig" expanded="true" />
-                      <element signature="e#7707#7731#0#Twig" expanded="true" />
-                      <element signature="e#7875#7901#0#Twig" expanded="true" />
-                      <element signature="e#8515#8542#0#Twig" expanded="true" />
-                      <element signature="e#8680#8709#0#Twig" expanded="true" />
-                      <element signature="e#9653#9684#0#Twig" expanded="true" />
-                      <element signature="e#9827#9865#0#Twig" expanded="true" />
-                      <element signature="e#10815#10843#0#Twig" expanded="true" />
-                      <element signature="e#10983#11018#0#Twig" expanded="true" />
-                      <element signature="e#11161#11192#0#Twig" expanded="true" />
-                      <element signature="e#11707#11739#0#Twig" expanded="true" />
-                      <element signature="e#11884#11918#0#Twig" expanded="true" />
-                      <element signature="e#12408#12426#0#Twig" expanded="true" />
-                      <element signature="e#12556#12576#0#Twig" expanded="true" />
-                      <element signature="e#13310#13342#0#Twig" expanded="true" />
-                      <element signature="e#13486#13520#0#Twig" expanded="true" />
-                      <element signature="e#14006#14042#0#Twig" expanded="true" />
-                      <element signature="e#14180#14218#0#Twig" expanded="true" />
-                      <element signature="e#19802#19832#0#Twig" expanded="true" />
-                      <element signature="e#19981#20013#0#Twig" expanded="true" />
-                      <element signature="e#20520#20550#0#Twig" expanded="true" />
-                      <element signature="e#20700#20732#0#Twig" expanded="true" />
-                      <element signature="e#21280#21321#0#Twig" expanded="true" />
-                      <element signature="e#21474#21517#0#Twig" expanded="true" />
-                      <element signature="e#24699#24724#0#Twig" expanded="true" />
-                      <element signature="e#24867#24894#0#Twig" expanded="true" />
-                      <element signature="e#25398#25428#0#Twig" expanded="true" />
-                      <element signature="e#25576#25608#0#Twig" expanded="true" />
-                      <element signature="e#27013#27043#0#Twig" expanded="true" />
-                      <element signature="e#27176#27208#0#Twig" expanded="true" />
-                      <element signature="e#27346#27378#0#Twig" expanded="true" />
-                      <element signature="e#27861#27892#0#Twig" expanded="true" />
-                      <element signature="e#28030#28063#0#Twig" expanded="true" />
-                    </folding>
+                    <folding />
                   </state>
                 </provider>
               </entry>
@@ -97,8 +53,8 @@
             <file leaf-file-name="PostCategory.php" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PostCategory.php">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="-74.84" vertical-offset="449" max-vertical-offset="2848">
-                    <caret line="145" column="30" selection-start-line="145" selection-start-column="30" selection-end-line="145" selection-end-column="30" />
+                  <state vertical-scroll-proportion="-7.0" vertical-offset="353" max-vertical-offset="2848">
+                    <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
                     <folding>
                       <element signature="e#42#90#0#PHP" expanded="true" />
                     </folding>
@@ -152,11 +108,23 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="create.html.twig" pinned="false" current-in-tab="true">
+            <file leaf-file-name="create.html.twig" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/faq/create.html.twig">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.5850144" vertical-offset="362" max-vertical-offset="1056">
-                    <caret line="48" column="35" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
+                  <state vertical-scroll-proportion="-18.8" vertical-offset="362" max-vertical-offset="1056">
+                    <caret line="52" column="88" selection-start-line="52" selection-start-column="88" selection-end-line="52" selection-end-column="88" />
+                    <folding>
+                      <element signature="e#12#51#0#Twig" expanded="false" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="publish.html.twig" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/publish.html.twig">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="0.5403818" vertical-offset="0" max-vertical-offset="1264">
+                    <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
                     <folding />
                   </state>
                 </provider>
@@ -190,33 +158,46 @@
       <file leaf-file-name="PostController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Controller/General/PostController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-36.08" vertical-offset="106" max-vertical-offset="1904">
-              <caret line="68" column="61" selection-start-line="68" selection-start-column="61" selection-end-line="68" selection-end-column="61" />
+            <state vertical-scroll-proportion="-29.68" vertical-offset="1018" max-vertical-offset="1904">
+              <caret line="115" column="23" selection-start-line="115" selection-start-column="23" selection-end-line="115" selection-end-column="23" />
               <folding>
                 <element signature="e#502#547#0#PHP" expanded="true" />
                 <element signature="e#783#827#0#PHP" expanded="true" />
                 <element signature="e#1256#1287#1#PHP" expanded="true" />
                 <element signature="e#1416#1450#1#PHP" expanded="true" />
                 <element signature="e#1507#1553#0#PHP" expanded="true" />
-                <element signature="e#1670#1691#1#PHP" expanded="true" />
-                <element signature="e#1817#1864#0#PHP" expanded="true" />
-                <element signature="e#2162#2208#0#PHP" expanded="true" />
-                <element signature="e#2368#2422#0#PHP" expanded="true" />
-                <element signature="e#2512#2565#0#PHP" expanded="true" />
-                <element signature="e#2884#2913#1#PHP" expanded="true" />
-                <element signature="e#3183#3207#1#PHP" expanded="true" />
+                <element signature="e#1825#1872#0#PHP" expanded="true" />
+                <element signature="e#2170#2216#0#PHP" expanded="true" />
+                <element signature="e#2376#2430#0#PHP" expanded="true" />
+                <element signature="e#2520#2573#0#PHP" expanded="true" />
+                <element signature="e#2892#2921#1#PHP" expanded="true" />
+                <element signature="e#3191#3215#1#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="create.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/create.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="3.75" vertical-offset="250" max-vertical-offset="1168">
-              <caret line="55" column="47" selection-start-line="55" selection-start-column="47" selection-end-line="55" selection-end-column="47" />
+            <state vertical-scroll-proportion="-13.44" vertical-offset="0" max-vertical-offset="1456">
+              <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
               <folding>
                 <element signature="e#12#51#0#Twig" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/faq/list.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="864">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#12#51#0#Twig" expanded="false" />
+                <element signature="e#1296#1316#0#Twig" expanded="false" />
+                <element signature="e#1460#1480#0#Twig" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -246,7 +227,7 @@
         <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/config/routing/posts.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="880">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -272,11 +253,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="services.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="services.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/config/services.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5056">
-              <caret line="43" column="66" selection-start-line="43" selection-start-column="66" selection-end-line="43" selection-end-column="66" />
+            <state vertical-scroll-proportion="3.3160622" vertical-offset="0" max-vertical-offset="5008">
+              <caret line="40" column="67" selection-start-line="40" selection-start-column="67" selection-end-line="40" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -2313,7 +2294,13 @@
       <option name="project" value="LOCAL" />
       <updated>1413811611163</updated>
     </task>
-    <option name="localTasksCounter" value="199" />
+    <task id="LOCAL-00199" summary="sauvegarde">
+      <created>1413814429339</created>
+      <option name="number" value="00199" />
+      <option name="project" value="LOCAL" />
+      <updated>1413814429339</updated>
+    </task>
+    <option name="localTasksCounter" value="200" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2421,17 +2408,11 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/scss/sites/common/_tabs.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1216">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scss/sites/common/_typo.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.28" vertical-offset="0" max-vertical-offset="1392">
           <caret line="2" column="8" selection-start-line="0" selection-start-column="0" selection-end-line="48" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2495,6 +2476,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-48.0" vertical-offset="0" max-vertical-offset="2464">
           <caret line="75" column="3" selection-start-line="75" selection-start-column="3" selection-end-line="75" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2523,6 +2505,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36107194" vertical-offset="432" max-vertical-offset="1168">
           <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2537,6 +2520,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7801724" vertical-offset="3457" max-vertical-offset="4640">
           <caret line="250" column="0" selection-start-line="250" selection-start-column="0" selection-end-line="250" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2662,16 +2646,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PostCategory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-74.84" vertical-offset="449" max-vertical-offset="2848">
-          <caret line="145" column="30" selection-start-line="145" selection-start-column="30" selection-end-line="145" selection-end-column="30" />
-          <folding>
-            <element signature="e#42#90#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PublishedPost.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-126.68" vertical-offset="81" max-vertical-offset="3776">
@@ -2686,14 +2660,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.45146728" vertical-offset="960" max-vertical-offset="4016">
           <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/publish.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="911">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2714,26 +2680,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/config/services.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5056">
-          <caret line="43" column="66" selection-start-line="43" selection-start-column="66" selection-end-line="43" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Form/Type/PostType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-17.92" vertical-offset="0" max-vertical-offset="768">
           <caret line="35" column="60" selection-start-line="35" selection-start-column="60" selection-end-line="35" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backup/post/PostTag.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.12" vertical-offset="165" max-vertical-offset="2432">
-          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -2751,95 +2701,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="209" max-vertical-offset="1792">
           <caret line="32" column="66" selection-start-line="32" selection-start-column="66" selection-end-line="32" selection-end-column="66" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/config/routing/posts.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="880">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Controller/General/PostController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-36.08" vertical-offset="106" max-vertical-offset="1904">
-          <caret line="68" column="61" selection-start-line="68" selection-start-column="61" selection-end-line="68" selection-end-column="61" />
-          <folding>
-            <element signature="e#502#547#0#PHP" expanded="true" />
-            <element signature="e#783#827#0#PHP" expanded="true" />
-            <element signature="e#1256#1287#1#PHP" expanded="true" />
-            <element signature="e#1416#1450#1#PHP" expanded="true" />
-            <element signature="e#1507#1553#0#PHP" expanded="true" />
-            <element signature="e#1670#1691#1#PHP" expanded="true" />
-            <element signature="e#1817#1864#0#PHP" expanded="true" />
-            <element signature="e#2162#2208#0#PHP" expanded="true" />
-            <element signature="e#2368#2422#0#PHP" expanded="true" />
-            <element signature="e#2512#2565#0#PHP" expanded="true" />
-            <element signature="e#2884#2913#1#PHP" expanded="true" />
-            <element signature="e#3183#3207#1#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backup/post/post/create.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-32.88" vertical-offset="506" max-vertical-offset="3376">
-          <caret line="83" column="22" selection-start-line="83" selection-start-column="22" selection-end-line="83" selection-end-column="22" />
-          <folding>
-            <element signature="e#12#51#0#Twig" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/Navs/sidebar.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.12" vertical-offset="0" max-vertical-offset="6080">
-          <caret line="8" column="58" selection-start-line="8" selection-start-column="58" selection-end-line="8" selection-end-column="58" />
-          <folding>
-            <element signature="e#1166#1197#0#Twig" expanded="true" />
-            <element signature="e#1336#1365#0#Twig" expanded="true" />
-            <element signature="e#1514#1553#0#Twig" expanded="true" />
-            <element signature="e#1699#1737#0#Twig" expanded="true" />
-            <element signature="e#6134#6154#0#Twig" expanded="true" />
-            <element signature="e#7022#7048#0#Twig" expanded="true" />
-            <element signature="e#7195#7223#0#Twig" expanded="true" />
-            <element signature="e#7707#7731#0#Twig" expanded="true" />
-            <element signature="e#7875#7901#0#Twig" expanded="true" />
-            <element signature="e#8515#8542#0#Twig" expanded="true" />
-            <element signature="e#8680#8709#0#Twig" expanded="true" />
-            <element signature="e#9653#9684#0#Twig" expanded="true" />
-            <element signature="e#9827#9865#0#Twig" expanded="true" />
-            <element signature="e#10815#10843#0#Twig" expanded="true" />
-            <element signature="e#10983#11018#0#Twig" expanded="true" />
-            <element signature="e#11161#11192#0#Twig" expanded="true" />
-            <element signature="e#11707#11739#0#Twig" expanded="true" />
-            <element signature="e#11884#11918#0#Twig" expanded="true" />
-            <element signature="e#12408#12426#0#Twig" expanded="true" />
-            <element signature="e#12556#12576#0#Twig" expanded="true" />
-            <element signature="e#13310#13342#0#Twig" expanded="true" />
-            <element signature="e#13486#13520#0#Twig" expanded="true" />
-            <element signature="e#14006#14042#0#Twig" expanded="true" />
-            <element signature="e#14180#14218#0#Twig" expanded="true" />
-            <element signature="e#19802#19832#0#Twig" expanded="true" />
-            <element signature="e#19981#20013#0#Twig" expanded="true" />
-            <element signature="e#20520#20550#0#Twig" expanded="true" />
-            <element signature="e#20700#20732#0#Twig" expanded="true" />
-            <element signature="e#21280#21321#0#Twig" expanded="true" />
-            <element signature="e#21474#21517#0#Twig" expanded="true" />
-            <element signature="e#24699#24724#0#Twig" expanded="true" />
-            <element signature="e#24867#24894#0#Twig" expanded="true" />
-            <element signature="e#25398#25428#0#Twig" expanded="true" />
-            <element signature="e#25576#25608#0#Twig" expanded="true" />
-            <element signature="e#27013#27043#0#Twig" expanded="true" />
-            <element signature="e#27176#27208#0#Twig" expanded="true" />
-            <element signature="e#27346#27378#0#Twig" expanded="true" />
-            <element signature="e#27861#27892#0#Twig" expanded="true" />
-            <element signature="e#28030#28063#0#Twig" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2863,19 +2724,115 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/faq/create.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5850144" vertical-offset="362" max-vertical-offset="1056">
-          <caret line="48" column="35" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
+        <state vertical-scroll-proportion="-18.8" vertical-offset="362" max-vertical-offset="1056">
+          <caret line="52" column="88" selection-start-line="52" selection-start-column="88" selection-end-line="52" selection-end-column="88" />
+          <folding>
+            <element signature="e#12#51#0#Twig" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/Navs/sidebar.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.12" vertical-offset="0" max-vertical-offset="6080">
+          <caret line="8" column="58" selection-start-line="8" selection-start-column="58" selection-end-line="8" selection-end-column="58" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/faq/list.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="911">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#12#51#0#Twig" expanded="false" />
+            <element signature="e#1296#1316#0#Twig" expanded="false" />
+            <element signature="e#1460#1480#0#Twig" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/config/routing/posts.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="880">
+          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backup/post/PostTag.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.12" vertical-offset="165" max-vertical-offset="2432">
+          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backup/post/post/create.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-32.88" vertical-offset="506" max-vertical-offset="3376">
+          <caret line="83" column="22" selection-start-line="83" selection-start-column="22" selection-end-line="83" selection-end-column="22" />
+          <folding>
+            <element signature="e#12#51#0#Twig" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PostCategory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.0" vertical-offset="353" max-vertical-offset="2848">
+          <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
+          <folding>
+            <element signature="e#42#90#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/create.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.75" vertical-offset="250" max-vertical-offset="1168">
-          <caret line="55" column="47" selection-start-line="55" selection-start-column="47" selection-end-line="55" selection-end-column="47" />
+        <state vertical-scroll-proportion="-13.44" vertical-offset="0" max-vertical-offset="1456">
+          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
           <folding>
             <element signature="e#12#51#0#Twig" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Controller/General/PostController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-29.68" vertical-offset="1018" max-vertical-offset="1904">
+          <caret line="115" column="23" selection-start-line="115" selection-start-column="23" selection-end-line="115" selection-end-column="23" />
+          <folding>
+            <element signature="e#502#547#0#PHP" expanded="true" />
+            <element signature="e#783#827#0#PHP" expanded="true" />
+            <element signature="e#1256#1287#1#PHP" expanded="true" />
+            <element signature="e#1416#1450#1#PHP" expanded="true" />
+            <element signature="e#1507#1553#0#PHP" expanded="true" />
+            <element signature="e#1825#1872#0#PHP" expanded="true" />
+            <element signature="e#2170#2216#0#PHP" expanded="true" />
+            <element signature="e#2376#2430#0#PHP" expanded="true" />
+            <element signature="e#2520#2573#0#PHP" expanded="true" />
+            <element signature="e#2892#2921#1#PHP" expanded="true" />
+            <element signature="e#3191#3215#1#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/publish.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5403818" vertical-offset="0" max-vertical-offset="1264">
+          <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/config/services.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.3160622" vertical-offset="0" max-vertical-offset="5008">
+          <caret line="40" column="67" selection-start-line="40" selection-start-column="67" selection-end-line="40" selection-end-column="67" />
+          <folding />
         </state>
       </provider>
     </entry>

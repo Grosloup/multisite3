@@ -58,10 +58,10 @@ class PostController extends BaseController
 
     public function publishAction($id)
     {
-        $post = $this->getRepo('ZPBAdminBundle:Post')->find($id);
-        if(!$post){
-            throw $this->createNotFoundException();
-        }
+        //$post = $this->getRepo('ZPBAdminBundle:Post')->find($id);
+        //if(!$post){
+            //throw $this->createNotFoundException();
+        //}
 
         return $this->render('ZPBAdminBundle:General/Post:publish.html.twig',
             [
@@ -101,7 +101,7 @@ class PostController extends BaseController
         $targets = $this->getTargets();
         $result = [];
         foreach($targets as $k=>$v){
-            $result[$k] = $this->getRepo('ZPBAdminBundle:PostCategory')->findBy(['target'=>$k, ['name'=>'ASC']]);
+            $result[$k] = $this->getRepo('ZPBAdminBundle:PostCategory')->findBy(['target'=>$k], ['name'=>'ASC']);
         }
         return $result;
     }
@@ -111,7 +111,7 @@ class PostController extends BaseController
         $targets = $this->getTargets();
         $result = [];
         foreach($targets as $k=>$v){
-            $result[$k] = $this->getRepo('ZPBAdminBundle:PostTag')->findBy(['target'=>$k, ['name'=>'ASC']]);
+            $result[$k] = $this->getRepo('ZPBAdminBundle:PostTag')->findBy(['target'=>$k], ['name'=>'ASC']);
         }
         return $result;
     }

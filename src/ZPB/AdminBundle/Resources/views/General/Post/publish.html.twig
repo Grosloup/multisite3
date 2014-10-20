@@ -1,0 +1,73 @@
+{% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
+
+{% block title %}Publier | Actulité{% endblock %}
+{% set active = "write_post" %}
+
+{% block headScripts %}
+    <script>
+        {% for key,target in targets %}
+
+        {% endfor %}
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <div class="tile-header">
+                    Publier un article
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column-8">
+            {% for key,target in targets %}
+            <div class="tile">
+                <div class="tile-header">
+                    {{ target }}
+                </div>
+
+                <div class="row">
+                    <div class="column-12">
+                        <form>
+                            <label for="target_{{ target }}"><input type="checkbox" id="target_{{ target }}"/> publier sur ce site</label>
+                        </form>
+
+                    </div>
+                    <div class="column-12">
+                        <form>
+                            <label for="category_{{ target }}">Dans la catégorie</label> <select id="category_{{ target }}"></select>
+                        </form>
+                        <form>
+                            <label>ou dans une nouvelle catégorie :</label><input type="text"/>
+                        </form>
+                    </div>
+                    <div class="column-12">
+                        Associer des mots-clés existants:
+                        <div class="row">
+                            <div class="column-5">
+
+                            </div>
+                            <div class="column-2"><i class="fa fa-arrow-left"></i><i class="fa fa-arrow-right"></i></div>
+                            <div class="column-5">
+
+                            </div>
+                        </div>
+                        ou créer des mots-clés : <form><input type="text"/></form>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="column-4">
+            <div class="tile">
+                <button class="btn btn-primary">Publier</button>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
