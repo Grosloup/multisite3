@@ -1,0 +1,305 @@
+{% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
+
+{% block title %}Nouvel article | Actualités{% endblock %}
+{% set active = "write_post" %}
+
+{% block angular %}PostApp{% endblock %}
+
+{% block headStyles %}
+    <style>
+        .dynamic-checkbox > div{
+            *zoom:1;
+        }
+        .dynamic-checkbox > div:before, .dynamic-checkbox > div:after{
+            content: " ";
+            display: table;
+        }
+        .dynamic-checkbox > div:after{
+            clear: both;
+        }
+        form.form .dynamic-checkbox label{
+            display: block;
+            float: right;
+            width: 90%;
+            height: 27px;
+        }
+        form.form .dynamic-checkbox input[type=checkbox], form.form .dynamic-checkbox input[type=radio]{
+            display: block;
+            float: left;
+            width: 9%;
+            height: 27px;
+        }
+    </style>
+{% endblock %}
+
+{% block headScripts %}
+    {{ parent() }}
+    <script>
+        var initTags = [
+            {% for t in tags %}
+            {id: {{ t.id}}, name: "{{ t.name }}", slug:"{{ t.slug }}" }{% if loop.last != true %},{% endif %}
+            {% endfor %}
+        ];
+    </script>
+
+{% endblock %}
+{% block content %}
+    <div class="row">
+        {{ form_start(form, {attr: {class: "form", novalidate:true }})}}
+        <div class="column-3">
+            <div class="tile">
+                <div class="tile-header">
+                    Status de l'article
+                </div>
+                <h3>{{ form.vars.value.status }}</h3>
+            </div>
+
+            <div class="tile">
+                <div class="tile-header">
+                    Sites Cibles
+                </div>
+
+                <div class="form-row">
+                    {{ form_label(form.targets, null, {label_attr:{style:"display:none;"}}) }}
+                    <div class="form-field dynamic-checkbox">
+                    {{ form_widget(form.targets) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tile-header">
+                    Catégorie
+                </div>
+                <div class="form-row {% if form.category.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.category, null, {label_attr:{style:"display:none;"}}) }}
+                    <div class="form-field">
+                        {{ form_widget(form.category)}}
+                        {% if form.category.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.category)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            {#<div class="tile" ng-controller="TagCtrl">
+                <div class="tile-header">
+                    Mots-clés
+                </div>
+                <div>
+                    &#123;&#35;<a class="btn btn-primary" ng-click="newtag()"><i class="fa fa-tag"></i></a>&#35;&#125;
+                    <div tags-builder></div>
+                    &#123;&#35;<div tag-builder tag-builder-datalist="tags-list"></div>&#35;&#125;
+
+                    <datalist id="tags-list">
+                        <option value="{$ tag.name $}" ng-repeat="tag in tags">{$ tag.name $}</option>
+                    </datalist>
+
+                </div>
+            </div>#}
+            {#<style>
+                .tags-container:before, .tags-container:after{
+                    *zoom: 1;
+                    display: table;
+                    content: " ";
+                }
+                .tags-container:after{
+                    clear: both;
+                }
+                .tags-container{
+                    border: 1px solid #ccc;
+                    padding: 5px;
+                }
+                .form input[type="text"].tag-input{
+                    border: 1px solid #ccc;
+                    padding: 5px;
+                    display: inline-block;
+                    float: left;
+                }
+                .tag-box{
+                    border-radius: 3px;
+                    background-color: #03a9f4;
+                    color: #fff;
+                    padding: 5px;
+                    float: left;
+                    display: inline-block;
+                    margin-right: 2px;
+                    margin-bottom: 2px;
+                }
+                .tag-box span{
+                    cursor: pointer;
+                    border-left: 1px solid #32b2f4;
+                    display: inline-block;
+                    padding: 0 3px;
+                }
+            </style>
+
+            <div class="tile" ng-controller="TagCtrl">
+                <div class="tile-header">
+                    Mots-clés
+                </div>
+                <div class="tags-container">
+                    <div class="tag-box" ng-repeat="(key,tag) in tags">{$ tag.name $} <span ng-click="deleteTag(key)">&times</span></div>
+                    <input type="text" class="tag-input" tag-input ng-model="tagText" ng-style="{width: iptWidth}" new-tag="addTag()" delete-tag="deleteTag()" list="tag-list"/>
+                </div>
+                <datalist id="tag-list">
+                    <option value="{$ itag.name $}" ng-repeat="itag in initTags" />
+                </datalist>
+            </div>#}
+
+
+            <div class="tile">
+                <div class="tile-header">
+                    Mots-clés
+                </div>
+                <div class="form-row {% if form.tags.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.tags, null, {label_attr:{style:"display:none;"}}) }}
+                    <div class="form-field">
+                        {{ form_widget(form.tags)}}
+                        {% if form.tags.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.tags)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div id="tagsContainer"></div>
+
+                <div class="form-row">
+                    <button class="btn btn-primary" id="addTagBtn"><i class="fa fa-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tile-header">
+                    Mettre à la une de:
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="column-6">
+            <div class="tile">
+                <div class="tile-header">
+                    Nouvel article d'actualité
+                </div>
+
+                {{ form_errors(form) }}
+
+                <div class="form-row {% if form.title.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.title) }}
+                    <div class="form-field">
+                        {{ form_widget(form.title)}}
+                        {% if form.title.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.title)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.body.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.body) }}
+                    <div class="form-field">
+                        {{ form_widget(form.body, {attr:{'data-editor':'html', 'data-editorsize':'large'}})}}
+                        {% if form.body.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.body)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.excerpt.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.excerpt) }}
+                    <div class="form-field">
+                        {{ form_widget(form.excerpt, {attr:{'data-editor':'html', 'data-editorsize':'small'}})}}
+                        {% if form.excerpt.vars.errors|length>0 %}
+                            <div class="errors-block">
+                                {{ form_errors(form.excerpt)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    {{ form_widget(form.save, {attr: {class: "btn btn-primary"}})}}
+                    {{ form_widget(form.save_publish, {attr: {class: "btn btn-primary"}})}}
+                </div>
+                {{ form_end(form)}}
+
+            </div>
+        </div>
+        <div class="column-3">
+            <div class="tile">
+                <div class="tile-header">
+                    Bandeau (min 1200x300, en 4:1)
+                </div>
+                <div class="dropzone" id="dropzone-img-bandeau">
+                    <div class="dropzone-in">
+                        <div class="dropzone-legend"></div>
+                    </div>
+                    <div class="dropzone-loader">
+                        <div class="dropzone-innerbar" id="dropzone-progress"></div>
+                    </div>
+                    <div class="dropzone-message"></div>
+
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tile-header">
+                    Vignette (min 120x120, en 1:1)
+                </div>
+                <div class="dropzone" id="dropzone-img-squarre">
+                    <div class="dropzone-in">
+                        <div class="dropzone-legend"></div>
+                    </div>
+                    <div class="dropzone-loader">
+                        <div class="dropzone-innerbar" id="dropzone-progress"></div>
+                    </div>
+                    <div class="dropzone-message"></div>
+
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tile-header">
+                    Facebook (min 600x315, en 1.91:1)
+                </div>
+                <div class="dropzone" id="dropzone-img-fb">
+                    <div class="dropzone-in">
+                        <div class="dropzone-legend"></div>
+                    </div>
+                    <div class="dropzone-loader">
+                        <div class="dropzone-innerbar" id="dropzone-progress"></div>
+                    </div>
+                    <div class="dropzone-message"></div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+{% endblock %}
+{% block footScripts %}
+    {{ parent() }}
+    <script src="/js/vendor/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/vendor/ace/ext-emmet.js"></script>
+    <script src="/js/vendor/emmet.js"></script>
+    <script src="/js/vendor/angular/angular.min.js"></script>
+    <script src="/js/vendor/angular/angular-resource.min.js"></script>
+    <script src="/js/vendor/angular/angular-route.min.js"></script>
+    <script src="/js/admin/newPost.min.js"></script>
+    <script src="/js/admin/createPostApp.min.js"></script>
+    <script src="/js/admin/post/app.js"></script>
+{% endblock %}
