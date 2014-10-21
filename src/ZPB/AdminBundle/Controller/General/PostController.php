@@ -21,9 +21,12 @@
 namespace ZPB\AdminBundle\Controller\General;
 
 
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use ZPB\AdminBundle\Controller\BaseController;
 use ZPB\AdminBundle\Entity\Post;
+use ZPB\AdminBundle\Entity\PostCategory;
+use ZPB\AdminBundle\Entity\PostTag;
 use ZPB\AdminBundle\Form\type\PostType;
 
 class PostController extends BaseController
@@ -46,11 +49,11 @@ class PostController extends BaseController
 
 
             if($form->get('save')->isClicked()){
-                return $this->redirect($this->generateUrl('zpb_sites_zoo_actualites_list'));
+                return $this->redirect($this->generateUrl('zpb_admin_actualites_list'));
             }
 
             if($form->get('publish')->isClicked()){
-                return $this->redirect($this->generateUrl('zpb_sites_zoo_actualites_publier'));
+                return $this->redirect($this->generateUrl('zpb_admin_actualites_publier'));
             }
         }
         return $this->render('ZPBAdminBundle:General/Post:create.html.twig', ['form'=>$form->createView()]);
@@ -114,5 +117,37 @@ class PostController extends BaseController
             $result[$k] = $this->getRepo('ZPBAdminBundle:PostTag')->findBy(['target'=>$k], ['name'=>'ASC']);
         }
         return $result;
+    }
+
+    public function apiCategoryCreateAction(Request $request)
+    {
+        if(!$request->isXmlHttpRequest()){
+            throw $this->createAccessDeniedException();
+        }
+        $categoryDatas = json_decode($request->getContent(), true);
+        $category = new PostCategory();
+        $category->setName($categoryDatas['name'])->setTarget($categoryDatas['target']);
+        $this->getManager()->persist($category);
+        $this->getManager()->flush();
+
+
+        return new JsonResponse(["error"=>false, "category"=>["name"=>$category->getName(),"id"=>$category->getId(),"slug"=>$category->getSlug(),"target"=>$category->getTarget()]]);
+    }
+
+    public function apiTagCreateAction(Request $request)
+    {
+        if(!$request->isXmlHttpRequest()){
+            throw $this->createAccessDeniedException();
+        }
+        $tagDatas = json_decode($request->getContent(), true);
+
+        $tag = new PostTag();
+
+        $tag->setName($tagDatas['name'])->setTarget($tagDatas['target']);
+        $this->getManager()->persist($tag);
+        $this->getManager()->flush();
+
+
+        return new JsonResponse(["error"=>false, "tag"=>["name"=>$tag->getName(),"id"=>$tag->getId(),"slug"=>$tag->getSlug(),"target"=>$tag->getTarget()]]);
     }
 }

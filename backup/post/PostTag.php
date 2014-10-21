@@ -1,5 +1,5 @@
 <?php
-
+?>
 namespace ZPB\AdminBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="65f47da9-4957-4172-a319-22ff74061384" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="cdb7bc78-9471-4ae5-8f7a-444ad36e7527" name="Default" comment="" />
     <ignored path="multisite3.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -30,40 +28,43 @@
   </component>
   <component name="FindManager">
     <FindUsagesManager>
-      <setting name="OPEN_NEW_TAB" value="false" />
+      <setting name="OPEN_NEW_TAB" value="true" />
     </FindUsagesManager>
   </component>
   <component name="FrameworkCommandLineHistory">
     <commandsHistory>
+      <command text="s doctrine:generate:entities ZPBAdminBundle --no-backup" />
       <command text="s doctrine:generate:entity" />
       <command text="s doctrine:generate:entities ZPBAdminBundle --no-backup" />
-      <command text="s doctrine:generate:entities ZPBAdminBundle" />
+      <command text="s generate:bundle" />
+      <command text="s doctrine:generate:entity" />
+      <command text="s generate:doctrine:entities ZPBAdminBundle:NewsletterSubscriber --no-backup" />
+      <command text="s doctrine:generate:entity" />
+      <command text="s generate:doctrine:entities ZPBAdminBundle:Restauration --no-backup" />
+      <command text="s generate:doctrine:entities ZPBAdminBundle:Restaurant --no-backup" />
+      <command text="s doctrine:generate:entity" />
+      <command text="s generate:doctrine:entities ZPBAdminBundle:PressRelease --no-backup" />
+      <command text="s doctrine:generate:entities ZPBAdminBundle --no-backup" />
+      <command text="s generate:doctrine:entities ZPBAdminBundle --no-backup" />
+      <command text="s generate:doctrine:entities  ZPBAdminBundle:SponsoringFormula --no-backup" />
+      <command text="s generate:doctrine:entities ZPBAdminBundle --no-backup" />
       <command text="s doctrine:generate:entity" />
       <command text="s generate:doctrine:entities ZPBAdminBundle --no-backup" />
-      <command text="s cache:clear" />
-      <command text="s doctrine:generate:entities ZPBAdminBundle --no-backup" />
-      <command text="s doctrine:generate:entity" />
-      <command text="s generate:bundle" />
-      <command text="s generate:doctrine:entities " />
-      <command text="s generate:doctrine:entity" />
-      <command text="s container:debug " />
-      <command text="s doctrine:generate:entities ZPBAdminBundle --nno-backup" />
-      <command text="s doctrine:generate:entities ZPBAdminBundle --no-backup" />
       <command text="s doctrine:generate:entity" />
       <command text="s generate:doctrine:entities ZPBAdminBundle --no-backup" />
       <command text="s router:debug " />
       <command text="s doctrine:generate:entity" />
-      <command text="s doctrine:generate:entities ZPBAdminBundle --no-backup" />
-      <command text="s doctrine:generate:entities ZPBAdminBundle:Institution --no-backup" />
-      <command text="s generate:bundle" />
-      <command text="s doctrine:generate:entity" />
+      <command text="s generate:doctrine:entities ZPBAdminBundle --no-backup" />
       <command text="s router:debug " />
-      <command text="s doctrine:generate:entity" />
-      <command text="s doctrine:generate:entities ZPBAdminBundle --no-backup" />
+      <command text="s router:debug zpb_sites_zoo_mobile_homepage" />
+      <command text="s router:debug " />
     </commandsHistory>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.txt" root0="SKIP_INSPECTION" />
   </component>
   <component name="JsGruntFileManager">
     <gruntfiles>
@@ -95,12 +96,12 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="master" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1912" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1096" />
+    <option name="x" value="-8" />
+    <option name="y" value="22" />
+    <option name="width" value="2576" />
+    <option name="height" value="1426" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -114,7 +115,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ColorIdeProjectViewPane" proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -126,8 +127,261 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="ColorIdeProjectViewPane">
+      <pane id="Scope">
+        <subPane subId="controllers">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="multisite3">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/ZPB/AdminBundle/Controller">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="multisite3">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/ZPB/AdminBundle/Controller">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="General">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="services">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="multisite3">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/ZPB/AdminBundle/Resources/config">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="routes">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="multisite3">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/ZPB/AdminBundle/Resources/config">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="multisite3">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/ZPB/AdminBundle/Resources/config">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="routing">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="multisite3">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app/config">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="multisite3">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="multisite3">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="docs">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="multisite3">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="docs">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="puphpet_multisite3/xWHB5Y">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="multisite3">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="docs">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="puphpet_multisite3/xWHB5Y">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="puphpet">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="twig">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="multisite3">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/ZPB/AdminBundle/Resources/views">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Navs">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="multisite3">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/ZPB/AdminBundle/Resources/views">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Layouts">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="multisite3">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/ZPB/AdminBundle/Resources/views">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Index">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="multisite3">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/ZPB/AdminBundle/Resources/views">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="General/post">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="multisite3">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app/Resources/views">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
@@ -135,36 +389,268 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="multisite3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="multisite3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../multisite3.design" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="options.lastSelected" value="Symfony2.MethodSignatureTypeSettingsForm" />
-    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
+    <property name="options.splitter.main.proportions" value="0.1286841" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../grillecss" />
     <property name="LayoutCode.rearrangeEntriesPHP" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="findB&#9;null&#9;null&#10;src/services.yml&#9;FILE&#9;file://H:/virtualhosts/sf-projects/beauval/multisite3/src/ZPB/AdminBundle/Resources/config/services.yml&#10;node npm&#9;ACTION&#9;ShowNodeJSSettingsAction" />
     <property name="LayoutCode.rearrangeEntriesTwig" value="false" />
-    <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\PROJETS\multisite3\web\fonts" />
-      <recent name="C:\PROJETS\multisite3\web\tests" />
-      <recent name="C:\PROJETS\multisite3\web\img\sites" />
-      <recent name="C:\PROJETS\multisite3\web\img\sites\zoo" />
-      <recent name="C:\PROJETS\multisite3\web\js\vendor" />
+      <recent name="H:\virtualhosts\sf-projects\beauval\multisite3\web\img\sites" />
+      <recent name="H:\virtualhosts\sf-projects\beauval\multisite3\src\ZPB\Sites\ZooMobileBundle\Resources\views\incs" />
+      <recent name="H:\virtualhosts\sf-projects\beauval\multisite3\web\css\admin" />
+      <recent name="H:\virtualhosts\sf-projects\beauval\multisite3\src\ZPB\Sites\ZooBundle\Resources\views\Parrainage\Index" />
+      <recent name="H:\virtualhosts\sf-projects\beauval\multisite3\web\fixtures\pdfs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\PROJETS\multisite3" />
-      <recent name="C:\PROJETS\multisite3\src\ZPB\AdminBundle\backup\post" />
-      <recent name="C:\PROJETS\multisite3\web\img\sites" />
-      <recent name="C:\PROJETS\multisite3\web\imgs" />
-      <recent name="C:\PROJETS\multisite3\scss\sites\common" />
+      <recent name="H:\virtualhosts\sf-projects\beauval\multisite3\src\ZPB\AdminBundle\Resources\views\General" />
+      <recent name="H:\virtualhosts\sf-projects\beauval\multisite3\src\ZPB\AdminBundle\Controller\General" />
+      <recent name="H:\virtualhosts\sf-projects\beauval\multisite3\web\tests\pdfs" />
+      <recent name="H:\virtualhosts\sf-projects\beauval\multisite3\web\img\sites\fixtures" />
+      <recent name="H:\virtualhosts\sf-projects\beauval\multisite3\src\ZPB\AdminBundle\DataFixtures\backup" />
     </key>
+  </component>
+  <component name="RestClientSettings">
+    <option name="REQUEST_HISTORY">
+      <list>
+        <RestClientRequest>
+          <option name="biscuits">
+            <list>
+              <Biscuit>
+                <option name="date" value="1414450800000" />
+                <option name="domain" value="new.admin.zooparc.com" />
+                <option name="name" value="device_view" />
+                <option name="path" value="/" />
+                <option name="value" value="full" />
+              </Biscuit>
+            </list>
+          </option>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="https://new.admin.zooparc.com" />
+          <option name="urlPath" value="/parrainages/xhr/modifier/animal-categorie" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-Requested-With" />
+                <option name="value" value="XMLHttpRequest" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="animalId" />
+                <option name="value" value="1" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="categoryId" />
+                <option name="value" value="1" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="biscuits">
+            <list>
+              <Biscuit>
+                <option name="date" value="1414450800000" />
+                <option name="domain" value="new.admin.zooparc.com" />
+                <option name="name" value="device_view" />
+                <option name="path" value="/" />
+                <option name="value" value="full" />
+              </Biscuit>
+            </list>
+          </option>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="https://new.admin.zooparc.com" />
+          <option name="urlPath" value="/parrainages/xhr/modifier/animal-categorie" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-Requested-With" />
+                <option name="value" value="XMLHttpRequest" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="animalId" />
+                <option name="value" value="1" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="categoryId" />
+                <option name="value" value="5" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="biscuits">
+            <list>
+              <Biscuit>
+                <option name="date" value="1414450800000" />
+                <option name="domain" value="new.admin.zooparc.com" />
+                <option name="name" value="device_view" />
+                <option name="path" value="/" />
+                <option name="value" value="full" />
+              </Biscuit>
+            </list>
+          </option>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="https://new.admin.zooparc.com" />
+          <option name="urlPath" value="/parrainages/xhr/modifier/animal-categorie" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-Requested-With" />
+                <option name="value" value="XMLHttpRequest" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="animalId" />
+                <option name="value" value="2" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="categoryId" />
+                <option name="value" value="18" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="biscuits">
+            <list>
+              <Biscuit>
+                <option name="date" value="1414450800000" />
+                <option name="domain" value="new.admin.zooparc.com" />
+                <option name="name" value="device_view" />
+                <option name="path" value="/" />
+                <option name="value" value="full" />
+              </Biscuit>
+            </list>
+          </option>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="https://new.admin.zooparc.com" />
+          <option name="urlPath" value="/parrainages/xhr/modifier/animal-categorie" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-Requested-With" />
+                <option name="value" value="XMLHttpRequest" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="animalId" />
+                <option name="value" value="50" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="categoryId" />
+                <option name="value" value="4" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="https://new.admin.zooparc.com" />
+          <option name="urlPath" value="/parrainages/xhr/modifier/animal-categorie" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-Requested-With" />
+                <option name="value" value="XMLHttpRequest" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+      </list>
+    </option>
   </component>
   <component name="RunManager">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -194,1223 +680,918 @@
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" myUseAcceleration="nothing">
+  <component name="SvnConfiguration">
     <configuration />
+    <supportedVersion>125</supportedVersion>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="65f47da9-4957-4172-a319-22ff74061384" name="Default" comment="" />
-      <created>1409553766401</created>
+      <changelist id="cdb7bc78-9471-4ae5-8f7a-444ad36e7527" name="Default" comment="" />
+      <created>1409395030170</created>
       <option name="number" value="Default" />
-      <updated>1409553766401</updated>
+      <updated>1409395030170</updated>
     </task>
-    <task id="LOCAL-00001" summary="sauvegarde">
-      <created>1409558411127</created>
+    <task id="LOCAL-00001" summary="first commit">
+      <created>1409399675820</created>
       <option name="number" value="00001" />
       <option name="project" value="LOCAL" />
-      <updated>1409558411127</updated>
+      <updated>1409399675820</updated>
     </task>
-    <task id="LOCAL-00002" summary="sauvegarde">
-      <created>1409563639845</created>
+    <task id="LOCAL-00002" summary="sauvegarde&#10;">
+      <created>1409478116202</created>
       <option name="number" value="00002" />
       <option name="project" value="LOCAL" />
-      <updated>1409563639845</updated>
+      <updated>1409478116202</updated>
     </task>
-    <task id="LOCAL-00003" summary="sauvegarde">
-      <created>1409584267394</created>
+    <task id="LOCAL-00003" summary="nginx conf bug fix">
+      <created>1409479205853</created>
       <option name="number" value="00003" />
       <option name="project" value="LOCAL" />
-      <updated>1409584267394</updated>
+      <updated>1409479205853</updated>
     </task>
     <task id="LOCAL-00004" summary="sauvegarde">
-      <created>1409585441078</created>
+      <created>1409485419195</created>
       <option name="number" value="00004" />
       <option name="project" value="LOCAL" />
-      <updated>1409585441078</updated>
+      <updated>1409485419195</updated>
     </task>
     <task id="LOCAL-00005" summary="sauvegarde">
-      <created>1409586577951</created>
+      <created>1409486483124</created>
       <option name="number" value="00005" />
       <option name="project" value="LOCAL" />
-      <updated>1409586577951</updated>
+      <updated>1409486483124</updated>
     </task>
     <task id="LOCAL-00006" summary="sauvegarde">
-      <created>1409586732518</created>
+      <created>1409489281407</created>
       <option name="number" value="00006" />
       <option name="project" value="LOCAL" />
-      <updated>1409586732518</updated>
+      <updated>1409489281407</updated>
     </task>
     <task id="LOCAL-00007" summary="sauvegarde">
-      <created>1409642982123</created>
+      <created>1409514535178</created>
       <option name="number" value="00007" />
       <option name="project" value="LOCAL" />
-      <updated>1409642982123</updated>
+      <updated>1409514535178</updated>
     </task>
     <task id="LOCAL-00008" summary="sauvegarde">
-      <created>1409645070492</created>
+      <created>1409519553694</created>
       <option name="number" value="00008" />
       <option name="project" value="LOCAL" />
-      <updated>1409645070492</updated>
+      <updated>1409519553694</updated>
     </task>
     <task id="LOCAL-00009" summary="sauvegarde">
-      <created>1409656523430</created>
+      <created>1409528046784</created>
       <option name="number" value="00009" />
       <option name="project" value="LOCAL" />
-      <updated>1409656523430</updated>
+      <updated>1409528046784</updated>
     </task>
     <task id="LOCAL-00010" summary="sauvegarde">
-      <created>1409663732929</created>
+      <created>1409528384940</created>
       <option name="number" value="00010" />
       <option name="project" value="LOCAL" />
-      <updated>1409663732929</updated>
+      <updated>1409528384940</updated>
     </task>
     <task id="LOCAL-00011" summary="sauvegarde">
-      <created>1409664203863</created>
+      <created>1409529809074</created>
       <option name="number" value="00011" />
       <option name="project" value="LOCAL" />
-      <updated>1409664203863</updated>
+      <updated>1409529809074</updated>
     </task>
     <task id="LOCAL-00012" summary="sauvegarde">
-      <created>1409670099026</created>
+      <created>1409608544306</created>
       <option name="number" value="00012" />
       <option name="project" value="LOCAL" />
-      <updated>1409670099026</updated>
+      <updated>1409608544306</updated>
     </task>
     <task id="LOCAL-00013" summary="sauvegarde">
-      <created>1409671285638</created>
+      <created>1409615445881</created>
       <option name="number" value="00013" />
       <option name="project" value="LOCAL" />
-      <updated>1409671285638</updated>
+      <updated>1409615445881</updated>
     </task>
     <task id="LOCAL-00014" summary="sauvegarde">
-      <created>1409672019472</created>
+      <created>1409615468139</created>
       <option name="number" value="00014" />
       <option name="project" value="LOCAL" />
-      <updated>1409672019472</updated>
+      <updated>1409615468139</updated>
     </task>
     <task id="LOCAL-00015" summary="sauvegarde">
-      <created>1409672954190</created>
+      <created>1409695402616</created>
       <option name="number" value="00015" />
       <option name="project" value="LOCAL" />
-      <updated>1409672954190</updated>
+      <updated>1409695402616</updated>
     </task>
     <task id="LOCAL-00016" summary="sauvegarde">
-      <created>1409672984274</created>
+      <created>1409778446312</created>
       <option name="number" value="00016" />
       <option name="project" value="LOCAL" />
-      <updated>1409672984274</updated>
+      <updated>1409778446312</updated>
     </task>
     <task id="LOCAL-00017" summary="sauvegarde">
-      <created>1409731117538</created>
+      <created>1409782084831</created>
       <option name="number" value="00017" />
       <option name="project" value="LOCAL" />
-      <updated>1409731117538</updated>
+      <updated>1409782084831</updated>
     </task>
     <task id="LOCAL-00018" summary="sauvegarde">
-      <created>1409736386137</created>
+      <created>1409992598351</created>
       <option name="number" value="00018" />
       <option name="project" value="LOCAL" />
-      <updated>1409736386137</updated>
+      <updated>1409992598351</updated>
     </task>
     <task id="LOCAL-00019" summary="sauvegarde">
-      <created>1409741176768</created>
+      <created>1409995679194</created>
       <option name="number" value="00019" />
       <option name="project" value="LOCAL" />
-      <updated>1409741176768</updated>
+      <updated>1409995679194</updated>
     </task>
     <task id="LOCAL-00020" summary="sauvegarde">
-      <created>1409742701660</created>
+      <created>1409997368139</created>
       <option name="number" value="00020" />
       <option name="project" value="LOCAL" />
-      <updated>1409742701660</updated>
+      <updated>1409997368139</updated>
     </task>
     <task id="LOCAL-00021" summary="sauvegarde">
-      <created>1409749710065</created>
+      <created>1410007277410</created>
       <option name="number" value="00021" />
       <option name="project" value="LOCAL" />
-      <updated>1409749710065</updated>
+      <updated>1410007277410</updated>
     </task>
     <task id="LOCAL-00022" summary="sauvegarde">
-      <created>1409755581926</created>
+      <created>1410007791911</created>
       <option name="number" value="00022" />
       <option name="project" value="LOCAL" />
-      <updated>1409755581926</updated>
+      <updated>1410007791911</updated>
     </task>
     <task id="LOCAL-00023" summary="sauvegarde">
-      <created>1409758380281</created>
+      <created>1410009453555</created>
       <option name="number" value="00023" />
       <option name="project" value="LOCAL" />
-      <updated>1409758380281</updated>
+      <updated>1410009453555</updated>
     </task>
     <task id="LOCAL-00024" summary="sauvegarde">
-      <created>1409828011192</created>
+      <created>1410014712349</created>
       <option name="number" value="00024" />
       <option name="project" value="LOCAL" />
-      <updated>1409828011192</updated>
+      <updated>1410014712349</updated>
     </task>
     <task id="LOCAL-00025" summary="sauvegarde">
-      <created>1409828833136</created>
+      <created>1410015641150</created>
       <option name="number" value="00025" />
       <option name="project" value="LOCAL" />
-      <updated>1409828833136</updated>
+      <updated>1410015641150</updated>
     </task>
     <task id="LOCAL-00026" summary="sauvegarde">
-      <created>1409845696110</created>
+      <created>1410016154132</created>
       <option name="number" value="00026" />
       <option name="project" value="LOCAL" />
-      <updated>1409845696110</updated>
+      <updated>1410016154132</updated>
     </task>
     <task id="LOCAL-00027" summary="sauvegarde">
-      <created>1409925355745</created>
+      <created>1410036756625</created>
       <option name="number" value="00027" />
       <option name="project" value="LOCAL" />
-      <updated>1409925355745</updated>
+      <updated>1410036756625</updated>
     </task>
     <task id="LOCAL-00028" summary="sauvegarde">
-      <created>1409931061583</created>
+      <created>1410042352467</created>
       <option name="number" value="00028" />
       <option name="project" value="LOCAL" />
-      <updated>1409931061583</updated>
+      <updated>1410042352467</updated>
     </task>
     <task id="LOCAL-00029" summary="sauvegarde">
-      <created>1409932426170</created>
+      <created>1410079019354</created>
       <option name="number" value="00029" />
       <option name="project" value="LOCAL" />
-      <updated>1409932426170</updated>
+      <updated>1410079019354</updated>
     </task>
     <task id="LOCAL-00030" summary="sauvegarde">
-      <created>1410167479892</created>
+      <created>1410080095188</created>
       <option name="number" value="00030" />
       <option name="project" value="LOCAL" />
-      <updated>1410167479892</updated>
+      <updated>1410080095188</updated>
     </task>
     <task id="LOCAL-00031" summary="sauvegarde">
-      <created>1410187584196</created>
+      <created>1410084338578</created>
       <option name="number" value="00031" />
       <option name="project" value="LOCAL" />
-      <updated>1410187584196</updated>
+      <updated>1410084338578</updated>
     </task>
     <task id="LOCAL-00032" summary="sauvegarde">
-      <created>1410187638427</created>
+      <created>1410108250191</created>
       <option name="number" value="00032" />
       <option name="project" value="LOCAL" />
-      <updated>1410187638427</updated>
+      <updated>1410108250191</updated>
     </task>
     <task id="LOCAL-00033" summary="sauvegarde">
-      <created>1410188896488</created>
+      <created>1410110450351</created>
       <option name="number" value="00033" />
       <option name="project" value="LOCAL" />
-      <updated>1410188896488</updated>
+      <updated>1410110450351</updated>
     </task>
     <task id="LOCAL-00034" summary="sauvegarde">
-      <created>1410191649691</created>
+      <created>1410115921050</created>
       <option name="number" value="00034" />
       <option name="project" value="LOCAL" />
-      <updated>1410191649691</updated>
+      <updated>1410115921050</updated>
     </task>
     <task id="LOCAL-00035" summary="sauvegarde">
-      <created>1410191883845</created>
+      <created>1410116085855</created>
       <option name="number" value="00035" />
       <option name="project" value="LOCAL" />
-      <updated>1410191883845</updated>
+      <updated>1410116085855</updated>
     </task>
     <task id="LOCAL-00036" summary="sauvegarde">
-      <created>1410252853759</created>
+      <created>1410128950949</created>
       <option name="number" value="00036" />
       <option name="project" value="LOCAL" />
-      <updated>1410252853759</updated>
+      <updated>1410128950949</updated>
     </task>
     <task id="LOCAL-00037" summary="sauvegarde">
-      <created>1410254385015</created>
+      <created>1410365701668</created>
       <option name="number" value="00037" />
       <option name="project" value="LOCAL" />
-      <updated>1410254385015</updated>
+      <updated>1410365701668</updated>
     </task>
     <task id="LOCAL-00038" summary="sauvegarde">
-      <created>1410261367495</created>
+      <created>1410370286876</created>
       <option name="number" value="00038" />
       <option name="project" value="LOCAL" />
-      <updated>1410261367495</updated>
+      <updated>1410370286876</updated>
     </task>
     <task id="LOCAL-00039" summary="sauvegarde">
-      <created>1410272732255</created>
+      <created>1410370304348</created>
       <option name="number" value="00039" />
       <option name="project" value="LOCAL" />
-      <updated>1410272732255</updated>
+      <updated>1410370304348</updated>
     </task>
     <task id="LOCAL-00040" summary="sauvegarde">
-      <created>1410274281649</created>
+      <created>1410374541342</created>
       <option name="number" value="00040" />
       <option name="project" value="LOCAL" />
-      <updated>1410274281649</updated>
+      <updated>1410374541342</updated>
     </task>
     <task id="LOCAL-00041" summary="sauvegarde">
-      <created>1410276121339</created>
+      <created>1410375320588</created>
       <option name="number" value="00041" />
       <option name="project" value="LOCAL" />
-      <updated>1410276121339</updated>
+      <updated>1410375320588</updated>
     </task>
     <task id="LOCAL-00042" summary="sauvegarde">
-      <created>1410340612017</created>
+      <created>1410383906389</created>
       <option name="number" value="00042" />
       <option name="project" value="LOCAL" />
-      <updated>1410340612017</updated>
+      <updated>1410383906389</updated>
     </task>
     <task id="LOCAL-00043" summary="sauvegarde">
-      <created>1410341088470</created>
+      <created>1410387905746</created>
       <option name="number" value="00043" />
       <option name="project" value="LOCAL" />
-      <updated>1410341088470</updated>
+      <updated>1410387905746</updated>
     </task>
     <task id="LOCAL-00044" summary="sauvegarde">
-      <created>1410363742792</created>
+      <created>1410542282224</created>
       <option name="number" value="00044" />
       <option name="project" value="LOCAL" />
-      <updated>1410363742792</updated>
+      <updated>1410542282224</updated>
     </task>
     <task id="LOCAL-00045" summary="sauvegarde">
-      <created>1410422609585</created>
+      <created>1410619918704</created>
       <option name="number" value="00045" />
       <option name="project" value="LOCAL" />
-      <updated>1410422609585</updated>
+      <updated>1410619918704</updated>
     </task>
     <task id="LOCAL-00046" summary="sauvegarde">
-      <created>1410428523668</created>
+      <created>1410623951164</created>
       <option name="number" value="00046" />
       <option name="project" value="LOCAL" />
-      <updated>1410428523668</updated>
+      <updated>1410623951164</updated>
     </task>
     <task id="LOCAL-00047" summary="sauvegarde">
-      <created>1410438697072</created>
+      <created>1410649215946</created>
       <option name="number" value="00047" />
       <option name="project" value="LOCAL" />
-      <updated>1410438697072</updated>
+      <updated>1410649215946</updated>
     </task>
     <task id="LOCAL-00048" summary="sauvegarde">
-      <created>1410451273299</created>
+      <created>1410654938910</created>
       <option name="number" value="00048" />
       <option name="project" value="LOCAL" />
-      <updated>1410451273299</updated>
+      <updated>1410654938910</updated>
     </task>
     <task id="LOCAL-00049" summary="sauvegarde">
-      <created>1410509298500</created>
+      <created>1410659116925</created>
       <option name="number" value="00049" />
       <option name="project" value="LOCAL" />
-      <updated>1410509298500</updated>
+      <updated>1410659116925</updated>
     </task>
     <task id="LOCAL-00050" summary="sauvegarde">
-      <created>1410513686902</created>
+      <created>1410693428592</created>
       <option name="number" value="00050" />
       <option name="project" value="LOCAL" />
-      <updated>1410513686902</updated>
+      <updated>1410693428592</updated>
     </task>
     <task id="LOCAL-00051" summary="sauvegarde">
-      <created>1410516986310</created>
+      <created>1410698256473</created>
       <option name="number" value="00051" />
       <option name="project" value="LOCAL" />
-      <updated>1410516986310</updated>
+      <updated>1410698256473</updated>
     </task>
     <task id="LOCAL-00052" summary="sauvegarde">
-      <created>1410519322582</created>
+      <created>1410701240821</created>
       <option name="number" value="00052" />
       <option name="project" value="LOCAL" />
-      <updated>1410519322582</updated>
+      <updated>1410701240821</updated>
     </task>
     <task id="LOCAL-00053" summary="sauvegarde">
-      <created>1410519374498</created>
+      <created>1410702091041</created>
       <option name="number" value="00053" />
       <option name="project" value="LOCAL" />
-      <updated>1410519374498</updated>
+      <updated>1410702091041</updated>
     </task>
     <task id="LOCAL-00054" summary="sauvegarde">
-      <created>1410531806215</created>
+      <created>1410705739224</created>
       <option name="number" value="00054" />
       <option name="project" value="LOCAL" />
-      <updated>1410531806215</updated>
+      <updated>1410705739224</updated>
     </task>
     <task id="LOCAL-00055" summary="sauvegarde">
-      <created>1410534215739</created>
+      <created>1410706220720</created>
       <option name="number" value="00055" />
       <option name="project" value="LOCAL" />
-      <updated>1410534215739</updated>
+      <updated>1410706220720</updated>
     </task>
     <task id="LOCAL-00056" summary="sauvegarde">
-      <created>1410534305472</created>
+      <created>1410709317674</created>
       <option name="number" value="00056" />
       <option name="project" value="LOCAL" />
-      <updated>1410534305472</updated>
+      <updated>1410709317674</updated>
     </task>
     <task id="LOCAL-00057" summary="sauvegarde">
-      <created>1410537371986</created>
+      <created>1410709489638</created>
       <option name="number" value="00057" />
       <option name="project" value="LOCAL" />
-      <updated>1410537371986</updated>
+      <updated>1410709489638</updated>
     </task>
     <task id="LOCAL-00058" summary="sauvegarde">
-      <created>1410538526152</created>
+      <created>1410710070734</created>
       <option name="number" value="00058" />
       <option name="project" value="LOCAL" />
-      <updated>1410538526152</updated>
+      <updated>1410710070734</updated>
     </task>
     <task id="LOCAL-00059" summary="sauvegarde">
-      <created>1410764997130</created>
+      <created>1410710601908</created>
       <option name="number" value="00059" />
       <option name="project" value="LOCAL" />
-      <updated>1410764997130</updated>
+      <updated>1410710601908</updated>
     </task>
     <task id="LOCAL-00060" summary="sauvegarde">
-      <created>1410767985952</created>
+      <created>1410712518489</created>
       <option name="number" value="00060" />
       <option name="project" value="LOCAL" />
-      <updated>1410767985952</updated>
+      <updated>1410712518489</updated>
     </task>
     <task id="LOCAL-00061" summary="sauvegarde">
-      <created>1410774505101</created>
+      <created>1410728916435</created>
       <option name="number" value="00061" />
       <option name="project" value="LOCAL" />
-      <updated>1410774505101</updated>
+      <updated>1410728916436</updated>
     </task>
     <task id="LOCAL-00062" summary="sauvegarde">
-      <created>1410775282045</created>
+      <created>1410729932718</created>
       <option name="number" value="00062" />
       <option name="project" value="LOCAL" />
-      <updated>1410775282045</updated>
+      <updated>1410729932718</updated>
     </task>
     <task id="LOCAL-00063" summary="sauvegarde">
-      <created>1410776193552</created>
+      <created>1410731338099</created>
       <option name="number" value="00063" />
       <option name="project" value="LOCAL" />
-      <updated>1410776193552</updated>
+      <updated>1410731338099</updated>
     </task>
     <task id="LOCAL-00064" summary="sauvegarde">
-      <created>1410776365279</created>
+      <created>1410732862929</created>
       <option name="number" value="00064" />
       <option name="project" value="LOCAL" />
-      <updated>1410776365279</updated>
+      <updated>1410732862929</updated>
     </task>
     <task id="LOCAL-00065" summary="sauvegarde">
-      <created>1410794973152</created>
+      <created>1410734933049</created>
       <option name="number" value="00065" />
       <option name="project" value="LOCAL" />
-      <updated>1410794973152</updated>
+      <updated>1410734933049</updated>
     </task>
     <task id="LOCAL-00066" summary="sauvegarde">
-      <created>1410795080174</created>
+      <created>1410809174954</created>
       <option name="number" value="00066" />
       <option name="project" value="LOCAL" />
-      <updated>1410795080174</updated>
+      <updated>1410809174954</updated>
     </task>
     <task id="LOCAL-00067" summary="sauvegarde">
-      <created>1410850559253</created>
+      <created>1410812268359</created>
       <option name="number" value="00067" />
       <option name="project" value="LOCAL" />
-      <updated>1410850559253</updated>
+      <updated>1410812268359</updated>
     </task>
     <task id="LOCAL-00068" summary="sauvegarde">
-      <created>1410862393117</created>
+      <created>1410813027497</created>
       <option name="number" value="00068" />
       <option name="project" value="LOCAL" />
-      <updated>1410862393117</updated>
+      <updated>1410813027497</updated>
     </task>
     <task id="LOCAL-00069" summary="sauvegarde">
-      <created>1410865447812</created>
+      <created>1410817186830</created>
       <option name="number" value="00069" />
       <option name="project" value="LOCAL" />
-      <updated>1410865447812</updated>
+      <updated>1410817186830</updated>
     </task>
     <task id="LOCAL-00070" summary="sauvegarde">
-      <created>1410872108460</created>
+      <created>1410819894465</created>
       <option name="number" value="00070" />
       <option name="project" value="LOCAL" />
-      <updated>1410872108460</updated>
+      <updated>1410819894465</updated>
     </task>
     <task id="LOCAL-00071" summary="sauvegarde">
-      <created>1410878172267</created>
+      <created>1410897161168</created>
       <option name="number" value="00071" />
       <option name="project" value="LOCAL" />
-      <updated>1410878172267</updated>
+      <updated>1410897161168</updated>
     </task>
     <task id="LOCAL-00072" summary="sauvegarde">
-      <created>1410886396732</created>
+      <created>1410904362150</created>
       <option name="number" value="00072" />
       <option name="project" value="LOCAL" />
-      <updated>1410886396732</updated>
+      <updated>1410904362150</updated>
     </task>
     <task id="LOCAL-00073" summary="sauvegarde">
-      <created>1410970389580</created>
+      <created>1410904470753</created>
       <option name="number" value="00073" />
       <option name="project" value="LOCAL" />
-      <updated>1410970389580</updated>
+      <updated>1410904470753</updated>
     </task>
     <task id="LOCAL-00074" summary="sauvegarde">
-      <created>1411024472880</created>
+      <created>1411012284345</created>
       <option name="number" value="00074" />
       <option name="project" value="LOCAL" />
-      <updated>1411024472880</updated>
+      <updated>1411012284345</updated>
     </task>
     <task id="LOCAL-00075" summary="sauvegarde">
-      <created>1411030678869</created>
+      <created>1411015650127</created>
       <option name="number" value="00075" />
       <option name="project" value="LOCAL" />
-      <updated>1411030678869</updated>
+      <updated>1411015650127</updated>
     </task>
     <task id="LOCAL-00076" summary="sauvegarde">
-      <created>1411032070159</created>
+      <created>1411018843962</created>
       <option name="number" value="00076" />
       <option name="project" value="LOCAL" />
-      <updated>1411032070159</updated>
+      <updated>1411018843962</updated>
     </task>
     <task id="LOCAL-00077" summary="sauvegarde">
-      <created>1411033747537</created>
+      <created>1411080263530</created>
       <option name="number" value="00077" />
       <option name="project" value="LOCAL" />
-      <updated>1411033747537</updated>
+      <updated>1411080263530</updated>
     </task>
     <task id="LOCAL-00078" summary="sauvegarde">
-      <created>1411048394046</created>
+      <created>1411155549548</created>
       <option name="number" value="00078" />
       <option name="project" value="LOCAL" />
-      <updated>1411048394046</updated>
+      <updated>1411155549548</updated>
     </task>
     <task id="LOCAL-00079" summary="sauvegarde">
-      <created>1411048409779</created>
+      <created>1411204856336</created>
       <option name="number" value="00079" />
       <option name="project" value="LOCAL" />
-      <updated>1411048409779</updated>
+      <updated>1411204856336</updated>
     </task>
     <task id="LOCAL-00080" summary="sauvegarde">
-      <created>1411056755508</created>
+      <created>1411238876450</created>
       <option name="number" value="00080" />
       <option name="project" value="LOCAL" />
-      <updated>1411056755508</updated>
+      <updated>1411238876450</updated>
     </task>
     <task id="LOCAL-00081" summary="sauvegarde">
-      <created>1411057071290</created>
+      <created>1411241177122</created>
       <option name="number" value="00081" />
       <option name="project" value="LOCAL" />
-      <updated>1411057071290</updated>
+      <updated>1411241177122</updated>
     </task>
     <task id="LOCAL-00082" summary="sauvegarde">
-      <created>1411125405932</created>
+      <created>1411243680948</created>
       <option name="number" value="00082" />
       <option name="project" value="LOCAL" />
-      <updated>1411125405932</updated>
+      <updated>1411243680948</updated>
     </task>
     <task id="LOCAL-00083" summary="sauvegarde">
-      <created>1411125418646</created>
+      <created>1411247102524</created>
       <option name="number" value="00083" />
       <option name="project" value="LOCAL" />
-      <updated>1411125418646</updated>
+      <updated>1411247102524</updated>
     </task>
     <task id="LOCAL-00084" summary="sauvegarde">
-      <created>1411132440869</created>
+      <created>1411285515063</created>
       <option name="number" value="00084" />
       <option name="project" value="LOCAL" />
-      <updated>1411132440869</updated>
+      <updated>1411285515063</updated>
     </task>
     <task id="LOCAL-00085" summary="sauvegarde">
-      <created>1411133849423</created>
+      <created>1411285766529</created>
       <option name="number" value="00085" />
       <option name="project" value="LOCAL" />
-      <updated>1411133849423</updated>
+      <updated>1411285766529</updated>
     </task>
     <task id="LOCAL-00086" summary="sauvegarde">
-      <created>1411140168812</created>
+      <created>1411287043741</created>
       <option name="number" value="00086" />
       <option name="project" value="LOCAL" />
-      <updated>1411140168812</updated>
+      <updated>1411287043741</updated>
     </task>
     <task id="LOCAL-00087" summary="sauvegarde">
-      <created>1411141422897</created>
+      <created>1411287803713</created>
       <option name="number" value="00087" />
       <option name="project" value="LOCAL" />
-      <updated>1411141422897</updated>
+      <updated>1411287803713</updated>
     </task>
     <task id="LOCAL-00088" summary="sauvegarde">
-      <created>1411392562831</created>
+      <created>1411288084572</created>
       <option name="number" value="00088" />
       <option name="project" value="LOCAL" />
-      <updated>1411392562831</updated>
+      <updated>1411288084572</updated>
     </task>
     <task id="LOCAL-00089" summary="sauvegarde">
-      <created>1411400197163</created>
+      <created>1411290127484</created>
       <option name="number" value="00089" />
       <option name="project" value="LOCAL" />
-      <updated>1411400197163</updated>
+      <updated>1411290127484</updated>
     </task>
     <task id="LOCAL-00090" summary="sauvegarde">
-      <created>1411454104396</created>
+      <created>1411295872992</created>
       <option name="number" value="00090" />
       <option name="project" value="LOCAL" />
-      <updated>1411454104396</updated>
+      <updated>1411295872992</updated>
     </task>
     <task id="LOCAL-00091" summary="sauvegarde">
-      <created>1411474185680</created>
+      <created>1411300178016</created>
       <option name="number" value="00091" />
       <option name="project" value="LOCAL" />
-      <updated>1411474185680</updated>
+      <updated>1411300178016</updated>
     </task>
     <task id="LOCAL-00092" summary="sauvegarde">
-      <created>1411474321506</created>
+      <created>1411302993760</created>
       <option name="number" value="00092" />
       <option name="project" value="LOCAL" />
-      <updated>1411474321506</updated>
+      <updated>1411302993760</updated>
     </task>
     <task id="LOCAL-00093" summary="sauvegarde">
-      <created>1411474377974</created>
+      <created>1411303816182</created>
       <option name="number" value="00093" />
       <option name="project" value="LOCAL" />
-      <updated>1411474377974</updated>
+      <updated>1411303816182</updated>
     </task>
     <task id="LOCAL-00094" summary="sauvegarde">
-      <created>1411474456553</created>
+      <created>1411305470051</created>
       <option name="number" value="00094" />
       <option name="project" value="LOCAL" />
-      <updated>1411474456553</updated>
+      <updated>1411305470051</updated>
     </task>
     <task id="LOCAL-00095" summary="sauvegarde">
-      <created>1411474493982</created>
+      <created>1411307760666</created>
       <option name="number" value="00095" />
       <option name="project" value="LOCAL" />
-      <updated>1411474493982</updated>
+      <updated>1411307760666</updated>
     </task>
     <task id="LOCAL-00096" summary="sauvegarde">
-      <created>1411475250826</created>
+      <created>1411310847091</created>
       <option name="number" value="00096" />
       <option name="project" value="LOCAL" />
-      <updated>1411475250826</updated>
+      <updated>1411310847091</updated>
     </task>
     <task id="LOCAL-00097" summary="sauvegarde">
-      <created>1411476681270</created>
+      <created>1411311422001</created>
       <option name="number" value="00097" />
       <option name="project" value="LOCAL" />
-      <updated>1411476681270</updated>
+      <updated>1411311422001</updated>
     </task>
     <task id="LOCAL-00098" summary="sauvegarde">
-      <created>1411482297476</created>
+      <created>1411320655800</created>
       <option name="number" value="00098" />
       <option name="project" value="LOCAL" />
-      <updated>1411482297476</updated>
+      <updated>1411320655800</updated>
     </task>
     <task id="LOCAL-00099" summary="sauvegarde">
-      <created>1411489310307</created>
+      <created>1411323566915</created>
       <option name="number" value="00099" />
       <option name="project" value="LOCAL" />
-      <updated>1411489310307</updated>
+      <updated>1411323566915</updated>
     </task>
     <task id="LOCAL-00100" summary="sauvegarde">
-      <created>1411566862542</created>
+      <created>1411332081059</created>
       <option name="number" value="00100" />
       <option name="project" value="LOCAL" />
-      <updated>1411566862542</updated>
+      <updated>1411332081059</updated>
     </task>
     <task id="LOCAL-00101" summary="sauvegarde">
-      <created>1411567720432</created>
+      <created>1411334334453</created>
       <option name="number" value="00101" />
       <option name="project" value="LOCAL" />
-      <updated>1411567720432</updated>
+      <updated>1411334334453</updated>
     </task>
     <task id="LOCAL-00102" summary="sauvegarde">
-      <created>1411639135871</created>
+      <created>1411336517820</created>
       <option name="number" value="00102" />
       <option name="project" value="LOCAL" />
-      <updated>1411639135871</updated>
+      <updated>1411336517820</updated>
     </task>
     <task id="LOCAL-00103" summary="sauvegarde">
-      <created>1411662176162</created>
+      <created>1411337536694</created>
       <option name="number" value="00103" />
       <option name="project" value="LOCAL" />
-      <updated>1411662176162</updated>
+      <updated>1411337536694</updated>
     </task>
     <task id="LOCAL-00104" summary="sauvegarde">
-      <created>1411662264513</created>
+      <created>1411408541835</created>
       <option name="number" value="00104" />
       <option name="project" value="LOCAL" />
-      <updated>1411662264513</updated>
+      <updated>1411408541835</updated>
     </task>
     <task id="LOCAL-00105" summary="sauvegarde">
-      <created>1411722692742</created>
+      <created>1411422618083</created>
       <option name="number" value="00105" />
       <option name="project" value="LOCAL" />
-      <updated>1411722692742</updated>
+      <updated>1411422618083</updated>
     </task>
     <task id="LOCAL-00106" summary="sauvegarde">
-      <created>1411745741091</created>
+      <created>1411422846552</created>
       <option name="number" value="00106" />
       <option name="project" value="LOCAL" />
-      <updated>1411745741091</updated>
+      <updated>1411422846552</updated>
     </task>
     <task id="LOCAL-00107" summary="sauvegarde">
-      <created>1411989216682</created>
+      <created>1411425375212</created>
       <option name="number" value="00107" />
       <option name="project" value="LOCAL" />
-      <updated>1411989216682</updated>
+      <updated>1411425375212</updated>
     </task>
     <task id="LOCAL-00108" summary="sauvegarde">
-      <created>1411994233270</created>
+      <created>1411817867972</created>
       <option name="number" value="00108" />
       <option name="project" value="LOCAL" />
-      <updated>1411994233270</updated>
+      <updated>1411817867972</updated>
     </task>
     <task id="LOCAL-00109" summary="sauvegarde">
-      <created>1411999284109</created>
+      <created>1411823551789</created>
       <option name="number" value="00109" />
       <option name="project" value="LOCAL" />
-      <updated>1411999284109</updated>
+      <updated>1411823551789</updated>
     </task>
     <task id="LOCAL-00110" summary="sauvegarde">
-      <created>1412003547662</created>
+      <created>1411835232549</created>
       <option name="number" value="00110" />
       <option name="project" value="LOCAL" />
-      <updated>1412003547662</updated>
+      <updated>1411835232549</updated>
     </task>
     <task id="LOCAL-00111" summary="sauvegarde">
-      <created>1412005703208</created>
+      <created>1411836552064</created>
       <option name="number" value="00111" />
       <option name="project" value="LOCAL" />
-      <updated>1412005703208</updated>
+      <updated>1411836552064</updated>
     </task>
     <task id="LOCAL-00112" summary="sauvegarde">
-      <created>1412071791741</created>
+      <created>1411885015874</created>
       <option name="number" value="00112" />
       <option name="project" value="LOCAL" />
-      <updated>1412071791741</updated>
+      <updated>1411885015874</updated>
     </task>
     <task id="LOCAL-00113" summary="sauvegarde">
-      <created>1412074932050</created>
+      <created>1411893245862</created>
       <option name="number" value="00113" />
       <option name="project" value="LOCAL" />
-      <updated>1412074932050</updated>
+      <updated>1411893245862</updated>
     </task>
     <task id="LOCAL-00114" summary="sauvegarde">
-      <created>1412085649900</created>
+      <created>1411895162136</created>
       <option name="number" value="00114" />
       <option name="project" value="LOCAL" />
-      <updated>1412085649900</updated>
+      <updated>1411895162136</updated>
     </task>
     <task id="LOCAL-00115" summary="sauvegarde">
-      <created>1412091738342</created>
+      <created>1411898024452</created>
       <option name="number" value="00115" />
       <option name="project" value="LOCAL" />
-      <updated>1412091738342</updated>
+      <updated>1411898024452</updated>
     </task>
     <task id="LOCAL-00116" summary="sauvegarde">
-      <created>1412092890728</created>
+      <created>1411917036365</created>
       <option name="number" value="00116" />
       <option name="project" value="LOCAL" />
-      <updated>1412092890728</updated>
+      <updated>1411917036365</updated>
     </task>
     <task id="LOCAL-00117" summary="sauvegarde">
-      <created>1412093591563</created>
+      <created>1411917946962</created>
       <option name="number" value="00117" />
       <option name="project" value="LOCAL" />
-      <updated>1412093591563</updated>
+      <updated>1411917946962</updated>
     </task>
     <task id="LOCAL-00118" summary="sauvegarde">
-      <created>1412148625732</created>
+      <created>1411918678190</created>
       <option name="number" value="00118" />
       <option name="project" value="LOCAL" />
-      <updated>1412148625732</updated>
+      <updated>1411918678190</updated>
     </task>
     <task id="LOCAL-00119" summary="sauvegarde">
-      <created>1412149090805</created>
+      <created>1411934170354</created>
       <option name="number" value="00119" />
       <option name="project" value="LOCAL" />
-      <updated>1412149090805</updated>
+      <updated>1411934170354</updated>
     </task>
     <task id="LOCAL-00120" summary="sauvegarde">
-      <created>1412149614799</created>
+      <created>1411935329999</created>
       <option name="number" value="00120" />
       <option name="project" value="LOCAL" />
-      <updated>1412149614799</updated>
+      <updated>1411935329999</updated>
     </task>
     <task id="LOCAL-00121" summary="sauvegarde">
-      <created>1412149626669</created>
+      <created>1411937650068</created>
       <option name="number" value="00121" />
       <option name="project" value="LOCAL" />
-      <updated>1412149626669</updated>
+      <updated>1411937650068</updated>
     </task>
     <task id="LOCAL-00122" summary="sauvegarde">
-      <created>1412151743373</created>
+      <created>1411938283411</created>
       <option name="number" value="00122" />
       <option name="project" value="LOCAL" />
-      <updated>1412151743373</updated>
+      <updated>1411938283411</updated>
     </task>
     <task id="LOCAL-00123" summary="sauvegarde">
-      <created>1412154654276</created>
+      <created>1411938867002</created>
       <option name="number" value="00123" />
       <option name="project" value="LOCAL" />
-      <updated>1412154654276</updated>
+      <updated>1411938867002</updated>
     </task>
     <task id="LOCAL-00124" summary="sauvegarde">
-      <created>1412159099448</created>
+      <created>1412015994995</created>
       <option name="number" value="00124" />
       <option name="project" value="LOCAL" />
-      <updated>1412159099448</updated>
+      <updated>1412015994995</updated>
     </task>
     <task id="LOCAL-00125" summary="sauvegarde">
-      <created>1412240425248</created>
+      <created>1412137488419</created>
       <option name="number" value="00125" />
       <option name="project" value="LOCAL" />
-      <updated>1412240425248</updated>
+      <updated>1412137488419</updated>
     </task>
     <task id="LOCAL-00126" summary="sauvegarde">
-      <created>1412242723901</created>
+      <created>1412140048224</created>
       <option name="number" value="00126" />
       <option name="project" value="LOCAL" />
-      <updated>1412242723901</updated>
+      <updated>1412140048224</updated>
     </task>
     <task id="LOCAL-00127" summary="sauvegarde">
-      <created>1412248617643</created>
+      <created>1412142140506</created>
       <option name="number" value="00127" />
       <option name="project" value="LOCAL" />
-      <updated>1412248617643</updated>
+      <updated>1412142140506</updated>
     </task>
     <task id="LOCAL-00128" summary="sauvegarde">
-      <created>1412256385904</created>
+      <created>1412542005267</created>
       <option name="number" value="00128" />
       <option name="project" value="LOCAL" />
-      <updated>1412256385904</updated>
+      <updated>1412542005267</updated>
     </task>
     <task id="LOCAL-00129" summary="sauvegarde">
-      <created>1412259368636</created>
+      <created>1412660209559</created>
       <option name="number" value="00129" />
       <option name="project" value="LOCAL" />
-      <updated>1412259368636</updated>
+      <updated>1412660209559</updated>
     </task>
     <task id="LOCAL-00130" summary="sauvegarde">
-      <created>1412352028774</created>
+      <created>1412973202622</created>
       <option name="number" value="00130" />
       <option name="project" value="LOCAL" />
-      <updated>1412352028774</updated>
+      <updated>1412973202622</updated>
     </task>
     <task id="LOCAL-00131" summary="sauvegarde">
-      <created>1412590131713</created>
+      <created>1412975395831</created>
       <option name="number" value="00131" />
       <option name="project" value="LOCAL" />
-      <updated>1412590131713</updated>
+      <updated>1412975395831</updated>
     </task>
     <task id="LOCAL-00132" summary="sauvegarde">
-      <created>1412604922107</created>
+      <created>1412979703939</created>
       <option name="number" value="00132" />
       <option name="project" value="LOCAL" />
-      <updated>1412604922107</updated>
+      <updated>1412979703939</updated>
     </task>
     <task id="LOCAL-00133" summary="sauvegarde">
-      <created>1412610741165</created>
+      <created>1412981157457</created>
       <option name="number" value="00133" />
       <option name="project" value="LOCAL" />
-      <updated>1412610741165</updated>
+      <updated>1412981157457</updated>
     </task>
     <task id="LOCAL-00134" summary="sauvegarde">
-      <created>1412611192152</created>
+      <created>1412981719595</created>
       <option name="number" value="00134" />
       <option name="project" value="LOCAL" />
-      <updated>1412611192152</updated>
+      <updated>1412981719595</updated>
     </task>
     <task id="LOCAL-00135" summary="sauvegarde">
-      <created>1412673242987</created>
+      <created>1412982155346</created>
       <option name="number" value="00135" />
       <option name="project" value="LOCAL" />
-      <updated>1412673242987</updated>
+      <updated>1412982155347</updated>
     </task>
     <task id="LOCAL-00136" summary="sauvegarde">
-      <created>1412677452206</created>
+      <created>1412986047804</created>
       <option name="number" value="00136" />
       <option name="project" value="LOCAL" />
-      <updated>1412677452206</updated>
-    </task>
-    <task id="LOCAL-00137" summary="sauvegarde">
-      <created>1412679131572</created>
-      <option name="number" value="00137" />
-      <option name="project" value="LOCAL" />
-      <updated>1412679131572</updated>
+      <updated>1412986047804</updated>
     </task>
     <task id="LOCAL-00138" summary="sauvegarde">
-      <created>1412679279298</created>
+      <created>1413042269531</created>
       <option name="number" value="00138" />
       <option name="project" value="LOCAL" />
-      <updated>1412679279298</updated>
+      <updated>1413042269531</updated>
     </task>
     <task id="LOCAL-00139" summary="sauvegarde">
-      <created>1412691710365</created>
+      <created>1413105163493</created>
       <option name="number" value="00139" />
       <option name="project" value="LOCAL" />
-      <updated>1412691710365</updated>
+      <updated>1413105163493</updated>
     </task>
     <task id="LOCAL-00140" summary="sauvegarde">
-      <created>1412697446341</created>
+      <created>1413109421853</created>
       <option name="number" value="00140" />
       <option name="project" value="LOCAL" />
-      <updated>1412697446341</updated>
+      <updated>1413109421853</updated>
     </task>
     <task id="LOCAL-00141" summary="sauvegarde">
-      <created>1412758533177</created>
+      <created>1413110936127</created>
       <option name="number" value="00141" />
       <option name="project" value="LOCAL" />
-      <updated>1412758533177</updated>
+      <updated>1413110936127</updated>
     </task>
     <task id="LOCAL-00142" summary="sauvegarde">
-      <created>1412762348098</created>
+      <created>1413112480739</created>
       <option name="number" value="00142" />
       <option name="project" value="LOCAL" />
-      <updated>1412762348098</updated>
+      <updated>1413112480739</updated>
     </task>
     <task id="LOCAL-00143" summary="sauvegarde">
-      <created>1412764519707</created>
+      <created>1413114569007</created>
       <option name="number" value="00143" />
       <option name="project" value="LOCAL" />
-      <updated>1412764519707</updated>
+      <updated>1413114569007</updated>
     </task>
     <task id="LOCAL-00144" summary="sauvegarde">
-      <created>1412765617318</created>
+      <created>1413229181110</created>
       <option name="number" value="00144" />
       <option name="project" value="LOCAL" />
-      <updated>1412765617318</updated>
+      <updated>1413229181110</updated>
     </task>
     <task id="LOCAL-00145" summary="sauvegarde">
-      <created>1412776192292</created>
+      <created>1413229680618</created>
       <option name="number" value="00145" />
       <option name="project" value="LOCAL" />
-      <updated>1412776192292</updated>
+      <updated>1413229680618</updated>
     </task>
     <task id="LOCAL-00146" summary="sauvegarde">
-      <created>1412782674027</created>
+      <created>1413241799693</created>
       <option name="number" value="00146" />
       <option name="project" value="LOCAL" />
-      <updated>1412782674027</updated>
+      <updated>1413241799693</updated>
     </task>
     <task id="LOCAL-00147" summary="sauvegarde">
-      <created>1412782780542</created>
+      <created>1413321491249</created>
       <option name="number" value="00147" />
       <option name="project" value="LOCAL" />
-      <updated>1412782780542</updated>
+      <updated>1413321491249</updated>
     </task>
     <task id="LOCAL-00148" summary="sauvegarde">
-      <created>1412783935141</created>
+      <created>1413323426523</created>
       <option name="number" value="00148" />
       <option name="project" value="LOCAL" />
-      <updated>1412783935141</updated>
+      <updated>1413323426524</updated>
     </task>
     <task id="LOCAL-00149" summary="sauvegarde">
-      <created>1412842192109</created>
+      <created>1413326927466</created>
       <option name="number" value="00149" />
       <option name="project" value="LOCAL" />
-      <updated>1412842192109</updated>
+      <updated>1413326927466</updated>
     </task>
     <task id="LOCAL-00150" summary="sauvegarde">
-      <created>1412848873056</created>
+      <created>1413401785904</created>
       <option name="number" value="00150" />
       <option name="project" value="LOCAL" />
-      <updated>1412848873056</updated>
+      <updated>1413401785904</updated>
     </task>
     <task id="LOCAL-00151" summary="sauvegarde">
-      <created>1412850595143</created>
+      <created>1413846029177</created>
       <option name="number" value="00151" />
       <option name="project" value="LOCAL" />
-      <updated>1412850595143</updated>
+      <updated>1413846029177</updated>
     </task>
-    <task id="LOCAL-00152" summary="sauvegarde">
-      <created>1412851692101</created>
-      <option name="number" value="00152" />
-      <option name="project" value="LOCAL" />
-      <updated>1412851692101</updated>
-    </task>
-    <task id="LOCAL-00153" summary="sauvegarde">
-      <created>1412856673446</created>
-      <option name="number" value="00153" />
-      <option name="project" value="LOCAL" />
-      <updated>1412856673446</updated>
-    </task>
-    <task id="LOCAL-00154" summary="sauvegarde">
-      <created>1412864670901</created>
-      <option name="number" value="00154" />
-      <option name="project" value="LOCAL" />
-      <updated>1412864670901</updated>
-    </task>
-    <task id="LOCAL-00155" summary="sauvegarde">
-      <created>1412867429797</created>
-      <option name="number" value="00155" />
-      <option name="project" value="LOCAL" />
-      <updated>1412867429797</updated>
-    </task>
-    <task id="LOCAL-00156" summary="sauvegarde">
-      <created>1412868625213</created>
-      <option name="number" value="00156" />
-      <option name="project" value="LOCAL" />
-      <updated>1412868625213</updated>
-    </task>
-    <task id="LOCAL-00157" summary="sauvegarde">
-      <created>1412869454441</created>
-      <option name="number" value="00157" />
-      <option name="project" value="LOCAL" />
-      <updated>1412869454441</updated>
-    </task>
-    <task id="LOCAL-00158" summary="sauvegarde">
-      <created>1412869977068</created>
-      <option name="number" value="00158" />
-      <option name="project" value="LOCAL" />
-      <updated>1412869977068</updated>
-    </task>
-    <task id="LOCAL-00159" summary="sauvegarde">
-      <created>1412927600300</created>
-      <option name="number" value="00159" />
-      <option name="project" value="LOCAL" />
-      <updated>1412927600300</updated>
-    </task>
-    <task id="LOCAL-00160" summary="sauvegarde">
-      <created>1412945019406</created>
-      <option name="number" value="00160" />
-      <option name="project" value="LOCAL" />
-      <updated>1412945019406</updated>
-    </task>
-    <task id="LOCAL-00161" summary="sauvegarde">
-      <created>1412946039112</created>
-      <option name="number" value="00161" />
-      <option name="project" value="LOCAL" />
-      <updated>1412946039112</updated>
-    </task>
-    <task id="LOCAL-00162" summary="sauvegarde">
-      <created>1412946998589</created>
-      <option name="number" value="00162" />
-      <option name="project" value="LOCAL" />
-      <updated>1412946998589</updated>
-    </task>
-    <task id="LOCAL-00163" summary="sauvegarde">
-      <created>1412951284431</created>
-      <option name="number" value="00163" />
-      <option name="project" value="LOCAL" />
-      <updated>1412951284431</updated>
-    </task>
-    <task id="LOCAL-00164" summary="sauvegarde">
-      <created>1412953061642</created>
-      <option name="number" value="00164" />
-      <option name="project" value="LOCAL" />
-      <updated>1412953061642</updated>
-    </task>
-    <task id="LOCAL-00165" summary="sauvegarde">
-      <created>1412957159363</created>
-      <option name="number" value="00165" />
-      <option name="project" value="LOCAL" />
-      <updated>1412957159363</updated>
-    </task>
-    <task id="LOCAL-00166" summary="sauvegarde">
-      <created>1412957336558</created>
-      <option name="number" value="00166" />
-      <option name="project" value="LOCAL" />
-      <updated>1412957336558</updated>
-    </task>
-    <task id="LOCAL-00167" summary="sauvegarde">
-      <created>1413183998398</created>
-      <option name="number" value="00167" />
-      <option name="project" value="LOCAL" />
-      <updated>1413183998398</updated>
-    </task>
-    <task id="LOCAL-00168" summary="sauvegarde">
-      <created>1413185065185</created>
-      <option name="number" value="00168" />
-      <option name="project" value="LOCAL" />
-      <updated>1413185065185</updated>
-    </task>
-    <task id="LOCAL-00169" summary="sauvegarde">
-      <created>1413187103090</created>
-      <option name="number" value="00169" />
-      <option name="project" value="LOCAL" />
-      <updated>1413187103090</updated>
-    </task>
-    <task id="LOCAL-00170" summary="sauvegarde">
-      <created>1413202171985</created>
-      <option name="number" value="00170" />
-      <option name="project" value="LOCAL" />
-      <updated>1413202171985</updated>
-    </task>
-    <task id="LOCAL-00171" summary="sauvegarde">
-      <created>1413215509374</created>
-      <option name="number" value="00171" />
-      <option name="project" value="LOCAL" />
-      <updated>1413215509374</updated>
-    </task>
-    <task id="LOCAL-00172" summary="sauvegarde">
-      <created>1413269993050</created>
-      <option name="number" value="00172" />
-      <option name="project" value="LOCAL" />
-      <updated>1413269993050</updated>
-    </task>
-    <task id="LOCAL-00173" summary="sauvegarde">
-      <created>1413272270250</created>
-      <option name="number" value="00173" />
-      <option name="project" value="LOCAL" />
-      <updated>1413272270250</updated>
-    </task>
-    <task id="LOCAL-00174" summary="sauvegarde">
-      <created>1413280356408</created>
-      <option name="number" value="00174" />
-      <option name="project" value="LOCAL" />
-      <updated>1413280356408</updated>
-    </task>
-    <task id="LOCAL-00175" summary="sauvegarde">
-      <created>1413280910760</created>
-      <option name="number" value="00175" />
-      <option name="project" value="LOCAL" />
-      <updated>1413280910760</updated>
-    </task>
-    <task id="LOCAL-00176" summary="sauvegarde">
-      <created>1413281747103</created>
-      <option name="number" value="00176" />
-      <option name="project" value="LOCAL" />
-      <updated>1413281747103</updated>
-    </task>
-    <task id="LOCAL-00177" summary="sauvegarde">
-      <created>1413285033878</created>
-      <option name="number" value="00177" />
-      <option name="project" value="LOCAL" />
-      <updated>1413285033878</updated>
-    </task>
-    <task id="LOCAL-00178" summary="sauvegarde">
-      <created>1413290679981</created>
-      <option name="number" value="00178" />
-      <option name="project" value="LOCAL" />
-      <updated>1413290679981</updated>
-    </task>
-    <task id="LOCAL-00179" summary="sauvegarde">
-      <created>1413292459114</created>
-      <option name="number" value="00179" />
-      <option name="project" value="LOCAL" />
-      <updated>1413292459115</updated>
-    </task>
-    <task id="LOCAL-00180" summary="sauvegarde">
-      <created>1413355880446</created>
-      <option name="number" value="00180" />
-      <option name="project" value="LOCAL" />
-      <updated>1413355880447</updated>
-    </task>
-    <task id="LOCAL-00181" summary="sauvegarde">
-      <created>1413357011022</created>
-      <option name="number" value="00181" />
-      <option name="project" value="LOCAL" />
-      <updated>1413357011022</updated>
-    </task>
-    <task id="LOCAL-00182" summary="sauvegarde">
-      <created>1413370104306</created>
-      <option name="number" value="00182" />
-      <option name="project" value="LOCAL" />
-      <updated>1413370104307</updated>
-    </task>
-    <task id="LOCAL-00183" summary="sauvegarde">
-      <created>1413379668362</created>
-      <option name="number" value="00183" />
-      <option name="project" value="LOCAL" />
-      <updated>1413379668362</updated>
-    </task>
-    <task id="LOCAL-00184" summary="sauvegarde">
-      <created>1413386118826</created>
-      <option name="number" value="00184" />
-      <option name="project" value="LOCAL" />
-      <updated>1413386118826</updated>
-    </task>
-    <task id="LOCAL-00185" summary="sauvegarde">
-      <created>1413389462606</created>
-      <option name="number" value="00185" />
-      <option name="project" value="LOCAL" />
-      <updated>1413389462606</updated>
-    </task>
-    <task id="LOCAL-00186" summary="sauvegarde">
-      <created>1413454835110</created>
-      <option name="number" value="00186" />
-      <option name="project" value="LOCAL" />
-      <updated>1413454835110</updated>
-    </task>
-    <task id="LOCAL-00187" summary="sauvegarde">
-      <created>1413475042935</created>
-      <option name="number" value="00187" />
-      <option name="project" value="LOCAL" />
-      <updated>1413475042935</updated>
-    </task>
-    <task id="LOCAL-00188" summary="sauvegarde">
-      <created>1413557967040</created>
-      <option name="number" value="00188" />
-      <option name="project" value="LOCAL" />
-      <updated>1413557967040</updated>
-    </task>
-    <task id="LOCAL-00189" summary="sauvegarde">
-      <created>1413561844444</created>
-      <option name="number" value="00189" />
-      <option name="project" value="LOCAL" />
-      <updated>1413561844444</updated>
-    </task>
-    <task id="LOCAL-00190" summary="sauvegarde">
-      <created>1413561935014</created>
-      <option name="number" value="00190" />
-      <option name="project" value="LOCAL" />
-      <updated>1413561935014</updated>
-    </task>
-    <task id="LOCAL-00191" summary="sauvegarde">
-      <created>1413807596883</created>
-      <option name="number" value="00191" />
-      <option name="project" value="LOCAL" />
-      <updated>1413807596883</updated>
-    </task>
-    <task id="LOCAL-00192" summary="sauvegarde">
-      <created>1413807615834</created>
-      <option name="number" value="00192" />
-      <option name="project" value="LOCAL" />
-      <updated>1413807615834</updated>
-    </task>
-    <task id="LOCAL-00193" summary="sauvegarde">
-      <created>1413807693657</created>
-      <option name="number" value="00193" />
-      <option name="project" value="LOCAL" />
-      <updated>1413807693657</updated>
-    </task>
-    <task id="LOCAL-00194" summary="sauvegarde">
-      <created>1413807715152</created>
-      <option name="number" value="00194" />
-      <option name="project" value="LOCAL" />
-      <updated>1413807715152</updated>
-    </task>
-    <task id="LOCAL-00195" summary="sauvegarde">
-      <created>1413807723947</created>
-      <option name="number" value="00195" />
-      <option name="project" value="LOCAL" />
-      <updated>1413807723947</updated>
-    </task>
-    <task id="LOCAL-00196" summary="sauvegarde">
-      <created>1413807732630</created>
-      <option name="number" value="00196" />
-      <option name="project" value="LOCAL" />
-      <updated>1413807732630</updated>
-    </task>
-    <task id="LOCAL-00197" summary="sauvegarde">
-      <created>1413810876053</created>
-      <option name="number" value="00197" />
-      <option name="project" value="LOCAL" />
-      <updated>1413810876053</updated>
-    </task>
-    <task id="LOCAL-00198" summary="sauvegarde">
-      <created>1413811611163</created>
-      <option name="number" value="00198" />
-      <option name="project" value="LOCAL" />
-      <updated>1413811611163</updated>
-    </task>
-    <task id="LOCAL-00199" summary="sauvegarde">
-      <created>1413814429339</created>
-      <option name="number" value="00199" />
-      <option name="project" value="LOCAL" />
-      <updated>1413814429339</updated>
-    </task>
-    <task id="LOCAL-00200" summary="sauvegarde">
-      <created>1413819630612</created>
-      <option name="number" value="00200" />
-      <option name="project" value="LOCAL" />
-      <updated>1413819630612</updated>
-    </task>
-    <task id="LOCAL-00201" summary="sauvegarde">
-      <created>1413819640167</created>
-      <option name="number" value="00201" />
-      <option name="project" value="LOCAL" />
-      <updated>1413819640167</updated>
-    </task>
-    <option name="localTasksCounter" value="202" />
+    <option name="localTasksCounter" value="152" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1421,7 +1602,7 @@
       <is-autoscroll-to-source value="false" />
     </todo-panel>
     <todo-panel id="all">
-      <are-packages-shown value="false" />
+      <are-packages-shown value="true" />
       <are-modules-shown value="false" />
       <flatten-packages value="false" />
       <is-autoscroll-to-source value="false" />
@@ -1434,66 +1615,49 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="-8" y="22" width="2576" height="1426" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Grunt" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30670926" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.76464325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35569754" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49369085" sideWeight="0.46502385" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.77760255" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298887" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Symfony2" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13486141" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5623028" sideWeight="0.5349761" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4536741" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3180851" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2539432" sideWeight="0.48290938" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Grunt" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2121451" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6632492" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40141955" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.09658188" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11486486" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26340693" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48107255" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Get Gist" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329653" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290735" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290735" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="REST Client" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33201894" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20553781" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.58359957" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4531915" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19893616" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290735" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Symfony2" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4536741" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3180851" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Grunt" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30670926" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290735" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1924307" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20531915" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.58359957" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
-      <collection />
+      <collection>
+        <UserGroup>
+          <option name="users">
+            <list>
+              <option value="me" />
+            </list>
+          </option>
+        </UserGroup>
+      </collection>
     </option>
     <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
       <collection />
@@ -1508,370 +1672,114 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <option name="MAXIMUM_HISTORY_ROWS" value="500" />
+    <MESSAGE value="first commit" />
+    <MESSAGE value="sauvegarde&#10;" />
+    <MESSAGE value="nginx conf bug fix" />
     <MESSAGE value="sauvegarde" />
     <option name="LAST_COMMIT_MESSAGE" value="sauvegarde" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/scss/sites/common/_typo.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.28" vertical-offset="0" max-vertical-offset="1392">
-          <caret line="2" column="8" selection-start-line="0" selection-start-column="0" selection-end-line="48" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooMobileBundle/Resources/views/Pratique/restauration.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.82369536" vertical-offset="72" max-vertical-offset="784">
-          <caret line="41" column="10" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooMobileBundle/Resources/views/Pratique/horaires_tarifs.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13540198" vertical-offset="0" max-vertical-offset="709">
-          <caret line="6" column="37" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooMobileBundle/Resources/views/Pratique/faq.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.119887166" vertical-offset="11" max-vertical-offset="1312">
-          <caret line="6" column="25" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooMobileBundle/Resources/views/Pratique/animations_spectacles.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13540198" vertical-offset="0" max-vertical-offset="709">
-          <caret line="6" column="47" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooMobileBundle/Resources/views/Pratique/acces.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13540198" vertical-offset="0" max-vertical-offset="709">
-          <caret line="6" column="27" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooMobileBundle/Controller/PratiqueController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.95977014" vertical-offset="340" max-vertical-offset="1168">
-          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooMobileBundle/Resources/views/Pratique/services.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13540198" vertical-offset="0" max-vertical-offset="709">
-          <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scss/sites/zoo/mobile/_vars.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18053597" vertical-offset="0" max-vertical-offset="709">
-          <caret line="8" column="64" selection-start-line="8" selection-start-column="64" selection-end-line="8" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scss/sites/common/_base.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-48.0" vertical-offset="0" max-vertical-offset="2464">
-          <caret line="75" column="3" selection-start-line="75" selection-start-column="3" selection-end-line="75" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scss/sites/zoo/_vars.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6318759" vertical-offset="0" max-vertical-offset="2672">
-          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooMobileBundle/Resources/views/Layouts/master.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9655172" vertical-offset="768" max-vertical-offset="1664">
-          <caret line="90" column="54" selection-start-line="90" selection-start-column="54" selection-end-line="90" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooMobileBundle/Resources/views/Partials/footer.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.112834975" vertical-offset="0" max-vertical-offset="709">
-          <caret line="5" column="52" selection-start-line="5" selection-start-column="52" selection-end-line="5" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scss/sites/zoo/mobile/_main_menu.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36107194" vertical-offset="432" max-vertical-offset="1168">
-          <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scss/sites/common/_button.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5714286" vertical-offset="0" max-vertical-offset="1984">
-          <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scss/sites/zoo/mobile/master.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7801724" vertical-offset="3457" max-vertical-offset="4640">
-          <caret line="250" column="0" selection-start-line="250" selection-start-column="0" selection-end-line="250" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/admin/newPost.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4909596" vertical-offset="1152" max-vertical-offset="2352">
-          <caret line="139" column="5" selection-start-line="139" selection-start-column="5" selection-end-line="139" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/admin/post/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="785" max-vertical-offset="1504">
-          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/Layouts/master.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.44" vertical-offset="66" max-vertical-offset="1120">
-          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/views/Actualite/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07048458" vertical-offset="0" max-vertical-offset="5168">
-          <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/views/Actualite/single.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.02349486" vertical-offset="0" max-vertical-offset="1472">
-          <caret line="1" column="37" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/config/routing/photos.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="992">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backup/post/PostController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1313131" vertical-offset="0" max-vertical-offset="2544">
-          <caret line="59" column="45" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Controller/ActualiteController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4334086" vertical-offset="240" max-vertical-offset="1648">
-          <caret line="45" column="78" selection-start-line="45" selection-start-column="78" selection-end-line="45" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="624" max-vertical-offset="1696">
-          <caret line="54" column="50" selection-start-line="54" selection-start-column="50" selection-end-line="54" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/list.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="911">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backup/post/post/update.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="911">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backup/post/post/list.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28893906" vertical-offset="0" max-vertical-offset="1328">
-          <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/update.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="911">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PublishedPostRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="911">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PostTag.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-40.28" vertical-offset="1505" max-vertical-offset="2848">
-          <caret line="157" column="31" selection-start-line="157" selection-start-column="31" selection-end-line="157" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PublishedPost.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-126.68" vertical-offset="81" max-vertical-offset="3776">
-          <caret line="203" column="27" selection-start-line="203" selection-start-column="27" selection-end-line="203" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/NewsletterSubscriber.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45146728" vertical-offset="960" max-vertical-offset="4016">
-          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/list_archived.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="911">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/list_published.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="911">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Form/Type/PostType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.92" vertical-offset="0" max-vertical-offset="768">
-          <caret line="35" column="60" selection-start-line="35" selection-start-column="60" selection-end-line="35" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/config/routing/actualite.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="719">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="209" max-vertical-offset="1792">
-          <caret line="32" column="66" selection-start-line="32" selection-start-column="66" selection-end-line="32" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backup/post/Post.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-65.28" vertical-offset="864" max-vertical-offset="10352">
-          <caret line="159" column="7" selection-start-line="159" selection-start-column="7" selection-end-line="159" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/Post.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.0" vertical-offset="2394" max-vertical-offset="5504">
-          <caret line="159" column="6" selection-start-line="159" selection-start-column="6" selection-end-line="159" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/faq/create.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.8" vertical-offset="362" max-vertical-offset="1056">
-          <caret line="52" column="88" selection-start-line="52" selection-start-column="88" selection-end-line="52" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/Navs/sidebar.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.12" vertical-offset="0" max-vertical-offset="6080">
-          <caret line="8" column="58" selection-start-line="8" selection-start-column="58" selection-end-line="8" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/faq/list.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="911">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/config/routing/posts.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="880">
-          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backup/post/PostTag.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.12" vertical-offset="165" max-vertical-offset="2432">
-          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backup/post/post/create.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-32.88" vertical-offset="506" max-vertical-offset="3376">
-          <caret line="83" column="22" selection-start-line="83" selection-start-column="22" selection-end-line="83" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PostCategory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.0" vertical-offset="353" max-vertical-offset="2848">
-          <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/create.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.44" vertical-offset="0" max-vertical-offset="1456">
-          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Controller/General/PostController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-29.68" vertical-offset="1018" max-vertical-offset="1904">
-          <caret line="115" column="23" selection-start-line="115" selection-start-column="23" selection-end-line="115" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.6919275" vertical-offset="1336" max-vertical-offset="2618">
+          <caret line="133" column="177" selection-start-line="133" selection-start-column="177" selection-end-line="133" selection-end-column="177" />
+          <folding>
+            <element signature="e#502#552#0#PHP" expanded="true" />
+            <element signature="e#1384#1411#1#PHP" expanded="true" />
+            <element signature="e#1540#1570#1#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/admin/post/editPostApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10967742" vertical-offset="0" max-vertical-offset="1240">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/admin/post/configs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26048386" vertical-offset="0" max-vertical-offset="1240">
+          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/admin/post/categoryFactory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19193548" vertical-offset="0" max-vertical-offset="1240">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/admin/post/CategoriesClass.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4903226" vertical-offset="38" max-vertical-offset="2278">
+          <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/admin/post/zooEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5483871" vertical-offset="527" max-vertical-offset="1955">
+          <caret line="71" column="40" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/publish.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5403818" vertical-offset="0" max-vertical-offset="1264">
-          <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.4901153" vertical-offset="1326" max-vertical-offset="7871">
+          <caret line="113" column="90" selection-start-line="113" selection-start-column="90" selection-end-line="113" selection-end-column="90" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#1;n#div#2;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#1;n#div#3;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#1;n#div#4;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/config/services.xml">
+    <entry file="file://$PROJECT_DIR$/web/js/admin/post/recapApp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.895719" vertical-offset="0" max-vertical-offset="5008">
-          <caret line="51" column="55" selection-start-line="51" selection-start-column="55" selection-end-line="51" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.06927466" vertical-offset="0" max-vertical-offset="1227">
+          <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/admin/post/postDatas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42950284" vertical-offset="0" max-vertical-offset="1227">
+          <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/config/routing/posts.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.63732684" vertical-offset="0" max-vertical-offset="1227">
+          <caret line="39" column="63" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4987775" vertical-offset="0" max-vertical-offset="2312">
+          <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1880,7 +1788,7 @@
     <states>
       <state key="ScopeChooserConfigurable.UI">
         <settings>
-          <last-edited>types</last-edited>
+          <last-edited>fixtures</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1889,17 +1797,16 @@
             </option>
           </splitter-proportions>
           <order>
+            <scope name="entities" />
+            <scope name="controllers" />
             <scope name="scss" />
             <scope name="twig" />
-            <scope name="vendorjs" />
             <scope name="routes" />
             <scope name="services" />
             <scope name="css" />
-            <scope name="controllers" />
-            <scope name="fixtures" />
-            <scope name="entities" />
             <scope name="js" />
-            <scope name="types" />
+            <scope name="vendorjs" />
+            <scope name="fixtures" />
           </order>
         </settings>
       </state>

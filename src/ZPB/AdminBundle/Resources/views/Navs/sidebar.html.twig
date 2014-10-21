@@ -15,10 +15,10 @@
                     <ul>
                         <li class="sidebar-dropdown {% if active in post_pages %}active{% endif %}"><a href="javascript:void(0)">Actualités </a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
-                                <li class="{% if active == "write_post" %}active{% endif %}"><a href="{{ path("zpb_sites_zoo_actualites_create") }}">Ecrire</a></li>
-                                <li class="{% if active == "list_post_draft" %}active{% endif %}"><a href="{{ path("zpb_sites_zoo_actualites_list") }}">Les brouillons</a></li>
-                                <li class="{% if active == "list_post_publish" %}active{% endif %}"><a href="{{ path("zpb_sites_zoo_actualites_list_published") }}">Les publiés</a></li>
-                                <li class="{% if active == "list_post_rachive" %}active{% endif %}"><a href="{{ path("zpb_sites_zoo_actualites_list_archived") }}">Les archivés</a></li>
+                                <li class="{% if active == "write_post" %}active{% endif %}"><a href="{{ path("zpb_admin_actualites_create") }}">Ecrire</a></li>
+                                <li class="{% if active == "list_post_draft" %}active{% endif %}"><a href="{{ path("zpb_admin_actualites_list") }}">Les brouillons</a></li>
+                                <li class="{% if active == "list_post_publish" %}active{% endif %}"><a href="{{ path("zpb_admin_actualites_list_published") }}">Les publiés</a></li>
+                                <li class="{% if active == "list_post_rachive" %}active{% endif %}"><a href="{{ path("zpb_admin_actualites_list_archived") }}">Les archivés</a></li>
                             </ul>
                             <ul>
                                 <li class="sidebar-dropdown {% if active in cat_post_pages %}active{% endif %}"><a href="javascript:void(0)">Les catégories</a><i class="sidebar-icon fa fa-angle-right"></i>
