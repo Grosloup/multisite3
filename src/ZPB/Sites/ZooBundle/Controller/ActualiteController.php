@@ -32,9 +32,13 @@ class ActualiteController extends BaseController
         //
         // paginés
         //
-        /*$target = $this->getRepo('ZPBAdminBundle:PostTarget')->findOneByAcronym('zb');
-        $posts = $this->getRepo('ZPBAdminBundle:Post')->getPublished($target);
-        return $this->render('ZPBSitesZooBundle:Actualite:index.html.twig', ['posts'=>$posts, 'img_factory'=>$this->get('zpb.image_factory')]);*/
+
+
+        $posts = $this->getRepo('ZPBAdminBundle:PublishedPost')->getByTarget('zoo');
+        $tags = $this->getRepo('ZPBAdminBundle:PostTag')->getByTarget('zoo');
+        $categories  = $this->getRepo('ZPBAdminBundle:PostCategory')->getByTarget('zoo');
+
+        return $this->render('ZPBSitesZooBundle:Actualite:index.html.twig', ['posts'=>$posts, 'tags'=>$tags, 'categories'=>$categories]);
     }
 
     // tri par categorie, publiés, ciblants zoo, paginés

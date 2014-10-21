@@ -12,4 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostTagRepository extends EntityRepository
 {
+    public function getByTarget($target)
+    {
+        $qb = $this->createQueryBuilder('t')->where('t.target = :target')->orderBy('t.name', 'DESC');
+        $qb->setParameter('target', $target);
+        return $qb->getQuery()->getResult();
+    }
 }

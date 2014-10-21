@@ -1,23 +1,24 @@
-zpb_admin_posts_tags_list:
-    path: /
-    defaults: { _controller: ZPBAdminBundle:General/PostTag:list }
-    methods: ["GET"]
-
-zpb_admin_posts_tags_create:
-    path: /nouvelle
-    defaults: { _controller: ZPBAdminBundle:General/PostTag:create }
-    methods: ["GET","POST"]
-
-zpb_admin_posts_tags_update:
-    path: /modifier/{id}
-    defaults: { _controller: ZPBAdminBundle:General/PostTag:update }
-    methods: ["GET","POST"]
-    requirements:
-        id: \d+
-
-zpb_admin_posts_tags_delete:
-    path: /supprimer/{id}
-    defaults: { _controller: ZPBAdminBundle:General/PostTag:delete }
-    methods: ["GET"]
-    requirements:
-        id: \d+
+#zpb_admin_posts_tags_list:
+#    path: /
+#    defaults: { _controller: ZPBAdminBundle:General/PostTag:list }
+#    methods: ["GET"]
+#
+#zpb_admin_posts_tags_create:
+#    path: /nouvelle
+#    defaults: { _controller: ZPBAdminBundle:General/PostTag:create }
+#    methods: ["GET","POST"]
+#
+#zpb_admin_posts_tags_update:
+#    path: /modifier/{id}
+#    defaults: { _controller: ZPBAdminBundle:General/PostTag:update }
+#    methods: ["GET","POST"]
+#    requirements:
+#        id: \d+
+#
+#zpb_admin_posts_tags_delete:
+#    path: /supprimer/{id}
+#    defaults: { _controller: ZPBAdminBundle:General/PostTag:delete }
+#    methods: ["GET"]
+#    requirements:
+#        id: \d+
+#
