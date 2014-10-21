@@ -212,6 +212,6 @@ class PostController extends BaseController
         $post = $this->getRepo('ZPBAdminBundle:Post')->find($postDatas["postId"]);
 
 
-        return new JsonResponse(["error"=>false, "messages"=>[], "post"=>$postDatas]);
+        return new JsonResponse(["error"=>false, "messages"=>[], "post"=>$post]);
     }
 }

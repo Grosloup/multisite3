@@ -4,6 +4,7 @@ namespace ZPB\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JsonSerializable;
 
 /**
  * Post
@@ -11,7 +12,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ORM\Table(name="zpb_posts")
  * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\PostRepository")
  */
-class Post
+class Post implements JsonSerializable
 {
     /**
      * @var integer
@@ -335,4 +336,15 @@ class Post
     }
 
 
+    /**
+     * (PHP 5 &gt;= 5.4.0)<br/>
+     * Specify data which should be serialized to JSON
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     */
+    function jsonSerialize()
+    {
+        return ['id'=>$this->getId(), 'body'=>$this->getBody(), 'excerpt'=>$this->getExcerpt()];
+    }
 }
