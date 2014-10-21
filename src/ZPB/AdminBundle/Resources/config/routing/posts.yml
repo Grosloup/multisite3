@@ -26,7 +26,10 @@ zpb_admin_actualites_publier:
         id: \d+
 
 
-
+zpb_admin_actualite_img_upload:
+    path: /image/upload
+    defaults: { _controller: ZPBAdminBundle:General/Post:postImageUpload }
+    methods: ["POST"]
 
 ########### api routes
 zpb_admin_actualites_api_post_categorie:
