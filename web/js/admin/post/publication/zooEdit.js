@@ -20,7 +20,7 @@ zooEditApp.controller('ZooController',['$scope','$window','$postDatas','$categor
     Categories.initialize($window["initialsCategotries_" + target]);
     //Categories.initialize(testCategories);
 
-    Tags.initialize($window["initialsCategotries_" + target]);
+    Tags.initialize($window["initialsTags_" + target]);
     //Tags.initialize(testTags);
 
     $scope.categories = Categories.all();

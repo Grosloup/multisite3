@@ -17,7 +17,7 @@
     (_ (_   |   |   |  |   |   |
       (__<  |mm_|mm_|  |mm_|mm_|
 */
-
+?>
 namespace ZPB\AdminBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;

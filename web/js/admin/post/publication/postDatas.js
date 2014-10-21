@@ -1,7 +1,8 @@
 var postDatasApp = angular.module('PostDataApp', []);
 
-postDatasApp.service('$postDatas', function(){
+postDatasApp.service('$postDatas', ['$window',function($window){
     return {
+        postId: $window.postId || null,
         editOn: {
             zoo: false,
             bn: false,
@@ -35,4 +36,4 @@ postDatasApp.service('$postDatas', function(){
             tags: []
         }
     };
-});
+}]);

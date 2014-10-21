@@ -7,7 +7,7 @@ recapApp.controller('RecapController', ['$scope','$postDatas','configs','$http',
     $scope.display_errors = false;
     $scope.display_results = false;
     $scope.errors = {messages:[]};
-    var saveUrl = configs.urls.post.base + configs.urls.post.save;
+    var saveUrl = configs.urls.base + configs.urls.post.base + configs.urls.post.save;
 
     function validatePost(datas){
         var countTarget= 0, countCategoryErrors = 0;
@@ -50,7 +50,7 @@ recapApp.controller('RecapController', ['$scope','$postDatas','configs','$http',
 
         $http.post(saveUrl, $scope.datas)
             .success(function(data, status, headers, config){
-                if(data.error = false){
+                if(data.error == false){
                     $scope.display_results = true;
 
                 } else {

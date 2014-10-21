@@ -34,7 +34,8 @@ class PostController extends BaseController
 {
     public function listAction()
     {
-        return $this->render('ZPBAdminBundle:General/Post:list.html.twig', []);
+        $posts = $this->getRepo('ZPBAdminBundle:Post')->findBy([], ['createdAt'=>'ASC']);
+        return $this->render('ZPBAdminBundle:General/Post:list.html.twig', ['posts'=>$posts]);
     }
 
     public function createAction(Request $request)
@@ -69,6 +70,7 @@ class PostController extends BaseController
 
         return $this->render('ZPBAdminBundle:General/Post:publish.html.twig',
             [
+                'id'=>$id,
                 'targets'=>$this->getTargets(),
                 'categories'=>$this->getCategoriesByTarget(),
                 'tags'=>$this->getTagsByTarget()
@@ -197,5 +199,19 @@ class PostController extends BaseController
 
 
         return new JsonResponse(["error"=>false, "tag"=>["name"=>$tag->getName(),"id"=>$tag->getId(),"slug"=>$tag->getSlug(),"target"=>$tag->getTarget()]]);
+    }
+
+    public function apiPublishPostAction(Request $request)
+    {
+        if(!$request->isXmlHttpRequest()){
+            throw $this->createAccessDeniedException();
+        }
+
+        $postDatas = json_decode($request->getContent(), true);
+
+        $post = $this->getRepo('ZPBAdminBundle:Post')->find($postDatas["postId"]);
+
+
+        return new JsonResponse(["error"=>false, "messages"=>[], "post"=>$postDatas]);
     }
 }

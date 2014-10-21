@@ -43,6 +43,10 @@ zpb_admin_actualites_api_post_tag:
     defaults: { _controller: ZPBAdminBundle:General/Post:apiTagCreate }
     methods: ["POST"]
 
+zpb_admin_actualites_api_post_save:
+    path: /api/post
+    defaults: { _controller: ZPBAdminBundle:General/Post:apiPublishPost }
+    methods: ["POST"]
 
 
 

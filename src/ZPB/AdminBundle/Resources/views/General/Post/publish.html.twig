@@ -6,6 +6,7 @@
 {% block angular %}EditPostApp{% endblock %}
 {% block headScripts %}
     <script>
+        var postId = {{ id }};
         {% for key,cats in categories %}
             var initialsCategotries_{{ key }} = [
                 {%- for cat in cats -%}
@@ -355,27 +356,27 @@
                 <div>
                     <div class="card">
                         <p ng-show="datas.editOn.zoo">Edité sur ZooParc de Beauval</p>
-                        <p ng-show="datas.zoo.category">Dans la category {$ datas.zoo.category.name $}</p>
+                        <p ng-show="datas.zoo.category">Dans la categorie {$ datas.zoo.category.name $}</p>
                         <p ng-show="datas.zoo.tags.length">Mots-clés : <span ng-repeat="t in datas.zoo.tags|orderBy:'name'">{$ t.name $}, </span></p>
                     </div>
                     <div class="card">
                         <p ng-show="datas.editOn.bn">Edité sur Beauval Nature</p>
-                        <p ng-show="datas.bn.category">Dans la category {$ datas.bn.category.name $}</p>
+                        <p ng-show="datas.bn.category">Dans la categorie {$ datas.bn.category.name $}</p>
                         <p ng-show="datas.bn.tags.length">Mots-clés : <span ng-repeat="t in datas.bn.tags|orderBy:'name'">{$ t.name $}, </span></p>
                     </div>
                     <div class="card">
                         <p ng-show="datas.editOn.jdb">Edité sur Les Jardins de Beauval</p>
-                        <p ng-show="datas.jdb.category">Dans la category {$ datas.jdb.category.name $}</p>
+                        <p ng-show="datas.jdb.category">Dans la categorie {$ datas.jdb.category.name $}</p>
                         <p ng-show="datas.jdb.tags.length">Mots-clés : <span ng-repeat="t in datas.jdb.tags|orderBy:'name'">{$ t.name $}, </span></p>
                     </div>
                     <div class="card">
                         <p ng-show="datas.editOn.hdb">Edité sur Les Hameaux de Beauval</p>
-                        <p ng-show="datas.hdb.category">Dans la category {$ datas.hdb.category.name $}</p>
+                        <p ng-show="datas.hdb.category">Dans la categorie {$ datas.hdb.category.name $}</p>
                         <p ng-show="datas.hdb.tags.length">Mots-clés : <span ng-repeat="t in datas.hdb.tags|orderBy:'name'">{$ t.name $}, </span></p>
                     </div>
                     <div class="card">
                         <p ng-show="datas.editOn.pdb">Edité sur Les Pagodes de Beauval</p>
-                        <p ng-show="datas.pdb.category">Dans la category {$ datas.pdb.category.name $}</p>
+                        <p ng-show="datas.pdb.category">Dans la categorie {$ datas.pdb.category.name $}</p>
                         <p ng-show="datas.pdb.tags.length">Mots-clés : <span ng-repeat="t in datas.pdb.tags|orderBy:'name'">{$ t.name $}, </span></p>
                     </div>
                 </div>
@@ -397,51 +398,7 @@
             </div>
 
             <div class="tile">
-                <form action="" method="post">
-                    <input name="edit_post_form[post_id]" type="hidden" value=""/>
-                    <!-- zoo -->
-
-                    <input name="edit_post_form[edit_on_zoo]" type="hidden" value="{$ datas.editOn.zoo $}"/>
-                    <input name="edit_post_form[zoo][cat]" type="hidden" value="{$ datas.zoo.category.id $}"/>
-                    <input name="edit_post_form[zoo][tags][]" type="hidden" ng-repeat="t in datas.zoo.tags" value="{$ t.id $}"/>
-
-                    <!-- end zoo -->
-
-                    <!-- bn -->
-
-                    <input name="edit_post_form[edit_on_bn]" type="hidden" value="{$ datas.editOn.bn $}"/>
-                    <input name="edit_post_form[bn][cat]" type="hidden" value="{$ datas.bn.category.id $}"/>
-                    <input name="edit_post_form[bn][tags][]" type="hidden" ng-repeat="t in datas.bn.tags" value="{$ t.id $}"/>
-
-                    <!-- end bn -->
-
-                    <!-- jdb -->
-
-                    <input name="edit_post_form[edit_on_jdb]" type="hidden" value="{$ datas.editOn.jdb $}"/>
-                    <input name="edit_post_form[jdb][cat]" type="hidden" value="{$ datas.jdb.category.id $}"/>
-                    <input name="edit_post_form[jdb][tags][]" type="hidden" ng-repeat="t in datas.jdb.tags" value="{$ t.id $}"/>
-
-                    <!-- end jdb -->
-
-
-                    <!-- hdb -->
-
-                    <input name="edit_post_form[edit_on_hdb]" type="hidden" value="{$ datas.editOn.hdb $}"/>
-                    <input name="edit_post_form[hdb][cat]" type="hidden" value="{$ datas.hdb.category.id $}"/>
-                    <input name="edit_post_form[hdb][tags][]" type="hidden" ng-repeat="t in datas.hdb.tags" value="{$ t.id $}"/>
-
-                    <!-- end hdb -->
-
-                    <!-- pdb -->
-
-                    <input name="edit_post_form[edit_on_pdb]" type="hidden" value="{$ datas.editOn.pdb $}"/>
-                    <input name="edit_post_form[pdb][cat]" type="hidden" value="{$ datas.pdb.category.id $}"/>
-                    <input name="edit_post_form[pdb][tags][]" type="hidden" ng-repeat="t in datas.pdb.tags" value="{$ t.id $}"/>
-
-                    <!-- end hdb -->
-
-
-
+                <form>
                     <button class="btn btn-primary" ng-show="!post_is_saving" ng-click="save()">Publier</button><div class="loader" ng-show="post_is_saving"></div>
                 </form>
             </div>
