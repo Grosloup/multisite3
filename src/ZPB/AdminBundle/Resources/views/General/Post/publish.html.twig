@@ -382,6 +382,20 @@
 
 
             </div>
+
+            <div class="tile" ng-show="display_errors">
+                <div class="tile-header">
+                    Des erreurs existent
+                </div>
+                <ul>
+                    <li ng-repeat="error in errors.messages">{$ error $}</li>
+                </ul>
+            </div>
+
+            <div class="tile" ng-show="display_results">
+                Article publié.
+            </div>
+
             <div class="tile">
                 <form action="" method="post">
                     <input name="edit_post_form[post_id]" type="hidden" value=""/>
@@ -428,7 +442,7 @@
 
 
 
-                    <button class="btn btn-primary">Publier</button>
+                    <button class="btn btn-primary" ng-show="!post_is_saving" ng-click="save()">Publier</button><div class="loader" ng-show="post_is_saving"></div>
                 </form>
             </div>
 

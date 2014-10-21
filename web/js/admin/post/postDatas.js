@@ -10,22 +10,27 @@ postDatasApp.service('$postDatas', function(){
             pdb: false
         },
         zoo:{
+            name: "ZooParc de Beauval",
             category: null,
             tags: []
         },
         bn:{
+            name: "Beauval Nature",
             category: null,
             tags: []
         },
         jdb:{
+            name: "Les Jardins de Beauval",
             category: null,
             tags: []
         },
         hdb:{
+            name: "Les Hameaux de Beauval",
             category: null,
             tags: []
         },
         pdb:{
+            name: "Les Pagodes de Beauval",
             category: null,
             tags: []
         }

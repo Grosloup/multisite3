@@ -4,7 +4,11 @@ angular.module('$configs', [])
     {
         urls: {
             "base": "/actualites/api",
-            categories: {
+            "post": {
+                "base": "/post",
+                "save": ""
+            },
+            "categories": {
                 "base":"/post/categories",
                 "save": "",
                 "update": "",
@@ -12,7 +16,7 @@ angular.module('$configs', [])
                 "getAll": "",
                 "delete": "/"
             },
-            tags: {
+            "tags": {
                 "base": "/post/tags",
                 "save": "",
                 "update": "",

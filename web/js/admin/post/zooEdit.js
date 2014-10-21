@@ -1,6 +1,7 @@
 var zooEditApp = angular.module("ZooEditApp",['PostDataApp', 'CategoryFactory','TagFactory']);
 
-
+/*var testCategories = [{id:1, name:"cat 1", slug:"cat-1", target: "zoo"},{id:2, name:"cat-2", slug:"cat 2", target: "zoo"},{id:3, name:"cat 3", slug:"cat-3", target: "zoo"}];
+var testTags = [{id:1, name:"tag 1", slug:"tag-1", target: "zoo"},{id:2, name:"tag-2", slug:"tag 2", target: "zoo"},{id:3, name:"tag 3", slug:"tag-3", target: "zoo"}];*/
 
 zooEditApp.controller('ZooController',['$scope','$window','$postDatas','$categories','$tags', function($scope,$window, $postDatas,$categories,$tags){
     var target = "zoo";
@@ -17,7 +18,6 @@ zooEditApp.controller('ZooController',['$scope','$window','$postDatas','$categor
     var Categories = $categories.get();
     var Tags = $tags.get();
     Categories.initialize($window["initialsCategotries_" + target]);
-
     Tags.initialize($window["initialsCategotries_" + target]);
 
     $scope.categories = Categories.all();
@@ -30,6 +30,7 @@ zooEditApp.controller('ZooController',['$scope','$window','$postDatas','$categor
 
 
     $scope.newCatForPost = function(){
+
         if($scope.new_cat_name == ""){
             return;
         }
