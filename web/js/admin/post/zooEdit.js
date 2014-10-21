@@ -18,7 +18,10 @@ zooEditApp.controller('ZooController',['$scope','$window','$postDatas','$categor
     var Categories = $categories.get();
     var Tags = $tags.get();
     Categories.initialize($window["initialsCategotries_" + target]);
+    //Categories.initialize(testCategories);
+
     Tags.initialize($window["initialsCategotries_" + target]);
+    //Tags.initialize(testTags);
 
     $scope.categories = Categories.all();
     $scope.new_cat_name = "";

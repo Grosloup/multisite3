@@ -1,6 +1,6 @@
 var recapApp = angular.module('RecapApp', ['PostDataApp','$configs']);
 
-recapApp.controller('RecapController', ['$scope','$postDatas','configs', function($scope, $postDatas,configs){
+recapApp.controller('RecapController', ['$scope','$postDatas','configs','$http', function($scope, $postDatas,configs,$http){
     $scope.datas = $postDatas;
 
     $scope.post_is_saving = false;
@@ -52,15 +52,18 @@ recapApp.controller('RecapController', ['$scope','$postDatas','configs', functio
             .success(function(data, status, headers, config){
                 if(data.error = false){
                     $scope.display_results = true;
-                    $scope.post_is_saving = false;
+
                 } else {
                     $scope.errors.messages = data.messages;
                     $scope.display_errors = true;
 
                 }
+                $scope.post_is_saving = false;
             })
-            .error(function(data, status, headers, config){
-
+            .error(function(data, status, headers, config, statusText){
+                $scope.errors.messages = ["Error " + status ];
+                $scope.post_is_saving = false;
+                $scope.display_errors = true;
             });
     }
 }]);
