@@ -42,6 +42,7 @@
 
                 <div class="form-row {% if form.excerpt.vars.errors|length>0 %}has-error{% endif %}">
                     {{ form_label(form.excerpt) }}
+                    <div class="char-counter" >Nombre de caractères : <span id="excerpt-char-counter">0</span></div>
                     <div class="form-field">
                         {{ form_widget(form.excerpt, {attr:{'data-editor':'html', 'data-editorsize':'small'}}) }}
                         {% if form.excerpt.vars.errors|length>0 %}

@@ -53,3 +53,6 @@ SitemapUrl : loc, lastmod, changefreq, priority
 
 robot.txt => dir web/robots/ zoobeauval.txt... jdb.txt...
 regles de redirection dans nginx => https://zoobeauval.com/robot.txt => https://zoobeauval.com/robots/zoobeauval.txt ..etc...
+
+meta description length google entre 150 et 160 caractères
+meta description length fb jusqu'à 300 caractères

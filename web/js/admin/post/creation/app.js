@@ -6,7 +6,7 @@ $(function(){
         var textarea = $(this);
         var mode = textarea.data('editor') || 'html';
         var size = textarea.data('editorsize') || 'medium';
-        var height = (size == "small") ? 250 : (size == "medium") ? 400 : (size == "large") ? 600 : 800;
+        var height = (size == "small") ? 100 : (size == "medium") ? 400 : (size == "large") ? 600 : 800;
         var options = {
             position: 'absolute',
             width: textarea.width(),
@@ -28,6 +28,11 @@ $(function(){
             textarea.val(editor.getSession().getValue());
         });
 
+        editor.on("change", function(){
+            if(textarea.attr("id") == "new_post_form_excerpt"){
+                $("#excerpt-char-counter").text(editor.getSession().getValue().length);
+            }
+        });
 
     });
 
