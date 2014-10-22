@@ -1,7 +1,7 @@
 {% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
 
-{% block title %}Ecrire | Actulité{% endblock %}
-{% set active = "write_post" %}
+{% block title %}Modifier un article publié | Actulité{% endblock %}
+{% set active = "update_post" %}
 
 {% block content %}
 
@@ -10,7 +10,7 @@
         <div class="column-6">
             <div class="tile">
                 <div class="tile-header">
-                    Ecrire un article
+                    Modifier un article publié
                 </div>
 
                 {{ form_start(form, {attr:{class: "form", novalidate:true}}) }}
@@ -53,7 +53,6 @@
                 </div>
                 <div class="form-row">
                     {{ form_widget(form.save, {attr: {class: "btn-flat btn-primary"}})}}
-                    {{ form_widget(form.publish, {attr: {class: "btn-flat btn-primary"}})}}
                 </div>
 
                 {{ form_end(form) }}
@@ -125,3 +124,5 @@
     <script>var uploadImageUrl = "{{ path("zpb_admin_actualite_img_upload") }}";</script>
     <script src="/js/admin/post/creation/app.js"></script>
 {% endblock %}
+
+

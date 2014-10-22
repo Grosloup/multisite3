@@ -353,4 +353,9 @@ class Post implements JsonSerializable
     {
         return ['id'=>$this->getId(), 'body'=>$this->getBody(), 'excerpt'=>$this->getExcerpt()];
     }
+
+    public function __toString()
+    {
+        return $this->title;
+    }
 }

@@ -33,6 +33,10 @@ zpb_sites_zoo_mobile_faq:
     defaults: { _controller: ZPBSitesZooMobileBundle:Pratique:faq }
     methods: ["GET"]
 
+zpb_sites_zoo_mobile_actualite:
+    path:     /actualite
+    defaults: { _controller: ZPBSitesZooMobileBundle:Actualit:index }
+    methods: ["GET"]
 
 
 

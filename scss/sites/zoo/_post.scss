@@ -1,106 +1,112 @@
 .posts{
+  @include clearfix;
   .post-col{
     float: left;
-    width: 50%;
+    width: 100%;
     padding: 0 10px;
   }
   .post{
-
-
-    &:hover{
-      border: 1px solid $ocean;
-      .post-date{
-        background-color: $ocean;
-      }
-      .post-title{
-
-        a{
-          color: $ocean;
-        }
-      }
-      .post-excerpt{
-
-
-        .post-more{
-          background-color: $ocean;
-          a{
-
-            color: $blanc;
-          }
-        }
-      }
-    }
     padding: 20px;
     margin: 30px 0 10px;
     border: 1px solid $grisBB;
     position: relative;
     @include clearfix;
-    .post-category{
-      font-size: topx($fontSize * 0.75);
-      color: lighten($grisFonce, 50);
-      a{
-        color: lighten($grisFonce, 50);
-        &:hover{
-          color: $bleu;
-        }
-      }
-    }
-    .post-title{
-      font-size: topx($fontSize * 1.25);
-      margin: 0 0 20px 0;
-      a{
-        color: $grisFonce;
-      }
-    }
-    .post-date{
-      position: absolute;
-      height: 30px;
-      line-height: 30px;
-      width: 105px;
-      font-size: topx($fontSize * 0.75);
-      top: -30px;
-      text-align: center;
-      background-color: $grisBB;
-      color: $blanc;
-    }
-    .post-thumbnail{
-      float: left;
-      width: 105px;
-      img{
-        width: 100%;
-      }
-    }
-    .post-excerpt{
-     margin-left: 125px;
-      /* margin-right: 100px;*/
-      &.post-has-thumbnail{
-        margin-left: 330px;
-      }
-      .post-more{
-        margin-top: 20px;
-        display: inline-block;
-        background-color: $grisBB;
-        //border: 1px solid $grisBB;
-        line-height: 25px;
-        height: 25px;
-        padding: 0 5px;
+    header{
+      .post-category{
         font-size: topx($fontSize * 0.75);
+        color: lighten($grisFonce, 50);
         a{
-          color: $blanc;
+          color: lighten($grisFonce, 50);
+          &:hover{
+            color: $bleu;
+          }
+        }
+      }
+      .post-title{
+        font-size: topx($fontSize * 1.25);
+        margin: 0 0 20px 0;
+        a{
+          color: $grisFonce;
+        }
+      }
+      .post-date{
+        position: absolute;
+        height: 30px;
+        line-height: 30px;
+        width: 105px;
+        font-size: topx($fontSize * 0.75);
+        top: -30px;
+        text-align: center;
+        background-color: $grisBB;
+        color: $blanc;
+      }
+    }
+    article{
+      @include clearfix;
+      .post-thumbnail{
+        float: left;
+        width: 105px;
+        img{
+          width: 100%;
+        }
+      }
+      .post-excerpt{
+        margin-left: 125px;
+
+        &.post-has-thumbnail{
+          margin-left: 330px;
+        }
+        .post-more{
+          margin-top: 20px;
+          display: inline-block;
+          background-color: $grisBB;
+          line-height: 25px;
+          height: 25px;
+          padding: 0 5px;
+          font-size: topx($fontSize * 0.75);
+          a{
+            color: $blanc;
+          }
         }
       }
     }
-    .post-tags{
-      padding: 8px 0 0 0 ;
-      ul{
-        li{
-          display: inline-block;
-          font-size: topx($fontSize * 0.75);
-          color: $grisBB;
-          a{
+    footer{
+      .post-tags{
+        padding: 8px 0 0 0 ;
+        ul{
+          li{
+            display: inline-block;
+            font-size: topx($fontSize * 0.75);
             color: $grisBB;
-            &:hover{
-              color: $ocean;
+            a{
+              color: $grisBB;
+              &:hover{
+                color: $ocean;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &:hover{
+      border: 1px solid $ocean;
+      header{
+        .post-date{
+          background-color: $ocean;
+        }
+        .post-title{
+          a{
+            color: $ocean;
+          }
+        }
+      }
+      article{
+        .post-excerpt{
+          .post-more{
+            background-color: $ocean;
+            a{
+              color: $blanc;
             }
           }
         }
@@ -108,7 +114,32 @@
     }
   }
 }
+@media only screen and (min-width: 960px){
+  .posts{
+    .post-col{
+      width: 50%;
+    }
+    .post{
+      article{
+        .post-excerpt{
+          font-size: topx($fontSize * 0.8);
+        }
+      }
+    }
+  }
 
+}
+@media only screen and (min-width: 1280px){
+  .posts{
+    .post{
+      article{
+        .post-excerpt{
+          font-size: topx($fontSize);
+        }
+      }
+    }
+  }
+}
 .single-post{
   .post-thumbnail{
     margin-bottom: 20px;

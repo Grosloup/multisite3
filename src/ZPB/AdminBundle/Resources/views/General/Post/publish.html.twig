@@ -354,28 +354,28 @@
                     Récapitulatif
                 </div>
                 <div>
-                    <div class="card">
+                    <div class="card" ng-show="datas.editOn.zoo">
                         <p ng-show="datas.editOn.zoo">Edité sur ZooParc de Beauval</p>
                         <p ng-show="datas.zoo.category">Dans la categorie {$ datas.zoo.category.name $}</p>
                         <p ng-show="datas.zoo.tags.length">Mots-clés : <span ng-repeat="t in datas.zoo.tags|orderBy:'name'">{$ t.name $}, </span></p>
                     </div>
-                    <div class="card">
-                        <p ng-show="datas.editOn.bn">Edité sur Beauval Nature</p>
+                    <div class="card" ng-show="datas.editOn.bn">
+                        <p>Edité sur Beauval Nature</p>
                         <p ng-show="datas.bn.category">Dans la categorie {$ datas.bn.category.name $}</p>
                         <p ng-show="datas.bn.tags.length">Mots-clés : <span ng-repeat="t in datas.bn.tags|orderBy:'name'">{$ t.name $}, </span></p>
                     </div>
-                    <div class="card">
-                        <p ng-show="datas.editOn.jdb">Edité sur Les Jardins de Beauval</p>
+                    <div class="card" ng-show="datas.editOn.jdb">
+                        <p>Edité sur Les Jardins de Beauval</p>
                         <p ng-show="datas.jdb.category">Dans la categorie {$ datas.jdb.category.name $}</p>
                         <p ng-show="datas.jdb.tags.length">Mots-clés : <span ng-repeat="t in datas.jdb.tags|orderBy:'name'">{$ t.name $}, </span></p>
                     </div>
-                    <div class="card">
-                        <p ng-show="datas.editOn.hdb">Edité sur Les Hameaux de Beauval</p>
+                    <div class="card" ng-show="datas.editOn.hdb">
+                        <p>Edité sur Les Hameaux de Beauval</p>
                         <p ng-show="datas.hdb.category">Dans la categorie {$ datas.hdb.category.name $}</p>
                         <p ng-show="datas.hdb.tags.length">Mots-clés : <span ng-repeat="t in datas.hdb.tags|orderBy:'name'">{$ t.name $}, </span></p>
                     </div>
-                    <div class="card">
-                        <p ng-show="datas.editOn.pdb">Edité sur Les Pagodes de Beauval</p>
+                    <div class="card" ng-show="datas.editOn.pdb">
+                        <p>Edité sur Les Pagodes de Beauval</p>
                         <p ng-show="datas.pdb.category">Dans la categorie {$ datas.pdb.category.name $}</p>
                         <p ng-show="datas.pdb.tags.length">Mots-clés : <span ng-repeat="t in datas.pdb.tags|orderBy:'name'">{$ t.name $}, </span></p>
                     </div>

@@ -43,8 +43,69 @@ class ZPBExtension extends \Twig_Extension{
             new \Twig_SimpleFunction('img_url', [$this, 'imgUrl']),
             new \Twig_SimpleFunction('img_thumb', [$this, 'imgThumb']),
             new \Twig_SimpleFunction('post_img_url', [$this, 'postImgUrl']),
+
+            new \Twig_SimpleFunction('post_bandeau_img_url', [$this, 'postBandeauImgUrl']),
+            new \Twig_SimpleFunction('post_bandeau_img_def_url', [$this, 'postBandeauImgDefUrl']),
+
+
+            new \Twig_SimpleFunction('post_squarre_img_url', [$this, 'postSquarreImgUrl']),
+            new \Twig_SimpleFunction('post_squarre_img_def_url', [$this, 'postSquarreImgDefUrl']),
+
+            new \Twig_SimpleFunction('post_fb_img_url', [$this, 'fbImgUrl']),
+            new \Twig_SimpleFunction('post_fb_img_def_url', [$this, 'fbImgDefUrl']),
         ];
     }
+
+    public function fbImgUrl($id)
+    {
+        if(!$id){
+            return null;
+        }
+        $img = $this->em->getRepository('ZPBAdminBundle:MediaImage')->find($id);
+        if(!$img){
+            return null;
+        }
+        return $img->getWebThumbPath('regular');
+    }
+    public function fbImgDefUrl()
+    {
+        return '/img/sites/zoo/fb_default.jpg';
+    }
+
+    public function postBandeauImgUrl($id)
+    {
+        if(!$id){
+            return null;
+        }
+        $img = $this->em->getRepository('ZPBAdminBundle:MediaImage')->find($id);
+        if(!$img){
+            return null;
+        }
+        return $img->getWebThumbPath('regular');
+    }
+
+    public function postBandeauImgDefUrl()
+    {
+        return '/img/sites/zoo/bandeau_default.jpg';
+    }
+
+    public function postSquarreImgUrl($id)
+    {
+        if(!$id){
+            return null;
+        }
+        $img = $this->em->getRepository('ZPBAdminBundle:MediaImage')->find($id);
+        if(!$img){
+            return null;
+        }
+        return $img->getWebThumbPath('regular');
+    }
+
+    public function postSquarreImgDefUrl()
+    {
+        return '/img/sites/zoo/squarre_default.jpg';
+    }
+
 
     public function pdfUrl($id)
     {
@@ -96,15 +157,5 @@ class ZPBExtension extends \Twig_Extension{
         return 'zpb_extension';
     }
 
-    public function postImgUrl($id)
-    {
-        if(!$id){
-            return null;
-        }
-        $img = $this->em->getRepository('ZPBAdminBundle:MediaImage')->find($id);
-        if(!$img){
-            return null;
-        }
-        return $img->getWebThumbPath('regular');
-    }
+
 }

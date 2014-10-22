@@ -1,0 +1,127 @@
+{% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
+
+{% block title %}Modifier un article | Actulité{% endblock %}
+{% set active = "update_post" %}
+
+{% block content %}
+
+    <div class="row">
+
+        <div class="column-6">
+            <div class="tile">
+                <div class="tile-header">
+                    Modifier un article
+                </div>
+
+                {{ form_start(form, {attr:{class: "form", novalidate:true}}) }}
+                {{ form_errors(form) }}
+
+                <div class="form-row {% if form.title.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.title) }}
+                    <div class="form-field">
+                        {{ form_widget(form.title) }}
+                        {% if form.title.vars.errors|length>0 %}
+                            <div class="error-block">
+                                {{ form_errors(form.title)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.body.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.body) }}
+                    <div class="form-field">
+                        {{ form_widget(form.body, {attr:{'data-editor':'html', 'data-editorsize':'large'}}) }}
+                        {% if form.body.vars.errors|length>0 %}
+                            <div class="error-block">
+                                {{ form_errors(form.body)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-row {% if form.excerpt.vars.errors|length>0 %}has-error{% endif %}">
+                    {{ form_label(form.excerpt) }}
+                    <div class="form-field">
+                        {{ form_widget(form.excerpt, {attr:{'data-editor':'html', 'data-editorsize':'small'}}) }}
+                        {% if form.excerpt.vars.errors|length>0 %}
+                            <div class="error-block">
+                                {{ form_errors(form.excerpt)}}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-row">
+                    {{ form_widget(form.save, {attr: {class: "btn-flat btn-primary"}})}}
+                    {{ form_widget(form.publish, {attr: {class: "btn-flat btn-primary"}})}}
+                </div>
+
+                {{ form_end(form) }}
+
+
+            </div>
+        </div>
+        <div class="column-3">
+            <div class="tile">
+                <div class="tile-header">
+                    Image bandeau (min 1200x300, en 4:1)
+                </div>
+                <div class="dropzone" id="dropzone-img-bandeau">
+                    <div class="dropzone-in">
+                        <div class="dropzone-legend"></div>
+                    </div>
+                    <div class="dropzone-loader">
+                        <div class="dropzone-innerbar" id="dropzone-progress"></div>
+                    </div>
+                    <div class="dropzone-message"></div>
+
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tile-header">
+                    Image d'illustration (min 120x120, en 1:1)
+                </div>
+                <div class="dropzone" id="dropzone-img-squarre">
+                    <div class="dropzone-in">
+                        <div class="dropzone-legend"></div>
+                    </div>
+                    <div class="dropzone-loader">
+                        <div class="dropzone-innerbar" id="dropzone-progress"></div>
+                    </div>
+                    <div class="dropzone-message"></div>
+
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tile-header">
+                    Image facebook (min 600x315, en 1.91:1)
+                </div>
+                <div class="dropzone" id="dropzone-img-fb">
+                    <div class="dropzone-in">
+                        <div class="dropzone-legend"></div>
+                    </div>
+                    <div class="dropzone-loader">
+                        <div class="dropzone-innerbar" id="dropzone-progress"></div>
+                    </div>
+                    <div class="dropzone-message"></div>
+
+                </div>
+            </div>
+        </div>
+        <div class="column-3">
+
+        </div>
+    </div>
+
+{% endblock %}
+{% block footScripts %}
+    {{ parent() }}
+    <script src="/js/vendor/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/vendor/ace/ext-emmet.js"></script>
+    <script src="/js/vendor/emmet.js"></script>
+    <script src="/js/admin/post/creation/jquery.zpbUploadImage.js"></script>
+    <script>var uploadImageUrl = "{{ path("zpb_admin_actualite_img_upload") }}";</script>
+    <script src="/js/admin/post/creation/app.js"></script>
+{% endblock %}
