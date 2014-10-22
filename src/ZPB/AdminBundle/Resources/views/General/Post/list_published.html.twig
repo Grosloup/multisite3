@@ -1,0 +1,46 @@
+{% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
+
+{% block title %}Liste des articles publiés | Actulité{% endblock %}
+{% set active = "list_post_publish" %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <div class="tile-header">
+                    Listes des articles publiés
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Date de création</th>
+                        <th>Modifier</th>
+                        <th>Voir les publications</th>
+                        <th>Supprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for post in posts %}
+                        <tr>
+                            <td>{{ post.title }}</td>
+                            <td>{{ post.createdAt|date('d/m/Y h:i') }}</td>
+                            <td><a class="btn btn-neutral" href=""><i class="fa fa-edit"></i></a></td>
+                            <td><a class="btn btn-neutral" href=""><i class="fa fa-eye"></i></a></td>
+                            <td><a class="btn btn-neutral" href=""><i class="fa fa-trash-o"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

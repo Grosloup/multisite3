@@ -252,10 +252,11 @@ class PostController extends BaseController
             foreach($publications as $key=>$value){
                 if($value){
                     $pub = new PublishedPost();
-                    $pub->setPostId($post->getId());
+                    $pub->setPost($post);
                     $pub->setTarget($key);
                     $cat = $categories[$key];
                     $pub->setCategory($cat);
+                    $pub->setPublishedAt(new \DateTime());
                     $tagIds = $postDatas[$key]['tags'];
                     foreach($tagIds as $tagId){
                         $tag = $this->getRepo('ZPBAdminBundle:PostTag')->find($tagId);
