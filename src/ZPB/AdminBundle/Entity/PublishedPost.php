@@ -46,7 +46,7 @@ class PublishedPost
     /**
      * @var boolean
      *
-     * @ORM\Column(name="is_archived", type="boolean")
+     * @ORM\Column(name="is_archived", type="boolean", nullable=false)
      */
     private $isArchived;
 
@@ -62,11 +62,17 @@ class PublishedPost
      */
     private $tags;
 
+    public function __construct()
+    {
+        $this->tags = new ArrayCollection();
+        $this->isArchived = false;
+    }
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -89,7 +95,7 @@ class PublishedPost
     /**
      * Get postId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPostId()
     {
@@ -112,7 +118,7 @@ class PublishedPost
     /**
      * Get target
      *
-     * @return string 
+     * @return string
      */
     public function getTarget()
     {
@@ -135,7 +141,7 @@ class PublishedPost
     /**
      * Get publishedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getPublishedAt()
     {
@@ -158,19 +164,13 @@ class PublishedPost
     /**
      * Get isArchived
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsArchived()
     {
         return $this->isArchived;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->tags = new ArrayCollection();
-    }
+
 
     /**
      * Set category
@@ -221,7 +221,7 @@ class PublishedPost
     /**
      * Get tags
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTags()
     {

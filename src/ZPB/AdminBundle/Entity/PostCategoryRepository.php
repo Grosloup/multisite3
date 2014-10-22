@@ -12,4 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostCategoryRepository extends EntityRepository
 {
+    public function getByTarget($target)
+    {
+        $qb = $this->createQueryBuilder('c')->where('c.target = :target')->orderBy('c.name', 'DESC');
+        $qb->setParameter('target', $target);
+        return $qb->getQuery()->getResult();
+    }
 }

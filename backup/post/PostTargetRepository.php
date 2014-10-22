@@ -1,5 +1,4 @@
-<?php
-
+<?php ?>
 namespace ZPB\AdminBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;

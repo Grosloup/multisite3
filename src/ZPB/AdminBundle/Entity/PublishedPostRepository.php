@@ -12,4 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class PublishedPostRepository extends EntityRepository
 {
+    public function getByTarget($target)
+    {
+        $qb = $this->createQueryBuilder('p')->where('p.target= :target')->andWhere('p.isArchived := isArchived')->orderBy('p.publishedAt', 'ASC');
+        $qb->setParameter('target', $target)->setParameter('isArchived',false);
+        return $qb->getQuery()->getResult();
+    }
 }

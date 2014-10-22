@@ -94,10 +94,16 @@ class Post implements JsonSerializable
      */
     private $isPublished;
 
+    /**
+     * @ORM\Column(name="is_archived", type="boolean", nullable=false)
+     */
+    private $isArchived;
+
 
     public function __construct()
     {
         $this->isPublished = false;
+        $this->isArchived = false;
     }
 
     /**
