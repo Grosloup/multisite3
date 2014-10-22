@@ -17,14 +17,30 @@ class PublishedPostRepository extends EntityRepository
         $qb = $this->createQueryBuilder('p')->where('p.target= :target')->andWhere('p.isArchived = :isArchived')->orderBy('p.publishedAt', 'ASC');
         $qb->setParameter('target', $target)->setParameter('isArchived',false);
         return $qb->getQuery()->getResult();
+    }
 
-        /*$q = $this->_em->createQuery(
-            'SELECT pp FROM ZPBAdminBundle:PublishedPost pp JOIN ZPBAdminBundle:Post p WHERE pp.postId = p.id AND pp.target= :target AND pp.isArchived = :isArchived ORDER BY pp.publishedAt ASC'
-        );*/
-        /*$q = $this->_em->createQuery(
-            'SELECT pp, p FROM ZPBAdminBundle:PublishedPost pp , ZPBAdminBundle:Post p WHERE pp.postId = p.id AND pp.target= :target AND pp.isArchived = :isArchived ORDER BY pp.publishedAt ASC'
-        );*/
+    public function countRow($target)
+    {
+        $qb = $this->createQueryBuilder('p')->select('COUNT(*)')->where('p.target= :target')->andWhere('p.isArchived = :isArchived')->orderBy('p.publishedAt', 'ASC');
+        $qb->setParameter('target', $target)->setParameter('isArchived',false);
+        return $qb->getQuery()->getSingleScalarResult();
+    }
 
+    public function getMaxPage($itemsPerPage, $target)
+    {
+        $count = $this->countRow($target);
+        if($count > $itemsPerPage){
+            return ceil($count/$itemsPerPage);
+        }
+        return 1;
+    }
+
+    public function paginate($target, $maxResult, $page, $itemsPerPage)
+    {
+        $qb = $this->createQueryBuilder('p')->where('p.target= :target')->andWhere('p.isArchived = :isArchived')->orderBy('p.publishedAt', 'ASC');
+        $qb->setParameter('target', $target)->setParameter('isArchived',false);
+        $qb->setMaxResults($maxResult)->setFirstResult(($itemsPerPage*($page-1))+1);
+        return $qb->getQuery()->getResult();
 
     }
 

@@ -18,6 +18,21 @@ zpb_admin_actualites_create:
     defaults: { _controller: ZPBAdminBundle:General/Post:create }
     methods: ["GET","POST"]
 
+zpb_admin_actualites_update_draft:
+    path: /modifier/brouillon/{id}
+    defaults: { _controller: ZPBAdminBundle:General/Post:updateDraft }
+    methods: ["GET","POST"]
+    requirements:
+        id: \d+
+
+zpb_admin_actualites_update_published:
+    path: /modifier/article-publier/{id}
+    defaults: { _controller: ZPBAdminBundle:General/Post:updatePublished }
+    methods: ["GET","POST"]
+    requirements:
+        id: \d+
+
+
 zpb_admin_actualites_publier:
     path: /publier/{id}
     defaults: { _controller: ZPBAdminBundle:General/Post:publish }

@@ -30,6 +30,7 @@ use ZPB\AdminBundle\Entity\PostCategory;
 use ZPB\AdminBundle\Entity\PostTag;
 use ZPB\AdminBundle\Entity\PublishedPost;
 use ZPB\AdminBundle\Form\type\PostType;
+use ZPB\AdminBundle\Form\Type\UpdatePostType;
 
 class PostController extends BaseController
 {
@@ -74,12 +75,9 @@ class PostController extends BaseController
         );
     }
 
-    public function updateAction($id, Request $request)
+    public function updateDraftAction($id, Request $request)
     {
-        $post = $this->getRepo('ZPBAdminBundle:Post')->find($id);
-        if(!$post){
-            throw $this->createNotFoundException();
-        }
+        $post = $this->getPost($id);
 
         $form = $this->createForm(new PostType(), $post);
         $form->handleRequest($request);
@@ -94,6 +92,21 @@ class PostController extends BaseController
             }
         }
         return $this->render('ZPBAdminBundle:General/Post:update.html.twig', ['form'=>$form->createView()]);
+    }
+
+    public function updatePublishedAction($id, Request $request)
+    {
+        $post = $this->getPost($id);
+
+        $form = $this->createForm(new UpdatePostType(), $post);
+        $form->handleRequest($request);
+        if($form->isValid()){
+            $this->getManager()->persist($post);
+            $this->getManager()->flush();
+
+            return $this->redirect($this->generateUrl('zpb_admin_actualites_list_published'));
+        }
+        return $this->render('ZPBAdminBundle:General/Post:update_published.html.twig', ['form'=>$form->createView()]);
     }
 
     public function deleteAction($id, Request $request)
@@ -135,6 +148,15 @@ class PostController extends BaseController
             $result[$k] = $this->getRepo('ZPBAdminBundle:PostTag')->findBy(['target'=>$k], ['name'=>'ASC']);
         }
         return $result;
+    }
+
+    private function getPost($id)
+    {
+        $post = $this->getRepo('ZPBAdminBundle:Post')->find($id);
+        if(!$post){
+            throw $this->createNotFoundException();
+        }
+        return $post;
     }
 
     public function postImageUploadAction(Request $request)
