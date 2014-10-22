@@ -25,9 +25,10 @@ class PublishedPost
     /**
      * @var integer
      *
-     * @ORM\Column(name="post_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="ZPB\AdminBundle\Entity\Post")
+     * @ORM\JoinColumn(name="post_id", referencedColumnName="id")
      */
-    private $postId;
+    private $post;
 
     /**
      * @var string
@@ -79,28 +80,7 @@ class PublishedPost
         return $this->id;
     }
 
-    /**
-     * Set postId
-     *
-     * @param integer $postId
-     * @return PublishedPost
-     */
-    public function setPostId($postId)
-    {
-        $this->postId = $postId;
 
-        return $this;
-    }
-
-    /**
-     * Get postId
-     *
-     * @return integer
-     */
-    public function getPostId()
-    {
-        return $this->postId;
-    }
 
     /**
      * Set target
@@ -226,5 +206,28 @@ class PublishedPost
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Set post
+     *
+     * @param Post $post
+     * @return PublishedPost
+     */
+    public function setPost(Post $post = null)
+    {
+        $this->post = $post;
+
+        return $this;
+    }
+
+    /**
+     * Get post
+     *
+     * @return Post
+     */
+    public function getPost()
+    {
+        return $this->post;
     }
 }

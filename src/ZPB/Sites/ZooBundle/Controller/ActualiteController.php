@@ -32,27 +32,23 @@ class ActualiteController extends BaseController
         //
         // paginés
         //
-
-
-        $posts = $this->getRepo('ZPBAdminBundle:PublishedPost')->getByTarget('zoo');
+        $pubs = $this->getRepo('ZPBAdminBundle:PublishedPost')->getByTarget('zoo');
         $tags = $this->getRepo('ZPBAdminBundle:PostTag')->getByTarget('zoo');
         $categories  = $this->getRepo('ZPBAdminBundle:PostCategory')->getByTarget('zoo');
-
-        return $this->render('ZPBSitesZooBundle:Actualite:index.html.twig', ['posts'=>$posts, 'tags'=>$tags, 'categories'=>$categories]);
+        return $this->render('ZPBSitesZooBundle:Actualite:index.html.twig', ['pubs'=>$pubs, 'tags'=>$tags, 'categories'=>$categories]);
     }
 
-    // tri par categorie, publiés, ciblants zoo, paginés
-    // tri par mot-clé, publiés, ciblants zoo, paginés
-    // tr par date, publiés, ciblants zoo, paginés
+
 
     public function singleAction($slug)
     {
-        /*$post = $this->getRepo('ZPBAdminBundle:Post')->findOneBySlug($slug);
-        if(!$post){
+        $pub = $this->getRepo('ZPBAdminBundle:PublishedPost')->getBySlug($slug, 'zoo');
+
+        if(!$pub){
             throw $this->createAccessDeniedException();
         }
 
-        return $this->render('ZPBSitesZooBundle:Actualite:single.html.twig', ['post'=>$post]);*/
+        return $this->render('ZPBSitesZooBundle:Actualite:single.html.twig', ['pub'=>$pub]);
     }
 
     public function nouveautesAction()
