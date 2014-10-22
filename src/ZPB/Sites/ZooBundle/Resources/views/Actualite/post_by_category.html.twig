@@ -1,7 +1,10 @@
 {% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
-{% block title %}Actualités{% endblock %}
+{% block title %}Tous les articles dans {{ category.name }} | Actualités{% endblock %}
 
 {% set active_page = "cat_posts" %}
+
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -39,7 +42,7 @@
 
                                     <div class="post-excerpt">
                                         <p>{{ pub.post.excerpt }}</p>
-                                        <div class="post-more"><a href="">Lire plus...</a></div>
+                                        <div class="post-more"><a href="{{ path("zpb_sites_zoo_actualites_single", {slug: pub.post.slug}) }}">Lire plus...</a></div>
                                     </div>
 
                                 </article>
