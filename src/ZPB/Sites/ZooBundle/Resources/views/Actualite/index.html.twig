@@ -23,19 +23,18 @@
                         <div class="post-col">
                             <div class="post">
                                 <header>
-                                    <div class="post-category"><a href="">{{ pub.category.name }}</a></div>
+                                    <div class="post-category"><a href="{{ path("zpb_sites_zoo_actualites_list_by_category", {slug: pub.category.slug}) }}">{{ pub.category.name }}</a></div>
                                     <h1 class="post-title"><a href="{{ path("zpb_sites_zoo_actualites_single", {slug: pub.post.slug}) }}">{{ pub.post.title }}</a></h1>
                                     <div class="post-date">{{ pub.publishedAt|date("d/m/y") }}</div>
                                 </header>
                                 <article>
-                                    {% if pub.post.squarreThumb != null %}
-                                        <div class="post-thumbnail">
-                                            <img src="" alt=""/>
-                                        </div>
-                                    {% endif %}
 
                                         <div class="post-thumbnail">
-                                            <img src="http://lorempicsum.com/rio/200/200/2" alt=""/>
+                                            {% if pub.post.squarreThumb != null %}
+                                            <img src="{{ post_squarre_img_url(pub.post.squarreThumb) }}" alt=""/>
+                                            {% else %}
+                                            <img src="{{ post_squarre_img_def_url() }}" alt=""/>
+                                            {% endif %}
                                         </div>
 
                                         <div class="post-excerpt">
@@ -49,24 +48,15 @@
                                         <div class="post-tags">
                                             <ul>
                                                 {% for tag in pub.tags %}
-                                                    <li><a href="">{{ tag.name }}</a>{% if loop.last != true %}, {% endif %}</li>
+                                                    <li><a href="{{ path("zpb_sites_zoo_actualites_list_by_tag", {slug: tag.slug}) }}">{{ tag.name }}</a>{% if loop.last != true %}, {% endif %}</li>
                                                 {% endfor %}
                                             </ul>
                                         </div>
                                     {% endif %}
                                 </footer>
-
-
-
                             </div>
                         </div>
-
-
                     {% endfor %}
-
-
-
-
                     </div>
                 </div>
             </div>

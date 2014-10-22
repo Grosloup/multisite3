@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="page-header">
-                    <h1>Actualité <small>{{ tag }}</small></h1>
+                    <h1>Actualité <small>{{ tag.name }}</small></h1>
                 </div>
             </div>
         </div>
@@ -16,46 +16,54 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <div class="posts">
-                    {% for post in posts %}
-                        <div class="row">
-
-                            <div class="col-md-6">
+                    <div class="row">
+                        {% for pub in pubs %}
+                            <div class="post-col">
                                 <div class="post">
-                                    <div class="post-category"><a href="{{ path("zpb_sites_zoo_actualites_list_by_category", {slug: post.category.slug}) }}">{{ post.category }}</a></div>
-                                    <a href="{{ path("zpb_sites_zoo_actualites_single", {slug: post.slug }) }}" class="post-title">{{ post.title }}</a>
-                                    <div class="post-details">{{ post.publishedAt|date("d/m/y") }}</div>
-                                    {% if post.squarreThumb != null %}
-                                        <div class="post-thumbnail">
-                                            <img src="{{ post_img_url(post.squarreThumb) }}" alt=""/>
-                                        </div>
-                                    {% endif %}
+                                    <header>
+                                        <div class="post-category"><a href="{{ path("zpb_sites_zoo_actualites_list_by_category", {slug: pub.category.slug}) }}">{{ pub.category.name }}</a></div>
+                                        <h1 class="post-title"><a href="{{ path("zpb_sites_zoo_actualites_single", {slug: pub.post.slug}) }}">{{ pub.post.title }}</a></h1>
+                                        <div class="post-date">{{ pub.publishedAt|date("d/m/y") }}</div>
+                                    </header>
+                                    <article>
 
-                                    <div class="post-excerpt">
-                                        <p>{{ post.excerpt|raw }}</p>
-                                        <div class="post-more"><a href="{{ path("zpb_sites_zoo_actualites_single", {slug: post.slug }) }}">Lire plus...</a></div>
-                                    </div>
-                                    {% if post.tags|length > 0 %}
-                                        <div class="post-tags">
-                                            <ul>
-                                                {% for tag in post.tags %}
-                                                    <li><a href="{{ path("zpb_sites_zoo_actualites_list_by_tag", {slug: tag.slug}) }}">{{ tag.name }}</a>{% if loop.last != true %}, {% endif %}</li>
-                                                {% endfor %}
-                                            </ul>
+                                        <div class="post-thumbnail">
+                                            {% if pub.post.squarreThumb != null %}
+                                                <img src="{{ post_squarre_img_url(pub.post.squarreThumb) }}" alt=""/>
+                                            {% else %}
+                                                <img src="{{ post_squarre_img_def_url() }}" alt=""/>
+                                            {% endif %}
                                         </div>
-                                    {% endif %}
+
+                                        <div class="post-excerpt">
+                                            <p>{{ pub.post.excerpt }}</p>
+                                            <div class="post-more"><a href="">Lire plus...</a></div>
+                                        </div>
+
+                                    </article>
+                                    <footer>
+                                        {% if pub.tags|length > 0 %}
+                                            <div class="post-tags">
+                                                <ul>
+                                                    {% for tag in pub.tags %}
+                                                        <li><a href="{{ path("zpb_sites_zoo_actualites_list_by_tag", {slug: tag.slug}) }}">{{ tag.name }}</a>{% if loop.last != true %}, {% endif %}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        {% endif %}
+                                    </footer>
                                 </div>
                             </div>
-
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
-            <div class="col-1">
+            {#<div class="col-1">
                 {{ render(controller("ZPBSitesZooBundle:Actualite:listCategories")) }}
                 {{ render(controller("ZPBSitesZooBundle:Actualite:listTags")) }}
-            </div>
+            </div>#}
         </div>
     </div>
 {% endblock %}

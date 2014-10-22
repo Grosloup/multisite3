@@ -2,14 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65f47da9-4957-4172-a319-22ff74061384" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/img/sites/zoo/bandeau_default.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/img/sites/zoo/fb_default.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/img/sites/zoo/squarre_default.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Controller/ActualiteController.php" afterPath="$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Controller/ActualiteController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ZPB/AdminBundle/DataFixtures/ORM/LoadPosts.php" afterPath="$PROJECT_DIR$/src/ZPB/AdminBundle/DataFixtures/ORM/LoadPosts.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PublishedPost.php" afterPath="$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PublishedPost.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/Post.php" afterPath="$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/Post.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PostCategory.php" afterPath="$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PostCategory.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PostTag.php" afterPath="$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PostTag.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PublishedPostRepository.php" afterPath="$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PublishedPostRepository.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ZPB/AdminBundle/Twig/ZPBExtension.php" afterPath="$PROJECT_DIR$/src/ZPB/AdminBundle/Twig/ZPBExtension.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scss/sites/zoo/_post.scss" afterPath="$PROJECT_DIR$/scss/sites/zoo/_post.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/views/Actualite/index.html.twig" afterPath="$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/views/Actualite/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/sites/zoo/master.css" afterPath="$PROJECT_DIR$/web/css/sites/zoo/master.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/views/Actualite/post_by_category.html.twig" afterPath="$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/views/Actualite/post_by_category.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/views/Actualite/posts_by_tag.html.twig" afterPath="$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/views/Actualite/posts_by_tag.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/views/Actualite/single.html.twig" afterPath="$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/views/Actualite/single.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -25,57 +29,10 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
+    <option name="PATCH_PATH" value="C:\PROJETS\multisite3" />
   </component>
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
-  </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="PostRepository.php" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/backup/post/PostRepository.php">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="1.92" vertical-offset="768" max-vertical-offset="1824">
-                    <caret line="45" column="62" selection-start-line="45" selection-start-column="62" selection-end-line="45" selection-end-column="62" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="ActualiteController.php" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Controller/ActualiteController.php">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.7028302" vertical-offset="401" max-vertical-offset="1648">
-                    <caret line="59" column="5" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
-                    <folding>
-                      <element signature="e#796#826#1#PHP" expanded="true" />
-                      <element signature="e#880#904#1#PHP" expanded="true" />
-                      <element signature="e#965#994#1#PHP" expanded="true" />
-                      <element signature="e#1046#1091#0#PHP" expanded="true" />
-                      <element signature="e#1238#1268#1#PHP" expanded="true" />
-                      <element signature="e#1412#1458#0#PHP" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="actualite.yml" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/config/routing/actualite.yml">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="688">
-                    <caret line="7" column="27" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="31" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -86,8 +43,8 @@
       <file leaf-file-name="PostController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Controller/General/PostController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.2" vertical-offset="1104" max-vertical-offset="4400">
-              <caret line="104" column="71" selection-start-line="104" selection-start-column="71" selection-end-line="104" selection-end-column="71" />
+            <state vertical-scroll-proportion="-100.48" vertical-offset="1536" max-vertical-offset="4416">
+              <caret line="258" column="58" selection-start-line="258" selection-start-column="58" selection-end-line="258" selection-end-column="58" />
               <folding>
                 <element signature="e#502#549#0#PHP" expanded="true" />
                 <element signature="e#1004#1025#1#PHP" expanded="true" />
@@ -99,61 +56,50 @@
                 <element signature="e#5597#5624#1#PHP" expanded="true" />
                 <element signature="e#8056#8077#1#PHP" expanded="true" />
                 <element signature="e#8463#8492#1#PHP" expanded="true" />
-                <element signature="e#9600#9624#1#PHP" expanded="true" />
+                <element signature="e#9648#9672#1#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Post.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/Post.php">
+      <file leaf-file-name="recapApp.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/js/admin/post/publication/recapApp.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="5.6632996" vertical-offset="1084" max-vertical-offset="5792">
-              <caret line="278" column="0" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
-              <folding>
-                <element signature="e#42#74#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/views/Actualite/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.64" vertical-offset="0" max-vertical-offset="2272">
-              <caret line="26" column="131" selection-start-line="26" selection-start-column="131" selection-end-line="26" selection-end-column="131" />
-              <folding>
-                <element signature="e#12#54#0#Twig" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_post.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scss/sites/zoo/_post.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.52" vertical-offset="426" max-vertical-offset="2800">
-              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="1200">
+              <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_grid.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scss/sites/common/_grid.scss">
+      <file leaf-file-name="create.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/create.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.84" vertical-offset="2736" max-vertical-offset="4224">
-              <caret line="202" column="41" selection-start-line="202" selection-start-column="0" selection-end-line="202" selection-end-column="41" />
+            <state vertical-scroll-proportion="-25.2" vertical-offset="954" max-vertical-offset="2128">
+              <caret line="99" column="22" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
+              <folding>
+                <element signature="e#12#51#0#Twig" expanded="false" />
+                <element signature="e#4878#4908#0#Twig" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PostCategory.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PostCategory.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.4" vertical-offset="1930" max-vertical-offset="2896">
+              <caret line="142" column="34" selection-start-line="142" selection-start-column="34" selection-end-line="142" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PublishedPost.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PublishedPost.php">
+      <file leaf-file-name="PostTag.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PostTag.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="27.6" vertical-offset="3202" max-vertical-offset="3808">
-              <caret line="158" column="28" selection-start-line="158" selection-start-column="28" selection-end-line="158" selection-end-column="28" />
+            <state vertical-scroll-proportion="1.8810068" vertical-offset="778" max-vertical-offset="2896">
+              <caret line="102" column="22" selection-start-line="102" selection-start-column="22" selection-end-line="102" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -172,17 +118,33 @@
       <file leaf-file-name="PublishedPostRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PublishedPostRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-25.6" vertical-offset="0" max-vertical-offset="784">
-              <caret line="40" column="49" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
+            <state vertical-scroll-proportion="-18.92" vertical-offset="343" max-vertical-offset="1312">
+              <caret line="51" column="40" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="40" />
               <folding>
-                <marker date="1413968295324" expanded="true" signature="644:658" placeholder="SELECT p FRO..." />
-                <marker date="1413968295324" expanded="true" signature="644:662" placeholder="SELECT p FRO..ZPB..." />
-                <marker date="1413968295324" expanded="true" signature="644:673" placeholder="SELECT p FRO..ZPBAdminBundle..." />
-                <marker date="1413968295324" expanded="true" signature="644:699" placeholder="SELECT p FRO..ZPBAdminBundle..." />
-                <marker date="1413968295324" expanded="true" signature="644:710" placeholder="SELECT p FRO..ZPBAdminBundle..." />
-                <marker date="1413968295324" expanded="true" signature="644:823" placeholder="SELECT p FRO..ZPBAdminBundle..." />
-                <marker date="1413968295324" expanded="true" signature="891:1070" placeholder="SELECT pp, p..ZPBAdminBundle..." />
-                <marker date="1413968295324" expanded="true" signature="1199:1376" placeholder="SELECT pp FR..ZPBAdminBundle..." />
+                <marker date="1413981422107" expanded="true" signature="644:658" placeholder="SELECT p FRO..." />
+                <marker date="1413981422107" expanded="true" signature="644:662" placeholder="SELECT p FRO..ZPB..." />
+                <marker date="1413981422107" expanded="true" signature="644:673" placeholder="SELECT p FRO..ZPBAdminBundle..." />
+                <marker date="1413981422107" expanded="true" signature="644:699" placeholder="SELECT p FRO..ZPBAdminBundle..." />
+                <marker date="1413981422107" expanded="true" signature="644:710" placeholder="SELECT p FRO..ZPBAdminBundle..." />
+                <marker date="1413981422107" expanded="true" signature="644:823" placeholder="SELECT p FRO..ZPBAdminBundle..." />
+                <marker date="1413981422107" expanded="true" signature="891:1070" placeholder="SELECT pp, p..ZPBAdminBundle..." />
+                <marker date="1413981422107" expanded="true" signature="1199:1376" placeholder="SELECT pp FR..ZPBAdminBundle..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="post_by_category.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/views/Actualite/post_by_category.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-22.64" vertical-offset="234" max-vertical-offset="1200">
+              <caret line="50" column="133" selection-start-line="50" selection-start-column="133" selection-end-line="50" selection-end-column="133" />
+              <folding>
+                <element signature="e#12#54#0#Twig" expanded="false" />
+                <marker date="1413981682759" expanded="true" signature="596:2953" placeholder="{% for pub in pubs ...%}" />
+                <marker date="1413981682759" expanded="true" signature="834:875" placeholder="/actualites/par-categorie/{slug}" />
+                <marker date="1413981682759" expanded="true" signature="1020:1051" placeholder="/actualites/article/{slug}" />
+                <marker date="1413981682759" expanded="true" signature="1402:1754" placeholder="{% if pub.post.squarreThumb != null ...%}" />
               </folding>
             </state>
           </provider>
@@ -191,29 +153,24 @@
       <file leaf-file-name="single.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/views/Actualite/single.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-28.16" vertical-offset="0" max-vertical-offset="1536">
-              <caret line="44" column="53" selection-start-line="44" selection-start-column="53" selection-end-line="44" selection-end-column="53" />
+            <state vertical-scroll-proportion="-22.12" vertical-offset="695" max-vertical-offset="1568">
+              <caret line="78" column="30" selection-start-line="78" selection-start-column="30" selection-end-line="78" selection-end-column="30" />
               <folding>
-                <element signature="e#3643#3679#0#Twig" expanded="true" />
+                <element signature="e#12#54#0#Twig" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ZPBExtension.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Twig/ZPBExtension.php">
+      <file leaf-file-name="posts_by_tag.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/views/Actualite/posts_by_tag.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.68" vertical-offset="346" max-vertical-offset="2304">
-              <caret line="48" column="77" selection-start-line="48" selection-start-column="77" selection-end-line="48" selection-end-column="77" />
+            <state vertical-scroll-proportion="-6.4" vertical-offset="0" max-vertical-offset="1200">
+              <caret line="10" column="52" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
               <folding>
-                <element signature="e#1562#1589#1#PHP" expanded="true" />
-                <element signature="e#1855#1882#1#PHP" expanded="true" />
-                <element signature="e#2148#2175#1#PHP" expanded="true" />
-                <element signature="e#2380#2405#1#PHP" expanded="true" />
-                <element signature="e#2629#2654#1#PHP" expanded="true" />
-                <element signature="e#2842#2864#1#PHP" expanded="true" />
-                <element signature="e#3108#3130#1#PHP" expanded="true" />
-                <element signature="e#3394#3421#1#PHP" expanded="true" />
+                <element signature="e#869#910#0#Twig" expanded="true" />
+                <element signature="e#1059#1090#0#Twig" expanded="true" />
+                <element signature="e#2606#2642#0#Twig" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -604,6 +561,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="multisite3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="multisite3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -776,108 +747,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Sites" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ZooBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="multisite3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="multisite3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ZPB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Sites" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ZooBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="routing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="multisite3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="multisite3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ZPB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Sites" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ZooBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="multisite3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="multisite3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ZPB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="AdminBundle" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -905,6 +774,142 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Twig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="multisite3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="multisite3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ZPB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AdminBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="multisite3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="multisite3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ZPB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AdminBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Navs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="multisite3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="multisite3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ZPB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AdminBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="General" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="multisite3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="multisite3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ZPB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AdminBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="General" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Post" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1179,7 +1184,7 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../multisite3.design" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="options.lastSelected" value="reference.settingsdialog.project.vagrant" />
+    <property name="options.lastSelected" value="settings.github" />
     <property name="options.splitter.main.proportions" value="0.1286841" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="LayoutCode.rearrangeEntriesPHP" value="true" />
@@ -2400,7 +2405,19 @@
       <option name="project" value="LOCAL" />
       <updated>1413958556321</updated>
     </task>
-    <option name="localTasksCounter" value="158" />
+    <task id="LOCAL-00158" summary="sauvegarde">
+      <created>1413971219194</created>
+      <option name="number" value="00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1413971219194</updated>
+    </task>
+    <task id="LOCAL-00159" summary="sauvegarde">
+      <created>1413972557762</created>
+      <option name="number" value="00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1413972557762</updated>
+    </task>
+    <option name="localTasksCounter" value="160" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2427,7 +2444,7 @@
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3109691" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.47816828" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29818955" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2442,7 +2459,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16897655" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20095949" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20447284" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.58359957" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2520,41 +2537,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/update.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="911">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PostTag.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-40.28" vertical-offset="1505" max-vertical-offset="2848">
-          <caret line="157" column="31" selection-start-line="157" selection-start-column="31" selection-end-line="157" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/NewsletterSubscriber.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45146728" vertical-offset="960" max-vertical-offset="4016">
-          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/list_archived.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="911">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/list_published.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="911">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Form/Type/PostType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-17.92" vertical-offset="0" max-vertical-offset="768">
@@ -2573,13 +2555,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.12" vertical-offset="165" max-vertical-offset="2432">
           <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PostCategory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.0" vertical-offset="353" max-vertical-offset="2848">
-          <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -2682,20 +2657,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/create.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.52" vertical-offset="0" max-vertical-offset="2080">
-          <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/Navs/sidebar.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09439528" vertical-offset="0" max-vertical-offset="6080">
-          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/faq/list.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.43994212" vertical-offset="0" max-vertical-offset="864">
@@ -2717,31 +2678,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/list.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.04" vertical-offset="0" max-vertical-offset="832">
-          <caret line="36" column="113" selection-start-line="36" selection-start-column="113" selection-end-line="36" selection-end-column="113" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/publish.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-248.32" vertical-offset="0" max-vertical-offset="6944">
-          <caret line="388" column="40" selection-start-line="388" selection-start-column="40" selection-end-line="388" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/js/admin/post/publication/zooEdit.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.49162012" vertical-offset="0" max-vertical-offset="1904">
           <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/admin/post/publication/recapApp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.82681566" vertical-offset="240" max-vertical-offset="1200">
-          <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -2798,14 +2738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PostRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.08" vertical-offset="0" max-vertical-offset="848">
-          <caret line="22" column="44" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PublishedPost.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="27.6" vertical-offset="3202" max-vertical-offset="3808">
@@ -2830,46 +2762,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/config/routing/actualite.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="688">
-          <caret line="7" column="27" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PublishedPostRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-25.6" vertical-offset="0" max-vertical-offset="784">
-          <caret line="40" column="49" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
-          <folding>
-            <marker date="1413968295324" expanded="true" signature="644:658" placeholder="SELECT p FRO..." />
-            <marker date="1413968295324" expanded="true" signature="644:662" placeholder="SELECT p FRO..ZPB..." />
-            <marker date="1413968295324" expanded="true" signature="644:673" placeholder="SELECT p FRO..ZPBAdminBundle..." />
-            <marker date="1413968295324" expanded="true" signature="644:699" placeholder="SELECT p FRO..ZPBAdminBundle..." />
-            <marker date="1413968295324" expanded="true" signature="644:710" placeholder="SELECT p FRO..ZPBAdminBundle..." />
-            <marker date="1413968295324" expanded="true" signature="644:823" placeholder="SELECT p FRO..ZPBAdminBundle..." />
-            <marker date="1413968295324" expanded="true" signature="891:1070" placeholder="SELECT pp, p..ZPBAdminBundle..." />
-            <marker date="1413968295324" expanded="true" signature="1199:1376" placeholder="SELECT pp FR..ZPBAdminBundle..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Controller/ActualiteController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7028302" vertical-offset="401" max-vertical-offset="1648">
-          <caret line="59" column="5" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
-          <folding>
-            <element signature="e#796#826#1#PHP" expanded="true" />
-            <element signature="e#880#904#1#PHP" expanded="true" />
-            <element signature="e#965#994#1#PHP" expanded="true" />
-            <element signature="e#1046#1091#0#PHP" expanded="true" />
-            <element signature="e#1238#1268#1#PHP" expanded="true" />
-            <element signature="e#1412#1458#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/config/services.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.68496156" vertical-offset="192" max-vertical-offset="5008">
@@ -2878,47 +2770,94 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/SponsoringFormula.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7616">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/list.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2167043" vertical-offset="0" max-vertical-offset="886">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/list_published.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-21.12" vertical-offset="96" max-vertical-offset="832">
+          <caret line="39" column="32" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/Navs/sidebar.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18327606" vertical-offset="0" max-vertical-offset="6080">
+          <caret line="10" column="99" selection-start-line="10" selection-start-column="99" selection-end-line="10" selection-end-column="99" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/publish.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.251693" vertical-offset="5409" max-vertical-offset="6944">
+          <caret line="352" column="41" selection-start-line="352" selection-start-column="41" selection-end-line="352" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/admin/post/publication/recapApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="1200">
+          <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Resources/views/General/Post/create.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-25.2" vertical-offset="954" max-vertical-offset="2128">
+          <caret line="99" column="22" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
+          <folding>
+            <element signature="e#12#51#0#Twig" expanded="false" />
+            <element signature="e#4878#4908#0#Twig" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Twig/ZPBExtension.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.68" vertical-offset="346" max-vertical-offset="2304">
-          <caret line="48" column="77" selection-start-line="48" selection-start-column="77" selection-end-line="48" selection-end-column="77" />
+        <state vertical-scroll-proportion="0.53645116" vertical-offset="474" max-vertical-offset="2592">
+          <caret line="59" column="5" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
           <folding>
-            <element signature="e#1562#1589#1#PHP" expanded="true" />
-            <element signature="e#1855#1882#1#PHP" expanded="true" />
-            <element signature="e#2148#2175#1#PHP" expanded="true" />
-            <element signature="e#2380#2405#1#PHP" expanded="true" />
-            <element signature="e#2629#2654#1#PHP" expanded="true" />
-            <element signature="e#2842#2864#1#PHP" expanded="true" />
-            <element signature="e#3108#3130#1#PHP" expanded="true" />
-            <element signature="e#3394#3421#1#PHP" expanded="true" />
+            <element signature="e#1848#1875#1#PHP" expanded="true" />
+            <element signature="e#2235#2262#1#PHP" expanded="true" />
+            <element signature="e#2637#2664#1#PHP" expanded="true" />
+            <element signature="e#2976#3001#1#PHP" expanded="true" />
+            <element signature="e#3225#3250#1#PHP" expanded="true" />
+            <element signature="e#3438#3460#1#PHP" expanded="true" />
+            <element signature="e#3704#3726#1#PHP" expanded="true" />
+            <element signature="e#3990#4017#1#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/views/Actualite/index.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PostRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.64" vertical-offset="0" max-vertical-offset="2272">
-          <caret line="26" column="131" selection-start-line="26" selection-start-column="131" selection-end-line="26" selection-end-column="131" />
-          <folding>
-            <element signature="e#12#54#0#Twig" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/views/Actualite/single.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-28.16" vertical-offset="0" max-vertical-offset="1536">
-          <caret line="44" column="53" selection-start-line="44" selection-start-column="53" selection-end-line="44" selection-end-column="53" />
-          <folding>
-            <element signature="e#3643#3679#0#Twig" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-14.08" vertical-offset="0" max-vertical-offset="848">
+          <caret line="22" column="44" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Controller/General/PostController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.2" vertical-offset="1104" max-vertical-offset="4400">
-          <caret line="104" column="71" selection-start-line="104" selection-start-column="71" selection-end-line="104" selection-end-column="71" />
+        <state vertical-scroll-proportion="-100.48" vertical-offset="1536" max-vertical-offset="4416">
+          <caret line="258" column="58" selection-start-line="258" selection-start-column="58" selection-end-line="258" selection-end-column="58" />
           <folding>
             <element signature="e#502#549#0#PHP" expanded="true" />
             <element signature="e#1004#1025#1#PHP" expanded="true" />
@@ -2930,18 +2869,128 @@
             <element signature="e#5597#5624#1#PHP" expanded="true" />
             <element signature="e#8056#8077#1#PHP" expanded="true" />
             <element signature="e#8463#8492#1#PHP" expanded="true" />
-            <element signature="e#9600#9624#1#PHP" expanded="true" />
+            <element signature="e#9648#9672#1#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Controller/ActualiteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.92" vertical-offset="825" max-vertical-offset="1648">
+          <caret line="84" column="113" selection-start-line="84" selection-start-column="113" selection-end-line="84" selection-end-column="113" />
+          <folding>
+            <element signature="e#796#826#1#PHP" expanded="true" />
+            <element signature="e#880#904#1#PHP" expanded="true" />
+            <element signature="e#965#994#1#PHP" expanded="true" />
+            <element signature="e#1046#1091#0#PHP" expanded="true" />
+            <element signature="e#1238#1268#1#PHP" expanded="true" />
+            <element signature="e#1412#1458#0#PHP" expanded="true" />
+            <element signature="e#1885#1914#1#PHP" expanded="true" />
+            <element signature="e#2057#2087#1#PHP" expanded="true" />
+            <element signature="e#2158#2214#0#PHP" expanded="true" />
+            <element signature="e#2344#2368#1#PHP" expanded="true" />
+            <element signature="e#2506#2536#1#PHP" expanded="true" />
+            <element signature="e#2602#2654#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PublishedPostRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.92" vertical-offset="343" max-vertical-offset="1312">
+          <caret line="51" column="40" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="40" />
+          <folding>
+            <marker date="1413981422107" expanded="true" signature="644:658" placeholder="SELECT p FRO..." />
+            <marker date="1413981422107" expanded="true" signature="644:662" placeholder="SELECT p FRO..ZPB..." />
+            <marker date="1413981422107" expanded="true" signature="644:673" placeholder="SELECT p FRO..ZPBAdminBundle..." />
+            <marker date="1413981422107" expanded="true" signature="644:699" placeholder="SELECT p FRO..ZPBAdminBundle..." />
+            <marker date="1413981422107" expanded="true" signature="644:710" placeholder="SELECT p FRO..ZPBAdminBundle..." />
+            <marker date="1413981422107" expanded="true" signature="644:823" placeholder="SELECT p FRO..ZPBAdminBundle..." />
+            <marker date="1413981422107" expanded="true" signature="891:1070" placeholder="SELECT pp, p..ZPBAdminBundle..." />
+            <marker date="1413981422107" expanded="true" signature="1199:1376" placeholder="SELECT pp FR..ZPBAdminBundle..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/config/routing/actualite.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="688">
+          <caret line="21" column="36" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/views/Actualite/post_by_category.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.64" vertical-offset="234" max-vertical-offset="1200">
+          <caret line="50" column="133" selection-start-line="50" selection-start-column="133" selection-end-line="50" selection-end-column="133" />
+          <folding>
+            <element signature="e#12#54#0#Twig" expanded="false" />
+            <marker date="1413981682759" expanded="true" signature="596:2953" placeholder="{% for pub in pubs ...%}" />
+            <marker date="1413981682759" expanded="true" signature="834:875" placeholder="/actualites/par-categorie/{slug}" />
+            <marker date="1413981682759" expanded="true" signature="1020:1051" placeholder="/actualites/article/{slug}" />
+            <marker date="1413981682759" expanded="true" signature="1402:1754" placeholder="{% if pub.post.squarreThumb != null ...%}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/views/Actualite/single.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.12" vertical-offset="695" max-vertical-offset="1568">
+          <caret line="78" column="30" selection-start-line="78" selection-start-column="30" selection-end-line="78" selection-end-column="30" />
+          <folding>
+            <element signature="e#12#54#0#Twig" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/views/Actualite/posts_by_tag.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.4" vertical-offset="0" max-vertical-offset="1200">
+          <caret line="10" column="52" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
+          <folding>
+            <element signature="e#869#910#0#Twig" expanded="true" />
+            <element signature="e#1059#1090#0#Twig" expanded="true" />
+            <element signature="e#2606#2642#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PostCategory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.4" vertical-offset="1930" max-vertical-offset="2896">
+          <caret line="142" column="34" selection-start-line="142" selection-start-column="34" selection-end-line="142" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/Sites/ZooBundle/Resources/views/Actualite/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5502063" vertical-offset="272" max-vertical-offset="2112">
+          <caret line="42" column="46" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
+          <folding>
+            <element signature="e#814#855#0#Twig" expanded="true" />
+            <element signature="e#1000#1031#0#Twig" expanded="true" />
+            <element signature="e#2499#2535#0#Twig" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/Post.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.6632996" vertical-offset="1084" max-vertical-offset="5792">
-          <caret line="278" column="0" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
+        <state vertical-scroll-proportion="2.914718" vertical-offset="3337" max-vertical-offset="5872">
+          <caret line="341" column="5" selection-start-line="341" selection-start-column="5" selection-end-line="341" selection-end-column="5" />
           <folding>
             <element signature="e#42#74#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ZPB/AdminBundle/Entity/PostTag.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.8810068" vertical-offset="778" max-vertical-offset="2896">
+          <caret line="102" column="22" selection-start-line="102" selection-start-column="22" selection-end-line="102" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>

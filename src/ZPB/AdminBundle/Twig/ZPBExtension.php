@@ -45,8 +45,14 @@ class ZPBExtension extends \Twig_Extension{
             new \Twig_SimpleFunction('post_img_url', [$this, 'postImgUrl']),
 
             new \Twig_SimpleFunction('post_bandeau_img_url', [$this, 'postBandeauImgUrl']),
+            new \Twig_SimpleFunction('post_bandeau_img_def_url', [$this, 'postBandeauImgDefUrl']),
+
+
             new \Twig_SimpleFunction('post_squarre_img_url', [$this, 'postSquarreImgUrl']),
+            new \Twig_SimpleFunction('post_squarre_img_def_url', [$this, 'postSquarreImgDefUrl']),
+
             new \Twig_SimpleFunction('post_fb_img_url', [$this, 'fbImgUrl']),
+            new \Twig_SimpleFunction('post_fb_img_def_url', [$this, 'fbImgDefUrl']),
         ];
     }
 
@@ -61,6 +67,10 @@ class ZPBExtension extends \Twig_Extension{
         }
         return $img->getWebThumbPath('regular');
     }
+    public function fbImgDefUrl()
+    {
+        return '/img/sites/zoo/fb_default.jpg';
+    }
 
     public function postBandeauImgUrl($id)
     {
@@ -72,6 +82,11 @@ class ZPBExtension extends \Twig_Extension{
             return null;
         }
         return $img->getWebThumbPath('regular');
+    }
+
+    public function postBandeauImgDefUrl()
+    {
+        return '/img/sites/zoo/bandeau_default.jpg';
     }
 
     public function postSquarreImgUrl($id)
@@ -86,7 +101,10 @@ class ZPBExtension extends \Twig_Extension{
         return $img->getWebThumbPath('regular');
     }
 
-
+    public function postSquarreImgDefUrl()
+    {
+        return '/img/sites/zoo/squarre_default.jpg';
+    }
 
 
     public function pdfUrl($id)

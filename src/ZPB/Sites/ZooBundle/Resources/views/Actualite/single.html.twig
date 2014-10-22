@@ -7,7 +7,7 @@
 {% set active_page = "single_post" %}
 {% set host = app.request.scheme~"://"~app.request.host %}
 
-{% set imageUrl = (post_fb_img_url(pub.post.fbThumb) != null) ? host~post_fb_img_url(pub.post.fbThumb) : "" %}
+{% set imageUrl = (post_fb_img_url(pub.post.fbThumb) != null) ? host~post_fb_img_url(pub.post.fbThumb) : host~post_fb_img_def_url() %}
 {% block meta_fb%}
     {{ include("ZPBSitesZooBundle:incs/facebook:metas.html.twig", {title: pub.post.title, type: "article", description: pub.post.excerpt, imageUrl: imageUrl}) }}
 {% endblock %}
@@ -42,14 +42,16 @@
 
             <div class="col-md-6">
                 <div class="single-post">
-                    {% if pub.post.bandeau != null %}
+
                         <div class="post-thumbnail">
-                            <img src="{{ post_img_url(pub.post.bandeau) }}" alt=""/>
+                            {% if pub.post.bandeau != null %}
+                            <img src="{{ post_bandeau_img_url(pub.post.bandeau) }}" alt=""/>
+                            {% else %}
+                            <img src="{{ post_bandeau_img_def_url() }}" alt=""/>
+                            {% endif %}
                         </div>
-                    {% endif %}
-                    <div class="post-thumbnail">
-                        <img src="http://lorempicsum.com/up/1200/300/3" alt=""/>
-                    </div>
+
+
                     <div class="post-category">{{ pub.category.name }}</div>
                     <h3 class="post-title">{{ pub.post.title }}</h3>
 

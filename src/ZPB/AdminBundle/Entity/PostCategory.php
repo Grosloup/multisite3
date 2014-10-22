@@ -34,7 +34,7 @@ class PostCategory
      * @var string
      *
      * @ORM\Column(name="slug", type="string", length=255)
-     * @Gedmo\Slug(fields={"name"})
+     * @Gedmo\Slug(fields={"name"}, unique=true)
      */
     private $slug;
 
@@ -168,5 +168,10 @@ class PostCategory
     public function getPosts()
     {
         return $this->posts;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

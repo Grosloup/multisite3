@@ -40,4 +40,37 @@ class PublishedPostRepository extends EntityRepository
 
         return $qb->getQuery()->getSingleResult();
     }
+
+
+    public function getByCategoryAndTarget($slug, $target)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->select('p, post')
+            ->join('p.post', 'post')
+            ->join('p.category','c')
+            ->where('p.target= :target')
+            ->andWhere('c.slug = :slug')
+            ->andWhere('p.isArchived = :isArchived')
+            ->orderBy('p.publishedAt', 'ASC');
+        $qb->setParameter('target', $target)
+            ->setParameter('isArchived',false)
+            ->setParameter('slug', $slug);
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getByTagAndTarget($slug, $target)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->select('p, post')
+            ->join('p.post', 'post')
+            ->join('p.tags','t')
+            ->where('p.target = :target')
+            ->andWhere('t.slug = :slug')
+            ->andWhere('p.isArchived = :isArchived')
+            ->orderBy('p.publishedAt', 'ASC');
+        $qb->setParameter('target', $target)
+            ->setParameter('isArchived',false)
+            ->setParameter('slug', $slug);
+        return $qb->getQuery()->getResult();
+    }
 }
