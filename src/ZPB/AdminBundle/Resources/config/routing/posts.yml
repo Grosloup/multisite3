@@ -33,11 +33,19 @@ zpb_admin_actualites_update_draft:
         id: \d+
 
 zpb_admin_actualites_update_published:
-    path: /modifier/article-publier/{id}
+    path: /modifier/article-publie/{id}
     defaults: { _controller: ZPBAdminBundle:General/Post:updatePublished }
     methods: ["GET","POST"]
     requirements:
         id: \d+
+
+zpb_admin_actualites_update_archived:
+    path: /modifier/article-archive/{id}
+    defaults: { _controller: ZPBAdminBundle:General/Post:updateArchived }
+    methods: ["GET","POST"]
+    requirements:
+        id: \d+
+
 
 zpb_admin_actualites_update_publication:
     path: /modifier/publication/{id}

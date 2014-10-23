@@ -99,8 +99,23 @@ class PostController extends BaseController
 
             return $this->redirect($this->generateUrl('zpb_admin_actualites_list_published'));
         }
-        return $this->render('ZPBAdminBundle:General/Post:update_published.html.twig', ['form'=>$form->createView()]);
+        return $this->render('ZPBAdminBundle:General/Post:update_published.html.twig', ['form'=>$form->createView(),'post'=>$post]);
     }
+
+    public function updateArchivedAction($id, Request $request)
+    {
+        $post = $this->getPost($id);
+        $form = $this->createForm(new UpdatePostType(), $post);
+        $form->handleRequest($request);
+        if($form->isValid()){
+            $this->getManager()->persist($post);
+            $this->getManager()->flush();
+
+            return $this->redirect($this->generateUrl('zpb_admin_actualites_list_archived'));
+        }
+        return $this->render('ZPBAdminBundle:General/Post:update_archived.html.twig', ['form'=>$form->createView(),'post'=>$post]);
+    }
+
 
     public function updatePublicationAction($id)
     {
