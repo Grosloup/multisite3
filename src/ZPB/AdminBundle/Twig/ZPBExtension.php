@@ -65,7 +65,7 @@ class ZPBExtension extends \Twig_Extension{
         if(!$img){
             return null;
         }
-        return $img->getWebThumbPath('regular');
+        return $img->getWebPath();
     }
     public function fbImgDefUrl()
     {
@@ -81,7 +81,7 @@ class ZPBExtension extends \Twig_Extension{
         if(!$img){
             return null;
         }
-        return $img->getWebThumbPath('regular');
+        return $img->getWebPath();
     }
 
     public function postBandeauImgDefUrl()
@@ -98,7 +98,7 @@ class ZPBExtension extends \Twig_Extension{
         if(!$img){
             return null;
         }
-        return $img->getWebThumbPath('regular');
+        return $img->getWebPath();
     }
 
     public function postSquarreImgDefUrl()
