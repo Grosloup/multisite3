@@ -341,6 +341,26 @@ class Post implements JsonSerializable
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getIsArchived()
+    {
+        return $this->isArchived;
+    }
+
+    /**
+     * @param mixed $isArchived
+     * @return Post
+     */
+    public function setIsArchived($isArchived)
+    {
+        $this->isArchived = $isArchived;
+        return $this;
+    }
+
+
+
 
     /**
      * (PHP 5 &gt;= 5.4.0)<br/>

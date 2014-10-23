@@ -102,8 +102,39 @@ class PostController extends BaseController
         return $this->render('ZPBAdminBundle:General/Post:update_published.html.twig', ['form'=>$form->createView()]);
     }
 
+    public function updatePublicationAction($id)
+    {
+        $post = $this->getRepo('ZPBAdminBundle:Post')->find($id);
+        return $this->render('ZPBAdminBundle:General/Post:update_publish.html.twig', ['post'=>$post]);
+    }
+
+
     public function deleteAction($id, Request $request)
     {
+        $post = $this->getRepo('ZPBAdminBundle:Post')->find($id);
+        if(!$post){
+            throw $this->createNotFoundException();
+        }
+        if(!$this->validateToken($request->query->get('_token'), 'delete_post')){
+            throw $this->createAccessDeniedException();
+        }
+        $em =$this->getManager();
+        $pubs = $this->getRepo('ZPBAdminBundle:PublishedPost')->findByPost($post);
+
+        foreach($pubs as $pub){
+            $em->remove($pub);
+        }
+
+        $em->remove($post);
+        $em->flush();
+
+        $referer = $request->headers->get('referer', false);
+
+        if($referer){
+            return $this->redirect($referer);
+        }
+
+        return $this->redirect($this->generateUrl('zpb_admin_actualites_list'));
     }
 
     public function listPublishedAction()

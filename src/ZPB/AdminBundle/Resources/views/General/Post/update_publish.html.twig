@@ -1,0 +1,428 @@
+{% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
+
+{% block title %}Publier | Actualité{% endblock %}
+{% set active = "write_post" %}
+
+{% block angular %}EditPostApp{% endblock %}
+{% block headScripts %}
+    <script>
+        var postId = {{ id }};
+        {% for key,cats in categories %}
+        var initialsCategotries_{{ key }} = [
+            {%- for cat in cats -%}
+            {id: {{ cat.id }}, name: "{{ cat.name }}", slug: "{{ cat.slug }}", target: "{{ cat.target }}" }{%- if loop.last != true -%}, {%- endif -%}
+            {%- endfor -%}
+        ];
+        {% endfor %}
+
+        {% for key,tgs in tags %}
+        var initialsTags_{{ key }} = [
+            {%- for tg in tgs -%}
+            {id: {{ tg.id }}, name: "{{ tg.name }}", slug: "{{ tg.slug }}", target: "{{ tg.target }}" }{%- if loop.last != true -%}, {%- endif -%}
+            {%- endfor -%}
+        ];
+        {% endfor %}
+    </script>
+{% endblock %}
+{% block headStyles %}
+    {{ parent() }}
+    <style>
+        .app-form label{
+            display: block;
+            margin-bottom: 3px;
+        }
+        .app-form input[type=text]{
+            display: block;
+        }
+        .loader{
+            background: url("/img/sites/ajax-loader.gif") no-repeat center center;
+            width: 28px;
+            height: 28px;
+        }
+        .tags-container{
+            *zoom: 1;
+
+        }
+        .tags-container:before, .tags-container:after{
+            display: table;
+            content: " ";
+        }
+        .tags-container:after{
+            clear: both;
+        }
+        .tag-box{
+            float: left;
+            margin: 2px;
+            border-radius: 3px;
+            background-color: #039be5;
+            color: #fff;
+            padding: 4px 6px;
+            cursor: pointer;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <div class="tile-header">
+                    Publier un article
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    <div class="column-8">
+    <!-- ####################################### zoo beauval ############################################# -->
+    <div class="tile" ng-controller="ZooController">
+        <div class="tile-header">
+            ZooParc de Beauval
+        </div>
+
+        <div class="row">
+            <div class="column-12">
+                <form>
+                    <label for="target_zoo"><input type="checkbox" id="target_zoo" ng-model="editOn_zoo"/> publier sur ce site</label>
+                </form>
+
+            </div>
+            <div class="column-12" ng-show="editOn_zoo">
+                <form class="app-form">
+                    <label for="category_zoo">Dans la catégorie</label>
+                    <select id="category_zoo" ng-model="cat_selected" ng-options="c.name for c in categories|orderBy:'name'"></select>
+                </form>
+                <form class="app-form" ng-submit="newCatForPost()">
+                    <label>ou dans une nouvelle catégorie :</label>
+                    <input type="text" ng-show="!cat_is_saving" ng-model="new_cat_name"/>
+                    <div class="loader" ng-show="cat_is_saving"></div>
+                </form>
+            </div>
+            <div class="column-12" ng-show="editOn_zoo">
+                Associer des mots-clés existants:
+                <div class="row">
+                    <div class="column-5">
+                        <div class="card">
+                            <div class="tags-container">
+                                <div class="tag-box" ng-repeat="(key,t) in tags" ng-click="addTag(t)">{$ t.name $}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column-2"><div class="card" style="text-align: center;"><i class="fa fa-arrow-left"></i><i class="fa fa-arrow-right"></i></div></div>
+                    <div class="column-5">
+                        <div class="card">
+                            <div class="tags-container">
+                                <div class="tag-box" ng-repeat="(key,t) in post_tags" ng-click="removeTag(t)" >{$ t.name $}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                et/ou créer des mots-clés :
+                <form class="app-form" ng-submit="newTag()">
+                    <input type="text" ng-model="new_tag_name" ng-show="!tag_is_saving"/>
+                    <div class="loader" ng-show="tag_is_saving"></div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!-- ####################################### fin zoo beauval ############################################# -->
+
+    <!-- ####################################### Beauval Nature ############################################# -->
+
+    <div class="tile" ng-controller="BnController">
+        <div class="tile-header">
+            Beauval Nature
+        </div>
+
+        <div class="row">
+            <div class="column-12">
+                <form>
+                    <label for="target_bn"><input type="checkbox" id="target_bn" ng-model="editOn_bn"/> publier sur ce site</label>
+                </form>
+
+            </div>
+            <div class="column-12" ng-show="editOn_bn">
+                <form class="app-form">
+                    <label for="category_bn">Dans la catégorie</label>
+                    <select id="category_bn" ng-model="cat_selected" ng-options="c.name for c in categories|orderBy:'name'"></select>
+                </form>
+                <form class="app-form" ng-submit="newCatForPost()">
+                    <label>ou dans une nouvelle catégorie :</label>
+                    <input type="text" ng-show="!cat_is_saving" ng-model="new_cat_name"/>
+                    <div class="loader" ng-show="cat_is_saving"></div>
+                </form>
+            </div>
+            <div class="column-12" ng-show="editOn_bn">
+                Associer des mots-clés existants:
+                <div class="row">
+                    <div class="column-5">
+                        <div class="card">
+                            <div class="tags-container">
+                                <div class="tag-box" ng-repeat="(key,t) in tags" ng-click="addTag(t)">{$ t.name $}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column-2"><div class="card" style="text-align: center;"><i class="fa fa-arrow-left"></i><i class="fa fa-arrow-right"></i></div></div>
+                    <div class="column-5">
+                        <div class="card">
+                            <div class="tags-container">
+                                <div class="tag-box" ng-repeat="(key,t) in post_tags" ng-click="removeTag(t)" >{$ t.name $}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                et/ou créer des mots-clés :
+                <form class="app-form" ng-submit="newTag()">
+                    <input type="text" ng-model="new_tag_name" ng-show="!tag_is_saving"/>
+                    <div class="loader" ng-show="tag_is_saving"></div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!-- ####################################### fin Beauval Nature ############################################# -->
+
+    <!-- ####################################### les jardins de beauval ############################################# -->
+    <div class="tile" ng-controller="JdbController">
+        <div class="tile-header">
+            Les Jardins de Beauval
+        </div>
+
+        <div class="row">
+            <div class="column-12">
+                <form>
+                    <label for="target_jdb"><input type="checkbox" id="target_jdb" ng-model="editOn_jdb"/> publier sur ce site</label>
+                </form>
+
+            </div>
+            <div class="column-12" ng-show="editOn_jdb">
+                <form class="app-form">
+                    <label for="category_jdb">Dans la catégorie</label>
+                    <select id="category_jdb" ng-model="cat_selected" ng-options="c.name for c in categories|orderBy:'name'"></select>
+                </form>
+                <form class="app-form" ng-submit="newCatForPost()">
+                    <label>ou dans une nouvelle catégorie :</label>
+                    <input type="text" ng-show="!cat_is_saving" ng-model="new_cat_name"/>
+                    <div class="loader" ng-show="cat_is_saving"></div>
+                </form>
+            </div>
+            <div class="column-12" ng-show="editOn_jdb">
+                Associer des mots-clés existants:
+                <div class="row">
+                    <div class="column-5">
+                        <div class="card">
+                            <div class="tags-container">
+                                <div class="tag-box" ng-repeat="(key,t) in tags" ng-click="addTag(t)">{$ t.name $}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column-2"><div class="card" style="text-align: center;"><i class="fa fa-arrow-left"></i><i class="fa fa-arrow-right"></i></div></div>
+                    <div class="column-5">
+                        <div class="card">
+                            <div class="tags-container">
+                                <div class="tag-box" ng-repeat="(key,t) in post_tags" ng-click="removeTag(t)" >{$ t.name $}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                et/ou créer des mots-clés :
+                <form class="app-form" ng-submit="newTag()">
+                    <input type="text" ng-model="new_tag_name" ng-show="!tag_is_saving"/>
+                    <div class="loader" ng-show="tag_is_saving"></div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ####################################### fin les jardins de beauval ############################################# -->
+
+    <!-- ####################################### les hameaux de beauval ############################################# -->
+    <div class="tile" ng-controller="HdbController">
+        <div class="tile-header">
+            Les Hameaux de Beauval
+        </div>
+
+        <div class="row">
+            <div class="column-12">
+                <form>
+                    <label for="target_hdb"><input type="checkbox" id="target_hdb" ng-model="editOn_hdb"/> publier sur ce site</label>
+                </form>
+
+            </div>
+            <div class="column-12" ng-show="editOn_hdb">
+                <form class="app-form">
+                    <label for="category_hdb">Dans la catégorie</label>
+                    <select id="category_hdb" ng-model="cat_selected" ng-options="c.name for c in categories|orderBy:'name'"></select>
+                </form>
+                <form class="app-form" ng-submit="newCatForPost()">
+                    <label>ou dans une nouvelle catégorie :</label>
+                    <input type="text" ng-show="!cat_is_saving" ng-model="new_cat_name"/>
+                    <div class="loader" ng-show="cat_is_saving"></div>
+                </form>
+            </div>
+            <div class="column-12" ng-show="editOn_hdb">
+                Associer des mots-clés existants:
+                <div class="row">
+                    <div class="column-5">
+                        <div class="card">
+                            <div class="tags-container">
+                                <div class="tag-box" ng-repeat="(key,t) in tags" ng-click="addTag(t)">{$ t.name $}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column-2"><div class="card" style="text-align: center;"><i class="fa fa-arrow-left"></i><i class="fa fa-arrow-right"></i></div></div>
+                    <div class="column-5">
+                        <div class="card">
+                            <div class="tags-container">
+                                <div class="tag-box" ng-repeat="(key,t) in post_tags" ng-click="removeTag(t)" >{$ t.name $}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                et/ou créer des mots-clés :
+                <form class="app-form" ng-submit="newTag()">
+                    <input type="text" ng-model="new_tag_name" ng-show="!tag_is_saving"/>
+                    <div class="loader" ng-show="tag_is_saving"></div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ####################################### fin les hameaux de beauval ############################################# -->
+
+    <!-- ####################################### les pagodes de beauval ############################################# -->
+    <div class="tile" ng-controller="PdbController">
+        <div class="tile-header">
+            Les Pagodes de Beauval
+        </div>
+
+        <div class="row">
+            <div class="column-12">
+                <form>
+                    <label for="target_pdb"><input type="checkbox" id="target_pdb" ng-model="editOn_pdb"/> publier sur ce site</label>
+                </form>
+
+            </div>
+            <div class="column-12" ng-show="editOn_pdb">
+                <form class="app-form">
+                    <label for="category_pdb">Dans la catégorie</label>
+                    <select id="category_pdb" ng-model="cat_selected" ng-options="c.name for c in categories|orderBy:'name'"></select>
+                </form>
+                <form class="app-form" ng-submit="newCatForPost()">
+                    <label>ou dans une nouvelle catégorie :</label>
+                    <input type="text" ng-show="!cat_is_saving" ng-model="new_cat_name"/>
+                    <div class="loader" ng-show="cat_is_saving"></div>
+                </form>
+            </div>
+            <div class="column-12" ng-show="editOn_pdb">
+                Associer des mots-clés existants:
+                <div class="row">
+                    <div class="column-5">
+                        <div class="card">
+                            <div class="tags-container">
+                                <div class="tag-box" ng-repeat="(key,t) in tags" ng-click="addTag(t)">{$ t.name $}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column-2"><div class="card" style="text-align: center;"><i class="fa fa-arrow-left"></i><i class="fa fa-arrow-right"></i></div></div>
+                    <div class="column-5">
+                        <div class="card">
+                            <div class="tags-container">
+                                <div class="tag-box" ng-repeat="(key,t) in post_tags" ng-click="removeTag(t)" >{$ t.name $}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                et/ou créer des mots-clés :
+                <form class="app-form" ng-submit="newTag()">
+                    <input type="text" ng-model="new_tag_name" ng-show="!tag_is_saving"/>
+                    <div class="loader" ng-show="tag_is_saving"></div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ####################################### fin les pagodes de beauval ############################################# -->
+    </div>
+    <div class="column-4" ng-controller="RecapController">
+        <div class="tile">
+            <div class="tile-header">
+                Récapitulatif
+            </div>
+            <div>
+                <div class="card" ng-show="datas.editOn.zoo">
+                    <p ng-show="datas.editOn.zoo">Edité sur ZooParc de Beauval</p>
+                    <p ng-show="datas.zoo.category">Dans la categorie {$ datas.zoo.category.name $}</p>
+                    <p ng-show="datas.zoo.tags.length">Mots-clés : <span ng-repeat="t in datas.zoo.tags|orderBy:'name'">{$ t.name $}, </span></p>
+                </div>
+                <div class="card" ng-show="datas.editOn.bn">
+                    <p>Edité sur Beauval Nature</p>
+                    <p ng-show="datas.bn.category">Dans la categorie {$ datas.bn.category.name $}</p>
+                    <p ng-show="datas.bn.tags.length">Mots-clés : <span ng-repeat="t in datas.bn.tags|orderBy:'name'">{$ t.name $}, </span></p>
+                </div>
+                <div class="card" ng-show="datas.editOn.jdb">
+                    <p>Edité sur Les Jardins de Beauval</p>
+                    <p ng-show="datas.jdb.category">Dans la categorie {$ datas.jdb.category.name $}</p>
+                    <p ng-show="datas.jdb.tags.length">Mots-clés : <span ng-repeat="t in datas.jdb.tags|orderBy:'name'">{$ t.name $}, </span></p>
+                </div>
+                <div class="card" ng-show="datas.editOn.hdb">
+                    <p>Edité sur Les Hameaux de Beauval</p>
+                    <p ng-show="datas.hdb.category">Dans la categorie {$ datas.hdb.category.name $}</p>
+                    <p ng-show="datas.hdb.tags.length">Mots-clés : <span ng-repeat="t in datas.hdb.tags|orderBy:'name'">{$ t.name $}, </span></p>
+                </div>
+                <div class="card" ng-show="datas.editOn.pdb">
+                    <p>Edité sur Les Pagodes de Beauval</p>
+                    <p ng-show="datas.pdb.category">Dans la categorie {$ datas.pdb.category.name $}</p>
+                    <p ng-show="datas.pdb.tags.length">Mots-clés : <span ng-repeat="t in datas.pdb.tags|orderBy:'name'">{$ t.name $}, </span></p>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="tile" ng-show="display_errors">
+            <div class="tile-header">
+                Des erreurs existent
+            </div>
+            <ul>
+                <li ng-repeat="error in errors.messages">{$ error $}</li>
+            </ul>
+        </div>
+
+        <div class="tile" ng-show="display_results">
+            Article publié.
+        </div>
+
+        <div class="tile">
+            <form>
+                <button class="btn btn-primary" ng-show="!post_is_saving" ng-click="save()">Publier</button><div class="loader" ng-show="post_is_saving"></div>
+            </form>
+        </div>
+
+
+    </div>
+    </div>
+
+
+{% endblock %}
+{% block footScripts %}
+    {{ parent() }}
+    <script src="/js/vendor/angular/angular.min.js"></script>
+    <script src="/js/admin/post/publication/CategoriesClass.js"></script>
+    <script src="/js/admin/post/publication/TagsClass.js"></script>
+    <script src="/js/admin/post/publication/configs.js"></script>
+    <script src="/js/admin/post/publication/categoryFactory.js"></script>
+    <script src="/js/admin/post/publication/tagFactory.js"></script>
+    <script src="/js/admin/post/publication/postDatas.js"></script>
+    <script src="/js/admin/post/publication/zooEdit.js"></script>
+    <script src="/js/admin/post/publication/bnEdit.js"></script>
+    <script src="/js/admin/post/publication/jdbEdit.js"></script>
+    <script src="/js/admin/post/publication/hdbEdit.js"></script>
+    <script src="/js/admin/post/publication/pdbEdit.js"></script>
+    <script src="/js/admin/post/publication/recapApp.js"></script>
+    <script src="/js/admin/post/publication/editPostApp.js"></script>
+{% endblock %}

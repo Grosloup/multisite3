@@ -53,11 +53,48 @@ class LoadPosts extends AbstractFixture implements OrderedFixtureInterface, Cont
 
         $this->loadPublished();
 
+        $this->loadArchives();
+
     }
 
     public function getOrder()
     {
         return 27;
+    }
+
+    private function loadArchives()
+    {
+        $post1 = $this->getReference('zpb-actu-archived-15');
+        $post1->setIsPublished(false);
+        $post1->setIsArchived(true);
+        $this->em->persist($post1);
+        $pubs1 = $this->em->getRepository('ZPBAdminBundle:PublishedPost')->findByPost($post1);
+        foreach($pubs1 as $pub){
+            $pub->setIsArchived(true);
+            $this->em->persist($pub);
+        }
+
+        $post2 = $this->getReference('zpb-actu-archived-16');
+        $post2->setIsPublished(false);
+        $post2->setIsArchived(true);
+        $this->em->persist($post2);
+        $pubs2 = $this->em->getRepository('ZPBAdminBundle:PublishedPost')->findByPost($post2);
+        foreach($pubs2 as $pub){
+            $pub->setIsArchived(true);
+            $this->em->persist($pub);
+        }
+
+        $post3 = $this->getReference('zpb-actu-archived-17');
+        $post3->setIsPublished(false);
+        $post3->setIsArchived(true);
+        $this->em->persist($post3);
+        $pubs3 = $this->em->getRepository('ZPBAdminBundle:PublishedPost')->findByPost($post3);
+        foreach($pubs3 as $pub){
+            $pub->setIsArchived(true);
+            $this->em->persist($pub);
+        }
+
+        $this->em->flush();
     }
 
     private function loadPublished()
@@ -131,6 +168,37 @@ class LoadPosts extends AbstractFixture implements OrderedFixtureInterface, Cont
         $this->getReference('zpb-actu-draft-12')->setIsPublished(true);
         $this->em->persist($this->getReference('zpb-actu-draft-12'));
         $this->em->persist($pubPost7);
+
+        $pubPost8 = new PublishedPost();
+        $pubPost8->setPost($this->getReference('zpb-actu-archived-15'))
+            ->setTarget('zoo')
+            ->setCategory($this->getReference('zpb-post-cat-zoo-3'))
+            ->addTag($this->getReference('zpb-post-tag-zoo-1'))->addTag($this->getReference('zpb-post-tag-zoo-3'))
+            ->setPublishedAt(new \DateTime());
+        $this->getReference('zpb-actu-archived-15')->setIsPublished(true);
+        $this->em->persist($this->getReference('zpb-actu-archived-15'));
+        $this->em->persist($pubPost8);
+
+        $pubPost9 = new PublishedPost();
+        $pubPost9->setPost($this->getReference('zpb-actu-archived-16'))
+            ->setTarget('zoo')
+            ->setCategory($this->getReference('zpb-post-cat-zoo-2'))
+            ->addTag($this->getReference('zpb-post-tag-zoo-2'))->addTag($this->getReference('zpb-post-tag-zoo-3'))
+            ->setPublishedAt(new \DateTime());
+        $this->getReference('zpb-actu-archived-15')->setIsPublished(true);
+        $this->em->persist($this->getReference('zpb-actu-archived-16'));
+        $this->em->persist($pubPost9);
+
+        $pubPost10 = new PublishedPost();
+        $pubPost10->setPost($this->getReference('zpb-actu-archived-17'))
+            ->setTarget('zoo')
+            ->setCategory($this->getReference('zpb-post-cat-zoo-1'))
+            ->addTag($this->getReference('zpb-post-tag-zoo-1'))->addTag($this->getReference('zpb-post-tag-zoo-2'))
+            ->setPublishedAt(new \DateTime());
+        $this->getReference('zpb-actu-archived-17')->setIsPublished(true);
+        $this->em->persist($this->getReference('zpb-actu-archived-17'));
+        $this->em->persist($pubPost10);
+
 
         $this->em->flush();
 
@@ -218,6 +286,22 @@ class LoadPosts extends AbstractFixture implements OrderedFixtureInterface, Cont
         $this->em->persist($post14);
 
 
+        $post15 = new Post();
+        $post15->setTitle('Archive 1')->setBody($this->getBody(4))
+            ->setExcerpt('Proin id erat ut orci ornare bibendum sit amet ut mi. Suspendisse sollicitudin facilisis tristique. Pellentesque a enim nec odio sollicitudin faucibus. ');
+        $this->em->persist($post15);
+
+        $post16 = new Post();
+        $post16->setTitle('Archive 2')->setBody($this->getBody(5))
+            ->setExcerpt('Nulla ut lorem accumsan, rhoncus nunc a, suscipit ipsum. Suspendisse accumsan arcu magna, eu mollis sem pretium congue.');
+        $this->em->persist($post16);
+
+        $post17 = new Post();
+        $post17->setTitle('Archive 3')->setBody($this->getBody(5))
+            ->setExcerpt('Nulla ut lorem accumsan, rhoncus nunc a, suscipit ipsum. Suspendisse accumsan arcu magna, eu mollis sem pretium congue.');
+        $this->em->persist($post17);
+
+
         $this->em->flush();
         $this->addReference('zpb-actu-draft-1', $post1);
         $this->addReference('zpb-actu-draft-2', $post2);
@@ -234,6 +318,10 @@ class LoadPosts extends AbstractFixture implements OrderedFixtureInterface, Cont
         $this->addReference('zpb-actu-draft-12', $post12);
         $this->addReference('zpb-actu-draft-13', $post13);
         $this->addReference('zpb-actu-draft-14', $post14);
+
+        $this->addReference('zpb-actu-archived-15', $post15);
+        $this->addReference('zpb-actu-archived-16', $post16);
+        $this->addReference('zpb-actu-archived-17', $post17);
     }
     private function getBody($num)
     {

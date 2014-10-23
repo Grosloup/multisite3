@@ -1,0 +1,44 @@
+{% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
+
+{% block title %}Listes des articles archivés | Actulité{% endblock %}
+{% set active = "list_post_archive" %}
+
+{% block content %}
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <div class="tile-header">
+                    Listes des articles archivés
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Date de création</th>
+                        <th>Modifier</th>
+                        <th>Republier</th>
+                        <th>Supprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for post in posts %}
+                        <tr>
+                            <td>{{ post.title }}</td>
+                            <td>{{ post.createdAt|date('d/m/Y h:i') }}</td>
+                            <td><a class="btn btn-neutral" href="{{ path("zpb_admin_actualites_update_published" ,{id: post.id}) }}"><i class="fa fa-edit"></i></a></td>
+                            <td><a class="btn btn-neutral" href=""><i class="fa fa-share"></i></a></td>
+                            <td><a class="btn btn-neutral delete-alert" href="{{ path("zpb_admin_actualites_delete" ,{id: post.id, _token: csrf_token('delete_post')}) }}" data-name="{{ post.slug }}"><i class="fa fa-trash-o"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

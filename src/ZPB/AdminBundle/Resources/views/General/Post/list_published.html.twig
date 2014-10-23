@@ -34,8 +34,8 @@
                             <td>{{ post.title }}</td>
                             <td>{{ post.createdAt|date('d/m/Y h:i') }}</td>
                             <td><a class="btn btn-neutral" href="{{ path("zpb_admin_actualites_update_published" ,{id: post.id}) }}"><i class="fa fa-edit"></i></a></td>
-                            <td><a class="btn btn-neutral" href=""><i class="fa fa-eye"></i></a></td>
-                            <td><a class="btn btn-neutral" href=""><i class="fa fa-trash-o"></i></a></td>
+                            <td><a class="btn btn-neutral" href="{{ path("zpb_admin_actualites_update_publication" ,{id: post.id}) }}"><i class="fa fa-eye"></i></a></td>
+                            <td><a class="btn btn-neutral delete-alert" href="{{ path("zpb_admin_actualites_delete" ,{id: post.id, _token: csrf_token('delete_post')}) }}" data-name="{{ post.slug }}"><i class="fa fa-trash-o"></i></a></td>
                         </tr>
                     {% endfor %}
                     </tbody>

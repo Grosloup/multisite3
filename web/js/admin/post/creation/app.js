@@ -30,9 +30,8 @@ $(function(){
     //#################### title
 
     iptTitle.on("keyup", function(e){
-       var len = $(this).val().length;
-        console.log(len);
-        validObj.title = (len > 0);
+        validObj.title = ( $(this).val().length > 0);
+        enableEdition();
     });
 
     //#################### editeur
@@ -71,8 +70,7 @@ $(function(){
                 enableEdition();
             }
             if(textarea.attr("id") == "new_post_form_body"){
-                var eb = editor.getSession().getValue().length;
-                validObj.body = (eb > 0);
+                validObj.body = (editor.getSession().getValue().length > 0);
                 enableEdition();
             }
         });
