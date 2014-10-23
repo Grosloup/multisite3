@@ -247,23 +247,17 @@ class PostController extends BaseController
         $filename = $request->headers->get('X-File-Name', false);
         $fileType = $request->headers->get('X-File-Type', false);
         $response = ['error'=>false,'msg'=>'', 'imgId'=>'', 'imgUrl'=>''];
-
+        $imgFactory = $this->get('zpb.post_image_factory');
         if(!$filename || !$fileType){
             $response = ['error'=>true,'msg'=>'Données manquantes', 'imgId'=>'', 'imgUrl'=>''];
-        } elseif(!in_array($fileType, ['image/jpeg', 'image/gif', 'image/png'])){
+        } elseif(!$imgFactory->isMimeAllowed($fileType)){
             $response = ['error'=>true,'msg'=>'Données érronées', 'imgId'=>'', 'imgUrl'=>''];
         } else {
-            $basePath =
-                $this->container->getParameter('zpb.medias.options')['zpb.img.root_dir']
-                . $this->container->getParameter('zpb.medias.options')['zpb.img.web_dir']
-            ;
-            if($fs->exists($basePath)){
-                $fs->mkdir($basePath);
-            }
+            $basePath = $imgFactory->createDirs($fs);
             $path = $basePath . $filename;
             if($fs->exists($path)){
                 $filenameNoExtension = pathinfo($filename, PATHINFO_FILENAME);
-                $old = $this->getRepo('ZPBAdminBundle:MediaImage')->findOneByFilename($filenameNoExtension);
+                $old = $this->getRepo('ZPBAdminBundle:PostImg')->findOneByFilename($filenameNoExtension);
                 if($old){
                     $this->getManager()->remove($old);
                     $this->getManager()->flush();
@@ -271,12 +265,11 @@ class PostController extends BaseController
             }
             file_put_contents($path, $request->getContent());
             $file = new File($path);
-            $image = $this->get('zpb.image_factory')->createFromFile($file);
-            $this->get('zpb.image_resizer')->makeThumbnails($image);
+            $image = $imgFactory->createFromFile($file);
             try{
                 $this->getManager()->persist($image);
                 $this->getManager()->flush();
-                $response = ['error'=>false,'msg'=>'Transfert réussi', 'imgId'=>$image->getId(), 'imgUrl'=> $image->getWebThumbPath('regular')];
+                $response = ['error'=>false,'msg'=>'Transfert réussi', 'imgId'=>$image->getId(), 'imgUrl'=> $image->getWebPath()];
             } catch(\Exception $e){
                 $response = ['error'=>true,'msg'=>$e->getMessage(), 'imgId'=>'', 'imgUrl'=>''];
             }

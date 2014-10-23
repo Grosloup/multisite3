@@ -14,6 +14,7 @@
         <parameter key="zpb.photo_factory.class">ZPB\AdminBundle\Service\PhotoFactory</parameter>
         <parameter key="zpb.photo_hd_factory.class">ZPB\AdminBundle\Service\PhotoHdFactory</parameter>
         <parameter key="zpb.image_factory.class">ZPB\AdminBundle\Service\ImageFactory</parameter>
+        <parameter key="zpb.post_image_factory.class">ZPB\AdminBundle\Service\PostImgFactory</parameter>
         <parameter key="zpb.pdf_factory.class">ZPB\AdminBundle\Service\PdfFactory</parameter>
         <parameter key="zpb.form.type.civility.class">ZPB\AdminBundle\Form\Type\CivilityType</parameter>
         <parameter key="zpb.listener.entity.godparent_listener.class">ZPB\AdminBundle\Listener\Entities\GodparentListener</parameter>
@@ -119,6 +120,17 @@
             <parameter key="zpb.img.thumbs.upload_dir">img/uploads/thumbs/</parameter>
             <parameter key="zpb.img.root_dir">%kernel.root_dir%/../web/</parameter>
             <parameter key="zpb.document.default_copyright.text">ZooParc de Beauval</parameter>
+        </parameter>
+
+        <parameter key="zpb.post_image.options" type="collection">
+            <parameter key="zpb.post_image.class">ZPB\AdminBundle\Entity\PostImg</parameter>
+            <parameter key="zpb.post_image.web_dir">img/post/</parameter>
+            <parameter key="zpb.post_image.root_dir">%kernel.root_dir%/../web/</parameter>
+            <parameter key="allowedMimes" type="collection">
+                <parameter key="jpg">image/jpeg</parameter>
+                <parameter key="gif">image/gif</parameter>
+                <parameter key="png">image/png</parameter>
+            </parameter>
         </parameter>
 
         <parameter key="zpb.iucn_status" type="collection">
@@ -264,6 +276,10 @@
         <service id="zpb.image_factory" class="%zpb.image_factory.class%">
             <argument>%zpb.image.thumbnails%</argument>
             <argument>%zpb.medias.options%</argument>
+        </service>
+
+        <service id="zpb.post_image_factory" class="%zpb.post_image_factory.class%">
+            <argument>%zpb.post_image.options%</argument>
         </service>
 
         <service id="zpb.zoo.form.type.civility" class="%zpb.form.type.civility.class%">

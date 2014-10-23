@@ -61,7 +61,7 @@ class ZPBExtension extends \Twig_Extension{
         if(!$id){
             return null;
         }
-        $img = $this->em->getRepository('ZPBAdminBundle:MediaImage')->find($id);
+        $img = $this->em->getRepository('ZPBAdminBundle:PostImg')->find($id);
         if(!$img){
             return null;
         }
@@ -77,7 +77,7 @@ class ZPBExtension extends \Twig_Extension{
         if(!$id){
             return null;
         }
-        $img = $this->em->getRepository('ZPBAdminBundle:MediaImage')->find($id);
+        $img = $this->em->getRepository('ZPBAdminBundle:PostImg')->find($id);
         if(!$img){
             return null;
         }
@@ -94,7 +94,7 @@ class ZPBExtension extends \Twig_Extension{
         if(!$id){
             return null;
         }
-        $img = $this->em->getRepository('ZPBAdminBundle:MediaImage')->find($id);
+        $img = $this->em->getRepository('ZPBAdminBundle:PostImg')->find($id);
         if(!$img){
             return null;
         }
