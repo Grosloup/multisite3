@@ -105,7 +105,62 @@ class PostController extends BaseController
     public function updatePublicationAction($id)
     {
         $post = $this->getRepo('ZPBAdminBundle:Post')->find($id);
-        return $this->render('ZPBAdminBundle:General/Post:update_publish.html.twig', ['post'=>$post]);
+        $pubs = $this->getRepo('ZPBAdminBundle:PublishedPost')->findByPost($post);
+        $postDatas = [
+            'editOn'=>[
+                'zoo'=>false,
+                'bn'=>false,
+                'jdb'=>false,
+                'hdb'=>false,
+                'pdb'=>false,
+            ],
+            'zoo'=>[
+                'name'=>'ZooParc de Beauval',
+                'category'=>'',
+                'tags'=>[]
+            ],
+            'bn'=>[
+                'name'=>'Beauval Nature',
+                'category'=>'',
+                'tags'=>[]
+            ],
+            'jdb'=>[
+                'name'=>'Les Jardins de Beauval',
+                'category'=>'',
+                'tags'=>[]
+            ],
+            'hdb'=>[
+                'name'=>'Les Hameaux de Beauval',
+                'category'=>'',
+                'tags'=>[]
+            ],
+            'pdb'=>[
+                'name'=>'Les Pagodes de Beauval',
+                'category'=>'',
+                'tags'=>[]
+            ],
+        ];
+        foreach($pubs as $pub){
+            /** @var \ZPB\AdminBundle\entity\PublishedPost $pub */
+            $postDatas['editOn'][$pub->getTarget()] = true;
+            $category = $pub->getCategory();
+            $postDatas[$pub->getTarget()]['category'] = ['name'=>$category->getName(),'slug'=>$category->getSlug(),'target'=> $category->getTarget()];
+            foreach($pub->getTags() as $tag){
+                /** @var \ZPB\AdminBundle\entity\PostTag $tag*/
+                $postDatas[$pub->getTarget()]['tags'][] = ['name'=>$tag->getName(),'slug'=>$tag->getSlug(),'target'=> $tag->getTarget()];
+            }
+        }
+
+
+        return $this->render('ZPBAdminBundle:General/Post:update_publish.html.twig',
+            [
+                'postDatas'=>$postDatas,
+                'id'=>$id,
+                'targets'=>$this->getTargets(),
+                'categories'=>$this->getCategoriesByTarget(),
+                'tags'=>$this->getTagsByTarget()
+            ]
+        );
     }
 
 

@@ -30,12 +30,8 @@ recapApp.controller('RecapController', ['$scope','$postDatas','configs','$http',
                 countCategoryErrors++;
             }
         });
-        if(countCategoryErrors>0){
-            return false;
-        }
+        return countCategoryErrors <= 0;
 
-
-        return true;
     }
 
     $scope.save = function(){
@@ -65,5 +61,5 @@ recapApp.controller('RecapController', ['$scope','$postDatas','configs','$http',
                 $scope.post_is_saving = false;
                 $scope.display_errors = true;
             });
-    }
+    };
 }]);

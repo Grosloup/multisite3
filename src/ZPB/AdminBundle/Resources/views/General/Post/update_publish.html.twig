@@ -22,6 +22,42 @@
             {%- endfor -%}
         ];
         {% endfor %}
+
+        var postDatas = {
+            postId: window.postId || null,
+            editOn: {
+                zoo: {% if postDatas.editOn.zoo == true %}true{% else %}false{% endif %},
+                bn: {% if postDatas.editOn.bn == true %}true{% else %}false{% endif %},
+                jdb: {% if postDatas.editOn.jdb == true %}true{% else %}false{% endif %},
+                hdb: {% if postDatas.editOn.hdb == true %}true{% else %}false{% endif %},
+                pdb: {% if postDatas.editOn.pdb == true %}true{% else %}false{% endif %}
+            },
+            zoo:{
+                name: "{{ postDatas.zoo.name }}",
+                category: {id:16, name: "Nouveauté", slug: "nouveaute", target: "zoo" },
+                tags: []
+            },
+            bn:{
+                name: "{{ postDatas.bn.name }}",
+                category: null,
+                tags: []
+            },
+            jdb:{
+                name: "{{ postDatas.jdb.name }}",
+                category: null,
+                tags: []
+            },
+            hdb:{
+                name: "{{ postDatas.hdb.name }}",
+                category: null,
+                tags: []
+            },
+            pdb:{
+                name: "{{ postDatas.pdb.name }}",
+                category: null,
+                tags: []
+            }
+        }
     </script>
 {% endblock %}
 {% block headStyles %}
@@ -67,7 +103,7 @@
         <div class="column-12">
             <div class="tile">
                 <div class="tile-header">
-                    Publier un article
+                    Modifier les données de publication d'un article
                 </div>
             </div>
         </div>
@@ -412,8 +448,8 @@
 {% block footScripts %}
     {{ parent() }}
     <script src="/js/vendor/angular/angular.min.js"></script>
-    <script src="/js/admin/post/publication/CategoriesClass.js"></script>
-    <script src="/js/admin/post/publication/TagsClass.js"></script>
+    <script src="/js/admin/post/libs/CategoriesClass.js"></script>
+    <script src="/js/admin/post/libs/TagsClass.js"></script>
     <script src="/js/admin/post/publication/configs.js"></script>
     <script src="/js/admin/post/publication/categoryFactory.js"></script>
     <script src="/js/admin/post/publication/tagFactory.js"></script>

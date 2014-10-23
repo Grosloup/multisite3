@@ -1,6 +1,9 @@
 var postDatasApp = angular.module('PostDataApp', []);
 
 postDatasApp.service('$postDatas', ['$window',function($window){
+    if($window.postDatas !== undefined){
+        return $window.postDatas;
+    }
     return {
         postId: $window.postId || null,
         editOn: {
