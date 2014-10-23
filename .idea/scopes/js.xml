@@ -1,3 +1,0 @@
-<component name="DependencyValidationManager">
-  <scope name="js" pattern="file:web//*.js*&amp;&amp;!file[multisite3]:web/js/vendor/*" />
-</component>

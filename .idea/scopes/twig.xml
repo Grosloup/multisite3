@@ -1,3 +1,0 @@
-<component name="DependencyValidationManager">
-  <scope name="twig" pattern="file:src//*.html.twig||file:app//*.html.twig" />
-</component>
