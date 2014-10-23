@@ -1,5 +1,40 @@
 $(function(){
 
+    var validObj = {
+        title: false,
+        body: false,
+        excerpt: false,
+        fb: false,
+        square: false,
+        bandeau: false
+    };
+    var editBtn = $("#new_post_form_publish"), iptTitle = $("#new_post_form_title");
+
+    function enableEdition(){
+        if(
+            validObj.title === true &&
+            validObj.body === true &&
+            validObj.excerpt === true &&
+            validObj.fb === true &&
+            validObj.square === true &&
+            validObj.bandeau === true
+        ){
+            editBtn.attr("disabled", false);
+        } else {
+            editBtn.attr("disabled", "disabled");
+        }
+    }
+
+    enableEdition();
+
+    //#################### title
+
+    iptTitle.on("keyup", function(e){
+       var len = $(this).val().length;
+        console.log(len);
+        validObj.title = (len > 0);
+    });
+
     //#################### editeur
 
     $("textarea[data-editor]").each(function(){
@@ -30,10 +65,17 @@ $(function(){
 
         editor.on("change", function(){
             if(textarea.attr("id") == "new_post_form_excerpt"){
-                $("#excerpt-char-counter").text(editor.getSession().getValue().length);
+                var el = editor.getSession().getValue().length;
+                $("#excerpt-char-counter").text(el);
+                validObj.excerpt = (el > 0);
+                enableEdition();
+            }
+            if(textarea.attr("id") == "new_post_form_body"){
+                var eb = editor.getSession().getValue().length;
+                validObj.body = (eb > 0);
+                enableEdition();
             }
         });
-
     });
 
 
@@ -50,10 +92,14 @@ $(function(){
     function loadDoneBandeau(response){
         $("#post_form_bandeau").val(response.pdfId);
         bandeau.find(".dropzone-message").text(response.msg);
+        validObj.bandeau = true;
+        enableEdition();
     }
 
     function loadFailBandeau(response){
         bandeau.find(".dropzone-message").text(response.msg);
+        validObj.bandeau = false;
+        enableEdition();
     }
 
     function errorMessageSquarre(message){
@@ -63,10 +109,14 @@ $(function(){
     function loadDoneSquarre(response){
         $("#post_form_squarreThumb").val(response.pdfId);
         squarre.find(".dropzone-message").text(response.msg);
+        validObj.square = true;
+        enableEdition();
     }
 
     function loadFailSquarre(response){
         squarre.find(".dropzone-message").text(response.msg);
+        validObj.square = false;
+        enableEdition();
     }
 
     function errorMessageFb(message){
@@ -76,10 +126,14 @@ $(function(){
     function loadDoneFb(response){
         $("#post_form_fbThumb").val(response.pdfId);
         fb.find(".dropzone-message").text(response.msg);
+        validObj.fb = true;
+        enableEdition();
     }
 
     function loadFailFb(response){
         fb.find(".dropzone-message").text(response.msg);
+        validObj.fb = false;
+        enableEdition();
     }
 
     bandeau.zpbUploadImage({

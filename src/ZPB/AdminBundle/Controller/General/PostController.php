@@ -44,18 +44,13 @@ class PostController extends BaseController
     {
         $post = new Post();
         $form = $this->createForm(new PostType(), $post);
-
         $form->handleRequest($request);
         if($form->isValid()){
-
             $this->getManager()->persist($post);
             $this->getManager()->flush();
-
-
             if($form->get('save')->isClicked()){
                 return $this->redirect($this->generateUrl('zpb_admin_actualites_list'));
             }
-
             if($form->get('publish')->isClicked()){
                 return $this->redirect($this->generateUrl('zpb_admin_actualites_publier'));
             }
@@ -78,7 +73,6 @@ class PostController extends BaseController
     public function updateDraftAction($id, Request $request)
     {
         $post = $this->getPost($id);
-
         $form = $this->createForm(new PostType(), $post);
         $form->handleRequest($request);
         if($form->isValid()){
@@ -97,7 +91,6 @@ class PostController extends BaseController
     public function updatePublishedAction($id, Request $request)
     {
         $post = $this->getPost($id);
-
         $form = $this->createForm(new UpdatePostType(), $post);
         $form->handleRequest($request);
         if($form->isValid()){
