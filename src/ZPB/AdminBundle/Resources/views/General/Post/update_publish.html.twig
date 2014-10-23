@@ -1,7 +1,7 @@
 {% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
 
 {% block title %}Publier | Actualité{% endblock %}
-{% set active = "write_post" %}
+{% set active = "update_post" %}
 
 {% block angular %}EditPostApp{% endblock %}
 {% block headScripts %}
@@ -34,28 +34,48 @@
             },
             zoo:{
                 name: "{{ postDatas.zoo.name }}",
-                category: {id:16, name: "Nouveauté", slug: "nouveaute", target: "zoo" },
-                tags: []
+                category: {% if postDatas.zoo.category != null %}{id: {{ postDatas.zoo.category.id }}, name: "{{ postDatas.zoo.category.name }}", slug: "{{ postDatas.zoo.category.slug }}", target: "{{ postDatas.zoo.category.target }}"}{% else %}null{% endif %},
+                tags: [
+                    {%- for t in postDatas.zoo.tags -%}
+                    {id: {{ t.id }}, name: "{{ t.name }}", slug: "{{ t.slug }}", target: "{{ t.target }}"}{% if loop.last != true %}, {% endif %}
+                    {%- endfor -%}
+                ]
             },
             bn:{
                 name: "{{ postDatas.bn.name }}",
-                category: null,
-                tags: []
+                category: {% if postDatas.bn.category != null %}{id: {{ postDatas.bn.category.id }}, name: "{{ postDatas.bn.category.name }}", slug: "{{ postDatas.bn.category.slug }}", target: "{{ postDatas.bn.category.target }}"}{% else %}null{% endif %},
+                tags: [
+                    {%- for t in postDatas.bn.tags -%}
+                    {id: {{ t.id }}, name: "{{ t.name }}", slug: "{{ t.slug }}", target: "{{ t.target }}"}{% if loop.last != true %}, {% endif %}
+                    {%- endfor -%}
+                ]
             },
             jdb:{
                 name: "{{ postDatas.jdb.name }}",
-                category: null,
-                tags: []
+                category: {% if postDatas.jdb.category != null %}{id: {{ postDatas.jdb.category.id }}, name: "{{ postDatas.jdb.category.name }}", slug: "{{ postDatas.jdb.category.slug }}", target: "{{ postDatas.jdb.category.target }}"}{% else %}null{% endif %},
+                tags: [
+                    {%- for t in postDatas.jdb.tags -%}
+                    {id: {{ t.id }}, name: "{{ t.name }}", slug: "{{ t.slug }}", target: "{{ t.target }}"}{% if loop.last != true %}, {% endif %}
+                    {%- endfor -%}
+                ]
             },
             hdb:{
                 name: "{{ postDatas.hdb.name }}",
-                category: null,
-                tags: []
+                category: {% if postDatas.hdb.category != null %}{id: {{ postDatas.hdb.category.id }}, name: "{{ postDatas.hdb.category.name }}", slug: "{{ postDatas.hdb.category.slug }}", target: "{{ postDatas.hdb.category.target }}"}{% else %}null{% endif %},
+                tags: [
+                    {%- for t in postDatas.hdb.tags -%}
+                    {id: {{ t.id }}, name: "{{ t.name }}", slug: "{{ t.slug }}", target: "{{ t.target }}"}{% if loop.last != true %}, {% endif %}
+                    {%- endfor -%}
+                ]
             },
             pdb:{
                 name: "{{ postDatas.pdb.name }}",
-                category: null,
-                tags: []
+                category: {% if postDatas.pdb.category != null %}{id: {{ postDatas.pdb.category.id }}, name: "{{ postDatas.pdb.category.name }}", slug: "{{ postDatas.pdb.category.slug }}", target: "{{ postDatas.pdb.category.target }}"}{% else %}null{% endif %},
+                tags: [
+                    {%- for t in postDatas.pdb.tags -%}
+                    {id: {{ t.id }}, name: "{{ t.name }}", slug: "{{ t.slug }}", target: "{{ t.target }}"}{% if loop.last != true %}, {% endif %}
+                    {%- endfor -%}
+                ]
             }
         }
     </script>

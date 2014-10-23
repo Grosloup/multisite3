@@ -61,58 +61,111 @@
 
             </div>
         </div>
-        <div class="column-3">
-            <div class="tile">
-                <div class="tile-header">
-                    Image bandeau (min 1200x300, en 4:1)
-                </div>
-                <div class="dropzone" id="dropzone-img-bandeau">
-                    <div class="dropzone-in">
-                        <div class="dropzone-legend"></div>
-                    </div>
-                    <div class="dropzone-loader">
-                        <div class="dropzone-innerbar" id="dropzone-progress"></div>
-                    </div>
-                    <div class="dropzone-message"></div>
+        <div class="column-6">
 
+            <!-- ############################## image bandeau ############################## -->
+            <div class="row">
+                <div class="column-6">
+                    <div class="tile">
+                        <div class="tile-header">
+                            Image bandeau (min 1200x300, en 4:1)
+                        </div>
+                        <div class="dropzone" id="dropzone-img-bandeau">
+                            <div class="dropzone-in">
+                                <div class="dropzone-legend"></div>
+                            </div>
+                            <div class="dropzone-loader">
+                                <div class="dropzone-innerbar" id="dropzone-progress"></div>
+                            </div>
+                            <div class="dropzone-message"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column-6">
+                    <div class="tile">
+                        <div class="post-img-holder" id="post-img-holder-bandeau">
+                            {% if post.bandeau != null %}
+                                <img src="{{ post_bandeau_img_url(post.bandeau) }}" alt="" width="100%"/>
+                            {% else %}
+                                <h5>Pas d'image</h5>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- ############################## fin image bandeau ############################## -->
+
+            <!-- ############################## image squarre ############################## -->
+            <div class="row">
+                <div class="column-6">
+                    <div class="tile">
+                        <div class="tile-header">
+                            Image d'illustration (min 120x120, en 1:1)
+                        </div>
+                        <div class="dropzone" id="dropzone-img-squarre">
+                            <div class="dropzone-in">
+                                <div class="dropzone-legend"></div>
+                            </div>
+                            <div class="dropzone-loader">
+                                <div class="dropzone-innerbar" id="dropzone-progress"></div>
+                            </div>
+                            <div class="dropzone-message"></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="column-6">
+                    <div class="tile">
+                        <div class="post-img-holder" id="post-img-holder-squarre">
+                            {% if post.squarreThumb != null %}
+                                <img src="{{ post_squarre_img_url(post.squarreThumb) }}" alt="" width="100%"/>
+                            {% else %}
+                                <h5>Pas d'image</h5>
+                            {% endif %}
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
-            <div class="tile">
-                <div class="tile-header">
-                    Image d'illustration (min 120x120, en 1:1)
-                </div>
-                <div class="dropzone" id="dropzone-img-squarre">
-                    <div class="dropzone-in">
-                        <div class="dropzone-legend"></div>
-                    </div>
-                    <div class="dropzone-loader">
-                        <div class="dropzone-innerbar" id="dropzone-progress"></div>
-                    </div>
-                    <div class="dropzone-message"></div>
+            <!-- ############################## fin image squarre ############################## -->
 
+            <!-- ############################## image fb ############################## -->
+            <div class="row">
+                <div class="column-6">
+                    <div class="tile">
+                        <div class="tile-header">
+                            Image facebook (min 600x315, en 1.91:1)
+                        </div>
+                        <div class="dropzone" id="dropzone-img-fb">
+                            <div class="dropzone-in">
+                                <div class="dropzone-legend"></div>
+                            </div>
+                            <div class="dropzone-loader">
+                                <div class="dropzone-innerbar" id="dropzone-progress"></div>
+                            </div>
+                            <div class="dropzone-message"></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="column-6">
+                    <div class="tile">
+                        <div class="post-img-holder" id="post-img-holder-fb">
+                            {% if post.squarreThumb != null %}
+                                <img src="{{ post_fb_img_url(post.fbThumb) }}" alt="" width="100%"/>
+                            {% else %}
+                                <h5>Pas d'image</h5>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="tile">
-                <div class="tile-header">
-                    Image facebook (min 600x315, en 1.91:1)
-                </div>
-                <div class="dropzone" id="dropzone-img-fb">
-                    <div class="dropzone-in">
-                        <div class="dropzone-legend"></div>
-                    </div>
-                    <div class="dropzone-loader">
-                        <div class="dropzone-innerbar" id="dropzone-progress"></div>
-                    </div>
-                    <div class="dropzone-message"></div>
-
-                </div>
-            </div>
+            <!-- ############################## image fb ############################## -->
         </div>
-        <div class="column-3">
 
-        </div>
     </div>
 
 {% endblock %}

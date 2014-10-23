@@ -32,6 +32,9 @@ class PostType extends AbstractType
             ->add('title','text', ['label'=>'Titre de l\'article'])
             ->add('body','textarea', ['label'=>'Corps'])
             ->add('excerpt','textarea', ['label'=>'Extrait'])
+            ->add('bandeau', 'hidden')
+            ->add('squarreThumb', 'hidden')
+            ->add('fbThumb', 'hidden')
             ->add('save', 'submit', ['label'=>'Enregistrer le brouillon'])
             ->add('publish', 'submit', ['label'=>'Publier'])
         ;
