@@ -44,20 +44,15 @@ class PostController extends BaseController
     {
         $post = new Post();
         $form = $this->createForm(new PostType(), $post);
-
         $form->handleRequest($request);
         if($form->isValid()){
-
             $this->getManager()->persist($post);
             $this->getManager()->flush();
-
-
             if($form->get('save')->isClicked()){
                 return $this->redirect($this->generateUrl('zpb_admin_actualites_list'));
             }
-
             if($form->get('publish')->isClicked()){
-                return $this->redirect($this->generateUrl('zpb_admin_actualites_publier'));
+                return $this->redirect($this->generateUrl('zpb_admin_actualites_publier', ['id'=>$post->getId()]));
             }
         }
         return $this->render('ZPBAdminBundle:General/Post:create.html.twig', ['form'=>$form->createView()]);
@@ -78,7 +73,6 @@ class PostController extends BaseController
     public function updateDraftAction($id, Request $request)
     {
         $post = $this->getPost($id);
-
         $form = $this->createForm(new PostType(), $post);
         $form->handleRequest($request);
         if($form->isValid()){
@@ -91,13 +85,12 @@ class PostController extends BaseController
                 return $this->redirect($this->generateUrl('zpb_admin_actualites_publier', ['id'=>$id]));
             }
         }
-        return $this->render('ZPBAdminBundle:General/Post:update.html.twig', ['form'=>$form->createView()]);
+        return $this->render('ZPBAdminBundle:General/Post:update.html.twig', ['form'=>$form->createView(), 'post'=>$post]);
     }
 
     public function updatePublishedAction($id, Request $request)
     {
         $post = $this->getPost($id);
-
         $form = $this->createForm(new UpdatePostType(), $post);
         $form->handleRequest($request);
         if($form->isValid()){
@@ -109,8 +102,94 @@ class PostController extends BaseController
         return $this->render('ZPBAdminBundle:General/Post:update_published.html.twig', ['form'=>$form->createView()]);
     }
 
+    public function updatePublicationAction($id)
+    {
+        $post = $this->getPost($id);
+        $pubs = $this->getRepo('ZPBAdminBundle:PublishedPost')->findByPost($post);
+        $postDatas = [
+            'editOn'=>[
+                'zoo'=>false,
+                'bn'=>false,
+                'jdb'=>false,
+                'hdb'=>false,
+                'pdb'=>false,
+            ],
+            'zoo'=>[
+                'name'=>'ZooParc de Beauval',
+                'category'=>null,
+                'tags'=>[]
+            ],
+            'bn'=>[
+                'name'=>'Beauval Nature',
+                'category'=>null,
+                'tags'=>[]
+            ],
+            'jdb'=>[
+                'name'=>'Les Jardins de Beauval',
+                'category'=>null,
+                'tags'=>[]
+            ],
+            'hdb'=>[
+                'name'=>'Les Hameaux de Beauval',
+                'category'=>null,
+                'tags'=>[]
+            ],
+            'pdb'=>[
+                'name'=>'Les Pagodes de Beauval',
+                'category'=>null,
+                'tags'=>[]
+            ],
+        ];
+        foreach($pubs as $pub){
+            /** @var \ZPB\AdminBundle\entity\PublishedPost $pub */
+            $postDatas['editOn'][$pub->getTarget()] = true;
+            $category = $pub->getCategory();
+            $postDatas[$pub->getTarget()]['category'] = ['id'=>$category->getId(),'name'=>$category->getName(),'slug'=>$category->getSlug(),'target'=> $category->getTarget()];
+            foreach($pub->getTags() as $tag){
+                /** @var \ZPB\AdminBundle\entity\PostTag $tag*/
+                $postDatas[$pub->getTarget()]['tags'][] = ['id'=>$tag->getId(),'name'=>$tag->getName(),'slug'=>$tag->getSlug(),'target'=> $tag->getTarget()];
+            }
+        }
+
+
+        return $this->render('ZPBAdminBundle:General/Post:update_publish.html.twig',
+            [
+                'postDatas'=>$postDatas,
+                'id'=>$id,
+                'targets'=>$this->getTargets(),
+                'categories'=>$this->getCategoriesByTarget(),
+                'tags'=>$this->getTagsByTarget()
+            ]
+        );
+    }
+
+
     public function deleteAction($id, Request $request)
     {
+        $post = $this->getRepo('ZPBAdminBundle:Post')->find($id);
+        if(!$post){
+            throw $this->createNotFoundException();
+        }
+        if(!$this->validateToken($request->query->get('_token'), 'delete_post')){
+            throw $this->createAccessDeniedException();
+        }
+        $em =$this->getManager();
+        $pubs = $this->getRepo('ZPBAdminBundle:PublishedPost')->findByPost($post);
+
+        foreach($pubs as $pub){
+            $em->remove($pub);
+        }
+
+        $em->remove($post);
+        $em->flush();
+
+        $referer = $request->headers->get('referer', false);
+
+        if($referer){
+            return $this->redirect($referer);
+        }
+
+        return $this->redirect($this->generateUrl('zpb_admin_actualites_list'));
     }
 
     public function listPublishedAction()
@@ -167,12 +246,12 @@ class PostController extends BaseController
         $fs = $this->get('filesystem');
         $filename = $request->headers->get('X-File-Name', false);
         $fileType = $request->headers->get('X-File-Type', false);
-        $response = ['error'=>false,'msg'=>'', 'imgId'=>''];
+        $response = ['error'=>false,'msg'=>'', 'imgId'=>'', 'imgUrl'=>''];
 
         if(!$filename || !$fileType){
-            $response = ['error'=>true,'msg'=>'Données manquantes', 'imgId'=>''];
+            $response = ['error'=>true,'msg'=>'Données manquantes', 'imgId'=>'', 'imgUrl'=>''];
         } elseif(!in_array($fileType, ['image/jpeg', 'image/gif', 'image/png'])){
-            $response = ['error'=>true,'msg'=>'Données érronées', 'imgId'=>''];
+            $response = ['error'=>true,'msg'=>'Données érronées', 'imgId'=>'', 'imgUrl'=>''];
         } else {
             $basePath =
                 $this->container->getParameter('zpb.medias.options')['zpb.img.root_dir']
@@ -197,9 +276,9 @@ class PostController extends BaseController
             try{
                 $this->getManager()->persist($image);
                 $this->getManager()->flush();
-                $response = ['error'=>false,'msg'=>'Transfert réussi', 'imageId'=>$image->getId()];
+                $response = ['error'=>false,'msg'=>'Transfert réussi', 'imgId'=>$image->getId(), 'imgUrl'=> $image->getWebThumbPath('regular')];
             } catch(\Exception $e){
-                $response = ['error'=>true,'msg'=>$e->getMessage(), 'imageId'=>''];
+                $response = ['error'=>true,'msg'=>$e->getMessage(), 'imgId'=>'', 'imgUrl'=>''];
             }
         }
 
@@ -249,29 +328,40 @@ class PostController extends BaseController
         /** @var \ZPB\AdminBundle\Entity\Post $post */
         $post = $this->getRepo('ZPBAdminBundle:Post')->find($postDatas["postId"]);
 
-        $publications = $postDatas["editOn"];
         $response = ["error"=>false, "messages"=>[], "post"=>$post];
+        if(!$post){
+            $response['error'] = true;
+            $response['messages'][] = 'Article introuvable';
+        }
+        $publications = $postDatas["editOn"];
         $categories = [];
 
-        foreach($publications as $key=>$value){
-            if($value){
+        if($response['error'] === false){
+            foreach($publications as $key=>$value){
+                if($value){
 
-                if($postDatas[$key]['category'] != null && is_int($postDatas[$key]['category']['id'])){
-                    $cat = $this->getRepo('ZPBAdminBundle:PostCategory')->find($postDatas[$key]['category']['id']);
-                    if($cat){
-                        $categories[$key] = $cat;
+                    if($postDatas[$key]['category'] != null && is_int($postDatas[$key]['category']['id'])){
+                        $cat = $this->getRepo('ZPBAdminBundle:PostCategory')->find($postDatas[$key]['category']['id']);
+                        if($cat){
+                            $categories[$key] = $cat;
+                        } else {
+                            $response['error'] = true;
+                            $response['messages'][] = 'Une catégorie est introuvable';
+                        }
                     } else {
                         $response['error'] = true;
-                        $response['messages'][] = 'Une catégorie est introuvable';
+                        $response['messages'][] = 'La publication de l\'article ' . $post->getId() . ' sur ' . $this->getTargets()[$key] . ' est impossible, pas de catégorie déclarée.';
                     }
-                } else {
-                    $response['error'] = true;
-                    $response['messages'][] = 'La publication de l\'article ' . $post->getId() . ' sur ' . $this->getTargets()[$key] . ' est impossible, pas de catégorie déclarée.';
                 }
             }
         }
 
         if($response['error'] === false){
+            $pubs = $this->getRepo('ZPBAdminBundle:PublishedPost')->findByPost($post);
+            foreach($pubs as $pub){
+                $this->getManager()->remove($pub);
+            }
+            $this->getManager()->flush();
             foreach($publications as $key=>$value){
                 if($value){
                     $pub = new PublishedPost();

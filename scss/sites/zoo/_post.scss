@@ -42,6 +42,9 @@
       }
     }
     article{
+      height: 150px;
+      max-height: 150px;
+
       @include clearfix;
       .post-thumbnail{
         float: left;

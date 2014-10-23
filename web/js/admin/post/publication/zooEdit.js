@@ -11,10 +11,14 @@ zooEditApp.controller('ZooController',['$scope','$window','$postDatas','$categor
     function refreshTags(){
         $scope.post_tags = $postDatas[target].tags;
     }
+    function refreshEditOn(){
+        $scope["editOn_"+target] = $postDatas["editOn"][target];
+    }
     refreshCategories();
     refreshTags();
+    refreshEditOn();
 
-    $scope["editOn_"+target] = false;
+
     var Categories = $categories.get();
     var Tags = $tags.get();
     Categories.initialize($window["initialsCategotries_" + target]);

@@ -9,10 +9,14 @@ bnEditApp.controller('BnController',['$scope','$window','$postDatas','$categorie
     function refreshTags(){
         $scope.post_tags = $postDatas[target].tags;
     }
+    function refreshEditOn(){
+        $scope["editOn_"+target] = $postDatas["editOn"][target];
+    }
+    refreshEditOn();
     refreshCategories();
     refreshTags();
 
-    $scope["editOn_"+target] = false;
+
     var Categories = $categories.get();
     var Tags = $tags.get();
     Categories.initialize($window["initialsCategotries_" + target]);

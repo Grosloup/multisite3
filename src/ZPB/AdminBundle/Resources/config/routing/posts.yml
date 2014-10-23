@@ -18,6 +18,13 @@ zpb_admin_actualites_create:
     defaults: { _controller: ZPBAdminBundle:General/Post:create }
     methods: ["GET","POST"]
 
+zpb_admin_actualites_delete:
+    path: /supprimer/{id}
+    defaults: { _controller: ZPBAdminBundle:General/Post:delete }
+    methods: ["GET"]
+    requirements:
+        id: \d+
+
 zpb_admin_actualites_update_draft:
     path: /modifier/brouillon/{id}
     defaults: { _controller: ZPBAdminBundle:General/Post:updateDraft }
@@ -32,6 +39,12 @@ zpb_admin_actualites_update_published:
     requirements:
         id: \d+
 
+zpb_admin_actualites_update_publication:
+    path: /modifier/publication/{id}
+    defaults: { _controller: ZPBAdminBundle:General/Post:updatePublication }
+    methods: ["GET"]
+    requirements:
+        id: \d+
 
 zpb_admin_actualites_publier:
     path: /publier/{id}

@@ -19,7 +19,7 @@ class PostRepository extends EntityRepository
             ->andWhere('p.isArchived = :isArchived')
             ->setParameter('isPublished', false)
             ->setParameter('isArchived', false)
-            ->orderBy('p.createdAt', 'ASC');
+            ->orderBy('p.createdAt', 'DESC');
         return $qb->getQuery()->getResult();
     }
 
@@ -30,7 +30,7 @@ class PostRepository extends EntityRepository
             ->andWhere('p.isArchived = :isArchived')
             ->setParameter('isPublished', true)
             ->setParameter('isArchived', false)
-            ->orderBy('p.createdAt', 'ASC');
+            ->orderBy('p.createdAt', 'DESC');
         return $qb->getQuery()->getResult();
     }
 
@@ -41,7 +41,7 @@ class PostRepository extends EntityRepository
             ->andWhere('p.isArchived = :isArchived')
             ->setParameter('isPublished', false)
             ->setParameter('isArchived', true)
-            ->orderBy('p.createdAt', 'ASC');
+            ->orderBy('p.createdAt', 'DESC');
         return $qb->getQuery()->getResult();
     }
 }

@@ -1,7 +1,7 @@
 {% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
 
 {% block title %}Publier | Actualité{% endblock %}
-{% set active = "write_post" %}
+{% set active = "update_post" %}
 
 {% block angular %}EditPostApp{% endblock %}
 {% block headScripts %}
@@ -412,8 +412,8 @@
 {% block footScripts %}
     {{ parent() }}
     <script src="/js/vendor/angular/angular.min.js"></script>
-    <script src="/js/admin/post/publication/CategoriesClass.js"></script>
-    <script src="/js/admin/post/publication/TagsClass.js"></script>
+    <script src="/js/admin/post/libs/CategoriesClass.js"></script>
+    <script src="/js/admin/post/libs/TagsClass.js"></script>
     <script src="/js/admin/post/publication/configs.js"></script>
     <script src="/js/admin/post/publication/categoryFactory.js"></script>
     <script src="/js/admin/post/publication/tagFactory.js"></script>
