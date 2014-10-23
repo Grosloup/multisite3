@@ -21,6 +21,7 @@
 namespace ZPB\Sites\ZooMobileBundle\Controller;
 
 
+use Symfony\Component\HttpFoundation\Request;
 use ZPB\AdminBundle\Controller\BaseController;
 
 class ActualiteController extends BaseController

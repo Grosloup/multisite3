@@ -1,7 +1,7 @@
 {% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
-{% block title %}Tous les articles dans {{ tag.name }} | Actualités{% endblock %}
+{% block title %}Nouveautés | Actualités{% endblock %}
 
-{% set active_page = "tag_posts" %}
+{% set active_page = "cat_posts" %}
 
 {% block description %}{% endblock %}
 {% block keywords %}{% endblock %}
@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="page-header">
-                    <h1>Actualité <small>{{ tag.name }}</small></h1>
+                    <h1>Nouveautés</h1>
                 </div>
             </div>
         </div>
@@ -63,10 +63,12 @@
                     </div>
                 </div>
             </div>
-            {#<div class="col-1">
+            {#<div class="col-md-1">
                 {{ render(controller("ZPBSitesZooBundle:Actualite:listCategories")) }}
                 {{ render(controller("ZPBSitesZooBundle:Actualite:listTags")) }}
             </div>#}
         </div>
     </div>
 {% endblock %}
+
+

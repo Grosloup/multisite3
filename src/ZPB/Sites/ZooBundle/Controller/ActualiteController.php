@@ -53,7 +53,13 @@ class ActualiteController extends BaseController
 
     public function nouveautesAction()
     {
-        //return $this->forward('ZPBSitesZooBundle:Actualite:postsByCategory', ['slug'=>'nouveaute']);
+        $category = $this->getRepo('ZPBAdminBundle:PostCategory')->findOneBy(['name'=>'Nouveauté','target'=>'zoo']);
+        if(!$category){
+            throw $this->createNotFoundException();
+        }
+        $pubs = $this->getRepo('ZPBAdminBundle:PublishedPost')->getByCategoryAndTarget($category->getSlug(), 'zoo');
+
+        return $this->render('ZPBSitesZooBundle:Actualite:post_nouveaute.html.twig', ['pubs'=>$pubs]);
     }
 
     public function carnetRoseAction()

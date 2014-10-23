@@ -107,6 +107,27 @@ class LoadPostCategories  extends AbstractFixture implements OrderedFixtureInter
         $manager->persist($cat15);
 
 
+        $cat16 = new PostCategory();
+        $cat16->setName('Nouveauté')->setTarget('zoo');
+        $manager->persist($cat16);
+
+        $cat17 = new PostCategory();
+        $cat17->setName('Nouveauté')->setTarget('bn');
+        $manager->persist($cat17);
+
+        $cat18 = new PostCategory();
+        $cat18->setName('Nouveauté')->setTarget('jdb');
+        $manager->persist($cat18);
+
+        $cat19 = new PostCategory();
+        $cat19->setName('Nouveauté')->setTarget('hdb');
+        $manager->persist($cat19);
+
+        $cat20 = new PostCategory();
+        $cat20->setName('Nouveauté')->setTarget('pdb');
+        $manager->persist($cat20);
+
+
         $manager->flush();
 
         $this->addReference('zpb-post-cat-zoo-1', $cat1);
@@ -128,6 +149,12 @@ class LoadPostCategories  extends AbstractFixture implements OrderedFixtureInter
         $this->addReference('zpb-post-cat-pdb-13', $cat13);
         $this->addReference('zpb-post-cat-pdb-14', $cat14);
         $this->addReference('zpb-post-cat-pdb-15', $cat15);
+
+        $this->addReference('zpb-post-cat-zoo-16', $cat16);
+        $this->addReference('zpb-post-cat-bn-17', $cat17);
+        $this->addReference('zpb-post-cat-jdb-18', $cat18);
+        $this->addReference('zpb-post-cat-hdb-19', $cat19);
+        $this->addReference('zpb-post-cat-pdb-20', $cat20);
 
     }
 

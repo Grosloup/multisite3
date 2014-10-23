@@ -8,26 +8,53 @@
 
 {% block header %}
 
-    <img src="http://lorempicsum.com/rio/1200/800/3" alt=""/>
+    <img src="http://lorempicsum.com/rio/1200/800/3" alt="" width="100%"/>
 {% endblock %}
 
 {% block content %}
 
-
-    <div class="row">
-        <div class="col-md-6">
-            <div class="page-header">
-                <h1>Actualité</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="page-header">
+                    <h1>Actualité</h1>
+                </div>
             </div>
         </div>
     </div>
 
+
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                {% for pub in pubs %}
 
-                {% endfor %}
+                    <div class="posts">
+                        {% for pub in pubs %}
+                        <div class="post">
+                            <header>
+                                <h1 class="post-title"><a href="#">{{ pub.post.title }}</a></h1>
+                                <div class="post-category"><a href="#">{{ pub.category.name }}</a></div>
+                                <div class="post-date">{{ pub.publishedAt|date("d/m/y") }}</div>
+                            </header>
+                            <article>
+                                <div class="post-thumbnail">
+                                    {% if pub.post.squarreThumb != null %}
+                                        <img src="{{ post_squarre_img_url(pub.post.squarreThumb) }}" alt=""/>
+                                    {% else %}
+                                        <img src="{{ post_squarre_img_def_url() }}" alt=""/>
+                                    {% endif %}
+                                </div>
+                                <div class="post-excerpt">
+                                    <p>{{ pub.post.excerpt }}</p>
+
+                                    <div class="post-more"><a href="#">Lire la suite...</a></div>
+                                </div>
+                            </article>
+                            <footer></footer>
+                        </div>
+                        {% endfor %}
+                    </div>
+
 
             </div>
         </div>

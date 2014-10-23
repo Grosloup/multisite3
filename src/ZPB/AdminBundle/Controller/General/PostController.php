@@ -88,7 +88,7 @@ class PostController extends BaseController
                 return $this->redirect($this->generateUrl('zpb_admin_actualites_list'));
             }
             if($form->get('publish')->isClicked()){
-                return $this->redirect($this->generateUrl('zpb_admin_actualites_publier'));
+                return $this->redirect($this->generateUrl('zpb_admin_actualites_publier', ['id'=>$id]));
             }
         }
         return $this->render('ZPBAdminBundle:General/Post:update.html.twig', ['form'=>$form->createView()]);
@@ -255,8 +255,9 @@ class PostController extends BaseController
 
         foreach($publications as $key=>$value){
             if($value){
-                if($postDatas[$key]['category'] != null && is_int($postDatas[$key]['category'])){
-                    $cat = $this->getRepo('ZPBAdminBundle:PostCategory')->find($postDatas[$key]['category']);
+
+                if($postDatas[$key]['category'] != null && is_int($postDatas[$key]['category']['id'])){
+                    $cat = $this->getRepo('ZPBAdminBundle:PostCategory')->find($postDatas[$key]['category']['id']);
                     if($cat){
                         $categories[$key] = $cat;
                     } else {
@@ -286,9 +287,12 @@ class PostController extends BaseController
                             $pub->addTag($tag);
                         }
                     }
+                    $this->getManager()->persist($pub);
                 }
             }
             $post->setIsPublished(true);
+            $this->getManager()->persist($post);
+            $this->getManager()->flush();
             $response['messages'][] = 'Article publié';
         }
 
