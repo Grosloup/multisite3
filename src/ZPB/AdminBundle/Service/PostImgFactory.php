@@ -37,8 +37,8 @@ class PostImgFactory {
         $class = $this->options['zpb.post_image.class'];
         /** @var \ZPB\AdminBundle\Entity\PostImg $image */
         $image = new $class();
-        $image->setRootDir($this->options['zpb.img.root_dir']);
-        $image->setWebDir($this->options['zpb.img.web_dir']);
+        $image->setRootDir($this->options['zpb.post_image.root_dir']);
+        $image->setWebDir($this->options['zpb.post_image.web_dir']);
         return $image;
     }
 
@@ -60,7 +60,7 @@ class PostImgFactory {
         if(!$fs->exists($rootDir)){
             $fs->mkdir($rootDir);
         }
-        return $rootDir;
+        return $rootDir . '/';
     }
 
     public function isMimeAllowed($mime)

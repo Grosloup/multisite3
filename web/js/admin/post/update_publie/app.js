@@ -119,7 +119,7 @@ $(function(){
     }
 
     function loadDoneBandeau(response){
-        $("#new_post_form_bandeau").val(response.imgId);
+        $("#update_post_form_bandeau").val(response.imgId);
         bandeau.find(".dropzone-message").text(response.msg);
         var img = imgHolderBandeau.find('img');
         if(img.length){
@@ -143,7 +143,7 @@ $(function(){
     }
 
     function loadDoneSquarre(response){
-        $("#new_post_form_squarreThumb").val(response.imgId);
+        $("#update_post_form_squarreThumb").val(response.imgId);
         squarre.find(".dropzone-message").text(response.msg);
         var img = imgHolderSquarre.find('img');
         if(img.length){
@@ -167,7 +167,7 @@ $(function(){
     }
 
     function loadDoneFb(response){
-        $("#new_post_form_fbThumb").val(response.imgId);
+        $("#update_post_form_fbThumb").val(response.imgId);
         fb.find(".dropzone-message").text(response.msg);
         var img = imgHolderFb.find('img');
         if(img.length){

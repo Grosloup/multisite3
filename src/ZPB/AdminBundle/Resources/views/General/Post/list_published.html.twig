@@ -21,6 +21,7 @@
                 <table class="table table-hover table-striped">
                     <thead>
                     <tr>
+                        <th>Vignette</th>
                         <th>Titre</th>
                         <th>Date de création</th>
                         <th>Modifier</th>
@@ -31,6 +32,7 @@
                     <tbody>
                     {% for post in posts %}
                         <tr>
+                            <td>{% if post.squarreThumb != null %}<img src="{{ post_squarre_img_url(post.squarreThumb) }}" alt="" width="50px"/>{% else %}<img src="{{ post_squarre_img_def_url() }}" alt="" width="50px"/>{% endif %}</td>
                             <td>{{ post.title }}</td>
                             <td>{{ post.createdAt|date('d/m/Y h:i') }}</td>
                             <td><a class="btn btn-neutral" href="{{ path("zpb_admin_actualites_update_published" ,{id: post.id}) }}"><i class="fa fa-edit"></i></a></td>
