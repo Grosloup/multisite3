@@ -66,7 +66,6 @@ class LoadRestos  extends AbstractFixture implements OrderedFixtureInterface, Co
             "Devant l’île des orangs-outans, une terrasse ombragée vous permet de consommer en toute tranquillité <strong>plats chauds, salades, pizzas, glaces et boissons.</strong>",
             "À la sortie de la serre tropicale des lamantins, découvrez un petit coin à part où vous pouvez acheter<strong> glaces, boissons et granités</strong>. Quelques tables, avec vue sur l’île des gorilles, vous offrent un repos agréable.",
             "Un point de restauration rapide près de la nouvelle plaine asiatique. Déjeunez  rapidement et profitez pleinement de votre journée en vous promenant. <strong>Hot-dogs,  gaufres, glaces et boissons</strong> réjouiront petits et grands.",
-
         ];
         $c = count($names);
         for($i=0;$i<$c;$i++){

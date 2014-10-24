@@ -47,13 +47,32 @@ class ZPBExtension extends \Twig_Extension{
             new \Twig_SimpleFunction('post_bandeau_img_url', [$this, 'postBandeauImgUrl']),
             new \Twig_SimpleFunction('post_bandeau_img_def_url', [$this, 'postBandeauImgDefUrl']),
 
-
             new \Twig_SimpleFunction('post_squarre_img_url', [$this, 'postSquarreImgUrl']),
             new \Twig_SimpleFunction('post_squarre_img_def_url', [$this, 'postSquarreImgDefUrl']),
 
             new \Twig_SimpleFunction('post_fb_img_url', [$this, 'fbImgUrl']),
             new \Twig_SimpleFunction('post_fb_img_def_url', [$this, 'fbImgDefUrl']),
+
+            new \Twig_SimpleFunction('press_release_img_url', [$this, 'pressReleaseImgUrl']),
+            new \Twig_SimpleFunction('press_release_img_def_url', [$this, 'pressReleaseImgDefUrl']),
         ];
+    }
+
+    public function pressReleaseImgUrl($id)
+    {
+        if(!$id){
+            return null;
+        }
+        $img = $this->em->getRepository('ZPBAdminBundle:PressReleaseImg')->find($id);
+        if(!$img){
+            return null;
+        }
+        return $img->getWebPath();
+    }
+
+    public function pressReleaseImgDefUrl()
+    {
+        return '/img/sites/common/com_de_presse.jpg';
     }
 
     public function fbImgUrl($id)

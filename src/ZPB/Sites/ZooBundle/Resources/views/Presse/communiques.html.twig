@@ -32,7 +32,9 @@
                                     </header>
                                     <article>
                                         {% if pr.image != null %}
-                                            <img src="{{ img_thumb(pr.image, 'regular') }}" alt=""/>
+                                            <img src="{{ press_release_img_url(pr.image) }}" alt=""/>
+                                            {% else %}
+                                                <img src="{{ press_release_img_def_url() }}" alt="" width="120px"/>
                                         {% endif %}
                                         <p>{{ pr.body|raw }}</p>
                                     </article>

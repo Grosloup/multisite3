@@ -83,7 +83,7 @@
                     Vignette
                 </div>
                 {% if form.vars.value.image != null %}
-                    <a class="btn btn-neutral" href="{{ img_thmb(form.vars.value.image, 'regular') }}" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
+                    <a class="btn btn-neutral" href="{{ press_release_img_url(form.vars.value.image) }}" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
                 {% else %}
                     Ce communiqué n'a pas d'image associée.
                 {% endif %}

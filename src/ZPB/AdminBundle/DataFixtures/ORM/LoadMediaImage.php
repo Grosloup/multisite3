@@ -64,7 +64,6 @@ class LoadMediaImage extends AbstractFixture implements OrderedFixtureInterface,
             $this->addReference('zpb-image-' . $k, $img);
             $resizer->makeThumbnails($img);
             $k++;
-
         }
         $manager->flush();
     }
