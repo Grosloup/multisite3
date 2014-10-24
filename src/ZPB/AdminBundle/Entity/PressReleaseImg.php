@@ -8,14 +8,14 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * PostImg
+ * PressReleaseImg
  *
- * @ORM\Table(name="zpb_post_imgs")
- * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\PostImgRepository")
+ * @ORM\Table(name="zpb_press_release_imgs")
+ * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\PressReleaseImgRepository")
  * @UniqueEntity("filename", message="Un fichier image du même nom existe déjà.")
  * @ORM\HasLifecycleCallbacks()
  */
-class PostImg
+class PressReleaseImg
 {
     /**
      * @var integer
@@ -31,12 +31,10 @@ class PostImg
      * @Assert\Image(maxSize="6M", maxSizeMessage="La taille de votre fichier dépasse le maximum autorisé.", mimeTypes={"image/jpeg","image/gif","image/png"}, mimeTypesMessage="Votre image n\'est pas d\'un type autorisé.")
      */
     public $file;
-
     /**
      * @var string
      *
      * @ORM\Column(name="filename", type="string", length=255, nullable=false, unique=true)
-     * @Assert\Regex("/^[a-zA-Z0-9._-]*$/", message="Ce champ contient des caractères non autorisés.")
      */
     private $filename;
 
@@ -55,7 +53,7 @@ class PostImg
     private $mime;
 
     /**
-     * @var integer
+     * @var string
      *
      * @ORM\Column(name="width", type="integer", nullable=false)
      */
@@ -87,7 +85,6 @@ class PostImg
      *
      * @ORM\Column(name="created_at", type="datetime")
      * @Gedmo\Timestampable(on="create")
-     *
      */
     private $createdAt;
 
@@ -100,11 +97,9 @@ class PostImg
     private $updatedAt;
 
     /**
-    * @var string
-    */
+     * @var string
+     */
     private $absolutePath;
-
-
     public function upload()
     {
         if ($this->file == null) {
@@ -159,10 +154,11 @@ class PostImg
             unlink($this->absolutePath);
         }
     }
+
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -173,7 +169,7 @@ class PostImg
      * Set filename
      *
      * @param string $filename
-     * @return PostImg
+     * @return PressReleaseImg
      */
     public function setFilename($filename)
     {
@@ -185,7 +181,7 @@ class PostImg
     /**
      * Get filename
      *
-     * @return string
+     * @return string 
      */
     public function getFilename()
     {
@@ -196,7 +192,7 @@ class PostImg
      * Set extension
      *
      * @param string $extension
-     * @return PostImg
+     * @return PressReleaseImg
      */
     public function setExtension($extension)
     {
@@ -208,7 +204,7 @@ class PostImg
     /**
      * Get extension
      *
-     * @return string
+     * @return string 
      */
     public function getExtension()
     {
@@ -219,7 +215,7 @@ class PostImg
      * Set mime
      *
      * @param string $mime
-     * @return PostImg
+     * @return PressReleaseImg
      */
     public function setMime($mime)
     {
@@ -231,7 +227,7 @@ class PostImg
     /**
      * Get mime
      *
-     * @return string
+     * @return string 
      */
     public function getMime()
     {
@@ -242,7 +238,7 @@ class PostImg
      * Set width
      *
      * @param integer $width
-     * @return PostImg
+     * @return PressReleaseImg
      */
     public function setWidth($width)
     {
@@ -265,7 +261,7 @@ class PostImg
      * Set height
      *
      * @param integer $height
-     * @return PostImg
+     * @return PressReleaseImg
      */
     public function setHeight($height)
     {
@@ -277,7 +273,7 @@ class PostImg
     /**
      * Get height
      *
-     * @return integer
+     * @return integer 
      */
     public function getHeight()
     {
@@ -288,7 +284,7 @@ class PostImg
      * Set rootDir
      *
      * @param string $rootDir
-     * @return PostImg
+     * @return PressReleaseImg
      */
     public function setRootDir($rootDir)
     {
@@ -300,7 +296,7 @@ class PostImg
     /**
      * Get rootDir
      *
-     * @return string
+     * @return string 
      */
     public function getRootDir()
     {
@@ -311,7 +307,7 @@ class PostImg
      * Set webDir
      *
      * @param string $webDir
-     * @return PostImg
+     * @return PressReleaseImg
      */
     public function setWebDir($webDir)
     {
@@ -323,7 +319,7 @@ class PostImg
     /**
      * Get webDir
      *
-     * @return string
+     * @return string 
      */
     public function getWebDir()
     {
@@ -334,7 +330,7 @@ class PostImg
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return PostImg
+     * @return PressReleaseImg
      */
     public function setCreatedAt($createdAt)
     {
@@ -346,7 +342,7 @@ class PostImg
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getCreatedAt()
     {
@@ -357,7 +353,7 @@ class PostImg
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
-     * @return PostImg
+     * @return PressReleaseImg
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -369,7 +365,7 @@ class PostImg
     /**
      * Get updatedAt
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getUpdatedAt()
     {

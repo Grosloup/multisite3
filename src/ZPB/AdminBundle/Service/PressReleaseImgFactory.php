@@ -1,11 +1,11 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Nicolas Canfrere
- * Date: 23/10/2014
- * Time: 22:46
+ * User: Nicolas Canfrère
+ * Date: 24/10/2014
+ * Time: 16:22
  */
- /*
+  /*
            ____________________
   __      /     ______         \
  {  \ ___/___ /       }         \
@@ -24,15 +24,15 @@ namespace ZPB\AdminBundle\Service;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\File;
 
-class PostImgFactory  extends AbstractImageFactory
+class PressReleaseImgFactory extends AbstractImageFactory
 {
     public function create()
     {
-        $class = $this->options['zpb.post_image.class'];
+        $class = $this->options['zpb.press_release_image.class'];
         /** @var \ZPB\AdminBundle\Entity\PostImg $image */
         $image = new $class();
-        $image->setRootDir($this->options['zpb.post_image.root_dir']);
-        $image->setWebDir($this->options['zpb.post_image.web_dir']);
+        $image->setRootDir($this->options['zpb.press_release_image.root_dir']);
+        $image->setWebDir($this->options['zpb.press_release_image.web_dir']);
         return $image;
     }
 
@@ -50,10 +50,10 @@ class PostImgFactory  extends AbstractImageFactory
 
     public function createDirs(Filesystem $fs)
     {
-        $rootDir = rtrim($this->options['zpb.post_image.root_dir'] . $this->options['zpb.post_image.web_dir'], '/');
+        $rootDir = rtrim($this->options['zpb.press_release_image.root_dir'] . $this->options['zpb.press_release_image.web_dir'], '/');
         if(!$fs->exists($rootDir)){
             $fs->mkdir($rootDir);
         }
         return $rootDir . '/';
     }
-}
+} 

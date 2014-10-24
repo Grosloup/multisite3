@@ -20,24 +20,30 @@
     <div class="wrapper">
         <div class="container">
             <div class="spaced-row">
-                <div class="col-6">
+                <div class="col-md-6">
                     {% if prs|length>0 %}
                         {% for pr in prs %}
                             <div class="spaced-row">
-                                <div class="col-1"></div>
-                                <div class="col-4">
-                                    <h4>{{ pr.title }}</h4>
-                                    {% if pr.image != null %}
-                                    <img src="{{ img_thumb(pr.image, 'regular') }}" alt=""/>
-                                    {% endif %}
-                                    <p>{{ pr.body|raw }}</p>
-
-                                    <p><a href="{{ pdf_url(pr.pdfFr) }}">Télécharger le pdf</a></p>
-                                    {% if pr.pdfEn != null %}
-                                        <p><a href="{{ pdf_url(pdfEn) }}">Télécharger le pdf en anglais</a></p>
-                                    {% endif %}
+                                <div class="col-md-1"></div>
+                                <div class="col-md-4">
+                                    <header>
+                                        <h4>{{ pr.title }}</h4>
+                                        <p>{{ pr.createdAt|date("d/m/y") }}</p>
+                                    </header>
+                                    <article>
+                                        {% if pr.image != null %}
+                                            <img src="{{ img_thumb(pr.image, 'regular') }}" alt=""/>
+                                        {% endif %}
+                                        <p>{{ pr.body|raw }}</p>
+                                    </article>
+                                    <footer>
+                                        <p><a href="{{ pdf_url(pr.pdfFr) }}">Télécharger le pdf</a></p>
+                                        {% if pr.pdfEn != null %}
+                                            <p><a href="{{ pdf_url(pr.pdfEn) }}">Télécharger le pdf en anglais</a></p>
+                                        {% endif %}
+                                    </footer>
                                 </div>
-                                <div class="col-1"></div>
+                                <div class="col-md-1"></div>
                             </div>
                         {% endfor %}
                     {% else %}
