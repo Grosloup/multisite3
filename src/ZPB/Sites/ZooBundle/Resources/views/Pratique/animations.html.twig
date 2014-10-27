@@ -32,9 +32,33 @@
     <div class="wrapper">
         <div class="container">
             <div class="col-sm-6 col-md-6">
-                <div class="testbox testbox-5">
-                    <p>calendrier animation</p>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <div class="cal" id="calendrier-animation">
+                            <div class="cal-row cal-month">
+                                <button class="cal-btn prevMonth">&lt;</button>
+                                <span class="cal-title"></span>
+                                <button class="cal-btn nextMonth">&gt;</button>
+                            </div>
+                            <div class="cal-row cal-days">
+                                <div class="cal-cell"><span class="cal-day">L</span></div>
+                                <div class="cal-cell"><span class="cal-day">M</span></div>
+                                <div class="cal-cell"><span class="cal-day">M</span></div>
+                                <div class="cal-cell"><span class="cal-day">J</span></div>
+                                <div class="cal-cell"><span class="cal-day">V</span></div>
+                                <div class="cal-cell"><span class="cal-day">S</span></div>
+                                <div class="cal-cell"><span class="cal-day">D</span></div>
+                            </div>
+                            <div class="cal-body"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <div id="animations-infos">
+
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -58,4 +82,35 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block footScripts %}
+    {{ parent() }}
+    <script src="/js/zoo/app.js"></script>
+    <script>
+        $(function(){
+            var animationsInfos = $("#animations-infos");
+            function displayInfos(response){
+                $("#animations-infos").text(response.message);
+            }
+
+            function displayFailedInfos(response){
+
+            }
+
+            function getInfos(d){
+                var datas = d.split("-");
+                var url = "/pratique/api/animation/" + datas[2] + "/" + datas[1] + "/" + datas[0];
+                console.log(url);
+
+                $.get(url).done(function(response){
+                    displayInfos(response);
+                }).fail(function(response){
+                    displayFailedInfos(response);
+                });
+            }
+
+            var calendarAnimation = new Calendar("calendrier-animation", getInfos);
+        });
+    </script>
+
 {% endblock %}

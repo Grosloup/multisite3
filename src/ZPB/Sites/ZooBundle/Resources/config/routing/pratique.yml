@@ -29,7 +29,14 @@ zpb_sites_zoo_pratique_services:
     methods: ["GET"]
 
 
-
+zpb_sites_zoo_api_info_anim:
+    path: /api/animation/{year}/{month}/{day}
+    defaults: { _controller: ZPBSitesZooBundle:Pratique:apiInfoAnim }
+    methods: ["GET"]
+    requirements:
+        year: "20(0[0-9]|[1-9][0-9])"
+        month: "[1-9]|1[0-2]"
+        day: "[1-9]|1[0-9]|2[0-9]|3[0-1]"
 
 
 
