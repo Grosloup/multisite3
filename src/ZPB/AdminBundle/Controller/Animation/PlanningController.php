@@ -33,12 +33,26 @@ class PlanningController extends BaseController
     }
 
 
-    public function apiGetDaysInMonthAction($month, Request $request)
+    public function apiGetDaysInMonthAction($year, $month, Request $request)
     {
         if(!$request->isXmlHttpRequest() && !$request->isMethod("GET")){
             throw $this->createAccessDeniedException();
         }
 
-        return new JsonResponse([['id'=>1, 'name'=>'test1'], ['id'=>2, 'name'=>'test2'], ['id'=>3, 'name'=>'test3']]);
+        $blue = '#5f9eff';
+        $orange = '#ff9744';
+        $green = '#5dd46a';
+        $datas = [
+            'year'=>$year,
+            'month'=>$month,
+            'days' => [
+                [],[$orange],[$blue],[$blue],[],[],[$green],[],[],[$blue, $orange],
+                [],[$orange],[],[],[],[$green,$blue],[],[],[],[$green],
+                [],[$orange],[],[$orange],[],[$green],[$blue],[$blue],[],[$orange],
+                [$green]
+            ]
+        ];
+
+        return new JsonResponse($datas);
     }
 }

@@ -10,7 +10,35 @@
     clear: both;
   }
 }
+.color-marker{
+  width: 100%;
+  height: 10px;
+  float: left;
+}
 .cal{
+  .cal-navigation{
+    @include clearfix;
+    .cal-loader{
+      width: 32px;
+      height: 32px;
+      display: inline-block;
+      vertical-align: middle;
+      background: transparent url('/img/sites/ajax-loader.gif') no-repeat center center;
+      &.hide{
+        display: none;
+      }
+      &.show{
+        display: inline-block;
+      }
+    }
+    .cal-title-month, .cal-title-year{
+      display: inline-block;
+      vertical-align: middle;
+      font-weight: 700;
+      font-size: 20px;
+      padding: 0 5px;
+    }
+  }
   .cal-days{
     height: 50px;
     line-height: 50px;
@@ -50,6 +78,7 @@
         border-top: 1px solid #efefef;
       }
       .cal-cell{
+        @include clearfix;
         height: 100%;
         width: percentage(1/7);
         border-left: 1px solid #efefef;

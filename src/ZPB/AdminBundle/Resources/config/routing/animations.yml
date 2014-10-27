@@ -26,8 +26,9 @@ zpb_admin_animations_planning_management:
     methods: ["GET"]
 
 zpb_admin_animations_planning_api_get_days_in_month:
-    path: /api/days/{month}
+    path: /api/days/{year}/{month}
     defaults: { _controller: ZPBAdminBundle:Animation/Planning:apiGetDaysInMonth }
     methods: ["GET"]
     requirements:
+        year: "20(0[0-9]|[1-9][0-9])"
         month: "[1-9]|1[0-2]"

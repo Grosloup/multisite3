@@ -21,7 +21,11 @@
 
                 <div class="cal" id="planning">
                     <div class="cal-navigation">
-
+                        <button class="prevBtn calBtn"><i class="fa fa-chevron-left"></i></button>
+                        <button class="nextBtn calBtn"><i class="fa fa-chevron-right"></i></button>
+                        <span class="cal-title-month"></span>
+                        <span class="cal-title-year"></span>
+                        <span class="cal-loader"></span>
                     </div>
                     <div class="cal-days">
                         <div class="cal-dayname">Lundi</div>
@@ -47,15 +51,21 @@
             this.calendrier = $(target);
 
             this.container = this.calendrier.find(".cal-body");
+            this.prevBtn = this.calendrier.find("button.prevBtn");
+            this.nextBtn = this.calendrier.find("button.nextBtn");
+            this.btns = this.calendrier.find(".calBtn");
+            this.loader = this.calendrier.find(".cal-loader");
 
+            this.btns.attr('disabled',true);
             this.today = new Date();
             this.month = this.today.getMonth();
             this.year = this.today.getFullYear();
-
+            this.titleMonth = this.calendrier.find('.cal-title-month');
+            this.titleYear = this.calendrier.find('.cal-title-year');
             this.monthes = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
             this.callback = callback || this.noop;
 
-            this.getDays();
+            this.getDays(true);
 
         }
 
@@ -71,6 +81,12 @@
 
         Calendar.prototype.createDay = function(text, date){
             return $('<span />', {'class':'cal-day', 'text':text, 'data-date': date});
+        };
+
+        Calendar.prototype.createMarker = function(color){
+            var marker =  $('<div />', {'class': 'color-marker'});
+            marker.css('background-color', color);
+            return marker;
         };
 
         Calendar.prototype.getNumDaysInMonth = function(y,m){
@@ -93,26 +109,62 @@
             return this.monthes[this.month];
         };
         Calendar.prototype.init = function(){
+            this.titleMonth.text(this.getMonthName());
+            this.titleYear.text(this.year);
+        };
+
+        Calendar.prototype.toggleLoader = function(){
+            if(this.loader.hasClass("show")){
+                this.loader.removeClass("show");
+                this.loader.addClass("hide");
+            } else {
+                this.loader.addClass("show");
+                this.loader.removeClass("hide");
+            }
+        };
+
+        Calendar.prototype.getDays = function(first){
+            var self, url;
+             self = this;
+            this.toggleLoader();
+             url = '/animations/api/days/' + this.year + '/' + (this.month + 1);
+             $.get(url).done(function(datas){
+                 self.build(datas);
+                 self.init();
+                 if(first){
+
+                     self.initEvents();
+                 }
+                 self.btns.attr('disabled',false);
+                 self.toggleLoader();
+             }).fail(function(datas){
+             // message d'erreur;
+             });
 
         };
 
-        Calendar.prototype.getDays = function(){
-            /*var self, url;
-             self = this;
-             url = '/animations/api/days/' + (this.month + 1);
-             $.get(url).done(function(datas){
-             console.log(datas);
-             self.build(datas);
-             self.init();
-             self.initEvents();
-             }).fail(function(datas){
-             // message d'erreur;
-             });*/
-            this.build();
+        Calendar.prototype.nextMonth = function(){
+            this.month += 1;
+            if(this.month == 12){
+                this.month = 0;
+                this.year += 1;
+            }
+            this.today = new Date(this.year, this.month, 1);
+            this.getDays(false);
+        };
+
+        Calendar.prototype.prevMonth = function(){
+            this.month -= 1;
+            if(this.month === -1){
+                this.month = 11;
+                this.year -= 1;
+            }
+            this.today = new Date(this.year, this.month, 1);
+            this.getDays(false);
         };
 
         Calendar.prototype.build = function(datas){
-
+            var self = this;
             this.firstDay = new Date(this.year, this.month, 1);
             this.firstDayNum = this.getReelDay(this.firstDay);
             this.numDaysInMonth = this.getNumDaysInMonth(this.today.getFullYear(), this.today.getMonth());
@@ -132,6 +184,12 @@
                     if(dayCounter >= this.firstDayNum && dayCounter < (this.numDaysInMonth + this.firstDayNum)){
                         var dDate = this.year + "/" + (this.month + 1) + "/" + dayNum;
                         var day = this.createDay(dayNum + '', dDate);
+                        if(datas['days'][dayNum-1].length > 0){
+                            $.each(datas['days'][dayNum-1], function(i,v){
+                                var marker = self.createMarker(v);
+                                cell.append(marker);
+                            });
+                        }
                         cell.append(day);
                         cell.addClass('cal-cell-hover');
                         dayNum++;
@@ -145,7 +203,18 @@
         };
 
         Calendar.prototype.initEvents = function(){
+            var self = this;
+            this.prevBtn.on("click", function(e){
+                e.preventDefault();
+                self.prevMonth();
+                self.btns.attr('disabled', 'disabled');
+            });
 
+            this.nextBtn.on("click", function(e){
+                e.preventDefault();
+                self.nextMonth();
+                self.btns.attr('disabled', 'disabled');
+            });
         };
 
         $(function(){
