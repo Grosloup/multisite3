@@ -246,7 +246,7 @@
                 <nav class="menu">
                     <h3 class="menu-title">Animations</h3>
                     <ul>
-                        <li class="sidebar-dropdown{% if active in ["new_animation","list_animations","update_animation","list_animations_days","new_animation_day"] %} active{% endif %}"><a href="javascript:void(0)">Calendriers</a><i class="sidebar-icon fa fa-angle-right"></i>
+                        <li class="sidebar-dropdown{% if active in ["new_animation","list_animations","update_animation","list_animations_days","new_animation_day","plannig_management"] %} active{% endif %}"><a href="javascript:void(0)">Calendriers</a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
                                 <li class="sidebar-dropdown{% if active in ["new_animation","list_animations","update_animation"] %} active{% endif %}"><a href="javascript:void(0)">Animations</a><i class="sidebar-icon fa fa-angle-right"></i>
                                     <ul>
@@ -260,10 +260,9 @@
                                         <li class="{% if active == "new_animation_day" %}active{% endif %}"><a href="{{ path("zpb_admin_animations_days_create") }}">Nouvelle</a></li>
                                     </ul>
                                 </li>
-                                <li class="sidebar-dropdown{% if active in [""] %} active{% endif %}"><a href="javascript:void(0)">Plannings</a><i class="sidebar-icon fa fa-angle-right"></i>
+                                <li class="sidebar-dropdown{% if active in ["plannig_management"] %} active{% endif %}"><a href="javascript:void(0)">Plannings</a><i class="sidebar-icon fa fa-angle-right"></i>
                                     <ul>
-                                        <li><a href="">Liste</a></li>
-                                        <li><a href="">Nouveau</a></li>
+                                        <li class="{% if active == "plannig_management" %}active{% endif %}"><a href="{{ path("zpb_admin_animations_planning_management") }}">Gérer</a></li>
                                     </ul>
                                 </li>
                             </ul>

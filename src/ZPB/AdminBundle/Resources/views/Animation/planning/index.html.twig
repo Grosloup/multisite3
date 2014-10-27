@@ -1,0 +1,155 @@
+{% extends 'ZPBAdminBundle:Layouts:master.html.twig' %}
+
+{% block title %}Planning des Animations{% endblock %}
+{% set active = "plannig_management" %}
+{% block headLinks %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/css/admin/planning.css"/>
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <div class="tile-header">Planning des animations</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+
+                <div class="cal" id="planning">
+                    <div class="cal-navigation">
+
+                    </div>
+                    <div class="cal-days">
+                        <div class="cal-dayname">Lundi</div>
+                        <div class="cal-dayname">Mardi</div>
+                        <div class="cal-dayname">Mercredi</div>
+                        <div class="cal-dayname">Jeudi</div>
+                        <div class="cal-dayname">Vendredi</div>
+                        <div class="cal-dayname">Samedi</div>
+                        <div class="cal-dayname">Dimanche</div>
+                    </div>
+                    <div class="cal-body"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footScripts %}
+    {{ parent() }}
+
+    <script>
+        function Calendar(target, callback){
+            this.calendrier = $(target);
+
+            this.container = this.calendrier.find(".cal-body");
+
+            this.today = new Date();
+            this.month = this.today.getMonth();
+            this.year = this.today.getFullYear();
+
+            this.monthes = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
+            this.callback = callback || this.noop;
+
+            this.getDays();
+
+        }
+
+        Calendar.prototype.noop = function(){};
+
+        Calendar.prototype.createRow = function(){
+            return $('<div />', {'class': 'cal-row'});
+        };
+
+        Calendar.prototype.createCell = function(){
+            return $('<div />', {'class': 'cal-cell','data-cell':''});
+        };
+
+        Calendar.prototype.createDay = function(text, date){
+            return $('<span />', {'class':'cal-day', 'text':text, 'data-date': date});
+        };
+
+        Calendar.prototype.getNumDaysInMonth = function(y,m){
+            return new Date(y, m+1, 0).getDate();
+        };
+
+        Calendar.prototype.getReelDay = function(date){
+            var d = date.getDay();
+            if(d === 0){
+                d = 7;
+            }
+            return d;
+        };
+
+        Calendar.prototype.getNumDaysFirstWeek = function(d){
+            return 8 - d;
+        };
+
+        Calendar.prototype.getMonthName = function(){
+            return this.monthes[this.month];
+        };
+        Calendar.prototype.init = function(){
+
+        };
+
+        Calendar.prototype.getDays = function(){
+            /*var self, url;
+             self = this;
+             url = '/animations/api/days/' + (this.month + 1);
+             $.get(url).done(function(datas){
+             console.log(datas);
+             self.build(datas);
+             self.init();
+             self.initEvents();
+             }).fail(function(datas){
+             // message d'erreur;
+             });*/
+            this.build();
+        };
+
+        Calendar.prototype.build = function(datas){
+
+            this.firstDay = new Date(this.year, this.month, 1);
+            this.firstDayNum = this.getReelDay(this.firstDay);
+            this.numDaysInMonth = this.getNumDaysInMonth(this.today.getFullYear(), this.today.getMonth());
+            this.lastDay = new Date(this.today.getFullYear(), this.today.getMonth(),this.numDaysInMonth);
+
+            this.numWeeks = 2 + (this.numDaysInMonth - (this.getNumDaysFirstWeek(this.firstDayNum) + this.getReelDay(this.lastDay)))/7;
+            var calClass = "cal-" + this.numWeeks;
+            this.calendrier.removeClass('cal-4 cal-5 cal-6');
+            this.calendrier.addClass(calClass);
+            var w= 0, d= 0, dayCounter = 1, dayNum = 1;
+            this.container.empty();
+            for(;w<this.numWeeks;w++){
+                var row = this.createRow();
+                d=0;
+                for(;d<7;d++){
+                    var cell = this.createCell();
+                    if(dayCounter >= this.firstDayNum && dayCounter < (this.numDaysInMonth + this.firstDayNum)){
+                        var dDate = this.year + "/" + (this.month + 1) + "/" + dayNum;
+                        var day = this.createDay(dayNum + '', dDate);
+                        cell.append(day);
+                        cell.addClass('cal-cell-hover');
+                        dayNum++;
+                    }
+                    dayCounter++;
+                    row.append(cell);
+                }
+                this.container.append(row);
+            }
+
+        };
+
+        Calendar.prototype.initEvents = function(){
+
+        };
+
+        $(function(){
+            var planning = new Calendar("#planning");
+        });
+    </script>
+{% endblock %}

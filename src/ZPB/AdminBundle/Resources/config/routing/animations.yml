@@ -20,6 +20,14 @@ zpb_admin_animations_delete:
 
 
 
+zpb_admin_animations_planning_management:
+    path: /planning
+    defaults: { _controller: ZPBAdminBundle:Animation/Planning:index }
+    methods: ["GET"]
 
-
-
+zpb_admin_animations_planning_api_get_days_in_month:
+    path: /api/days/{month}
+    defaults: { _controller: ZPBAdminBundle:Animation/Planning:apiGetDaysInMonth }
+    methods: ["GET"]
+    requirements:
+        month: "[1-9]|1[0-2]"

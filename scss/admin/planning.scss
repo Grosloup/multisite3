@@ -1,0 +1,76 @@
+@import "compass";
+
+@mixin clearfix{
+  *zoom: 1;
+  &:before, &:after{
+    content: " ";
+    display: table;
+  }
+  &:after{
+    clear: both;
+  }
+}
+.cal{
+  .cal-days{
+    height: 50px;
+    line-height: 50px;
+    @include clearfix;
+    width: 100%;
+    .cal-dayname{
+      width: 14%;
+      height: 100%;
+      float: left;
+      text-align: center;
+      font-weight: 700;
+    }
+  }
+  &.cal-4{
+    .cal-body{
+      height: 400px;
+    }
+  }
+  &.cal-5{
+    .cal-body{
+      height: 500px;
+    }
+  }
+  &.cal-6{
+    .cal-body{
+      height: 600px;
+    }
+  }
+
+  .cal-body{
+    .cal-row{
+      height: 100px;
+      width: 100%;
+      @include clearfix;
+      .cal-cell{
+        height: 100%;
+        width: 14%;
+
+        float: left;
+        position: relative;
+        &.cal-cell-hover{
+          cursor: pointer;
+          &:hover{
+            background-color: #eee;
+          }
+        }
+        .cal-day{
+          position: relative;
+          top:50%;
+          left:50%;
+          width: 30px;
+          height: 30px;
+          margin: -15px 0 0 -15px;
+          display: block;
+          text-align: center;
+          line-height: 30px;
+          font-size: 20px;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
