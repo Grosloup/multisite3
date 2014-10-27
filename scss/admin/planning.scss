@@ -15,9 +15,9 @@
     height: 50px;
     line-height: 50px;
     @include clearfix;
-    width: 100%;
+    width: 98%;
     .cal-dayname{
-      width: 14%;
+      width: percentage(1/7);
       height: 100%;
       float: left;
       text-align: center;
@@ -43,12 +43,19 @@
   .cal-body{
     .cal-row{
       height: 100px;
-      width: 100%;
+      width: 98%;
       @include clearfix;
+      border-bottom: 1px solid #efefef;
+      &:first-child{
+        border-top: 1px solid #efefef;
+      }
       .cal-cell{
         height: 100%;
-        width: 14%;
-
+        width: percentage(1/7);
+        border-left: 1px solid #efefef;
+        &:last-child{
+          border-right: 1px solid #efefef;
+        }
         float: left;
         position: relative;
         &.cal-cell-hover{
@@ -59,11 +66,11 @@
         }
         .cal-day{
           position: relative;
-          top:50%;
-          left:50%;
+          top: 100%;
+          left: 100%;
           width: 30px;
           height: 30px;
-          margin: -15px 0 0 -15px;
+          margin: -30px 0 0 -30px;
           display: block;
           text-align: center;
           line-height: 30px;

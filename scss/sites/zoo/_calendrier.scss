@@ -66,6 +66,16 @@
       }
     }
   }
+  @at-root &.cal-4{
+    //height: 100%;
+    height: 400px;
+    .cal-row{
+      height: percentage(1/4);
+      &.cal-month{
+        height: 50px;
+      }
+    }
+  }
   @at-root &.cal-5{
     //height: 100%;
     height: 500px;
