@@ -12,8 +12,5 @@ use Doctrine\ORM\EntityRepository;
  */
 class AnimationDayRepository extends EntityRepository
 {
-    public function getByMonth($month, $year = 2014)
-    {
 
-    }
 }

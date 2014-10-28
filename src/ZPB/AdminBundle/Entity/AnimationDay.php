@@ -46,12 +46,23 @@ class AnimationDay
     private $schedules;
 
     /**
+     * @ORM\ManyToMany(targetEntity="ZPB\AdminBundle\Entity\AnimationProgram", mappedBy="animationDays")
+     */
+    private $animationPrograms;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->schedules = new ArrayCollection();
+        $this->animationPrograms = new ArrayCollection();
         $this->color = "ffffff";
+    }
+
+    public function toArray()
+    {
+        return ['id'=>$this->getId(), 'name'=>$this->getName(), 'color'=>$this->getColor()];
     }
 
     /**
@@ -141,5 +152,38 @@ class AnimationDay
     public function getSchedules()
     {
         return $this->schedules;
+    }
+
+    /**
+     * Add animationPrograms
+     *
+     * @param AnimationProgram $animationPrograms
+     * @return AnimationDay
+     */
+    public function addAnimationProgram(AnimationProgram $animationPrograms)
+    {
+        $this->animationPrograms[] = $animationPrograms;
+
+        return $this;
+    }
+
+    /**
+     * Remove animationPrograms
+     *
+     * @param AnimationProgram $animationPrograms
+     */
+    public function removeAnimationProgram(AnimationProgram $animationPrograms)
+    {
+        $this->animationPrograms->removeElement($animationPrograms);
+    }
+
+    /**
+     * Get animationPrograms
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAnimationPrograms()
+    {
+        return $this->animationPrograms;
     }
 }
