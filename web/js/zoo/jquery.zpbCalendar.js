@@ -29,6 +29,7 @@
         testTarget: /^\.|#.+/,
         bodyClass: 'cal-body',
         calCellHoverClass: 'cal-cell-hover',
+        calCellTodayClass: 'cal-cell-today',
         btnsClass: 'calBtn',
         prevBtnClass: 'prevBtn',
         nextBtnClass: 'nextBtn',
@@ -63,6 +64,7 @@
         this.monthTitle = this.find(this.options.monthTitleClass);
         this.yearTitle = this.find(this.options.yearTitleClass);
         this.loader = this.find(this.options.loaderClass);
+        this.remember = new Date();
         this.today = new Date();
         this.month = this.today.getMonth();
         this.year  = this.today.getFullYear();
@@ -184,6 +186,13 @@
                     this.options.buildDayCb(day);
                     cell.append(day);
                     cell.addClass(this.options.calCellHoverClass);
+                    if(
+                        this.year == this.remember.getFullYear() &&
+                        this.month == this.remember.getMonth() &&
+                        dayNum == this.remember.getDate()
+                    ){
+                        cell.addClass(this.options.calCellTodayClass);
+                    }
                     dayNum++;
                 }
                 dayCounter++;
