@@ -16,7 +16,7 @@
     </div>
 
     <div class="row">
-        <div class="column-12">
+        <div class="column-9">
             <div class="tile">
 
                 <div class="cal" id="planning">
@@ -40,6 +40,11 @@
                 </div>
             </div>
         </div>
+        <div class="column-3">
+            <div class="tile">
+                <div class="tile-header" id="open-day-title"></div>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
@@ -50,7 +55,7 @@
 
     <script>
         $(function(){
-            var planning = $("#planning"), baseUrl = '/animations/api/days/';
+            var planning = $("#planning"), baseUrl = '/animations/api/days/', openDayTitle = $("#open-day-title");
 
             function startCalendar(cal){
                 cal.toggleLoader();
@@ -82,10 +87,17 @@
                             cal.toggleLoader();
                         });
             }
+
+            function newDay(data){
+                var date = new Date(data);
+                openDayTitle.text(date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear());
+            }
+
             planning.zpbCalendar({
                 startCb: startCalendar,
                 nextMonthCb: prevMonth,
-                prevMonthCb: nextMonth
+                prevMonthCb: nextMonth,
+                dayCb: newDay
             });
         });
     </script>
