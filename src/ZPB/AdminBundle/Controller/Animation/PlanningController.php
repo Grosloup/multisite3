@@ -39,7 +39,7 @@ class PlanningController extends BaseController
             throw $this->createAccessDeniedException();
         }
 
-        $blue = '#5f9eff';
+        /*$blue = '#5f9eff';
         $orange = '#ff9744';
         $green = '#5dd46a';
         $datas = [
@@ -72,7 +72,9 @@ class PlanningController extends BaseController
                 [['color'=>$orange, 'name'=>'Orange']],
                 [['color'=>$green, 'name'=>'Vert']]
             ]
-        ];
+        ];*/
+
+        $datas = $this->getRepo('ZPBAdminBundle:AnimationProgram')->getAnimationsInMonth($month, $year);
 
         return new JsonResponse($datas);
     }
