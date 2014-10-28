@@ -46,7 +46,52 @@
 {% block footScripts %}
     {{ parent() }}
 
+    <script src="/js/zoo/jquery.zpbCalendar.js"></script>
+
     <script>
+        $(function(){
+            var planning = $("#planning"), baseUrl = '/animations/api/days/';
+
+            function startCalendar(cal){
+                cal.toggleLoader();
+                getDatas(cal);
+
+            }
+
+            function prevMonth (cal){
+                cal.toggleLoader();
+                getDatas(cal);
+
+            }
+
+            function nextMonth (cal){
+                cal.toggleLoader();
+                getDatas(cal);
+
+            }
+
+            function getDatas(cal){
+                var url = baseUrl + cal.year + '/' + (cal.month + 1);
+                $.get(url)
+                        .done(function(response){
+                            cal.build(response['days']);
+                            cal.toggleLoader();
+                            cal.enableBtns();
+                        })
+                        .fail(function(response){
+                            cal.toggleLoader();
+                        });
+            }
+
+            planning.zpbCalendar({
+                startCb: startCalendar,
+                nextMonthCb: prevMonth,
+                prevMonthCb: nextMonth
+            });
+        });
+    </script>
+
+    {#<script>
         function Calendar(target, callback){
             this.calendrier = $(target);
 
@@ -220,5 +265,5 @@
         $(function(){
             var planning = new Calendar("#planning");
         });
-    </script>
+    </script>#}
 {% endblock %}

@@ -36,9 +36,10 @@
                     <div class="col-md-4 col-sm-4">
                         <div class="cal" id="calendrier-animation">
                             <div class="cal-row cal-month">
-                                <button class="cal-btn prevMonth">&lt;</button>
-                                <span class="cal-title"></span>
-                                <button class="cal-btn nextMonth">&gt;</button>
+                                <button class="cal-btn prevBtn">&lt;</button>
+                                <span class="cal-title-month"></span>
+                                <span class="cal-title-year"></span>
+                                <button class="cal-btn nextBtn">&gt;</button>
                             </div>
                             <div class="cal-row cal-days">
                                 <div class="cal-cell"><span class="cal-day">L</span></div>
@@ -86,30 +87,27 @@
 {% block footScripts %}
     {{ parent() }}
     <script src="/js/zoo/app.js"></script>
+    <script src="/js/zoo/jquery.zpbCalendar.js"></script>
     <script>
         $(function(){
-            var animationsInfos = $("#animations-infos");
-            function displayInfos(response){
-                $("#animations-infos").text(response.message);
-            }
 
-            function displayFailedInfos(response){
+            var calendrierAnimation = $("#calendrier-animation");
 
-            }
+            calendrierAnimation.zpbCalendar(
+                    {
+                        dayCb : function(date){
 
-            function getInfos(d){
-                var datas = d.split("-");
-                var url = "/pratique/api/animation/" + datas[2] + "/" + datas[1] + "/" + datas[0];
-                console.log(url);
+                            var url = "/pratique/api/animation/" + date;
+                            console.log(url);
 
-                $.get(url).done(function(response){
-                    displayInfos(response);
-                }).fail(function(response){
-                    displayFailedInfos(response);
-                });
-            }
-
-            var calendarAnimation = new Calendar("calendrier-animation", getInfos);
+                            $.get(url).done(function(response){
+                                console.log(response);
+                            }).fail(function(response){
+                                console.log(response);
+                            });
+                        }
+                    }
+            );
         });
     </script>
 
