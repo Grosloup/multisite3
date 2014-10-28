@@ -93,17 +93,22 @@
 
             var calendrierAnimation = $("#calendrier-animation");
 
+            function displayDay(response){
+                console.log(response);
+            }
+
+            function displayError(response){
+                console.log(response);
+            }
+
             calendrierAnimation.zpbCalendar(
                     {
                         dayCb : function(date){
-
                             var url = "/pratique/api/animation/" + date;
-                            console.log(url);
-
                             $.get(url).done(function(response){
-                                console.log(response);
+                                displayDay(response);
                             }).fail(function(response){
-                                console.log(response);
+                                displayError(response);
                             });
                         }
                     }
