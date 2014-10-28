@@ -46,10 +46,31 @@ class PlanningController extends BaseController
             'year'=>$year,
             'month'=>$month,
             'days' => [
-                [],[$orange],[$blue],[$blue],[],[],[$green],[],[],[$blue, $orange],
-                [],[$orange],[],[],[],[$green,$blue],[],[],[],[$green],
-                [],[$orange],[],[$orange],[],[$green],[$blue],[$blue],[],[$orange],
-                [$green]
+                [],
+                [['color'=>$orange, 'name'=>'Orange']],
+                [['color'=>$blue, 'name'=>'Bleu']],
+                [['color'=>$blue, 'name'=>'Bleu']],
+                [],[],
+                [['color'=>$green, 'name'=>'Vert']],
+                [],[],
+                [['color'=>$blue, 'name'=>'Bleu'],['color'=>$orange, 'name'=>'Orange']],
+                [],
+                [['color'=>$orange, 'name'=>'Orange']],
+                [],[],[],
+                [['color'=>$green, 'name'=>'Vert'],['color'=>$blue, 'name'=>'Bleu']],
+                [],[],[],
+                [['color'=>$green, 'name'=>'Vert']],
+                [],
+                [['color'=>$orange, 'name'=>'Orange']],
+                [],
+                [['color'=>$orange, 'name'=>'Orange']],
+                [],
+                [['color'=>$green, 'name'=>'Vert']],
+                [['color'=>$blue, 'name'=>'Bleu']],
+                [['color'=>$blue, 'name'=>'Bleu']],
+                [],
+                [['color'=>$orange, 'name'=>'Orange']],
+                [['color'=>$green, 'name'=>'Vert']]
             ]
         ];
 

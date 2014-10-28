@@ -54,6 +54,12 @@
 
             function startCalendar(cal){
                 cal.toggleLoader();
+
+                cal.createMarker = function(v){
+                    var marker =  $('<div />', {'class': 'color-marker'});
+                    marker.css('background-color', v['color']);
+                    return marker;
+                };
                 getDatas(cal);
             }
             function prevMonth (cal){
