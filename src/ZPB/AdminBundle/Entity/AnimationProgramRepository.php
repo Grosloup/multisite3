@@ -15,12 +15,14 @@ class AnimationProgramRepository extends EntityRepository
     public function animationsInMonth($month, $year = 2014)
     {
 
-        $m = \DateTime::createFromFormat('d/m/Y', '1/'.$month.'/'.$year);
+        $m = \DateTime::createFromFormat('j/n/Y', '1/'.$month.'/'.$year);
         $daysInMonth = (int)$m->format('t') + 1;
         $result = [];
         for($i = 1; $i < $daysInMonth; $i++){
-            $qb = $this->createQueryBuilder('p')->where('p.daytime = :theDate')->setParameter('theDate', new \DateTime($year.'/'.$month.'/'.$i));
-            $result[] = $qb->getQuery()->getResult();
+            $d = \DateTime::createFromFormat('Y/n/j',$year.'/'.$month.'/'.$i);
+            $qb = $this->createQueryBuilder('p')->where('p.daytime = :theDate')
+                ->setParameter('theDate', $d, \Doctrine\DBAL\Types\Type::DATE);
+            $result[] = $qb->getQuery()->getOneOrNullResult();
         }
 
 
@@ -37,9 +39,11 @@ class AnimationProgramRepository extends EntityRepository
         $result = ['year'=>$year, 'month'=>$month, 'days'=>[]];
 
         foreach($programs as $prog){
+
             if($prog != null){
                 /** @var \ZPB\AdminBundle\Entity\AnimationProgram $prog */
                 $days = $prog->getAnimationDays();
+
                 $tmp = [];
                 foreach($days as $day){
                     /** @var \ZPB\AdminBundle\Entity\AnimationDay $day */

@@ -39,40 +39,7 @@ class PlanningController extends BaseController
             throw $this->createAccessDeniedException();
         }
 
-        /*$blue = '#5f9eff';
-        $orange = '#ff9744';
-        $green = '#5dd46a';
-        $datas = [
-            'year'=>$year,
-            'month'=>$month,
-            'days' => [
-                [],
-                [['color'=>$orange, 'name'=>'Orange']],
-                [['color'=>$blue, 'name'=>'Bleu']],
-                [['color'=>$blue, 'name'=>'Bleu']],
-                [],[],
-                [['color'=>$green, 'name'=>'Vert']],
-                [],[],
-                [['color'=>$blue, 'name'=>'Bleu'],['color'=>$orange, 'name'=>'Orange']],
-                [],
-                [['color'=>$orange, 'name'=>'Orange']],
-                [],[],[],
-                [['color'=>$green, 'name'=>'Vert'],['color'=>$blue, 'name'=>'Bleu']],
-                [],[],[],
-                [['color'=>$green, 'name'=>'Vert']],
-                [],
-                [['color'=>$orange, 'name'=>'Orange']],
-                [],
-                [['color'=>$orange, 'name'=>'Orange']],
-                [],
-                [['color'=>$green, 'name'=>'Vert']],
-                [['color'=>$blue, 'name'=>'Bleu']],
-                [['color'=>$blue, 'name'=>'Bleu']],
-                [],
-                [['color'=>$orange, 'name'=>'Orange']],
-                [['color'=>$green, 'name'=>'Vert']]
-            ]
-        ];*/
+
 
         $datas = $this->getRepo('ZPBAdminBundle:AnimationProgram')->getAnimationsInMonth($month, $year);
 

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * AnimationProgram
  *
- * @ORM\Table()
+ * @ORM\Table(name="zpb_animations_programs")
  * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\AnimationProgramRepository")
  */
 class AnimationProgram
@@ -25,7 +25,7 @@ class AnimationProgram
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="daytime", type="datetime")
+     * @ORM\Column(name="daytime", type="date")
      */
     private $daytime;
 
@@ -61,28 +61,7 @@ class AnimationProgram
         return $this->id;
     }
 
-    /**
-     * Get daytime
-     *
-     * @return \DateTime
-     */
-    public function getDaytime()
-    {
-        return $this->daytime;
-    }
 
-    /**
-     * Set daytime
-     *
-     * @param \DateTime $daytime
-     * @return AnimationProgram
-     */
-    public function setDaytime($daytime)
-    {
-        $this->daytime = $daytime;
-
-        return $this;
-    }
 
     /**
      * Get isOff
@@ -138,5 +117,28 @@ class AnimationProgram
     public function getAnimationDays()
     {
         return $this->animationDays;
+    }
+
+    /**
+     * Set daytime
+     *
+     * @param \DateTime $daytime
+     * @return AnimationProgram
+     */
+    public function setDaytime($daytime)
+    {
+        $this->daytime = $daytime;
+
+        return $this;
+    }
+
+    /**
+     * Get daytime
+     *
+     * @return \DateTime 
+     */
+    public function getDaytime()
+    {
+        return $this->daytime;
     }
 }
