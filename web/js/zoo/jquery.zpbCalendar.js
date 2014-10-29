@@ -148,6 +148,10 @@
         return marker;
     };
 
+    Calendar.prototype.removeMarker = function(idx){
+        console.log(idx);
+    };
+
     Calendar.prototype.build = function (datas) {
         this.options.beforeBuildCb(this);
         var self = this;
@@ -250,9 +254,9 @@
 
         $(document).on("click", "[data-cell]", function(e){
             e.preventDefault();
-            var data = $(this).find('.' + self.options.dayClass).data('date') || null;
+            var date = $(this).find('.' + self.options.dayClass).data('date') || null;
             var idx = $(this).data('cellindex');
-            self.options.dayClickCb(data, idx);
+            self.options.dayClickCb(date, idx);
         });
     };
 

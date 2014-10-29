@@ -1,4 +1,4 @@
-angular.module('configs', [])
+angular.module('Configs', [])
     .value(
     "$configs",
     {

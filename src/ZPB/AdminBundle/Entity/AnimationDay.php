@@ -13,7 +13,7 @@ use ZPB\AdminBundle\Validator\Constraints as ZPBAssert;
  * @ORM\Table(name="zpb_animations_days")
  * @ORM\Entity(repositoryClass="ZPB\AdminBundle\Entity\AnimationDayRepository")
  */
-class AnimationDay
+class AnimationDay implements \JsonSerializable
 {
     /**
      * @var integer
@@ -185,5 +185,17 @@ class AnimationDay
     public function getAnimationPrograms()
     {
         return $this->animationPrograms;
+    }
+
+    /**
+     * (PHP 5 &gt;= 5.4.0)<br/>
+     * Specify data which should be serialized to JSON
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     */
+    function jsonSerialize()
+    {
+        return $this->toArray();
     }
 }

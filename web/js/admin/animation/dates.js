@@ -1,9 +1,9 @@
-angular.module('dates',[])
+angular.module('Dates',[])
 
 .service('DatesService', function(){
 
         return {
-            dates: {
+            datas: {
                 'year': null,
                 'month': null,
                 'days': []

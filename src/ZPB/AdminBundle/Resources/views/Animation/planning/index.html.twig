@@ -14,16 +14,16 @@
             </div>
         </div>
     </div>
-    <div class="row" ng-controller="CalendarController">
+    <div class="row">
         <div class="column-9">
-            <div class="tile">
+            <div class="tile" ng-controller="CalendarController">
                 <div class="cal" id="planning" zpb-calendar>
                     <div class="cal-navigation">
-                        <button class="prevBtn calBtn"><i class="fa fa-chevron-left"></i></button>
-                        <button class="nextBtn calBtn"><i class="fa fa-chevron-right"></i></button>
-                        <span class="cal-title-month"></span>
-                        <span class="cal-title-year"></span>
-                        <span class="cal-loader"></span>
+                        <button class="prevBtn calBtn" ng-disabled="isLoading"><i class="fa fa-chevron-left"></i></button>
+                        <button class="nextBtn calBtn" ng-disabled="isLoading"><i class="fa fa-chevron-right"></i></button>
+                        <span class="cal-title-month" ng-hide="isLoading"></span>
+                        <span class="cal-title-year" ng-hide="isLoading"></span>
+                        <span class="cal-loader" ng-show="isLoading"></span>
                     </div>
                     <div class="cal-days">
                         <div class="cal-dayname">Lundi</div>
@@ -38,132 +38,36 @@
                 </div>
             </div>
         </div>
-        <div class="column-3">
+        <div class="column-3" ng-controller="ModifierController">
             <div class="tile" id="open-day-infos">
                 <div class="tile-header" id="open-day-title">
-                    {$ openDayTitleText $}
+                    {$ modifier.currentMonth $} {$ modifier.currentYear $} <span ng-show="modifier.currentDay != ''">, le {$ modifier.currentDay $}</span>
                 </div>
-                <div id="open-day-body"></div>
+                <div id="open-day-body">
+                    <ul>
+                        <li ng-repeat="d in dates">{$ d.name $} <button class="btn btn-primary" ng-click="remove(d)"><i class="fa fa-trash-o"></i></button></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-    {#<div class="row">
-        <div class="column-9">
-            <div class="tile">
 
-                <div class="cal" id="planning">
-                    <div class="cal-navigation">
-                        <button class="prevBtn calBtn"><i class="fa fa-chevron-left"></i></button>
-                        <button class="nextBtn calBtn"><i class="fa fa-chevron-right"></i></button>
-                        <span class="cal-title-month"></span>
-                        <span class="cal-title-year"></span>
-                        <span class="cal-loader"></span>
-                    </div>
-                    <div class="cal-days">
-                        <div class="cal-dayname">Lundi</div>
-                        <div class="cal-dayname">Mardi</div>
-                        <div class="cal-dayname">Mercredi</div>
-                        <div class="cal-dayname">Jeudi</div>
-                        <div class="cal-dayname">Vendredi</div>
-                        <div class="cal-dayname">Samedi</div>
-                        <div class="cal-dayname">Dimanche</div>
-                    </div>
-                    <div class="cal-body"></div>
-                </div>
-            </div>
-        </div>
-        <div class="column-3">
-            <div class="tile" id="open-day-infos">
-                <div class="tile-header" id="open-day-title"></div>
-                <div id="open-day-body"></div>
-            </div>
-        </div>
-    </div>#}
 {% endblock %}
 
 {% block footScripts %}
     {{ parent() }}
     <script src="/js/vendor/angular/angular.min.js"></script>
     <script src="/js/zoo/jquery.zpbCalendar.js"></script>
+    <script>
+        angular.module('AnimationDaysApp', []).value('$animationDays', {{ animationDays|raw }});
+    </script>
     <script src="/js/admin/animation/configs.js"></script>
     <script src="/js/admin/animation/dates.js"></script>
+    <script src="/js/admin/animation/modifier.js"></script>
     <script src="/js/admin/animation/zpbCalendarApp.js"></script>
     <script src="/js/admin/animation/app.js"></script>
 
-    {#<script>
-        $(function(){
-            var planning = $("#planning"),
-                    baseUrl = '/animations/api/days/',
-                    openDayTitle = $("#open-day-title"),
-                    openDayBody = $("#open-day-body");
-            var dates = {};
-            function startCalendar(cal){
-                cal.toggleLoader();
 
-                cal.createMarker = function(v){
-                    var marker =  $('<div />', {'class': 'color-marker'});
-                    marker.css('background-color', v['color']);
-                    return marker;
-                };
-                getDatas(cal);
-            }
-            function prevMonth (cal){
-                cal.toggleLoader();
-                openDayTitle.text('');
-                openDayBody.empty();
-                getDatas(cal);
-            }
-            function nextMonth (cal){
-                cal.toggleLoader();
-                openDayTitle.text('');
-                openDayBody.empty();
-                getDatas(cal);
-            }
-            function getDatas(cal){
-                var url = baseUrl + cal.year + '/' + (cal.month + 1);
-                $.get(url)
-                        .done(function(response){
-                            dates = response;
-                            cal.build(response['days']);
-                            cal.toggleLoader();
-                            cal.enableBtns();
-                        })
-                        .fail(function(response){
-                            cal.toggleLoader();
-                        });
-            }
-
-            function newDay(data, idx){
-                var date = new Date(data);
-                openDayTitle.text(date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear());
-                openDayTitle.attr('data-index', idx);
-                var days = dates['days'][idx];
-                openDayBody.empty();
-                if(days.length > 0){
-                    var ul = $('<ul />');
-                    $.each(days, function(i,v){
-                        var del = $('<a />', {'href':'#', text: 'x','display': 'inline-block'});
-                        del.attr('data-day', date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear());
-                        del.attr('data-id', v.id);
-                        var li = $('<li />', {text: v.name});
-                        li.css({'display': 'inline-block', 'backgroundColor': v.color});
-                        li.prepend(del);
-                        ul.append(li);
-                    });
-                    openDayBody.append(ul);
-                } else {
-                    openDayBody.html('<h4>nothing !</h4>');
-                }
-            }
-
-            planning.zpbCalendar({
-                startCb: startCalendar,
-                nextMonthCb: prevMonth,
-                prevMonthCb: nextMonth,
-                dayClickCb: newDay
-            });
-        });
-    </script>#}
 
 
 {% endblock %}

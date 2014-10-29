@@ -29,7 +29,8 @@ class PlanningController extends BaseController
 {
     public function indexAction()
     {
-        return $this->render('ZPBAdminBundle:Animation:planning/index.html.twig', []);
+        $animDays = $this->getRepo('ZPBAdminBundle:AnimationDay')->findAll();
+        return $this->render('ZPBAdminBundle:Animation:planning/index.html.twig', ['animationDays'=>json_encode($animDays)]);
     }
 
 
