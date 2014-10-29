@@ -85,78 +85,11 @@
     {{ parent() }}
     <script src="/js/vendor/angular/angular.min.js"></script>
     <script src="/js/zoo/jquery.zpbCalendar.js"></script>
+    <script src="/js/admin/animation/configs.js"></script>
+    <script src="/js/admin/animation/dates.js"></script>
+    <script src="/js/admin/animation/zpbCalendarApp.js"></script>
+    <script src="/js/admin/animation/app.js"></script>
 
-    <script>
-        var app = angular.module('App', []);
-        app
-                .config(['$interpolateProvider', function($interpolateProvider){
-                    $interpolateProvider.startSymbol('{$').endSymbol('$}');
-                }])
-                .config(['$httpProvider', function($httpProvider){
-                    $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-                }]);
-        app.controller('CalendarController', ['$scope','$http', function($scope,$http){
-            $scope.openDayTitleText = '';
-            $scope.getDatas = function(cal){
-                var url = '/animations/api/days/'  + cal.year + '/' + (cal.month + 1);
-                $http.get(url)
-                        .success(function(response){
-                            dates = response;
-                            cal.build(response['days']);
-                            cal.toggleLoader();
-                            cal.enableBtns();
-                        })
-                        .error(function(d){
-                            cal.toggleLoader();
-                        });
-            };
-
-            $scope.startCalendar = function(cal){
-                cal.toggleLoader();
-
-                cal.createMarker = function(v){
-                    var marker =  $('<div />', {'class': 'color-marker'});
-                    marker.css('background-color', v['color']);
-                    return marker;
-                };
-                $scope.getDatas(cal);
-            };
-
-            $scope.prevMonth = function(cal){
-                cal.toggleLoader();
-                $scope.openDayTitleText = '';
-                //openDayBody.empty();
-                $scope.getDatas(cal);
-            };
-
-            $scope.nextMonth = function(cal){
-                cal.toggleLoader();
-                $scope.openDayTitleText = '';
-                //openDayBody.empty();
-                $scope.getDatas(cal);
-            };
-
-            $scope.newDay = function(data, idx){
-
-            }
-
-        }]);
-        app.directive('zpbCalendar', function(){
-
-            return {
-                restrict: 'A',
-                link: function(scope, elem, attrs){
-                    angular.element(elem).zpbCalendar({
-                        startCb: scope.startCalendar,
-                        nextMonthCb: scope.prevMonth,
-                        prevMonthCb: scope.nextMonth,
-                        dayClickCb: scope.newDay
-                    });
-
-                }
-            }
-        });
-    </script>
     {#<script>
         $(function(){
             var planning = $("#planning"),
