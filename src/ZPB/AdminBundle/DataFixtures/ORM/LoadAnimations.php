@@ -53,6 +53,22 @@ class LoadAnimations extends AbstractFixture implements OrderedFixtureInterface,
         $anim4 = new Animation();
         $anim4->setName('Eléphants')->setPlaceNumber('18');
         $manager->persist($anim4);
+
+        $anim5 = new Animation();
+        $anim5->setName('Gorilles')->setPlaceNumber('38');
+        $manager->persist($anim5);
+
+        $anim6 = new Animation();
+        $anim6->setName('Girafes')->setPlaceNumber('21');
+        $manager->persist($anim6);
+
+        $anim7 = new Animation();
+        $anim7->setName('Ratons laveurs')->setPlaceNumber('34');
+        $manager->persist($anim7);
+
+        $anim8 = new Animation();
+        $anim8->setName('Rhinocéros indiens')->setPlaceNumber('57');
+        $manager->persist($anim8);
         
         $manager->flush();
         
@@ -60,6 +76,10 @@ class LoadAnimations extends AbstractFixture implements OrderedFixtureInterface,
         $this->addReference('zpb-anim-2', $anim2);
         $this->addReference('zpb-anim-3', $anim3);
         $this->addReference('zpb-anim-4', $anim4);
+        $this->addReference('zpb-anim-5', $anim5);
+        $this->addReference('zpb-anim-6', $anim6);
+        $this->addReference('zpb-anim-7', $anim7);
+        $this->addReference('zpb-anim-8', $anim8);
 
     }
     

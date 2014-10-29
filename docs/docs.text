@@ -27,6 +27,9 @@ LoadSponsoring                  => 50
 
 
 LoadAnimations                  => 60
+LoadAnimationDay                => 61
+LoadAnimationSchedules          => 62
+LoadAnimationPrograms           => 63
 
 LoadFaqs                        => 75
 LoadMediaPdfs                   => 100
