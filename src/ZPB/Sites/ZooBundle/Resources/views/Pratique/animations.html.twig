@@ -103,7 +103,7 @@
 
             calendrierAnimation.zpbCalendar(
                     {
-                        dayCb : function(date){
+                        dayClickCb : function(date){
                             var url = "/pratique/api/animation/" + date;
                             $.get(url).done(function(response){
                                 displayDay(response);

@@ -1,5 +1,5 @@
 {% extends 'ZPBAdminBundle:Layouts:master.html.twig' %}
-
+{% block angular%}App{% endblock %}
 {% block title %}Planning des Animations{% endblock %}
 {% set active = "plannig_management" %}
 {% block headLinks %}
@@ -14,8 +14,40 @@
             </div>
         </div>
     </div>
-
-    <div class="row">
+    <div class="row" ng-controller="CalendarController">
+        <div class="column-9">
+            <div class="tile">
+                <div class="cal" id="planning" zpb-calendar>
+                    <div class="cal-navigation">
+                        <button class="prevBtn calBtn"><i class="fa fa-chevron-left"></i></button>
+                        <button class="nextBtn calBtn"><i class="fa fa-chevron-right"></i></button>
+                        <span class="cal-title-month"></span>
+                        <span class="cal-title-year"></span>
+                        <span class="cal-loader"></span>
+                    </div>
+                    <div class="cal-days">
+                        <div class="cal-dayname">Lundi</div>
+                        <div class="cal-dayname">Mardi</div>
+                        <div class="cal-dayname">Mercredi</div>
+                        <div class="cal-dayname">Jeudi</div>
+                        <div class="cal-dayname">Vendredi</div>
+                        <div class="cal-dayname">Samedi</div>
+                        <div class="cal-dayname">Dimanche</div>
+                    </div>
+                    <div class="cal-body"></div>
+                </div>
+            </div>
+        </div>
+        <div class="column-3">
+            <div class="tile" id="open-day-infos">
+                <div class="tile-header" id="open-day-title">
+                    {$ openDayTitleText $}
+                </div>
+                <div id="open-day-body"></div>
+            </div>
+        </div>
+    </div>
+    {#<div class="row">
         <div class="column-9">
             <div class="tile">
 
@@ -41,22 +73,97 @@
             </div>
         </div>
         <div class="column-3">
-            <div class="tile">
+            <div class="tile" id="open-day-infos">
                 <div class="tile-header" id="open-day-title"></div>
+                <div id="open-day-body"></div>
             </div>
         </div>
-    </div>
+    </div>#}
 {% endblock %}
 
 {% block footScripts %}
     {{ parent() }}
-
+    <script src="/js/vendor/angular/angular.min.js"></script>
     <script src="/js/zoo/jquery.zpbCalendar.js"></script>
 
     <script>
-        $(function(){
-            var planning = $("#planning"), baseUrl = '/animations/api/days/', openDayTitle = $("#open-day-title");
+        var app = angular.module('App', []);
+        app
+                .config(['$interpolateProvider', function($interpolateProvider){
+                    $interpolateProvider.startSymbol('{$').endSymbol('$}');
+                }])
+                .config(['$httpProvider', function($httpProvider){
+                    $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+                }]);
+        app.controller('CalendarController', ['$scope','$http', function($scope,$http){
+            $scope.openDayTitleText = '';
+            $scope.getDatas = function(cal){
+                var url = '/animations/api/days/'  + cal.year + '/' + (cal.month + 1);
+                $http.get(url)
+                        .success(function(response){
+                            dates = response;
+                            cal.build(response['days']);
+                            cal.toggleLoader();
+                            cal.enableBtns();
+                        })
+                        .error(function(d){
+                            cal.toggleLoader();
+                        });
+            };
 
+            $scope.startCalendar = function(cal){
+                cal.toggleLoader();
+
+                cal.createMarker = function(v){
+                    var marker =  $('<div />', {'class': 'color-marker'});
+                    marker.css('background-color', v['color']);
+                    return marker;
+                };
+                $scope.getDatas(cal);
+            };
+
+            $scope.prevMonth = function(cal){
+                cal.toggleLoader();
+                $scope.openDayTitleText = '';
+                //openDayBody.empty();
+                $scope.getDatas(cal);
+            };
+
+            $scope.nextMonth = function(cal){
+                cal.toggleLoader();
+                $scope.openDayTitleText = '';
+                //openDayBody.empty();
+                $scope.getDatas(cal);
+            };
+
+            $scope.newDay = function(data, idx){
+
+            }
+
+        }]);
+        app.directive('zpbCalendar', function(){
+
+            return {
+                restrict: 'A',
+                link: function(scope, elem, attrs){
+                    angular.element(elem).zpbCalendar({
+                        startCb: scope.startCalendar,
+                        nextMonthCb: scope.prevMonth,
+                        prevMonthCb: scope.nextMonth,
+                        dayClickCb: scope.newDay
+                    });
+
+                }
+            }
+        });
+    </script>
+    {#<script>
+        $(function(){
+            var planning = $("#planning"),
+                    baseUrl = '/animations/api/days/',
+                    openDayTitle = $("#open-day-title"),
+                    openDayBody = $("#open-day-body");
+            var dates = {};
             function startCalendar(cal){
                 cal.toggleLoader();
 
@@ -69,16 +176,21 @@
             }
             function prevMonth (cal){
                 cal.toggleLoader();
+                openDayTitle.text('');
+                openDayBody.empty();
                 getDatas(cal);
             }
             function nextMonth (cal){
                 cal.toggleLoader();
+                openDayTitle.text('');
+                openDayBody.empty();
                 getDatas(cal);
             }
             function getDatas(cal){
                 var url = baseUrl + cal.year + '/' + (cal.month + 1);
                 $.get(url)
                         .done(function(response){
+                            dates = response;
                             cal.build(response['days']);
                             cal.toggleLoader();
                             cal.enableBtns();
@@ -88,19 +200,37 @@
                         });
             }
 
-            function newDay(data){
+            function newDay(data, idx){
                 var date = new Date(data);
                 openDayTitle.text(date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear());
+                openDayTitle.attr('data-index', idx);
+                var days = dates['days'][idx];
+                openDayBody.empty();
+                if(days.length > 0){
+                    var ul = $('<ul />');
+                    $.each(days, function(i,v){
+                        var del = $('<a />', {'href':'#', text: 'x','display': 'inline-block'});
+                        del.attr('data-day', date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear());
+                        del.attr('data-id', v.id);
+                        var li = $('<li />', {text: v.name});
+                        li.css({'display': 'inline-block', 'backgroundColor': v.color});
+                        li.prepend(del);
+                        ul.append(li);
+                    });
+                    openDayBody.append(ul);
+                } else {
+                    openDayBody.html('<h4>nothing !</h4>');
+                }
             }
 
             planning.zpbCalendar({
                 startCb: startCalendar,
                 nextMonthCb: prevMonth,
                 prevMonthCb: nextMonth,
-                dayCb: newDay
+                dayClickCb: newDay
             });
         });
-    </script>
+    </script>#}
 
 
 {% endblock %}

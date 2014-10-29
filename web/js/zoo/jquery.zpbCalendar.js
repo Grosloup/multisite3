@@ -42,7 +42,7 @@
         buildDayCb: Calendar.noop,
         buildRowCb: Calendar.noop,
         buildCellCb: Calendar.noop,
-        dayCb: Calendar.noop,
+        dayClickCb: Calendar.noop,
         prevMonthCb: null,
         nextMonthCb: null
     };
@@ -174,6 +174,7 @@
                 this.options.buildCellCb(cell);
                 if(dayCounter >= firstDayNum && dayCounter < (numDaysInMonth + firstDayNum)){
                     var dDate = this.year + "/" + (this.month + 1) + "/" + dayNum;
+                    cell.attr('data-cellindex', dayNum-1);
                     var day = this.createDay(dayNum + '', dDate);
                     if(datas){
                         if(datas[dayNum-1].length > 0){
@@ -250,7 +251,8 @@
         $(document).on("click", "[data-cell]", function(e){
             e.preventDefault();
             var data = $(this).find('.' + self.options.dayClass).data('date') || null;
-            self.options.dayCb(data);
+            var idx = $(this).data('cellindex');
+            self.options.dayClickCb(data, idx);
         });
     };
 
