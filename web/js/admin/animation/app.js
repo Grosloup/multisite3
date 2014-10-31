@@ -86,8 +86,11 @@ $(function () {
             if (isUnique === true) {
                 var marker = cell.find("[data-eventid='" + eId + "']");
                 marker.remove();
+                $.ajax({
+                    url: cal.options.baseUrl + "/" + eId + "/" ,
+                    type: "DELETE"
+                }).done(function(){}).fail({});
             } else {
-
                 var markers = cell.find(".cal-event-marker");
                 markers.remove();
             }

@@ -46,4 +46,11 @@ class PlanningController extends BaseController
 
         return new JsonResponse($datas);
     }
+
+    public function apiDeleteDayAction($id,$year, $month,$day, Request $request)
+    {
+        if(!$request->isXmlHttpRequest() && !$request->isMethod("DELETE")){
+            throw $this->createAccessDeniedException();
+        }
+    }
 }
