@@ -1,3 +1,23 @@
+if(!window.deepCopy){
+    var deepCopy = function(obj){
+        if (Object.prototype.toString.call(obj) === '[object Array]') {
+            var out = [], i = 0, len = obj.length;
+            for ( ; i < len; i++ ) {
+                out[i] = deepCopy(obj[i]);
+            }
+            return out;
+        }
+        if (typeof obj === 'object') {
+            var out = {}, i;
+            for ( i in obj ) {
+                out[i] = deepCopy(obj[i]);
+            }
+            return out;
+        }
+        return obj;
+    }
+}
+
 function CalendarManager(elem, options){
     this.elem = this.$view = this.header = this.body = null;
     this.loadedEvents = this.evtList = this.calendar = null;

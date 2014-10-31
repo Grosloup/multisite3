@@ -1,6 +1,6 @@
 
 if(!window.deepCopy){
-    var deepCopy = function(ojb){
+    var deepCopy = function(obj){
         if (Object.prototype.toString.call(obj) === '[object Array]') {
             var out = [], i = 0, len = obj.length;
             for ( ; i < len; i++ ) {
@@ -433,11 +433,8 @@ Calendar.prototype.initMouseEvents = function(){
         if(index !== null){
             self.selectedEvent = self.events[index];
         }
-        var copy = [];
-        _.each(self.selectedEvent, function(v){
-            copy.push(_.clone(v));
-        });
-        self.options.mouseClickCb(this, self.selectedEvent, e);
+
+        self.options.mouseClickCb(this, deepCopy(self.selectedEvent), e);
     });
 };
 
