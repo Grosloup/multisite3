@@ -82,18 +82,51 @@ $(function () {
         },
         removeEventViews: function (isUnique, cal, idx, eId) {
             var cell;
+            idx = parseInt(idx);
             cell = cal.getCell(idx);
             if (isUnique === true) {
                 var marker = cell.find("[data-eventid='" + eId + "']");
-                marker.remove();
+
                 $.ajax({
-                    url: cal.options.baseUrl + "/" + eId + "/" ,
+                    url: cal.options.baseUrl + "/" + eId + "/" + cal.currentYear + "/" + (cal.currentMonth + 1) + "/" + (idx + 1) ,
                     type: "DELETE"
-                }).done(function(){}).fail({});
+                }).done(function(response){
+                    if(!response.error){
+                        marker.remove();
+                    }
+                }).fail({});
             } else {
                 var markers = cell.find(".cal-event-marker");
                 markers.remove();
             }
+
+        },
+        deleteEventCb: function(idx, prop, eId, cal){
+            var cell, marker;
+            idx = parseInt(idx);
+            cell = cal.getCell(idx);
+            marker = cell.find("[data-eventid='" + eId + "']");
+            $.ajax({
+                url: cal.options.baseUrl + "/" + eId + "/" + cal.currentYear + "/" + (cal.currentMonth + 1) + "/" + (idx + 1) ,
+                type: "DELETE"
+            }).done(function(response){
+                if(response.error === false){
+                    marker.remove();
+                    cal.unloadEvent(idx, prop, eId);
+                } else {
+
+                    var d = cal.currentYear + "/" + (cal.currentMonth + 1) + "/" + (idx + 1);
+                    cal.selectedEvent = cal.events[idx];
+                    console.log(cal.events[idx], d, cal.selectedEvent, cal.events[idx]);
+                    cal_manager.loadEvents(cal.selectedEvent, d);
+                    console.log(cal_manager.loadedEvents);
+                }
+            }).fail(function(response){
+                var d = cal.currentYear + "/" + (cal.currentMonth + 1) + "/" + (idx + 1);
+                cal.selectedEvent = cal.events[idx];
+                cal_manager.loadEvents(cal.selectedEvent, d);
+            });
+
 
         },
         removeAllEventViews: function (cal) {

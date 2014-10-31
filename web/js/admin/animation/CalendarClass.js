@@ -37,7 +37,8 @@ Calendar.DEFAULTS = {
     nextBtnClickCb: _.noop,
     createEventView: _.noop, // 1 argument isUnique => 1 événement (true) à representer ou une collection (false)
     removeEventViews: _.noop,
-    removeAllEventViews: _.noop
+    removeAllEventViews: _.noop,
+    deleteEventCb: _.noop
 };
 
 Calendar.prototype.init = function(elem, options){
@@ -306,7 +307,13 @@ Calendar.prototype.unloadEvent = function (idx, prop, value) {
         this.events[idx].splice(k, 1);
     }
 
-    this.options.removeEventViews(true, this, idx, value);
+    //this.options.removeEventViews(true, this, idx, value);
+};
+
+Calendar.prototype.deleteEvent = function(idx, prop, value){
+
+    this.options.deleteEventCb(idx, prop, value, this);
+
 };
 
 Calendar.prototype.unloadAllEvents = function(){

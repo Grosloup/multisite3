@@ -52,5 +52,19 @@ class PlanningController extends BaseController
         if(!$request->isXmlHttpRequest() && !$request->isMethod("DELETE")){
             throw $this->createAccessDeniedException();
         }
+        $animationDay = $this->getRepo('ZPBAdminBundle:AnimationDay')->find($id);
+        if(!$animationDay){
+            throw $this->createNotFoundException();
+        }
+        /** @var \ZPB\AdminBundle\Entity\AnimationProgram $program */
+        $program = $this->getRepo('ZPBAdminBundle:AnimationProgram')->findOneByDaytime(\DateTime::createFromFormat('Y/n/j', $year.'/'.$month.'/'.$day));
+        if(!$program){
+            throw $this->createNotFoundException();
+        }
+        /*$program->removeAnimationDay($animationDay);
+        $this->getManager()->persist($program);
+        $this->getManager()->flush();*/
+
+        return new JsonResponse(["error"=>true, "msg"=>$program->getId()]);
     }
 }

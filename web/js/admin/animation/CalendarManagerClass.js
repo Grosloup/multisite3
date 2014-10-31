@@ -152,7 +152,7 @@ CalendarManager.prototype.initMouseEvents = function(){
     $(document).on("click", "[data-delete]", function(e){
         e.preventDefault();
         self.deleteEvent($(this).attr("data-deleteid"));
-        self.calendar.unloadEvent($(this).attr("data-delete"), "id", $(this).attr("data-deleteid"));
+        self.calendar.deleteEvent($(this).attr("data-delete"), "id", $(this).attr("data-deleteid"));
         $(this).parent().remove();
     })
 };
