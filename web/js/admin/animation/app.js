@@ -17,7 +17,7 @@ $(function () {
 
         },
         prevBtnClickCb: function (el, cal, e) {
-            var url = cal.options.baseUrl + "/" + cal.currentYear + "/" + (calendar.currentMonth + 1);
+            var url = cal.options.baseUrl + "/" + cal.currentYear + "/" + (cal.currentMonth + 1);
             calMsg.text("");
             cal.disableBtns();
             cal.disableCellClick();
@@ -37,7 +37,7 @@ $(function () {
             calInfos.text(cal.getMonthName() + " " + cal.currentYear);
         },
         nextBtnClickCb: function (el, cal, e) {
-            var url = cal.options.baseUrl + "/" + cal.currentYear + "/" + (calendar.currentMonth + 1);
+            var url = cal.options.baseUrl + "/" + cal.currentYear + "/" + (cal.currentMonth + 1);
             calMsg.text("");
             cal.disableBtns();
             cal.disableCellClick();
@@ -110,15 +110,16 @@ $(function () {
                 url: cal.options.baseUrl + "/" + eId + "/" + cal.currentYear + "/" + (cal.currentMonth + 1) + "/" + (idx + 1) ,
                 type: "DELETE"
             }).done(function(response){
+                console.log(response);
                 if(response.error === false){
                     marker.remove();
                     cal.unloadEvent(idx, prop, eId);
                 } else {
 
                     var d = cal.currentYear + "/" + (cal.currentMonth + 1) + "/" + (idx + 1);
-                    cal.selectedEvent = cal.events[idx];
-                    console.log(cal.events[idx], d, cal.selectedEvent, cal.events[idx]);
-                    cal_manager.loadEvents(cal.selectedEvent, d);
+                    cal.selectedEvent = cal.getEvents(idx);
+                    console.log(calendar.events,idx, cal.getEvents(idx), d, cal.selectedEvent, cal.events[idx]);
+                    cal_manager.loadEvents(cal.getEvents(idx), d);
                     console.log(cal_manager.loadedEvents);
                 }
             }).fail(function(response){
@@ -149,6 +150,7 @@ $(function () {
     calendar.displayMessage("Loading...");
     $.get(baseUrl + calendar.currentYear + "/" + (calendar.currentMonth + 1)).done(function (response) {
         calendar.loadEvents(response.days);
+        console.log(calendar.events);
         calendar.enableBtns();
         calendar.enableCellClick();
         calendar.eraseMessage();

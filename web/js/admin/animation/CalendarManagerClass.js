@@ -22,7 +22,7 @@ CalendarManager.DEFAULTS = {
 
 
 CalendarManager.prototype.init = function (elem, options) {
-    this.options = $.extend({}, CalendarManager.DEFAULTS, options );
+    this.options = $.extend(true, {}, CalendarManager.DEFAULTS, options );
     this.elem = elem;
     this.$view = $(elem);
     console.log(this.options);

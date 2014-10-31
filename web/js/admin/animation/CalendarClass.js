@@ -1,4 +1,27 @@
 
+if(!window.deepCopy){
+    var deepCopy = function(ojb){
+        if (Object.prototype.toString.call(obj) === '[object Array]') {
+            var out = [], i = 0, len = obj.length;
+            for ( ; i < len; i++ ) {
+                out[i] = deepCopy(obj[i]);
+            }
+            return out;
+        }
+        if (typeof obj === 'object') {
+            var out = {}, i;
+            for ( i in obj ) {
+                out[i] = deepCopy(obj[i]);
+            }
+            return out;
+        }
+        return obj;
+    }
+}
+
+
+
+
 function Calendar(elem, options){
     this.today = this.currentMonth = this.currentYear = this.currentDay = null;
     this.events = this.prevBtn = this.nextBtn = null;
@@ -45,7 +68,7 @@ Calendar.prototype.init = function(elem, options){
     this.elem = elem;
     this.$view = $(elem);
     this.$view.addClass("cal");
-    this.options = $.extend({}, Calendar.DEFAULTS, options );
+    this.options = $.extend(true, {}, Calendar.DEFAULTS, options );
 
     this.today = new Date();
     this.currentMonth = this.today.getMonth();
@@ -410,6 +433,10 @@ Calendar.prototype.initMouseEvents = function(){
         if(index !== null){
             self.selectedEvent = self.events[index];
         }
+        var copy = [];
+        _.each(self.selectedEvent, function(v){
+            copy.push(_.clone(v));
+        });
         self.options.mouseClickCb(this, self.selectedEvent, e);
     });
 };
