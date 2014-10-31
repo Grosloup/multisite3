@@ -1,5 +1,4 @@
 {% extends 'ZPBAdminBundle:Layouts:master.html.twig' %}
-{% block angular%}App{% endblock %}
 {% block title %}Planning des Animations{% endblock %}
 {% set active = "plannig_management" %}
 {% block headLinks %}
@@ -9,45 +8,24 @@
 {% block content %}
     <div class="row">
         <div class="column-12">
+
             <div class="tile">
+
                 <div class="tile-header">Planning des animations</div>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="column-9">
-            <div class="tile" ng-controller="CalendarController">
-                <div class="cal" id="planning" zpb-calendar>
-                    <div class="cal-navigation">
-                        <button class="prevBtn calBtn" ng-disabled="isLoading"><i class="fa fa-chevron-left"></i></button>
-                        <button class="nextBtn calBtn" ng-disabled="isLoading"><i class="fa fa-chevron-right"></i></button>
-                        <span class="cal-title-month" ng-hide="isLoading"></span>
-                        <span class="cal-title-year" ng-hide="isLoading"></span>
-                        <span class="cal-loader" ng-show="isLoading"></span>
-                    </div>
-                    <div class="cal-days">
-                        <div class="cal-dayname">Lundi</div>
-                        <div class="cal-dayname">Mardi</div>
-                        <div class="cal-dayname">Mercredi</div>
-                        <div class="cal-dayname">Jeudi</div>
-                        <div class="cal-dayname">Vendredi</div>
-                        <div class="cal-dayname">Samedi</div>
-                        <div class="cal-dayname">Dimanche</div>
-                    </div>
-                    <div class="cal-body"></div>
-                </div>
+            <div class="tile">
+                <div class="tile-header" id="calInfos"></div>
+                <div id="calendrier"></div>
+
             </div>
         </div>
-        <div class="column-3" ng-controller="ModifierController">
-            <div class="tile" id="open-day-infos">
-                <div class="tile-header" id="open-day-title">
-                    {$ modifier.currentMonth $} {$ modifier.currentYear $} <span ng-show="modifier.currentDay != ''">, le {$ modifier.currentDay $}</span>
-                </div>
-                <div id="open-day-body">
-                    <ul>
-                        <li ng-repeat="d in dates">{$ d.name $} <button class="btn btn-primary" ng-click="remove(d)"><i class="fa fa-trash-o"></i></button></li>
-                    </ul>
-                </div>
+        <div class="column-3" >
+            <div class="tile">
+                <div id="event_manager"></div>
             </div>
         </div>
     </div>
@@ -55,18 +33,16 @@
 {% endblock %}
 
 {% block footScripts %}
+    <script src="/js/vendor/underscore-min.js"></script>
     {{ parent() }}
-    <script src="/js/vendor/angular/angular.min.js"></script>
-    <script src="/js/zoo/jquery.zpbCalendar.js"></script>
     <script>
-        angular.module('AnimationDaysApp', []).value('$animationDays', {{ animationDays|raw }});
+        var animationDays = {{ animationDays|raw }};
     </script>
-    <script src="/js/admin/animation/configs.js"></script>
-    <script src="/js/admin/animation/dates.js"></script>
-    <script src="/js/admin/animation/modifier.js"></script>
-    <script src="/js/admin/animation/zpbCalendarApp.js"></script>
+    <script src="/js/admin/animation/CalendarClass.js"></script>
+    <script src="/js/admin/animation/CalendarManagerClass.js"></script>
+    <script src="/js/admin/animation/jquery.zpb.calendar.js"></script>
+    <script src="/js/admin/animation/jquery.zpb.calendar_manager.js"></script>
     <script src="/js/admin/animation/app.js"></script>
-
 
 
 

@@ -10,102 +10,190 @@
     clear: both;
   }
 }
-.color-marker{
+.cal{
+  position: relative;
+  @include clearfix;
+  background-color: #fff;
+}
+.cal-head-row, .cal-row, .cal-body-row{
+  @include clearfix;
   width: 100%;
-  height: 10px;
+}
+.cal-head-cell, .cal-cell, .cal-body-cell{
+  width: percentage(1/7);
+  float: left;
+  height: 100%;
+}
+.cal-head-cell{
+  text-align: center;
+  line-height: 50px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.cal-head-row{
+  height: 50px;
+}
+.cal-row, .cal-body-row{
+  height: 100px;
+}
+
+.cal-body{
+  @include clearfix;
+  width: 100%;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  z-index: 100;
+  .cal-body-row{
+    border-bottom: 1px solid #ddd;
+    &:first-child{
+      border-top: 1px solid #ddd;
+    }
+    .cal-body-cell{
+      border-right: 1px solid #ddd;
+      position: relative;
+      &.cal-cell-today{
+        background-color: #4fb2ff;
+        .cal-day{
+          color: #fff;
+        }
+      }
+      &.cal-empty-cell{
+        background-color: #ddd;
+      }
+      &:first-child{
+        border-left: 1px solid #ddd;
+      }
+      .cal-day{
+        position: absolute;
+        display: block;
+        width: 30px;
+        height: 30px;
+        right: 0;
+        bottom: 0;
+        color: #bbb;
+      }
+    }
+  }
+}
+.cal-evt-layer{
+  @include clearfix;
+  width: 100%;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  z-index: 1000;
+  .cal-row{
+    .cal-cell{
+
+      &.cal-cell-enabled{
+        cursor: pointer;
+        &:hover{
+          @include box-shadow(rgba(0,0,0,0.2) 0 0 4px);
+          border: 1px solid #ddd;
+        }
+      }
+      &.cal-cell-disabled{
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.cal-4{
+  height: 500px;
+  .cal-body, .cal-evt-layer{
+    height: 400px;
+  }
+}
+.cal-5{
+  height: 600px;
+  .cal-body, .cal-evt-layer{
+    height: 500px;
+  }
+}
+.cal-6{
+  height: 700px;
+  .cal-body, .cal-evt-layer{
+    height: 600px;
+  }
+}
+
+.cal-event-marker{
+  width: 100%;
+  height: 5px;
   float: left;
 }
-.cal{
-  .cal-navigation{
-    @include clearfix;
-    .cal-loader{
-      width: 32px;
-      height: 32px;
-      display: inline-block;
-      vertical-align: middle;
-      background: transparent url('/img/sites/ajax-loader.gif') no-repeat center center;
-      &.hide{
-        display: none;
-      }
-      &.show{
-        display: inline-block;
-      }
-    }
-    .cal-title-month, .cal-title-year{
-      display: inline-block;
-      vertical-align: middle;
-      font-weight: 700;
-      font-size: 20px;
-      padding: 0 5px;
-    }
+
+.cal-overlay{
+  &.hide{
+    display: none;
   }
-  .cal-days{
-    height: 50px;
-    line-height: 50px;
-    @include clearfix;
-    width: 98%;
-    .cal-dayname{
-      width: percentage(1/7);
-      height: 100%;
-      float: left;
-      text-align: center;
-      font-weight: 700;
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100000;
+  background-color: rgba(0,0,0,0.7);
+  .cal-messenger{
+    width: 40%;
+    position: absolute;
+    top: 25%;
+    left: 30%;
+    min-height: 50px;
+    z-index: 100001;
+    @include box-shadow(rgba(0,0,0,0.5) 0 0 10px);
+    background-color: #fff;
+    padding: 10px;
+    @include border-radius(5px);
   }
-  &.cal-4{
-    .cal-body{
-      height: 400px;
-    }
+}
+
+//////////////
+.cal-manager{
+  width: 100%;
+  min-height: 500px;
+  border: 1px solid #ddd;
+
+}
+.cal-manager-header{
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  h5{
+    text-align: center;
   }
-  &.cal-5{
-    .cal-body{
-      height: 500px;
-    }
-  }
-  &.cal-6{
-    .cal-body{
-      height: 600px;
-    }
+}
+
+.cal-manager-body{
+  padding: 10px;
+  .cal-manager-event-selector{
+    width: 100%;
+    margin: 10px 0;
+    padding: 5px 10px;
   }
 
-  .cal-body{
-    .cal-row{
-      height: 100px;
-      width: 98%;
-      @include clearfix;
-      border-bottom: 1px solid #efefef;
-      &:first-child{
-        border-top: 1px solid #efefef;
-      }
-      .cal-cell{
-        @include clearfix;
-        height: 100%;
-        width: percentage(1/7);
-        border-left: 1px solid #efefef;
-        &:last-child{
-          border-right: 1px solid #efefef;
-        }
-        float: left;
-        position: relative;
-        &.cal-cell-hover{
-          cursor: pointer;
-          &:hover{
-            background-color: #eee;
-          }
-        }
-        .cal-day{
-          position: relative;
-          top: 100%;
-          left: 100%;
-          width: 30px;
-          height: 30px;
-          margin: -30px 0 0 -30px;
-          display: block;
-          text-align: center;
-          line-height: 30px;
-          font-size: 20px;
-          font-weight: 700;
-        }
+  ul.cal-manager-events-list{
+    li.cal-manager-event-row{
+      display: block;
+      padding: 10px 20px 10px 10px;
+      background-color: #74b9ff;
+      @include border-radius(5px);
+      margin-bottom: 5px;
+      position: relative;
+      .cal-manager-delete-btn{
+        text-decoration: none;
+        display: block;
+        position: absolute;
+        width: 20px;
+        height: 25px;
+        right: 5px;
+        top: 5px;
+        color: #fff;
+        font-weight: 700;
+        line-height: 25px;
+        text-align: center;
       }
     }
   }
