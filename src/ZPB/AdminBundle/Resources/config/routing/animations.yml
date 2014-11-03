@@ -35,6 +35,16 @@ zpb_admin_animations_planning_api_delete_day:
         month: "[1-9]|1[0-2]"
         day: "[1-9]|[1-2][0-9]|3[0-1]"
 
+zpb_admin_animations_planning_api_add_day:
+    path: /api/days/{id}/{year}/{month}/{day}
+    defaults: { _controller: ZPBAdminBundle:Animation/Planning:apiAddDays }
+    methods: ["POST"]
+    requirements:
+        id: \d+
+        year: "20(0[0-9]|[1-9][0-9])"
+        month: "[1-9]|1[0-2]"
+        day: "[1-9]|[1-2][0-9]|3[0-1]"
+
 zpb_admin_animations_planning_api_get_days_in_month:
     path: /api/days/{year}/{month}
     defaults: { _controller: ZPBAdminBundle:Animation/Planning:apiGetDaysInMonth }

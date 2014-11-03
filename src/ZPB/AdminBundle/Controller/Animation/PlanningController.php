@@ -24,6 +24,7 @@ namespace ZPB\AdminBundle\Controller\Animation;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use ZPB\AdminBundle\Controller\BaseController;
+use ZPB\AdminBundle\Entity\AnimationProgram;
 
 class PlanningController extends BaseController
 {
@@ -47,7 +48,34 @@ class PlanningController extends BaseController
         return new JsonResponse($datas);
     }
 
-    public function apiDeleteDayAction($id,$year, $month,$day, Request $request)
+    public function apiAddDaysAction($id, $year, $month, $day, Request $request)
+    {
+        if(!$request->isXmlHttpRequest() && !$request->isMethod("POST")){
+            throw $this->createAccessDeniedException();
+        }
+        $animationDay = $this->getRepo('ZPBAdminBundle:AnimationDay')->find($id);
+        if(!$animationDay){
+            throw $this->createNotFoundException();
+        }
+        $date = \DateTime::createFromFormat('Y/n/j', $year.'/'.$month.'/'.$day);
+        /** @var \ZPB\AdminBundle\Entity\AnimationProgram $program */
+        $program = $this->getRepo('ZPBAdminBundle:AnimationProgram')->findOneByDaytime($date);
+        if(!$program){
+
+            $program = new AnimationProgram();
+            $program->setDaytime($date);
+            $this->getManager()->persist($program);
+            $this->getManager()->flush();
+            //throw $this->createNotFoundException();
+        }
+        $program->addAnimationDay($animationDay);
+        $this->getManager()->persist($program);
+        $this->getManager()->flush();
+
+        return new JsonResponse(["error"=>false, "message"=>$program->getId()]);
+    }
+
+    public function apiDeleteDayAction($id, $year, $month, $day, Request $request)
     {
         if(!$request->isXmlHttpRequest() && !$request->isMethod("DELETE")){
             throw $this->createAccessDeniedException();
@@ -61,10 +89,10 @@ class PlanningController extends BaseController
         if(!$program){
             throw $this->createNotFoundException();
         }
-        /*$program->removeAnimationDay($animationDay);
+        $program->removeAnimationDay($animationDay);
         $this->getManager()->persist($program);
-        $this->getManager()->flush();*/
+        $this->getManager()->flush();
 
-        return new JsonResponse(["error"=>true, "msg"=>$program->getId()]);
+        return new JsonResponse(["error"=>false, "message"=>$program->getId()]);
     }
 }

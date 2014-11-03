@@ -25,7 +25,7 @@
         </div>
         <div class="column-3" >
             <div class="tile">
-                <div id="event_manager"></div>
+                <div id="calendrierManager"></div>
             </div>
         </div>
     </div>
@@ -33,15 +33,23 @@
 {% endblock %}
 
 {% block footScripts %}
-    <script src="/js/vendor/underscore-min.js"></script>
+
     {{ parent() }}
     <script>
         var animationDays = {{ animationDays|raw }};
     </script>
-    <script src="/js/admin/animation/CalendarClass.js"></script>
-    <script src="/js/admin/animation/CalendarManagerClass.js"></script>
-    <script src="/js/admin/animation/jquery.zpb.calendar.js"></script>
-    <script src="/js/admin/animation/jquery.zpb.calendar_manager.js"></script>
+    <script src="/js/admin/modules/addons.js"></script>
+    <script src="/js/admin/modules/CacheManager.js"></script>
+    <script src="/js/admin/modules/EventManager.js"></script>
+    <script src="/js/admin/modules/loader.js"></script>
+    <script src="/js/admin/modules/yearSelector.js"></script>
+    <script src="/js/admin/modules/monthSelector.js"></script>
+    <script src="/js/admin/modules/animationDaySelector.js"></script>
+
+    <script src="/js/admin/animation/calendar.js"></script>
+    <script src="/js/admin/animation/calendarManager.js"></script>
+    <script src="/js/admin/animation/calendarMediator.js"></script>
+    <script src="/js/admin/animation/day.js"></script>
     <script src="/js/admin/animation/app.js"></script>
 
 

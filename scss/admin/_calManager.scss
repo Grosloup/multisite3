@@ -1,0 +1,60 @@
+.cal-manager{
+  position: relative;
+  border: 1px solid #ddd;
+}
+
+.cal-manager-header{
+  width: 100%;
+  height: 100px;
+  position: relative;
+  @include clearfix;
+  padding: 10px;
+  h1{
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+  }
+}
+
+.cal-manager-body{
+  width: 100%;
+  height: 500px;
+
+  position: relative;
+  @include clearfix;
+  padding: 0 10px 10px;
+}
+
+.animation-days-selector{
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  padding: 10px;
+  .cal-animation-days-select{
+
+  }
+}
+
+.cal-manager-list{
+  display: block;
+  width: 100%;
+  .cal-manager-list-row{
+    display: block;
+    position: relative;
+    padding: 10px;
+    @include border-radius(5px);
+    border: 1px solid #ddd;
+    background-color: #eee;
+    margin-bottom: 2px;
+    .cal-manager-list-row-delete{
+      display: block;
+      width: 20px;
+      height: 20px;
+      position:absolute;
+      color: #000;
+      top: 8px;
+      right: 4px;
+      text-align: center;
+    }
+  }
+}
