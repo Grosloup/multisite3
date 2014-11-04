@@ -1,5 +1,5 @@
 @function  topx($value){
-  @return  $value * 1px;
+  @return  floor($value) * 1px;
 }
 
 @mixin nakedLink{
@@ -17,13 +17,7 @@
   }
 }
 
-.hide{
-  display: none;
-}
 
-.show{
-  display: block;
-}
 
 $btn_vertBgColor: #54b45b !default;
 $btn_vertColor: #fff !default;
