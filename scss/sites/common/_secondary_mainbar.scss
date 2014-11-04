@@ -1,0 +1,54 @@
+
+$smb_bgColor: $gris51 !default;
+$smb_color: $blanc !default;
+$smb_fontFamily: $fontfamily !default;
+$smb_linkColor: $blanc !default;
+$smb_linkHoverColor: $bleu !default;
+$smb_linkFontFamily: $fontfamily !default;
+$smb_blockHeaderFontFamily: "cooper_hewitt_semi_bold", Arial, Helvetica, sans-serif !default;
+$smb_blockHeaderActiveColor: $jaune !default;
+$smb_menuBorderColor: $blanc !default;
+
+#seconday-mainbar-wrapper{
+  background-color: $smb_bgColor;
+  padding: 50px 0;
+  margin-bottom: -16px;
+  color: $smb_color;
+  font-family: $smb_fontFamily;
+  a{
+    color: $smb_linkColor;
+    font-family: $smb_linkFontFamily;
+    &:hover{
+      color: $smb_linkHoverColor;
+    }
+    &.menu-block-header{
+      display: block;
+      padding: 15px 0 5px;
+      font-family: $smb_blockHeaderFontFamily;
+
+    }
+  }
+  .menu-block{
+    &.active{
+      .menu-block-header{
+        color: $smb_blockHeaderActiveColor;
+      }
+    }
+    ul{
+      li{
+        padding-bottom: 3px;
+        margin-top: 3px;
+        border-bottom: 1px solid rgba($smb_menuBorderColor, 0.2);
+        &:first-child{
+          border-bottom: 1px solid rgba($smb_menuBorderColor, 0.2);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1030px){
+  #seconday-mainbar-wrapper{
+    display: none;
+  }
+}

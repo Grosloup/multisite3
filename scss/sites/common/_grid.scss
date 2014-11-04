@@ -1,4 +1,10 @@
 
+
+/*********************** grid **************************\
+\*******************************************************/
+$gridGutter: 20 !default;
+$numCols: 12 !default;
+
 @mixin row{
   width: 100%;
   @include clearfix;
@@ -40,12 +46,10 @@
 }
 
 
-
 .row, .spaced-row{
   @include row;
   [class^="col-sm-"], [class*=" col-sm-"],
-  [class^="col-md-"], [class*=" col-md-"],
-  [class^="col4-md-"], [class*=" col4-md-"]{
+  [class^="col-md-"], [class*=" col-md-"]{
     padding-left: topx($gridGutter);
     padding-right: topx($gridGutter);
   }
@@ -58,10 +62,9 @@
     }
 
     [class^="col-sm-"], [class*=" col-sm-"],
-    [class^="col-md-"], [class*=" col-md-"],
-    [class^="col4-md-"], [class*=" col4-md-"]{
-      padding-left: topx($gridGutter);
-      padding-right: topx($gridGutter);
+    [class^="col-md-"], [class*=" col-md-"]{
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 }
@@ -140,20 +143,13 @@
 
 @media only screen and (min-width: 768px){
 
-  [class^="col-md-"], [class*=" col-md-"],
-  [class^="col4-md-"], [class*=" col4-md-"]{
+  [class^="col-md-"], [class*=" col-md-"]{
     @include column;
   }
 
   @for $i from 1 through $numCols{
     .col-md-#{$i}{
       width: percentage( $i / $numCols);
-      float: left;
-    }
-  }
-  @for $i from 1 through 4{
-    .col4-md-#{$i}{
-      width: percentage( $i / 4);
       float: left;
     }
   }
@@ -188,12 +184,10 @@
   .row, .spaced-row{
 
     .row, .spaced-row{
-      [class^="col-md-"]:first-child, [class*=" col-md-"]:first-child,
-      [class^="col4-md-"]:first-child, [class*=" col4-md-"]:first-child{
+      [class^="col-md-"]:first-child, [class*=" col-md-"]:first-child{
         padding-left: 0;
       }
-      [class^="col-md-"]:last-child, [class*=" col-md-"]:last-child,
-      [class^="col4-md-"]:last-child, [class*=" col4-md-"]:last-child{
+      [class^="col-md-"]:last-child, [class*=" col-md-"]:last-child{
         padding-right: 0;
       }
     }
@@ -201,13 +195,13 @@
 }
 
 @media only screen and (min-width: 960px){
-  .container{
-    max-width: 1020px;
-  }
+
 }
 
 @media only screen and (min-width: 1024px){
-
+  .container{
+    max-width: 1020px;
+  }
 }
 
 @media only screen and (min-width: 1280px){
