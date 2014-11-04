@@ -1,0 +1,152 @@
+$headerHeight: 100px;
+
+.cal{
+  position: relative;
+  @include clearfix;
+  background-color: #fff;
+
+  &.cal-4{
+    height: 500px;
+    .cal-body, .cal-event-layer{
+      height: 400px;
+    }
+  }
+  &.cal-5{
+    height: 600px;
+    .cal-body, .cal-event-layer{
+      height: 500px;
+    }
+  }
+  &.cal-6{
+    height: 700px;
+    .cal-body, .cal-event-layer{
+      height: 600px;
+    }
+  }
+
+}
+
+.cal-header{
+  position: relative;
+  @include clearfix;
+  width: 100%;
+  height: $headerHeight;
+}
+.cal-error-message{
+  position: absolute;
+  height: 50px;
+  top: 40px;
+  left: 10px;
+  min-width: 150px;
+  z-index: 1000;
+  @include box-shadow(rgba(0,0,0,0.15) 0 0 7px);
+  @include border-radius(5px);
+  padding: 5px;
+  background-color: #ffcfcc;
+  color: #ff411a;
+}
+.month-selector, .year-selector, .loader{
+  padding: 10px;
+}
+
+
+.month-selector, .year-selector{
+  height: 100%;
+  float: left;
+}
+.loader{
+  height: 100%;
+  float: right;
+}
+
+.cal-body{
+  @include clearfix;
+  width: 100%;
+  position: absolute;
+  top: $headerHeight;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+
+}
+.cal-body-row, .cal-row{
+  width: 100%;
+  height: 100px;
+  float: left;
+}
+.cal-body-row{
+
+  border-bottom: 1px solid #ddd;
+  &:first-child{
+    border-top: 1px solid #ddd;
+  }
+}
+
+.cal-cell, .cal-body-cell{
+  position: relative;
+  width: percentage(1/7);
+  float: left;
+  height: 100%;
+}
+.cal-body-cell{
+
+  border-right: 1px solid #ddd;
+  position: relative;
+  @include clearfix;
+  .cal-event-marker{
+    width: 100%;
+    height: 5px;
+    margin-bottom: 2px;
+    /*width: 10px;
+    height: 10px;
+    @include border-radius(10px);
+    margin: 2px;*/
+    float: left;
+  }
+  &:first-child{
+    border-left: 1px solid #ddd;
+  }
+  &.cal-empty-cell{
+    background-color: #ddd;
+  }
+  &.cal-cell-today{
+    background-color: #5daddd;
+    .cal-day{
+      color: #fff;
+    }
+  }
+  .cal-day{
+    position: absolute;
+    width: 25px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #bbb;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.cal-event-layer{
+  @include clearfix;
+  width: 100%;
+  position: absolute;
+  top: $headerHeight;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.cal-cell{
+
+  &.cal-cell-disabled{
+    cursor: not-allowed;
+  }
+  &.cal-cell-enabled{
+    cursor: pointer;
+    &:hover{
+      @include box-shadow(rgba(0,0,0,0.15) 0 0 7px);
+    }
+  }
+}

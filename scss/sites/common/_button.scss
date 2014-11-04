@@ -3,7 +3,7 @@ a, button, input[type=button], input[type=submit], input[type=reset]{
   &.btn{
     @include nakedLink;
     color: $btn_defaultBtnColor;
-    //font-family: $btn_defaultBtnFontFamily;
+
     font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     font-size: $btn_defaultBtnFontSize;
@@ -104,12 +104,14 @@ a, button, input[type=button], input[type=submit], input[type=reset]{
     &.btn-warning{
       background-color: $btn_warningBgColor;
       color: $btn_warningColor;
-
+      @include box-shadow(darken($btn_warningBgColor, 7) 0 5px 0);
       &:hover{
-        background-color: lighten($btn_warningBgColor, 15);
+        top: 1px;
+        @include box-shadow(darken($btn_warningBgColor, 7) 0 4px 0);
       }
       &:active{
-        background-color: darken($btn_warningBgColor, 15);
+        top: 5px;
+        @include box-shadow(none);
       }
     }
   }

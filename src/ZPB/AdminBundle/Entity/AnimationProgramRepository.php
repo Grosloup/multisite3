@@ -36,7 +36,7 @@ class AnimationProgramRepository extends EntityRepository
 
         $programs = $this->animationsInMonth($month, $year);
 
-        $result = ['year'=>$year, 'month'=>$month, 'days'=>[]];
+        $result = ['error'=>false, 'message'=>'NO ERROR','year'=>$year, 'month'=>$month, 'days'=>[]];
 
         foreach($programs as $prog){
 

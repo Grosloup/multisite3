@@ -1,0 +1,5 @@
+
+
+function CacheManager(){
+    this.caches = {};
+}

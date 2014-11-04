@@ -10,103 +10,12 @@
     clear: both;
   }
 }
-.color-marker{
-  width: 100%;
-  height: 10px;
-  float: left;
+*,*:before,*:after{
+  @include box-sizing(border-box);
 }
-.cal{
-  .cal-navigation{
-    @include clearfix;
-    .cal-loader{
-      width: 32px;
-      height: 32px;
-      display: inline-block;
-      vertical-align: middle;
-      background: transparent url('/img/sites/ajax-loader.gif') no-repeat center center;
-      &.hide{
-        display: none;
-      }
-      &.show{
-        display: inline-block;
-      }
-    }
-    .cal-title-month, .cal-title-year{
-      display: inline-block;
-      vertical-align: middle;
-      font-weight: 700;
-      font-size: 20px;
-      padding: 0 5px;
-    }
-  }
-  .cal-days{
-    height: 50px;
-    line-height: 50px;
-    @include clearfix;
-    width: 98%;
-    .cal-dayname{
-      width: percentage(1/7);
-      height: 100%;
-      float: left;
-      text-align: center;
-      font-weight: 700;
-    }
-  }
-  &.cal-4{
-    .cal-body{
-      height: 400px;
-    }
-  }
-  &.cal-5{
-    .cal-body{
-      height: 500px;
-    }
-  }
-  &.cal-6{
-    .cal-body{
-      height: 600px;
-    }
-  }
 
-  .cal-body{
-    .cal-row{
-      height: 100px;
-      width: 98%;
-      @include clearfix;
-      border-bottom: 1px solid #efefef;
-      &:first-child{
-        border-top: 1px solid #efefef;
-      }
-      .cal-cell{
-        @include clearfix;
-        height: 100%;
-        width: percentage(1/7);
-        border-left: 1px solid #efefef;
-        &:last-child{
-          border-right: 1px solid #efefef;
-        }
-        float: left;
-        position: relative;
-        &.cal-cell-hover{
-          cursor: pointer;
-          &:hover{
-            background-color: #eee;
-          }
-        }
-        .cal-day{
-          position: relative;
-          top: 100%;
-          left: 100%;
-          width: 30px;
-          height: 30px;
-          margin: -30px 0 0 -30px;
-          display: block;
-          text-align: center;
-          line-height: 30px;
-          font-size: 20px;
-          font-weight: 700;
-        }
-      }
-    }
-  }
-}
+@import "calendrier";
+@import "calManager";
+@import "css_loader";
+
+
