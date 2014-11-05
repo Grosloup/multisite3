@@ -111,5 +111,20 @@ a, button, input[type=button], input[type=submit], input[type=reset]{
       }
     }
 
+    &.btn-filtre{
+      background-color: $grisBB;
+      color: $blanc;
+      text-transform: none;
+      padding: topx($btn_defaultBtnFontSize * 0.25) topx($btn_defaultBtnFontSize * 0.5);
+      font-size: topx($btn_defaultBtnFontSize * 0.75);
+      font-family: "cooper_hewitt_semi_bold", Arial, Helvetica, sans-serif;
+      &:hover{
+        background-color: $btn_grisBBHover;
+      }
+      &:active{
+        background-color: $btn_grisBBActive;
+      }
+    }
+
   }
 }

@@ -1,8 +1,0 @@
-{% if page != null %}
-    <title>{% if prepend_title != null %}{{ prepend_title}} | {% endif %}{% if page.title != null %}{{ page.title }} | {% else %}Accueil | {% endif %}ZooParc de Beauval</title>
-    <meta name="description" content="{{ page.description }}"/>
-    <meta name="keywords" content="{{ page.keywords }}"/>
-{% else %}
-    <title>ZooParc de Beauval</title>
-    <meta name="description" content="Bla bla bla"/>
-{% endif %}

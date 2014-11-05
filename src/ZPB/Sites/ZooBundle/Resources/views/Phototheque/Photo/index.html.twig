@@ -9,7 +9,7 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-sm-12 col-md-12">
                 <div class="page-header">
                     <h1>Galerie photo</h1>
                 </div>
@@ -17,8 +17,8 @@
         </div>
 
         <div class="spaced-row">
-            <div class="col-md-1"></div>
-            <div class="col-md-4">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
                 <div class="page-intro">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus id magnam nesciunt rem. Amet
                         autem delectus distinctio, ea eligendi esse illo, impedit laudantium magni mollitia
@@ -27,12 +27,12 @@
                         necessitatibus officiis sint!</p>
                 </div>
             </div>
-            <div class="col-md-1"></div>
+            <div class="col-md-2"></div>
         </div>
 
         <div class="spaced-row">
-            <div class="col-md-6 text-center">Filtrer par :</div>
-            <div class="col-md-6 text-center" id="filters">
+            <div class="col-sm-12 col-md-12 text-center">Filtrer par :</div>
+            <div class="col-sm-12 col-md-12 text-center" id="filters">
                 <button class="btn btn-filtre is-filter" data-filter="*">Tous</button>
                 {% for institution in institutions %}
                     <button class="btn btn-filtre" data-filter=".{{ institution.slug }}">{{ institution.name }}</button>
@@ -41,7 +41,7 @@
         </div>
         <div class="row">
 
-            <div class="col-md-6">
+            <div class="col-sm-12 col-md-12">
                 <div id="iso-container">
                     <ul class="grid-sm-2 grid-md-4">
                         {% for institution in institutions %}

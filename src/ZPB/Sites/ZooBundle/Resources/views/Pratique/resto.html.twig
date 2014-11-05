@@ -9,7 +9,7 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-sm-12 col-md-12">
                 <div class="page-header">
                     <h1>Restauration</h1>
                 </div>
@@ -19,18 +19,19 @@
 
     <div class="container">
         <div class="spaced-row">
-            <div class="col-md-1"></div>
-            <div class="col-md-4 ">
+            <div class="col-sm-2 col-md-2"></div>
+            <div class="col-sm-8 col-md-8 ">
                 <div class="page-intro">
                     <p>Sur place ou à emporter, en restauration rapide ou dans notre self-service, choisissez la restauration qui vous convient&nbsp;! Tous les points de restauration ne sont pas ouverts chaque jour ; pensez à bien vous renseigner à l'entrée du parc.</p>
                 </div>
             </div>
-            <div class="col-md-1"></div>
+            <div class="col-sm-2 col-md-2"></div>
         </div>
     </div>
+
     <div class="container">
         <div class="spaced-row">
-            <div class="col-sm-6 col-md-6">
+            <div class="col-sm-12 col-md-12">
                 {% if restos|length > 0 %}
                 <ul class="grid-sm-1 grid-md-3">
                     {% for resto in restos %}
@@ -63,13 +64,13 @@
 
         <div class="container">
             <div class="spaced-row">
-                <div class="col-md-3">
+                <div class="col-sm-6 col-md-6">
                     <div class="panel panel-grey">
                         <h4 class="panel-title">Les chalets</h4>
                         <p>Sur la terrasse de l'Eucalyptus et face aux enclos extérieurs des okapis, de petits chalets de bois vous proposent en chemin sandwichs, boissons fraîches, glaces, confiseries... Pour vous restaurer tout en poursuivant votre visite !</p>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-sm-6 col-md-6">
                     <div class="panel panel-grey">
                         <h4 class="panel-title">Pique-nique</h4>
                         <p>Une aire de pique-nique abritée de 300 places, des tables et des bancs sont à votre disposition sur le parking du zoo. Vous pouvez entrer le matin et ressortir pique-niquer sans problème, à condition de vous faire délivrer un tampon de sortie à la boutique.</p>

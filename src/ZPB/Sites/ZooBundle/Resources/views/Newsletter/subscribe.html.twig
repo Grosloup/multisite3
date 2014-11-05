@@ -10,7 +10,7 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-sm-12 col-md-12">
             <div class="page-header">
                 <h1>Newsletter</h1>
             </div>
@@ -20,21 +20,21 @@
 
     <div class="container">
         <div class="spaced-row">
-            <div class="col-md-1"></div>
-            <div class="col-md-4">
+            <div class="col-sm-2 col-md-2"></div>
+            <div class="col-sm-8 col-md-8">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus aliquid aspernatur assumenda
                     beatae, consequatur corporis debitis dolor, dolore ea expedita explicabo fugiat in maiores natus
                     provident quas sint tenetur vero voluptate. Aliquid debitis, doloremque dolores eligendi et harum
                     illum ipsam laborum nam natus nemo recusandae repellendus totam. Assumenda, ipsa!</p>
             </div>
-            <div class="col-md-1"></div>
+            <div class="col-sm-2 col-md-2"></div>
         </div>
     </div>
 
     <div class="container">
         <div class="spaced-row">
-            <div class="col-md-1"></div>
-            <div class="col-md-4">
+            <div class="col-sm-2 col-md-2"></div>
+            <div class="col-sm-8 col-md-8">
 
 
                 {{ form_start(form, {attr:{novalidate: true, class:"form"}}) }}
@@ -42,7 +42,7 @@
 
                 <div class="row">
 
-                    <div class="col-3">
+                    <div class="col-sm-6 col-md-6">
                         <div class="form-row {% if form.civilite.vars.errors|length>0 %}has-error{% endif %}">
                             {{ form_label(form.civilite) }}
                             <div class="form-field">
@@ -56,7 +56,7 @@
                         </div>
                     </div>
 
-                    <div class="col-3">
+                    <div class="col-sm-6 col-md-6">
                         <div class="form-row {% if form.bornAt.vars.errors|length>0 %}has-error{% endif %}">
                             {{ form_label(form.bornAt) }}
                             <div class="form-field">
@@ -129,7 +129,7 @@
                 {{ form_end(form) }}
 
             </div>
-            <div class="col-md-1"></div>
+            <div class="col-sm-2 col-md-2"></div>
         </div>
     </div>
 
