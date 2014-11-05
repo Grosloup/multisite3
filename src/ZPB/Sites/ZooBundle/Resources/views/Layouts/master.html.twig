@@ -23,33 +23,11 @@
     {% block headScripts %}{% endblock %}
 
     {% block headStyles %}
-        <style>
-            .alert-box{
-                width: 400px;
-                box-shadow: rgba(0,0,0,0.5) 0 0 5px;
-                z-index: 99999;
-                position: absolute;
-            }
-            .alert-box .alert-close{
-                position: absolute;
-                top: 10px;
-                right: 10px;
-                font-size: 25px;
-                width: 25px;
-                height: 25px;
-                line-height: 25px;
-                text-align: center;
-                font-weight: 700;
-            }
-        </style>
+
     {% endblock %}
 </head>
-{% if is_tablet() %}
-{#<body class="{{ "bg_tab_"~(random(6)+1) }}">#}
-{% else %}
-{#<body class="{{ "bg_"~(random(10)+1) }}">#}
-{% endif %}
-<body class="{{ "bg_"~(random(10)+1) }}">
+
+<body>
 {{ render(controller("ZPBSitesCommonBundle:Navs:topnav")) }}
     {% block main %}
         {% block header %}
@@ -95,22 +73,10 @@
     <script src="/js/vendor/jquery-2.1.1.min.js"></script>
     <script src="/js/vendor/waypoints.min.js"></script>
     <script src="/js/vendor/waypoints-sticky.min.js"></script>
-    <script>
-        $(function(){
-            $("#stickytop").waypoint('sticky');
-        })
-    </script>
+    <script src="/js/vendor/jquery.scrollTo.min.js"></script>
+    <script src="/js/common_app.js"></script>
 {% endblock %}
 
-{% if app.session.flashBag|length > 0 %}
-    {% for type,messages in app.session.flashBag %}
-        {%  for message in messages %}
-            <div class="alert-box {{ type }}" data-message="">
-                <p>{{ message }}</p>
-                <a class="alert-close" href="#">&times</a>
-            </div>
-        {% endfor %}
-    {% endfor %}
-{% endif %}
+
 </body>
 </html>
