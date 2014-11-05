@@ -45,7 +45,7 @@ $mn_color: $blanc;
 $mn_lineHeight: 35px;
 $mn_masterLinkHoverColor: lighten($mn_bgColor, 10);
 $mn_subMenuBgColor: $mn_bgColor;
-//$mn_subMenuShadow: "none";
+$mn_subMenuShadow: "yes";
 $mn_subMenuShadow: rgba(0,0,0,0.5) 0 4px 6px;
 $mn_submenuLinkHoverBgColor: $blanc;
 $mn_submenuLinkHoverColor: $grisFonce;
