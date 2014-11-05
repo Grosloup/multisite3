@@ -17,3 +17,8 @@ zpb_sites_zoo_zooparc_dev_durable:
     path: /developpement-durable
     defaults: { _controller: ZPBSitesZooBundle:ZooParc:devDurable }
     methods: ["GET"]
+
+zpb_sites_zoo_zooparc_animation_spectacle:
+    path: /animations-et-spectacles
+    defaults: { _controller: ZPBSitesZooBundle:ZooParc:animSpect }
+    methods: ["GET"]

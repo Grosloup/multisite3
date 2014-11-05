@@ -9,7 +9,7 @@ zpb_sites_zoo_pratique_acces:
     methods: ["GET"]
 
 zpb_sites_zoo_pratique_animations:
-    path: /animations-spectacles
+    path: /au-programme
     defaults: { _controller: ZPBSitesZooBundle:Pratique:animations }
     methods: ["GET"]
 

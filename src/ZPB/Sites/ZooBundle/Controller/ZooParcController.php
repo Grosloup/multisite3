@@ -44,4 +44,9 @@ class ZooParcController extends BaseController
     {
         return $this->render('ZPBSitesZooBundle:ZooParc:dev_durable.html.twig', []);
     }
+
+    public function animSpectAction()
+    {
+        return $this->render('ZPBSitesZooBundle:ZooParc:animation_spectacle.html.twig', []);
+    }
 } 
