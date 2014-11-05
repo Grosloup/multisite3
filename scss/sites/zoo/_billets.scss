@@ -1,0 +1,121 @@
+#cart{
+  font-size: 12px;
+  .cart-step{
+    text-align: center;
+
+    color: $grisBB;
+    padding: 4px;
+    &.active{
+      color: $grisFonce;
+    }
+  }
+  #cart-header{
+    @include clearfix;
+    background-color: $grisFonce;
+    color: $blanc;
+    font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    .col-cart-header{
+      padding: 4px;
+      text-align: center;
+    }
+  }
+
+  .cart-article-row{
+    @include clearfix;
+    margin-top: 10px;
+    background-color: $grisDF;
+    [class^="col-"], [class*="col-"]{
+      padding: 4px;
+    }
+    .cart-article-quantity{
+      button{
+        background-color: transparent;
+        border: none;
+        padding: 3px;
+        margin: 0;
+        cursor: pointer;
+      }
+      input{
+        width: 100%;
+        max-width: 40px;
+        border: $grisFonce 1px solid;
+      }
+    }
+  }
+
+  #cart-footer{
+    margin-top: 10px;
+    @include clearfix;
+    background-color: lighten($ocean, 10);
+    font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+
+    .col-cart-footer{
+      text-transform: uppercase;
+      padding: 4px;
+      text-align: center;
+
+      color: $blanc;
+    }
+    .col-cart-footer-value{
+      background-color: $ocean;
+      color: $blanc;
+      padding: 4px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+
+  }
+  #cart-footer-reduc{
+    margin-top: 10px;
+    background-color: lighten($vertParrainage, 10);
+    color: $blanc;
+    @include clearfix;
+    [class^="col-"], [class*=" col-"]{
+
+      color: $blanc;
+      padding: 4px;
+      text-transform: uppercase;
+      text-align: center;
+      font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+      &.cart-footer-reduc-value{
+        background-color: $vertParrainage;
+      }
+    }
+  }
+
+}
+.cart-actions{
+  .btn{
+    margin-right: 10px;
+    &:last-of-type{
+      margin-right: 0;
+    }
+  }
+}
+
+@media only screen and (min-width: 640px) {
+ #cart{
+   .cart-step{
+     text-transform: uppercase;
+     font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+   }
+   font-size: $fontSize;
+   .cart-article-row{
+     .cart-article-quantity{
+       button{
+         background-color: transparent;
+         border: none;
+         padding: 3px;
+         margin: 0;
+         cursor: pointer;
+       }
+       input{
+         max-width: 40px;
+         border: $grisFonce 1px solid;
+       }
+     }
+   }
+ }
+}
