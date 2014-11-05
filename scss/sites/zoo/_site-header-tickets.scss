@@ -1,0 +1,63 @@
+#site-header{
+
+  .tickets{
+    width: topx($bs_width);
+    height: topx($bs_regHeight);
+    position:absolute;
+    bottom: 0;
+    z-index: 200;
+    @if $bs_transition != "none"{
+      transition: $bs_transition;
+    }
+    @include box-shadow($bs_outerBoxShadow);
+    font-size: topx($bs_fontSize);
+    @if $bs_textTrasform != "none"{
+      text-transform: $bs_textTrasform;
+    }
+    text-align: center;
+    font-family: $bs_fontFamily;
+    a{
+      color: $bs_linkColor;
+    }
+    &:hover{
+      height: topx($bs_hoverHeight);
+      a{
+        color: $bs_hoverLinkColor;
+      }
+    }
+    .inner{
+      width: topx($bs_width);
+      height: topx($bs_hoverHeight);
+      padding: 15px 25px 0;
+      text-align: center;
+      #dormir-svg, #parrainer-svg, #billet-svg{
+        margin-top: 10px;
+        .main{
+          fill: $bs_svgsFillColor;
+        }
+      }
+    }
+
+    &.tickets-left{
+      $decal: topx($bs_width + ($bs_width / 2) + $bs_gutter);
+      left: calc(50% - #{$decal});
+      .inner{
+        background-color: $bs_btnBgColor_1;
+      }
+    }
+    &.tickets-center{
+      $decal: topx($bs_width / 2);
+      left: calc(50% - #{$decal});
+      .inner{
+        background-color: $bs_btnBgColor_2;
+      }
+    }
+    &.tickets-right{
+      $decal: topx( ($bs_width / 2) + $bs_gutter );
+      left: calc(50% + #{$decal});
+      .inner{
+        background-color: $bs_btnBgColor_3;
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@function  topx($value){
+  @return  floor($value) * 1px;
+}
+
+@mixin nakedLink{
+  outline: none;
+  text-decoration: none;
+}
+@mixin clearfix{
+  *zoom: 1;
+  &:before, &:after{
+    content: " ";
+    display: table;
+  }
+  &:after{
+    clear: both;
+  }
+}
+
+.hide{
+  display: none;
+}
+
+.show{
+  display: block;
+}

@@ -1,0 +1,115 @@
+
+$btn_defaultBtnColor: $noir !default;
+$btn_defaultBtnFontSize: 16 !default;
+$btn_defaultBtnFontFamily: Arial, Helvetica, sans-serif !default;
+$btn_uppercase: false !default;
+$btn_defaultBtnBgColor: $grisDD !default;
+$btn_grisFonceHover: $ocean !default;
+$btn_grisFonceActive: $ocean !default;
+$btn_grisBBHover: $ocean !default;
+$btn_grisBBActive: $ocean !default;
+
+$btn_primaryColor: $blanc !default;
+$btn_primaryBgColor: $ocean !default;
+
+$btn_vertBgColor: $vert !default;
+$btn_vertColor: $blanc !default;
+
+$btn_warningColor: $grisFonce !default;
+$btn_warningBgColor: $jaune !default;
+
+a, button, input[type=button], input[type=submit], input[type=reset]{
+
+
+  &.btn{
+    @include nakedLink;
+    color: $btn_defaultBtnColor;
+    font-family: $btn_defaultBtnFontFamily;
+    @if $btn_uppercase == true {
+      text-transform: uppercase;
+    }
+    font-size: topx($btn_defaultBtnFontSize);
+    display: inline-block;
+    vertical-align: middle;
+    background-color: $btn_defaultBtnBgColor;
+    padding: topx($btn_defaultBtnFontSize * 0.33) topx($btn_defaultBtnFontSize * 0.66);
+    border: none;
+    margin: 0;
+    position: relative;
+
+    &.btn-small{
+      padding: topx($btn_defaultBtnFontSize * 0.25) topx($btn_defaultBtnFontSize * 0.5);
+      font-size: topx($btn_defaultBtnFontSize * 0.75);
+    }
+
+    &.btn-xlarge{
+      padding: topx($btn_defaultBtnFontSize * 1) topx($btn_defaultBtnFontSize * 2);
+      font-size: topx($btn_defaultBtnFontSize * 1.25);
+    }
+
+    &.btn-grisfonce{
+      background-color: $grisFonce;
+      color: $blanc;
+      &:hover{
+        background-color: $btn_grisFonceHover;
+      }
+      &:active{
+        background-color: $btn_grisFonceActive;
+      }
+    }
+
+    &.btn-grisclair{
+      background-color: $grisBB;
+      color: $blanc;
+      &:hover{
+        background-color: $btn_grisBBHover;
+      }
+      &:active{
+        background-color: $btn_grisBBActive;
+      }
+    }
+
+    &.btn-primary{
+      background-color: $btn_primaryBgColor;
+      color: $btn_primaryColor;
+      @include box-shadow(darken($btn_primaryBgColor, 7) 0 5px 0);
+      &:hover{
+        top: 1px;
+        @include box-shadow(darken($btn_primaryBgColor, 7) 0 4px 0);
+      }
+      &:active{
+        top: 5px;
+        @include box-shadow(none);
+      }
+    }
+
+    &.btn-vert{
+      background-color: $btn_vertBgColor;
+      color: $btn_vertColor;
+      @include box-shadow(darken($btn_vertBgColor, 7) 0 5px 0);
+      &:hover{
+        top: 1px;
+        @include box-shadow(darken($btn_vertBgColor, 7) 0 4px 0);
+      }
+      &:active{
+        top: 5px;
+        @include box-shadow(none);
+      }
+    }
+
+    &.btn-warning{
+      background-color: $btn_warningBgColor;
+      color: $btn_warningColor;
+      @include box-shadow(darken($btn_warningBgColor, 7) 0 5px 0);
+      &:hover{
+        top: 1px;
+        @include box-shadow(darken($btn_warningBgColor, 7) 0 4px 0);
+      }
+      &:active{
+        top: 5px;
+        @include box-shadow(none);
+      }
+    }
+
+  }
+}

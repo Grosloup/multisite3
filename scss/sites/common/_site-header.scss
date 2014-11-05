@@ -1,0 +1,35 @@
+
+$sh_tablet_height: 600 !default;
+$sh_height: 750 !default;
+$sh_boxShadow: rgba(0,0,0,0.6) 0 50px 70px inset !default;
+
+
+#site-header{
+  overflow: hidden;
+  padding-top: 25px;
+  width: 100%;
+  height: topx($sh_tablet_height);
+
+  position: relative;
+  @if $sh_boxShadow != "none" {
+    @include box-shadow($sh_boxShadow);
+  }
+
+  #img-header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: topx($sh_tablet_height);
+    z-index: 100;
+  }
+}
+
+@media only screen and (min-width: 1030px) {
+  #site-header{
+    height: topx($sh_height);
+    #img-header{
+
+      height: topx($sh_height);
+    }
+  }
+}

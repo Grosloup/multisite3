@@ -1,0 +1,45 @@
+$fontSize: 12;
+$fontfamily: 'cooper_hewitt_book', Arial, Helvetica, sans-serif;
+$headerFontFamily: 'cooper_hewitt_bold', Arial, Helvetica, sans-serif;
+$fontColor: $grisFonce ;
+$lineHeight: 1.43 ;
+$headerFontColor: $ocean ;
+
+// ************************** grid
+$gridGutter: 20;
+$numCols: 12;
+
+
+// ************************** buttons
+
+$btn_defaultBtnColor: $grisFonce;
+$btn_defaultBtnFontSize: $fontSize;
+$btn_defaultBtnFontFamily: $fontfamily;
+$btn_uppercase: false;
+$btn_defaultBtnBgColor: #grisDD;
+
+$btn_grisFonceHover: $ocean;
+$btn_grisFonceActive: $ocean;
+
+$btn_grisBBHover: $ocean;
+$btn_grisBBActive: $ocean;
+
+$btn_primaryColor: $blanc;
+$btn_primaryBgColor: $ocean;
+
+$btn_vertBgColor: $vertParrainage;
+$btn_vertColor: $blanc;
+
+$btn_warningColor: $grisFonce;
+$btn_warningBgColor: $jaune;
+
+// ************************** topbar
+
+$topBarHeight: 50;
+$menuWidth: 250;
+
+
+// ************************** faq
+
+$faq_defaultBgColor: $grisBB;
+$faq_activeBgColor: $ocean;

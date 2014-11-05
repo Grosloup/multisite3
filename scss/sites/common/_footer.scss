@@ -1,0 +1,61 @@
+
+$footerBgColor: "none" !default;
+$footerBgImage: "none" !default;
+$footerBgImageRepeat: null !default;
+$footerBgImagePosition: null !default;
+$footerColor: #000 !default;
+
+$footerLinkFontFamily: Arial, Helvetica, sans-serif !default;
+$footerLinkColor: inherit !default;
+$footerLinkHoverColor: $bleu !default;
+
+$footerLegalsBorderColor: #4b4b4f !default;
+
+#main-footer{
+  margin-top: topx($fontSize);
+  @if $footerBgColor != "non" {
+    background-color: $footerBgColor;
+  }
+  @if $footerBgImage != "none" {
+    background-image: $footerBgImage;
+    @if $footerBgImageRepeat != null{
+      background-repeat: $footerBgImageRepeat
+    } @else {
+      background-repeat: no-repeat;
+    }
+    @if $footerBgImagePosition != null {
+      background-position: $footerBgImagePosition;
+    } @else {
+      background-position: center center;
+    }
+  }
+  min-height: 300px;
+  color: $footerColor;
+  .row{
+    padding-top: topx($fontSize);
+    padding-bottom: topx($fontSize);
+  }
+  a{
+    @include nakedLink;
+    color: inherit;
+    font-family: $footerLinkFontFamily;
+    &:hover{
+      color: $linkHoverColor;
+    }
+  }
+  .socials{
+    text-align: center;
+    a{
+      font-size: topx($fontSize * 3);
+      &:hover{
+        color: $footerLinkHoverColor;
+      }
+    }
+  }
+  .legals{
+    text-align: center;
+    font-size: topx($fontSize * 0.66);
+    padding-top: topx($fontSize);
+    border-top: 1px solid $footerLegalsBorderColor;
+  }
+}

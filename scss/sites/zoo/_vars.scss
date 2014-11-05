@@ -1,0 +1,216 @@
+
+$fontSize: 16;
+$fontfamily: 'cooper_hewitt_book', Arial, Helvetica, sans-serif;
+$headerFontFamily: 'cooper_hewitt_bold', Arial, Helvetica, sans-serif;
+$fontColor: $grisFonce ;
+$headerFontColor: $ocean ;
+$lineHeight: 1.43 ;
+
+$headerSize: 50, 45, 30, 25, 20, 15;
+$headers: h1,h2,h3,h4,h5,h6;
+
+$linkFontFamily: 'cooper_hewitt_semi_bold', Arial, Helvetica, sans-serif;
+$linkHoverColor: $ocean;
+
+// ************************** grid
+$gridGutter: 20;
+$numCols: 12;
+
+// ************************** buttons
+$btn_defaultBtnColor: $grisFonce;
+$btn_defaultBtnFontSize: $fontSize;
+$btn_defaultBtnFontFamily: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+$btn_uppercase: true;
+$btn_defaultBtnBgColor: $grisDD;
+
+$btn_grisFonceHover: $ocean;
+$btn_grisFonceActive: $ocean;
+
+$btn_grisBBHover: $ocean;
+$btn_grisBBActive: $ocean;
+
+$btn_primaryColor: $blanc;
+$btn_primaryBgColor: $ocean;
+$btn_vertBgColor: $vertParrainage;
+$btn_vertColor: $blanc;
+$btn_warningColor: $grisFonce;
+$btn_warningBgColor: $jaune;
+
+// ************************** forms
+$fieldsetBgColor: $grisBB;
+$labelColor: $grisFonce;
+$labelBold: true;
+
+$fieldBorderColor: $grisBB;
+$fieldColor: $grisFonce;
+
+$fieldFocusBorderColor: $bleu ;
+
+// ************************** tabs
+$tab_tabBgColor: $grisBB;
+$tab_tabColor: $blanc;
+$tab_tabUppercase: true;
+$tab_tabFontFamily: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+$tab_tabFontSize: 25;
+$tab_tabActiveBgColor: $ocean;
+$tab_tabActiveFontSize: 40;
+
+// ************************** panel
+$panel_greyBgColor: $grisBB;
+$panel_greyColor: $blanc;
+
+// ************************** modal
+$overlay_bgColor: rgba(0,0,0,0.7);
+$modal_bgColor: $blanc;
+$modal_color: $grisFonce;
+$modal_closeBtnColor: $blanc;
+$modal_closeBtnBgColor: $grisFonce;
+$modal_closeBtnBorderColor: $blanc;
+
+// ************************** multisite-menu
+
+$mn_bgColor: $grisFonce;
+$mn_color: $blanc;
+$mn_lineHeight: 35px;
+$mn_masterLinkHoverColor: lighten($mn_bgColor, 10);
+$mn_subMenuBgColor: $mn_bgColor;
+$mn_subMenuShadow: "yes";
+$mn_subMenuShadow: rgba(0,0,0,0.5) 0 4px 6px;
+$mn_submenuLinkHoverBgColor: $blanc;
+$mn_submenuLinkHoverColor: $grisFonce;
+
+// ************************** site-header
+
+$sh_tablet_height: 600;
+$sh_height: 750;
+$sh_boxShadow: rgba(0,0,0,0.6) 0 50px 70px inset;
+
+
+// ************************** main-menu
+
+$shmn_stickytopHeight: 50;
+$shmn_reg_height: 35;
+$shmn_reg_lineHeight: $shmn_reg_height;
+$shmn_reg_menu_textTransform: uppercase;
+$shmn_reg_menu_fontFamily: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+$shmn_reg_menu_linkColor: $blanc;
+$shmn_reg_logo_color: $blanc;
+$shmn_reg_logo_width:250;
+$shmn_reg_logo_height:32;
+$shmn_reg_menu_activeLinkColor: $jaune;
+$shmn_reg_subMenu_bgColor: $blanc;
+$shmn_reg_subMenu_shadow: rgba(0,0,0,0.5) 0 0 4px;
+$shmn_reg_subMenu_fontSize: 14;
+$shmn_reg_subMenu_fontFamily: "cooper_hewitt_book", Arial, Helvetica, sans-serif;
+$shmn_reg_subMenu_linkPaddingRight: 10;
+$shmn_reg_subMenu_linkPaddingLeft: 10;
+$shmn_reg_subMenu_linkColor: $grisFonce;
+$shmn_reg_subMenu_linkHoverColor: $blanc;
+$shmn_reg_subMenu_linkHoverBgColor: $grisFonce;
+
+
+$shmn_stuck_menu_textTransform: uppercase;
+$shmn_stuck_menu_fontFamily: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+$shmn_stuck_bgColor: $ocean;
+$shmn_stuck_boxShadow: rgba(0,0,0,0.5) 0 1px 4px;
+$shmn_stuck_menu_linkColor: $blanc;
+$shmn_stuck_logo_color: $blanc;
+$shmn_stuck_logo_width:250;
+$shmn_stuck_logo_height:32;
+$shmn_stuck_menu_activeLinkColor: $jaune;
+$shmn_stuck_subMenu_bgColor: $blanc;
+$shmn_stuck_subMenu_shadow: rgba(0,0,0,0.5) 0 1px 4px;
+$shmn_stuck_subMenu_fontSize: 14;
+$shmn_stuck_subMenu_fontFamily: "cooper_hewitt_book", Arial, Helvetica, sans-serif;
+$shmn_stuck_subMenu_linkPaddingRight: 10;
+$shmn_stuck_subMenu_linkPaddingLeft: 10;
+$shmn_stuck_subMenu_linkColor: $grisFonce;
+$shmn_stuck_subMenu_linkHoverColor: $blanc;
+$shmn_stuck_subMenu_linkHoverBgColor: $ocean;
+$shmn_stuck_logo_paddingLeft: $gridGutter;
+$shmn_stuck_logo_paddingRight: 15;
+
+// ************************** contact
+
+
+
+// ************************** faq
+$faq_defaultBgColor: $grisBB;
+$faq_activeBgColor: $ocean;
+
+// ************************** secondaryMainbar
+$smb_bgColor: #515151;
+$smb_color: $blanc;
+$smb_fontFamily: $fontfamily;
+$smb_linkColor: $blanc;
+$smb_linkHoverColor: $bleu;
+$smb_linkFontFamily: $fontfamily;
+$smb_blockHeaderFontFamily: "cooper_hewitt_semi_bold", Arial, Helvetica, sans-serif;
+$smb_blockHeaderActiveColor: $jaune;
+$smb_menuBorderColor: $blanc;
+
+// ************************** footer
+$footerBgColor: $grisFonce;
+$footerBgImage: url('../../../img/sites/common/strips.png');
+$footerBgImageRepeat: repeat;
+$footerBgImagePosition: top left;
+$footerColor: $blanc;
+$footerLinkFontFamily: Arial, Helvetica, sans-serif;
+$footerLinkColor: inherit;
+$footerLinkHoverColor: $bleu;
+$footerLegalsBorderColor: #4b4b4f;
+
+
+// ************************** site-header-tickets
+
+$bs_width: 140;
+$bs_regHeight: 65;
+$bs_hoverHeight: 120;
+$bs_outerBoxShadow: rgba(0,0,0,0.3) 0 0 5px;
+$bs_fontSize: 14;
+$bs_fontFamily: 'cooper_hewitt_bold', Arial, Helvetica, sans-serif;
+$bs_textTrasform: uppercase;
+$bs_transition: all 0.15s;
+$bs_linkColor: $blanc;
+$bs_hoverLinkColor: $grisFonce;
+$bs_svgsFillColor: $grisFonce;
+$bs_btnBgColor_1: $jaunePale;
+$bs_btnBgColor_2: $bleuPale;
+$bs_btnBgColor_3: $vertPale;
+$bs_gutter: 10;
+
+// ************************** post
+$post_borderColor: $grisBB;
+$post_categoryColor: lighten($grisFonce, 50);
+$post_categoryFontSize:$fontSize * 0.75;
+$post_categoryLinkColor: $post_categoryColor;
+$post_categoryLinkHoverColor: $bleu;
+
+$post_titleFontSize: $fontSize * 1.25 ;
+$post_titleLinkColor: $grisFonce;
+
+$post_dateBgColor:$grisBB;
+$post_dateColor:$blanc;
+
+$post_dateFontSize: $fontSize * 0.75;
+
+$post_articleHeight: 150;
+$post_thumbWidth: 105;
+
+$post_postMoreBgColor: $grisBB;
+$post_postMoreColor: $blanc;
+$post_postMoreFontSize: $fontSize * 0.75;
+
+$post_tagsFontSize: $fontSize * 0.75;
+$post_tagsColor: $grisBB;
+$post_tagsLinkColor: $grisBB;
+$post_tagsLinkHoverColor: $ocean;
+
+$post_hover_borderColor: $ocean;
+$post_hover_dateBgColor: $ocean;
+$post_hover_titleLinkColor: $ocean;
+$post_hover_postMoreBgColor: $ocean;
+$post_hover_postMoreBgColor: $ocean;
+$post_hover_postMoreColor: $blanc !default;
+
+

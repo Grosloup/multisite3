@@ -1,0 +1,79 @@
+$tab_tabBgColor: $grisBB !default;
+$tab_tabColor: $blanc !default;
+$tab_tabFontSize: 25 !default;
+$tab_tabUppercase: false !default;
+$tab_tabFontFamily: Arial, Helvetica, sans-serif !default;
+$tab_tabActiveBgColor: $ocean !default;
+$tab_tabActiveFontSize: 40 !default;
+
+._tabs{
+  @include clearfix;
+  text-align: center;
+  ._tab{
+    display: inline-block;
+    vertical-align: bottom;
+    padding: topx($fontSize);
+    cursor: pointer;
+    background-color: $tab_tabBgColor;
+    margin-right: -3px;
+    font-size: topx($tab_tabFontSize);
+    color: $tab_tabColor;
+    @if $tab_tabUppercase == true {
+      text-transform: uppercase;
+    }
+    font-family: $tab_tabFontFamily;
+
+    &.active{
+      font-size: topx($tab_tabActiveFontSize);
+      background-color: $tab_tabActiveBgColor;
+    }
+  }
+
+}
+._tabs-content{
+  border-top: 5px solid $ocean;
+  ._tab-panel{
+    display: none;
+
+    &.active{
+      display: block;
+    }
+
+    ._tab-header{
+      margin-bottom: 40px;
+    }
+    ._tab-body{
+      .tab-encart{
+        background-color: $grisDF;
+        padding: topx(20);
+
+        &.tab-encart-blue{
+          background-color: $ocean;
+          color: $blanc;
+        }
+      }
+    }
+  }
+}
+
+._tabs-small{
+  @include clearfix;
+  text-align: center;
+  ._tab{
+    display: inline-block;
+    vertical-align: bottom;
+    padding: topx($fontSize / 2);
+    cursor: pointer;
+    background-color: $grisBB;
+    //margin-right: -3px;
+    font-size: topx($fontSize);
+    color: $blanc;
+    text-transform: uppercase;
+    font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+
+    &.active{
+
+      background-color: $ocean;
+    }
+  }
+}

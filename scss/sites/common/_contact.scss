@@ -1,0 +1,23 @@
+.contact-card{
+  border: 1px solid $grisDF;
+  padding: 20px;
+  address {
+    height: 110px;
+    p{
+      text-align: center;
+    }
+  }
+}
+.contact-card-name{
+  font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+  span{
+    font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+  }
+}
+.contact-card-cap{
+  font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+}
+.contact-card-tel{
+
+}

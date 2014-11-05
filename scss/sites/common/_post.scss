@@ -1,0 +1,207 @@
+$post_borderColor: #ddd !default;
+$post_hover_borderColor: #ddd !default;
+
+$post_categoryColor: $grisFonce !default;
+$post_categoryFontSize: $fontSize !default;
+$post_categoryLinkColor: $post_categoryColor !default;
+$post_categoryLinkHoverColor: $bleu !default;
+
+$post_titleFontSize: $fontSize !default;
+$post_titleLinkColor: $grisFonce !default;
+$post_hover_titleLinkColor: $bleu !default;
+
+$post_dateBgColor: #bbb !default;
+$post_dateColor: #fff !default;
+$post_dateFontSize: $fontSize !default;
+
+$post_hover_dateBgColor: $bleu !default;
+
+$post_articleHeight: 150 !default;
+$post_thumbWidth: 100 !default;
+
+$post_postMoreBgColor: #bbb !default;
+$post_hover_postMoreBgColor: $bleu !default;
+$post_postMoreColor: #fff !default;
+$post_hover_postMoreColor: #fff !default;
+$post_postMoreFontSize: $fontSize !default;
+
+$post_tagsFontSize: $fontSize !default;
+$post_tagsColor: #bbb !default;
+$post_tagsLinkColor: #bbb !default;
+$post_tagsLinkHoverColor: $bleu !default;
+
+
+.posts{
+  @include clearfix;
+  .post-col{
+    float: left;
+    width: 100%;
+    padding: 0 10px;
+  }
+  .post{
+    padding: 20px;
+    margin: 30px 0 10px;
+    border: 1px solid $post_borderColor;
+    position: relative;
+    @include clearfix;
+    header{
+      .post-category{
+        font-size: topx($post_categoryFontSize);
+        color: $post_categoryColor;
+        a{
+          color: $post_categoryLinkColor;
+          &:hover{
+            color: $post_categoryLinkHoverColor;
+          }
+        }
+      }
+      .post-title{
+        font-size: topx($post_titleFontSize);
+        margin: 0 0 20px 0;
+        a{
+          color: $post_titleLinkColor;
+        }
+      }
+      .post-date{
+        position: absolute;
+        height: 30px;
+        line-height: 30px;
+        width: 105px;
+        font-size: topx($post_dateFontSize);
+        top: -30px;
+        text-align: center;
+        background-color: $post_dateBgColor;
+        color: $post_dateColor;
+      }
+    }
+    article{
+      height: topx($post_articleHeight);
+      max-height: topx($post_articleHeight);
+
+      @include clearfix;
+      .post-thumbnail{
+        float: left;
+        width: topx($post_thumbWidth);
+        img{
+          width: 100%;
+        }
+      }
+      .post-excerpt{
+        margin-left: topx($post_thumbWidth + 20);
+
+        &.post-has-thumbnail{
+          margin-left: topx($post_thumbWidth + 195);
+        }
+        .post-more{
+          margin-top: 20px;
+          display: inline-block;
+          background-color: $post_postMoreBgColor;
+          line-height: 25px;
+          height: 25px;
+          padding: 0 5px;
+          font-size: topx($post_postMoreFontSize);
+          color: $post_postMoreColor;
+          a{
+            color: $post_postMoreColor;
+          }
+        }
+      }
+    }
+    footer{
+      .post-tags{
+        padding: 8px 0 0 0 ;
+        ul{
+          li{
+            display: inline-block;
+            font-size: topx($post_tagsFontSize);
+            color: $post_tagsColor;
+            a{
+              color: $post_tagsLinkColor;
+              &:hover{
+                color: $post_tagsLinkHoverColor;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &:hover{
+      border: 1px solid $post_hover_borderColor;
+      header{
+        .post-date{
+          background-color: $post_hover_dateBgColor;
+        }
+        .post-title{
+          a{
+            color: $post_hover_titleLinkColor;
+          }
+        }
+      }
+      article{
+        .post-excerpt{
+          .post-more{
+            background-color: $post_hover_postMoreBgColor;
+            color: $post_hover_postMoreColor;
+            a{
+              color: $post_hover_postMoreColor;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: 960px){
+  .posts{
+    .post-col{
+      width: 50%;
+    }
+    .post{
+      article{
+        .post-excerpt{
+          font-size: topx($fontSize * 0.8);
+        }
+      }
+    }
+  }
+
+}
+@media only screen and (min-width: 1280px){
+  .posts{
+    .post{
+      article{
+        .post-excerpt{
+          font-size: topx($fontSize);
+        }
+      }
+    }
+  }
+}
+.single-post{
+  .post-thumbnail{
+    margin-bottom: 20px;
+    img{
+      width: 100%;
+    }
+  }
+  .post-category{
+    font-size: topx($fontSize * 0.75);
+    color: $grisBB;
+    a{
+      color: lighten($grisFonce, 50);
+      &:hover{
+        color: $bleu;
+      }
+    }
+  }
+  .post-title{
+    margin: 0;
+  }
+  .post-date{
+    color: $grisBB;
+  }
+  .post-body{
+    margin-top: 20px;
+  }
+}

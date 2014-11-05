@@ -1,0 +1,25 @@
+$faq_defaultBgColor: $grisBB !default;
+$faq_activeBgColor: $ocean !default;
+
+
+.faq{
+  margin-bottom: topx($fontSize);
+  .faq-question{
+    font-size: topx(23);
+    background-color: $faq_defaultBgColor;
+    color: $blanc;
+    padding: 8px 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+    &:hover{
+      background-color:$faq_activeBgColor;
+    }
+    &.is-active{
+      background-color: $faq_activeBgColor;
+    }
+  }
+  .faq-response{
+    padding: topx($fontSize);
+    display: none;
+  }
+}

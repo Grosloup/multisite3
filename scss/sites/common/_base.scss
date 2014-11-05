@@ -1,0 +1,150 @@
+
+
+/*********************** typo **************************\
+\*******************************************************/
+
+$fontSize: 16 !default;
+$fontfamily: 'cooper_hewitt_book', Arial, Helvetica, sans-serif !default;
+$headerFontFamily: 'cooper_hewitt_bold', Arial, Helvetica, sans-serif !default;
+$fontColor: $grisFonce !default;
+$headerFontColor: $ocean !default;
+$lineHeight: 1.43 !default;
+
+*,*:before,*:after{
+  @include box-sizing(border-box);
+}
+
+
+body{
+  font-size: topx($fontSize);
+  font-family: $fontfamily;
+  color: $fontColor;
+  line-height: $lineHeight;
+}
+
+h1,h2,h3,h4,h5,h6{
+  text-transform: uppercase;
+  font-family: $headerFontFamily;
+  color: $headerFontColor;
+  a{
+    color: inherit;
+  }
+}
+h1{
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+h2{
+  margin-top: 16px;
+  margin-bottom: 12px;
+}
+h3{
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+h4{
+  margin-top: 16px;
+  margin-bottom: 4px;
+}
+h5{
+  margin-top: 16px;
+  margin-bottom: 2px;
+}
+@for $h from 1 through 6 {
+  h#{$h}{
+    font-size: topx(55 - ($h * 8));
+  }
+}
+
+a{
+  @include  nakedLink;
+  font-family: $linkFontFamily;
+  color: $grisFonce;
+  &:hover{
+    color: $linkHoverColor;
+  }
+}
+
+small, .small{
+  font-size: topx($fontSize * 0.8);
+}
+
+ul{
+  &.disc-list{
+    list-style-type: disc;
+    list-style-position: inside;
+  }
+  &.inline{
+    li{
+      display: inline;
+      a, span.alike{
+        display: inline-block;
+        margin: 0 12px;
+      }
+    }
+  }
+}
+table{
+  width: 100%;
+  border-collapse: collapse;
+  border: none;
+  tr th, tr td{
+    vertical-align: top;
+  }
+}
+strong{
+  font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+}
+.bold{
+  font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+}
+.main-content{
+  min-height: 800px;
+}
+
+/*************************************************\
+  helpers
+\*************************************************/
+
+.text-left{
+  text-align: left;
+}
+.text-center{
+  text-align: center;
+}
+.text-right{
+  text-align: right;
+}
+
+
+.page-header{
+  h1, h2, h3, h4, h5, h6{
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  text-align: center;
+  padding: topx($fontSize * 1.5) 0;
+
+}
+
+.page-intro{
+  text-align: center;
+  font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+}
+
+ul{
+  &.inline-list{
+    li{
+      display: inline-block;
+    }
+  }
+}
+
+.hide{
+  display: none;
+}
+
+.show{
+  display: block;
+}
