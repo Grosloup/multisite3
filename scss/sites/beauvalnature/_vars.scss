@@ -59,6 +59,24 @@ $mn_subMenuShadow: rgba(0,0,0,0.5) 0 4px 6px;
 $mn_submenuLinkHoverBgColor: $blanc;
 $mn_submenuLinkHoverColor: $grisFonce;
 
+// ************************** header tickets
+
+$bs_width: 140;
+$bs_regHeight: 65;
+$bs_hoverHeight: 120;
+$bs_outerBoxShadow: rgba(0,0,0,0.3) 0 0 5px;
+$bs_fontSize: 14;
+$bs_fontFamily: 'cooper_hewitt_bold', Arial, Helvetica, sans-serif;
+$bs_textTrasform: uppercase;
+$bs_transition: all 0.15s;
+$bs_linkColor: $blanc;
+$bs_hoverLinkColor: $grisFonce;
+$bs_svgsFillColor: $grisFonce;
+$bs_btnBgColor_1: $jaunePale;
+$bs_btnBgColor_2: $bleuPale;
+$bs_btnBgColor_3: $vertPale;
+$bs_gutter: 10;
+
 // ************************** site-header
 
 $sh_tablet_height: 600;
