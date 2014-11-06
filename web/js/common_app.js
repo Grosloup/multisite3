@@ -3,9 +3,9 @@ $(function(){
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
-    function resizeHeader(){
-        var imgHeaderWidth = imgHeader.width();
-        imgHeader.css("left", -((imgHeaderWidth - $(window).width())/2) + "px");
+    function resizeHeader(img){
+        var imgHeaderWidth = img.width();
+        img.css("left", -((imgHeaderWidth - $(window).width())/2) + "px");
     }
 
     function changeImg(){
@@ -27,14 +27,18 @@ $(function(){
         $.scrollTo( this.hash, 300);
 
     });
-    var imgHeader;
-    imgHeader = $("#img-header");
-    imgHeader.attr("src", "/img/sites/common/headers/" + changeImg());
-
-    resizeHeader();
+    var imgHeader, siteHeader, img, $imgHeader;
+    siteHeader = $("#site-header");
+    imgHeader = new Image();
+    $imgHeader = $(imgHeader);
+    $imgHeader.load(function(){
+        $imgHeader.attr("id", "img-header");
+        siteHeader.append($imgHeader);
+        resizeHeader($imgHeader);
+    }).attr("src", "/img/sites/common/headers/" + changeImg());
 
     $(window).on("resize", function(e){
         e.preventDefault();
-        resizeHeader();
+        resizeHeader($imgHeader);
     });
 });

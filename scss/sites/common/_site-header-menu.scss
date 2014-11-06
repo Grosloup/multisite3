@@ -284,6 +284,35 @@
   }
 }
 
+@media only screen and (min-width: 480px) {
+  #site-header{
+    #stickytop{
+      .container{
+        #main-menu {
+          .logo{
+            #Calque_1{
+              width: topx($shmn_reg_logo_real_width);
+              height: topx($shmn_reg_logo_real_height);
+            }
+          }
+        }
+      }
+      &.stuck{
+        .container{
+          #main-menu {
+            .logo{
+              #Calque_1{
+                width: topx($shmn_stuck_logo_real_width);
+                height: topx($shmn_stuck_logo_real_height);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 @media only screen and (min-width: 1030px) {
   #site-header{
     #stickytop{
