@@ -9,7 +9,7 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="page-header">
                     <h1>Animations et spectacles</h1>
                 </div>
@@ -87,35 +87,5 @@
 {% block footScripts %}
     {{ parent() }}
 
-
-    {#<script src="/js/zoo/app.js"></script>
-    <script src="/js/zoo/jquery.zpbCalendar.js"></script>
-    <script>
-        $(function(){
-
-            var calendrierAnimation = $("#calendrier-animation");
-
-            function displayDay(response){
-                console.log(response);
-            }
-
-            function displayError(response){
-                console.log(response);
-            }
-
-            calendrierAnimation.zpbCalendar(
-                    {
-                        dayClickCb : function(date){
-                            var url = "/pratique/api/animation/" + date;
-                            $.get(url).done(function(response){
-                                displayDay(response);
-                            }).fail(function(response){
-                                displayError(response);
-                            });
-                        }
-                    }
-            );
-        });
-    </script>#}
 
 {% endblock %}
