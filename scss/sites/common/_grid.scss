@@ -54,18 +54,20 @@ $numCols: 12 !default;
     padding-right: topx($gridGutter);
   }
   .row, .spaced-row{
-    [class^="col-xs-"]:first-child, [class*=" col-xs-"]:first-child{
+    [class^="col-xs-"]:first-child, [class*=" col-xs-"]:first-child
+    [class^="col-sm-"]:first-child, [class*=" col-sm-"]:first-child,
+    [class^="col-md-"]:first-child, [class*=" col-md-"]:first-child,
+    {
       padding-left: 0;
     }
-    [class^="col-xs-"]:last-child, [class*=" col-xs-"]:last-child{
+    [class^="col-xs-"]:last-child, [class*=" col-xs-"]:last-child
+    [class^="col-sm-"]:last-child, [class*=" col-sm-"]:last-child
+    [class^="col-md-"]:last-child, [class*=" col-md-"]:last-child
+    {
       padding-right: 0;
     }
 
-    [class^="col-sm-"], [class*=" col-sm-"],
-    [class^="col-md-"], [class*=" col-md-"]{
-      padding-left: 0;
-      padding-right: 0;
-    }
+
   }
 }
 
