@@ -5,7 +5,10 @@
 {% block keywords %}{% endblock %}
 
 {% set active_page = "contact" %}
-
+{% block headScripts %}
+    {{ parent() }}
+    <script src="/js/sites/zoo/contact/index.js"></script>
+{% endblock %}
 {% block content %}
 
     <div class="container">
@@ -211,31 +214,5 @@
 
         </div>
     </div>
-
-{% endblock %}
-{% block footScripts %}
-    {{ parent() }}
-    <script src="/js/modal.js"></script>
-    <script>
-        $(function(){
-            function selectInterloc(value){
-                var options = $("#info_zoo_contact_form_interlocutor").find("option");
-                options.attr("selected", false);
-                options.each(function(){
-                    if($(this).val() === value){
-                        $(this).attr("selected", true);
-                    }
-                });
-            }
-            var $modal = $(".modal");
-            $modal.zpbModal();
-            var modal = $modal.data("zpbModal");
-            $(".contact").on("click", function(e){
-                e.preventDefault();
-                selectInterloc($(this).data("id"));
-                modal.open();
-            })
-        })
-    </script>
 
 {% endblock %}

@@ -20,7 +20,9 @@
         <link rel="stylesheet" href="/css/sites/zoo/master.css"/>
     {% endblock %}
 
-    {% block headScripts %}{% endblock %}
+    {% block headScripts %}
+        <script src="/js/vendor/require.js" data-main="/js/sites/zoo/main"></script>
+    {% endblock %}
 
     {% block headStyles %}
 
@@ -33,7 +35,71 @@
         {% block header %}
             <div id="site-header">
                 {{ render(controller("ZPBSitesZooBundle:Navs:mainbar", {active_page: active_page})) }}
-                {#<img id="img-header" src="/img/sites/common/headers/header_01.jpg" alt=""/>#}
+                <div class="carousel" id="hCarousel">
+                    <div class="slides">
+                        <div class="slide" id="slide_1">
+                            <div class="slide-img-placeholder">
+                                <img class="slide-img" src="/img/sites/common/headers/header_01.jpg" alt=""/>
+                            </div>
+
+                        </div>
+                        <div class="slide hide" id="slide_2">
+                            <div class="slide-img-placeholder" >
+                                <img class="slide-img" src="/img/sites/common/headers/header_02.jpg" alt=""/>
+                            </div>
+
+                        </div>
+                        <div class="slide hide" id="slide_3">
+                            <div class="slide-img-placeholder" >
+                                <img class="slide-img" src="/img/sites/common/headers/header_03.jpg" alt=""/>
+                            </div>
+                        </div>
+                        <div class="slide hide" id="slide_4">
+                            <div class="slide-img-placeholder" >
+                                <img class="slide-img" src="/img/sites/common/headers/header_04.jpg" alt=""/>
+                            </div>
+                        </div>
+                        <div class="slide hide" id="slide_5">
+                            <div class="slide-img-placeholder" >
+                                <img class="slide-img" src="/img/sites/common/headers/header_05.jpg" alt=""/>
+                            </div>
+
+
+                        </div>
+                        <div class="slide hide" id="slide_6">
+                            <div class="slide-img-placeholder" >
+                                <img class="slide-img" src="/img/sites/common/headers/header_06.jpg" alt=""/>
+                            </div>
+
+                        </div>
+                        <div class="slide hide" id="slide_7">
+                            <div class="slide-img-placeholder" >
+                                <img class="slide-img" src="/img/sites/common/headers/header_07.jpg" alt=""/>
+                            </div>
+                        </div>
+                        <div class="slide hide" id="slide_8">
+                            <div class="slide-img-placeholder" >
+                                <img class="slide-img" src="/img/sites/common/headers/header_08.jpg" alt=""/>
+                            </div>
+                        </div>
+                        <div class="slide hide" id="slide_9">
+                            <div class="slide-img-placeholder" >
+                                <img class="slide-img" src="/img/sites/common/headers/header_09.jpg" alt=""/>
+                            </div>
+
+                        </div>
+                        <div class="slide hide" id="slide_10">
+                            <div class="slide-img-placeholder" >
+                                <img class="slide-img" src="/img/sites/common/headers/header_10.jpg" alt=""/>
+                            </div>
+                        </div>
+                        <div class="slide hide" id="slide_11">
+                            <div class="slide-img-placeholder" >
+                                <img class="slide-img" src="/img/sites/common/headers/header_11.jpg" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="tickets tickets-left">
                     <a href="">
                         <div class="inner">
@@ -70,13 +136,7 @@
 {{ render(controller("ZPBSitesZooBundle:Navs:secondaryMainbar", {active_page: active_page})) }}
 {{ render(controller("ZPBSitesZooBundle:Partials:footer")) }}
 
-{% block footScripts %}
-    <script src="/js/vendor/jquery-2.1.1.min.js"></script>
-    <script src="/js/vendor/waypoints.min.js"></script>
-    <script src="/js/vendor/waypoints-sticky.min.js"></script>
-    <script src="/js/vendor/jquery.scrollTo.min.js"></script>
-    <script src="/js/common_app.js"></script>
-{% endblock %}
+
 
 
 </body>

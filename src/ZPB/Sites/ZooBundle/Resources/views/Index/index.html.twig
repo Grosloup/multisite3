@@ -6,7 +6,10 @@
 {% block description %}{% endblock %}
 {% block keywords %}{% endblock %}
 
-
+{% block headeScripts %}
+    {{ parent() }}
+    <script src="/js/sites/zoo/index/index.js"></script>
+{% endblock %}
 {% block content %}
     <div class="container">
         <div class="row">
@@ -23,9 +26,7 @@
             <div class="col-sm-2 col-md-2"></div>
             <div class="col-sm-8 col-md-8">
                 <div class="page-intro">
-                    <p>Très engagé dans la protection des espèces menacées et classé parmi les 15 plus beaux zoos au monde, le ZooParc de Beauval est un lieu magique et inoubliable.</p>
-
-                    <p>Plus de 5700 animaux évoluent au sein d'installations exceptionnelles : koalas, okapis, lamantins, kangourous arboricoles, tigres et lions blancs... sans oublier les pandas géants !</p>
+                    <p>Classé parmi les 15 plus beaux zoos du monde par Forbes Traveler, le ZooParc de Beauval présente, avec 5700 animaux, la plus grande diversité animalière de France.</p>
                 </div>
             </div>
             <div class="col-sm-2 col-md-2"></div>
@@ -45,9 +46,8 @@
                     <div class="page-header">
                         <h1>Aujourd'hui à Beauval</h1>
                         <div class="slogan">
-                            <p class="sautdeligne">Tout au long de l’année, l’équipe pédagogique propose aux visiteurs des rendez-vous aux quatre coins du ZooParc, au cours desquels un animateur explique tout de la vie et des mœurs des espèces présentes à Beauval, le plus souvent au cours d'un nourrissage.</p>
-                            <p>Animés par des commentaires pédagogiques, les spectacles d’oiseaux et d’otaries ont lieu tous les jours de fin mars à mi-novembre.</p>
-
+                            <p>Tout au long de l’année, notre équipe pédagogique vous propose des rendez-vous aux quatre coins du ZooParc, pour vous livrer tous les secrets des espèces présentes à Beauval.</p>
+                            <p>De fin mars à mi-novembre, se déroulent spectacles d’oiseaux et d’otaries !</p>
                         </div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
             <div class="row">
                 <div class="col-sm-2 col-md-2"></div>
                 <div class="col-sm-8 col-md-8 text-center">
-                    <a class="btn btn-warning btn-xlarge" href="">Consulter les horaires</a>
+                    <a class="btn btn-warning btn-xlarge" href="">Découvrez la programmation…</a>
                 </div>
                 <div class="col-sm-2 col-md-2"></div>
             </div>
@@ -119,52 +119,3 @@
 {% endblock %}
 
 
-{% block footScripts %}
-    {{ parent() }}
-    <script>
-        (function($, w){
-
-            $.fn.jqLegender = function(o){
-
-                var defaults = {};
-                var opts = $.extend({}, defaults, o||{});
-
-                return this.each(function(){
-                    var $this = $(this),
-                            legend = $this.find(".jqlegend"),
-                            title = legend.find(".title"),
-                            legendHeight = legend.height(),
-                            titleHeight = title.height();
-
-                    function update(){
-                        legend.css("top", ($this.height() - titleHeight) + "px");
-                    }
-
-
-
-                    $this.on("mouseover", function(e){
-                        legend.css("top", ($this.height() - legendHeight) + "px");
-
-                    });
-                    $this.on("mouseout", function(e){
-                        legend.css("top",  ($this.height() - titleHeight) + "px");
-
-                    });
-
-                    $(w).on("resize", function(){
-                        update();
-                    });
-
-                    update();
-                });
-            }
-        }
-        )(jQuery, this);
-        $(function(){
-            $(".jqlegender").jqLegender();
-
-        });
-    </script>
-
-
-{% endblock %}
