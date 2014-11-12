@@ -6,8 +6,7 @@
 
 {% set active_page = "soigneur" %}
 {% block headScripts %}
-    {{ parent() }}
-    <script src="/js/sites/zoo/pedagogie/soigneur.js"></script>
+    <script src="/js/vendor/require.js" data-main="/js/sites/zoo/pedagogie/soigneur.js"></script>
 {% endblock %}
 {% block content %}
 

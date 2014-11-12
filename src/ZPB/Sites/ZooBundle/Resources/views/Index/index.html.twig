@@ -6,9 +6,9 @@
 {% block description %}{% endblock %}
 {% block keywords %}{% endblock %}
 
-{% block headeScripts %}
-    {{ parent() }}
-    <script src="/js/sites/zoo/index/index.js"></script>
+{% block headScripts %}
+
+    <script src="/js/vendor/require.js" data-main="/js/sites/zoo/index/index.js"></script>
 {% endblock %}
 {% block content %}
     <div class="container">

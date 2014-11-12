@@ -4,29 +4,33 @@
 {% block description %}{% endblock %}
 {% block keywords %}{% endblock %}
 
+{% block headScripts %}
+    <script src="/js/vendor/require.js" data-main="/js/sites/zoo/faq/index.js"></script>
+{% endblock %}
 {% block content %}
+
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="page-header"><h1>Questions fréquentes</h1></div>
             </div>
         </div>
+    </div>
 
+    <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A at corporis debitis deleniti enim eum ex
-                    expedita id iusto nisi odit, perspiciatis quaerat, quam quod sapiente unde veniam, voluptates.
-                    Cupiditate iusto sed sint veniam! Aut necessitatibus obcaecati quaerat quas. Aliquam, animi
-                    assumenda culpa cum deleniti in, libero magnam minus nisi, nobis quam reiciendis sequi tempore ut
-                    vel veniam voluptatum. Aliquam architecto autem cupiditate exercitationem harum itaque maiores, nam
-                    nesciunt quaerat quam quas repellendus sint suscipit tempora veritatis voluptatem voluptatibus?
-                    Accusantium dolor dolores esse fugiat illo numquam, repudiandae sed ullam? Architecto aut distinctio
-                    ea laboriosam laborum nihil non, porro provident quia.</p>
+            <div class="col-sm-2 col-md-2"></div>
+            <div class="col-sm-8 col-md-8">
+                <div class="page-intro">
+                    <p>Vous trouverez ici les réponses aux questions le plus fréquemment posées aux équipes de Beauval.</p>
+                    <p>Pour tout renseignement complémentaire, rendez-vous sur la page <a href="{{ path("zpb_sites_zoo_contact") }}">contact</a></p>
+                </div>
             </div>
+            <div class="col-sm-2 col-md-2"></div>
         </div>
+    </div>
 
-
-
+    <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 {% for faq in faqs %}
@@ -62,26 +66,4 @@
 
 
 {% endblock %}
-{% block footScripts %}
-    {{ parent() }}
-    <script>
-        $(function(){
-            $(".faq-question").on("click", function(e){
-                e.preventDefault();
-                var response = $(this).next(".faq-response");
 
-                if(response.hasClass("is-hide")){
-                    $(this).addClass("is-active");
-                    response.slideDown(200, function(){
-                        response.removeClass("is-hide").addClass("is-shown");
-                    });
-                } else {
-                    $(this).removeClass("is-active");
-                    response.slideUp(200, function(){
-                        response.removeClass("is-shown").addClass("is-hide");
-                    });
-                }
-            })
-        });
-    </script>
-{% endblock %}

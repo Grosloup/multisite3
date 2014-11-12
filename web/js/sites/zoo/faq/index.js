@@ -32,34 +32,22 @@ require(["jquery","Carousel"], function($,app){
     });
 });
 require(["jquery"], function($){
-    (function($){
-        var tabs_default = {
-            btnSelector : '._tab',
-            panelSelector: '._tab-panel',
-            activeClass: 'active'
-        };
-        $.fn.tabs = function(o){
-            var opts = $.extend({}, tabs_default, o || {});
-            return this.each(function(){
-                var $el = $(this);
-                var $tabs = $el.find(opts.btnSelector);
-                var panels = $(opts.panelSelector);
-
-                $tabs.each(function(){
-                    var target = $($(this).data("target"));
-                    $(this).on("click", function(e){
-                        e.preventDefault();
-                        panels.removeClass(opts.activeClass);
-                        target.addClass(opts.activeClass);
-                        $tabs.removeClass("active");
-                        $(this).addClass("active");
-                    });
-                });
-            });
-        }
-    })($);
-
     $(function(){
-        $("[data-tabs]").tabs();
+        $(".faq-question").on("click", function(e){
+            e.preventDefault();
+            var response = $(this).next(".faq-response");
+
+            if(response.hasClass("is-hide")){
+                $(this).addClass("is-active");
+                response.slideDown(200, function(){
+                    response.removeClass("is-hide").addClass("is-shown");
+                });
+            } else {
+                $(this).removeClass("is-active");
+                response.slideUp(200, function(){
+                    response.removeClass("is-shown").addClass("is-hide");
+                });
+            }
+        })
     });
 });

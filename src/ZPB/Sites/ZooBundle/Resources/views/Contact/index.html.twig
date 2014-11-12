@@ -6,8 +6,7 @@
 
 {% set active_page = "contact" %}
 {% block headScripts %}
-    {{ parent() }}
-    <script src="/js/sites/zoo/contact/index.js"></script>
+    <script src="/js/vendor/require.js" data-main="/js/sites/zoo/contact/index.js"></script>
 {% endblock %}
 {% block content %}
 
@@ -22,19 +21,23 @@
     </div>
 
     <div class="container">
-
-        <div class="spaced-row">
-            <div class="col-sm-12 col-md-12">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam aperiam corporis
-                    doloremque dolores expedita ipsam maiores provident rerum voluptas?</p>
-
-                <p>At deserunt incidunt minima nihil quaerat quidem quod repellat sapiente vero. Culpa dolore eos
-                    maiores qui sapiente sequi similique, vero.</p>
-
-                <p>Amet fugit inventore quae quam quidem sed. Asperiores cumque cupiditate doloremque esse, facilis iste
-                    itaque nam nihil quae, sint ullam?</p>
+        <div class="row">
+            <div class="col-sm-2 col-md-2"></div>
+            <div class="col-sm-8 col-md-8">
+                <div class="page-intro">
+                    <p>Les équipes du ZooParc de Beauval se tiennent à disposition pour répondre à toutes vos questions.</p>
+                    <p>ZooParc de Beauval</p>
+                    <p>41110 Saint Aignan sur Cher</p>
+                    <p>Tél : 02 54 75 5000 </p>
+                </div>
             </div>
+            <div class="col-sm-2 col-md-2"></div>
         </div>
+    </div>
+
+    <div class="container">
+
+
 
         <div class="spaced-row">
             <div class="col-sm-4 col-md-4">
