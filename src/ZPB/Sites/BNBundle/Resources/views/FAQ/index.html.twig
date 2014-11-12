@@ -53,26 +53,3 @@
 
 
 {% endblock %}
-{% block footScripts %}
-    {{ parent() }}
-    <script>
-        $(function(){
-            $(".faq-question").on("click", function(e){
-                e.preventDefault();
-                var response = $(this).next(".faq-response");
-
-                if(response.hasClass("is-hide")){
-                    $(this).addClass("is-active");
-                    response.slideDown(200, function(){
-                        response.removeClass("is-hide").addClass("is-shown");
-                    });
-                } else {
-                    $(this).removeClass("is-active");
-                    response.slideUp(200, function(){
-                        response.removeClass("is-shown").addClass("is-hide");
-                    });
-                }
-            })
-        });
-    </script>
-{% endblock %}

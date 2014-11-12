@@ -18,7 +18,9 @@
         <link rel="stylesheet" href="/css/sites/pro/master.css"/>
     {% endblock %}
 
-    {% block headScripts %}{% endblock %}
+    {% block headScripts %}
+        <script src="/js/vendor/require.js" data-main="/js/sites/pro/main.js"></script>
+    {% endblock %}
 
     {% block headStyles %}
 
@@ -30,6 +32,7 @@
     {% block header %}
         <div id="site-header">
             {{ render(controller("ZPBSitesProBundle:Navs:mainbar")) }}
+            {{ header_carousel("ZPBSitesCommonBundle:incs:header_carousel.html.twig") }}
         </div>
     {% endblock %}
 
@@ -42,13 +45,7 @@
 
 {{ render(controller("ZPBSitesProBundle:Partials:footer")) }}
 
-{% block footScripts %}
-    <script src="/js/vendor/jquery-2.1.1.min.js"></script>
-    <script src="/js/vendor/waypoints.min.js"></script>
-    <script src="/js/vendor/waypoints-sticky.min.js"></script>
-    <script src="/js/vendor/jquery.scrollTo.min.js"></script>
-    <script src="/js/common_app.js"></script>
-{% endblock %}
+
 
 </body>
 </html>
