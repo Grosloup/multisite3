@@ -5,7 +5,10 @@
 {% block keywords %}{% endblock %}
 
 {% set active_page = "soigneur" %}
-
+{% block headScripts %}
+    {{ parent() }}
+    <script src="/js/sites/zoo/pedagogie/soigneur.js"></script>
+{% endblock %}
 {% block content %}
 
     <div class="container">
@@ -228,12 +231,4 @@
     </div>
 
 {% endblock %}
-{% block footScripts %}
-    {{ parent() }}
-    <script src="/js/tabs.min.js"></script>
-    <script>
-        $(function(){
-            $("[data-tabs]").tabs();
-        });
-    </script>
-{% endblock %}
+
