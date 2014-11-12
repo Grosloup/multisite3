@@ -13,5 +13,33 @@ zpb_sites_scolar_cgv:
     methods: ["GET"]
 
 
+zpb_sites_scolar_resto:
+    path: /restauration
+    defaults: { _controller: ZPBSitesScolarBundle:Resto:index }
+    methods: ["GET"]
 
+zpb_sites_scolar_scolar_cycle_1:
+    path: /groupes-scolaires/cyle-1
+    defaults: { _controller: ZPBSitesScolarBundle:Scolar:cycleOne }
+    methods: ["GET"]
+
+zpb_sites_scolar_scolar_cycle_2:
+    path: /groupes-scolaires/cyle-2
+    defaults: { _controller: ZPBSitesScolarBundle:Scolar:cycleTwo }
+    methods: ["GET"]
+
+zpb_sites_scolar_scolar_cycle_3:
+    path: /groupes-scolaires/cyle-3
+    defaults: { _controller: ZPBSitesScolarBundle:Scolar:cycleThree }
+    methods: ["GET"]
+
+zpb_sites_scolar_scolar_colleges:
+    path: /groupes-scolaires/colleges-lycees
+    defaults: { _controller: ZPBSitesScolarBundle:Scolar:colleges }
+    methods: ["GET"]
+
+zpb_sites_scolar_scolar_jd:
+    path: /groupes-scolaires/journees-decouverte
+    defaults: { _controller: ZPBSitesScolarBundle:Scolar:jd }
+    methods: ["GET"]
 

@@ -17,25 +17,27 @@
                 <ul>
                     <li class="dropdown{% if active_page in children_pages %} active{% endif %}"><a href="">Groupes Enfants</a>
                         <ul>
-                            <li><a href="">Parc seul</a></li>
-                            <li><a href="">Restauration</a></li>
-                            <li><a href="">Pédago</a></li>
+                            <li><a href="">Visite du parc</a></li>
+                            <li><a href="">Offre pédagogique</a></li>
+                            <li><a href="{{ path("zpb_sites_scolar_resto") }}">Restauration</a></li>
                         </ul>
                     </li>
                     <li class="dropdown{% if active_page in handi_pages %} active{% endif %}"><a href="javascript:void(0)">Groupes Enfants Handicapés</a>
                         <ul>
-                            <li><a href="">Parc seul</a></li>
-                            <li><a href="">Restauration</a></li>
-                            <li><a href="">Pédago</a></li>
+                            <li><a href="">Visite du parc</a></li>
+                            <li><a href="">Offre pédagogique</a></li>
+                            <li><a href="{{ path("zpb_sites_scolar_resto") }}">Restauration</a></li>
 
                         </ul>
                     </li>
-                    <li class="dropdown{% if active_page in school_pages %} active{% endif %}"><a href="">Groupes Scolaires</a>
+                    <li class="dropdown{% if active_page in school_pages %} active{% endif %}"><a href="">Scolaires</a>
                         <ul>
-                            <li><a href="">Lorem ipsum.</a></li>
-                            <li><a href="">Sunt, temporibus.</a></li>
-                            <li><a href="">Ipsa, tempora?</a></li>
-                            <li><a href="">A, harum.</a></li>
+                            <li><a href="{{ path("zpb_sites_scolar_scolar_jd") }}">Journées découverte</a></li>
+                            <li><a href="{{ path("zpb_sites_scolar_scolar_cycle_1") }}">Cycle 1</a></li>
+                            <li><a href="{{ path("zpb_sites_scolar_scolar_cycle_2") }}">Cycle 2</a></li>
+                            <li><a href="{{ path("zpb_sites_scolar_scolar_cycle_3") }}">Cycle 3</a></li>
+                            <li><a href="{{ path("zpb_sites_scolar_scolar_colleges") }}">Collèges et lycées</a></li>
+                            <li><a href="{{ path("zpb_sites_scolar_resto") }}">Restauration</a></li>
                         </ul>
                     </li>
                     <li class="dropdown{% if active_page in practicle_pages %} active{% endif %}"><a href="javascript:void(0)">Pratique</a>
