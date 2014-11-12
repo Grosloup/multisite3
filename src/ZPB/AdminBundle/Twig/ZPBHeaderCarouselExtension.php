@@ -20,9 +20,13 @@
 
 namespace ZPB\AdminBundle\Twig;
 
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class ZPBHeaderCarouselExtension extends \Twig_Extension {
 
+    /**
+     * @var \Symfony\Component\DependencyInjection\ContainerInterface
+     */
     private $container;
 
     public function __construct($container)
@@ -33,12 +37,21 @@ class ZPBHeaderCarouselExtension extends \Twig_Extension {
     public function getFunctions()
     {
         return [
-
+            new \Twig_SimpleFunction('header_carousel', [$this, 'renderHeaderCarousel'], ['is_safe'=>['html']])
         ];
     }
 
-    public function getService($service)
+    function renderHeaderCarousel($twigFile)
     {
+        return $this->getService('templating')->render($twigFile, []);
+    }
+
+    public function getService($service, $default = null)
+    {
+        if($this->container->has($service)){
+            return $this->container->get($service);
+        }
+        return $default;
 
     }
 
