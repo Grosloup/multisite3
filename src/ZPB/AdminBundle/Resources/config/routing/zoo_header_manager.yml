@@ -1,0 +1,4 @@
+zpb_admin_zoo_header_manager:
+    path: /
+    defaults: {}
+    methods: ["GET"]

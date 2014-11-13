@@ -89,13 +89,15 @@ zpb_admin_xhrs_routes:
     prefix: /xhr
     resource: "@ZPBAdminBundle/Resources/config/routing/xhr.yml"
 
-zpb_admin_zoo_static_pages_routes:
-    prefix: /zoo/pages-statiques
-    resource: "@ZPBAdminBundle/Resources/config/routing/zoo_static_pages.yml"
 
 zpb_admin_zoo_restaurants_routes:
     prefix: /zoo/restaurants
     resource: "@ZPBAdminBundle/Resources/config/routing/zoo_restaurants.yml"
+
+zpb_admin_zoo_header_manager_routes:
+    prefix: /zoo/header-manager
+    resource: "@ZPBAdminBundle/Resources/config/routing/zoo_header_manager.yml"
+
 
 zpb_admin_general_press_release_routes:
     prefix: /communiques-de-presse
