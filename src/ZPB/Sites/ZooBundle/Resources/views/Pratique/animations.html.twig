@@ -5,7 +5,9 @@
 {% block keywords %}{% endblock %}
 
 {% set active_page = "animations" %}
-
+{% block headScripts %}
+    <script src="/js/vendor/require.js" data-main="/js/sites/zoo/pratique/animations.js"></script>
+{% endblock %}
 {% block content %}
     <div class="container">
         <div class="row">
@@ -17,75 +19,32 @@
         </div>
     </div>
 
-    <div class="wrapper">
-        <div class="container">
-            <div class="spaced-row">
-                <div class="col-sm-12 col-md-12">
-                    <div class="testbox testbox-5">
-                        <p>Intro animations</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="wrapper">
-        <div class="container">
+    <div class="container">
+        <div class="row">
             <div class="col-sm-12 col-md-12">
-                <div class="row">
-                    <div class="col-md-8 col-sm-8">
-                        <div class="cal" id="calendrier-animation">
-                            <div class="cal-row cal-month">
-                                <button class="cal-btn prevBtn">&lt;</button>
-                                <span class="cal-title-month"></span>
-                                <span class="cal-title-year"></span>
-                                <button class="cal-btn nextBtn">&gt;</button>
-                            </div>
-                            <div class="cal-row cal-days">
-                                <div class="cal-cell"><span class="cal-day">Lundi</span></div>
-                                <div class="cal-cell"><span class="cal-day">Mardi</span></div>
-                                <div class="cal-cell"><span class="cal-day">Mercredi</span></div>
-                                <div class="cal-cell"><span class="cal-day">Jeudi</span></div>
-                                <div class="cal-cell"><span class="cal-day">Vendredi</span></div>
-                                <div class="cal-cell"><span class="cal-day">Samedi</span></div>
-                                <div class="cal-cell"><span class="cal-day">Dimanche</span></div>
-                            </div>
-                            <div class="cal-body"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4">
-                        <div id="animations-infos">
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="wrapper">
-        <div class="container">
-            <div class="col-sm-12 col-md-12">
-                <div class="testbox testbox-5">
-                    <p>Intro spectacle</p>
+                <div class="page-intro">
+                    <p>Intro animations</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="wrapper">
-        <div class="container">
-            <div class="col-sm-12 col-md-12">
-                <div class="testbox testbox-5">
-                    <p>horaires spectacle</p>
-                </div>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-4 col-md-6">
+                <div id="calendar"></div>
+            </div>
+
+            <div class="col-sm-4 col-md-3">
+                <div id="animations"></div>
+            </div>
+
+            <div class="col-sm-4 col-md-3">
+                <div id="shows"></div>
             </div>
         </div>
     </div>
-{% endblock %}
-{% block footScripts %}
-    {{ parent() }}
-
 
 {% endblock %}
