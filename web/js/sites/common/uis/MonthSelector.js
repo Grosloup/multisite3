@@ -60,6 +60,7 @@ define(["require", "exports", "jquery", "Event"], function (require, exports, $,
             var self;
             self = this;
             this.prevBtn.on("click", function (e) {
+                console.log("click prev");
                 e.preventDefault();
                 if (self.isLocked === true) {
                     return false;
@@ -69,7 +70,7 @@ define(["require", "exports", "jquery", "Event"], function (require, exports, $,
                     self.curMonth = 11;
                     self.curYear -= 1;
                 }
-                //self.refresh();
+                self.refresh();
                 self.evtManager.trigger(new E.Event("ms:month:down", { month: self.curMonth, year: self.curYear, target: this }));
             });
             this.nextBtn.on("click", function (e) {
@@ -77,12 +78,13 @@ define(["require", "exports", "jquery", "Event"], function (require, exports, $,
                 if (self.isLocked === true) {
                     return false;
                 }
+                console.log("click next");
                 self.curMonth += 1;
                 if (self.curMonth > 11) {
                     self.curMonth = 0;
                     self.curYear += 1;
                 }
-                //self.refresh();
+                self.refresh();
                 self.evtManager.trigger(new E.Event("ms:month:up", { month: self.curMonth, year: self.curYear, target: this }));
             });
         };

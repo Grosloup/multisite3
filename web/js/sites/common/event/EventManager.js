@@ -15,6 +15,7 @@ define(["require", "exports"], function (require, exports) {
             });
         };
         EventManager.prototype.trigger = function (event) {
+            console.log("trigger");
             if (!event.hasOwnProperty("name") || !this.events.hasOwnProperty(event.name)) {
                 return false;
             }

@@ -113,8 +113,11 @@ define(["require", "exports", "jquery", "Event", "Day"], function (require, expo
         Calendar.prototype.attachEvents = function () {
             this.evtManager.addEvent("ms:month:up", this.changeMonth, this);
             this.evtManager.addEvent("ms:month:down", this.changeMonth, this);
+
+            console.log(this.evtManager);
         };
         Calendar.prototype.changeMonth = function (event) {
+            console.log(event);
             this.curMonth = event["month"];
             this.curYear = event["year"];
             this.refresh();

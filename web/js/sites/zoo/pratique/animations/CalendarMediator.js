@@ -21,7 +21,7 @@ define(["require", "exports", "jquery", "MonthSelector"], function (require, exp
         CalendarMediator.prototype.loadEvents = function (event) {
             var cached = this.getCache(event["year"], event["month"], event["day"]);
             var self = this;
-            event["target"]["lock"]();
+            //event["target"]["lock"]();
             if (cached !== null) {
                 event["target"]["dispatchDatas"](cached);
                 //anims
@@ -32,13 +32,13 @@ define(["require", "exports", "jquery", "MonthSelector"], function (require, exp
             else {
                 this.httpGet(this.makeGetUrl(event)).done(function (data, textStatus, jqXHR) {
                     if (data["error"] === false) {
-                        event["target"]["dispatchDatas"](data["datas"]);
-                        self.setCache(event["year"], event["month"], event["day"], data["datas"]);
+                        //event["target"]["dispatchDatas"](data["datas"]);
+                        //self.setCache(event["year"], event["month"], event["day"], data["datas"]);
                     }
                     else {
-                        event["target"]["showError"](data["message"], textStatus);
+                        //event["target"]["showError"](data["message"], textStatus);
                     }
-                    console.log(event["target"]);
+
                     event["target"]["unlock"]();
                 }).fail(function (jqXHR, textStatus, errorThrown) {
                     event["target"]["showError"]();
