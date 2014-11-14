@@ -2,3 +2,10 @@ zpb_admin_zoo_header_manager:
     path: /
     defaults: { _controller: ZPBAdminBundle:Zoo/Header:index }
     methods: ["GET"]
+
+zpb_admin_zoo_header_manager_img_upload:
+    path: /slider/{id}/image/upload
+    defaults: { _controller: ZPBAdminBundle:Zoo/Header:xhrImageUpload }
+    methods: ["POST"]
+    requirements:
+        id: \d+

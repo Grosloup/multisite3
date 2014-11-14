@@ -29,6 +29,9 @@
         <parameter key="zpb.twig.zpb_extension.class">ZPB\AdminBundle\Twig\ZPBExtension</parameter>
         <parameter key="zpb.twig.zpb_header_carousel_extension.class">ZPB\AdminBundle\Twig\ZPBHeaderCarouselExtension</parameter>
 
+        <parameter key="zpb.carousel.zoo_img_root_dir">%kernel.root_dir%/../web/</parameter>
+        <parameter key="zpb.carousel.zoo_img_web_dir">img/sites/zoo/headers/</parameter>
+
 
         <parameter key="zpb.civility" type="collection">
             <parameter key="Mm">Madame</parameter>

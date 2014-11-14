@@ -2,7 +2,104 @@
 
 {% block title %}Gestion du carousel | ZooParc de Beauval{% endblock %}
 {% set active = "carousel_manager" %}
+{% block headStyles %}
+    {{ parent() }}
+    <style>
+        .slide, .slide-message{
+            *zoom:1;
 
+        }
+        .slide{
+            padding: 5px;
+            display: block;
+            width: 100%;
+            height: 100px;
+            border: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 5px;
+            background-color: #fff;
+        }
+        .slide:before, .slide:after, .slide-message:before, .slide-message:after{
+            display: table;
+            content: " ";
+        }
+        .slide:after, .slide-message:after{
+            clear: both;
+        }
+        .slide .slide-element{
+            float: left;
+            height: 100%;
+            margin-left: 5px;
+        }
+        .slide .slide-element:first-child{
+            margin-left: 0;
+        }
+        .slide .slide-handle{
+            width: 20px;
+            background-color: rgba(0,0,0,0.05);
+            cursor: move;
+        }
+        .slide .slide-position{
+            width: 40px;
+            line-height: 90px;
+            text-align: center;
+        }
+        .slide .slide-img{
+            max-height: 90px;
+        }
+        .slide .slide-img img{
+            max-height: 90px;
+            display: block;
+        }
+        .slide .slide-activate{
+            line-height: 90px;
+            max-height: 90px;
+        }
+
+        .slide .slide-activate label{
+            display: inline-block;
+            padding: 5px;
+            line-height: normal;
+            cursor: pointer;
+        }
+
+        .slide .slide-activate label input[type='checkbox']{
+            margin-right: 5px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .slide .slide-delete{
+            float: right;
+            width: 50px;
+            text-align: center;
+        }
+
+        .slide .slide-delete a{
+            display: inline-block;
+            padding: 10px;
+            color: inherit;
+        }
+
+        .loader{
+            background: url("/img/sites/ajax-loader.gif") no-repeat center center;
+            width: 28px;
+            height: 28px;
+        }
+
+        .slide-message{
+            height: 50px;
+            width: 100%;
+            line-height: 50px;
+        }
+
+        .slide-message .loader{
+            float: right;
+        }
+
+
+
+    </style>
+{% endblock %}
 {% block content %}
     <div class="row">
         <div class="column-12">
@@ -20,21 +117,61 @@
                         <div class="tile-header">Images enregistées</div>
                     </div>
 
-                    <div class="tile">
+
                         {% if slider.slides|length < 1 %}
+                        <div class="tile">
                             <p class="text-warning">Il n'y a pas d'images associées à ce carousel.</p>
+                        </div>
                         {% else %}
+                            <div class="tile">
+                                <div class="slide-message">
+
+                                    <div class="loader"></div>
+
+                                    <div class="message"></div>
+
+                                </div>
+
+                            </div>
                             <ul>
                                 {% for slide in slides %}
-                                    <li><img src="{{ slide.image }}" alt="" width="200px"/></li>
+                                    <li>
+                                        <div class="slide">
+                                            <div class="slide-element slide-handle"></div>
+
+                                            <div class="slide-element slide-position">{{ slide.position }}</div>
+
+                                            <div class="slide-element slide-img">
+                                                <img src="{{ slide.image }}" alt=""/>
+                                            </div>
+
+                                            <div class="slide-element slide-activate">
+                                                <label><input type="checkbox" data-id="{{ slide.id }}"/>activée</label>
+                                            </div>
+
+                                            <div class="slide-element slide-delete " data-id="{{ slide.id }}">
+                                                <a href=""><i class="fa fa-trash-o" data-id="{{ slide.id }}"></i></a>
+                                            </div>
+
+
+
+                                        </div>
+                                    </li>
                                 {% endfor %}
                             </ul>
                         {% endif %}
-                    </div>
+
                 </div>
                 <div class="column-4">
                     <div class="tile">
                         <div class="tile-header">Upload d'images</div>
+                    </div>
+                    <div class="tile">
+                        <p>L'image doit :</p>
+                        <ul>
+                            <li>Avoir une dimension de 2560x750px</li>
+                            <li>Poids maximum de 250Ko</li>
+                        </ul>
                     </div>
 
                     <div class="tile">
@@ -45,7 +182,7 @@
                             <div class="dropzon-loader">
                                 <div class="dropzone-innerbar"></div>
                             </div>
-                            <div class="drop-message"></div>
+                            <div class="dropzone-message"></div>
                         </div>
                     </div>
                 </div>
@@ -58,7 +195,7 @@
     {{ parent() }}
     <script src="/js/admin/post/creation/jquery.zpbUploadImage.js"></script>
     <script>
-        var uploadUrl = "";
+        var uploadUrl = "{{ path("zpb_admin_zoo_header_manager_img_upload", {id: slider.id}) }}";
     </script>
     <script src="/js/admin/carousel/app.zoo.js"></script>
 {% endblock %}

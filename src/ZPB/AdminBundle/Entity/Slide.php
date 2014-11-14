@@ -24,11 +24,17 @@ class Slide
     private $id;
 
     /**
-     * @var integer
+     * @var string
      *
      * @ORM\Column(name="image", type="string", length=255, nullable=false)
      */
     private $image;
+
+    /**
+     * @var string
+     * @ORM\Column(name="image_root", type="string", length=255, nullable=false)
+     */
+    private $imageRoot;
 
     /**
      * @var boolean
@@ -204,5 +210,28 @@ class Slide
     public function getSlider()
     {
         return $this->slider;
+    }
+
+    /**
+     * Set imageRoot
+     *
+     * @param string $imageRoot
+     * @return Slide
+     */
+    public function setImageRoot($imageRoot)
+    {
+        $this->imageRoot = $imageRoot;
+
+        return $this;
+    }
+
+    /**
+     * Get imageRoot
+     *
+     * @return string 
+     */
+    public function getImageRoot()
+    {
+        return $this->imageRoot;
     }
 }
