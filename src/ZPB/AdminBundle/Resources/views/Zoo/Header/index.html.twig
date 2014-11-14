@@ -15,7 +15,7 @@
     <div class="row">
         <div class="column-12">
             <div class="row">
-                <div class="column-6">
+                <div class="column-8">
                     <div class="tile">
                         <div class="tile-header">Images enregistées</div>
                     </div>
@@ -24,20 +24,41 @@
                         {% if slider.slides|length < 1 %}
                             <p class="text-warning">Il n'y a pas d'images associées à ce carousel.</p>
                         {% else %}
-
+                            <ul>
+                                {% for slide in slides %}
+                                    <li><img src="{{ slide.image }}" alt="" width="200px"/></li>
+                                {% endfor %}
+                            </ul>
                         {% endif %}
                     </div>
                 </div>
-                <div class="column-6">
+                <div class="column-4">
                     <div class="tile">
                         <div class="tile-header">Upload d'images</div>
                     </div>
 
                     <div class="tile">
-
+                        <div class="dropzone" id="imgUpload">
+                            <div class="dropzone-in">
+                                <div class="dropzone-legend"></div>
+                            </div>
+                            <div class="dropzon-loader">
+                                <div class="dropzone-innerbar"></div>
+                            </div>
+                            <div class="drop-message"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block footScripts %}
+    {{ parent() }}
+    <script src="/js/admin/post/creation/jquery.zpbUploadImage.js"></script>
+    <script>
+        var uploadUrl = "";
+    </script>
+    <script src="/js/admin/carousel/app.zoo.js"></script>
 {% endblock %}

@@ -35,6 +35,7 @@ class HeaderController extends BaseController
             $this->getManager()->persist($slider);
             $this->getManager()->flush();
         }
-        return $this->render('ZPBAdminBundle:Zoo/Header:index.html.twig', ['slider'=>$slider]);
+        $slides = $this->getRepo('ZPBAdminBundle:Slide')->findBy(['slider'=>$slider], ['position'=>'ASC']);
+        return $this->render('ZPBAdminBundle:Zoo/Header:index.html.twig', ['slider'=>$slider, 'slides'=>$slides]);
     }
 } 
