@@ -145,8 +145,14 @@ class PhotoController extends BaseController
         if(!$request->isMethod("post") || !$request->isXmlHttpRequest()){
             throw $this->createAccessDeniedException();
         }
-        $id = intval($request->request->get('id', false));
-        $position = intval($request->request->get('position', false));
+        $id = $request->request->get('id', false);
+        if($id !== false){
+            $id = intval($id);
+        }
+        $position = $request->request->get('position', false);
+        if($position !== false){
+            $position = intval($position);
+        }
         $response = ['error'=>'ok', 'oldPosition'=>null, 'id'=>null, 'newPosition'=>null];
         if($id === false || $position === false){
             $response['error'] = 'Données manquantes';

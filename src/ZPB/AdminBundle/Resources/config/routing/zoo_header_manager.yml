@@ -9,3 +9,15 @@ zpb_admin_zoo_header_manager_img_upload:
     methods: ["POST"]
     requirements:
         id: \d+
+zpb_admin_zoo_header_manager_img_position:
+    path: /slider/{id}/image/position
+    defaults: { _controller: ZPBAdminBundle:Zoo/Header:xhrUpdateImgPosition }
+    methods: ["POST"]
+    requirements:
+        id: \d+
+zpb_admin_zoo_header_manager_img_delete:
+    path: /slider/{id}/image/delete
+    defaults: { _controller: ZPBAdminBundle:Zoo/Header:xhrDeleteSlide }
+    methods: ["GET"]
+    requirements:
+        id: \d+

@@ -94,4 +94,63 @@ class HeaderController extends BaseController
         return new JsonResponse($response);
 
     }
+
+    public function xhrDeleteSlideAction($id,Request $request)
+    {
+        if(!$request->isMethod("GET") || !$request->isXmlHttpRequest() ){
+            throw $this->createAccessDeniedException();
+        }
+        $imgId = $request->query->get('imgId', null);
+        $slide = $this->getRepo('ZPBAdminBundle:Slide')->find($imgId);
+        $response = ['error'=>true, 'msg'=>''];
+        if(!$slide){
+            $response['msg'] = 'Données introuvables';
+        } else {
+            $this->getManager()->remove($slide);
+            $this->getManager()->flush();
+            $response['error'] = false;
+            $response['msg'] = 'Slide bien supprimé';
+        }
+
+        return new JsonResponse($response);
+    }
+
+    public function xhrUpdateImgPositionAction($id, Request $request)
+    {
+        if(!$request->isMethod("POST") || !$request->isXmlHttpRequest() ){
+            throw $this->createAccessDeniedException();
+        }
+        /** @var \ZPB\AdminBundle\Entity\Slider $slider */
+        $slider = $this->getRepo('ZPBAdminBundle:Slider')->find($id);
+        if(!$slider || $slider->getInstitution() != $this->institution){
+            throw $this->createNotFoundException();
+        }
+        $response = ['error'=>true, 'msg'=>'', 'oldPosition'=>null, 'newPosition'=>null];
+        $slideId = $request->request->get('id',false);
+        $slidePos = $request->request->get('position',false);
+
+        if($slideId === false || $slidePos === false){
+            $response['msg'] = 'Données invalides ou manquantes';
+        } else {
+            $slideId = intval($slideId);
+            $slidePos = intval($slidePos);
+            /** @var \ZPB\AdminBundle\Entity\Slide $slide */
+            $slide = $this->getRepo('ZPBAdminBundle:Slide')->find($slideId);
+            if(!$slide){
+                $response['msg'] = 'Données introuvables';
+            } else {
+                $oldPos = $slide->getPosition();
+                $slide->setPosition($slidePos);
+                $this->getManager()->persist($slide);
+                $this->getManager()->flush();
+                $response['oldPosition'] = $oldPos;
+                $response['newPosition'] = $slidePos;
+                $response['error'] = false;
+                $response['msg'] = 'Nouvelle position du slide bien enregistrée';
+            }
+        }
+
+
+        return new JsonResponse($response);
+    }
 } 
