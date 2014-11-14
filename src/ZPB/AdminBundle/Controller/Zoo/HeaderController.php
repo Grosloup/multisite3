@@ -22,8 +22,19 @@ namespace ZPB\AdminBundle\Controller\Zoo;
 
 
 use ZPB\AdminBundle\Controller\BaseController;
+use ZPB\AdminBundle\Entity\Slider;
 
 class HeaderController extends BaseController
 {
-
+    public function indexAction()
+    {
+        $slider = $this->getRepo('ZPBAdminBundle:Slider')->findOneByInstitution('zoo');
+        if(!$slider){
+            $slider = new Slider();
+            $slider->setInstitution('zoo');
+            $this->getManager()->persist($slider);
+            $this->getManager()->flush();
+        }
+        return $this->render('ZPBAdminBundle:Zoo/Header:index.html.twig', ['slider'=>$slider]);
+    }
 } 

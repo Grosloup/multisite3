@@ -1,0 +1,43 @@
+{% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
+
+{% block title %}Gestion du carousel | ZooParc de Beauval{% endblock %}
+{% set active = "carousel_manager" %}
+
+{% block content %}
+    <div class="row">
+        <div class="column-12">
+            <div class="tile">
+                <div class="tile-header">Gestion du carousel | ZooParc de Beauval</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column-12">
+            <div class="row">
+                <div class="column-6">
+                    <div class="tile">
+                        <div class="tile-header">Images enregistées</div>
+                    </div>
+
+                    <div class="tile">
+                        {% if slider.slides|length < 1 %}
+                            <p class="text-warning">Il n'y a pas d'images associées à ce carousel.</p>
+                        {% else %}
+
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="column-6">
+                    <div class="tile">
+                        <div class="tile-header">Upload d'images</div>
+                    </div>
+
+                    <div class="tile">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

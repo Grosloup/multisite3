@@ -1,4 +1,4 @@
 zpb_admin_zoo_header_manager:
     path: /
-    defaults: {}
+    defaults: { _controller: ZPBAdminBundle:Zoo/Header:index }
     methods: ["GET"]
