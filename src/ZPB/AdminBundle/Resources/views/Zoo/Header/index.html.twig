@@ -162,15 +162,12 @@
                                             </div>
 
                                             <div class="slide-element slide-activate">
-                                                <label><input type="checkbox" data-id="{{ slide.id }}"/>activée</label>
+                                                <label><input type="checkbox" data-id="{{ slide.id }}" class="slide-activate-ipt" {% if slide.isActive == true %}checked="checked" {% endif %}/>activée</label>
                                             </div>
 
-                                            <div class="slide-element slide-delete " data-id="{{ slide.id }}">
-                                                <a href="" class="slide_delete-btn"><i class="fa fa-trash-o" data-id="{{ slide.id }}"></i></a>
+                                            <div class="slide-element slide-delete ">
+                                                <a href="" class="slide-delete-btn" data-id="{{ slide.id }}"><i class="fa fa-trash-o"></i></a>
                                             </div>
-
-
-
                                         </div>
                                     </li>
                                 {% endfor %}
@@ -215,6 +212,8 @@
         var uploadUrl = "{{ path("zpb_admin_zoo_header_manager_img_upload", {id: slider.id}) }}";
         var updatePosUrl = "{{ path("zpb_admin_zoo_header_manager_img_position", {id: slider.id}) }}";
         var  deleteSlideUrl = "{{ path("zpb_admin_zoo_header_manager_img_delete", {id: slider.id} ) }}";
+        var activateUrl = "{{ path("zpb_admin_zoo_header_manager_img_activate", {id: slider.id}) }}";
+        var desActivateUrl = "{{ path("zpb_admin_zoo_header_manager_img_desactivate", {id: slider.id}) }}";
     </script>
     <script src="/js/admin/carousel/app.zoo.js"></script>
 {% endblock %}

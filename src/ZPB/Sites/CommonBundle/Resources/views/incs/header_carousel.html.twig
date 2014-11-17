@@ -1,6 +1,6 @@
 <div class="carousel" id="hCarousel">
     <div class="slides">
-        <div class="slide" id="slide_1">
+        {#<div class="slide" id="slide_1">
             <div class="slide-img-placeholder">
                 <img class="slide-img" src="/img/sites/common/headers/header_01.jpg" alt=""/>
             </div>
@@ -60,6 +60,13 @@
             <div class="slide-img-placeholder" >
                 <img class="slide-img" src="/img/sites/common/headers/header_11.jpg" alt=""/>
             </div>
-        </div>
+        </div>#}
+        {% for slide in slides %}
+            <div class="slide {% if loop.first == false %}hide{% endif %}" id="slide_{{ slide.id }}">
+                <div class="slide-img-placeholder" >
+                    <img class="slide-img" src="{{ slide.image }}" alt=""/>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 </div>

@@ -20,18 +20,27 @@
 
 namespace ZPB\AdminBundle\Twig;
 
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class ZPBHeaderCarouselExtension extends \Twig_Extension {
+class ZPBHeaderCarouselExtension extends \Twig_Extension{
 
     /**
      * @var \Symfony\Component\DependencyInjection\ContainerInterface
      */
     private $container;
 
-    public function __construct($container)
+    /**
+     * @var ObjectManager
+     */
+    private $manager;
+
+    private $institution = 'zoo';
+
+    public function __construct(ContainerInterface $container, ObjectManager $manager)
     {
         $this->container = $container;
+        $this->manager = $manager;
     }
 
     public function getFunctions()
@@ -43,7 +52,9 @@ class ZPBHeaderCarouselExtension extends \Twig_Extension {
 
     function renderHeaderCarousel($twigFile)
     {
-        return $this->getService('templating')->render($twigFile, []);
+        $slider = $this->manager->getRepository('ZPBAdminBundle:Slider')->findOneByInstitution($this->institution);
+        $slides = $this->manager->getRepository('ZPBAdminBundle:Slide')->findBy(['slider'=>$slider,'isActive'=>true], ['position'=>'ASC']);
+        return $this->getService('templating')->render($twigFile, ['slider'=>$slider, 'slides'=>$slides]);
     }
 
     public function getService($service, $default = null)
@@ -59,4 +70,5 @@ class ZPBHeaderCarouselExtension extends \Twig_Extension {
     {
         return 'zpb_header_carousel_extension';
     }
-} 
+
+}

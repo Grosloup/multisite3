@@ -223,6 +223,7 @@
 
         <service id="zpb.twig.zpb_header_carousel_extension" class="%zpb.twig.zpb_header_carousel_extension.class%">
             <argument type="service" id="service_container" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
             <tag name="twig.extension" />
         </service>
 
