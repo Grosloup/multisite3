@@ -1,0 +1,4 @@
+zpb_admin_bn_header_manager:
+    path: /
+    defaults: { _controller: ZPBAdminBundle:BeauvalNature/Header:index }
+    methods: ["GET"]

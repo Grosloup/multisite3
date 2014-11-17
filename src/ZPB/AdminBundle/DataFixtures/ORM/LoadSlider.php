@@ -45,9 +45,16 @@ class LoadSlider extends AbstractFixture implements OrderedFixtureInterface, Con
         $slider->setInstitution('zoo');
 
         $manager->persist($slider);
+
+        $slider2 = new Slider();
+        $slider2->setInstitution('bn');
+
+        $manager->persist($slider2);
+
         $manager->flush();
 
         $this->setReference('zpb-slider-zoo', $slider);
+        $this->setReference('zpb-slider-zoo-2', $slider2);
     }
     
     public function getOrder()

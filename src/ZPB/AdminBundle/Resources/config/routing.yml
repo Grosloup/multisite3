@@ -106,3 +106,7 @@ zpb_admin_general_press_release_routes:
 zpb_admin_general_press_kit_routes:
     prefix: /dossiers-de-presse
     resource: "@ZPBAdminBundle/Resources/config/routing/press_kit.yml"
+
+zpb_admin_bn_header_manager_routes:
+    prefix: /beauval-nature/header-manager
+    resource: "@ZPBAdminBundle/Resources/config/routing/bn_header_manager.yml"

@@ -284,9 +284,9 @@
                                 <li class="{% if active == "manage_restos" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_restaurants_manage") }}">Gérer</a></li>
                             </ul>
                         </li>
-                        <li class="sidebar-dropdown{% if active in ["carousel_manager"] %} active{% endif %}"><a href="javascript:void(0)">Carousel</a><i class="sidebar-icon fa fa-angle-right"></i>
+                        <li class="sidebar-dropdown{% if active in ["zoo_carousel_manager"] %} active{% endif %}"><a href="javascript:void(0)">Carousel</a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
-                                <li class="{% if active == "carousel_manager" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_header_manager") }}">Gestion</a></li>
+                                <li class="{% if active == "zoo_carousel_manager" %}active{% endif %}"><a href="{{ path("zpb_admin_zoo_header_manager") }}">Gestion</a></li>
                             </ul>
 
                         </li>
@@ -301,9 +301,9 @@
                 <nav class="menu">
                     <h3 class="menu-title">Beauval Nature</h3>
                     <ul>
-                        <li class="sidebar-dropdown{% if active in ["carousel_manager"] %} active{% endif %}"><a href="javascript:void(0)">Carousel ! TODO !</a><i class="sidebar-icon fa fa-angle-right"></i>
+                        <li class="sidebar-dropdown{% if active in ["bn_carousel_manager"] %} active{% endif %}"><a href="javascript:void(0)">Carousel ! TODO !</a><i class="sidebar-icon fa fa-angle-right"></i>
                             <ul>
-                                <li class="{% if active == "carousel_manager" %}active{% endif %}"><a href="">Gestion</a></li>
+                                <li class="{% if active == "bn_carousel_manager" %}active{% endif %}"><a href="{{ path("zpb_admin_bn_header_manager") }}">Gestion</a></li>
                             </ul>
 
                         </li>

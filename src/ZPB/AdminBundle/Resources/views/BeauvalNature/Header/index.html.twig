@@ -1,7 +1,8 @@
 {% extends "ZPBAdminBundle:Layouts:master.html.twig" %}
 
-{% block title %}Gestion du carousel | ZooParc de Beauval{% endblock %}
-{% set active = "zoo_carousel_manager" %}
+{% block title %}Gestion du carousel | Beauval Nature{% endblock %}
+{% set active = "bn_carousel_manager" %}
+
 {% block headStyles %}
     {{ parent() }}
     <style>
@@ -135,11 +136,12 @@
 
     </style>
 {% endblock %}
+
 {% block content %}
     <div class="row">
         <div class="column-12">
             <div class="tile">
-                <div class="tile-header">Gestion du carousel | ZooParc de Beauval</div>
+                <div class="tile-header">Gestion du carousel | Beauval Nature</div>
             </div>
         </div>
     </div>
@@ -168,49 +170,49 @@
                     </div>
 
 
-                        {% if slider.slides|length < 1 %}
+                    {% if slider.slides|length < 1 %}
                         <div class="tile">
                             <p class="text-warning">Il n'y a pas d'images associées à ce carousel.</p>
                         </div>
-                        {% else %}
-                            <div class="tile">
-                                <div class="slide-message">
+                    {% else %}
+                        <div class="tile">
+                            <div class="slide-message">
 
-                                    <div class="loader hide"></div>
+                                <div class="loader hide"></div>
 
-                                    <div class="message"></div>
-
-                                </div>
+                                <div class="message"></div>
 
                             </div>
-                            <ul class="slides" id="sort-slide">
-                                {% for slide in slides %}
-                                    <li id="{{ slide.id }}">
-                                        <div class="slide">
-                                            <div class="slide-element slide-handle"></div>
 
-                                            <div class="slide-element slide-position">{{ slide.position }}</div>
+                        </div>
+                        <ul class="slides" id="sort-slide">
+                            {% for slide in slides %}
+                                <li id="{{ slide.id }}">
+                                    <div class="slide">
+                                        <div class="slide-element slide-handle"></div>
 
-                                            <div class="slide-element slide-img">
-                                                <img src="{{ slide.image }}" alt=""/>
-                                            </div>
+                                        <div class="slide-element slide-position">{{ slide.position }}</div>
 
-                                            <div class="slide-element slide-activate">
-                                                <label><input type="checkbox" data-id="{{ slide.id }}" class="slide-activate-ipt" {% if slide.isActive == true %}checked="checked" {% endif %}/>activée</label>
-                                            </div>
-
-                                            <div class="slide-element slide-title">
-                                                <input type="text" value="{{ slide.title }}" class="slide-title-ipt"  data-id="{{ slide.id }}"/><button class="btn btn-neutral slide-title-btn">ok</button>
-                                            </div>
-
-                                            <div class="slide-element slide-delete ">
-                                                <a href="" class="slide-delete-btn" data-id="{{ slide.id }}"><i class="fa fa-trash-o"></i></a>
-                                            </div>
+                                        <div class="slide-element slide-img">
+                                            <img src="{{ slide.image }}" alt=""/>
                                         </div>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
+
+                                        <div class="slide-element slide-activate">
+                                            <label><input type="checkbox" data-id="{{ slide.id }}" class="slide-activate-ipt" {% if slide.isActive == true %}checked="checked" {% endif %}/>activée</label>
+                                        </div>
+
+                                        <div class="slide-element slide-title">
+                                            <input type="text" value="{{ slide.title }}" class="slide-title-ipt"  data-id="{{ slide.id }}"/><button class="btn btn-neutral slide-title-btn">ok</button>
+                                        </div>
+
+                                        <div class="slide-element slide-delete ">
+                                            <a href="" class="slide-delete-btn" data-id="{{ slide.id }}"><i class="fa fa-trash-o"></i></a>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
 
                 </div>
                 <div class="column-4">
@@ -247,12 +249,12 @@
     <script src="/js/vendor/ui/jquery-ui.min.js"></script>
     <script src="/js/admin/post/creation/jquery.zpbUploadImage.js"></script>
     <script>
-        var uploadUrl = "{{ path("zpb_admin_zoo_header_manager_img_upload", {id: slider.id}) }}";
-        var updatePosUrl = "{{ path("zpb_admin_zoo_header_manager_img_position", {id: slider.id}) }}";
-        var  deleteSlideUrl = "{{ path("zpb_admin_zoo_header_manager_img_delete", {id: slider.id} ) }}";
-        var activateUrl = "{{ path("zpb_admin_zoo_header_manager_img_activate", {id: slider.id}) }}";
-        var desActivateUrl = "{{ path("zpb_admin_zoo_header_manager_img_desactivate", {id: slider.id}) }}";
-        var changeSliderDurationUrl = "{{ path("zpb_admin_zoo_header_manager_change_duration", {id: slider.id}) }}";
+        var uploadUrl = "";
+        var updatePosUrl = "";
+        var  deleteSlideUrl = "";
+        var activateUrl = "";
+        var desActivateUrl = "";
+        var changeSliderDurationUrl = "";
     </script>
-    <script src="/js/admin/carousel/app.zoo.js"></script>
+    <script src="/js/admin/carousel/app.bn.js"></script>
 {% endblock %}

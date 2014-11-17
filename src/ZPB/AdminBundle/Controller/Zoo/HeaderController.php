@@ -35,7 +35,7 @@ class HeaderController extends BaseController
         $slider = $this->getRepo('ZPBAdminBundle:Slider')->findOneByInstitution($this->institution);
         if(!$slider){
             $slider = new Slider();
-            $slider->setInstitution('zoo');
+            $slider->setInstitution($this->institution);
             $this->getManager()->persist($slider);
             $this->getManager()->flush();
         }
