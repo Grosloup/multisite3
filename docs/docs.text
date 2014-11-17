@@ -40,6 +40,9 @@ LoadPressReleases               => 230
 LoadRestos                      => 250
 LoadPhotoStats                  => 300
 
+LoadSlider                      => 400
+LoadSlides                      => 410
+
 knp-snappy => pdf
 mobile detect
 Installer modify headers sur firefox

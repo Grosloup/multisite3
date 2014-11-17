@@ -153,4 +153,49 @@ class HeaderController extends BaseController
 
         return new JsonResponse($response);
     }
+
+    public function xhrActivateSlideAction($id, Request $request)
+    {
+        if(!$request->isMethod("GET") || !$request->isXmlHttpRequest() ){
+            throw $this->createAccessDeniedException();
+        }
+        $imgId = $request->query->get('imgId', null);
+        $slide = $this->getRepo('ZPBAdminBundle:Slide')->find($imgId);
+        $response = ['error'=>true, 'msg'=>''];
+        if(!$slide){
+            $response['msg'] = 'Données introuvables';
+        } else {
+            $slide->setIsActive(true);
+            $this->getManager()->persist($slide);
+            $this->getManager()->flush();
+            $response['error'] = false;
+            $response['msg'] = 'Slide activé.';
+        }
+
+        return new JsonResponse($response);
+
+    }
+
+    public function xhrDesActivateSlideAction($id, Request $request)
+    {
+        if(!$request->isMethod("GET") || !$request->isXmlHttpRequest() ){
+            throw $this->createAccessDeniedException();
+        }
+        $imgId = $request->query->get('imgId', null);
+        /** @var \ZPB\AdminBundle\Entity\Slide $slide */
+        $slide = $this->getRepo('ZPBAdminBundle:Slide')->find($imgId);
+        $response = ['error'=>true, 'msg'=>''];
+        if(!$slide){
+            $response['msg'] = 'Données introuvables';
+        } else {
+            $slide->setIsActive(false);
+            $this->getManager()->persist($slide);
+            $this->getManager()->flush();
+            $response['error'] = false;
+            $response['msg'] = 'Slide desactivé.';
+        }
+
+        return new JsonResponse($response);
+
+    }
 } 
