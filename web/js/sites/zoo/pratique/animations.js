@@ -31,7 +31,7 @@ require(["waypoints_sticky", "scrollTo"], function () {
 require(["jquery", "Carousel"], function ($, app) {
     $(function () {
         var hCarousel = app.Carousel.initHeaderCarousel($("#hCarousel"), {
-            duration: 7000,
+            duration: sliderDuration || 3000,
             fadeTransionTime: 800,
             auto: true,
             hasNavigation: false

@@ -13,7 +13,7 @@
             padding: 5px;
             display: block;
             width: 100%;
-            height: 100px;
+            min-height: 100px;
             border: 1px solid rgba(0,0,0,0.05);
             margin-bottom: 5px;
             background-color: #fff;
@@ -37,6 +37,8 @@
             width: 20px;
             background-color: rgba(0,0,0,0.05);
             cursor: move;
+            height: 100%;
+            min-height: 88px;
         }
         .slide .slide-position{
             width: 40px;
@@ -80,6 +82,16 @@
             color: inherit;
         }
 
+        .slide .slide-title{}
+
+        .slide .slide-title .slide-title-ipt{
+            display: inline-block;
+            vertical-align: middle;
+            border: 1px solid #ddd;
+            width: 300px;
+            height: 39px;
+        }
+
         .loader{
             background: url("/img/sites/ajax-loader.gif") no-repeat center center;
             width: 28px;
@@ -103,14 +115,21 @@
         }
 
         .phantom{
-
             display: block;
             width: 100%;
             height: 100px;
-
             margin-bottom: 5px;
             background-color: #ddd;
         }
+
+        .slider-duration-ipt{
+            height: 39px;
+            display: inline-block;
+            vertical-align: middle;
+            width: 100px;
+            border: 1px solid #ddd;
+        }
+
 
 
 
@@ -130,7 +149,22 @@
             <div class="row">
                 <div class="column-8">
                     <div class="tile">
-                        <div class="tile-header">Images enregistées</div>
+                        <div class="tile-header">
+                            Durée de passage des images (en ms)
+                        </div>
+
+                        <div class="slider-duration">
+                            <input type="text" value="{{ slider.duration }}"  class="slider-duration-ipt"/>
+                            <button class="btn btn-neutral slider-duration-btn">ok</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="column-4"></div>
+            </div>
+            <div class="row">
+                <div class="column-8">
+                    <div class="tile">
+                        <div class="tile-header">Images enregistrées</div>
                     </div>
 
 
@@ -163,6 +197,10 @@
 
                                             <div class="slide-element slide-activate">
                                                 <label><input type="checkbox" data-id="{{ slide.id }}" class="slide-activate-ipt" {% if slide.isActive == true %}checked="checked" {% endif %}/>activée</label>
+                                            </div>
+
+                                            <div class="slide-element slide-title">
+                                                <input type="text" value="{{ slide.title }}" class="slide-title-ipt"  data-id="{{ slide.id }}"/><button class="btn btn-neutral slide-title-btn">ok</button>
                                             </div>
 
                                             <div class="slide-element slide-delete ">
@@ -214,6 +252,7 @@
         var  deleteSlideUrl = "{{ path("zpb_admin_zoo_header_manager_img_delete", {id: slider.id} ) }}";
         var activateUrl = "{{ path("zpb_admin_zoo_header_manager_img_activate", {id: slider.id}) }}";
         var desActivateUrl = "{{ path("zpb_admin_zoo_header_manager_img_desactivate", {id: slider.id}) }}";
+        var changeSliderDurationUrl = "{{ path("zpb_admin_zoo_header_manager_change_duration", {id: slider.id}) }}";
     </script>
     <script src="/js/admin/carousel/app.zoo.js"></script>
 {% endblock %}

@@ -45,11 +45,18 @@ class Slider
     private $slides;
 
     /**
+     * @var integer
+     * @ORM\Column(name="duration", type="integer", nullable=true)
+     */
+    private $duration;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->slides = new ArrayCollection();
+        $this->duration = 10000;
     }
 
     /**
@@ -153,4 +160,24 @@ class Slider
     {
         $this->slides->removeElement($slides);
     }
+
+    /**
+     * @return int
+     */
+    public function getDuration()
+    {
+        return $this->duration;
+    }
+
+    /**
+     * @param int $duration
+     * @return Slider
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+        return $this;
+    }
+
+
 }

@@ -1,7 +1,31 @@
 $(function(){
     var uploader = $("#imgUpload");
     var sortable = $("#sort-slide");
+    var messageReposition = $(".slide-message .message");
+    var sliderDurationBtn = $(".slider-duration-btn");
+    var sliderDurationIpt = $(".slider-duration-ipt");
 
+    sliderDurationBtn.on("click",function(e){
+        e.preventDefault();
+        if(sliderDurationIpt.val() == ""){
+            return false;
+        }
+        loader.removeClass("hide");
+        $.post(changeSliderDurationUrl, {duration: parseInt(sliderDurationIpt.val())})
+            .done(function(response){
+
+                messageReposition.text(response.msg);
+                loader.addClass("hide");
+                window.setTimeout(function(){
+                    messageReposition.text("");
+                }, 5000);
+            })
+            .fail(function(jqXHR, textStatus){
+                messageReposition.text(textStatus + " Une erreur est survenue !");
+                loader.addClass("hide");
+            });
+
+    });
 
     function errorMessage(message){
         uploader.find(".dropzone-message").text(message);
@@ -34,7 +58,7 @@ $(function(){
         uploader.find(".dropzone-message").text(response.msg);
     }
 
-    var messageReposition = $(".slide-message .message");
+
 
     uploader.zpbUploadImage({
         url: uploadUrl || null,
@@ -63,12 +87,19 @@ $(function(){
                 window.setTimeout(function(){
                     messageReposition.text("");
                 }, 5000);
-            }).fail(function(response){
-                messageReposition.text(response.msg);
+            }).fail(function(jqXHR, textStatus){
+                messageReposition.text(textStatus + " Une erreur est survenue !");
                 loader.addClass("hide");
             });
         }
         return false;
+
+    });
+
+    $(document).on("click",".slide-title-btn", function(e){
+        e.preventDefault();
+        //loader.removeClass("hide");
+        alert("todo");
 
     });
 
@@ -90,8 +121,8 @@ $(function(){
                     messageReposition.text("");
                 }, 5000);
             })
-            .fail(function(response){
-                messageReposition.text(response.msg);
+            .fail(function(jqXHR, textStatus){
+                messageReposition.text(textStatus + " Une erreur est survenue !");
                 loader.addClass("hide");
             });
     });
@@ -131,8 +162,8 @@ $(function(){
                         messageReposition.text("");
                     }, 5000);
                 })
-                .fail(function(response){
-                    messageReposition = "Une erreur est survenue !";
+                .fail(function(jqXHR, textStatus){
+                    messageReposition.text(textStatus + " Une erreur est survenue !");
                     loader.addClass("hide");
                 });
         }

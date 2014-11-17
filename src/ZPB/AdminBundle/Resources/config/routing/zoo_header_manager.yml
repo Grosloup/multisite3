@@ -35,4 +35,9 @@ zpb_admin_zoo_header_manager_img_desactivate:
     requirements:
         id: \d+
 
-
+zpb_admin_zoo_header_manager_change_duration:
+    path: /slider/{id}/duration/change
+    defaults: { _controller: ZPBAdminBundle:Zoo/Header:xhrChangeSliderDuration }
+    methods: ["POST"]
+    requirements:
+        id: \d+

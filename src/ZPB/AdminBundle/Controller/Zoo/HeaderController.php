@@ -198,4 +198,28 @@ class HeaderController extends BaseController
         return new JsonResponse($response);
 
     }
+
+    public function xhrChangeSliderDurationAction($id, Request $request)
+    {
+        if(!$request->isMethod("POST") || !$request->isXmlHttpRequest() ){
+            throw $this->createAccessDeniedException();
+        }
+        /** @var \ZPB\AdminBundle\Entity\Slider $slider */
+        $slider = $this->getRepo('ZPBAdminBundle:Slider')->find($id);
+        if(!$slider || $slider->getInstitution() != $this->institution){
+            throw $this->createNotFoundException();
+        }
+        $response = ['error'=>true, 'msg'=>''];
+        $duration = $request->request->get('duration', false);
+        if($duration === false){
+            $response["msg"] = 'Données insuffisantes';
+        } else {
+            $slider->setDuration(intval($duration));
+            $this->getManager()->persist($slider);
+            $this->getManager()->flush();
+            $response['error'] = false;
+            $response['msg'] = 'Données enregistrées';
+        }
+        return new JsonResponse($response);
+    }
 } 
