@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-12">
                 <div class="page-header">
-                    <h1>Bienvenue au ZooParc de Beauval</h1>
+                    <h1>ZooParc de Beauval</h1>
                 </div>
             </div>
         </div>
@@ -23,44 +23,37 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-2 col-md-2"></div>
-            <div class="col-sm-8 col-md-8">
+            <div class="col-sm-12 col-md-12">
                 <div class="page-intro">
-                    <p>Classé parmi les 15 plus beaux zoos du monde par Forbes Traveler, le ZooParc de Beauval présente, avec 5700 animaux, la plus grande diversité animalière de France.</p>
+                    <p><span class="quoted">N° 1 des zoos et aquariums de France</span></p>
+                    <p class="underline"> Traveler's Choice Attractions Awards</p>
                 </div>
             </div>
-            <div class="col-sm-2 col-md-2"></div>
         </div>
     </div>
 
-    <div class="wrapper">
+    <div class="img-wrapper">
         <img src="/img/sites/zoo/nouveaute_2014.jpg" alt="" width="100%"/>
     </div>
 
     <div class="wrapper">
         <div class="container">
             
-            <div class="row">
-                <div class="col-sm-2 col-md-2"></div>
-                <div class="col-sm-8 col-md-8">
+            <div class="spaced-row">
+                <div class="col-sm12 col-md-12">
                     <div class="page-header">
                         <h1>Aujourd'hui à Beauval</h1>
-                        <div class="slogan">
+                        {#<div class="slogan">
                             <p>Tout au long de l’année, notre équipe pédagogique vous propose des rendez-vous aux quatre coins du ZooParc, pour vous livrer tous les secrets des espèces présentes à Beauval.</p>
                             <p>De fin mars à mi-novembre, se déroulent spectacles d’oiseaux et d’otaries !</p>
-                        </div>
+                        </div>#}
                     </div>
                 </div>
-                <div class="col-sm-2 col-md-2"></div>
-            </div>
-            
-            <div class="row">
-                <div class="col-sm-2 col-md-2"></div>
-                <div class="col-sm-8 col-md-8 text-center">
+                <div class="col-sm-12 col-md-12 text-center">
                     <a class="btn btn-warning btn-xlarge" href="">Découvrez la programmation…</a>
                 </div>
-                <div class="col-sm-2 col-md-2"></div>
             </div>
+
 
         </div>
     </div>
@@ -69,31 +62,46 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4 col-md-4">
-                    <a href="#">
-                        <div class="jqlegender jqlegender-atelier">
-                            <img src="/img/sites/fixtures/Ateliers-pedagogiques.jpg" alt="" width="100%"/>
-                            <div class="jqlegend">
-                                <div class="title">Ateliers pédagogiques</div>
-                                <div class="icon">
-                                    {{ include("ZPBSitesZooBundle:incs:atelier_svg.html.twig") }}
-                                </div>
-                            </div>
+                    <div class="front-box">
+                        <div class="image-area">
+                            <a href="">
+                                <img src="/img/sites/fixtures/Carnet-Rose.jpg" alt=""/>
+                            </a>
+                            <div class="overlay"></div>
                         </div>
-                    </a>
+
+                    </div>
+
                 </div>
                 <div class="col-sm-4 col-md-4">
-                    <a href="#">
-                        <div class="jqlegender jqlegender-soigneur">
-                            <img src="/img/sites/fixtures/Soigneur-d-un-Jour.jpg" alt="" width="100%"/>
-                            <div class="jqlegend">
-                                <div class="title">Soigneur d'un jour</div>
-                                <div class="icon">
-                                    {{ include("ZPBSitesZooBundle:incs:empreinte_svg.html.twig") }}
-                                </div>
-                            </div>
+                    <div class="front-box">
+                        <div class="image-area">
+                            <a href="">
+                                <img src="/img/sites/fixtures/Carnet-Rose.jpg" alt=""/>
+                            </a>
+                            <div class="overlay"></div>
                         </div>
-                    </a>
+
+                    </div>
                 </div>
+                <div class="col-sm-4 col-md-4">
+                    <div class="front-box">
+                        <div class="image-area">
+                            <a href="">
+                                <img src="/img/sites/fixtures/Carnet-Rose.jpg" alt=""/>
+                            </a>
+                            <div class="overlay"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
                 <div class="col-sm-4 col-md-4">
                     <a href="{{ path("zpb_sites_zoo_actualites_carnet_rose") }}">
                         <div class="jqlegender jqlegender-rose">
@@ -101,7 +109,38 @@
                             <div class="jqlegend">
                                 <div class="title">Carnet Rose</div>
                                 <div class="icon">
-                                    {{ include("ZPBSitesZooBundle:incs:cigogne_svg.html.twig") }}
+                                    {#{{ include("ZPBSitesZooBundle:incs:cigogne_svg.html.twig") }}#}
+                                    <p>Découvrez les derniers bébés du zoo...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-sm-4 col-md-4">
+                    <a href="#">
+                        <div class="jqlegender jqlegender-soigneur">
+                            <img src="/img/sites/fixtures/Soigneur-d-un-Jour.jpg" alt="" width="100%"/>
+                            <div class="jqlegend">
+                                <div class="title">Soigneur d'un jour</div>
+                                <div class="icon">
+                                    {#{{ include("ZPBSitesZooBundle:incs:empreinte_svg.html.twig") }}#}
+                                    <p>Vivez en une matinée une expérience de soigneur animalier</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-sm-4 col-md-4">
+                    <a href="#">
+                        <div class="jqlegender jqlegender-atelier">
+                            <img src="/img/sites/fixtures/Ateliers-pedagogiques.jpg" alt="" width="100%"/>
+                            <div class="jqlegend">
+                                <div class="title">Parrainages</div>
+                                <div class="icon">
+                                    {#{{ include("ZPBSitesZooBundle:incs:atelier_svg.html.twig") }}#}
+                                    <p>Devenez le Parrain d'un animal de Beauval</p>
                                 </div>
                             </div>
                         </div>

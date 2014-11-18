@@ -130,8 +130,38 @@ strong{
 
 .page-intro{
   text-align: center;
-  font-family: "cooper_hewitt_bold", Arial, Helvetica, sans-serif;
+  font-family: "cooper_hewitt_medium", Arial, Helvetica, sans-serif;
   margin-bottom: 20px;
+  font-size: topx(38);
+  .quoted{
+
+    position: relative;
+    display: inline-block;
+    &:before, &:after{
+      position: absolute;
+      font-family: 'Georgia', serif;
+      font-size: topx(90);
+    }
+    &:before{
+      content:"\201C";
+      top: -34px;
+      left: -42px;
+    }
+    &:after{
+      content:"\201D";
+      top: 2px;
+      right: -42px;
+    }
+
+
+  }
+  .underline{
+    font-size: topx(24);
+    font-style: italic;
+    //text-align: right;
+    color: $grisBB;
+    margin-top: topx(10);
+  }
 }
 
 ul{
@@ -148,4 +178,40 @@ ul{
 
 .show{
   display: block;
+}
+
+.front-box{
+  .image-area{
+    position: relative;
+    overflow: hidden;
+    &:hover{
+      a{
+        img{
+          @include transform(scale(1.1));
+        }
+      }
+      .overlay{
+        background-color: rgba(0,0,0,0.3);
+      }
+    }
+    a{
+
+      img{
+        width: 100%;
+        height: auto;
+        display: block;
+        @include transform(scale(1));
+        @include transition(transform 0.3s ease-in-out);
+      }
+    }
+    .overlay{
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      @include transition(background-color 0.3s ease-in-out);
+    }
+  }
 }

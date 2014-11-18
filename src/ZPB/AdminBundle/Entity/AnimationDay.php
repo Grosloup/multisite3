@@ -42,6 +42,7 @@ class AnimationDay implements \JsonSerializable
 
     /**
      * @ORM\OneToMany(targetEntity="ZPB\AdminBundle\Entity\AnimationSchedule", mappedBy="animationDay")
+     * @ORM\OrderBy({"timetable" = "ASC"})
      */
     private $schedules;
 

@@ -20,13 +20,13 @@
                     <li class="dropdown{% if active_page in zooparc_pages %} active{% endif %}"><a href="javascript:void(0)">ZooParc</a>
                         {{ include("ZPBSitesZooBundle:Navs:zooparc.html.twig") }}
                     </li>
-                    <li class="dropdown{% if active_page in pedago_pages %} active{% endif %}"><a href="javascript:void(0)">Activités</a>
+                   {# <li class="dropdown{% if active_page in pedago_pages %} active{% endif %}"><a href="javascript:void(0)">Activités</a>
                         {{ include("ZPBSitesZooBundle:Navs:pedagogie.html.twig") }}
-                    </li>
-                    <li class="dropdown{% if active_page in news_pages %} active{% endif %}"><a href="javascript:void(0)">{#Actualité#}Blog</a>
+                    </li>#}
+                    <li class="dropdown{% if active_page in news_pages %} active{% endif %}"><a href="javascript:void(0)">Actualité</a>
                         {{ include("ZPBSitesZooBundle:Navs:actualite.html.twig") }}
                     </li>
-                    <li class="{% if active_page in social_pages %}active{% endif %}"><a href="{{ path("zpb_sites_zoo_reseaux_homepage") }}">Réseaux</a></li>
+                    <li class="{% if active_page in social_pages %}active{% endif %}"><a href="{{ path("zpb_sites_zoo_reseaux_homepage") }}">Fans</a></li>
                     <li class="{% if active_page in shop_pages %}active{% endif %}"><a href="">Boutique</a></li>
                 </ul>
             </nav>

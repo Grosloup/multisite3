@@ -30,7 +30,11 @@ $numCols: 12 !default;
     margin-bottom: topx(2 * $gridGutter);
   }
 }
-
+.img-wrapper{
+  width: 100%;
+  @include clearfix;
+  margin: topx(20) 0;
+}
 .wrapper{
   width: 100%;
   @include clearfix;
