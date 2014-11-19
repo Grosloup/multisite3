@@ -1,0 +1,50 @@
+
+{% set association_pages = [] %}
+{% set conservation_pages = [] %}
+{% set recherche_pages = [] %}
+{% set help_pages = [] %}
+{% set news_pages = [] %}
+
+{% set active_page = "none" %}
+
+
+
+<div id="seconday-mainbar-wrapper">
+    <div class="container">
+        <div class="row">
+            <div id="secondary-mainbar">
+                <div class="col-md-3">
+                    <div class="menu-block {% if active_page in association_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">L'association</a>
+                        {{ include("ZPBSitesBNBundle:Navs:association.html.twig") }}
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="menu-block {% if active_page in conservation_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">La conservation</a>
+                        {{ include("ZPBSitesBNBundle:Navs:conservation.html.twig") }}
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="menu-block {% if active_page in recherche_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">La recherche</a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="menu-block {% if active_page in help_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">Nous aider</a>
+                        {{ include("ZPBSitesBNBundle:Navs:help.html.twig") }}
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="menu-block {% if active_page in news_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">Actualité</a>
+                        {{ include("ZPBSitesBNBundle:Navs:news.html.twig") }}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,9 +1,8 @@
-{% set practicle_pages = ["pratique", "tarifs"] %}
-{% set zooparc_pages = ["zooparc", "phototheque"] %}
-{% set pedago_pages = ["pedago"] %}
-{% set news_pages = ["news","single_post"] %}
-{% set social_pages = ["social"] %}
-{% set shop_pages = ["shop"] %}
+{% set association_pages = [] %}
+{% set conservation_pages = [] %}
+{% set recherche_pages = [] %}
+{% set help_pages = [] %}
+{% set news_pages = [] %}
 
 {% set active_page = "none" %}
 
@@ -15,35 +14,19 @@
             <button id="menu-toggler"></button>
             <nav>
                 <ul>
-                    <li class="dropdown{% if active_page in social_pages %}active{% endif %}"><a href="javascript:void(0)">L'association</a>
-                        <ul>
-                            <li><a href="">L'histoire de l'association</a></li>
-
-                        </ul>
+                    <li class="dropdown{% if active_page in association_pages %}active{% endif %}"><a href="javascript:void(0)">L'association</a>
+                        {{ include("ZPBSitesBNBundle:Navs:association.html.twig") }}
                     </li>
-                    <li class="dropdown{% if active_page in social_pages %}active{% endif %}"><a href="">La conservation</a>
-                        <ul>
-                            <li><a href="">Les programmes</a></li>
-                            <li><a href="">Anciens programmes</a></li>
-
-                        </ul>
+                    <li class="dropdown{% if active_page in conservation_pages %}active{% endif %}"><a href="">La conservation</a>
+                        {{ include("ZPBSitesBNBundle:Navs:conservation.html.twig") }}
                     </li>
-                    <li class="{% if active_page in social_pages %}active{% endif %}"><a href="">La recherche</a></li>
-                    <li class="dropdown{% if active_page in practicle_pages %} active{% endif %}"><a href="javascript:void(0)">Nous aider</a>
-                        <ul>
-                            <li><a href="">Parrainez un animal</a></li>
-                            <li><a href="">Soutenez nos actions</a></li>
-                            <li><a href="">Faites un don</a></li>
-                            <li><a href="">Devenez partenaire</a></li>
-
-                        </ul>
+                    <li class="{% if active_page in recherche_pages %}active{% endif %}"><a href="">La recherche</a></li>
+                    <li class="dropdown{% if active_page in help_pages %} active{% endif %}"><a href="javascript:void(0)">Nous aider</a>
+                        {{ include("ZPBSitesBNBundle:Navs:help.html.twig") }}
                     </li>
 
-                    <li class="dropdown{% if active_page in shop_pages %}active{% endif %}"><a href="javascript:void(0)">Actualité</a>
-                        <ul>
-                            <li><a href="">News</a></li>
-                            <li><a href="">Rapport d'activités</a></li>
-                        </ul>
+                    <li class="dropdown{% if active_page in news_pages %}active{% endif %}"><a href="javascript:void(0)">Actualité</a>
+                        {{ include("ZPBSitesBNBundle:Navs:news.html.twig") }}
                     </li>
                 </ul>
             </nav>
