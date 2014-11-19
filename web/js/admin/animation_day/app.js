@@ -59,7 +59,7 @@ $(function(){
         disableSelect(parent);
         showLoader(parent);
         hideMessage();
-        $.post(changeHourUrl, {})
+        $.post(changeHourUrl, {hour:$this.val(), id:id})
             .done(function(response){
 
                 if(response.error === false){
@@ -92,7 +92,7 @@ $(function(){
         disableSelect(parent);
         showLoader(parent);
         hideMessage();
-        $.post(changeMinUrl, {})
+        $.post(changeMinUrl, {min:$this.val(), id:id})
             .done(function(response){
 
                 if(response.error === false){

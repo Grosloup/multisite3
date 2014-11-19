@@ -171,8 +171,8 @@
 {% block footScripts %}
     {{ parent() }}
     <script>
-        var changeHourUrl = "/tests";
-        var changeMinUrl = "/tests";
+        var changeHourUrl = "{{ path("zpb_admin_animations_days_hour_change") }}";
+        var changeMinUrl = "{{ path("zpb_admin_animations_days_min_change") }}";
     </script>
     <script src="/js/admin/animation_day/app.js"></script>
 {% endblock %}

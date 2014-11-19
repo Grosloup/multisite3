@@ -222,7 +222,7 @@ ul{
       position: absolute;
       top: -20%;
       @include translateY(-50%);
-      margin: 0 15px;
+
       width: 60%;
       left: 20%;
       text-align: center;
@@ -234,26 +234,33 @@ ul{
         color: inherit;
       }
     }
+    .front-box-title{
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 300;
+      font-size: topx($fontSize * 1.2);
+      text-align: center;
+      color: $blanc;
+      padding: topx($fontSize * 0.5) 0;
+      &>h3{
+        font-size: inherit;
+        color: inherit;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      &.rose{
+        background-color: $rose;
+      }
+      &.red{
+        background-color: $rouge;
+      }
+      &.green{
+        background-color: $vertParrainage;
+      }
+    }
   }
 
-  .front-box-title{
-    font-size: topx($fontSize * 1.2);
-    text-align: center;
-    color: $blanc;
-    padding: topx($fontSize) 0;
-    h3{
-      font-size: inherit;
-      color: inherit;
-      padding: 0;
-    }
-    &.rose{
-      background-color: $rose;
-    }
-    &.red{
-      background-color: $rouge;
-    }
-    &.green{
-      background-color: $vertParrainage;
-    }
-  }
+
 }

@@ -17,3 +17,13 @@ zpb_admin_animations_days_delete:
     path: /supprimer/{id}
     defaults: { _controller: ZPBAdminBundle:Animation/Day:delete }
     methods: ["GET"]
+
+zpb_admin_animations_days_hour_change:
+    path: /horaire/change/heure
+    defaults: { _controller: ZPBAdminBundle:Animation/Day:xhrScheduleChangeHour }
+    methods: ["POST"]
+
+zpb_admin_animations_days_min_change:
+    path: /horaire/change/minute
+    defaults: { _controller: ZPBAdminBundle:Animation/Day:xhrScheduleChangeMin }
+    methods: ["POST"]
