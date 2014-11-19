@@ -1,6 +1,20 @@
 $(function(){
 
     var $detailsActive = false;
+    var $messenger = $("#messenger");
+    var $message = $("#message");
+
+    $messenger.hide();
+
+    function showMessage(message){
+        $message.html(message);
+        $messenger.show();
+    }
+
+    function hideMessage(){
+        $message.empty();
+        $messenger.hide();
+    }
 
     function showLoader(parent){
         $(".loader", parent).removeClass("hide").addClass("show");
@@ -36,23 +50,66 @@ $(function(){
 
     $(document).on("change", ".anim-schedule-hour-select", function(e){
         e.preventDefault();
+        if(changeHourUrl == undefined || changeHourUrl == null || changeHourUrl == ""){
+            return false;
+        }
         var $this = $(this);
         var parent = $this.parents(".anim-schedule:first");
         var id = parent.attr("data-id");
         disableSelect(parent);
         showLoader(parent);
+        hideMessage();
+        $.post(changeHourUrl, {})
+            .done(function(response){
 
+                if(response.error === false){
 
+                } else {
+
+                }
+                if(response.msg){
+                    showMessage(response.msg);
+                }
+                enableSelect(parent);
+                hideLoader(parent);
+            })
+            .fail(function( jqXHR, textStatus, errorThrown ){
+                showMessage(jqXHR.status + " " + jqXHR.statusText);
+                enableSelect(parent);
+                hideLoader(parent);
+            });
 
     });
 
     $(document).on("change", ".anim-schedule-min-select", function(e){
         e.preventDefault();
+        if(changeMinUrl == undefined || changeMinUrl == null || changeMinUrl == ""){
+            return false;
+        }
         var $this = $(this);
         var parent = $this.parents(".anim-schedule:first");
         var id = parent.attr("data-id");
         disableSelect(parent);
         showLoader(parent);
+        hideMessage();
+        $.post(changeMinUrl, {})
+            .done(function(response){
 
+                if(response.error === false){
+
+                } else {
+
+                }
+                if(response.msg){
+                    showMessage(response.msg);
+                }
+                enableSelect(parent);
+                hideLoader(parent);
+            })
+            .fail(function( jqXHR, textStatus, errorThrown ){
+                showMessage(jqXHR.status + " " + jqXHR.statusText);
+                enableSelect(parent);
+                hideLoader(parent);
+            });
     });
 });
