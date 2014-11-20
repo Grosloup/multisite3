@@ -107,7 +107,7 @@ class DayController extends BaseController
         $min = $request->request->get("min", false);
         if($scheduleId !== false && $min !== false){
             $scheduleId = intval($scheduleId);
-            $min = (intval($min)<10) ? '0' . $min : $min;
+            //$min = (intval($min)<10) ? '0' . $min : $min;
             /** @var \ZPB\AdminBundle\Entity\AnimationSchedule $schedule */
             $schedule = $this->getRepo('ZPBAdminBundle:AnimationSchedule')->find($scheduleId);
             if($schedule){

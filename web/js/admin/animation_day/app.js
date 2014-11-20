@@ -37,13 +37,15 @@ $(function(){
         var $btn = $(this);
         var $detail = $btn.parents(".anim-day-row:first").nextAll(".anim-day-details:first");
         if($detail.hasClass("active")){
+            $detail.removeClass("active");
+            $detail.slideUp(300);
             return true;
         }
         $detailsActive = $(".anim-day-details.active");
         if($detailsActive.length>0){
             $detailsActive.slideUp(300, function(){
                 $detailsActive.removeClass("active");
-            })
+            });
         }
         $detail.slideDown().addClass("active");
     });
@@ -68,6 +70,8 @@ $(function(){
                     tpl = tpl.replace("[[id]]", response["horaire"]["id"]).replace("[[animation]]", response["horaire"]["animation"]);
                     var d = $("<div />");
                     d.html(tpl);
+                    $(".anim-schedule-hour-select", d).val(hSelect.val());
+                    $(".anim-schedule-min-select", d).val(mSelect.val());
                     schedules.append($(".anim-schedule", d));
                     d = null;
                 } else {
