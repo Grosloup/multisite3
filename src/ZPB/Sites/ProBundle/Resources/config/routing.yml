@@ -16,8 +16,55 @@ zpb_sites_pro_cgv:
 
 
 
+zpb_sites_pro_indiv_billetterie:
+    path: /individuels/billetterie
+    defaults: { _controller: ZPBSitesProBundle:Indiv:billetterie }
+    methods: ["GET"]
+zpb_sites_pro_indiv_sejours:
+    path: /individuels/sejours
+    defaults: { _controller: ZPBSitesProBundle:Indiv:sejours }
+    methods: ["GET"]
+zpb_sites_pro_indiv_cadeaux:
+    path: /individuels/idees-cadeaux
+    defaults: { _controller: ZPBSitesProBundle:Indiv:cadeaux }
+    methods: ["GET"]
 
 
+zpb_sites_pro_group_visite_libre:
+    path: /groupes/visite-libre
+    defaults: { _controller: ZPBSitesProBundle:Group:visiteLibre }
+    methods: ["GET"]
+zpb_sites_pro_group_visite_guidee:
+    path: /groupes/visite-guidee
+    defaults: { _controller: ZPBSitesProBundle:Group:visiteGuidee }
+    methods: ["GET"]
+zpb_sites_pro_group_resto:
+    path: /groupes/restauration
+    defaults: { _controller: ZPBSitesProBundle:Group:resto }
+    methods: ["GET"]
+zpb_sites_pro_group_sejours:
+    path: /groupes/sejours
+    defaults: { _controller: ZPBSitesProBundle:Group:sejours }
+    methods: ["GET"]
 
+zpb_sites_pro_pratique_acces:
+    path: /pratique/acces
+    defaults: { _controller: ZPBSitesProBundle:Pratique:acces }
+    methods: ["GET"]
+zpb_sites_pro_pratique_fiches:
+    path: /pratique/fiches
+    defaults: { _controller: ZPBSitesProBundle:Pratique:fiches }
+    methods: ["GET"]
+zpb_sites_pro_pratique_trucs:
+    path: /pratique/trucs-astuces
+    defaults: { _controller: ZPBSitesProBundle:Pratique:trucs }
+    methods: ["GET"]
 
-
+zpb_sites_pro_media_tools:
+    path: /mediatheque/outils-communication
+    defaults: { _controller: ZPBSitesProBundle:Media:tools }
+    methods: ["GET"]
+zpb_sites_pro_media_galerie_photo:
+    path: /mediatheque/outils-communication
+    defaults: { _controller: ZPBSitesProBundle:Media:galeriePhoto }
+    methods: ["GET"]

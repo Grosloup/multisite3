@@ -4,22 +4,16 @@
 {% block description %}{% endblock %}
 {% block keywords %}{% endblock %}
 
+{% block title %}Visite guidée{% endblock %}
+{% set active_page = "visite_guidee" %}
 
 {% block content %}
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="page-header">
-                    <h1>Professionnels du tourisme</h1>
+                    <h1>{{ block('title') }}</h1>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="wrapper">
-        <div class="container">
-            <div class="row">
-
             </div>
         </div>
     </div>
