@@ -26,6 +26,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use ZPB\AdminBundle\Controller\BaseController;
 use ZPB\AdminBundle\Entity\AnimationDay;
+use ZPB\AdminBundle\Entity\AnimationSchedule;
 use ZPB\AdminBundle\Form\Type\AnimationDayType;
 
 class DayController extends BaseController
@@ -33,7 +34,8 @@ class DayController extends BaseController
     public function listAction()
     {
         $animationDays = $this->getRepo('ZPBAdminBundle:AnimationDay')->findAll();
-        return $this->render('ZPBAdminBundle:Animation:day/list.html.twig', ['animDays'=>$animationDays]);
+        $animations = $this->getRepo('ZPBAdminBundle:Animation')->findAllToArray();
+        return $this->render('ZPBAdminBundle:Animation:day/list.html.twig', ['animDays'=>$animationDays, 'animations'=>$animations]);
     }
 
     public function createAction(Request $request)
@@ -120,6 +122,43 @@ class DayController extends BaseController
                 
             }
         }
+
+        return new JsonResponse($response);
+    }
+
+    public function xhrAddScheduleToDayAction(Request $request)
+    {
+        if(!$request->isMethod('POST') || !$request->isXmlHttpRequest()){
+            throw $this->createAccessDeniedException();
+        }
+        $response = ['error'=>true, 'msg'=>'Données Manquantes.', 'horaire'=>null];
+        $dayId = $request->request->get('dayId', false);
+        $hour = $request->request->get('hour', false);
+        $min = $request->request->get('min', false);
+        $animId = $request->request->get('animId', false);
+        if($dayId !== false && $hour !== false && $min !== false && $animId !== false){
+            /** @var \ZPB\AdminBundle\Entity\AnimationDay $animationDay */
+            $animationDay = $this->getRepo('ZPBAdminBundle:AnimationDay')->find(intval($dayId));
+            /** @var \ZPB\AdminBundle\Entity\Animation $animationDay */
+            $animation = $this->getRepo('ZPBAdminBundle:Animation')->find(intval($animId));
+
+            if($animationDay !== null && $animation !== null){
+                $schedule = new AnimationSchedule();
+                $schedule->setAnimation($animation);
+                $date = \DateTime::createFromFormat('H:i:s', $hour.':'.$min.':00');
+                $schedule->setTimetable($date);
+                $schedule->setAnimationDay($animationDay);
+                $this->getManager()->persist($schedule);
+
+                $this->getManager()->flush();
+                $response['error'] = false;
+                $response['msg'] = 'Horaire enregistré';
+                $response['horaire'] = ['id'=>$schedule->getId(), 'animation'=>$animation->getName()];
+            }
+
+        }
+
+
 
         return new JsonResponse($response);
     }

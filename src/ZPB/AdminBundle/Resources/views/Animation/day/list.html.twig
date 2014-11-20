@@ -11,18 +11,18 @@
             padding: 5px;
             border: 1px solid #ddd;
         }
-        .anim-day-row{
+        .anim-day-row, .anim-day-add-form{
             *zoom: 1;
             height: 50px;
         }
-        .anim-day-row:before, .anim-day-row:after{
+        .anim-day-row:before, .anim-day-row:after, .anim-day-add-form:before, .anim-day-add-form:after{
             display: table;
             content: " ";
         }
-        .anim-day-row:after{
+        .anim-day-row:after, .anim-day-add-form:after{
             clear: both;
         }
-        .anim-day-element{
+        .anim-day-element, .anim-day-add-element{
             float: left;
             height: 100%;
             margin-right: 5px;
@@ -91,9 +91,23 @@
             float: left;
             margin-right: 10px;
         }
+        .anim-day-add-form{
+            line-height: 50px;
+        }
+        .anim-day-add-btn{
+            line-height: normal;
+        }
+
+        .anim-day-add.hide,.anim-day-add-btn.hide{
+            display: none;
+        }
+        .anim-day-add.show,.anim-day-add-btn.show{
+            display: block;
+        }
     </style>
 {% endblock %}
 {% block content %}
+
     <div class="row">
         <div class="column-12">
             <div class="tile">
@@ -121,10 +135,44 @@
                                 <div class="anim-day-name anim-day-element">{{ animDay.name }}</div>
                                 <div class="anim-day-element right anim-day-delete"><button class="btn btn-primary"><i class="fa fa-trash-o"></i></button></div>
                                 <div class="anim-day-element right anim-day-modify"><button class="btn btn-primary anim-day-modify-btn"><i class="fa fa-edit"></i></button></div>
-                                <div class="anim-day-element right anim-day-add"><button class="btn btn-primary"><i class="fa fa-plus"></i></button></div>
+                                <div class="anim-day-element right anim-day-add"><button class="btn btn-primary anim-day-add-btn"><i class="fa fa-plus"></i></button></div>
                             </div>
-                            <div class="anim-day-add"></div>
+                            <div class="anim-day-add hide">
+                                <div class="anim-day-add-form" data-id="{{ animDay.id }}">
+                                    <div class="anim-day-add-select-hour anim-day-add-element">
+                                        <select>
+                                            {% for h in 8..20 %}
+                                                {% set t = h<10 ? "0"~h : h %}
+                                                <option value="{{ t }}">{{ t }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+
+                                    <div class="anim-day-add-select-min anim-day-add-element">
+                                        <select>
+                                            {% for m in ["00", "15", "30", "45"] %}
+
+                                                <option value="{{ m }}">{{ m }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+
+                                    <div class="anim-day-add-select-anim anim-day-add-element">
+                                        <select>
+                                            {% for a in animations %}
+                                                <option value="{{ a.id }}">{{ a.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+
+                                    <div class="anim-day-add-btn anim-day-add-element show">
+                                        <button>ok</button>
+                                    </div>
+                                    <div class="loader anim-day-add-element hide"></div>
+                                </div>
+                            </div>
                             <div class="anim-day-details">
+
                                 {% if animDay.schedules|length >0 %}
                                     {% for schedule in animDay.schedules %}
                                         <div class="anim-schedule" data-id="{{ schedule.id }}">
@@ -170,9 +218,36 @@
 
 {% block footScripts %}
     {{ parent() }}
+    <script type="text/template" id="schedule_tpl">
+        <div class="anim-schedule" data-id="[[id]]">
+            <div class="loader anim-schedule-element hide"></div>
+            <div class="anim-schedule-element anim-schedule-delete show"><a href=""><i class="fa fa-trash-o"></i></a></div>
+            <div class="anim-schedule-element innner-row">
+                <div class="anim-schedule-hour">
+                    <select class="anim-schedule-hour-select">
+                        {% for h in 8..20 %}
+                            {% set t = h<10 ? "0"~h : h %}
+                            <option value="{{ t }}">{{ t }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="anim-schedule-mn">
+                    <select class="anim-schedule-min-select">
+                        {% for h in ["00", "15", "30", "45"] %}
+                            <option value="{{ h }}">{{ h }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="anim-schedule-element">[[animation]]</div>
+            </div>
+
+
+        </div>
+    </script>
     <script>
         var changeHourUrl = "{{ path("zpb_admin_animations_days_hour_change") }}";
         var changeMinUrl = "{{ path("zpb_admin_animations_days_min_change") }}";
+        var addScheduleUrl = "{{ path("zpb_admin_animations_days_add_schedule") }}";
     </script>
     <script src="/js/admin/animation_day/app.js"></script>
 {% endblock %}

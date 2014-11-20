@@ -12,4 +12,9 @@ use Doctrine\ORM\EntityRepository;
  */
 class AnimationRepository extends EntityRepository
 {
+    public function findAllToArray()
+    {
+        $qb = $this->createQueryBuilder('a')->orderBy('a.name', 'ASC');
+        return $qb->getQuery()->getArrayResult();
+    }
 }

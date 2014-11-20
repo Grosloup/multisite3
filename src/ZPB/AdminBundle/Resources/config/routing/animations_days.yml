@@ -27,3 +27,8 @@ zpb_admin_animations_days_min_change:
     path: /horaire/change/minute
     defaults: { _controller: ZPBAdminBundle:Animation/Day:xhrScheduleChangeMin }
     methods: ["POST"]
+
+zpb_admin_animations_days_add_schedule:
+    path: /ajouter/horaire
+    defaults: { _controller: ZPBAdminBundle:Animation/Day:xhrAddScheduleToDay }
+    methods: ["POST"]
