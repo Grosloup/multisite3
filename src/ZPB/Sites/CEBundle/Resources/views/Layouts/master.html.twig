@@ -31,7 +31,7 @@
 {% block main %}
     {% block header %}
         <div id="site-header">
-            {{ render(controller("ZPBSitesCEBundle:Navs:mainbar")) }}
+            {{ render(controller("ZPBSitesCEBundle:Navs:mainbar", {active_page: active_page})) }}
             {{ header_carousel("ZPBSitesCommonBundle:incs:header_carousel.html.twig") }}
         </div>
     {% endblock %}
@@ -42,7 +42,7 @@
 
 
 {% endblock %}
-
+{{ render(controller("ZPBSitesCEBundle:Navs:secondaryMainbar", {active_page: active_page})) }}
 {{ render(controller("ZPBSitesCEBundle:Partials:footer")) }}
 
 

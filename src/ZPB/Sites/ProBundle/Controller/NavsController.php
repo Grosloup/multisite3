@@ -25,8 +25,13 @@ use ZPB\AdminBundle\Controller\BaseController;
 
 class NavsController extends BaseController
 {
-    public function mainbarAction()
+    public function mainbarAction($active_page = "")
     {
-        return $this->render('ZPBSitesProBundle:Navs:mainbar.html.twig', []);
+        return $this->render('ZPBSitesProBundle:Navs:mainbar.html.twig', ['active_page'=>$active_page]);
+    }
+
+    public function secondaryMainbarAction($active_page = "")
+    {
+        return $this->render('ZPBSitesProBundle:Navs:secondaryMainbar.html.twig', ['active_page'=>$active_page]);
     }
 }

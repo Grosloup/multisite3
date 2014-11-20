@@ -20,9 +20,9 @@
                     <li class="dropdown{% if active_page in zooparc_pages %} active{% endif %}"><a href="javascript:void(0)">ZooParc</a>
                         {{ include("ZPBSitesZooBundle:Navs:zooparc.html.twig") }}
                     </li>
-                   {# <li class="dropdown{% if active_page in pedago_pages %} active{% endif %}"><a href="javascript:void(0)">Activités</a>
-                        {{ include("ZPBSitesZooBundle:Navs:pedagogie.html.twig") }}
-                    </li>#}
+                    <li class="dropdown{% if active_page in pedago_pages %} active{% endif %}"><a href="javascript:void(0)">Enfants</a>
+                        {{ include("ZPBSitesZooBundle:Navs:enfants.html.twig") }}
+                    </li>
                     <li class="dropdown{% if active_page in news_pages %} active{% endif %}"><a href="javascript:void(0)">Actualité</a>
                         {{ include("ZPBSitesZooBundle:Navs:actualite.html.twig") }}
                     </li>

@@ -1,5 +1,6 @@
 {% set indiv_pages = ["individuels"] %}
 {% set groupes_pages = ["groupes"] %}
+{% set handicap_pages = ["groupes"] %}
 {% set practicle_pages = ["pratique"] %}
 {% set tools_pages = ["tools"] %}
 
@@ -14,43 +15,19 @@
             <nav>
                 <ul>
                     <li class="dropdown{% if active_page in indiv_pages %} active{% endif %}"><a href="javascript:void(0)">Individuels</a>
-                        <ul>
-                            <li><a href="">Billetterie</a></li>
-                            <li><a href="">Séjours</a></li>
-                            <li><a href="">Idées cadeaux</a></li>
-
-                        </ul>
+                        {{ include("ZPBSitesCEBundle:Navs:individuel.html.twig") }}
                     </li>
                     <li class="dropdown{% if active_page in groupes_pages %} active{% endif %}"><a href="javascript:void(0)">Groupes</a>
-                        <ul>
-                            <li><a href="">Visite libre</a></li>
-                            <li><a href="">Visite guidée</a></li>
-                            <li><a href="">Restauration</a></li>
-                            <li><a href="">Séjours</a></li>
-                            <li><a href="">Avantages groupes</a></li>
-                        </ul>
+                        {{ include("ZPBSitesCEBundle:Navs:groupes.html.twig") }}
                     </li>
-                    <li class="dropdown{% if active_page in groupes_pages %} active{% endif %}"><a href="javascript:void(0)">Situation de handicap</a>
-                        <ul>
-                            <li><a href="">Visite libre</a></li>
-                            <li><a href="">Restauration</a></li>
-                            <li><a href="">Séjours</a></li>
-                            <li><a href="{{ path("zpb_sites_scolar_homepage") }}">Enfants</a></li>
-                        </ul>
+                    <li class="dropdown{% if active_page in handicap_pages %} active{% endif %}"><a href="javascript:void(0)">Situation de handicap</a>
+                        {{ include("ZPBSitesCEBundle:Navs:handicap.html.twig") }}
                     </li>
                     <li class="dropdown{% if active_page in practicle_pages %} active{% endif %}"><a href="javascript:void(0)">Pratique</a>
-                        <ul>
-                            <li><a href="">Accès</a></li>
-                            <li><a href="">Fiches</a></li>
-                            <li><a href="">Trucs et astuces</a></li>
-
-                        </ul>
+                        {{ include("ZPBSitesCEBundle:Navs:pratique.html.twig") }}
                     </li>
                     <li class="dropdown{% if active_page in tools_pages %} active{% endif %}"><a href="javascript:void(0)">Médiathèque</a>
-                        <ul>
-                            <li><a href="">Outils de communication</a></li>
-                            <li><a href="">Galerie photo</a></li>
-                        </ul>
+                        {{ include("ZPBSitesCEBundle:Navs:mediatheque.html.twig") }}
                     </li>
 
                 </ul>

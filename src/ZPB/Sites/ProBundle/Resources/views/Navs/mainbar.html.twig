@@ -1,6 +1,5 @@
-{% set pro_pages = ["individuels"] %}
-{% set prest_pages = ["groupes"] %}
-{% set sem_pages = ["groupes"] %}
+{% set indiv_pages = ["individuels"] %}
+{% set groupes_pages = ["groupes"] %}
 {% set practicle_pages = ["pratique"] %}
 {% set tools_pages = ["tools"] %}
 
@@ -14,29 +13,18 @@
             <button id="menu-toggler"></button>
             <nav>
                 <ul>
-                    <li class="dropdown{% if active_page in pro_pages %} active{% endif %}"><a href="">Professionnels</a>
-
+                    <li class="dropdown{% if active_page in indiv_pages %} active{% endif %}"><a href="">Individuels</a>
+                        {{ include("ZPBSitesProBundle:Navs:individuel.html.twig") }}
                     </li>
-                    <li class="dropdown{% if active_page in prest_pages %} active{% endif %}"><a href="javascript:void(0)">Prestataires</a>
-                        <ul>
-                            <li><a href="">Visite libre</a></li>
-                            <li><a href="">Annonces jt</a></li>
-
-                        </ul>
+                    <li class="dropdown{% if active_page in groupes_pages %} active{% endif %}"><a href="javascript:void(0)">groupes</a>
+                        {{ include("ZPBSitesProBundle:Navs:groupes.html.twig") }}
                     </li>
 
-
-                    </li>
                     <li class="dropdown{% if active_page in practicle_pages %} active{% endif %}"><a href="javascript:void(0)">Pratique</a>
-                        <ul>
-                            <li><a href="">Accès</a></li>
-                        </ul>
+                        {{ include("ZPBSitesProBundle:Navs:pratique.html.twig") }}
                     </li>
                     <li class="dropdown{% if active_page in tools_pages %} active{% endif %}"><a href="javascript:void(0)">Médiathèque</a>
-                        <ul>
-                            <li><a href="">Outils de communication</a></li>
-                            <li><a href="">Galerie photo</a></li>
-                        </ul>
+                        {{ include("ZPBSitesProBundle:Navs:mediatheque.html.twig") }}
                     </li>
 
                 </ul>
