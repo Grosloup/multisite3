@@ -15,7 +15,9 @@ zpb_sites_ce_cgv:
 
 
 
-
+zpb_sites_ce_cgv_english_routes:
+    prefix: /en
+    resource: "@ZPBSitesCEBundle/Resources/config/routing/english/routes.yml"
 
 
 

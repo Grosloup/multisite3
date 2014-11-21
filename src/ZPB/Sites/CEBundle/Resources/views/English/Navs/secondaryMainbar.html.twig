@@ -1,0 +1,52 @@
+{% set indiv_pages = ["individuels"] %}
+{% set groupes_pages = ["groupes"] %}
+{% set handicap_pages = ["groupes"] %}
+{% set practicle_pages = ["pratique"] %}
+{% set tools_pages = ["tools"] %}
+
+
+<div id="seconday-mainbar-wrapper">
+    <div class="container">
+        <div class="row">
+            <nav id="secondary-mainbar">
+                <div class="col-md-2">
+                    <div class="menu-block {% if active_page in indiv_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">Singles</a>
+                        {{ include("ZPBSitesCEBundle:English/Navs:individuel.html.twig") }}
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="menu-block{% if active_page in groupes_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">Groups</a>
+                        {{ include("ZPBSitesCEBundle:English/Navs:groupes.html.twig") }}
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+                    <div class="menu-block{% if active_page in handicap_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">Handicap</a>
+                        {{ include("ZPBSitesCEBundle:English/Navs:handicap.html.twig") }}
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="menu-block{% if active_page in practicle_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">Utils</a>
+                        {{ include("ZPBSitesCEBundle:English/Navs:pratique.html.twig") }}
+                    </div>
+
+
+                </div>
+                <div class="col-md-3">
+                    <div class="menu-block{% if active_page in tools_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">Library</a>
+                        {{ include("ZPBSitesCEBundle:English/Navs:mediatheque.html.twig") }}
+                    </div>
+
+                </div>
+
+            </nav>
+        </div>
+    </div>
+</div>
