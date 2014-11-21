@@ -43,3 +43,7 @@ zpb_sites_scolar_scolar_jd:
     defaults: { _controller: ZPBSitesScolarBundle:Scolar:jd }
     methods: ["GET"]
 
+
+zpb_sites_scolar_english_routes:
+    prefix: /en
+    resource: "@ZPBSitesScolarBundle/Resources/config/routing/english/routes.yml"

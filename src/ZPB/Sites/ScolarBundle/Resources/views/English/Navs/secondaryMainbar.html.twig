@@ -1,0 +1,52 @@
+{% set children_pages = ["individuels"] %}
+{% set handi_pages = ["groupes"] %}
+{% set school_pages = ["groupes"] %}
+{% set practicle_pages = ["pratique"] %}
+{% set tools_pages = ["tools"] %}
+
+{% set active_page = "none" %}
+
+<div id="seconday-mainbar-wrapper">
+    <div class="container">
+        <div class="row">
+            <nav id="secondary-mainbar">
+                <div class="col-md-3">
+                    <div class="menu-block {% if active_page in children_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">Children</a>
+                        {{ include("ZPBSitesScolarBundle:English/Navs:enfants.html.twig") }}
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="menu-block{% if active_page in handi_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">Handicap</a>
+                        {{ include("ZPBSitesScolarBundle:English/Navs:handicap.html.twig") }}
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="menu-block{% if active_page in school_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">Scolars</a>
+                        {{ include("ZPBSitesScolarBundle:English/Navs:scolaires.html.twig") }}
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="menu-block{% if active_page in practicle_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">Utils</a>
+                        {{ include("ZPBSitesScolarBundle:English/Navs:pratique.html.twig") }}
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+                    <div class="menu-block{% if active_page in tools_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">Library</a>
+                        {{ include("ZPBSitesScolarBundle:English/Navs:mediatheque.html.twig") }}
+                    </div>
+                </div>
+
+
+            </nav>
+        </div>
+    </div>
+</div>

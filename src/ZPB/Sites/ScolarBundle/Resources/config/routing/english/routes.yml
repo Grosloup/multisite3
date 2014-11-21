@@ -1,0 +1,4 @@
+zpb_sites_scolar_english_index:
+    path: /
+    defaults: { _controller: ZPBSitesScolarBundle:English/Index:index }
+    methods: ["GET"]

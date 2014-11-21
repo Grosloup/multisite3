@@ -27,11 +27,17 @@
     {% endblock %}
 </head>
 <body>
-{{ render(controller("ZPBSitesCommonBundle:Navs:topnav")) }}
+{% block topnav %}
+    {{ render(controller("ZPBSitesCommonBundle:Navs:topnav", {url: path("zpb_sites_scolar_english_index")})) }}
+{% endblock %}
+
 {% block main %}
     {% block header %}
         <div id="site-header">
-            {{ render(controller("ZPBSitesScolarBundle:Navs:mainbar")) }}
+            {% block mainbar %}
+                {{ render(controller("ZPBSitesScolarBundle:Navs:mainbar")) }}
+            {% endblock %}
+
             {{ header_carousel("ZPBSitesCommonBundle:incs:header_carousel.html.twig") }}
         </div>
     {% endblock %}
@@ -41,8 +47,14 @@
 
 
 {% endblock %}
+{% block secondary_mainbar %}
+    {{ render(controller("ZPBSitesScolarBundle:Navs:secondaryMainbar")) }}
+{% endblock %}
+{% block footer %}
+    {{ render(controller("ZPBSitesScolarBundle:Partials:footer")) }}
+{% endblock %}
 
-{{ render(controller("ZPBSitesScolarBundle:Partials:footer")) }}
+
 
 
 

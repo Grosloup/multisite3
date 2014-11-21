@@ -1,11 +1,11 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Nicolas Canfrere
- * Date: 19/09/2014
- * Time: 00:34
+ * User: Nicolas Canfrère
+ * Date: 21/11/2014
+ * Time: 14:47
  */
- /*
+  /*
            ____________________
   __      /     ______         \
  {  \ ___/___ /       }         \
@@ -18,7 +18,7 @@
       (__<  |mm_|mm_|  |mm_|mm_|
 */
 
-namespace ZPB\Sites\ScolarBundle\Controller;
+namespace ZPB\Sites\ScolarBundle\Controller\English;
 
 
 use ZPB\AdminBundle\Controller\BaseController;
@@ -27,11 +27,12 @@ class NavsController extends BaseController
 {
     public function mainbarAction($active_page = '')
     {
-        return $this->render('ZPBSitesScolarBundle:Navs:mainbar.html.twig', ['active_page'=>$active_page]);
+        return $this->render('ZPBSitesScolarBundle:English/Navs:mainbar.html.twig', ['active_page'=>$active_page]);
     }
 
     public function secondaryMainbarAction($active_page = '')
     {
-        return $this->render('ZPBSitesScolarBundle:Navs:secondaryMainbar.html.twig', ['active_page'=>$active_page]);
+        return $this->render('ZPBSitesScolarBundle:English/Navs:secondaryMainbar.html.twig', ['active_page'=>$active_page]);
     }
-}
+
+} 

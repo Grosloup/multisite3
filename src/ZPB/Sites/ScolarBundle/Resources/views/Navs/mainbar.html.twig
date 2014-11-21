@@ -16,43 +16,19 @@
 
                 <ul>
                     <li class="dropdown{% if active_page in children_pages %} active{% endif %}"><a href="">Groupes Enfants</a>
-                        <ul>
-                            <li><a href="">Visite libre</a></li>
-                            <li><a href="{{ path("zpb_sites_scolar_resto") }}">Restauration</a></li>
-                            <li><a href="">Pédagogie</a></li>
-                        </ul>
+                        {{ include("ZPBSitesScolarBundle:Navs:enfants.html.twig") }}
                     </li>
                     <li class="dropdown{% if active_page in handi_pages %} active{% endif %}"><a href="javascript:void(0)">Situation de handicap</a>
-                        <ul>
-                            <li><a href="">Visite libre</a></li>
-                            <li><a href="{{ path("zpb_sites_scolar_resto") }}">Restauration</a></li>
-                            <li><a href="">Pédagogie</a></li>
-
-                        </ul>
+                        {{ include("ZPBSitesScolarBundle:Navs:handicap.html.twig") }}
                     </li>
                     <li class="dropdown{% if active_page in school_pages %} active{% endif %}"><a href="">Scolaires</a>
-                        <ul>
-                            <li><a href="{{ path("zpb_sites_scolar_scolar_jd") }}">Journées découverte</a></li>
-                            <li><a href="{{ path("zpb_sites_scolar_scolar_cycle_1") }}">Cycle 1</a></li>
-                            <li><a href="{{ path("zpb_sites_scolar_scolar_cycle_2") }}">Cycle 2</a></li>
-                            <li><a href="{{ path("zpb_sites_scolar_scolar_cycle_3") }}">Cycle 3</a></li>
-                            <li><a href="{{ path("zpb_sites_scolar_scolar_colleges") }}">Secondaire</a></li>
-                            <li><a href="{{ path("zpb_sites_scolar_resto") }}">Restauration</a></li>
-                        </ul>
+                        {{ include("ZPBSitesScolarBundle:Navs:scolaires.html.twig") }}
                     </li>
                     <li class="dropdown{% if active_page in practicle_pages %} active{% endif %}"><a href="javascript:void(0)">Pratique</a>
-                        <ul>
-                            <li><a href="">Accès</a></li>
-                            <li><a href="">Hébergements</a></li>
-                            <li><a href="">Transports</a></li>
-
-                        </ul>
+                        {{ include("ZPBSitesScolarBundle:Navs:pratique.html.twig") }}
                     </li>
                     <li class="dropdown{% if active_page in tools_pages %} active{% endif %}"><a href="javascript:void(0)">Médiathèque</a>
-                        <ul>
-                            <li><a href="">Outils de communication</a></li>
-                            <li><a href="">Galerie photo</a></li>
-                        </ul>
+                        {{ include("ZPBSitesScolarBundle:Navs:mediatheque.html.twig") }}
                     </li>
 
                 </ul>
