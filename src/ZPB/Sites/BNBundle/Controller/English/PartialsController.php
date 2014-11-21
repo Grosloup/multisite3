@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: Nicolas Canfrère
- * Date: 03/09/14
- * Time: 12:17
+ * Date: 21/11/2014
+ * Time: 16:14
  */
   /*
            ____________________
@@ -18,16 +18,15 @@
       (__<  |mm_|mm_|  |mm_|mm_|
 */
 
-namespace ZPB\Sites\ZooBundle\Controller;
+namespace ZPB\Sites\BNBundle\Controller\English;
 
 
 use ZPB\AdminBundle\Controller\BaseController;
 
 class PartialsController extends BaseController
 {
-
     public function footerAction()
     {
-        return $this->render('ZPBSitesZooBundle:Partials:footer.html.twig', []);
+        return $this->render('ZPBSitesBNBundle:English/Partials:footer.html.twig', []);
     }
-}
+} 
