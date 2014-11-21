@@ -3296,7 +3296,7 @@ if ( typeof define === 'function' && define.amd ) {
 
 /*!
  * Isotope v2.0.1
- * Filter & sort magical layouts
+ * Filter & sort magical Layouts
  * http://isotope.metafizzy.co
  */
 
@@ -3482,7 +3482,7 @@ function isotopeDefinition( Outlayer, getSize, matchesSelector, Item, LayoutMode
 
   // HACK
   // Don't animate/transition first layout
-  // Or don't animate/transition other layouts
+  // Or don't animate/transition other Layouts
   Isotope.prototype._getIsInstant = function() {
     var isInstant = this.options.isLayoutInstant !== undefined ?
       this.options.isLayoutInstant : !this._isLayoutInited;

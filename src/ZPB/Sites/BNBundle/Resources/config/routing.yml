@@ -21,7 +21,9 @@ zpb_sites_bn_cgv:
 
 
 
-
+zpb_sites_bn_english_routes:
+    prefix: /en
+    resource: "@ZPBSitesBNBundle/Resources/config/routing/english/routes.yml"
 
 
 
