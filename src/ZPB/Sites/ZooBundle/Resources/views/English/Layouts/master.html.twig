@@ -1,0 +1,10 @@
+{% extends "ZPBSitesZooBundle:Layouts:master.html.twig" %}
+
+{% block mainbar %}
+    {{ render(controller("ZPBSitesZooBundle:English/Navs:mainbar", {active_page: active_page})) }}
+{% endblock %}
+
+
+{% block secondary_mainbar %}
+    {{ render(controller("ZPBSitesZooBundle:English/Navs:secondaryMainbar", {active_page: active_page})) }}
+{% endblock %}

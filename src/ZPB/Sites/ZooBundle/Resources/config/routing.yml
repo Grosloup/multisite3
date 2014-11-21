@@ -98,3 +98,7 @@ zpb_sites_zoo_presse_routes:
 zpb_sites_zoo_reseaux_sociaux_routes:
     prefix: /reseaux-sociaux
     resource: "@ZPBSitesZooBundle/Resources/config/routing/reseaux_sociaux.yml"
+
+zpb_sites_zoo_english_routes:
+    prefix: /en
+    resource: "@ZPBSitesZooBundle/Resources/config/routing/english/routes.yml"

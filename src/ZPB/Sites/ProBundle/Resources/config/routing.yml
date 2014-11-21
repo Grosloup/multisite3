@@ -12,7 +12,10 @@ zpb_sites_pro_cgv:
     defaults: { _controller: ZPBSitesProBundle:CGV:index }
     methods: ["GET"]
 
-
+zpb_sites_pro_contact:
+    path:     /contact
+    defaults: { _controller: ZPBSitesProBundle:Contact:index }
+    methods: ["GET","POST"]
 
 
 
@@ -68,3 +71,4 @@ zpb_sites_pro_media_galerie_photo:
     path: /mediatheque/outils-communication
     defaults: { _controller: ZPBSitesProBundle:Media:galeriePhoto }
     methods: ["GET"]
+

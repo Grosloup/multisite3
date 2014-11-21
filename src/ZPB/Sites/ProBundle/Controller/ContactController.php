@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: Nicolas Canfrère
- * Date: 18/09/2014
- * Time: 10:19
+ * Date: 21/11/2014
+ * Time: 09:45
  */
   /*
            ____________________
@@ -18,16 +18,16 @@
       (__<  |mm_|mm_|  |mm_|mm_|
 */
 
-namespace ZPB\Sites\CommonBundle\Controller;
+namespace ZPB\Sites\ProBundle\Controller;
 
 
+use Symfony\Component\HttpFoundation\Request;
 use ZPB\AdminBundle\Controller\BaseController;
 
-class NavsController extends BaseController
+class ContactController extends BaseController
 {
-    public function topnavAction($url = null)
+    public function indexAction(Request $request)
     {
-
-        return $this->render('ZPBSitesCommonBundle:Navs:topnav.html.twig', ['url'=>$url]);
+        return $this->render('ZPBSitesProBundle:Contact:index.html.twig', []);
     }
-}
+} 

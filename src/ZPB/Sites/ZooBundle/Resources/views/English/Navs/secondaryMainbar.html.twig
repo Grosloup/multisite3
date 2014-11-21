@@ -1,0 +1,27 @@
+{% set practicle_pages = ["pratique", "tarifs", "acces", "animations", "map", "resto","services"] %}
+{% set zooparc_pages = ["zooparc", "phototheque","animaux", "histoire","mission","devDurable"] %}
+
+<div id="seconday-mainbar-wrapper">
+    <div class="container">
+        <div class="row">
+            <nav id="secondary-mainbar">
+                <div class="col-md-2">
+                    <div class="menu-block {% if active_page in practicle_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">You visit</a>
+                        {{ include("ZPBSitesZooBundle:English/Navs:pratique.html.twig") }}
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="menu-block{% if active_page in zooparc_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">ZooParc</a>
+                        {{ include("ZPBSitesZooBundle:English/Navs:zooparc.html.twig") }}
+                    </div>
+
+                </div>
+
+
+            </nav>
+        </div>
+    </div>
+</div>

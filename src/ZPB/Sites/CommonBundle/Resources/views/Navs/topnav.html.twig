@@ -5,11 +5,14 @@
 {% set host_seminaires = "new.seminaires.zoobeauval.com" %}
 {% set host_com = ["new.ce.zoobeauval.com","new.pro.zoobeauval.com","new.groupes.zoobeauval.com","new.scolaires.zoobeauval.com"] %}
 
+{% set url = (url is defined) ? url : "/en" %}
+
 <div class="" id="multisite-menu">
-    <div class="flag">
-        <a href=""><img src="/img/sites/en.gif" alt=""/></a>
-    </div>
+
     <div class="container">
+        <div class="flag">
+            <a href="{{ url }}"><img src="/img/sites/en.gif" alt=""/></a>
+        </div>
         <nav>
             <ul>
                 <li class="{% if app.request.host == host_zoo %} active{% endif %}"><a href="{{path("zpb_sites_zoo_homepage")}}">ZooParc de Beauval</a></li>
