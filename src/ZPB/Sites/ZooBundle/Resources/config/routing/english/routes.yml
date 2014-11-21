@@ -3,6 +3,17 @@ zpb_sites_zoo_english_index:
     defaults: { _controller: ZPBSitesZooBundle:English/Index:index }
     methods: ["GET"]
 
+zpb_sites_zoo_english_faq:
+    path: /faq
+    defaults: { _controller: ZPBSitesZooBundle:English/FAQ:index }
+    methods: ["GET"]
+
+zpb_sites_zoo_english_contact:
+    path: /contact
+    defaults: { _controller: ZPBSitesZooBundle:English/Contact:index }
+    methods: ["GET","POST"]
+
+
 
 
 ############### pratique
