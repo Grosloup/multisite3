@@ -27,11 +27,16 @@
     {% endblock %}
 </head>
 <body>
-{{ render(controller("ZPBSitesCommonBundle:Navs:topnav")) }}
+{% block topnav %}
+    {{ render(controller("ZPBSitesCommonBundle:Navs:topnav", {url: path("zpb_sites_pro_english_index")})) }}
+{% endblock %}
+
 {% block main %}
     {% block header %}
         <div id="site-header">
-            {{ render(controller("ZPBSitesProBundle:Navs:mainbar", {active_page: active_page})) }}
+            {% block mainbar %}
+                {{ render(controller("ZPBSitesProBundle:Navs:mainbar", {active_page: active_page})) }}
+            {% endblock %}
             {{ header_carousel("ZPBSitesCommonBundle:incs:header_carousel.html.twig") }}
         </div>
     {% endblock %}
@@ -42,8 +47,12 @@
 
 
 {% endblock %}
-{{ render(controller("ZPBSitesProBundle:Navs:secondaryMainbar", {active_page: active_page})) }}
-{{ render(controller("ZPBSitesProBundle:Partials:footer")) }}
+{% block secondary_mainbar %}
+    {{ render(controller("ZPBSitesProBundle:Navs:secondaryMainbar", {active_page: active_page})) }}
+{% endblock %}
+{% block footer %}
+    {{ render(controller("ZPBSitesProBundle:Partials:footer")) }}
+{% endblock %}
 
 
 

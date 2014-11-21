@@ -72,3 +72,7 @@ zpb_sites_pro_media_galerie_photo:
     defaults: { _controller: ZPBSitesProBundle:Media:galeriePhoto }
     methods: ["GET"]
 
+
+zpb_sites_pro_english_routes:
+    prefix: /en
+    resource: "@ZPBSitesProBundle/Resources/config/routing/english/routes.yml"

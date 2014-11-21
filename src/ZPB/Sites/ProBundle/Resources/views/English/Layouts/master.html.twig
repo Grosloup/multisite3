@@ -1,0 +1,19 @@
+{% extends "ZPBSitesProBundle:Layouts:master.html.twig" %}
+
+
+{% block topnav %}
+    {{ parent() }}
+{% endblock %}
+
+
+{% block mainbar %}
+    {{ render(controller("ZPBSitesProBundle:English/Navs:mainbar", {active_page: active_page})) }}
+{% endblock %}
+
+{% block secondary_mainbar %}
+    {{ render(controller("ZPBSitesProBundle:English/Navs:secondaryMainbar", {active_page: active_page})) }}
+{% endblock %}
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

@@ -1,0 +1,4 @@
+zpb_sites_pro_english_index:
+    path: /
+    defaults: { _controller: ZPBSitesProBundle:English/Index:index }
+    methods: ["GET"]
