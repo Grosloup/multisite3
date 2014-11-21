@@ -1,0 +1,18 @@
+{% extends "ZPBSitesBNBundle:Layouts:master.html.twig" %}
+
+{% block topnav %}
+    {{ render(controller("ZPBSitesCommonBundle:English/Navs:topnav", {url: path("zpb_sites_zoo_homepage")})) }}
+{% endblock %}
+
+{% block mainbar %}
+    {{ render(controller("ZPBSitesBNBundle:English/Navs:mainbar", {active_page: active_page})) }}
+{% endblock %}
+
+{% block secondary_mainbar %}
+    {{ render(controller("ZPBSitesBNBundle:English/Navs:secondaryMainbar", {active_page: active_page})) }}
+{% endblock %}
+
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}
