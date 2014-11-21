@@ -12,7 +12,10 @@ zpb_sites_ce_cgv:
     defaults: { _controller: ZPBSitesCEBundle:CGV:index }
     methods: ["GET"]
 
-
+zpb_sites_ce_contact:
+    path: /contact
+    defaults: { _controller: ZPBSitesCEBundle:Contact:index }
+    methods: ["GET", "POST"]
 
 
 zpb_sites_ce_cgv_english_routes:
