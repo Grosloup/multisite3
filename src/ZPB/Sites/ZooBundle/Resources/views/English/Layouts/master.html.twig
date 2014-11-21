@@ -13,3 +13,7 @@
 {% block secondary_mainbar %}
     {{ render(controller("ZPBSitesZooBundle:English/Navs:secondaryMainbar", {active_page: active_page})) }}
 {% endblock %}
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}
