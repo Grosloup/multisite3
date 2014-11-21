@@ -2,3 +2,23 @@ zpb_sites_bn_english_index:
     path: /
     defaults: { _controller: ZPBSitesBNBundle:English/Index:index }
     methods: ["GET"]
+
+zpb_sites_bn_english_contact:
+    path:     /contact
+    defaults: { _controller: ZPBSitesBNBundle:English/Contact:index }
+    methods: ["GET","POST"]
+
+zpb_sites_bn_english_faq:
+    path:     /faq
+    defaults: { _controller: ZPBSitesBNBundle:English/FAQ:index }
+    methods: ["GET"]
+
+
+
+
+
+
+
+
+
+
