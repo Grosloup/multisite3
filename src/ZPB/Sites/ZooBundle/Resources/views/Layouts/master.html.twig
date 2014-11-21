@@ -30,7 +30,10 @@
 </head>
 
 <body>
-{{ render(controller("ZPBSitesCommonBundle:Navs:topnav", {url: path("zpb_sites_zoo_english_index")})) }}
+{% block topnav %}
+    {{ render(controller("ZPBSitesCommonBundle:Navs:topnav", {url: path("zpb_sites_zoo_english_index")})) }}
+{% endblock %}
+
     {% block main %}
         {% block header %}
             <div id="site-header">
