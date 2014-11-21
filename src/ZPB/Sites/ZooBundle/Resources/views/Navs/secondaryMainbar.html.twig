@@ -1,9 +1,10 @@
 {% set practicle_pages = ["pratique", "tarifs", "acces", "animations", "map", "resto","services"] %}
-{% set zooparc_pages = ["zooparc", "phototheque"] %}
-{% set pedago_pages = ["pedago"] %}
+{% set zooparc_pages = ["zooparc", "phototheque","animaux", "histoire","mission","devDurable"] %}
+{% set children_pages = ["carnet","parcours","soigneurJr"] %}
 {% set news_pages = ["news","single_post", "cat_posts", "tag_posts"] %}
 {% set social_pages = ["social","reseau"] %}
-{% set shop_pages = ["shop"] %}
+{% set shop_pages = ["shop", "shop_index"] %}
+
 <div id="seconday-mainbar-wrapper">
     <div class="container">
         <div class="row">
@@ -23,7 +24,7 @@
 
                 </div>
                 <div class="col-md-2">
-                    <div class="menu-block{% if active_page in pedago_pages %} active{% endif %}">
+                    <div class="menu-block{% if active_page in children_pages %} active{% endif %}">
                         <a href="javascript:void(0)" class="menu-block-header">Enfants</a>
                         {{ include("ZPBSitesZooBundle:Navs:enfants.html.twig") }}
                     </div>
@@ -45,7 +46,7 @@
                 </div>
                 <div class="col-md-2">
                     <div class="menu-block{% if active_page in shop_pages %} active{% endif %}">
-                        <a href="#" class="menu-block-header">Boutique</a>
+                        <a href="{{ path("zpb_sites_zoo_shop_index") }}" class="menu-block-header">Boutique</a>
                     </div>
 
                 </div>

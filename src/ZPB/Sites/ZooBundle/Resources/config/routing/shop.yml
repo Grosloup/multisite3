@@ -1,0 +1,4 @@
+zpb_sites_zoo_shop_index:
+    path: /
+    defaults: { _controller: ZPBSitesZooBundle:Boutique/Shop:index }
+    methods: ["GET"]
