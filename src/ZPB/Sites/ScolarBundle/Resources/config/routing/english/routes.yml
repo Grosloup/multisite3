@@ -2,3 +2,23 @@ zpb_sites_scolar_english_index:
     path: /
     defaults: { _controller: ZPBSitesScolarBundle:English/Index:index }
     methods: ["GET"]
+
+zpb_sites_scolar_english_contact:
+    path: /contact
+    defaults: { _controller: ZPBSitesScolarBundle:English/Contact:index }
+    methods: ["GET","POST"]
+
+zpb_sites_scolar_english_faq:
+    path: /faq
+    defaults: { _controller: ZPBSitesScolarBundle:English/FAQ:index }
+    methods: ["GET"]
+
+
+
+
+
+
+
+
+
+

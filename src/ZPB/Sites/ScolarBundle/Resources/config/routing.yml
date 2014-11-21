@@ -12,6 +12,11 @@ zpb_sites_scolar_cgv:
     defaults: { _controller: ZPBSitesScolarBundle:CGV:index }
     methods: ["GET"]
 
+zpb_sites_scolar_contact:
+    path: /contact
+    defaults: { _controller: ZPBSitesScolarBundle:Contact:index }
+    methods: ["GET","POST"]
+
 
 zpb_sites_scolar_resto:
     path: /restauration
