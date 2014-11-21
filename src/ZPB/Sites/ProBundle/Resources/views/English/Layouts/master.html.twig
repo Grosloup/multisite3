@@ -2,7 +2,7 @@
 
 
 {% block topnav %}
-    {{ parent() }}
+    {{ render(controller("ZPBSitesCommonBundle:English/Navs:topnav", {url: path("zpb_sites_pro_homepage")})) }}
 {% endblock %}
 
 
