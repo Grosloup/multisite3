@@ -1,0 +1,43 @@
+{% set association_pages = [] %}
+{% set conservation_pages = [] %}
+{% set recherche_pages = [] %}
+{% set help_pages = [] %}
+{% set news_pages = [] %}
+
+{% set active_page = "none" %}
+
+
+
+<div id="seconday-mainbar-wrapper">
+    <div class="container">
+        <div class="row">
+            <div id="secondary-mainbar">
+                <div class="col-md-3">
+                    <div class="menu-block {% if active_page in association_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">The association</a>
+                        {{ include("ZPBSitesBNBundle:English/Navs:association.html.twig") }}
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="menu-block {% if active_page in conservation_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">Conservation</a>
+                        {{ include("ZPBSitesBNBundle:English/Navs:conservation.html.twig") }}
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="menu-block {% if active_page in recherche_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">Research</a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="menu-block {% if active_page in help_pages %} active{% endif %}">
+                        <a href="javascript:void(0)" class="menu-block-header">Help us</a>
+                        {{ include("ZPBSitesBNBundle:English/Navs:help.html.twig") }}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
