@@ -9,6 +9,32 @@
     {{ render(controller("ZPBSitesZooBundle:English/Navs:mainbar", {active_page: active_page})) }}
 {% endblock %}
 
+{% block tickets %}
+    <div class="tickets tickets-left">
+        <a href="">
+            <div class="inner">
+                Buy your<br>tickets
+                {{ include("ZPBSitesZooBundle:incs:billet_svg.html.twig") }}
+            </div>
+        </a>
+    </div>
+    <div class="tickets tickets-center">
+        <a href="{{ url("zpb_sites_hotels_homepage") }}">
+            <div class="inner">
+                Sleep<br>in Beauval
+                {{ include("ZPBSitesZooBundle:incs:dormir_svg.html.twig") }}
+            </div>
+        </a>
+    </div>
+    <div class="tickets tickets-right">
+        <a href="{{ path("zpb_sites_zoo_parrainages_homepage") }}">
+            <div class="inner">
+                Come<br>in Beauval
+                {{ include("ZPBSitesZooBundle:incs:parrainer_svg.html.twig") }}
+            </div>
+        </a>
+    </div>
+{% endblock %}
 
 {% block secondary_mainbar %}
     {{ render(controller("ZPBSitesZooBundle:English/Navs:secondaryMainbar", {active_page: active_page})) }}

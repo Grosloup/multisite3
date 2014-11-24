@@ -6,6 +6,10 @@
 {% block description %}{% endblock %}
 {% block keywords %}{% endblock %}
 
+{% block headScripts %}
+    <script src="/js/vendor/require.js" data-main="/js/sites/zoo/faq/index.js"></script>
+{% endblock %}
+
 {% block content %}
     <div class="container">
         <div class="row">
@@ -13,6 +17,72 @@
                 <div class="page-header">
                     <h1>{{ block("title") }}</h1>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2 col-md-2"></div>
+            <div class="col-sm-8 col-md-8">
+                <div class="page-intro">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum ipsam laborum nihil unde
+                        voluptates.</p>
+                    <p>For more infos, go to contact page : <a href="{{ path("zpb_sites_zoo_english_contact") }}">contact</a></p>
+                </div>
+            </div>
+            <div class="col-sm-2 col-md-2"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="faq">
+                    <div class="faq-question">
+                        Lorem ipsum dolor sit amet ?
+                    </div>
+                    <div class="faq-response is-hide">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, molestias!
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, impedit!
+                    </div>
+
+                </div>
+
+                <div class="faq">
+                    <div class="faq-question">
+                        Lorem ipsum dolor sit amet ?
+                    </div>
+                    <div class="faq-response is-hide">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, molestias!
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, impedit!
+                    </div>
+
+                </div>
+
+                <div class="faq">
+                    <div class="faq-question">
+                        Lorem ipsum dolor sit amet ?
+                    </div>
+                    <div class="faq-response is-hide">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, molestias!
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, impedit!
+                    </div>
+
+                </div>
+
+                <div class="faq">
+                    <div class="faq-question">
+                        Lorem ipsum dolor sit amet ?
+                    </div>
+                    <div class="faq-response is-hide">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, molestias!
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, impedit!
+                    </div>
+
+                </div>
+
+
             </div>
         </div>
     </div>
