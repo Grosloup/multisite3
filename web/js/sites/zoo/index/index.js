@@ -7,13 +7,18 @@ requirejs.config({
         scrollTo: "../vendor/jquery.scrollTo.min",
         modal: "common/modal/Modal.min",
         Carousel: "common/carousel/Carousel.min",
-        Slide: "common/carousel/Slide.min"
+        Slide: "common/carousel/Slide.min",
+        nanoScroller: "../vendor/jquery.nanoscroller.min"
     }
 });
-require(["waypoints_sticky", "scrollTo"], function(){
+require(["jquery","waypoints_sticky", "scrollTo", "nanoScroller"], function($){
     $(function(){
         $("#stickytop").waypoint('sticky');
-
+        $(".nano").nanoScroller({
+            alwaysVisible: true,
+            sliderMaxHeight: 50,
+            sliderMinHeight: 50
+        });
         $("#menu-toggler").on("click", function(e){
             e.preventDefault();
             $.scrollTo( this.hash, 300);

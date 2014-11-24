@@ -1,0 +1,103 @@
+$frontPanelHeight: 300 !default;
+$frontPanelTabHeight: 39 !default;
+
+@mixin front-panel($color){
+  margin-bottom: 20px;
+  border: 1px solid $color;
+  font-size: topx($fontSize * 0.8);
+  color: $fontColor;
+  font-family: $fontfamily;
+  font-weight: normal;
+
+  .front-panel-posts{
+    height: topx($frontPanelHeight);
+    //overflow-y: scroll;
+    .nano-pane{
+      @include border-radius(0);
+      background-color: $grisDF;
+      .nano-slider{
+        @include border-radius(0);
+        background-color: $color;
+      }
+    }
+    .front-panel-post-wrapper{
+      display: block;
+      border-bottom: 1px solid $color;
+      color: $fontColor;
+      font-weight: normal;
+      font-family: $fontfamily;
+      &:last-child{
+        border-bottom: none;
+      }
+    }
+    .front-panel-post{
+
+      padding: topx($fontSize * 0.8);
+
+      .front-panel-post-content{
+
+      }
+    }
+  }
+  .front-panel-title{
+    background-color: $color;
+    font-size: topx($fontSize);
+    text-align: center;
+    color: $blanc;
+    padding: topx($fontSize * 0.5) 0;
+    &>h3{
+      font-size: inherit;
+      color: inherit;
+      padding: 0 !important;
+      margin: 0 !important;
+      a{
+        font-size: inherit;
+        color: inherit;
+        font-family: inherit;
+        font-weight: inherit;
+      }
+    }
+
+  }
+}
+.front-panel{
+  @include front-panel($grisDF);
+  &.rose {
+    @include front-panel($rose)
+  }
+  &.bleu{
+    @include front-panel($ocean)
+  }
+  &.orange{
+    @include front-panel($abricot)
+  }
+  &.has-tab{
+    .front-panel-posts{
+      height: topx($frontPanelHeight - $frontPanelTabHeight);
+    }
+  }
+
+  .front-panel-tabs{
+    width: 100%;
+    @include clearfix;
+    height: topx($frontPanelTabHeight);
+    .front-panel-tab{
+      float: left;
+      width: percentage(1/3);
+      height: 100%;
+      &.active{
+        a{
+          background-color: $blanc;
+        }
+      }
+      a{
+        display: block;
+        height: 100%;
+        line-height: topx($frontPanelTabHeight);
+        text-align: center;
+        background-color: #eee;
+        font-size: topx($fontSize * 1.2);
+      }
+    }
+  }
+}
