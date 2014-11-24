@@ -100,4 +100,13 @@ $frontPanelTabHeight: 39 !default;
       }
     }
   }
+
+  .front-panel-panes{
+    .front-panel-pane{
+      display: none;
+      &.active{
+        display: block;
+      }
+    }
+  }
 }
