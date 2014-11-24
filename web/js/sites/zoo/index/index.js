@@ -9,15 +9,41 @@ requirejs.config({
         Carousel: "common/carousel/Carousel.min",
         Slide: "common/carousel/Slide.min",
         nanoScroller: "../vendor/jquery.nanoscroller.min"
+    },
+    shim:{
+        nanoScroller: {
+            deps: ["jquery"]
+        }
     }
 });
-require(["jquery","waypoints_sticky", "scrollTo", "nanoScroller"], function($){
+require(["waypoints_sticky", "scrollTo", "nanoScroller"], function(){
     $(function(){
         $("#stickytop").waypoint('sticky');
-        $(".nano").nanoScroller({
+
+        var tabs = ".front-panel.has-tab .front-panel-tab";
+        var $tabs = $(tabs);
+        var $panes = $(".front-panel-pane", $(".front-panel.has-tab"));
+        var timer, nanoOptions = {
             alwaysVisible: true,
             sliderMaxHeight: 50,
             sliderMinHeight: 50
+        };
+        $(".nano").nanoScroller(nanoOptions);
+        function refreshNano(){
+            window.clearTimeout(timer);
+            timer = window.setTimeout(function(){
+                $(".nano", $panes).nanoScroller(nanoOptions);
+            }, 100);
+        }
+
+        $(document).on("click",tabs,function(e){
+            e.preventDefault();
+            var index = $tabs.index(this);
+            $tabs.removeClass("active");
+            $(this).addClass("active");
+            $panes.removeClass("active");
+            $($panes.get(index)).addClass("active");
+            refreshNano();
         });
         $("#menu-toggler").on("click", function(e){
             e.preventDefault();
@@ -39,6 +65,8 @@ require(["jquery","Carousel"], function($,app){
 
 require(["jquery"], function($){
     (function($, w){
+
+
 
         $.fn.jqLegender = function(o){
 
