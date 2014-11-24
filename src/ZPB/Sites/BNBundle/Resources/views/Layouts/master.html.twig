@@ -38,23 +38,26 @@
                 {{ render(controller("ZPBSitesBNBundle:Navs:mainbar", {active_page: active_page})) }}
             {% endblock %}
             {{ header_carousel("ZPBSitesCommonBundle:incs:header_carousel.html.twig") }}
-            <div class="tickets tickets-left">
-                <a href="">
-                    <div class="inner">
-                        Faites<br> un don
-                        {{ include("ZPBSitesZooBundle:incs:billet_svg.html.twig") }}
-                    </div>
-                </a>
-            </div>
+            {% block tickets %}
+                <div class="tickets tickets-left">
+                    <a href="">
+                        <div class="inner">
+                            Faites<br> un don
+                            {{ include("ZPBSitesZooBundle:incs:billet_svg.html.twig") }}
+                        </div>
+                    </a>
+                </div>
 
-            <div class="tickets tickets-right">
-                <a href="{{ path("zpb_sites_zoo_parrainages_homepage") }}">
-                    <div class="inner">
-                        Parrainez<br>un animal
-                        {{ include("ZPBSitesZooBundle:incs:parrainer_svg.html.twig") }}
-                    </div>
-                </a>
-            </div>
+                <div class="tickets tickets-right">
+                    <a href="{{ path("zpb_sites_zoo_parrainages_homepage") }}">
+                        <div class="inner">
+                            Parrainez<br>un animal
+                            {{ include("ZPBSitesZooBundle:incs:parrainer_svg.html.twig") }}
+                        </div>
+                    </a>
+                </div>
+            {% endblock %}
+
         </div>
     {% endblock %}
     <div class="main-content">

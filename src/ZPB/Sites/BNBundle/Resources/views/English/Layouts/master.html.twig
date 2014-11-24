@@ -8,6 +8,26 @@
     {{ render(controller("ZPBSitesBNBundle:English/Navs:mainbar", {active_page: active_page})) }}
 {% endblock %}
 
+{% block tickets %}
+    <div class="tickets tickets-left">
+        <a href="">
+            <div class="inner">
+                Make a <br/> donation
+                {{ include("ZPBSitesZooBundle:incs:billet_svg.html.twig") }}
+            </div>
+        </a>
+    </div>
+
+    <div class="tickets tickets-right">
+        <a href="{{ path("zpb_sites_zoo_parrainages_homepage") }}">
+            <div class="inner">
+                Sponsor<br>an animal
+                {{ include("ZPBSitesZooBundle:incs:parrainer_svg.html.twig") }}
+            </div>
+        </a>
+    </div>
+{% endblock %}
+
 {% block secondary_mainbar %}
     {{ render(controller("ZPBSitesBNBundle:English/Navs:secondaryMainbar", {active_page: active_page})) }}
 {% endblock %}
