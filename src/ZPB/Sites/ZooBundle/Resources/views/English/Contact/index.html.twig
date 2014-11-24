@@ -16,4 +16,54 @@
             </div>
         </div>
     </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2 col-md-3"></div>
+            <div class="col-sm-8 col-md-6">
+                {{ form_start(form, {attr:{novalidate: true, class:"form"}}) }}
+                {{ form_errors(form) }}
+
+                <div class="form-row">
+                    {{ form_label(form.email) }}
+                    <div class="form-field">
+                        {{ form_widget(form.email) }}
+                        <div class="error-block">
+                            {{ form_errors(form.email) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    {{ form_label(form.topic) }}
+                    <div class="form-field">
+                        {{ form_widget(form.topic) }}
+                        <div class="error-block">
+                            {{ form_errors(form.topic) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    {{ form_label(form.message) }}
+                    <div class="form-field">
+                        {{ form_widget(form.message) }}
+                        <div class="error-block">
+                            {{ form_errors(form.message) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row hide">
+                    {{ form_label(form.name) }}
+                    <div class="form-field">
+                        {{ form_widget(form.name) }}
+                        {{ form_errors(form.name) }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    {{ form_widget(form.save, {attr:{class:"btn btn-primary"}}) }}
+                </div>
+                {{ form_end(form) }}
+            </div>
+            <div class="col-sm-2 col-md-3"></div>
+        </div>
+    </div>
 {% endblock %}

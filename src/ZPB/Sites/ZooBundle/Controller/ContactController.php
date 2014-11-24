@@ -22,7 +22,6 @@ namespace ZPB\Sites\ZooBundle\Controller;
 
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use ZPB\AdminBundle\Controller\BaseController;
 use ZPB\AdminBundle\Entity\ContactInfo;
 use ZPB\Sites\ZooBundle\Form\Type\ContactType;
@@ -39,7 +38,7 @@ class ContactController extends BaseController
         if($form->isValid()){
             $nonHuman = $form->get('name')->getData();
             if($nonHuman != null){
-                throw new AccessDeniedException();
+                throw $this->createAccessDeniedException();
             }
             $this->getManager()->persist($contact);
             $this->getManager()->flush();
@@ -54,7 +53,7 @@ class ContactController extends BaseController
             $sent = $this->get('mailer')->send($message);
 
             if($sent>0){
-                $this->setSuccess('Un email vous a été envoyé avec un nouveau de passe !');
+                $this->setSuccess('Votre message a bien été envoyé.');
             }else {
                 $this->setError('Un problème est survenu !');
             }
