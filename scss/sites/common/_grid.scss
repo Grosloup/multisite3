@@ -39,7 +39,7 @@ $numCols: 12 !default;
 .wrapper{
   width: 100%;
   @include clearfix;
-  margin: topx($fontSize * 4) 0;
+  padding: topx($fontSize * 2) 0;
 }
 .container{
   @include row;

@@ -21,12 +21,16 @@
 namespace ZPB\Sites\ZooBundle\Controller;
 
 
+use Facebook\FacebookRequest;
+use Facebook\FacebookSession;
+use Facebook\GraphUserPage;
 use ZPB\AdminBundle\Controller\BaseController;
 
 class TestDesignController extends BaseController
 {
     public function indexAction()
     {
+
         return $this->render('ZPBSitesZooBundle:TestDesign:index.html.twig', []);
     }
 } 

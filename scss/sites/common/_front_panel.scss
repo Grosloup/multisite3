@@ -85,9 +85,19 @@ $frontPanelTabHeight: 39 !default;
       float: left;
       width: percentage(1/3);
       height: 100%;
+
       &.active{
         a{
           background-color: $blanc;
+          border:{
+            bottom: 1px solid #fff;
+
+          }
+        }
+      }
+      &:last-child{
+        a{
+          border-right: none;
         }
       }
       a{
@@ -97,9 +107,15 @@ $frontPanelTabHeight: 39 !default;
         text-align: center;
         background-color: #eee;
         font-size: topx($fontSize * 1.2);
+        border:{
+          bottom: 1px solid darken(#eee, 10%);
+          right: 1px solid darken(#eee, 10%);
+        }
       }
     }
   }
+
+
 
   .front-panel-panes{
     .front-panel-pane{
