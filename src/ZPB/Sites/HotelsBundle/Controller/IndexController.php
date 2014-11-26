@@ -29,4 +29,9 @@ class IndexController extends BaseController
     {
         return $this->render('ZPBSitesHotelsBundle:Index:index.html.twig', []);
     }
+
+    public function englishAction()
+    {
+        return $this->render('ZPBSitesHotelsBundle:Index:en.html.twig', []);
+    }
 }

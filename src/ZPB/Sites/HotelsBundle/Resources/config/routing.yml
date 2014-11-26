@@ -1,3 +1,7 @@
 zpb_sites_hotels_homepage:
     path:     /
     defaults: { _controller: ZPBSitesHotelsBundle:Index:index }
+
+zpb_sites_hotels_english_homepage:
+    path:     /en
+    defaults: { _controller: ZPBSitesHotelsBundle:Index:english }

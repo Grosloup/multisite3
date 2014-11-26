@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>{% if block('title') %}{{ block('title')}}{% else %}Bienvenue{% endif %} | Les Hôtels de Beauval</title>
+    <title>{% if block('title') %}{{ block('title')}}{% else %}Home{% endif %} | Les Hôtels de Beauval</title>
     {% if block('description') %}
         <meta name="description" content="{{ block('description') }}"/>
     {% endif %}
@@ -26,7 +26,7 @@
 </head>
 <body>
 {% block topnav %}
-    {{ render(controller("ZPBSitesCommonBundle:Navs:topnav", {url: path("zpb_sites_hotels_english_homepage")})) }}
+    {{ render(controller("ZPBSitesCommonBundle:Navs:topnav", {url: path("zpb_sites_hotels_homepage")})) }}
 {% endblock %}
 {% block main %}
     {% block header %}
