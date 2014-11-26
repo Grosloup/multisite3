@@ -2,7 +2,7 @@ $frontPanelHeight: 300 !default;
 $frontPanelTabHeight: 39 !default;
 
 @mixin front-panel($color){
-  margin-bottom: 20px;
+  //margin-bottom: 20px;
   border: 1px solid $color;
   font-size: topx($fontSize * 0.8);
   color: $fontColor;

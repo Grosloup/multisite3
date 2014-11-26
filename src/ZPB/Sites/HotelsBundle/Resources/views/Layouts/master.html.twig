@@ -14,8 +14,8 @@
     {% endif %}
 
     {% block headLinks%}
-        <link rel="stylesheet" href="/css/font-awesome.min.css"/>
         <link rel="stylesheet" href="/css/sites/leshotels/master.css"/>
+        <link rel="stylesheet" href="/css/font-awesome.min.css"/>
     {% endblock %}
 
     {% block headScripts %}{% endblock %}
@@ -25,7 +25,7 @@
     {% endblock %}
 </head>
 <body class="{% if block('body_class') %}{{ body_class }}{% endif %}">
-{{ render(controller("ZPBSitesCommonBundle:Navs:topnav")) }}
+{#{{ render(controller("ZPBSitesCommonBundle:Navs:topnav")) }}#}
 {% block main %}
     {% block header %}
 
