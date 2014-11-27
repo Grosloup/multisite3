@@ -3,7 +3,7 @@ $fontSize: 16;
 $fontfamily: 'cooper_hewitt_book', Arial, Helvetica, sans-serif;
 $headerFontFamily: 'cooper_hewitt_bold', Arial, Helvetica, sans-serif;
 $fontColor: $grisFonce ;
-$headerFontColor: $ocean ;
+$headerFontColor: $taupe ;
 $lineHeight: 1.43 ;
 
 $headerSize: 50, 45, 30, 25, 20, 15;
@@ -154,16 +154,7 @@ $smb_blockHeaderFontFamily: "cooper_hewitt_semi_bold", Arial, Helvetica, sans-se
 $smb_blockHeaderActiveColor: $jaune;
 $smb_menuBorderColor: $blanc;
 
-// ************************** footer
-$footerBgColor: $grisFonce;
-$footerBgImage: url('../../../img/sites/common/strips.png');
-$footerBgImageRepeat: repeat;
-$footerBgImagePosition: top left;
-$footerColor: $blanc;
-$footerLinkFontFamily: Arial, Helvetica, sans-serif;
-$footerLinkColor: inherit;
-$footerLinkHoverColor: $bleu;
-$footerLegalsBorderColor: #4b4b4f;
+
 
 
 // ************************** site-header-tickets
@@ -184,38 +175,15 @@ $bs_btnBgColor_2: $bleuPale;
 $bs_btnBgColor_3: $vertPale;
 $bs_gutter: 10;
 
-// ************************** post
-$post_borderColor: $grisBB;
-$post_categoryColor: lighten($grisFonce, 50);
-$post_categoryFontSize:$fontSize * 0.75;
-$post_categoryLinkColor: $post_categoryColor;
-$post_categoryLinkHoverColor: $bleu;
+// ************************** footer
+$footerBgColor: $grisFonce;
 
-$post_titleFontSize: $fontSize * 1.25 ;
-$post_titleLinkColor: $grisFonce;
-
-$post_dateBgColor:$grisBB;
-$post_dateColor:$blanc;
-
-$post_dateFontSize: $fontSize * 0.75;
-
-$post_articleHeight: 150;
-$post_thumbWidth: 105;
-
-$post_postMoreBgColor: $grisBB;
-$post_postMoreColor: $blanc;
-$post_postMoreFontSize: $fontSize * 0.75;
-
-$post_tagsFontSize: $fontSize * 0.75;
-$post_tagsColor: $grisBB;
-$post_tagsLinkColor: $grisBB;
-$post_tagsLinkHoverColor: $ocean;
-
-$post_hover_borderColor: $ocean;
-$post_hover_dateBgColor: $ocean;
-$post_hover_titleLinkColor: $ocean;
-$post_hover_postMoreBgColor: $ocean;
-$post_hover_postMoreBgColor: $ocean;
-$post_hover_postMoreColor: $blanc !default;
+$footerBgImageRepeat: repeat;
+$footerBgImagePosition: top left;
+$footerColor: $blanc;
+$footerLinkFontFamily: Arial, Helvetica, sans-serif;
+$footerLinkColor: inherit;
+$footerLinkHoverColor: $taupe;
+$footerLegalsBorderColor: #4b4b4f;
 
 

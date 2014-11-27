@@ -16,30 +16,35 @@
 @import "../common/grid";
 
 @import "../common/multisite-menu";
+
+@import "../common/footer";
+
 body{
   background-color: #ada28a;
 }
+$w: 395;
+$h: 189;
 .logo{
   /*width: 395px;
   height: 189px;*/
-  width: 100%;
-  margin: 40px auto;
+  width: topx($w * 0.5);
+  height: topx($h * 0.5);
+  margin: 10px auto;
 }
 .logo #Calque_1{
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
-.h-page-header{
-  text-align: center;
-  color: $blanc;
+.h-page-header, .spacer{
+  display: none;
 }
 
 .h-wrapper-jdb, .h-wrapper-hdb, .h-wrapper-pdb{
-  width: 100%;
-  float: left;
+  width: 95%;
+  //float: left;
   padding-bottom: 10px;
-  margin-bottom: 30px;
+  margin: 0 auto;
   background-color: $kiwi;
 }
 .h-wrapper-hdb{
@@ -112,41 +117,52 @@ body{
       text-transform: uppercase;
 
     }
-    /*.front-box-title{
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      height: 39px;
-      z-index: 300;
-      font-size: topx($fontSize);
-      text-align: center;
-      color: $blanc;
-      padding: topx($fontSize * 0.5) 0;
-      &>h3{
-        font-size: inherit;
-        color: inherit;
-        padding: 0 !important;
-        margin: 0 !important;
-      }
-      &.rose{
-        background-color: $rose;
-      }
-      &.red{
-        background-color: $rouge;
-      }
-      &.green{
-        background-color: $vertParrainage;
-      }
-      &.lilas{
-        background-color: $lilas;
-      }
-    }*/
+
   }
 }
-@media only screen and (min-width: 768px) {
+
+#main-footer{
+  margin-top: 35px;
+  min-height: 75px;
+  background-color: $grisFonce;
+}
+@media only screen and (min-width: 640px) {
+  .h-page-header{
+    text-align: center;
+    font-size: topx($fontSize * 0.9);
+    color: $blanc;
+    display: block;
+  }
+  .h-wrapper-jdb, .h-wrapper-hdb, .h-wrapper-pdb{
+    width: 80%;
 
 
+    margin:0 auto 20px;
+
+  }
+
+  .logo{
+    width: topx($w * 0.8);
+    height: topx($h * 0.8);
+    margin: 10px auto;
+  }
+
+  .spacer{
+    display: block;
+    padding-bottom: 20px;
+  }
+
+  #main-footer{
+    margin-top: 75px;
+    min-height: 150px;
+    background-color: $grisFonce;
+  }
+}
+@media only screen and (min-width: 960px) {
+
+  .h-page-header{
+    font-size: topx($fontSize);
+  }
 
   .logo{
     width: 395px;
@@ -160,7 +176,9 @@ body{
 
   .h-wrapper-jdb, .h-wrapper-hdb, .h-wrapper-pdb{
     width: percentage(1/3);
-    margin-bottom: 0;
+    margin: 0;
+    float: left;
+
   }
 
   .front-box{
@@ -246,5 +264,10 @@ body{
 
   }
 
+  #main-footer{
+    margin-top: 150px;
+    min-height: 300px;
+    background-color: $grisFonce;
+  }
 }
 
