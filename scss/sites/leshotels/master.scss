@@ -15,17 +15,19 @@
 
 @import "../common/grid";
 
+@import "../common/multisite-menu";
 body{
   background-color: #ada28a;
 }
 .logo{
-  width: 395px;
-  height: 189px;
+  /*width: 395px;
+  height: 189px;*/
+  width: 100%;
   margin: 40px auto;
 }
 .logo #Calque_1{
-  width: 395px;
-  height: 189px;
+  width: 100%;
+  height: auto;
 }
 
 .h-page-header{
@@ -37,7 +39,7 @@ body{
   width: 100%;
   float: left;
   padding-bottom: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   background-color: $kiwi;
 }
 .h-wrapper-hdb{
@@ -55,27 +57,26 @@ body{
     position: relative;
     overflow: hidden;
     &:hover{
-      a{
-        img{
-          @include transform(scale(1.1));
-        }
+      .bg-img{
+        @include transform(scale(1.1));
       }
+
       .overlay{
         background-color: rgba(0,0,0,0.5);
       }
       .front-box-text{
-        bottom: 25%;
+
         color: $blanc;
+        top: 20%;
       }
     }
-    a{
-      img{
-        width: 100%;
-        height: auto;
-        display: block;
-        @include transform(scale(1));
-        @include transition(transform 0.3s ease-in-out);
-      }
+
+    .bg-img{
+      width: 100%;
+      height: auto;
+      display: block;
+      @include transform(scale(1.01));
+      @include transition(transform 0.3s ease-in-out);
     }
     .overlay{
       position: absolute;
@@ -86,10 +87,21 @@ body{
       z-index: 100;
       @include transition(background-color 0.3s ease-in-out);
     }
+    .front-box-logo{
+      img{
+        display: block;
+        width: 60%;
+        height: auto;
+      }
+      position: absolute;
+      left: 50%;
+      z-index: 200;
+      bottom: -7%;
+      @include translateX(-30%);
+    }
     .front-box-text{
       position: absolute;
-      bottom: -30%;
-      @include translateY(-50%);
+      top: -30%;
       width: 60%;
       left: 20%;
       text-align: center;
@@ -97,21 +109,10 @@ body{
       color: transparent;
       font-size: topx($fontSize);
       @include transition(all 0.3s ease-in-out);
-      a{
-        //color: inherit;
+      text-transform: uppercase;
 
-        &.hdb{
-          color:#479094;
-        }
-        &.jdb{
-          color: #95c11e;
-        }
-        &.pdb{
-          color:#c03427;
-        }
-      }
     }
-    .front-box-title{
+    /*.front-box-title{
       position: absolute;
       left: 0;
       right: 0;
@@ -140,19 +141,17 @@ body{
       &.lilas{
         background-color: $lilas;
       }
-    }
+    }*/
   }
 }
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 768px) {
 
-  .h-page-header{
 
-  }
 
   .logo{
     width: 395px;
     height: 189px;
-    margin: 40px auto;
+
   }
   .logo #Calque_1{
     width: 395px;
@@ -170,30 +169,15 @@ body{
       position: relative;
       overflow: hidden;
       &:hover{
-        a{
-          img{
-            @include transform(scale(1.1));
-          }
-        }
+
         .overlay{
           background-color: rgba(0,0,0,0.5);
         }
         .front-box-logo{
-          //top: 20%;
         }
         .front-box-text{
-          top: 40%;
+          top: 20%;
           color: $blanc;
-        }
-      }
-      a{
-
-        img{
-          width: 100%;
-          height: auto;
-          display: block;
-          @include transform(scale(1.01));
-          @include transition(transform 0.3s ease-in-out);
         }
       }
       .overlay{
@@ -216,13 +200,10 @@ body{
         z-index: 200;
         bottom: -7%;
         @include translateX(-30%);
-        //@include transition(all 0.3s ease-in-out);
       }
       .front-box-text{
         position: absolute;
-        top: 30%;
-        @include translateY(-50%);
-
+        top: -30%;
         width: 60%;
         left: 20%;
         text-align: center;
@@ -230,13 +211,11 @@ body{
         color: transparent;
         font-size: topx($fontSize * 1.5);
         @include transition(all 0.3s ease-in-out);
-        a{
-          color: inherit;
-          text-transform: uppercase;
 
-        }
+        text-transform: uppercase;
+
       }
-      .front-box-title{
+      /*.front-box-title{
         position: absolute;
         left: 0;
         right: 0;
@@ -261,7 +240,7 @@ body{
         &.green{
           background-color: $vertParrainage;
         }
-      }
+      }*/
     }
 
 

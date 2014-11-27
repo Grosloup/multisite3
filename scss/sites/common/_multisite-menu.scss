@@ -1,4 +1,3 @@
-
 $mn_bgColor: $grisFonce !default;
 $mn_color: $blanc !default;
 $mn_lineHeight: 35px !default;
@@ -72,7 +71,7 @@ $mn_submenuLinkHoverColor: $grisFonce !default;
         display: inline-block;
         position: relative;
         &.dropdown{
-          &:hover{
+          &:hover,&.open{
             &>ul{
               display: block;
             }

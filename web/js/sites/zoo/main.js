@@ -12,10 +12,17 @@ requirejs.config({
 });
 require(["waypoints_sticky", "scrollTo"], function(){
     $(function(){
+        var topMenuDropdowns = $("#multisite-menu-nav li.dropdown ");
         $("#stickytop").waypoint('sticky');
         $("#menu-toggler").on("click", function(e){
             e.preventDefault();
             $.scrollTo( this.hash, 300);
+        });
+
+        topMenuDropdowns.on("click", function(e){
+            e.preventDefault();
+
+            $(this).toggleClass("open");
         });
     });
 });

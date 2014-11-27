@@ -13,11 +13,24 @@ requirejs.config({
 require(["waypoints_sticky", "scrollTo"], function(){
     $(function(){
         $("#stickytop").waypoint('sticky');
-
+        var topMenuDropdowns = $("#multisite-menu-nav li.dropdown");
         $("#menu-toggler").on("click", function(e){
             e.preventDefault();
             $.scrollTo( this.hash, 300);
+        });
 
+        topMenuDropdowns.on("click", function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            if($(this).hasClass("open")){
+                $(this).removeClass("open");
+            } else{
+                topMenuDropdowns.removeClass("open");
+                $(this).addClass("open");
+            }
+        });
+        $(document).on("click", function(e){
+            topMenuDropdowns.removeClass("open");
         });
     });
 });
