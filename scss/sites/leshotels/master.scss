@@ -144,12 +144,12 @@ $h: 189;
   .logo{
     width: topx($w * 0.8);
     height: topx($h * 0.8);
-    margin: 10px auto;
+    margin: 30px auto;
   }
 
   .spacer{
     display: block;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
   }
 
   #main-footer{
@@ -161,7 +161,8 @@ $h: 189;
 @media only screen and (min-width: 960px) {
 
   .h-page-header{
-    font-size: topx($fontSize);
+    font-size: topx($fontSize * 1.2);
+    font-weight: 700;
   }
 
   .logo{
