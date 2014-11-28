@@ -290,3 +290,54 @@ $h: 189;
   }
 }
 
+.social-btn{
+  display: block;
+  width: 41px;
+  height: 41px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-image: url('../../../img/sites/leshotels/reseaux.png');
+}
+.facebook{
+  background-position: 0 0;
+  &:hover{
+    background-position: 0 -41px;
+  }
+}
+
+.youtube{
+  background-position: -41px 0;
+  &:hover{
+    background-position: -41px -41px;
+  }
+}
+.google{
+  background-position: -82px 0;
+  &:hover{
+    background-position: -82px -41px;
+  }
+}
+.pinterest{
+  background-position: -123px 0;
+  &:hover{
+    background-position: -123px -41px;
+  }
+}
+.trip{
+  background-position: -164px 0;
+  &:hover{
+    background-position: -164px -41px;
+  }
+}
+.twitter{
+  background-position: -205px 0;
+  &:hover{
+    background-position: -205px -41px;
+  }
+}
+.instagram{
+  background-position: -246px 0;
+  &:hover{
+    background-position: -246px -41px;
+  }
+}
