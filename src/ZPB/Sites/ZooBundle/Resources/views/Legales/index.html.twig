@@ -6,6 +6,18 @@
 {% block description %}{% endblock %}
 {% block keywords %}{% endblock %}
 
+
+{% block headStyles %}
+    <style>
+        p{
+            margin-bottom: 16px;
+        }
+        address{
+            margin: 16px 0;
+        }
+    </style>
+{% endblock %}
+
 {% block content %}
     <div class="container">
         <div class="row">
@@ -21,15 +33,15 @@
         <div class="row">
             <div class="col-sm-2 col-md-2"></div>
             <div class="col-sm-8 col-md-8">
-                <h3>Editeur</h3>
-                <p>Le site web zoobeauval.com est un service de communication au public en ligne édité par le ZooParc de Beauval.</p>
+                <h4>éditeur</h4>
+                <p>Le site web zoobeauval.com est un service de communication au public en ligne édité par le ZooParc de Beauval. Il est hébergé par :</p>
                 <address>
-                    Il est hébergé par OVH<br/>
+                    OVH<br/>
                     140 Quai du Sartel<br/>
                     59100 Roubaix<br/>
                     France<br/>
                 </address>
-                <h3>Raison sociale et siège social</h3>
+                <h4>Raison sociale et siège social</h4>
                 <p>Le présent site est la propriété de la SAS ZooParc de Beauval.</p>
                 <address>
                     ZooParc de Beauval<br/>
@@ -38,7 +50,7 @@
                     sous le numéro RCS 38357843200015<br/>
                     N° intracommunautaire : FR 58 383 578 432<br/>
                 </address>
-                <h3>Crédits</h3>
+                <h4>Crédits</h4>
                 <p>Directeur de la Publication :<br/>
                 Delphine Delord, Directrice de la communication</p>
                 <address>
@@ -47,9 +59,9 @@
                     41110 Saint Aignan s/ Cher<br/>
                     France<br/>
                 </address>
-                <h3>Photos</h3>
+                <h4>Photos</h4>
                 <p>&copy;ZooParc de Beauval</p>
-                <h3>Informatiques et Libertés</h3>
+                <h4>Informatiques et Libertés</h4>
                 <p>En conformité avec les dispositions de la loi n°78-17 du 6 janvier 1978, ce site a fait l'objet d'une déclaration préalable auprès de la Commission Nationale Informatiques et Libertés (CNIL).</p>
                 <p>Conformément à la loi Informatique et Libertés du 6 janvier 1978, la personne communiquant des données personnelles dispose d'un droit d'accès, de rectification et de suppression de ces données. Vous pouvez l'exercer en écrivant à :</p>
                 <address>

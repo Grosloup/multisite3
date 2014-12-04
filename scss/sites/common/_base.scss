@@ -9,6 +9,7 @@ $headerFontFamily: 'cooper_hewitt_bold', Arial, Helvetica, sans-serif !default;
 $fontColor: $grisFonce !default;
 $headerFontColor: $ocean !default;
 $lineHeight: 1.43 !default;
+$linkColor: $ocean!default;
 
 *,*:before,*:after{
   @include box-sizing(border-box);
@@ -59,7 +60,7 @@ h5{
 a{
   @include  nakedLink;
   font-family: $linkFontFamily;
-  color: $grisFonce;
+  color: $linkColor;
   &:hover{
     color: $linkHoverColor;
   }
@@ -136,7 +137,7 @@ strong{
   text-align: center;
   font-family: "cooper_hewitt_medium", Arial, Helvetica, sans-serif;
   margin-bottom: 20px;
-  font-size: topx(38);
+  font-size: topx(20);
   .quoted{
     position: relative;
     display: inline-block;
